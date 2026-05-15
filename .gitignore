@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Local environments
+.venv/
+.env
+
+# Local scratch artifacts
+executive_dashboard_*.png
+render_executive_dashboard.py
+
+# Local NotebookLM sync state
+.notebooklm-sync.json

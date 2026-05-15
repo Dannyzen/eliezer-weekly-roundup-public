@@ -1,0 +1,215 @@
+# Skills as Control
+
+Last updated: 2026-05-14
+
+Core sources:
+- From Research Question to Scientific Workflow: Leveraging Agentic AI for Science Automation: https://arxiv.org/abs/2604.21910v1
+- Agentic AI-assisted coding offers a unique opportunity to instill epistemic grounding during software development: https://arxiv.org/abs/2604.21744v1
+- Thinking with Reasoning Skills: Fewer Tokens, More Accuracy: https://arxiv.org/abs/2604.21764v1
+- AEL: Agent Evolving Learning for Open-Ended Environments: https://arxiv.org/abs/2604.21725v1
+- OpenAI Codex plugins and skills: https://openai.com/academy/codex-plugins-and-skills
+- ComposioHQ/awesome-codex-skills: https://github.com/ComposioHQ/awesome-codex-skills
+- Skill Retrieval Augmentation for Agentic AI: https://arxiv.org/abs/2604.24594
+- From Skill Text to Skill Structure: https://arxiv.org/abs/2604.24026
+- Skills as Verifiable Artifacts: https://arxiv.org/abs/2605.00424v1
+- Semia: Auditing Agent Skills via Constraint-Guided Representation Synthesis: https://arxiv.org/abs/2605.00314v1
+- An Empirical Study of Agent Skills for Healthcare: https://arxiv.org/abs/2605.02709v1
+- SkillSafetyBench: https://arxiv.org/abs/2605.12015v1
+- Under the Hood of SKILL.md: https://arxiv.org/abs/2605.11418v1
+- Proteus: https://arxiv.org/abs/2605.11891v1
+- SkillOps: https://arxiv.org/abs/2605.13716
+- Hik289/SkillOps: https://github.com/Hik289/SkillOps
+- Sefz semantic fuzzing: https://arxiv.org/abs/2605.13044
+
+## Thesis
+
+Skills are not just reusable prompt snippets. In serious agent systems, skills are becoming a control layer: reviewed, scoped, versioned procedural knowledge that constrains model behavior, translates domain language into structured intents, and lets deterministic code perform the final execution.
+
+The pattern is strongest when the LLM is allowed to interpret ambiguous human intent but is not allowed to improvise domain rules, validity constraints, workflow topology, or execution semantics.
+
+## April 26 distribution update: skills are becoming packages
+
+The newest practical signal is that skills are becoming installable packages. OpenAI’s Codex docs define a skill as a playbook Codex can follow for a team-specific process, distinct from a plugin that connects Codex to an external tool or source of information. That boundary is important: plugins grant access; skills constrain procedure.
+
+`ComposioHQ/awesome-codex-skills` turns the pattern into a distribution format. It uses `$CODEX_HOME/skills`, per-skill folders, required `SKILL.md` metadata, optional `scripts/`, `references/`, and `assets/`, and an installer that fetches skills from GitHub. The README also describes progressive disclosure: load metadata to decide whether a skill applies, then load the body only after the skill fires.
+
+That turns the skill from a prompt trick into a software artifact. It can be pinned, reviewed, installed, tested, shared, deprecated, and audited.
+
+## April 28 retrieval update: skills need admission control
+
+Skill Retrieval Augmentation makes the scaling problem explicit. A large skill library cannot be pasted into context. The system has to retrieve a small candidate set, decide whether external procedural knowledge is actually needed, and then load only the useful parts. The paper's SRA-Bench construction is useful because it separates retrieval, incorporation, and end-task execution, and it shows that current agents often load skills indiscriminately even when a gold skill is absent or the task does not require one.
+
+The SSL skill-representation paper adds the missing structure. Skills should expose scheduling signals, execution structure, logic-level action/resource evidence, prerequisites, and side effects. That structure improves both discovery and risk assessment compared with text-only lookup.
+
+Immediate design implication:
+- keep short metadata separate from full skill bodies
+- retrieve by metadata first, then rerank by task fit
+- add a load/no-load gate before consuming context
+- normalize skills into invocation interfaces, execution phases, resource touches, side effects, and tests
+- log retrieved skills, loaded skills, and task outcomes so stale or harmful skills can be pruned
+
+Sources:
+- [Skill Retrieval Augmentation for Agentic AI](https://arxiv.org/abs/2604.24594)
+- [From Skill Text to Skill Structure](https://arxiv.org/abs/2604.24026)
+
+## Architecture pattern
+
+1. User goal arrives in natural language.
+2. The agent retrieves a small set of relevant skills or grounding documents.
+3. The model maps the goal into a typed intent or plan while citing the skill sections it used.
+4. Deterministic generators, validators, or tools convert the typed intent into artifacts: DAGs, code, config, test cases, or operational steps.
+5. Runtime traces preserve which skills were applied, which constraints were checked, and where execution diverged.
+6. Repeated successful trajectories are proposed as new or updated skills only after review.
+
+## What belongs in a skill
+
+Good skills should separate:
+- hard constraints: invariants the agent must not violate;
+- convention parameters: defaults that are usually right but can be overridden deliberately;
+- vocabulary mappings: domain words to schemas, APIs, or workflow objects;
+- decision rules: when to choose one path over another;
+- examples: short, high-signal cases that clarify boundary conditions;
+- tests: checks that prove the skill constrained behavior correctly;
+- deterministic helpers: scripts, templates, schemas, or small tools that prevent the model from improvising brittle steps;
+- long references: loaded only when needed, not pasted into every turn.
+
+Bad skills are long transcripts, motivational prose, stale checklists, unpinned third-party installers, or untested instructions that silently override newer project facts.
+
+## Why this matters for the agentic stack
+
+The science-workflow paper shows the implementation payoff: Skills improved full-match intent accuracy from 44% to 83%, reduced data transfer by 92% through deferred workflow generation, and kept LLM overhead below 15 seconds with sub-mill cent query cost in the reported Kubernetes setup.
+
+The GROUNDING.md paper shows the governance payoff: field-scoped documents can encode non-negotiable scientific or engineering constraints so non-experts can still generate code that respects domain validity.
+
+The reasoning-skills paper shows the cost payoff: reusable distilled reasoning routines can cut redundant reasoning tokens and improve accuracy.
+
+AEL adds the discipline: memory and reflection help, but piling on more self-improvement mechanisms can degrade outcomes. Skills need to be compact, useful, and tested.
+
+The Codex/Composio packaging pattern adds the operational payoff: skills can be distributed and updated like internal libraries, with metadata-triggered loading instead of always-on context bloat.
+
+## Implementation checklist
+
+- Add `GROUNDING.md` or `SKILLS.md` at the repo, domain, and method levels where agents repeatedly work.
+- Package recurring workflows as folders with `SKILL.md`, optional `scripts/`, `references/`, `templates/`, and tests.
+- Label sections as hard constraints, conventions, examples, and tests.
+- Require agents to cite applied skill sections in plans or generated artifacts.
+- Convert plans into typed intents before deterministic execution.
+- Pin third-party skill installers or skill repos to reviewed commits.
+- Add regression tests that intentionally tempt the agent to violate hard constraints.
+- Version skills like source code and review changes before they become default behavior.
+- Deprecate or remove skills that are stale, overbroad, or no longer tested.
+
+## Pitfalls
+
+- Treating every remembered fact as a skill.
+- Letting skills become huge context dumps.
+- Allowing stale skills to outrank current repository state.
+- Encoding preferences as hard constraints without owner review.
+- Skipping tests, which turns a skill into another unverified prompt.
+- Hiding domain assumptions inside examples instead of stating them as constraints.
+- Installing community skills without supply-chain review.
+- Confusing plugins that grant access with skills that guide process.
+
+## Implementability score
+
+0.94
+
+The pattern is implementable immediately with markdown files, metadata, deterministic helper scripts, retrieval, typed schemas, and regression tests. The remaining hard work is lifecycle management: review, versioning, applicability scoring, deprecation, and supply-chain safety for shared skills.
+
+## April 30 ops update: skills are event-specific retrieval contracts
+
+Bian Que sharpens the skill architecture for operations agents. The key move is Flexible Skill Arrangement: a Skill specifies which operational data and knowledge to retrieve for a given business-module context. That is more precise than a generic prompt playbook. For release interception, proactive inspection, and alert root-cause analysis, the skill should encode the event type, relevant metrics/logs/change events, handbook rules, practitioner knowledge, allowed tools, and verification steps.
+
+The public BianQue Assistant repo describes a practical execution skeleton: Parse → Search → Fetch Data → Build Prompt → LLM Inference → Post-process → Feedback Update. It explicitly leaves context management, tool orchestration, RAG, sandboxing, and data-source connectors to the adopter. That makes it a useful pattern rather than a drop-in agent.
+
+GitHub Trending reinforced the same direction with `obra/superpowers`, `mattpocock/skills`, `browserbase/skills`, and `jcode`: procedural knowledge is becoming packaged, composable, and tied to concrete tool surfaces.
+
+Practical lesson:
+- make skills declare required evidence and allowed tools, not just advice
+- route by event type and business module before retrieving context
+- connect correction feedback to both case memory and reviewed skill patches
+- keep generated skill updates reviewable and versioned
+- measure skill quality by alert reduction, root-cause accuracy, MTTR, false positives, and operator corrections
+
+Sources:
+- [Bian Que](https://arxiv.org/abs/2604.26805v1)
+- [BianQue Assistant](https://github.com/benchen4395/BianQue_Assistant)
+- [Superpowers](https://github.com/obra/superpowers)
+- [Browserbase Skills](https://github.com/browserbase/skills)
+
+## May 4 security update: skills are untrusted code until verified
+
+Skills as Verifiable Artifacts and Semia turn the skill layer into a security and supply-chain problem. The central rule is simple: a skill is untrusted code until it has been verified. Signatures, registries, and known authors help with provenance, but they do not prove that the prose, scripts, tool paths, and human-approval conditions are safe.
+
+Semia makes the analysis shape more concrete. It treats a skill as a hybrid artifact: structured declarations plus natural-language behavior. It then lifts the artifact into a Datalog-style fact base so security properties can be queried as reachability problems: indirect injection, secret leakage, confused deputies, unguarded sinks, and missing HITL checkpoints.
+
+Practical update:
+- add explicit verification-level metadata to skill manifests
+- keep provenance/signature separate from behavioral verification
+- list high-impact sinks and required approvals per skill
+- statically review bundled scripts and tool declarations
+- route unverified skills through stricter HITL gates
+- preserve approval and denial artifacts in the agent trace
+- build adversarial skill fixtures that try prompt injection, secret exfiltration, and confused-deputy paths
+
+This tightens the original skills thesis. Skills are still a control layer, but an unverified control layer can become an attack surface.
+
+Sources:
+- [Skills as Verifiable Artifacts](https://arxiv.org/abs/2605.00424v1)
+- [Semia](https://arxiv.org/abs/2605.00314v1)
+
+## May 5 healthcare update: domain-risk labels are part of skill governance
+
+An Empirical Study of Agent Skills for Healthcare adds an empirical domain-governance layer. The authors filtered 557 healthcare-related skills from 58,159 public skills on ClawHub and annotated them across function, deployment context, autonomy, and safety dimensions. The key finding is that public healthcare skills cluster around patient-facing workflow automation and monitoring, while healthcare-agent research often emphasizes diagnosis and treatment. The paper also warns that general technical risk does not reliably capture clinical risk.
+
+The practical lesson is that skill manifests need domain-risk fields, not just tool names and autonomy labels:
+- domain and workflow phase
+- affected record type and data sensitivity
+- action class and escalation path
+- required reviewer role
+- local SOP or policy citation
+- skill-version and domain-risk label in every trace
+
+This extends the May 4 verification rule. A skill is untrusted until verified, and in regulated domains verification has to include domain validity, not only script safety and provenance.
+
+Source:
+- [An Empirical Study of Agent Skills for Healthcare](https://arxiv.org/abs/2605.02709v1)
+
+## May 13 update: skills are semantic supply-chain surfaces
+
+SkillSafetyBench, Under the Hood of SKILL.md, and Proteus make the skill-security boundary explicit. Skills package procedural text, scripts, tools, files, memory assumptions, and execution privileges. That means skill metadata and instructions can shape discovery, selection, governance, and runtime behavior before the user ever asks for anything malicious.
+
+The practical correction is to stop treating SKILL.md as passive documentation. It is operational text. It can improve adversarial visibility in embedding retrieval, bias an agent toward an unsafe variant, evade semantic governance checks, or steer a benign task through unsafe local artifacts. Adaptive attackers make this worse because they can mutate a skill after seeing audit and runtime feedback.
+
+Practical update:
+- pin third-party skills to reviewed commits and record the loaded body hash in traces
+- require skills to declare allowed tools, file/network scopes, memory-write behavior, side effects, and approval points
+- keep registry discovery text, selection descriptions, full instructions, scripts, and runtime outputs under separate review surfaces
+- build adversarial fixtures for prompt injection, secret exfiltration, unsafe scripts, stale policy, and confused-deputy behavior
+- evaluate skills with rule-based verifiers and adaptive red-team loops, not only provenance checks or LLM-as-judge reviews
+- treat public skill marketplaces as supply chains: provenance is necessary, but behavioral verification is the control that matters
+
+Sources:
+- [SkillSafetyBench](https://arxiv.org/abs/2605.12015v1)
+- [Under the Hood of SKILL.md](https://arxiv.org/abs/2605.11418v1)
+- [Proteus](https://arxiv.org/abs/2605.11891v1)
+- [Anthropic skills repository](https://github.com/anthropics/skills)
+
+## May 14 update: skill libraries need library-time maintenance and semantic fuzzing
+
+SkillOps turns the skill layer from packaging into operations. A useful skill registry is not only a folder of `SKILL.md` files; it is a maintained library with contracts, validators, dependency edges, compatibility checks, and retirement paths. The paper's P/O/A/V/F contract shape is useful because it makes a skill inspectable before retrieval: what preconditions must hold, what operation is allowed, what artifact is produced, what validator proves success, and which failure modes are known.
+
+Sefz adds the missing negative test. A skill can violate its own stated guardrails under benign requests, without any explicit attacker string. Translating natural-language guardrails into trace predicates and fuzzing for ordinary inputs that reach violations is the right way to test whether the skill is actually a control surface.
+
+Practical lesson:
+- represent high-value skills as explicit contracts, not only prose
+- maintain library-level edges for dependency, redundancy, alternatives, compatibility, and lineage
+- add validators and adapters as first-class maintenance actions
+- run semantic fuzzing against trace-level guardrail predicates
+- log loaded skill hash, contract version, validator result, and side effects on every run
+- retire or quarantine stale and under-validated skills before retrieval can select them
+
+Sources:
+- [SkillOps](https://arxiv.org/abs/2605.13716)
+- [Hik289/SkillOps](https://github.com/Hik289/SkillOps)
+- [Sefz semantic fuzzing](https://arxiv.org/abs/2605.13044)

@@ -1,0 +1,382 @@
+# Memory Systems
+
+Memory is becoming the real architecture question for long-lived agents.
+
+The durable pattern across recent work is simple: agents become more useful when memory preserves ground truth, retrieves broader context than a single chunk, and distinguishes between what should stay local, what should become durable profile data, and what should remain ephemeral. The new wrinkle is that the best systems are no longer treating memory as transcript storage. They are turning experience into portable guidance and giving operators much better control over what gets written and recalled.
+
+## Why this topic now
+
+The April 2026 wave of memory work is pushing seven ideas into focus:
+- **MemMachine** argues that episodic memory should preserve full conversational evidence rather than summarize too aggressively.
+- **FileGram** argues that personalization should be grounded in behavioral traces from local file activity, not just dialogue.
+- **Springdrift** argues that persistent memory must be embedded in an auditable runtime with explicit recovery and policy controls.
+- **ALTK-Evolve** argues that the real goal is not replaying transcripts but extracting reusable guidelines, policies, and SOPs from trajectories.
+- **Drawing on Memory** argues that durable facts should be paired with contextual scene traces so temporal reasoning and update tracking survive across sessions.
+- **claude-mem** shows that installable memory infrastructure with search, citations, and progressive disclosure is a more practical product shape than hidden context injection.
+- **Memory Transfer Learning** shows that memory becomes much more valuable when distilled lessons transfer across domains instead of staying trapped inside one benchmark.
+- **StructMem** argues that long-horizon memory needs event-level bindings, temporal anchors, and cross-event links rather than isolated vectorized facts.
+
+Core sources:
+- MemMachine: https://arxiv.org/abs/2604.04853
+- FileGram: https://arxiv.org/abs/2604.04901
+- Springdrift: https://arxiv.org/abs/2604.04660
+- ALTK-Evolve article: https://huggingface.co/blog/ibm-research/altk-evolve
+- ALTK-Evolve paper: https://arxiv.org/abs/2603.10600
+- Drawing on Memory: https://arxiv.org/abs/2604.12948
+- claude-mem: https://github.com/thedotmack/claude-mem
+- Memory Transfer Learning: https://arxiv.org/abs/2604.14004
+- Experience Compression Spectrum: https://arxiv.org/abs/2604.15877
+- StructMem: https://arxiv.org/abs/2604.21748
+- LightMem: https://github.com/zjunlp/LightMem
+
+## Core thesis
+
+The wrong question is "how do we give the agent more memory?"
+
+The right questions are:
+- what evidence should be preserved verbatim?
+- what can be compressed safely?
+- what should become a reusable guideline?
+- what should remain local?
+- what contextual trace should travel with a stored fact?
+- how should retrieval adapt to the query?
+- what policy should govern writes, reads, and profile formation?
+- what abstraction level makes a memory transferable to new tasks?
+
+If those questions are ignored, memory turns into a lossy, leaky mess that is simultaneously unhelpful and unsafe.
+
+## The three memory layers that matter
+
+### 1. Episodic memory
+This is the raw record of what happened: conversations, tool calls, outcomes, and surrounding context.
+
+Current lesson:
+- preserve more of the original episode than most systems do today
+- index it intelligently, but do not treat aggressive extraction as truth preservation
+- keep enough context to reconstruct why a fact was learned, not just the fact itself
+
+### 2. Profile memory
+This is the durable model of the user, workflow, project, and preferences.
+
+Current lesson:
+- build profile memory from repeated evidence, not one-off statements
+- distinguish stable traits from transient task state
+- keep especially sensitive profile signals local by default
+
+### 3. Procedural memory
+This is how the system remembers how to act: routines, playbooks, policies, and recovery paths.
+
+Current lesson:
+- some of the most important memory is operational, not conversational
+- if the runtime cannot recover, replay, and justify decisions, the memory system is incomplete
+- the most useful promoted memories often look like guidelines, not transcripts
+
+## What to build now
+
+### Preserve raw episodes
+Store the full interaction episode plus metadata, then layer indexing and summarization on top. Do not throw away ground truth during ingestion.
+
+### Retrieve neighborhoods, not just chunks
+When one relevant turn is found, expand around it. Adjacent actions and context often matter more than the isolated snippet that matched the query.
+
+### Separate trust tiers
+Not every memory object deserves the same scope.
+
+Use at least three tiers:
+- ephemeral working memory
+- durable but local profile memory
+- externally shareable or system-wide memory
+
+### Put policy on memory writes
+Treat memory writes as consequential actions. Some memories change future behavior and should pass policy checks or confidence thresholds before becoming durable.
+
+### Distill guidelines, not just summaries
+Run offline passes that convert repeated trajectory patterns into concise guidelines, policies, and SOPs. Retrieval should surface those distilled lessons when they matter instead of dragging whole transcripts back into the prompt.
+
+### Store contextual traces with durable facts
+A durable memory entry should not be only a proposition. Pair it with a lightweight scene trace: where it came from, when it was learned, and what local situation made it relevant.
+
+### Promote memories at the abstraction level that transfers
+Raw traces are useful for audit and close-match replay, but cross-domain reuse depends on extracting higher-level workflows, validation routines, and generalizable insights.
+
+### Measure memory by continuity, transfer, and reversibility
+Useful metrics include:
+- factual continuity across sessions
+- profile accuracy over time
+- retrieval precision under noisy histories
+- token efficiency for grounded recall
+- reversibility and auditability of memory changes
+- transfer gain from retrieved guidelines on unseen tasks
+- temporal reasoning and update-tracking accuracy
+
+## What to avoid
+
+Avoid these traps:
+- turning every conversation into a flattened summary
+- treating vector search alone as a memory architecture
+- mixing user profile, task scratchpad, and governance history into one blob
+- letting behavioral traces flow into permanent memory without clear consent or scope
+- assuming bigger context windows remove the need for memory design
+- confusing transcript replay with actual learning
+- writing decontextualized facts and hoping retrieval can recover the missing situation later
+- promoting overly specific low-level traces as if they will transfer cleanly to new task domains
+
+## New April 2026 additions
+
+### Typed semantic memory is the practical middle path after vector-only and graph-heavy memory
+Memanto sharpens the memory architecture tradeoff. The paper argues that high-fidelity agent memory does not always require LLM-mediated entity extraction, explicit graph schema maintenance, and multi-query retrieval. Its proposed pattern is typed semantic memory, automated conflict resolution, temporal versioning, and a single-query retrieval path.
+
+The immediate design lesson is not to depend blindly on one proprietary retrieval backend. It is to make memory writes more disciplined:
+- classify durable memories into typed categories;
+- attach timestamp, source, supersession, and conflict metadata;
+- reconcile contradictions at write time instead of asking the answerer to improvise later;
+- keep the online retrieval path cheap enough to use continuously;
+- evaluate long-horizon continuity with realistic temporal and multi-session tasks.
+
+This connects directly to StructMem and WorldDB. Flat memory is too lossy, but full graph memory can be expensive and brittle. A typed, versioned event/state layer is the practical middle path for many agent products.
+
+Source:
+- [Memanto: Typed Semantic Memory with Information-Theoretic Retrieval for Long-Horizon Agents](https://arxiv.org/abs/2604.22085)
+
+### Memory, skills, and rules are one compression pipeline
+Experience Compression Spectrum adds the abstraction this category was missing. Episodic memory, procedural skills, and declarative rules are not separate product features. They are compression levels for the same underlying experience. The practical move is to preserve evidence once, then promote it along a governed ladder from episode to reusable routine to compact rule when transfer value is high and specificity costs are acceptable. The paper's "missing diagonal" is the opportunity: most systems can store or summarize, but very few can adapt compression level to the query, the time horizon, or the privacy tier.
+
+The concrete design hint is useful immediately. Treat memory promotion as a lifecycle problem with three explicit targets:
+- episodic recall when auditability and context fidelity matter
+- skill extraction when a reusable procedure keeps paying off
+- rule distillation when the lesson is stable enough to survive aggressive compression
+
+The compression ratios in the paper make the trade-off legible instead of mystical: roughly 5-20x for episodic memory, 50-500x for skills, and 1,000x or more for rules. That is the right language for designing memory budgets.
+
+### Cross-domain transfer favors insight over trace replay
+Memory Transfer Learning sharpens the promotion problem. The memory object that transfers best is usually not the full episode and not even the task-specific summary. It is the reusable insight: validation habits, safe-editing routines, workflow constraints, and debugging patterns that survive a change of benchmark.
+
+### Searchable memory compression is becoming installable infrastructure
+`claude-mem` is useful signal because it turns persistent memory into a product surface an operator can actually use: one-command install, searchable observations, progressive disclosure, explicit privacy exclusions, and inspectable citations. That pushes memory architecture in the right direction. Durable context should behave like governed infrastructure, not hidden prompt residue.
+
+### Dual-trace encoding fixes the weakest part of flat memory
+Drawing on Memory makes the strongest recent empirical case that a fact should travel with a scene trace. That extra encoding pressure improves the kinds of recall that agents actually fail at in the wild: temporal reasoning, update tracking, and multi-session aggregation.
+
+### Guidelines beat transcripts when the goal is transfer
+ALTK-Evolve sharpens the practical memory lesson of the month: the agent should not keep relearning from raw logs every time. Good memory systems preserve the episode, then promote the parts that proved reusable. That makes memory smaller, more auditable, and more transferable.
+
+### Memory quality loops belong off the critical path
+The most robust pattern is a two-loop design: the online loop acts, while a background consolidation loop scores, merges, and prunes learned guidance. That keeps the action path lean without giving up long-term improvement.
+
+### Write-time reconciliation is the next memory moat
+WorldDB adds an important correction to current memory fashion. The problem is not only retrieving the right fact. It is deciding what a new write should do to the memory state. Flat vector stores and many graph memories still treat updates as passive additions, then hope the answerer can reconcile contradictions later. WorldDB argues for the opposite design: nodes should be immutable and content-addressed, while edge types should execute write-time behavior such as supersession, contradiction handling, and merge proposals.
+
+That matters because many of the failures operators actually care about are state failures, not retrieval failures:
+- stale preferences that should have been replaced
+- conflicting facts that should have remained visible as conflicts
+- aliases that should have been merged earlier
+- audit trails that vanish once summaries overwrite the past
+
+The practical lesson is immediate even if the full architecture is heavy. High-value memory should stop behaving like an append-only note pad. It should have explicit mutation semantics, version lineage, and enough structure that update tracking does not depend on whatever the answering model improvises at query time.
+
+### StructMem makes event structure the practical middle path between flat memory and brittle graphs
+StructMem adds a useful correction to the memory stack. Flat memory is cheap, but it loses the relations that matter for long-horizon behavior. Full graph memory can model relationships, but construction and maintenance are expensive and fragile. StructMem sits in the middle: preserve event-level bindings, temporally anchor memories, induce cross-event links, and periodically consolidate related items in the background.
+
+The implementation lesson is direct:
+- store memory as events with provenance, timestamps, participants, and relation candidates
+- retrieve event neighborhoods rather than isolated nearest-neighbor chunks
+- run consolidation off the critical path so the online loop stays fast
+- evaluate memory on temporal and multi-hop behavior, not just fact recall
+
+Source:
+- [StructMem: Structured Memory for Long-Horizon Behavior in LLMs](https://arxiv.org/abs/2604.21748)
+- [zjunlp/LightMem](https://github.com/zjunlp/LightMem)
+
+## April 30 update: optical memory preserves verbatim traces under token pressure
+
+OCR-Memory adds a useful multimodal twist to this topic. The paper renders historical agent trajectories into images annotated with unique visual identifiers, uses visual anchors to locate relevant regions, then transcribes the corresponding verbatim text. The point is not that OCR is inherently better than text retrieval. The point is that a rendered trace can preserve spatial/local structure and act as a high-density index while still recovering exact evidence.
+
+This complements the existing memory thesis: preserve raw episodes, retrieve neighborhoods, and do not trust summary-only memory for evidence-sensitive work. OCR-Memory’s locate-and-transcribe pattern is especially relevant for long agent traces where the system needs to find the right part of history without stuffing the whole trajectory into the prompt.
+
+Practical lesson:
+- render long traces into stable, addressable artifacts such as HTML, PDF, or images
+- map visual regions back to exact raw text spans and tool-call records
+- retrieve candidate regions first, then inject exact text only when needed
+- use OCR/layout retrieval as an index layer, not as the only source of truth
+- evaluate memory on faithful evidence recovery under strict context budgets
+
+Source:
+- [OCR-Memory](https://arxiv.org/abs/2604.26622v1)
+
+## May 1 update: memory retrieval needs an abstain action
+
+“Learning When to Remember” adds the safety mechanism this topic needed: memory retrieval should be a decision policy with an explicit no-injection action, not a reflexive top-k lookup. The paper’s RSCB-MC controller stores issue knowledge as pattern, variant, and episode; converts retrieval evidence into a 16-feature state covering relevance, uncertainty, structural compatibility, feedback history, false-positive risk, latency, and token cost; then chooses whether to inject one memory, summarize candidates, retrieve high precision/high recall, abstain, ask for feedback, or use no memory.
+
+The product lesson is immediate: a coding agent should sometimes decide that the best available memory is not safe enough to influence the run. Superficially similar stack traces, terminal errors, and config symptoms can hide different causal structures. False-positive memory injection is a distinct failure mode and should be penalized more heavily than missed reuse.
+
+Practical lesson:
+- add an explicit abstain/no-memory branch to memory retrieval
+- score structural compatibility, uncertainty, false-positive risk, token cost, and latency
+- store issue memories with pattern/variant/episode structure instead of flat notes
+- log when retrieved memories worsen a debugging run
+- start with calibrated rules or a simple classifier before training a bandit controller
+
+Source:
+- [Learning When to Remember](https://arxiv.org/abs/2604.27283)
+
+## May 2 update: memory is becoming a write-path and code-graph discipline
+
+Schema-grounded memory adds the missing systems-of-record language to this topic. The paper argues that exact facts, current state, updates, deletions, aggregations, relations, negative queries, and explicit unknowns cannot be handled reliably by vector recall alone. The interpretation burden has to move to the write path: object detection, field detection, field-value extraction, validation gates, local retries, and constrained reads over verified records.
+
+The same design pressure shows up in local code context. `code-review-graph` is useful demand signal because it turns codebase context into a local Tree-sitter graph exposed through MCP, instead of asking a coding agent to repeatedly reread the whole repository. That is context economy as infrastructure: query the graph, inject the scoped evidence, and leave the rest local.
+
+Practical lesson:
+- define schemas for high-value memories before they become durable
+- validate writes and preserve evidence, timestamps, confidence, and supersession lineage
+- use local code graphs, LSP metadata, and Tree-sitter indexes before whole-repo context stuffing
+- expose memory/code context through governed local services or MCP with explicit read scopes
+- keep vector search for thematic recall, not as the only source of truth
+
+Sources:
+- [From Unstructured Recall to Schema-Grounded Memory](https://arxiv.org/abs/2604.27906)
+- [tirth8205/code-review-graph](https://github.com/tirth8205/code-review-graph)
+
+## May 3 update: governed memory wants a database core, not a vector sidecar
+
+Oracle AI Agent Memory is product signal for the architecture this topic has been converging on. It treats working, semantic, episodic, and procedural memory as access patterns over one governed state core backed by Oracle AI Database, with vector search, relational querying, graph-aware access, JSON, transactional consistency, tenant isolation, auditing, encryption, and high availability.
+
+The practical lesson is not Oracle-specific:
+- store high-value memories in a transactional governed backend
+- keep vector search as one retrieval path, not the whole system
+- put memory writes behind validation, evidence retention, tenant scope, and forgetting/deletion semantics
+- expose the same memory core to LangGraph, OpenAI Agents, Claude Agent SDK, or custom harnesses through narrow adapters
+- audit both memory writes and future runs that consume those memories
+
+This is the move from memory-augmented agents to memory-aware agents. The agent does not merely search a store; it participates in a governed state system.
+
+Source:
+- [Oracle AI Agent Memory](https://blogs.oracle.com/developers/oracle-ai-agent-memory-a-governed-unified-memory-core-for-enterprise-ai-agents)
+
+## May 4 update: memory admission belongs on the write path
+
+MemRouter adds an online-control point to the memory stack. The paper replaces per-turn LLM decoding for memory management with an embedding-based write-side router trained with lightweight classification heads. Under a matched LoCoMo harness, it reports better F1 than an LLM-based memory manager and a large latency reduction for memory-management decisions.
+
+The practical lesson is direct:
+- put an explicit admission gate before durable memory writes
+- keep memory admission separate from downstream answer generation
+- start with rules and embeddings, then train a small classifier from accepted/rejected memory writes
+- log every admit, reject, merge, and review decision with evidence
+- evaluate memory on write quality, not only retrieval quality
+
+This connects the recent memory findings into one lifecycle: preserve evidence, validate high-value writes, route what deserves durable storage, store it in governed state, and retrieve only when the policy says the memory is useful enough to influence the run.
+
+Source:
+- [MemRouter](https://arxiv.org/abs/2605.00356v1)
+
+## May 6 update: tiered memory makes retrieval a governed subsystem
+
+MEMTIER turns the memory lesson into a more concrete runtime pattern: keep episodic memory structured, retrieve through multiple weighted signals, consolidate asynchronously into semantic memory, and tune retrieval policy from evidence rather than intuition.
+
+The important correction is that memory quality is not only a storage problem. It is a subsystem with four control points:
+- what gets written into episodic memory;
+- which signals retrieve or suppress a candidate memory;
+- which facts graduate into semantic memory;
+- how retrieval behavior is evaluated over multi-session tasks.
+
+That maps cleanly onto the existing memory thesis. Start with inspectable rules, append-only evidence, and background consolidation. Only then consider PPO-style adaptation of retrieval weights. If the system cannot replay why a memory was retrieved or promoted, it is not ready for learned policy updates.
+
+Practical lesson:
+- store episodic memory with provenance, timestamps, tool/action metadata, outcomes, confidence, and trust tier
+- consolidate in a background worker rather than inside the hot action path
+- blend recency, semantic similarity, entity match, task continuity, and source trust during retrieval
+- evaluate memory on temporal reasoning, multi-session synthesis, and false-positive retrieval harm
+- keep retrieval-weight changes versioned so memory behavior can be rolled back
+
+Source:
+- [MEMTIER](https://arxiv.org/abs/2605.03675)
+
+## May 7 update: storage is not memory
+
+Storage Is Not Memory sharpens this topic with a useful design rule: preserve events first, retrieve late. Extraction at ingestion is dangerous because the future query is unknown. A profile fact, summary, or schema field may be useful later, but it should remain a derived artifact with lineage back to the raw event, not a destructive replacement for that event.
+
+The reported True Memory system is also practical signal because it runs as a single SQLite file with a multi-stage retrieval pipeline rather than requiring a heavyweight vector database or graph store. The exact benchmark numbers need replication, but the architecture aligns with the repo's memory thesis: memory quality lives in event preservation, retrieval policy, evidence neighborhoods, and derived-summary lineage.
+
+Practical lesson:
+- keep verbatim event logs for conversations, tool calls, files, URLs, outcomes, and timestamps
+- use SQLite/FTS5/BM25, entity/time indexes, and reranking before semantic synthesis
+- retrieve neighborhoods around events rather than isolated nearest-neighbor chunks
+- store derived memories as pointers to raw evidence
+- evaluate memory by evidence recovery, update tracking, false-positive recall harm, and temporal reasoning
+
+Source:
+- [Storage Is Not Memory](https://arxiv.org/abs/2605.04897)
+
+## May 8 update: memory invalidation is a first-class eval axis
+
+STALE sharpens the memory stack around a failure mode that normal recall tests miss: an agent can retrieve updated evidence and still behave as if an old belief is valid. The paper's Implicit Conflict framing is useful because many real updates are not phrased as direct negations. A user moves, a project changes policy, a credential is rotated, a meeting is canceled, or a preference flips under new context. The old memory is now stale even if the latest turn never says "forget X."
+
+The practical lesson:
+- memory entries need validity state, timestamps, source evidence, superseded-by links, and conflict metadata
+- memory retrieval should surface update neighborhoods around changed state, not isolated facts
+- eval suites should include stale premises embedded in user questions and score whether the agent resists them
+- downstream behavior should adapt to implicit changes, not merely mention that newer evidence exists
+- write-path policies should create explicit supersession or conflict records when a new event invalidates old state
+
+This turns memory from a retrieval problem into a state-maintenance problem. A long-lived agent that cannot invalidate stale memories is not personalized; it is confidently out of date.
+
+Source:
+- [STALE](https://arxiv.org/abs/2605.06527)
+
+## May 10 update: memory is becoming structured agent state, not transcript recall
+
+Memori, Statewave, MemReranker, and SkillRet sharpen the memory stack around an implementable product shape: raw agent events should compile into typed, attributed, provenance-bearing state, and retrieval should be evaluated separately from storage.
+
+Memori is useful signal because it captures memory from what agents do, not just what they say: entity/process attribution, sessions, conversations, tool calls, decisions, and outcomes. Statewave is useful signal because it makes the same idea more infrastructure-shaped: events compile into typed memories with confidence, provenance, subject timelines, token-bounded context bundles, conflict handling, Postgres/pgvector storage, connectors, and OpenTelemetry tracing. MemReranker adds the retrieval correction: generic semantic rerankers miss temporal, causal, and dialogue-context constraints. SkillRet adds the catalog correction: reusable skills need retrieval quality tests once explicit name invocation stops scaling.
+
+Practical lesson:
+- store entity, process, session, source episode, tool call, decision, outcome, timestamp, and confidence with memory events
+- preserve raw events and treat typed memories as derived artifacts with lineage
+- benchmark transcript stuffing, simple RAG, typed memory, and reranked memory on the same repeated tasks
+- add stale-memory, implicit-conflict, and skill-retrieval fixtures to the eval suite
+- expose memory through governed local services or MCP/CLI adapters only after write and read policy are explicit
+
+Sources:
+- [MemoriLabs/Memori](https://github.com/MemoriLabs/Memori)
+- [Statewave](https://github.com/smaramwbc/statewave)
+- [MemReranker](https://arxiv.org/abs/2605.06132)
+- [SkillRet](https://arxiv.org/abs/2605.05726)
+
+## May 11 update: memory needs usability budgets and writeback firewalls
+
+The Memory Curse, scale-conditioned memory evaluation, and unintended long-term state poisoning make a blunt correction: memory is an active behavioral control surface, not a passive recall buffer.
+
+The Memory Curse shows that longer accessible history can erode cooperation in multi-agent social dilemmas because the retrieved content changes the agent's reasoning pattern. Scale-conditioned evaluation shows that memory quality has to be reported as an agent-interface-scale-budget property, not a single recall score. Unintended long-term state poisoning shows that routine conversations can corrupt durable state by weakening confirmation boundaries, expanding tool defaults, or increasing unchecked autonomy.
+
+Practical lesson:
+- report budget-compliant reliability and tail memory-call burden, not only answer accuracy
+- hold relevant evidence fixed while adding irrelevant sessions to find the usable-scale boundary
+- treat retrieval-call budgets and stop conditions as part of memory quality
+- audit durable state diffs before writeback, especially instruction-like memories that change future permissions or autonomy
+- preserve source episode, validity state, supersession links, confidence, and rollback metadata with high-impact memories
+- sanitize or summarize long histories when raw recall encourages retaliation, paranoia, or unhelpful over-deliberation
+
+Sources:
+- [The Memory Curse](https://arxiv.org/abs/2605.08060)
+- [Scale-Conditioned Evaluation of Agent Memory](https://arxiv.org/abs/2605.07313)
+- [Unintended Long-Term State Poisoning](https://arxiv.org/abs/2605.06731)
+
+## May 13 update: memory must test dependencies deletion and absence
+
+MEME turns the memory stack's hardest product question into a small, inspectable benchmark shape: can the system maintain evolving state across multiple entities? Static retrieval is not enough. The project reports that six memory systems collapse on dependency reasoning under default settings, averaging 3% on Cascade and 1% on Absence, even when static retrieval looks acceptable.
+
+The practical correction is that memory eval needs to look more like state-machine testing. Deletion should leave tombstones or validity metadata. Supersession should connect old and new facts. Absence should be answerable as a grounded negative result, not a confused retrieval miss. Dependency reasoning should test whether a change to one entity propagates to the questions that depend on it.
+
+Practical lesson:
+- create controlled episodes with several entities, updates, deletions, and dependent facts
+- score Cascade, Absence, and Deletion separately from exact recall and aggregation
+- store supersession edges, deletion tombstones, validity state, and dependency metadata with high-impact memories
+- evaluate memory systems under a fixed cost and retrieval-call budget so expensive internal models do not hide bad architecture
+- treat a file-based memory agent's expensive partial success as a diagnostic, not as the default production answer
+
+Sources:
+- [MEME](https://arxiv.org/abs/2605.12477v1)
+- [MEME project](https://seokwonjung-jay.github.io/meme-eval/)
+
+## Working conclusion
+
+The next generation of agents will be differentiated less by how eloquently they speak and more by how faithfully and safely they remember. The winning systems will preserve evidence, route memory writes explicitly, retrieve context adaptively, abstain when memory is unsafe, validate high-value writes, query local graphs when code structure matters, promote only the right lessons into durable guidance, attach enough context for updates and temporal reasoning, choose abstraction levels that transfer across tasks, keep the most sensitive memory close to the user and under policy control, run durable memory through a governed database-backed state core, and measure whether memories remain usable under scale, budgets, and writeback review.

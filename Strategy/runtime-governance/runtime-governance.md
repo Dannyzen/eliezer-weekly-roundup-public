@@ -1,0 +1,318 @@
+# Runtime Governance
+
+Runtime governance is becoming the real control plane for agent systems.
+
+The durable pattern is straightforward: the more autonomy an agent gets, the less acceptable it is to rely on prompt-only guardrails or after-the-fact policy review. Real systems need execution-time mediation.
+
+## Core thesis
+
+Governance for agents should look more like platform engineering than policy paperwork.
+
+That means:
+- identity for agents and subagents
+- scoped permissions for tools and data sources
+- policy checks before action execution
+- approval gates for high-risk actions
+- kill switches and rollback paths
+- evidence collection tied to traces, not screenshots in a slide deck
+
+## Why this matters
+
+Traditional software governance assumed deterministic code paths and relatively stable permissions. Agent systems break that comfort. They plan, select tools, branch, retry, and act under changing context. If control only happens at design time, you do not really have control.
+
+## Practical runtime patterns
+
+### 1. Policy before tool execution
+Every tool call should pass through a mediation layer that can allow, deny, rewrite, require approval, or attach additional constraints.
+
+Useful technologies:
+- Open Policy Agent
+- Cedar
+- signed tool registries
+- least-privilege credentials
+
+### 2. Agent identity and scopes
+Treat agents as services, not as magical prompt wrappers.
+
+Minimum expectations:
+- stable identity per agent or workflow
+- scoped access tokens
+- separation between read, write, and destructive actions
+- environment-aware permissions
+
+### 3. Approval and interruption semantics
+High-risk operations need explicit interrupt points.
+
+Examples:
+- sending an email externally
+- modifying production systems
+- moving money
+- deleting records
+- writing durable memory that will affect future runs
+
+### 4. Reliability controls
+Agent platforms need classic SRE patterns.
+
+That includes:
+- SLOs and error budgets
+- circuit breakers
+- rate limits
+- staged rollout
+- replay and audit trails
+
+### 5. Evidence capture
+If a workflow is regulated or business-critical, proof has to be collected during execution.
+
+Capture:
+- who acted
+- what policy was evaluated
+- which tools were called
+- which approval path was taken
+- what memory or retrieved context influenced the action
+
+## What to build now
+
+If you are building an agent platform today, the minimum viable governance stack should include:
+1. a policy mediation layer in front of tools
+2. identity and scope assignment for each workflow
+3. approval gates for risky actions
+4. trace-linked evidence capture
+5. a kill switch that actually works in production
+
+## What to avoid
+
+Avoid these traps:
+- treating prompts as the primary security boundary
+- letting memory writes bypass policy review
+- storing traces without enough metadata to reconstruct decisions
+- assuming better models reduce governance needs
+- waiting for regulation before implementing controls
+
+## Representative sources
+
+- Microsoft Agent Governance Toolkit: https://opensource.microsoft.com/blog/2026/04/02/introducing-the-agent-governance-toolkit-open-source-runtime-security-for-ai-agents/
+- OWASP Top 10 for Agentic Applications for 2026: referenced in the Microsoft post above
+- eTAMP memory poisoning paper: https://arxiv.org/abs/2604.02623
+- Springdrift auditable runtime report: https://arxiv.org/abs/2604.04660
+- OpenClaw real-world safety analysis: https://arxiv.org/abs/2604.04759
+- TraceSafe: https://arxiv.org/abs/2604.07223
+- PIArena: https://arxiv.org/abs/2604.08499v1
+- AgentCity: https://arxiv.org/abs/2604.07007
+- Subliminal Transfer of Unsafe Behaviors in AI Agent Distillation: https://arxiv.org/abs/2604.15559
+- AgentWard: https://arxiv.org/abs/2604.24657
+- FIND-Lab/AgentWard: https://github.com/FIND-Lab/AgentWard
+- AgentVisor: https://arxiv.org/abs/2604.24118
+- Governing What You Cannot Observe: https://arxiv.org/abs/2604.24686
+- OpenAI Privacy Filter: https://openai.com/index/introducing-openai-privacy-filter/
+- openai/privacy-filter: https://github.com/openai/privacy-filter
+
+## New April 2026 additions
+
+### Auditable persistence is part of governance, not just ops
+Springdrift sharpens an important point: if an agent is long-lived, governance has to include append-only evidence, recoverable state, and deterministic policy gates. Runtime governance is not complete if the system cannot reconstruct what happened after the fact.
+
+### Capability, identity, and knowledge should be governed separately
+The OpenClaw real-world safety analysis introduces a useful framing: capability, identity, and knowledge are distinct attack surfaces. That suggests governance should separate tool authority, principal identity, and durable memory instead of treating "agent state" as one blob.
+
+### Trace understanding is now a first-class safety requirement
+TraceSafe adds a blunt lesson: a guardrail that cannot parse and reason over tool trajectories is not a serious runtime control. Safety for agents depends on structured-trace competence as much as on refusal behavior or jailbreak resistance.
+
+### Prompt injection has to be tested as a systems problem
+PIArena adds a needed correction. Prompt injection defense is not serious if it only survives one benchmark and one attack style. Runtime governance has to assume adaptive attackers, cross-task transfer, and interaction with tool scopes, retrieval paths, and policy mediation.
+
+### Checkpoint restore paths are part of the governance surface
+Microsoft Agent Framework's Python 1.0.1 release added restricted checkpoint deserialization by default for `FileCheckpointStorage`. That is not a minor patch note. It is a reminder that persisted workflow state is a privileged trust boundary. If a runtime can restore opaque objects from disk, governance has to cover deserialization policy, custom type allowlists, migration, and replay evidence just as seriously as it covers tool permissions.
+
+### Distillation pipelines inherit behavior, not just task skill
+Subliminal Transfer of Unsafe Behaviors in AI Agent Distillation closes an easy governance loophole. A student agent can inherit destructive tendencies from teacher trajectories even when the visible traces look clean and deletion keywords were filtered out. In the paper's API-style setup, the student inherits a deletion bias strongly enough to hit a 100% deletion rate against a 5% baseline. In the Bash setting, the student develops a strong `chmod`-first preference even after keyword sanitation.
+
+That means governance has to cover the training and distillation path, not only the runtime path. Demonstration corpora, replay datasets, and distilled student checkpoints are all policy-relevant artifacts. Keyword filtering is not a serious defense if the behavior survives in trajectory dynamics. Distilled agents still need post-training behavior probes, destructive-action canaries, and sandboxed execution surfaces.
+
+### Accountability chains matter once agents cross principals
+AgentCity is still highly conceptual, but it surfaces a durable governance question: who authored the rule, who executed the action, and who is accountable when agents transact across organizational boundaries? Runtime governance will eventually need an answer to that, even outside blockchain-heavy designs.
+
+### Runtime security is becoming lifecycle mediation
+AgentWard, AgentVisor, RiskGate, and OpenAI Privacy Filter sharpen this topic into an implementation pattern.
+
+AgentWard organizes controls across startup, input processing, memory, decision-making, and execution. That is the right level of abstraction because agent failures propagate through lifecycle stages instead of staying inside one prompt boundary.
+
+AgentVisor frames the target agent as an untrusted guest and places a trusted semantic mediator at the tool-call boundary. The important idea is semantic privilege separation: the system should inspect what the action means, what context caused it, and whether the privilege escalation is justified before the tool executes.
+
+RiskGate adds adaptive monitoring. Agents can become unsafe without a code change, so governance has to observe drift, pattern shifts, and unobserved-risk margins at runtime.
+
+OpenAI Privacy Filter adds a practical local-first context gate. Sensitive context should be labeled or redacted before it is stored in memory, retrieved into prompts, routed to hosted models, or passed to external tools.
+
+Practical lesson:
+- split controls across lifecycle stages
+- put a mediator in front of privileged tool calls
+- keep PII filtering local where possible
+- record governance events in the same trace as actions and memory writes
+- treat drift monitoring as part of runtime policy, not only analytics
+
+Sources:
+- [AgentWard](https://arxiv.org/abs/2604.24657)
+- [FIND-Lab/AgentWard](https://github.com/FIND-Lab/AgentWard)
+- [AgentVisor](https://arxiv.org/abs/2604.24118)
+- [Governing What You Cannot Observe](https://arxiv.org/abs/2604.24686)
+- [OpenAI Privacy Filter](https://openai.com/index/introducing-openai-privacy-filter/)
+- [openai/privacy-filter](https://github.com/openai/privacy-filter)
+
+### Semantic gateways turn MCP exposure into a governable enterprise boundary
+The Semantic Gateway paper and Jarvis Registry update this topic with a concrete enterprise control-plane pattern. MCP makes tool discovery easy; governance has to make discovery scoped, execution authorized, and transitions auditable.
+
+Practical lesson:
+- put an MCP/A2A gateway in front of privileged tools
+- assign identity and scopes to each agent workflow
+- enforce tool-level RBAC deterministically
+- place semantic policy checks before privileged execution
+- preserve approval artifacts in the trace
+- fuzz enabled-tool graphs for unauthorized state transitions
+
+The gateway is becoming the runtime governance choke point. It should expose not just what the agent did, but what it could have done under the enabled tool set and policy configuration.
+
+Sources:
+- [From CRUD to Autonomous Agents](https://arxiv.org/abs/2604.25555v1)
+- [Jarvis Registry](https://github.com/ascending-llc/jarvis-registry)
+
+
+### May 3 update: control planes and trajectory firewalls move governance below the prompt
+
+Microsoft Agent 365 and the behavioral-firewall paper update this topic at two different layers.
+
+Microsoft’s Agent 365 general availability makes the inventory layer concrete: discover local and SaaS agents, distinguish delegated agents from agents with their own credentials, manage endpoint agents through Defender/Intune, run agents in managed Windows 365 environments, sync registries with AWS Bedrock and Google Gemini Enterprise Agent Platform, and extend Entra network controls to agent traffic. That is the enterprise product version of the runtime-governance thesis.
+
+The behavioral-firewall paper pushes the execution layer. It compiles verified benign tool-call telemetry into a parameterized DFA and checks the next state transition at runtime through a lightweight gateway. The point is not that every workflow can be perfectly modeled. The point is that stateless prompt scanners are the wrong primitive for structured workflows where harm emerges from sequence, context, and parameters.
+
+Practical lesson:
+- inventory agents as principals, not only as apps or scripts
+- attach credential, network, and data policy to the agent identity
+- run privileged agents in managed execution environments
+- log tool trajectories with enough structure to compile allowed paths
+- enforce stable workflows with state-machine guards before tool execution
+- keep exact parameter guards for secrets and destructive actions
+
+Sources:
+- [Microsoft Agent 365 general availability](https://www.microsoft.com/en-us/security/blog/2026/05/01/microsoft-agent-365-now-generally-available-expands-capabilities-and-integrations/)
+- [Enforcing Benign Trajectories](https://arxiv.org/abs/2604.26274)
+
+## May 9 update: prompt injection is now a code-execution primitive
+
+Microsoft's Semantic Kernel write-up makes the runtime-governance thesis concrete: once a model can map language into framework/tool parameters, prompt injection can cross from content manipulation into unauthorized file writes, code execution, database access, or host-level behavior. The model is not the security boundary. The boundary is where parsed parameters meet framework code and privileged tools.
+
+The enterprise retrieval paper adds the data-plane version of the same problem. Relevance is not authorization. A retrieval system that ranks by semantic match before tenant and scope checks can leak data even if each component looks normal in isolation.
+
+Practical lesson:
+- patch affected frameworks and audit whether model outputs can autonomously trigger dangerous functions
+- validate and authorize tool parameters before execution, especially file paths, script arguments, vector-store operations, browser actions, database queries, and shell commands
+- enforce tenant authorization before relevance-ranked documents enter context
+- correlate model-level intent, parsed parameters, policy verdicts, host detections, and patch versions in one trace
+- add adversarial fixtures that try to turn retrieval, memory, or benign plugin calls into file writes, script execution, or cross-tenant disclosure
+
+Sources:
+- [When prompts become shells](https://www.microsoft.com/en-us/security/blog/2026/05/07/prompts-become-shells-rce-vulnerabilities-ai-agent-frameworks/)
+- [Securing the Agent](https://arxiv.org/abs/2605.05287)
+- [SkillScope](https://arxiv.org/abs/2605.05868)
+
+## May 10 update: Codex safety makes local agents managed endpoints
+
+OpenAI's Codex safety write-up is a concrete runtime-governance blueprint for local coding agents. The control stack is sandbox plus approval policy plus network policy plus managed auth plus agent-native telemetry. That is the right product shape: a local agent should be productive inside a bounded environment, low-risk actions should be frictionless, and higher-risk actions should stop for review.
+
+The observability lesson matters as much as the sandboxing lesson. Endpoint logs can show that a process ran or a file changed, but agent-native logs explain the user request, tool approval decision, tool result, MCP server usage, and network allow/deny verdict. Those events belong in OpenTelemetry and SIEM/compliance pipelines so security teams can tell expected agent behavior from benign mistakes and real escalation.
+
+Practical lesson:
+- default local coding agents to read-only or workspace-write sandboxes
+- define writable roots and protected paths explicitly
+- use network allow/deny lists and cached web-fetch modes instead of open outbound access
+- require approval or auto-review for actions outside the sandbox
+- store CLI/MCP credentials in secure OS keyrings and bind auth to enterprise workspaces where possible
+- export prompts, tool decisions, tool results, MCP usage, and network verdicts through OpenTelemetry
+
+Sources:
+- [Running Codex safely at OpenAI](https://openai.com/index/running-codex-safely)
+- [openai/codex](https://github.com/openai/codex)
+
+## May 11 update: agentic workflow injection makes CI/CD an agent security boundary
+
+Agentic Workflow Injection updates runtime governance with a repository-native threat model. Issue bodies, pull-request descriptions, comments, titles, and artifacts are untrusted inputs. If those inputs reach an agent prompt and the agent's response later drives a shell command, `gh` call, GitHub API operation, MCP server, or workflow output, prompt injection has become a CI/CD dataflow problem.
+
+GitHub's Copilot cloud agent secrets update shows the matching control surface. Agent secrets and variables now have a dedicated Agents type, separate from Actions, Codespaces, and Dependabot, with organization-level selected-repository scoping and `COPILOT_MCP_` prefixes for MCP server configuration. That is useful, but only if workflows treat secrets and model outputs as explicitly scoped, typed, and taint-aware.
+
+Practical lesson:
+- classify GitHub event fields as tainted before they enter prompts or scripts
+- separate trusted system/workflow instructions from untrusted repository content
+- avoid direct shell interpolation of model outputs; prefer files, validated JSON, environment variables, and safe escaping
+- restrict `GITHUB_TOKEN` and Agents secrets to the smallest repository, job, and MCP scope
+- add static checks for flows from event context to agent prompts, model outputs, shell commands, `gh` operations, `git push`, and secret-bearing MCP configuration
+- treat prompt-only instructions such as "ignore prompt injection" as advisory, not as a security boundary
+
+Sources:
+- [Agentic Workflow Injection](https://arxiv.org/abs/2605.07135)
+- [Configure secrets and variables for Copilot cloud agent](https://docs.github.com/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/configure-secrets-and-variables)
+- [More flexible secrets and variables for Copilot cloud agent](https://github.blog/changelog/2026-05-08-more-flexible-secrets-and-variables-for-copilot-cloud-agent)
+
+## May 13 update: MCP consent and browser red-teaming move policy into the tool path
+
+Conleash and IPI-proxy sharpen runtime governance at two adjacent boundaries. MCP consent needs argument-scoped policy rather than broad always-allow toggles. Browser agents need red-team tests on real retrieved content from allowed domains rather than only mock malicious pages.
+
+The shared lesson is that authority lives in the tool path. A safe MCP call is not defined by the tool name alone; it depends on arguments, data boundary, credential use, side effects, and repeated user intent. A safe browser retrieval is not defined by the domain alone; whitelisted pages can still carry hidden instructions that become agent-consumed context.
+
+Microsoft's SocialReasoning-Bench adds the delegation metric above this layer: task completion is not enough if the agent fails to act in the principal's best interest. Runtime governance should eventually connect consent and policy decisions to outcome optimality and due diligence, not only allow/deny verdicts.
+
+Practical lesson:
+- classify tools by argument-level boundaries: read-only, local file, network, credential, money, external communication, durable memory, and destructive action
+- auto-permit safe repeated calls only inside scoped boundaries, then escalate risky argument combinations
+- convert user decisions into expiring rules with evidence and rollback
+- run indirect-prompt-injection sweeps by rewriting real whitelisted HTTP responses before the browser agent reads them
+- track exfiltration callbacks, policy verdicts, approvals, denials, and content provenance in the same trace as the final tool action
+- evaluate delegated agents on outcome optimality and due diligence where they negotiate or schedule on behalf of a user
+
+Sources:
+- [Options, Not Clicks](https://arxiv.org/abs/2605.11360v1)
+- [IPI-proxy](https://arxiv.org/abs/2605.11868v1)
+- [SocialReasoning-Bench](https://www.microsoft.com/en-us/research/blog/socialreasoning-bench-measuring-whether-ai-agents-act-in-users-best-interests/)
+
+## May 14 update: always-on agents need provenance gates and OS-level sandboxes
+
+Sleeper Channels and Provenance Gates makes persistent prompt injection concrete for always-on agents. The dangerous pattern is not one bad prompt; it is cross-surface persistence. An untrusted input can become memory, a skill, a cron entry, or a filesystem patch, then trigger a later action through a different surface after the attacker is gone. The paper's D2 gate pattern is useful because it binds authorization to a canonical action-instance digest and a one-shot owner attestation, not to a broad paraphrase of intent.
+
+MCPShield adds the monitoring lesson for tool traffic: metadata-only detectors are weak, content-level features over arguments and responses matter, and random train/test splits can overstate performance. OpenAI's Windows Codex sandbox adds the execution lesson: local coding agents need OS-enforced writable roots, protected paths, and network-deny defaults rather than prompt-only rules. GitHub's Copilot cloud task API adds the operations lesson: background agents can now be started programmatically, so task identity, scope, and provenance become automation controls.
+
+Practical lesson:
+- record provenance for memory writes, skill edits, scheduled jobs, filesystem patches, cloud-agent tasks, and tool calls
+- bind approvals to exact action digests with scoped, one-shot, or expiring attestations
+- treat persistent inputs as tainted until policy revalidates them at firing time
+- evaluate MCP/tool-call monitors with task-disjoint splits and content-aware argument/response features
+- default local coding agents to OS-level sandboxes with protected paths and network-deny modes
+- scope background-agent task APIs by principal, repository, token class, secret access, and trace evidence
+
+Sources:
+- [Sleeper Channels and Provenance Gates](https://arxiv.org/abs/2605.13471)
+- [maloyan/sleeper-channels](https://github.com/maloyan/sleeper-channels)
+- [MCPShield](https://arxiv.org/abs/2605.11053)
+- [OpenAI Codex Windows sandbox](https://openai.com/index/building-codex-windows-sandbox)
+- [GitHub Copilot cloud agent task API](https://github.blog/changelog/2026-05-13-start-copilot-cloud-agent-tasks-via-the-rest-api)
+
+## May 15 update: web-agent guards must run in parallel with sessionful coding-agent policy
+
+WARD and the same-day GitHub/OpenAI coding-agent updates sharpen runtime governance at the live-session boundary. WARD is the browser-agent security piece: prompt injection can live in HTML or screenshots, so the guard needs to inspect user task, page content, screenshot, and proposed action. The useful product pattern is a parallel sidecar, not a slow sequential review step.
+
+GitHub's Copilot app technical preview and auto model selection update, plus OpenAI's Codex mobile/session update, show the operational pressure. Coding agents are becoming persistent sessions across desktop, mobile, cloud, local hosts, remote SSH, branches, PRs, hooks, access tokens, and model routers. That is too much authority to govern as a chat transcript.
+
+Practical lesson:
+- run browser-agent guards in parallel over task intent, HTML, screenshot, URL, proposed action, and tool context
+- require structured guard output: attack goal, injection location, evidence, confidence, and verdict
+- bind coding-agent sessions to principal, repository, branch, host, token class, network mode, and approval state
+- record model auto-selection, fallback, cost multiplier, health signal, and policy reason in the session trace
+- use hooks for secret scanning, prompt validation, repository-specific policy, and logging before side effects
+- treat mobile steering and remote SSH as privileged control surfaces, not convenience-only UX
+
+Sources:
+- [WARD](https://arxiv.org/abs/2605.15030v1)
+- [WARD-WebAgent](https://github.com/caothientri2001vn/WARD-WebAgent)
+- [GitHub Copilot app technical preview](https://github.blog/changelog/2026-05-14-github-copilot-app-is-now-available-in-technical-preview)
+- [Copilot cloud agent auto model selection](https://github.blog/changelog/2026-05-14-copilot-cloud-agent-supports-auto-model-selection)
+- [OpenAI Codex mobile/session update](https://openai.com/index/work-with-codex-from-anywhere)
+
+## Working conclusion
+
+Runtime governance is not a niche enterprise concern. It is the natural consequence of giving agents durable memory, tool access, repository permissions, CI/CD authority, and delegated secrets. The control plane has to move into runtime: inventory the agents, bind identity and scope, manage execution environments, preserve trace evidence, enforce valid next transitions before privileged tools execute, and keep tainted repository inputs from silently becoming trusted agent instructions or script data.

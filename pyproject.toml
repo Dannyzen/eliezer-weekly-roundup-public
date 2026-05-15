@@ -1,0 +1,26 @@
+[build-system]
+requires = ["hatchling>=1.27.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "eliezer-weekly-roundup"
+version = "0.1.0"
+description = "NotebookLM podcast sync for Eliezer Weekly Roundup reports"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "notebooklm-py[browser]>=0.3.4,<0.4",
+]
+
+[project.scripts]
+eliezer-roundup = "eliezer_weekly_roundup.cli:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0,<9",
+    "pytest-bdd>=8.1.0,<9",
+    "ruff>=0.12,<1",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/eliezer_weekly_roundup"]

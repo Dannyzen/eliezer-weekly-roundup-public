@@ -1,0 +1,332 @@
+# Trajectory-Aware Evaluation
+
+Trajectory-aware evaluation is becoming the dividing line between toy agent demos and systems you can actually improve.
+
+## Core thesis
+
+If you only grade the final output, you are measuring luck, not behavior.
+
+Agent systems act through sequences: planning, tool selection, retries, state changes, recoveries, and handoffs. A benchmark that ignores the sequence cannot reliably tell the difference between:
+- a clean execution
+- a dangerous execution that happened to end well
+- a brittle execution that only works once every few tries
+- an execution that silently violated policy before producing a superficially correct answer
+
+## Why this matters
+
+Traditional LLM evals were built for static responses. Agent evals need to answer different questions:
+- Did the agent take the right actions?
+- Did it stay within policy?
+- Did it recover correctly when the environment pushed back?
+- Would the behavior repeat across multiple trials?
+- Is the trace good enough to audit after a failure?
+
+That means evidence has to come from the run itself, not only the final artifact.
+
+## What a modern agent eval should capture
+
+### 1. Execution traces
+Record the actual sequence of actions, tool calls, retries, and branch decisions.
+
+### 2. Environment snapshots
+Capture state before, during, and after important actions so graders can verify whether the world changed as intended.
+
+### 3. Audit logs
+Preserve policy decisions, approvals, exceptions, and metadata about why actions were allowed or denied.
+
+### 4. Repeated-trial consistency
+Use multiple runs per task. A system that passes once in three attempts is not equivalent to a system that passes reliably.
+
+### 5. Separate scoring dimensions
+Completion, safety, and robustness should not be collapsed into one opaque metric.
+
+### 6. Parameter-level execution quality
+For tool-heavy work, many failures come from wrong arguments, wrong thresholds, and wrong target selection rather than bad intent or bad final prose. Good evals score those execution details directly.
+
+### 7. Modality-aware verification
+When outputs are visual, spatial, interactive, or otherwise world-facing, the grader should verify the artifact in the right modality instead of reducing everything to text matching.
+
+## Practical build pattern
+
+A useful minimum stack now looks like this:
+1. replayable traces for every run
+2. state snapshots at critical checkpoints
+3. explicit scoring rubrics for completion, safety, and robustness
+4. repeated-trial metrics such as Pass@k and stricter consistency-oriented variants
+5. dashboards that let engineers inspect failures by trajectory, not only by top-line score
+6. environment-aware checks for parameter correctness and output fidelity
+
+## Tools and methodologies worth exploring now
+
+- OpenTelemetry-style tracing for agent workflows
+- environment snapshotting for browser, desktop, or API task state
+- rubric-based evaluators linked to traces rather than final outputs only
+- perturbation testing to measure recovery and consistency under noise
+- benchmark harnesses that preserve evidence artifacts for later replay
+- parameter-level execution scoring
+- modality-aware verifiers for visual or structured outputs
+- adaptive curricula that keep environments near the policy frontier
+- runtime-specific safety taxonomies for different execution surfaces
+
+## Representative sources
+
+- Claw-Eval: Toward Trustworthy Evaluation of Autonomous Agents: https://arxiv.org/abs/2604.06132
+- Microsoft Agent Framework repository, especially its checkpointing and observability features: https://github.com/microsoft/agent-framework
+- OpenClaw real-world safety analysis: https://arxiv.org/abs/2604.04759
+- GeoAgentBench: https://arxiv.org/abs/2604.13888
+- Ecom-RLVE: https://huggingface.co/blog/ecom-rlve
+- ATBench-Claw and ATBench-CodeX: https://arxiv.org/abs/2604.14858
+- AgentEval: https://arxiv.org/abs/2604.23581
+- AgentPulse: https://arxiv.org/abs/2604.24038
+- OS-SPEAR: https://arxiv.org/abs/2604.24348
+- Wuzheng02/OS-SPEAR: https://github.com/Wuzheng02/OS-SPEAR
+
+## New April 2026 additions
+
+### GeoAgentBench shows why execution metrics need to reach below the final artifact
+GeoAgentBench is domain-specific on paper and generally useful in practice. Its main lesson is that tool-augmented agents often fail on the execution substrate: wrong parameters, weak recovery logic, and outputs that need modality-aware verification. Parameter Execution Accuracy is a good pattern because it grades what the agent actually did to the environment, not just whether it wrote a plausible answer afterward.
+
+### Claw-Eval strengthens the case for trace-first grading
+Claw-Eval is the clearest current argument that final-output grading is not enough. Its three evidence channels and separate completion, safety, and robustness scores make a good default pattern for future agent benchmarks.
+
+### CodeTracer shows that trace structure matters as much as trace capture
+CodeTracer adds an important operational lesson: it is not enough to log everything if the resulting evidence is still too flat to debug. Reconstructing hierarchical state transitions, tagging likely failure onset, and tracing downstream error chains turns observability into something engineers can actually use to recover failed runs.
+
+### EcomRLVE-GYM turns verifiable environments into reusable agent infrastructure
+EcomRLVE-GYM adds a useful escalation of the trajectory-aware-eval idea. The environment is not only the place where you score the agent after the fact. It is also the curriculum, the verifier, and the regression harness. Procedural generation, adaptive difficulty, and tuple-level reward computation make the benchmark reusable as training infrastructure.
+
+### ATBench shows safety eval has to adapt to the runtime surface
+ATBench-Claw and ATBench-CodeX make an important design correction: the benchmark pipeline can stay shared while the safety taxonomy changes with the runtime. Shells, patches, approvals, sessions, skills, and external actions create different harm surfaces, so the taxonomy has to move with the execution setting.
+
+### Frameworks are starting to absorb evaluation prerequisites
+Microsoft Agent Framework is strategically relevant here because checkpointing, time travel, and observability reduce the gap between runtime debugging and benchmark evidence collection. The platform layer is beginning to catch up with what evaluation research actually needs.
+
+### Environment generation turns eval into a service, not a spreadsheet
+ClawEnvKit sharpens the next step beyond trace-first evaluation. The benchmark should not only record what happened inside a fixed set of tasks. It should generate new verified tasks when the capability frontier moves. Its parser-generator-validator pipeline and 1,040-environment Auto-ClawEval benchmark make the design pattern clear: a capability description can be compiled into an environment, scored automatically, and recycled into both training and regression testing.
+
+Two lessons matter immediately:
+- harness engineering still changes outcomes materially, so eval has to compare scaffolding and not only model families
+- operators should be able to describe a desired capability in natural language and get back a verified task world instead of waiting for the next benchmark paper
+
+This is a better product shape for agent evaluation. The environment factory becomes part of the runtime improvement loop.
+
+### Repeated execution is now a first-class reliability test
+On the Reliability of Computer Use Agents adds the correction this topic needed. A task is not solved because the agent passed once. The same model can alternate between success and failure across repeated runs due to execution stochasticity, task ambiguity, and behavioral drift. That turns repeated-trial consistency from a nice-to-have into a required metric for browser and desktop agents.
+
+The product lesson is direct:
+- rerun the same task multiple times before trusting a pass rate
+- record ambiguity and clarification failure as benchmark data, not annotation noise
+- optimize for stable strategies across runs instead of one aggressive lucky trajectory
+
+Source:
+- [On the Reliability of Computer Use Agents](https://arxiv.org/abs/2604.17849)
+
+### SWE-chat shows why coding-agent eval has to leave benchmark theater
+SWE-chat adds the missing field evidence for coding agents. Instead of another curated benchmark, it captures 6,000 real coding-agent sessions from open-source development, with more than 63,000 user prompts and 355,000 agent tool calls. That makes it possible to score what actually matters in practice: how often humans interrupt or correct the agent, how much agent-written code survives into commits, and whether security quality drops when the agent is doing more of the work.
+
+Its numbers are useful precisely because they are messy. Only 44% of agent-produced code survives into user commits, users push back against agent outputs in 44% of turns, and agent-written code introduces more security vulnerabilities than human-authored code. That is a much better eval substrate than a clean coding benchmark because it captures the negotiation between user and agent instead of pretending the interaction ends when the model emits code.
+
+Practical lesson:
+- measure code-survival and authorship patterns, not just task completion
+- treat interruption and rewrite behavior as primary signals of usefulness
+- run security analysis on agent-authored diffs as part of the same benchmark loop
+- preserve full user-agent traces so teams can study where collaboration actually degrades
+
+Source:
+- [SWE-chat: Coding Agent Interactions From Real Users in the Wild](https://arxiv.org/abs/2604.20779)
+
+### April 28 update: eval is becoming operational observability
+AgentEval, AgentPulse, and OS-SPEAR add a useful three-layer correction to this topic.
+
+AgentEval shows that multi-step workflows should be represented as DAGs, not flat logs. Typed node metrics, dependency edges, and hierarchical failure labels make root-cause attribution possible and CI regression results actionable.
+
+AgentPulse shows that deployed agent quality also has an ecosystem dimension. Benchmark scores need to be interpreted next to adoption signals, package/marketplace activity, issue health, community sentiment, and maintenance evidence. Those signals are not ground truth, but they catch risks that static benchmarks miss.
+
+OS-SPEAR makes the runtime-specific case for OS agents. Safety, performance, efficiency, and robustness have to be scored separately because a desktop/browser agent can finish a task while still being slow, unsafe, or brittle under visual/textual perturbations.
+
+Practical lesson:
+- store traces in a shape that preserves dependencies
+- grade intermediate steps, not only final artifacts
+- connect eval failures to CI/CD root-cause reports
+- track deployment-health signals as context around benchmark scores
+- use runtime-specific perturbation and efficiency tests for OS/browser/desktop agents
+
+Sources:
+- [AgentEval](https://arxiv.org/abs/2604.23581)
+- [AgentPulse](https://arxiv.org/abs/2604.24038)
+- [OS-SPEAR](https://arxiv.org/abs/2604.24348)
+- [Wuzheng02/OS-SPEAR](https://github.com/Wuzheng02/OS-SPEAR)
+
+## April 30 update: eval cost turns environment factories into infrastructure
+
+ClawGym and Hugging Face’s eval-cost analysis update this topic with a hard operational constraint: agent evaluation now has to be both environment-aware and cost-aware.
+
+ClawGym pushes the environment side. Its personal-agent framework synthesizes 13.5K filtered tasks from persona-driven intents and skill-grounded operations, pairs them with realistic mock workspaces and hybrid verification mechanisms, trains ClawGym-Agents from black-box rollout trajectories, explores RL through parallel per-task environments, and builds a 200-instance benchmark calibrated by automated filtering and human-LLM review. That is the environment-factory shape this topic has been moving toward.
+
+The Hugging Face article pushes the cost side. HAL spent about $40,000 on 21,730 agent rollouts; a single frontier GAIA run can cost $2,829 before caching; and scaffold choice can create a 33x cost spread on identical tasks. That means trajectory-aware evaluation without cost accounting is incomplete.
+
+Practical lesson:
+- benchmark the model x scaffold x environment x token-budget product, not the model alone
+- store cost, tokens, retries, scaffold version, and trace path with every eval result
+- use cheap coarse screens before expensive repeated trials
+- report success-versus-cost Pareto frontiers
+- treat generated task worlds as reusable training, eval, and regression infrastructure
+
+Sources:
+- [ClawGym](https://arxiv.org/abs/2604.26904v1)
+- [AI evals are becoming the new compute bottleneck](https://huggingface.co/blog/evaleval/eval-costs-bottleneck)
+
+## May 1 update: live workflow eval needs fresh demand and adversarial task design
+
+Claw-Eval-Live, WindowsWorld, and the terminal-agent benchmark guideline sharpen this topic in the same direction: agent eval should be maintained like infrastructure, not published once as a static quiz.
+
+Claw-Eval-Live separates a refreshable demand-signal layer from a reproducible release snapshot. The current release uses ClawHub Top-500 skills to construct 105 controlled workflow tasks across 17 families and evaluates 13 frontier models from execution traces, audit logs, service state, and post-run workspace artifacts. The leading model passes only 66.7% of tasks and no model reaches 70%, which is exactly the kind of sober signal operators need.
+
+WindowsWorld adds the desktop/workstation version of the same lesson: 181 tasks across 17 Windows applications, 77.9% multi-application workflows, and all tested agents below 21% success on multi-app tasks. The benchmark guideline adds the task-authoring correction: benchmark tasks are not prompts. They should be adversarial, difficult, and legible, with reward-hacking checks and verification logic review.
+
+Practical lesson:
+- derive internal benchmark tasks from real workflow demand, then snapshot releases for reproducibility
+- grade state changes, intermediate checkpoints, audit logs, and artifacts before trusting final prose
+- tag failures by execution surface: browser, terminal, desktop, API, workspace, or multi-system handoff
+- adversarially review benchmark tasks for hidden oracle assumptions and reward-hackable tests
+- keep benchmark distribution change logs so freshness does not destroy comparability
+
+Sources:
+- [Claw-Eval-Live](https://arxiv.org/abs/2604.28139)
+- [Claw-Eval-Live repo](https://github.com/Claw-Eval-Live/Claw-Eval-Live)
+- [WindowsWorld](https://arxiv.org/abs/2604.27776)
+- [WindowsWorld repo](https://github.com/HITsz-TMG/WindowsWorld)
+- [What Makes a Good Terminal-Agent Benchmark Task](https://arxiv.org/abs/2604.28093)
+
+## May 2 update: synthetic computers make long-horizon productivity eval concrete
+
+Synthetic Computers at Scale updates this topic by making the task world itself the unit of evaluation. The public dataset exposes 98 synthetic computers with personas, monthly objectives, collaborators, filesystem policies, file lists, and file relationship graphs. The paper’s larger methodology then runs month-scale productivity simulations across these environments to generate professional deliverables and process traces.
+
+The practical implication is strong: a computer-use eval should not start from an empty browser or a one-line prompt. It should start from a realistic workspace whose state conditions the task. That is how agents fail in the real world: they miss the right folder, misread project history, ignore local conventions, overwrite the wrong artifact, or produce a deliverable that is ungrounded in the user’s files.
+
+Practical lesson:
+- seed internal desktop/file-system evals from synthetic computer metadata
+- score file discovery, grounded evidence use, artifact quality, trace evidence, and repeated-run consistency
+- preserve the workspace before and after each run for replay
+- track cost and wall time because long-horizon workspace evals can become expensive quickly
+
+Sources:
+- [Synthetic Computers at Scale](https://arxiv.org/abs/2604.28181)
+- [microsoft/synthetic-computers-at-scale](https://huggingface.co/datasets/microsoft/synthetic-computers-at-scale)
+
+## May 6 update: search-agent eval should grade evidence portfolios
+
+OpenSeeker-v2 and Bright-Pro add a useful search-agent correction to this topic. A deep-research agent should not be judged only on final answer quality or generic retrieval recall. The trace should show whether the agent generated useful search trajectories, covered the required evidence aspects, avoided redundant lookup, and assembled complementary sources for reasoning.
+
+OpenSeeker-v2 emphasizes trajectory data quality: informative, high-difficulty traces can make simple SFT surprisingly competitive for ReAct-style search agents. Bright-Pro emphasizes evaluation shape: reasoning-intensive retrievers should be scored on aspect-aware evidence portfolios and in-loop agentic search behavior, not only static top-k matching.
+
+Practical lesson:
+- record query decomposition, retrieval calls, selected evidence, missing aspects, judge decisions, and final claims
+- label evidence aspects for internal research tasks so retrieval can be graded by coverage and complementarity
+- evaluate search agents in both static retrieval and agentic in-loop settings
+- curate hard successful traces and near-miss traces instead of only collecting easy wins
+- attach cost and iteration count to search quality so teams can compare success-versus-cost frontiers
+
+Sources:
+- [OpenSeeker-v2](https://arxiv.org/abs/2605.04036)
+- [PolarSeeker/OpenSeeker](https://github.com/PolarSeeker/OpenSeeker)
+- [Bright-Pro / Rethinking Reasoning-Intensive Retrieval](https://arxiv.org/abs/2605.04018)
+- [yale-nlp/Bright-Pro](https://github.com/yale-nlp/Bright-Pro)
+
+## May 8 update: citation verification belongs in the research-agent eval loop
+
+Cited but Not Verified adds the evaluation layer this topic needs for deep research agents. A source-grounded report is not verified because it contains links. The system has to parse the Markdown, identify which claim each citation is supposed to support, retrieve the cited content, and score link validity, relevance, and factual support separately.
+
+The practical lesson is immediate:
+- parse citations from generated Markdown with an AST, not only regex link scraping
+- snapshot cited source content so later audits do not drift with the web
+- score link availability, source relevance, and claim support as separate dimensions
+- fail publication on dead links, uncited core claims, unsupported claim-source pairs, and source drift
+- preserve retrieval IDs, cited spans, source snapshots, and final claims in the run trace
+- use model judges only after deterministic retrieval and source extraction have produced auditable evidence
+
+This directly upgrades trajectory-aware evaluation from "grade the final report" to "grade the evidence chain that produced the report." It is especially relevant for research agents, coding agents that cite docs, and compliance assistants that cite policies.
+
+Source:
+- [Cited but Not Verified](https://arxiv.org/abs/2605.06635)
+
+## May 9 update: prefix monitors and test evolution move eval before final failure
+
+PrefixGuard and TEBench make the same correction from different sides: agent evaluation should catch failure while the run is still unfolding and should test whether the surrounding verification harness stays current.
+
+PrefixGuard turns raw agent traces into typed step views and trains online prefix-risk monitors. That is the right product shape for long-running tool use: not every risky run should wait until a final grader says the task failed. The monitor should warn when the prefix already contains enough evidence of repeated tool confusion, missing state, risky actions, or unrecoverable trajectory drift.
+
+TEBench adds the coding-agent version. Production code changes can leave tests broken, stale, or missing. A coding agent that only makes the current suite pass is not enough; it should identify affected tests, update stale assertions, and add tests for new behavior. That moves evaluation from static patch correctness to project-level test maintenance.
+
+Practical lesson:
+- train or hand-author cheap prefix monitors over typed trace events before reaching for LLM judges
+- store warning time, warning reason, observed prefix, and final outcome together
+- create internal TEBench-style fixtures from real commits where tests broke, went stale, or were missing
+- treat browser/network/runtime evidence from tools like Chrome DevTools MCP as trace artifacts and CI evidence
+- score warning quality, test-evolution quality, final success, and human-intervention burden separately
+
+Sources:
+- [PrefixGuard](https://arxiv.org/abs/2605.06455)
+- [TEBench](https://arxiv.org/abs/2605.06125)
+- [iSEngLab/TEBench](https://github.com/iSEngLab/TEBench)
+- [Chrome DevTools MCP](https://github.com/ChromeDevTools/chrome-devtools-mcp)
+
+## May 10 update: agent eval is becoming chaos engineering
+
+EvalMonkey is useful because it turns agent evaluation into a local failure-injection workflow. It talks to agents over HTTP, supports common frameworks, runs standard text benchmarks, injects chaos such as latency, header mutation, and schema corruption, then emits traces and improvement eval assets.
+
+This complements PrefixGuard and TEBench. PrefixGuard warns before final failure; TEBench checks whether tests evolve with the project; EvalMonkey contributes the operator move: deliberately perturb the runtime seams where agents break, then turn failures into repair artifacts.
+
+Practical lesson:
+- expose internal agents through stable HTTP endpoints so eval harnesses can test them without invasive changes
+- run small benchmark samples as smoke tests before full expensive sweeps
+- inject latency, malformed headers, corrupt schemas, missing fields, and response-shape mismatches
+- preserve `traces.json`, `evals.json`, and improvement prompts as CI artifacts
+- evaluate recovery behavior, not only clean-prompt accuracy
+
+Source:
+- [EvalMonkey](https://github.com/Corbell-AI/evalmonkey)
+
+## May 11 update: eval must test state propagation, live failures, and abstention
+
+AgentEscapeBench, SREGym, FixedBench, and TraceFix push this topic from trace capture into operational stress testing.
+
+AgentEscapeBench shows that agents can call local tools but still fail when intermediate results must be propagated through long unfamiliar dependency graphs. SREGym shows the live-systems version: SRE agents need to diagnose faults under Kubernetes, observability streams, ambient noise, and metastable/correlated failures. FixedBench adds the abstention axis for coding agents: stale issues require the agent to prove that no patch is needed. TraceFix adds the coordination axis: multi-agent protocols should be verified against model-checker counterexamples and monitored at runtime, not left as chat-room etiquette.
+
+Practical lesson:
+- build DAG-style tool-use evals where intermediate state is checked, not only the final answer
+- include live fault-injection environments for agents that touch production-like systems
+- score abstention and empty-patch decisions as successful outcomes when the current state is already correct
+- require reproduction, Git-history inspection, or state inspection before edits
+- verify critical multi-agent handoffs with TLA+, state machines, or runtime topology monitors
+- preserve the trace, environment snapshot, protocol spec, and final artifact together so failures are debuggable
+
+Sources:
+- [AgentEscapeBench](https://arxiv.org/abs/2605.07926)
+- [SREGym](https://arxiv.org/abs/2605.07161)
+- [SREGym repository](https://github.com/SREGym/SREGym)
+- [Coding Agents Don't Know When to Act](https://arxiv.org/abs/2605.07769)
+- [TraceFix](https://arxiv.org/abs/2605.07935)
+
+## May 14 update: coding-agent eval must grade the whole cycle and the process
+
+SWE-Cycle, AgentLens, and BenchJack all attack the same weakness in coding-agent evaluation: final pass/fail scores are too easy to misread. SWE-Cycle removes scaffolding by asking agents to reconstruct environments, implement code, generate verification tests, and complete the whole issue-resolution cycle in a bare repository. AgentLens shows that even passing trajectories can be low-quality lucky passes. BenchJack shows that benchmarks themselves can be hacked for near-perfect scores without solving the intended task.
+
+The practical correction is to turn every coding-agent eval into an evidence package. The run should prove environment reconstruction, reproduction, implementation, test maintenance, verification, process quality, and benchmark integrity. A green patch is only one artifact in that package.
+
+Practical lesson:
+- split evals into setup, reproduction, implementation, test generation/maintenance, and final verification phases
+- label trace steps as exploration, implementation, verification, orchestration, retry, rollback, or waste
+- flag blind retries, regression cycles, missing verification, and temporally disordered work even when tests pass
+- combine dynamic testing with static review and process-quality scoring
+- adversarially audit benchmarks for reward-hacking shortcuts before using them as selection signals
+- preserve bare-repo state, trace labels, test artifacts, patches, and benchmark-audit notes together
+
+Sources:
+- [SWE-Cycle](https://arxiv.org/abs/2605.13139)
+- [AgentLens](https://arxiv.org/abs/2605.12925)
+- [BenchJack](https://arxiv.org/abs/2605.12673)
+
+## Working conclusion
+
+Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, and scored across safety, robustness, parameter correctness, environment fidelity, runtime-specific harm dimensions, real-user collaboration traces, realistic workspace state, live workflow demand, cost, adversarial task quality, long-range state propagation, abstention, and protocol conformance, improvement efforts will stay shallow and trust claims will stay unearned.

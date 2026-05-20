@@ -163,6 +163,41 @@ The strategic point is that manuals should not remain PDFs next to an autonomous
 Source:
 - [MANTRA](https://arxiv.org/abs/2605.06334)
 
+## May 18 update: API documentation needs semantic readiness gates
+
+The OpenAPI agent-readiness study sharpens gateway governance at the tool-surface layer. An internal API can be structurally valid, stable, and useful to humans while still being a bad agent tool. In the reported industrial setting, MCP-based agents failed at task planning, tool selection, and payload construction across an ecosystem of 16 production APIs and roughly 600 endpoints. The researchers’ Hermes system found 2,450 documentation and REST smells, with deficiencies present in all analyzed operations.
+
+The gateway lesson is direct: do not bulk-wrap enterprise APIs as MCP tools and call that modernization. Tool exposure needs a readiness gate that checks whether an autonomous planner can understand parameter semantics, constraints, examples, error behavior, and endpoint boundaries.
+
+Practical lesson:
+- run semantic OpenAPI linting before MCP/tool exposure
+- require descriptions, examples, constraints, and failure modes for agent-visible parameters
+- generate tool-use tests from endpoint specs and replay payload-construction failures
+- expose selected endpoints first, not the whole microservice estate
+- treat documentation fixes as gateway policy work, not only docs cleanup
+
+Source:
+- [Making OpenAPI Documentation Agent-Ready](https://arxiv.org/abs/2605.14312)
+
+## May 19 update: managed coding agents need repo-level configuration inventory
+
+GitHub’s Copilot cloud-agent configuration API makes a core governance requirement explicit: operators need repo-level inventory before they can safely delegate work to cloud agents at scale. The API exposes MCP server configuration, enabled tools, GitHub Actions workflow policy, and firewall configuration. The adjacent releases — one-click Actions fixes and cheaper model choices for simple delegated tasks — make the inventory even more important because the agent is now part of CI repair and model-routing policy.
+
+The enterprise direction is broader than GitHub. OpenAI and Dell’s Codex partnership frames coding agents as hybrid/on-prem enterprise infrastructure near codebases, documents, systems of record, and operational knowledge. That reinforces the same gateway thesis: agent placement, data boundary, tool authority, model choice, and audit trail have to be governed together.
+
+Practical lesson:
+- inventory enabled tools, MCP servers, workflow policy, firewall configuration, and model policy per repository
+- diff agent configuration like infrastructure, not personal settings
+- route low-risk CI/lint fixes to cheaper models only when branch protection and review gates remain intact
+- require trace-linked review for cloud-agent commits before merge
+- treat hybrid/on-prem coding-agent deployment as a data-governance and control-plane decision
+
+Sources:
+- [Audit repository Copilot cloud agent configuration via the REST API](https://github.blog/changelog/2026-05-18-audit-repository-copilot-cloud-agent-configuration-via-the-rest-api)
+- [One-click fixes for failing Actions with Copilot cloud agent](https://github.blog/changelog/2026-05-18-one-click-fixes-for-failing-actions-with-copilot-cloud-agent)
+- [Copilot cloud agent: Fast, cost-efficient models for simple tasks](https://github.blog/changelog/2026-05-18-copilot-cloud-agent-fast-cost-efficient-models-for-simple-tasks)
+- [OpenAI and Dell Technologies partner to bring Codex to hybrid and on-premises enterprise environments](https://openai.com/index/dell-codex-enterprise-partnership)
+
 ## Implementability score
 
 0.76

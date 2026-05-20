@@ -313,6 +313,39 @@ Sources:
 - [Copilot cloud agent auto model selection](https://github.blog/changelog/2026-05-14-copilot-cloud-agent-supports-auto-model-selection)
 - [OpenAI Codex mobile/session update](https://openai.com/index/work-with-codex-from-anywhere)
 
+## May 17 update: threat coverage maps are a governance artifact
+
+Talk is (Not) Cheap makes a governance problem visible: LLM security benchmarks cover different and often non-overlapping parts of the attack surface. The paper builds a STRIDE-grounded Target x Technique matrix from a 507-leaf taxonomy of inference-time attacks and finds that major benchmarks such as HarmBench, InjecAgent, and AgentDojo cover at most 25% of the matrix.
+
+The strategic correction is simple: a pass rate is not enough. Agent governance needs a coverage map that shows which threat cells were tested, which remain blank, and which controls exist for each cell. Otherwise benchmark success can hide untested service-disruption, model-internals, token-amplification, tool-abuse, retrieval, memory, and workflow-injection risks.
+
+Practical lesson:
+- maintain a Target x Technique coverage matrix for each agent product or runtime surface
+- map public benchmarks and internal red-team fixtures into explicit cells
+- publish untested high-risk cells in release notes and risk reviews
+- add service-disruption, token-amplification, model-internals, tool-argument abuse, retrieval poisoning, and memory poisoning tests where gaps exist
+- connect coverage cells to runtime controls, trace evidence, and owner accountability
+
+Source:
+- [Talk is (Not) Cheap: A Taxonomy and Benchmark Coverage Audit for LLM Attacks](https://arxiv.org/abs/2605.15118)
+
+## May 18 update: sleeper memory poisoning makes persistent state tainted until proven otherwise
+
+Hidden in Memory makes the runtime-governance consequence of persistent memory explicit. Prompt injection no longer has to win in the current context window. An attacker can place malicious content in a document, webpage, repository, or email; the assistant can store a fabricated memory; and that memory can later be retrieved to steer an unrelated future action.
+
+This turns memory into a governance boundary. A memory entry needs source, trust tier, derivation path, timestamp, and use-time policy. The most dangerous entries are instruction-like memories derived from external context because they can look like personalized user preferences while actually encoding attacker intent.
+
+Practical lesson:
+- tag memory writes as user-authored, agent-inferred, or externally supplied
+- require confirmation for instruction-like memories extracted from untrusted content
+- prevent externally descended memories from justifying sensitive tool calls alone
+- revalidate memory provenance when the memory is used, not only when it is written
+- add sleeper-memory red-team fixtures with malicious docs, pages, repos, and emails
+- record memory influence in the same trace as tool policy and action execution
+
+Source:
+- [Hidden in Memory: Sleeper Memory Poisoning in LLM Agents](https://arxiv.org/abs/2605.15338)
+
 ## Working conclusion
 
 Runtime governance is not a niche enterprise concern. It is the natural consequence of giving agents durable memory, tool access, repository permissions, CI/CD authority, and delegated secrets. The control plane has to move into runtime: inventory the agents, bind identity and scope, manage execution environments, preserve trace evidence, enforce valid next transitions before privileged tools execute, and keep tainted repository inputs from silently becoming trusted agent instructions or script data.

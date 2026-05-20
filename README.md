@@ -6,27 +6,26 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Friday synthesis, week ending 2026-05-15: [roundup](roundups/2026-05-15.md)
-- AgenticAI weekly analysis: [2026-05-15](AgenticAI/2026-05-15/reasoning.md)
-- Strategy weekly analysis: [2026-05-15](Strategy/2026-05-15/sovereignty.md)
+- Daily scan, 2026-05-19: [roundup](roundups/2026-05-19.md)
+- AgenticAI daily analysis: [2026-05-19](AgenticAI/2026-05-19/reasoning.md)
+- Strategy daily analysis: [2026-05-19](Strategy/2026-05-19/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
-- Latest Deep Dive Wednesday asset: [GUI-Tool Path Orchestration](AgenticAI/gui-tool-path-orchestration/gui-tool-path-orchestration.md)
-- Prior Friday synthesis: [week ending 2026-05-08](roundups/2026-05-08.md)
-- Earlier Friday synthesis: [week ending 2026-05-01](roundups/2026-05-01.md)
+- Updated durable topics: [Trajectory-Aware Evaluation](AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Memory Systems](AgenticAI/memory-systems/memory-systems.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md)
+- Prior daily scan: [2026-05-18](roundups/2026-05-18.md)
+- Prior Friday synthesis: [week ending 2026-05-15](roundups/2026-05-15.md)
+- Earlier Friday synthesis: [week ending 2026-05-08](roundups/2026-05-08.md)
 
 ## Current thesis
 
-The agent stack is becoming a compiled runtime for stateful work. The useful question is not “which model is smartest?” but “which tool surface did it see, which workflow profile ran, which model was routed to which phase, which memory state was trusted, which skill version authorized the action, which GUI/tool path was taken, which sandbox contained it, and can the entire run be replayed?”
+The agent stack is becoming a managed improvement loop. The useful question is not only “which model is strongest?” It is “which full agent system was evaluated, which executable environments supplied training and regression data, which rubric failures became governed evaluation memory, and which managed coding-agent configuration is auditable before delegation?”
 
-Friday synthesis 2026-05-15 adds six durable implementation patterns:
+Daily scan 2026-05-19 adds four implementation patterns:
 
-- Tool schemas, capability catalogs, workflow profiles, model routing, token budgets, and async futures should be treated as versioned runtime control surfaces.
-- Evaluation should move from final answer checks to trajectory and process evidence: prefix warnings, chaos fixtures, test evolution, full-cycle coding eval, and lucky-pass detection.
-- Memory and context should be governed state with raw-event preservation, typed promotion, writeback gates, invalidation tests, and retrieval-path provenance.
-- Skills are a semantic supply chain: manifest them, fuzz them, version them, pin privileged variants, and log side effects.
-- Computer-use agents need path-level traces across GUI actions, tool calls, screenshots, confirmations, and verification.
-- Coding and browser agents need session identity, sandbox policy, scoped consent, parameter validation, provenance gates, and parallel guardrails.
+- Full agent systems should be evaluated as model plus scaffold plus tools plus memory plus recovery behavior plus cost.
+- Tool-use RL needs verified executable environment supply, not only prompts and static synthetic trajectories.
+- Rubric-based training should preserve evaluation diagnostics as memory with provenance and rollback.
+- Managed coding agents need repo-level configuration inventory, model-routing policy, and trace-linked review before broad CI auto-fix delegation.
 
 ## Browse by category
 
@@ -37,6 +36,7 @@ Friday synthesis 2026-05-15 adds six durable implementation patterns:
 
 ### AgenticAI
 
+- [Agentic Search and Retrieval](AgenticAI/agentic-search/agentic-search.md)
 - [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md)
 - [GUI-Tool Path Orchestration](AgenticAI/gui-tool-path-orchestration/gui-tool-path-orchestration.md)
 - [Ticket-Native Agent Orchestration](AgenticAI/ticket-native-agent-orchestration/ticket-native-agent-orchestration.md)

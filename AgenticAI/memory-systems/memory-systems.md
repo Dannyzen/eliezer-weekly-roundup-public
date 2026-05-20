@@ -377,6 +377,54 @@ Sources:
 - [MEME](https://arxiv.org/abs/2605.12477v1)
 - [MEME project](https://seokwonjung-jay.github.io/meme-eval/)
 
+## May 17 update: continuous consolidation should not overwrite evidence
+
+Useful Memories Become Faulty When Continuously Updated by LLMs adds the strongest warning yet against destructive memory promotion. The paper’s setup is exactly the pattern many agent products are drifting toward: an LLM repeatedly rewrites raw trajectories into a durable textual memory bank. The reported result is that utility can rise and then fall, and can even drop below a no-memory baseline. The abstract reports GPT-5.4 failing on 54% of a set of ARC-AGI problems it had previously solved without memory after consolidation from ground-truth solutions.
+
+The practical lesson is not to abandon memory. It is to stop treating the latest consolidated text as the source of truth. Raw episodes should be first-class evidence; consolidated memories should be derived artifacts with lineage, confidence, and rollback.
+
+Practical lesson:
+- preserve raw trajectories, tool calls, files, outcomes, and timestamps as append-only evidence
+- store derived memories as pointers to raw episodes, not destructive replacements
+- gate consolidation in background jobs with provenance, confidence, diff review, and rollback metadata
+- replay important tasks with and without consolidated memory to catch regression from faulty abstraction
+- separate harmless recall from sensitive-action justification when memory influences future authority
+
+Source:
+- [Useful Memories Become Faulty When Continuously Updated by LLMs](https://arxiv.org/abs/2605.12978)
+
+## May 18 update: population-broadcast memory needs promotion gates
+
+FORGE adds the positive counterpart to yesterday’s memory-warning pattern. Continuous consolidation can become faulty, but evaluated memory promotion can still improve agents when the loop is explicit. FORGE converts failed trajectories into rules, examples, or mixed memory artifacts, scores them in a bounded environment, broadcasts the best-performing artifact to the agent population, and freezes converged instances.
+
+The design lesson is that memory promotion should look like a release pipeline, not a hidden summarizer:
+- raw trajectories remain append-only evidence;
+- candidate rules/examples are derived artifacts with lineage;
+- promotion requires held-out evaluation, not vibe-based reflection;
+- broadcast scope is controlled because a bad memory can degrade every worker;
+- rollback is part of the memory object, not an afterthought.
+
+This also clarifies the role of population learning. A team of agents should not each hallucinate its own private memory bank indefinitely. When a memory artifact proves useful, broadcast can amortize learning. But when the artifact is unverified or externally tainted, broadcast becomes a failure multiplier.
+
+Source:
+- [FORGE: Self-Evolving Agent Memory With No Weight Updates via Population Broadcast](https://arxiv.org/abs/2605.16233)
+
+## May 19 update: evaluation memory can improve rubrics without corrupting user memory
+
+AMARIS adds a useful positive memory pattern after the recent warnings about faulty consolidation and sleeper poisoning. Its memory is not a free-form user profile and not a self-mutating instruction bank. It is persistent evaluation history: rollout diagnostics, step-level summaries, recent context, and dynamically retrieved similar failures used to update rubrics.
+
+That distinction matters. Evaluation memory is still a derived artifact and still needs provenance, but it has a cleaner threat model than user-facing behavioral memory. It can be append-only, scoped to a training run, versioned with rubric changes, and replayed against held-out evals.
+
+Practical lesson:
+- store rubric-level failures, not only pass/fail outcomes
+- retrieve recent failures and semantically similar historical failures before rubric updates
+- keep rubric changes versioned with source diagnostics and rollback metadata
+- run rubric refinement asynchronously, outside the hot action path
+- evaluate whether updated rubrics improve held-out behavior before promotion
+
+Source:
+- [AMARIS: A Memory-Augmented Rubric Improvement System for Rubric-Based Reinforcement Learning](https://arxiv.org/abs/2605.18592v1)
+
 ## Working conclusion
 
-The next generation of agents will be differentiated less by how eloquently they speak and more by how faithfully and safely they remember. The winning systems will preserve evidence, route memory writes explicitly, retrieve context adaptively, abstain when memory is unsafe, validate high-value writes, query local graphs when code structure matters, promote only the right lessons into durable guidance, attach enough context for updates and temporal reasoning, choose abstraction levels that transfer across tasks, keep the most sensitive memory close to the user and under policy control, run durable memory through a governed database-backed state core, and measure whether memories remain usable under scale, budgets, and writeback review.
+The next generation of agents will be differentiated less by how eloquently they speak and more by how faithfully and safely they remember. The winning systems will preserve evidence, route memory writes explicitly, retrieve context adaptively, abstain when memory is unsafe, validate high-value writes, query local graphs when code structure matters, promote only the right lessons into durable guidance, attach enough context for updates and temporal reasoning, choose abstraction levels that transfer across tasks, keep the most sensitive memory close to the user and under policy control, run durable memory through a governed database-backed state core, separate evaluation memory from user-facing memory, and measure whether memories remain usable under scale, budgets, and writeback review.

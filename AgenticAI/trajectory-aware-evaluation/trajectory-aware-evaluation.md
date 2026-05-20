@@ -327,6 +327,45 @@ Sources:
 - [AgentLens](https://arxiv.org/abs/2605.12925)
 - [BenchJack](https://arxiv.org/abs/2605.12673)
 
+## May 17 update: adaptive eval needs chronological replay and verified artifacts
+
+FutureSim and Viverra update trajectory-aware evaluation from two sides. FutureSim shows how to test adaptation by replaying real-world events in chronological order and asking agents to forecast outcomes beyond their knowledge cutoff. That turns state update, evidence use, uncertainty, and calibration into measurable behavior. Viverra shows the coding-agent version of evidence discipline: generated code should carry candidate assertions and deterministic verification results, not only a persuasive explanation.
+
+The shared lesson is that an eval should leave an evidence package. For adaptive agents, the package is the dated event stream, forecast, uncertainty, retrieved evidence, state update, and resolution. For coding agents, it is the patch, properties, verification attempts, proven claims, and explicit non-guarantees.
+
+Practical lesson:
+- replay dated tickets, docs, incidents, changelogs, or source feeds through the same agent harness
+- score accuracy, Brier calibration, evidence use, state updates, and missed-event failure modes
+- ask coding agents for invariants, postconditions, and safety properties with each patch
+- run deterministic verifiers, static analyzers, property tests, or model checkers where feasible
+- store replay traces and proof artifacts next to final outputs so failures can be audited
+
+Sources:
+- [FutureSim: Replaying World Events to Evaluate Adaptive Agents](https://arxiv.org/abs/2605.15188)
+- [Viverra: Text-to-Code with Guarantees](https://arxiv.org/abs/2605.14972)
+
+## May 19 update: full-agent evals need environment factories and cost traces
+
+The Open Agent Leaderboard and EnvFactory push trajectory-aware evaluation into a more operational shape.
+
+The Open Agent Leaderboard makes the full agent system the eval unit. The useful comparison is no longer only model A versus model B. It is model plus scaffold plus tool shortlist plus memory/recovery policy plus cost. Its Exgentic protocol is especially useful because it normalizes diverse benchmarks into task, context, and actions, while the results layer tracks full-system outcomes.
+
+EnvFactory extends the environment side of the same thesis. Tool-use RL cannot scale if every stateful task world is handmade or if synthetic trajectories reveal the tool sequence too directly. Verified executable environments should become a reusable supply layer for training, evaluation, and regression.
+
+Practical lesson:
+- benchmark model x scaffold x tool shortlist x cost, not model names alone
+- preserve failed-run traces because failures can cost materially more than successful runs
+- build small verified mock environments from real internal tool schemas and docs
+- generate natural intents that force the agent to infer the tool path
+- reuse environment factories for SFT/RL data, eval, and CI regression
+- report success-versus-cost Pareto frontiers rather than single leaderboard numbers
+
+Sources:
+- [The Open Agent Leaderboard](https://huggingface.co/blog/ibm-research/open-agent-leaderboard)
+- [Exgentic](https://github.com/Exgentic/exgentic)
+- [Open Agent Leaderboard results dataset](https://huggingface.co/datasets/open-agent-leaderboard/results)
+- [EnvFactory](https://arxiv.org/abs/2605.18703v1)
+
 ## Working conclusion
 
-Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, and scored across safety, robustness, parameter correctness, environment fidelity, runtime-specific harm dimensions, real-user collaboration traces, realistic workspace state, live workflow demand, cost, adversarial task quality, long-range state propagation, abstention, and protocol conformance, improvement efforts will stay shallow and trust claims will stay unearned.
+Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, and scored across safety, robustness, parameter correctness, environment fidelity, runtime-specific harm dimensions, real-user collaboration traces, realistic workspace state, live workflow demand, cost, adversarial task quality, long-range state propagation, abstention, protocol conformance, tool-shortlist quality, and environment-factory coverage, improvement efforts will stay shallow and trust claims will stay unearned.

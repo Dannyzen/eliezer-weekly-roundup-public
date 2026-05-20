@@ -366,6 +366,21 @@ Sources:
 - [Open Agent Leaderboard results dataset](https://huggingface.co/datasets/open-agent-leaderboard/results)
 - [EnvFactory](https://arxiv.org/abs/2605.18703v1)
 
+## May 20 update: code cleanliness is an agent-cost metric
+
+Does Code Cleanliness Affect Coding Agents? adds a practical measurement correction. In the reported controlled minimal-pair study, cleaner repositories did not materially change Claude Code pass rate, but they did reduce token usage by 7-8% and file revisitations by 34%. That means code cleanliness should be treated as a measurable agent operating-cost variable, not only a human maintainability preference.
+
+The eval implication is direct: pass rate alone hides repository-shape effects. A coding-agent benchmark should report the target codebase's static-analysis profile, cognitive complexity, file-revisit count, token spend, tool calls, retries, and latency. Otherwise a harness change may look neutral while still wasting materially more context and wall-clock time.
+
+Practical lesson:
+- add static-analysis and cognitive-complexity metadata to coding-agent eval tasks
+- track token usage, file revisits, tool calls, retries, latency, and failed-run premiums
+- build clean/messy minimal-pair repositories to isolate environment effects from model effects
+- prioritize refactors that lower agent navigation waste even when they do not change pass rate
+
+Source:
+- [Does Code Cleanliness Affect Coding Agents?](https://arxiv.org/abs/2605.20049v1)
+
 ## Working conclusion
 
 Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, and scored across safety, robustness, parameter correctness, environment fidelity, runtime-specific harm dimensions, real-user collaboration traces, realistic workspace state, live workflow demand, cost, adversarial task quality, long-range state propagation, abstention, protocol conformance, tool-shortlist quality, and environment-factory coverage, improvement efforts will stay shallow and trust claims will stay unearned.

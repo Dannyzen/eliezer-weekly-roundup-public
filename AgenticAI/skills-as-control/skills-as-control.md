@@ -1,6 +1,6 @@
 # Skills as Control
 
-Last updated: 2026-05-14
+Last updated: 2026-05-20
 
 Core sources:
 - From Research Question to Scientific Workflow: Leveraging Agentic AI for Science Automation: https://arxiv.org/abs/2604.21910v1
@@ -213,3 +213,20 @@ Sources:
 - [SkillOps](https://arxiv.org/abs/2605.13716)
 - [Hik289/SkillOps](https://github.com/Hik289/SkillOps)
 - [Sefz semantic fuzzing](https://arxiv.org/abs/2605.13044)
+
+
+## May 20 update: skills need feedback-bandwidth admission control
+
+When Skills Don't Help is valuable because it is a negative result. It argues that procedural skill packs can become redundant overhead when the environment already gives strict, low-latency, schema-validated feedback. In that setting the tool layer itself supplies the correction signal that a skill would otherwise provide.
+
+This does not weaken the skills thesis. It sharpens it. Skills are a control layer when they add missing procedure, constraints, or domain structure. They are context debt when they restate what the environment already proves through validators, error messages, and immediate state feedback.
+
+Practical lesson:
+- add a skill load/no-load gate before full skill retrieval
+- measure marginal skill value against no-skill and thin-skill baselines
+- log loaded skill hash, tool-feedback quality, retries, token cost, and task outcome
+- improve tool errors and validators before adding more procedural markdown
+- quarantine or retire skills that correlate with retries, policy misses, or worse completion
+
+Sources:
+- [When Skills Don't Help](https://arxiv.org/abs/2605.20023v1)

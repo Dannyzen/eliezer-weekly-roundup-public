@@ -1,5 +1,7 @@
 # Agent Sandboxing
 
+Last updated: 2026-05-20
+
 Agent sandboxing is becoming a durable part of the agentic stack because coding agents are now powerful enough to make ordinary developer environments unsafe by default.
 
 The core lesson is blunt: local execution is not the same thing as safe execution. Running an agent on your own hardware does not help much if it still inherits your main user account, your SSH keys, your cloud credentials, and unbounded network access.
@@ -104,6 +106,30 @@ Useful pattern:
 Source:
 - [Shannon v1.1.0](https://github.com/KeygraphHQ/shannon/releases/tag/v1.1.0)
 - [KeygraphHQ/shannon](https://github.com/KeygraphHQ/shannon)
+
+## May 20 update: managed-agent sandboxes are becoming control planes
+
+Cloudflare's Claude Managed Agents integration is the clearest current product signal for the sandboxing thesis. The agent loop can run on Anthropic while the execution substrate runs inside Cloudflare-controlled sandboxes. Cloudflare's docs call this a split between the brain and the hands: the model plans, but code execution, browser access, email, private-service connectivity, custom tools, state persistence, and egress policy live in the operator's Cloudflare environment.
+
+This matters because sandboxing is becoming more than a killable container. It is becoming an agent control plane:
+- microVM/container backends for full developer-style work
+- isolate backends for cheap high-scale tool execution
+- egress proxies that inject credentials without exposing raw secrets to the model
+- private-service paths through Workers VPC or Mesh
+- browser recordings, logs, and dashboards for audit
+- custom tools backed by operator-owned bindings such as R2, KV, D1, and Workers AI
+
+Practical lesson:
+- separate the model provider from the execution principal
+- route outbound traffic through policy-aware egress layers
+- inject credentials at the proxy/tool boundary instead of inside the agent prompt or filesystem
+- choose container versus isolate by required tools, risk, cost, and startup latency
+- preserve session logs, browser traces, and sandbox state as audit artifacts
+
+Sources:
+- [Announcing Claude Managed Agents on Cloudflare](https://blog.cloudflare.com/claude-managed-agents/)
+- [Cloudflare docs: Set up Claude Managed Agents](https://developers.cloudflare.com/sandbox/tutorials/claude-managed-agents/)
+- [cloudflare/claude-managed-agents](https://github.com/cloudflare/claude-managed-agents)
 
 ## Current read
 

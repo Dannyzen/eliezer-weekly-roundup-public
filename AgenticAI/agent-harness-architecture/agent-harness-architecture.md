@@ -1,6 +1,6 @@
 # Agent Harness Architecture
 
-Last updated: 2026-05-15
+Last updated: 2026-05-20
 
 Agent harness architecture is becoming the part of the agent stack that teams can actually standardize.
 
@@ -170,6 +170,26 @@ Sources:
 - [CANTANTE](https://arxiv.org/abs/2605.13295)
 - [GitHub token efficiency in agentic workflows](https://github.blog/ai-and-ml/github-copilot/improving-token-efficiency-in-github-agentic-workflows/)
 - [GitHub Agentic Workflows weekly update](https://github.github.com/gh-aw/blog/2026-05-11-weekly-update/)
+
+## May 20 update: SDB makes the action boundary explicit
+
+The production-runtime-patterns paper and companion repository add a useful missing primitive to harness architecture: the stochastic-deterministic boundary. Every material action should be modeled as proposer -> verifier -> commit -> reject signal. That is more useful than arguing about agent frameworks because it identifies where model output stops being suggestion and starts becoming system state.
+
+This updates the harness thesis in three ways:
+- side-effecting tools should not be raw model-to-action pipes;
+- orchestration patterns should be selected by task horizon and state durability, not by framework popularity;
+- rejection signals are runtime evidence and should be preserved for retries, audits, and harness patches.
+
+Practical lesson:
+- make every side-effecting tool expose a verifier and explicit commit step
+- keep reject reasons structured enough for retry and postmortem analysis
+- map long-horizon agents onto shared state machines or event logs before adding subagents
+- use saga compensation for parallel branches that may partially succeed
+- bind human approval to the same SDB contract instead of treating it as an out-of-band chat instruction
+
+Sources:
+- [A Methodology for Selecting and Composing Runtime Architecture Patterns for Production LLM Agents](https://arxiv.org/abs/2605.20173v1)
+- [Runtime Architecture Patterns for Agents in Production](https://github.com/vasundras/agent-runtime-patterns)
 
 ## Core thesis
 

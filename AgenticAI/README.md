@@ -2,53 +2,53 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: 2026-05-19 Daily Scan
+## Most Recent Structured Update: 2026-05-20 Daily Scan
 
-### Open Agent Leaderboard makes the full agent system the eval unit
-Summary: IBM Research’s Open Agent Leaderboard evaluates complete agent systems rather than base models alone. It treats the wrapper, tools, planning, memory, recovery behavior, and cost as part of the measured object.
+### Stochastic-deterministic boundaries turn agent reliability into architecture
+Summary: A production agent needs an explicit boundary where stochastic model proposals become deterministic system actions. The useful contract is proposer -> verifier -> commit -> reject signal.
 
-Analysis: [reasoning analysis](2026-05-19/reasoning.md#open-agent-leaderboard-makes-the-full-agent-system-the-eval-unit)
-Durable topic: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
-Core source: [The Open Agent Leaderboard](https://huggingface.co/blog/ibm-research/open-agent-leaderboard)
+Analysis: [reasoning analysis](2026-05-20/reasoning.md#stochastic-deterministic-boundaries-turn-agent-reliability-into-architecture)
+Durable topic: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
+Core source: [A Methodology for Selecting and Composing Runtime Architecture Patterns for Production LLM Agents](https://arxiv.org/abs/2605.20173v1)
 Implementable now:
-- normalize tasks into task/context/action;
-- compare model x scaffold x tool-shortlist variants;
-- track success, cost, retries, failed-run premium, and tool-selection errors together;
-- preserve result artifacts and traces for replay.
+- define every side-effecting action as propose -> verify -> commit -> reject;
+- bind validators, tests, policy gates, and human approvals to commit paths;
+- preserve reject signals in traces for replay and retry;
+- choose orchestration patterns by task horizon and state persistence needs.
 Tools, repos, and methodologies worth exploring:
-- Exgentic, Open Agent Leaderboard Space, Open Agent Leaderboard results dataset, OpenTelemetry traces, cost-per-task dashboards, scaffold A/B tests
+- LangGraph, Google ADK, Temporal, Prefect, OpenTelemetry, Pydantic/JSON Schema, Open Policy Agent, state machines, saga compensation, `vasundras/agent-runtime-patterns`
+Implementability score: 0.78
+
+### Skills need admission control when tool feedback is already strong
+Summary: A negative result on procedural skills argues that skills can become redundant overhead when tools already return strict, low-latency, schema-validated correction feedback.
+
+Analysis: [reasoning analysis](2026-05-20/reasoning.md#skills-can-become-redundant-overhead-when-tools-give-high-bandwidth-feedback)
+Durable topic: [Skills as Control](skills-as-control/skills-as-control.md)
+Core source: [When Skills Don't Help](https://arxiv.org/abs/2605.20023v1)
+Implementable now:
+- add skill load/no-load gates;
+- A/B test skill value against no-skill and thinner-skill baselines;
+- improve tool error messages and validators before adding more procedural text;
+- quarantine skills that increase retries, context cost, or policy violations.
+Tools, repos, and methodologies worth exploring:
+- skill admission gates, skill A/B tests, schema-validated tool outputs, structured tool errors, OpenTelemetry traces, SkillOps-style contracts, semantic fuzzing
 Implementability score: 0.86
 
-### EnvFactory turns tool-use RL into executable environment supply
-Summary: EnvFactory frames stateful tool environments as the bottleneck for agentic RL. It synthesizes verified executable environments and natural multi-turn trajectories so tool-use agents can train and evaluate against realistic hidden intents.
+### Code cleanliness changes agent cost even when pass rate stays flat
+Summary: A controlled minimal-pair study reports that cleaner repositories did not change coding-agent pass rate, but did reduce token usage by 7-8% and file revisits by 34%.
 
-Analysis: [reasoning analysis](2026-05-19/reasoning.md#envfactory-turns-tool-use-rl-into-executable-environment-supply)
+Analysis: [reasoning analysis](2026-05-20/reasoning.md#code-cleanliness-changes-agent-cost-even-when-pass-rate-stays-flat)
 Durable topic: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
-Core source: [EnvFactory](https://arxiv.org/abs/2605.18703v1)
+Core source: [Does Code Cleanliness Affect Coding Agents?](https://arxiv.org/abs/2605.20049v1)
 Implementable now:
-- build verified mock environments for a few high-value internal workflows;
-- generate natural intents instead of scripted step-by-step instructions;
-- score state transitions, payload correctness, recovery, and final outcome;
-- reuse the environments for SFT data, RL experiments, and CI regression.
+- add static-analysis and cognitive-complexity metrics to coding-agent evals;
+- track tokens, file revisits, tool calls, latency, and retries per task;
+- build minimal-pair repository tests before claiming harness gains;
+- prioritize refactors that reduce agent navigation waste.
 Tools, repos, and methodologies worth exploring:
-- tau2-Bench, BFCL, MCP-Atlas-style evals, AppWorld-style simulated apps, LangGraph/custom state machines, Schemathesis, OpenAPI specs, deterministic mock services
-Implementability score: 0.55
-
-### AMARIS treats rubric updates as memory, not per-step improvisation
-Summary: AMARIS stores rollout diagnostics and historical rubric failures so RL reward rubrics improve from persistent evaluation memory instead of re-deriving criteria from the current step alone.
-
-Analysis: [reasoning analysis](2026-05-19/reasoning.md#amaris-treats-rubric-updates-as-memory-not-per-step-improvisation)
-Durable topic: [Memory Systems](memory-systems/memory-systems.md)
-Core source: [AMARIS](https://arxiv.org/abs/2605.18592v1)
-Implementable now:
-- store rubric-level diagnostics from eval runs;
-- retrieve recent and semantically similar historical failures when updating rubrics;
-- version rubric changes with provenance and rollback;
-- keep rubric refinement asynchronous.
-Tools, repos, and methodologies worth exploring:
-- structured rubrics, SQLite/Postgres evaluation memory, BM25/vector retrieval, W&B or MLflow experiment history, TRL-style RL loops, OpenTelemetry traces
-Implementability score: 0.58
+- SonarQube/SonarCloud, ESLint, Ruff, cognitive-complexity budgets, OpenTelemetry traces, file-revisit metrics, cost-per-task dashboards
+Implementability score: 0.92
 
 ## Previous structured update
 
-The prior daily scan for 2026-05-18 focused on population-broadcast memory and evidence-graph research orchestration: [2026-05-18 reasoning](2026-05-18/reasoning.md).
+The prior daily scan for 2026-05-19 focused on full-system agent evals, executable environment supply, and persistent rubric memory: [2026-05-19 reasoning](2026-05-19/reasoning.md).

@@ -6,26 +6,26 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Daily scan, 2026-05-19: [roundup](roundups/2026-05-19.md)
-- AgenticAI daily analysis: [2026-05-19](AgenticAI/2026-05-19/reasoning.md)
-- Strategy daily analysis: [2026-05-19](Strategy/2026-05-19/sovereignty.md)
+- Daily scan, 2026-05-20: [roundup](roundups/2026-05-20.md)
+- AgenticAI daily analysis: [2026-05-20](AgenticAI/2026-05-20/reasoning.md)
+- Strategy daily analysis: [2026-05-20](Strategy/2026-05-20/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
-- Updated durable topics: [Trajectory-Aware Evaluation](AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Memory Systems](AgenticAI/memory-systems/memory-systems.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md)
-- Prior daily scan: [2026-05-18](roundups/2026-05-18.md)
+- Updated durable topics: [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [Trajectory-Aware Evaluation](AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Agent Sandboxing](Strategy/agent-sandboxing/agent-sandboxing.md)
+- Prior daily scan: [2026-05-19](roundups/2026-05-19.md)
 - Prior Friday synthesis: [week ending 2026-05-15](roundups/2026-05-15.md)
 - Earlier Friday synthesis: [week ending 2026-05-08](roundups/2026-05-08.md)
 
 ## Current thesis
 
-The agent stack is becoming a managed improvement loop. The useful question is not only “which model is strongest?” It is “which full agent system was evaluated, which executable environments supplied training and regression data, which rubric failures became governed evaluation memory, and which managed coding-agent configuration is auditable before delegation?”
+The agent stack is becoming a set of explicit control planes. The useful question is not only “which model is strongest?” It is “where does a model proposal become a system action, when should procedural skills load, how does the codebase shape agent cost, and where do the agent’s hands execute?”
 
-Daily scan 2026-05-19 adds four implementation patterns:
+Daily scan 2026-05-20 adds four implementation patterns:
 
-- Full agent systems should be evaluated as model plus scaffold plus tools plus memory plus recovery behavior plus cost.
-- Tool-use RL needs verified executable environment supply, not only prompts and static synthetic trajectories.
-- Rubric-based training should preserve evaluation diagnostics as memory with provenance and rollback.
-- Managed coding agents need repo-level configuration inventory, model-routing policy, and trace-linked review before broad CI auto-fix delegation.
+- Side-effecting agent actions need proposer/verifier/commit/reject contracts.
+- Skills should be gated by marginal value, especially when the tool environment already gives high-bandwidth feedback.
+- Code cleanliness should be measured as an agent operating-cost variable through token, revisit, retry, and latency traces.
+- Managed agents need a split brain/hands/steering architecture: model loop, sandboxed execution substrate, and human/policy control plane.
 
 ## Browse by category
 

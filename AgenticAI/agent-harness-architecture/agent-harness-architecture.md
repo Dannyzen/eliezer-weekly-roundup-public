@@ -1,6 +1,6 @@
 # Agent Harness Architecture
 
-Last updated: 2026-05-20
+Last updated: 2026-05-21
 
 Agent harness architecture is becoming the part of the agent stack that teams can actually standardize.
 
@@ -190,6 +190,23 @@ Practical lesson:
 Sources:
 - [A Methodology for Selecting and Composing Runtime Architecture Patterns for Production LLM Agents](https://arxiv.org/abs/2605.20173v1)
 - [Runtime Architecture Patterns for Agents in Production](https://github.com/vasundras/agent-runtime-patterns)
+
+## May 21 update: web agents should compile action programs
+
+Agent JIT Compilation updates harness architecture at the browser-action layer. The old loop is fetch screenshot -> ask model -> execute one action -> fetch screenshot again. That is simple, slow, and easy to break. The better shape is compiler-like: generate candidate plans, validate them against tool/state constraints, estimate cost, schedule independent work, execute under invariants, and record rejection reasons.
+
+This directly complements the May 20 stochastic-deterministic-boundary update. The compiled plan is still stochastic output until it passes deterministic validation. Preconditions and postconditions are the boundary between model proposal and real browser action.
+
+Practical lesson:
+- define browser/API tools with preconditions, postconditions, and observable state checks;
+- generate multi-step candidate plans before executing side effects;
+- estimate latency and parallelize independent reads or tab work;
+- preserve invalid-plan rejection reasons as replay and training data;
+- treat browser-agent serving engines like BLAST as harness infrastructure, not just demos.
+
+Sources:
+- [Agent JIT Compilation for Latency-Optimizing Web Agent Planning and Scheduling](https://arxiv.org/abs/2605.21470v1)
+- [stanford-mast/blast](https://github.com/stanford-mast/blast)
 
 ## Core thesis
 

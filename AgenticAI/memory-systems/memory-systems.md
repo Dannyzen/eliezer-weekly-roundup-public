@@ -425,6 +425,22 @@ Practical lesson:
 Source:
 - [AMARIS: A Memory-Augmented Rubric Improvement System for Rubric-Based Reinforcement Learning](https://arxiv.org/abs/2605.18592v1)
 
+## May 21 update: generated memory still needs an abstain gate
+
+Mem-pi adds the next positive memory pattern after the recent warnings about faulty consolidation and memory broadcast risk. It does not retrieve static memories or skills by similarity alone. It uses a separate language or vision-language model to decide when to generate task-specific guidance and what guidance to generate, with an explicit ability to abstain.
+
+The implementation lesson is broader than the paper's RL setup. Memory should be an intervention policy. A long-running agent should ask whether a memory object deserves to influence this run, whether raw evidence should be shown instead, whether a concise derived hint is enough, or whether the safest choice is no memory.
+
+Practical lesson:
+- add a memory critic before injecting memories, skills, or guidelines;
+- support abstain, raw-evidence retrieval, candidate summarization, and generated guidance as separate actions;
+- log whether each memory intervention helped, harmed, or was ignored;
+- keep generated guidance as a derived artifact with lineage to raw episodes;
+- replay important tasks with memory disabled, static retrieval, and adaptive guidance to measure marginal value.
+
+Source:
+- [Mem-pi: Adaptive Memory through Learning When and What to Generate](https://arxiv.org/abs/2605.21463v1)
+
 ## Working conclusion
 
 The next generation of agents will be differentiated less by how eloquently they speak and more by how faithfully and safely they remember. The winning systems will preserve evidence, route memory writes explicitly, retrieve context adaptively, abstain when memory is unsafe, validate high-value writes, query local graphs when code structure matters, promote only the right lessons into durable guidance, attach enough context for updates and temporal reasoning, choose abstraction levels that transfer across tasks, keep the most sensitive memory close to the user and under policy control, run durable memory through a governed database-backed state core, separate evaluation memory from user-facing memory, and measure whether memories remain usable under scale, budgets, and writeback review.

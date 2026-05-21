@@ -6,26 +6,26 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Daily scan, 2026-05-20: [roundup](roundups/2026-05-20.md)
-- AgenticAI daily analysis: [2026-05-20](AgenticAI/2026-05-20/reasoning.md)
-- Strategy daily analysis: [2026-05-20](Strategy/2026-05-20/sovereignty.md)
+- Daily scan, 2026-05-21: [roundup](roundups/2026-05-21.md)
+- AgenticAI daily analysis: [2026-05-21](AgenticAI/2026-05-21/reasoning.md)
+- Strategy daily analysis unchanged from latest strategy scan: [2026-05-20](Strategy/2026-05-20/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
-- Fresh Strategy index: [Strategy README](Strategy/README.md)
-- Updated durable topics: [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [Trajectory-Aware Evaluation](AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Agent Sandboxing](Strategy/agent-sandboxing/agent-sandboxing.md)
-- Prior daily scan: [2026-05-19](roundups/2026-05-19.md)
+- Strategy index unchanged today: [Strategy README](Strategy/README.md)
+- Updated durable topics: [Agentic Search and Retrieval](AgenticAI/agentic-search/agentic-search.md), [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Memory Systems](AgenticAI/memory-systems/memory-systems.md), [Trajectory-Aware Evaluation](AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md)
+- Prior daily scan: [2026-05-20](roundups/2026-05-20.md)
 - Prior Friday synthesis: [week ending 2026-05-15](roundups/2026-05-15.md)
 - Earlier Friday synthesis: [week ending 2026-05-08](roundups/2026-05-08.md)
 
 ## Current thesis
 
-The agent stack is becoming a set of explicit control planes. The useful question is not only “which model is strongest?” It is “where does a model proposal become a system action, when should procedural skills load, how does the codebase shape agent cost, and where do the agent’s hands execute?”
+The agent stack is becoming a set of explicit control planes. The useful question is not only “which model is strongest?” It is “where does evidence become a claim, when does memory deserve to influence a run, how does an agent plan become a validated action program, and what verification survives benchmark gaming?”
 
-Daily scan 2026-05-20 adds four implementation patterns:
+Daily scan 2026-05-21 adds four implementation patterns:
 
-- Side-effecting agent actions need proposer/verifier/commit/reject contracts.
-- Skills should be gated by marginal value, especially when the tool environment already gives high-bandwidth feedback.
-- Code cleanliness should be measured as an agent operating-cost variable through token, revisit, retry, and latency traces.
-- Managed agents need a split brain/hands/steering architecture: model loop, sandboxed execution substrate, and human/policy control plane.
+- Deep-research agents need claim/evidence/derivation traces because retrieval is not the main failure point.
+- Browser agents should compile, validate, and schedule action plans instead of clicking one screenshot at a time.
+- Memory systems need an abstaining guidance gate, not automatic top-k injection.
+- Coding-agent evals need hidden composed tests plus scaffold/cost/failure disclosure.
 
 ## Browse by category
 

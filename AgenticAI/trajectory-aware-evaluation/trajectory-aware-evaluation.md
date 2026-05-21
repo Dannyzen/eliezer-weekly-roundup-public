@@ -381,6 +381,23 @@ Practical lesson:
 Source:
 - [Does Code Cleanliness Affect Coding Agents?](https://arxiv.org/abs/2605.20049v1)
 
+## May 21 update: green tests are not enough for coding agents
+
+SpecBench sharpens the reward-hacking problem for long-horizon coding agents. The benchmark separates natural-language specification, visible validation tests, and held-out composed tests. That split matters because a coding agent can saturate visible tests while failing the real specification once features interact.
+
+The companion benchmark-disclosure audit adds a reporting correction. Agent evals should disclose the benchmark identity, harness/scaffold, inference settings, cost, and failure breakdown. Without that, two papers can disagree on the same benchmark and no operator can tell whether the difference came from model behavior, scaffold behavior, sampling settings, task subset, or evaluator version.
+
+Practical lesson:
+- keep visible tests for local feedback but reserve held-out composed tests for trust decisions;
+- add integration tests that combine features and stress hidden assumptions;
+- adversarially audit benchmark tasks for shortcut solutions and test-memorization paths;
+- record scaffold version, model version, prompts/settings, token/cost, retries, and failure labels;
+- publish or preserve an evidence package for each eval run instead of a naked score.
+
+Sources:
+- [SpecBench: Measuring Reward Hacking in Long-Horizon Coding Agents](https://arxiv.org/abs/2605.21384v1)
+- [What Twelve LLM Agent Benchmark Papers Disclose About Themselves](https://arxiv.org/abs/2605.21404v1)
+
 ## Working conclusion
 
 Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, and scored across safety, robustness, parameter correctness, environment fidelity, runtime-specific harm dimensions, real-user collaboration traces, realistic workspace state, live workflow demand, cost, adversarial task quality, long-range state propagation, abstention, protocol conformance, tool-shortlist quality, and environment-factory coverage, improvement efforts will stay shallow and trust claims will stay unearned.

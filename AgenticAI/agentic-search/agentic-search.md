@@ -85,6 +85,24 @@ This complements the grep-vs-vector lesson. Agentic search quality is a runtime 
 Source:
 - [Argus: Evidence Assembly for Scalable Deep Research Agents](https://arxiv.org/abs/2605.16217)
 
+## May 21 update: deep research needs derivation and calibration traces
+
+DeepWeb-Bench adds a useful correction to agentic search. Its headline is not merely that deep research benchmarks are getting harder. The important result is that retrieval is not the dominant failure mode. The paper reports retrieval failures at only 12-14% of errors, while derivation and calibration dominate.
+
+That changes the build target. A research agent should not be judged by whether it fetched enough links. It should be judged by whether it can preserve source provenance, reconcile conflicting sources, compute derived answers, abstain when precision is not available, and show which evidence supported which claim.
+
+Practical lesson:
+- score retrieval, derivation, reasoning, and calibration separately;
+- keep a claim -> evidence -> derivation graph instead of only final citations;
+- snapshot sources and attach cited spans to generated claims;
+- track hallucinated precision as a distinct calibration failure;
+- use DeepWeb-Bench tasks as regression cases for research-agent workflows.
+
+Sources:
+- [DeepWeb-Bench](https://arxiv.org/abs/2605.21482v1)
+- [DeepWeb-Bench project page](https://sixiongxie1001-dot.github.io/deep-research-benchmark2.0)
+- [DeepWeb-Bench dataset](https://huggingface.co/datasets/deepweb-bench-anon/deepweb-bench)
+
 ## Related durable topics
 
 - [Agent Harness Architecture](../agent-harness-architecture/agent-harness-architecture.md)

@@ -2,52 +2,84 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: 2026-05-22 Daily Scan
+## Most Recent Structured Update: 2026-05-22 Friday Synthesis
 
-### Event-sourced runtimes make agent state replayable
-Summary: ActiveGraph makes the append-only event log the source of truth and projects working graph state from it. That gives agents replay, fork/diff, and end-to-end lineage that transcript-plus-memory systems cannot provide.
+### Evidence-graph research agents need derivation and calibration audits
+Summary: The week’s research-agent sources say the bottleneck is not just finding more pages. The stronger pattern is claim-evidence-derivation structure: lexical baselines, missing-evidence slots, evidence assembly, derivation audits, and calibration scoring.
 
-Analysis: [reasoning analysis](2026-05-22/reasoning.md#activegraph-makes-the-event-log-the-agent-state)
-Durable topic: [Event-Sourced Agent Runtime](event-sourced-agent-runtime/event-sourced-agent-runtime.md)
-Core source: [The Log is the Agent](https://arxiv.org/abs/2605.21997)
+Analysis: [weekly reasoning analysis](2026-05-22/reasoning.md#evidence-graph-research-agents-need-derivation-and-calibration-audits)
+Durable topic: [Agentic Search and Retrieval](agentic-search/agentic-search.md)
+Core sources: [Harness-shaped retrieval](https://arxiv.org/abs/2605.15184), [Argus](https://arxiv.org/abs/2605.16217), [DeepWeb-Bench](https://arxiv.org/abs/2605.21482v1)
 Implementable now:
-- store model calls, tool calls, object mutations, relation changes, policy decisions, failures, and final artifacts as append-only events;
-- project claims, evidence, tasks, and artifacts into a graph from the log;
-- cache model/tool responses where possible so runs can replay;
-- add fork-and-diff to one narrow workflow before generalizing.
+- run exact lexical retrieval beside vector search;
+- store claims, evidence, derivation steps, contradictions, and missing slots as typed objects;
+- dispatch search toward missing evidence slots, not duplicate whole-answer rollouts;
+- score retrieval, derivation, and calibration separately.
 Tools, repos, and methodologies worth exploring:
-- `yoheinakajima/activegraph`, event sourcing, graph projections, deterministic replay caches, structural diffs, lineage graphs, OpenTelemetry trace IDs
-Implementability score: 0.84
+- evidence graphs, claim extraction, DeepWeb-Bench-style labels, Argus-style Searcher/Navigator separation, pgvector plus lexical search, trace-preserved research workflows
+Implementability score: 0.83
 
-### Harness fixes should target runtime interfaces before model weights
-Summary: Life-Harness argues that deterministic-agent failures often come from environment contracts, action realization, procedural skills, and trajectory regulation. Those are harness-interface problems, not only model-weight problems.
+### Trace-aware evaluation is an evidence pipeline, not a score
+Summary: Open Agent Leaderboard, SpecBench, TerminalWorld, Agentic CLEAR, and SynAE point to eval as infrastructure: full-system traces, hidden composed tests, realistic terminal/workflow tasks, node-level failure analysis, and synthetic-data quality audits.
 
-Analysis: [reasoning analysis](2026-05-22/reasoning.md#life-harness-says-fix-the-interface-before-the-model)
-Durable topic: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
-Core source: [Adapting the Interface, Not the Model](https://arxiv.org/abs/2605.22166)
-Implementable now:
-- mine failed traces for recurring environment-contract and action-realization failures;
-- convert those failures into versioned harness interventions;
-- test harness patches across multiple models;
-- log loop-control and termination fixes as runtime components, not prompt folklore.
-Tools, repos, and methodologies worth exploring:
-- trace clustering, harness patch manifests, replay suites, `tau-bench`, `tau^2-bench`, AgentBench-style deterministic tasks, model-agnostic A/B tests
-Implementability score: 0.66
-
-### Agent eval needs real task worlds and synthetic-data audits
-Summary: TerminalWorld derives terminal-agent tasks from in-the-wild recordings, Agentic CLEAR analyzes agents at system/trace/node levels, and SynAE measures whether synthetic tool-calling traces preserve validity, fidelity, diversity, and downstream utility.
-
-Analysis: [reasoning analysis](2026-05-22/reasoning.md#terminalworld-agentic-clear-and-synae-turn-eval-into-a-trace-and-data-quality-stack)
+Analysis: [weekly reasoning analysis](2026-05-22/reasoning.md#trace-aware-evaluation-is-an-evidence-pipeline-not-a-scoreboard)
 Durable topic: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
-Core sources: [TerminalWorld](https://arxiv.org/abs/2605.22535), [Agentic CLEAR](https://arxiv.org/abs/2605.22608), [SynAE](https://arxiv.org/abs/2605.22564)
+Core sources: [Open Agent Leaderboard](https://huggingface.co/blog/ibm-research/open-agent-leaderboard), [SpecBench](https://arxiv.org/abs/2605.21384v1), [TerminalWorld](https://arxiv.org/abs/2605.22535), [Agentic CLEAR](https://arxiv.org/abs/2605.22608), [SynAE](https://arxiv.org/abs/2605.22564)
 Implementable now:
-- build a small verified subset of real terminal or workflow tasks;
-- preserve full traces and label failures at node, trace, and system levels;
-- audit synthetic tool-call trajectories for format validity, semantic fidelity, diversity, and downstream ranking preservation;
-- store scaffold, model, dataset version, cost, and failure taxonomy with every run.
+- preserve full traces with model, scaffold, tool, dataset, and cost metadata;
+- add hidden composed tests and real task-world subsets;
+- label failures at system, trace, and node levels;
+- audit synthetic tool-call traces for validity, fidelity, diversity, and rank preservation.
 Tools, repos, and methodologies worth exploring:
-- `EuniAI/TerminalWorld`, TerminalWorld dataset, `wsqwsq/SynAE`, Agentic CLEAR-style multi-level eval, OpenTelemetry/LangSmith traces, synthetic-data quality checks
-Implementability score: 0.78
+- `Exgentic/exgentic`, `EuniAI/TerminalWorld`, `wsqwsq/SynAE`, OpenTelemetry/LangSmith traces, hidden integration tests, synthetic-data audits
+Implementability score: 0.85
+
+### Replayable state and memory gates should precede self-improvement loops
+Summary: ActiveGraph makes the event log the source of truth. FORGE and Mem-pi show useful memory-improvement patterns. Faulty-memory and sleeper-memory work show the failure mode: unverified memory rewrites and persistent context can corrupt or poison future action.
+
+Analysis: [weekly reasoning analysis](2026-05-22/reasoning.md#replayable-state-and-memory-gates-should-precede-self-improvement-loops)
+Durable topics: [Event-Sourced Agent Runtime](event-sourced-agent-runtime/event-sourced-agent-runtime.md), [Memory Systems](memory-systems/memory-systems.md)
+Core sources: [The Log is the Agent](https://arxiv.org/abs/2605.21997), [ActiveGraph](https://activegraph.ai/), [Faulty memories](https://arxiv.org/abs/2605.12978), [FORGE](https://arxiv.org/abs/2605.16233), [Mem-pi](https://arxiv.org/abs/2605.21463v1)
+Implementable now:
+- store model calls, tool calls, object mutations, policy decisions, failures, and artifacts as append-only events;
+- project tasks, evidence, artifacts, and policies from the log;
+- promote memory only through provenance gates;
+- test stale-premise, deletion, contradiction, and poisoning cases.
+Tools, repos, and methodologies worth exploring:
+- `yoheinakajima/activegraph`, event sourcing, replay/fork/diff, provenance graphs, typed memory schemas, writeback firewalls, memory taint labels
+Implementability score: 0.71
+
+### Harness contracts beat prompt folklore
+Summary: Agent reliability work this week centered on the runtime boundary: stochastic/deterministic handoffs, skill admission, browser-plan compilation, and Life-Harness-style interface adaptation. The model is not the whole agent.
+
+Analysis: [weekly reasoning analysis](2026-05-22/reasoning.md#harness-contracts-beat-prompt-folklore)
+Durable topic: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
+Core sources: [runtime boundaries](https://arxiv.org/abs/2605.20173v1), [skill admission](https://arxiv.org/abs/2605.20023v1), [Agent JIT](https://arxiv.org/abs/2605.21470v1), [Life-Harness](https://arxiv.org/abs/2605.22166)
+Implementable now:
+- define propose/verify/commit/reject phases for side effects;
+- measure skill load/no-load effects;
+- compile browser or workflow plans before execution;
+- mine failed traces into versioned harness patches;
+- test interface fixes across multiple models.
+Tools, repos, and methodologies worth exploring:
+- `vasundras/agent-runtime-patterns`, `stanford-mast/blast`, harness patch manifests, replay suites, skill admission tests, deterministic task harnesses
+Implementability score: 0.77
+
+### Coding-agent productivity now includes operating-cost telemetry
+Summary: Coding-agent quality now means more than pass rate. Code cleanliness affects token/file-revisit cost; hidden tests expose reward hacking; proof-carrying outputs remain promising but heavy; managed cloud agents need configuration audit.
+
+Analysis: [weekly reasoning analysis](2026-05-22/reasoning.md#coding-agent-productivity-now-includes-operating-cost-telemetry)
+Durable topic: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
+Core sources: [code cleanliness and cost](https://arxiv.org/abs/2605.20049v1), [SpecBench](https://arxiv.org/abs/2605.21384v1), [Viverra](https://arxiv.org/abs/2605.14972), [Copilot cloud-agent audit](https://github.blog/changelog/2026-05-18-audit-repository-copilot-cloud-agent-configuration-via-the-rest-api)
+Implementable now:
+- track token spend, file revisits, command count, retries, and elapsed time;
+- run hidden composed tests;
+- label claims as proved, tested, inspected, or unsupported;
+- preserve command/test traces with patch diffs;
+- audit cloud-agent configuration by repo.
+Tools, repos, and methodologies worth exploring:
+- static analysis, cognitive-complexity metrics, trace/cost dashboards, hidden tests, proof/non-proof labeling, GitHub Copilot cloud-agent audit APIs
+Implementability score: 0.76
 
 ## Previous structured update
 

@@ -6,26 +6,28 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Daily scan, 2026-05-22: [roundup](roundups/2026-05-22.md)
-- AgenticAI daily analysis: [2026-05-22](AgenticAI/2026-05-22/reasoning.md)
-- Strategy daily analysis: [2026-05-22](Strategy/2026-05-22/sovereignty.md)
+- Friday synthesis, week ending 2026-05-22: [roundup](roundups/2026-05-22.md)
+- AgenticAI weekly analysis: [2026-05-22](AgenticAI/2026-05-22/reasoning.md)
+- Strategy weekly analysis: [2026-05-22](Strategy/2026-05-22/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
-- Updated durable topics: [Event-Sourced Agent Runtime](AgenticAI/event-sourced-agent-runtime/event-sourced-agent-runtime.md), [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Trajectory-Aware Evaluation](AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md)
+- Related durable topics: [Agentic Search and Retrieval](AgenticAI/agentic-search/agentic-search.md), [Event-Sourced Agent Runtime](AgenticAI/event-sourced-agent-runtime/event-sourced-agent-runtime.md), [Memory Systems](AgenticAI/memory-systems/memory-systems.md), [Trajectory-Aware Evaluation](AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md)
 - Prior daily scan: [2026-05-21](roundups/2026-05-21.md)
 - Prior Friday synthesis: [week ending 2026-05-15](roundups/2026-05-15.md)
 - Earlier Friday synthesis: [week ending 2026-05-08](roundups/2026-05-08.md)
 
 ## Current thesis
 
-The agent stack is becoming a set of replayable control surfaces. The useful question is not only “which model is strongest?” It is “what state can be replayed, which interface interventions improve behavior, which eval worlds reflect real work, and which remote tool boundaries are actually authenticated?”
+The agent stack is becoming replayable infrastructure. The useful question is not only “which model is strongest?” It is “who controls the log, evidence graph, harness contract, eval trace, memory authority, gateway policy, sandbox, and right to replay or deny an action?”
 
-Daily scan 2026-05-22 adds four implementation patterns:
+Week ending 2026-05-22 adds six implementation patterns:
 
-- Event-sourced runtimes make agent state replayable, forkable, and auditable.
-- Runtime harness fixes should target environment contracts, action realization, procedural skills, and trajectory regulation before model weights.
-- Agent evaluation needs real task worlds plus trace-level and synthetic-data-quality audits.
-- Remote MCP authentication must be governed at the gateway, especially around dynamic client registration and OAuth boundaries.
+- Research agents need evidence graphs with derivation and calibration audits, not just more retrieval.
+- Agent evaluation needs full traces, hidden tests, realistic task worlds, and synthetic-data-quality audits.
+- Event-sourced state and memory gates should precede self-improvement loops.
+- Harness/interface contracts beat prompt folklore for durable reliability improvements.
+- Agent gateways need semantic API readiness checks plus MCP authentication controls before tool exposure.
+- Managed agents are becoming brain, sandbox, memory, and steering-plane infrastructure.
 
 ## Browse by category
 

@@ -398,6 +398,25 @@ Sources:
 - [SpecBench: Measuring Reward Hacking in Long-Horizon Coding Agents](https://arxiv.org/abs/2605.21384v1)
 - [What Twelve LLM Agent Benchmark Papers Disclose About Themselves](https://arxiv.org/abs/2605.21404v1)
 
+## May 22 update: eval needs realistic terminal worlds and synthetic-data audits
+TerminalWorld, Agentic CLEAR, and SynAE make the evaluation stack more operational. TerminalWorld derives terminal tasks from real asciinema recordings and reports that the best tested systems reach only 62.5% on a verified subset. Agentic CLEAR adds system-, trace-, and node-level analysis above observability. SynAE measures whether synthetic tool-calling trajectories preserve validity, fidelity, diversity, and downstream evaluation behavior.
+
+The practical lesson is that agent eval is now a data pipeline, not a scoreboard:
+- collect realistic task worlds from real workflows, not only hand-authored prompts;
+- preserve full traces and environment state;
+- grade failures at system, trace, and node levels;
+- keep synthetic-data generation under validity, fidelity, diversity, and downstream-rank audits;
+- report scaffold version, model/settings, dataset/source version, cost, and failure taxonomy with every score;
+- maintain a small manually verified subset for trust decisions even when the larger benchmark is generated automatically.
+
+Sources:
+- [TerminalWorld](https://arxiv.org/abs/2605.22535)
+- [EuniAI/TerminalWorld](https://github.com/EuniAI/TerminalWorld)
+- [TerminalWorld dataset](https://huggingface.co/datasets/EuniAI/TerminalWorld)
+- [Agentic CLEAR](https://arxiv.org/abs/2605.22608)
+- [SynAE](https://arxiv.org/abs/2605.22564)
+- [wsqwsq/SynAE](https://github.com/wsqwsq/SynAE)
+
 ## Working conclusion
 
 Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, and scored across safety, robustness, parameter correctness, environment fidelity, runtime-specific harm dimensions, real-user collaboration traces, realistic workspace state, live workflow demand, cost, adversarial task quality, long-range state propagation, abstention, protocol conformance, tool-shortlist quality, and environment-factory coverage, improvement efforts will stay shallow and trust claims will stay unearned.

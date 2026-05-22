@@ -198,6 +198,26 @@ Sources:
 - [Copilot cloud agent: Fast, cost-efficient models for simple tasks](https://github.blog/changelog/2026-05-18-copilot-cloud-agent-fast-cost-efficient-models-for-simple-tasks)
 - [OpenAI and Dell Technologies partner to bring Codex to hybrid and on-premises enterprise environments](https://openai.com/index/dell-codex-enterprise-partnership)
 
+## May 22 update: remote MCP auth needs gateway-owned client registration
+The first measurement study of real-world remote MCP authentication turns the gateway thesis into an urgent control-plane requirement. The paper reports 7,973 live remote MCP servers, with 40.55% exposing tools without authentication. In a tested sample of 119 OAuth-enabled servers, every server had at least one flaw, and dynamic client registration flaws affected 96.6%.
+
+The strategic lesson is direct: OAuth support is not the same as secure agent authorization. Remote MCP deployments combine open client environments, dynamic client registration, delegated authorization, and side-effecting tools. That boundary needs gateway ownership, not blind client trust.
+
+Practical lesson:
+- require auth on every non-public remote MCP server;
+- disable or tightly constrain dynamic client registration;
+- pin redirect URIs and client metadata for trusted agent clients;
+- enforce scoped OAuth/OIDC, PKCE, token rotation, and per-tool authorization;
+- scan for unauthenticated tools, weak registration, redirect manipulation, token leakage, and overbroad scopes;
+- log discovery, enabled tools, denied calls, approvals, auth context, and final tool effects;
+- treat third-party remote MCP servers as untrusted until their auth behavior is tested.
+
+Sources:
+- [A First Measurement Study on Authentication Security in Real-World Remote MCP Servers](https://arxiv.org/abs/2605.22333)
+- [Measuring Security Without Fooling Ourselves](https://arxiv.org/abs/2605.22568)
+- [microsoft/agent-governance-toolkit](https://github.com/microsoft/agent-governance-toolkit)
+- [modelcontextprotocol/inspector](https://github.com/modelcontextprotocol/inspector)
+
 ## Implementability score
 
 0.76

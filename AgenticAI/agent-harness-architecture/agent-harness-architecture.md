@@ -1,6 +1,6 @@
 # Agent Harness Architecture
 
-Last updated: 2026-05-21
+Last updated: 2026-05-22
 
 Agent harness architecture is becoming the part of the agent stack that teams can actually standardize.
 
@@ -207,6 +207,26 @@ Practical lesson:
 Sources:
 - [Agent JIT Compilation for Latency-Optimizing Web Agent Planning and Scheduling](https://arxiv.org/abs/2605.21470v1)
 - [stanford-mast/blast](https://github.com/stanford-mast/blast)
+
+## May 22 update: event logs and interface harnesses make control explicit
+ActiveGraph and Life-Harness update harness architecture from two sides. ActiveGraph says the durable runtime should be event-sourced: model calls, tool responses, object mutations, relations, policies, failures, and final artifacts should become replayable events. Life-Harness says many deterministic-agent gains come from fixing the model-environment interface: contracts, procedural skills, action realization, and trajectory regulation.
+
+The shared lesson is that the harness is the control surface. The model is not the only thing that learns or improves. The runtime can preserve causality, replay a run, fork a hypothesis, and patch interface failures without changing model weights.
+
+Practical lesson:
+- record agent runs as append-only events, not only transcripts;
+- project claims, tasks, evidence, artifacts, tool calls, and policy decisions into a graph or structured state view;
+- make replay and fork/diff a harness primitive for at least one critical workflow;
+- mine failed traces for environment-contract, action-realization, termination, and recovery failures;
+- convert recurring failures into versioned harness interventions with predicted effects and regression risks;
+- test harness interventions across models before attributing improvements to model-specific prompting.
+
+Sources:
+- [The Log is the Agent](https://arxiv.org/abs/2605.21997)
+- [yoheinakajima/activegraph](https://github.com/yoheinakajima/activegraph)
+- [ActiveGraph site](https://activegraph.ai/)
+- [Adapting the Interface, Not the Model](https://arxiv.org/abs/2605.22166)
+- [Event-Sourced Agent Runtime](../event-sourced-agent-runtime/event-sourced-agent-runtime.md)
 
 ## Core thesis
 

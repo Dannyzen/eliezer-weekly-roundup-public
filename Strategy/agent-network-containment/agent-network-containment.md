@@ -147,6 +147,25 @@ Sources:
 - [MAGE](https://arxiv.org/abs/2605.03228)
 - [MEMSAD](https://arxiv.org/abs/2605.03482)
 
+## May 23 update: latent state and multi-turn evasions expand the containment boundary
+
+LCGuard and A3S-Bench extend containment below and across the visible prompt. LCGuard shows that KV-cache sharing can leak sensitive inputs through latent state even when text outputs look safe. A3S-Bench shows that temporal, spatial, and semantic evasion can hide malicious intent across turns, external artifacts, and benign-looking task context.
+
+The containment boundary is therefore wider than chat. It includes latent caches, embeddings, summaries, memories, imported files, web pages, tool outputs, and the sequence that connected them.
+
+Practical additions:
+- classify KV caches, embeddings, summaries, and compressed memories as governed data artifacts;
+- forbid cross-principal latent-state sharing unless provenance, sensitivity, retention, and destination are explicit;
+- test reconstruction leakage before enabling latent communication;
+- run temporal/spatial/semantic evasion suites against staging agents;
+- label influence paths across turns, files, pages, memory, and tool outputs;
+- treat artifact parsers as containment boundaries, not neutral utilities.
+
+Sources:
+- [LCGuard](https://arxiv.org/abs/2605.22786v1)
+- [A3S-Bench](https://arxiv.org/abs/2605.22321v1)
+- [Agent3Sigma-Stage](https://github.com/antgroup/Agent3Sigma-Stage)
+
 ## Working conclusion
 
 Agent network containment is the next governance layer after tool permissioning. Once agents can discover, message, delegate, and relay across principals, the operator has to govern the graph: who spoke, who acted, what data crossed, what policy allowed it, and how the system can stop spread when a benign-looking workflow turns viral.

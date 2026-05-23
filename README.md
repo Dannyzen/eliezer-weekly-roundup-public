@@ -6,28 +6,26 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Friday synthesis, week ending 2026-05-22: [roundup](roundups/2026-05-22.md)
-- AgenticAI weekly analysis: [2026-05-22](AgenticAI/2026-05-22/reasoning.md)
-- Strategy weekly analysis: [2026-05-22](Strategy/2026-05-22/sovereignty.md)
+- Daily scan, 2026-05-23: [roundup](roundups/2026-05-23.md)
+- AgenticAI daily analysis: [2026-05-23](AgenticAI/2026-05-23/reasoning.md)
+- Strategy daily analysis: [2026-05-23](Strategy/2026-05-23/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
-- Related durable topics: [Agentic Search and Retrieval](AgenticAI/agentic-search/agentic-search.md), [Event-Sourced Agent Runtime](AgenticAI/event-sourced-agent-runtime/event-sourced-agent-runtime.md), [Memory Systems](AgenticAI/memory-systems/memory-systems.md), [Trajectory-Aware Evaluation](AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md)
-- Prior daily scan: [2026-05-21](roundups/2026-05-21.md)
+- Related durable topics: [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Agent Network Containment](Strategy/agent-network-containment/agent-network-containment.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md), [Trajectory-Aware Evaluation](AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Event-Sourced Agent Runtime](AgenticAI/event-sourced-agent-runtime/event-sourced-agent-runtime.md), [Memory Systems](AgenticAI/memory-systems/memory-systems.md)
+- Prior Friday synthesis: [week ending 2026-05-22](roundups/2026-05-22.md)
 - Prior Friday synthesis: [week ending 2026-05-15](roundups/2026-05-15.md)
 - Earlier Friday synthesis: [week ending 2026-05-08](roundups/2026-05-08.md)
 
 ## Current thesis
 
-The agent stack is becoming replayable infrastructure. The useful question is not only “which model is strongest?” It is “who controls the log, evidence graph, harness contract, eval trace, memory authority, gateway policy, sandbox, and right to replay or deny an action?”
+The agent stack is becoming replayable infrastructure, but the control surfaces are moving below visible chat. The useful question is not only “which model is strongest?” It is “who controls the source patch, workflow placement, latent state boundary, full-run trace, artifact path, MCP client capability, gateway policy, sandbox, and right to replay or deny an action?”
 
-Week ending 2026-05-22 adds six implementation patterns:
+The 2026-05-23 scan adds four implementation patterns:
 
-- Research agents need evidence graphs with derivation and calibration audits, not just more retrieval.
-- Agent evaluation needs full traces, hidden tests, realistic task worlds, and synthetic-data-quality audits.
-- Event-sourced state and memory gates should precede self-improvement loops.
-- Harness/interface contracts beat prompt folklore for durable reliability improvements.
-- Agent gateways need semantic API readiness checks plus MCP authentication controls before tool exposure.
-- Managed agents are becoming brain, sandbox, memory, and steering-plane infrastructure.
+- Source-level self-evolution needs failure-batch replay, isolated candidate images, predicted-effect manifests, promotion gates, health probes, and rollback.
+- Workflow logic should be placed deliberately: prompt, graph, gateway, code, or weights depending on stability, auditability, cost, and policy-change rate.
+- KV caches and other latent state are governed data artifacts, not harmless implementation detail.
+- Agent security has to inspect whole-run evasion paths and live MCP client capabilities, not just the current prompt or nominal tool list.
 
 ## Browse by category
 

@@ -218,6 +218,20 @@ Sources:
 - [microsoft/agent-governance-toolkit](https://github.com/microsoft/agent-governance-toolkit)
 - [modelcontextprotocol/inspector](https://github.com/modelcontextprotocol/inspector)
 
+## May 23 update: gateway policy needs MCP client capability inventory
+
+The `evalstate/mcp-clients` dataset is useful because it turns MCP client heterogeneity into observable data. Clients advertise different combinations of UI, elicitation, roots, sampling, tasks, and experimental auth capabilities. Gateway policy should not treat all MCP clients as equivalent just because they speak the protocol.
+
+Practical lesson:
+- inventory client name, version, and advertised capabilities during MCP connection setup;
+- gate high-risk features such as UI rendering, elicitation, roots, sampling, task execution, and experimental auth by client identity and policy;
+- diff client-capability changes like infrastructure changes;
+- log client capability, selected tools, denied tools, auth context, and final effects in the same trace;
+- use live capability telemetry to prioritize gateway test cases.
+
+Source:
+- [evalstate/mcp-clients](https://huggingface.co/datasets/evalstate/mcp-clients)
+
 ## Implementability score
 
 0.76

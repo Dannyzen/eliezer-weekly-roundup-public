@@ -1,6 +1,6 @@
 # Agent Harness Architecture
 
-Last updated: 2026-05-22
+Last updated: 2026-05-23
 
 Agent harness architecture is becoming the part of the agent stack that teams can actually standardize.
 
@@ -511,6 +511,24 @@ Sources:
 - [Orchard](https://arxiv.org/abs/2605.15040v1)
 - [microsoft/Orchard dataset](https://huggingface.co/datasets/microsoft/Orchard)
 - [AsyncFC](https://arxiv.org/abs/2605.15077v1)
+
+## May 23 update: source-level and workflow-placement changes need stronger harness gates
+
+MOSS, GraphFlow, and workflow compilation extend the harness topic below prompt engineering. MOSS says recurring structural failures sometimes require source-level changes, not new prompts or skills. GraphFlow says reusable workflow graphs can serve task-specific flows and manage KV-cache state more efficiently. The workflow-compilation paper says stable procedural workflows may belong in small fine-tuned models rather than repeated external orchestration.
+
+The durable lesson is a placement rule. The harness should decide where control logic lives: prompt, graph, gateway, source code, or weights. That decision needs evidence, not framework taste.
+
+Practical lesson:
+- source-level self-evolution needs failure-batch replay, isolated candidate images, predicted-effect manifests, consent gates, health probes, and rollback;
+- workflow graphs need typed atomic operations, state ownership, cache policy, and per-node traces;
+- stable workflow compilation needs prompt-only and graph-orchestrated baselines before fine-tuning;
+- do not compile workflows into weights when approval logic, auditability, or policy change frequency matters;
+- record workflow placement, model, graph/source version, cost, latency, and failure mode in every trace.
+
+Sources:
+- [MOSS](https://arxiv.org/abs/2605.22794v1)
+- [GraphFlow](https://arxiv.org/abs/2605.22566v1)
+- [Compiling Agentic Workflows into LLM Weights](https://arxiv.org/abs/2605.22502v1)
 
 ## Working conclusion
 

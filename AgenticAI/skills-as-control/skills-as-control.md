@@ -1,6 +1,6 @@
 # Skills as Control
 
-Last updated: 2026-05-20
+Last updated: 2026-05-24
 
 Core sources:
 - From Research Question to Scientific Workflow: Leveraging Agentic AI for Science Automation: https://arxiv.org/abs/2604.21910v1
@@ -20,6 +20,10 @@ Core sources:
 - SkillOps: https://arxiv.org/abs/2605.13716
 - Hik289/SkillOps: https://github.com/Hik289/SkillOps
 - Sefz semantic fuzzing: https://arxiv.org/abs/2605.13044
+- HarnessAPI: https://arxiv.org/abs/2605.22733
+- HarnessAPI repository: https://github.com/edwinjosechittilappilly/harnessapi
+- Unbrowse: https://github.com/unbrowse-ai/unbrowse
+- CodeGraph: https://github.com/colbymchenry/codegraph
 
 ## Thesis
 
@@ -230,3 +234,22 @@ Practical lesson:
 
 Sources:
 - [When Skills Don't Help](https://arxiv.org/abs/2605.20023v1)
+
+## May 24 update: skills are becoming executable API surfaces
+
+HarnessAPI, Unbrowse, and CodeGraph push the skills thesis from prose packages into executable infrastructure. HarnessAPI treats a typed skill folder as the source of truth and derives a streaming HTTP endpoint, OpenAPI/Swagger surface, and MCP tool from the same handler and Pydantic schemas. Unbrowse turns repeated browser work into reusable API-native MCP paths. CodeGraph moves codebase context into a local graph surface so agents do not rediscover the same structure through repeated scanning.
+
+The durable lesson: a skill that matters should not stay as untyped advice forever. It should eventually become a reviewed contract with schema, validator, timeout, permission scope, trace hash, and callable interface.
+
+Practical lesson:
+- start high-value skills with explicit input/output schemas;
+- expose stable skills through both HTTP and MCP only when the permission model is clear;
+- keep skill docs, OpenAPI schemas, MCP tool declarations, and validators generated from one source of truth;
+- turn browser/API discoveries into reviewed route assets, not automatic authority;
+- log compiled-surface version, schema hash, tool arguments, output shape, and side effects on every invocation.
+
+Sources:
+- [HarnessAPI](https://arxiv.org/abs/2605.22733)
+- [edwinjosechittilappilly/harnessapi](https://github.com/edwinjosechittilappilly/harnessapi)
+- [Unbrowse](https://github.com/unbrowse-ai/unbrowse)
+- [CodeGraph](https://github.com/colbymchenry/codegraph)

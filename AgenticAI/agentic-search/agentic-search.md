@@ -103,6 +103,25 @@ Sources:
 - [DeepWeb-Bench project page](https://sixiongxie1001-dot.github.io/deep-research-benchmark2.0)
 - [DeepWeb-Bench dataset](https://huggingface.co/datasets/deepweb-bench-anon/deepweb-bench)
 
+## May 24 update: retrieval agents fail by setting the wrong state, not only by missing documents
+
+SGR-Bench adds a missing category to agentic search evaluation: state-gated retrieval. The agent may reach the right data source but still configure the wrong filters, views, hierarchy, scope, or criterion before answering. That is a different failure than low top-k recall. It is a harness and state-management failure.
+
+SpecHop adds the latency side of the same problem. Multi-hop retrieval agents spend wall-clock time waiting on tools. That wait can be used for reversible speculation, but only if the harness records speculative branches, verifies observations, commits correct branches, and rolls back wrong ones.
+
+Practical lesson:
+- log retrieval state, not only query text and returned snippets;
+- score scope drift and criterion mismatch separately from final-answer errors;
+- add state-gated retrieval cases to internal research-agent evals;
+- instrument tool-wait time and start with read-only speculative prefetch;
+- keep speculative evidence out of authoritative memory until verified.
+
+Sources:
+- [SGR-Bench](https://arxiv.org/abs/2605.22219)
+- [SGR-Bench dataset](https://huggingface.co/datasets/PKUAIWeb/SGR-BENCH)
+- [SpecHop](https://arxiv.org/abs/2605.21965)
+- [mehrdadsaberi/spechop](https://github.com/mehrdadsaberi/spechop)
+
 ## Related durable topics
 
 - [Agent Harness Architecture](../agent-harness-architecture/agent-harness-architecture.md)

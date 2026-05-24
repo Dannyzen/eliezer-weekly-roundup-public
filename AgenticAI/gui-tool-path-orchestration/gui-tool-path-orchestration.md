@@ -1,6 +1,6 @@
 # GUI-Tool Path Orchestration
 
-Last updated: 2026-05-13
+Last updated: 2026-05-24
 
 ## Overview
 
@@ -147,6 +147,23 @@ The practical product opportunity is a "computer-use harness control plane": a s
 - **ToolCUA plus ComplexMCP** changes how to think about computer-use itself: a desktop agent is an action-path optimizer over GUI, tools, verification, and recovery.
 
 That makes it the week's best durable deep dive.
+
+## May 24 update: browser use can be compiled into scripts
+
+Webwright adds a practical implementation path for the GUI-tool thesis: sometimes the right browser action is not another click prediction or another heavyweight GUI planner. It is a short script written by the agent, executed in a disposable browser session, and saved as the evidence artifact.
+
+The important pattern is not “terminal beats browser.” The pattern is that the browser becomes a controllable runtime inside a code workspace. The agent can inspect state, write Playwright, capture screenshots, debug failures, and rerun the final script in a fresh folder before claiming completion. That turns a web-agent trajectory into something closer to an RPA artifact with logs and replay.
+
+Practical update:
+- add a browser-task-as-script lane next to GUI-only and tool-only baselines;
+- require screenshots, DOM/accessibility evidence, logs, final assertions, and a rerunnable script;
+- keep browser sessions disposable while preserving workspace artifacts;
+- promote repeated scripts into reviewed local tools only after replay and side-effect review;
+- score script brevity, replay success, final-state correctness, and skipped-verification failures separately.
+
+Sources:
+- [Webwright: A Terminal Is All You Need For Web Agents](https://www.microsoft.com/en-us/research/articles/webwright-a-terminal-is-all-you-need-for-web-agents/)
+- [microsoft/Webwright](https://github.com/microsoft/Webwright)
 
 ## Core source links
 

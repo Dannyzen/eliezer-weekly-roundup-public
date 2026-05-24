@@ -417,6 +417,32 @@ Sources:
 - [SynAE](https://arxiv.org/abs/2605.22564)
 - [wsqwsq/SynAE](https://github.com/wsqwsq/SynAE)
 
+## May 24 update: eval needs work-product quality, not only task completion
+
+WorkstreamBench, SGR-Bench, ClawBench, and GBQA make the same operational point from different domains. Agents are now being asked to produce or manipulate work products: spreadsheets, website states, terminal environments, software releases, and QA findings. A final answer can be plausible while the artifact is unreviewable, the retrieval state is wrong, or the process skipped required evidence.
+
+The evaluation unit should be a work-product evidence package:
+- initial state and final state;
+- trace with tool/browser/terminal actions;
+- intermediate artifacts;
+- verifier-owned checks;
+- quality rubric for the artifact itself;
+- process-defect labels;
+- cost and retry metadata.
+
+Practical lesson:
+- grade spreadsheets across accuracy, formula lineage, formatting, and modifiability;
+- grade browser/search tasks on state configuration before final prose;
+- grade QA agents on reproducible bug evidence, not only issue text;
+- keep verifier-owned tests and environment snapshots outside the agent's control;
+- report process-defect classes next to pass/fail.
+
+Sources:
+- [WorkstreamBench](https://arxiv.org/abs/2605.22664)
+- [SGR-Bench](https://arxiv.org/abs/2605.22219)
+- [ClawBench](https://github.com/TIGER-AI-Lab/ClawBench)
+- [GBQA](https://github.com/camel-ai/GBQA)
+
 ## Working conclusion
 
 Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, and scored across safety, robustness, parameter correctness, environment fidelity, runtime-specific harm dimensions, real-user collaboration traces, realistic workspace state, live workflow demand, cost, adversarial task quality, long-range state propagation, abstention, protocol conformance, tool-shortlist quality, and environment-factory coverage, improvement efforts will stay shallow and trust claims will stay unearned.

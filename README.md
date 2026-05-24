@@ -6,26 +6,26 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Daily scan, 2026-05-23: [roundup](roundups/2026-05-23.md)
-- AgenticAI daily analysis: [2026-05-23](AgenticAI/2026-05-23/reasoning.md)
-- Strategy daily analysis: [2026-05-23](Strategy/2026-05-23/sovereignty.md)
+- Daily scan, 2026-05-24: [roundup](roundups/2026-05-24.md)
+- AgenticAI daily analysis: [2026-05-24](AgenticAI/2026-05-24/reasoning.md)
+- Strategy latest analysis: [2026-05-23](Strategy/2026-05-23/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
-- Related durable topics: [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Agent Network Containment](Strategy/agent-network-containment/agent-network-containment.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md), [Trajectory-Aware Evaluation](AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Event-Sourced Agent Runtime](AgenticAI/event-sourced-agent-runtime/event-sourced-agent-runtime.md), [Memory Systems](AgenticAI/memory-systems/memory-systems.md)
+- Related durable topics: [GUI-Tool Path Orchestration](AgenticAI/gui-tool-path-orchestration/gui-tool-path-orchestration.md), [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [Agentic Search and Retrieval](AgenticAI/agentic-search/agentic-search.md), [Trajectory-Aware Evaluation](AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md)
 - Prior Friday synthesis: [week ending 2026-05-22](roundups/2026-05-22.md)
 - Prior Friday synthesis: [week ending 2026-05-15](roundups/2026-05-15.md)
 - Earlier Friday synthesis: [week ending 2026-05-08](roundups/2026-05-08.md)
 
 ## Current thesis
 
-The agent stack is becoming replayable infrastructure, but the control surfaces are moving below visible chat. The useful question is not only “which model is strongest?” It is “who controls the source patch, workflow placement, latent state boundary, full-run trace, artifact path, MCP client capability, gateway policy, sandbox, and right to replay or deny an action?”
+The agent stack is becoming runtime infrastructure. The useful question is not only “which model is strongest?” It is “what runtime surface turns the model’s work into inspectable, replayable, permissioned artifacts?”
 
-The 2026-05-23 scan adds four implementation patterns:
+The 2026-05-24 scan adds four implementation patterns:
 
-- Source-level self-evolution needs failure-batch replay, isolated candidate images, predicted-effect manifests, promotion gates, health probes, and rollback.
-- Workflow logic should be placed deliberately: prompt, graph, gateway, code, or weights depending on stability, auditability, cost, and policy-change rate.
-- KV caches and other latent state are governed data artifacts, not harmless implementation detail.
-- Agent security has to inspect whole-run evasion paths and live MCP client capabilities, not just the current prompt or nominal tool list.
+- Browser agents are becoming terminal-coded workspaces: scripts, logs, screenshots, and fresh-run validation beat brittle click transcripts.
+- Skills are becoming API/MCP compilation units: typed folders, HTTP endpoints, OpenAPI docs, MCP tools, browser API paths, and code graphs should share one reviewed source of truth.
+- Tool waits are schedulable compute: read-only speculation, prefetching, branch commits, and rollbacks belong in the harness scheduler.
+- Workflow eval is moving from final answers to stateful work products: retrieval state, formulas, workspace snapshots, process defects, and synthetic-data fidelity are the unit of trust.
 
 ## Browse by category
 

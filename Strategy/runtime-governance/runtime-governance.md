@@ -346,6 +346,23 @@ Practical lesson:
 Source:
 - [Hidden in Memory: Sleeper Memory Poisoning in LLM Agents](https://arxiv.org/abs/2605.15338)
 
+## May 25 update: trajectory-level guardrails are now deployable enough to test offline
+
+AgentDoG 1.5 makes trajectory-level risk classification a practical artifact rather than only a paper pattern. The model card describes guardrail variants that classify full tool-using trajectories across observations, reasoning/actions, and environment feedback, with labels for failure mode, risk consequence, and risk source. The new OpenClaw risk paper reinforces why this matters for privileged local agents: persistent local storage, tool invocation, cross-context aggregation, plugins, and multi-user interaction create risks that final-output moderation can miss.
+
+The practical lesson is not to drop a classifier inline and trust it immediately. It is to start with offline governance evidence:
+- normalize stored traces into a stable trajectory format;
+- label unconfirmed actions, tool misuse, privacy leakage, prompt injection, and over-privileged local file access;
+- compare model flags against human-reviewed canary traces;
+- keep policy mediation separate from risk classification;
+- only move to online blocking after false-positive and false-negative behavior is understood.
+
+This extends runtime governance below prompts and final answers. The unit of safety is the trajectory and the authority boundary it crosses.
+
+Sources:
+- [AgentDoG 1.5 model card](https://huggingface.co/AI45Research/AgentDoG1.5-Qwen3.5-4B)
+- [Security, Privacy, and Ethical Risks in OpenClaw](https://arxiv.org/abs/2605.23330)
+
 ## Working conclusion
 
-Runtime governance is not a niche enterprise concern. It is the natural consequence of giving agents durable memory, tool access, repository permissions, CI/CD authority, and delegated secrets. The control plane has to move into runtime: inventory the agents, bind identity and scope, manage execution environments, preserve trace evidence, enforce valid next transitions before privileged tools execute, and keep tainted repository inputs from silently becoming trusted agent instructions or script data.
+Runtime governance is not a niche enterprise concern. It is the natural consequence of giving agents durable memory, tool access, repository permissions, CI/CD authority, local storage, plugins, and delegated secrets. The control plane has to move into runtime: inventory the agents, bind identity and scope, manage execution environments, preserve trace evidence, enforce valid next transitions before privileged tools execute, calibrate trust from outcomes, test trajectory-level guardrails offline, and keep tainted inputs from silently becoming trusted agent instructions or script data.

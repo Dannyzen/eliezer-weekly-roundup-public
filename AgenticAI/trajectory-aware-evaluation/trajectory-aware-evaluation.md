@@ -443,6 +443,25 @@ Sources:
 - [ClawBench](https://github.com/TIGER-AI-Lab/ClawBench)
 - [GBQA](https://github.com/camel-ai/GBQA)
 
+## May 25 update: long-horizon agents need quantitative persistence ledgers
+
+Push Your Agent adds a metric that should become standard in long-horizon agent eval: Quantitative Goal Persistence. The failure is familiar. An agent performs plausible local work, repeats itself, loses count, submits duplicates, or declares completion before enough distinct valid work units have passed an external verifier. Final-answer scoring hides that defect; a progress ledger exposes it.
+
+The practical lesson is to make completion external and machine-checkable:
+- target count;
+- candidate IDs;
+- duplicate keys;
+- verifier result;
+- accepted distinct units;
+- remaining backlog;
+- stop reason;
+- false-completion and repeated-work labels.
+
+This extends work-product evaluation. The artifact is not only the final deliverable; it is also the ledger proving that the agent persisted until the requested quantity of valid work existed.
+
+Source:
+- [Push Your Agent](https://arxiv.org/abs/2605.23574)
+
 ## Working conclusion
 
-Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, and scored across safety, robustness, parameter correctness, environment fidelity, runtime-specific harm dimensions, real-user collaboration traces, realistic workspace state, live workflow demand, cost, adversarial task quality, long-range state propagation, abstention, protocol conformance, tool-shortlist quality, and environment-factory coverage, improvement efforts will stay shallow and trust claims will stay unearned.
+Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, and scored across safety, robustness, parameter correctness, environment fidelity, runtime-specific harm dimensions, real-user collaboration traces, realistic workspace state, live workflow demand, cost, adversarial task quality, long-range state propagation, abstention, protocol conformance, tool-shortlist quality, environment-factory coverage, and quantitative goal persistence, improvement efforts will stay shallow and trust claims will stay unearned.

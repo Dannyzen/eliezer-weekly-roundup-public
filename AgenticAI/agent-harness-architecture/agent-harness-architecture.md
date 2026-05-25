@@ -1,6 +1,6 @@
 # Agent Harness Architecture
 
-Last updated: 2026-05-23
+Last updated: 2026-05-25
 
 Agent harness architecture is becoming the part of the agent stack that teams can actually standardize.
 
@@ -529,6 +529,24 @@ Sources:
 - [MOSS](https://arxiv.org/abs/2605.22794v1)
 - [GraphFlow](https://arxiv.org/abs/2605.22566v1)
 - [Compiling Agentic Workflows into LLM Weights](https://arxiv.org/abs/2605.22502v1)
+
+## May 25 update: operations agents need falsifiable measurement substrates
+
+The agentic Kubernetes measurement paper adds the operations version of harness discipline. Autonomous ops-agent claims should not be accepted from anecdotes or curated demos. They need controlled fault injection, agent-disabled baselines, ground-truth scoring, and outcome-labeled `(state, action, outcome)` tuples.
+
+This matters because code agents already have a fast falsification substrate: tests. Operations agents usually do not. A serious ops harness should therefore create one:
+- disposable or staging environments;
+- injected faults with known ground truth;
+- separate scores for diagnosis, action correctness, recovery, and side effects;
+- agent-disabled and simple-script baselines;
+- trace-linked state/action/outcome records;
+- replay packs for regression.
+
+The durable architecture lesson is that agent harnesses need environment-specific falsification surfaces. Browser agents need screenshots and DOM state. Coding agents need tests and diffs. Ops agents need controlled incidents and recovery evidence.
+
+Sources:
+- [A measurement substrate for agentic Kubernetes operations](https://arxiv.org/abs/2605.23058)
+- [odmarkj/agent-breakage](https://github.com/odmarkj/agent-breakage)
 
 ## Working conclusion
 

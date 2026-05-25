@@ -67,6 +67,22 @@ Sources:
 - [Switchcraft](https://arxiv.org/abs/2605.07112)
 - [Improving token efficiency in GitHub Agentic Workflows](https://github.blog/ai-and-ml/github-copilot/improving-token-efficiency-in-github-agentic-workflows/)
 
+## May 25 update: runtime confidence calibration belongs in the router
+
+MARGIN adds the missing runtime-trust layer to model-router governance. In a multi-agent system, a coordinator cannot simply trust whichever agent reports the highest confidence. Self-confidence can be miscalibrated, especially on hard tasks. The useful pattern is online per-agent, per-confidence-band calibration from task outcomes.
+
+The implementation shape is simple enough to start now:
+- log agent/model, task class, self-confidence, selected answer, verifier outcome, human correction, and fallback path;
+- maintain reliability buckets and Brier/reliability curves per agent and task type;
+- route by calibrated reliability plus policy, latency, and cost, not by self-confidence alone;
+- preserve the routing trace so bad handoffs can be audited;
+- treat confidence-band drift as a deployment signal.
+
+This extends the May 11 tool-call routing lesson. Tool-call correctness, schema validity, cost, and confidence calibration all belong in the same router evidence layer.
+
+Source:
+- [MARGIN](https://arxiv.org/abs/2605.22949)
+
 ## Minimum governance checklist
 
 ### 1. Artifact trust

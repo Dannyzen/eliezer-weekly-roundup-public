@@ -6,26 +6,26 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Daily scan, 2026-05-24: [roundup](roundups/2026-05-24.md)
-- AgenticAI daily analysis: [2026-05-24](AgenticAI/2026-05-24/reasoning.md)
-- Strategy latest analysis: [2026-05-23](Strategy/2026-05-23/sovereignty.md)
+- Daily scan, 2026-05-25: [roundup](roundups/2026-05-25.md)
+- AgenticAI daily analysis: [2026-05-25](AgenticAI/2026-05-25/reasoning.md)
+- Strategy daily analysis: [2026-05-25](Strategy/2026-05-25/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
-- Related durable topics: [GUI-Tool Path Orchestration](AgenticAI/gui-tool-path-orchestration/gui-tool-path-orchestration.md), [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [Agentic Search and Retrieval](AgenticAI/agentic-search/agentic-search.md), [Trajectory-Aware Evaluation](AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md)
+- Related durable topics: [Trajectory-Aware Evaluation](AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [Model Router Governance](Strategy/model-router-governance/model-router-governance.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md), [Local-First Agents](Strategy/local-first-agents/local-first-agents.md)
 - Prior Friday synthesis: [week ending 2026-05-22](roundups/2026-05-22.md)
 - Prior Friday synthesis: [week ending 2026-05-15](roundups/2026-05-15.md)
 - Earlier Friday synthesis: [week ending 2026-05-08](roundups/2026-05-08.md)
 
 ## Current thesis
 
-The agent stack is becoming runtime infrastructure. The useful question is not only “which model is strongest?” It is “what runtime surface turns the model’s work into inspectable, replayable, permissioned artifacts?”
+The agent stack is becoming measurable runtime infrastructure. The useful question is not only “which model is strongest?” It is “what external substrate proves the agent persisted, recovered, improved, routed, and stayed inside authority boundaries?”
 
-The 2026-05-24 scan adds four implementation patterns:
+The 2026-05-25 scan adds four implementation patterns:
 
-- Browser agents are becoming terminal-coded workspaces: scripts, logs, screenshots, and fresh-run validation beat brittle click transcripts.
-- Skills are becoming API/MCP compilation units: typed folders, HTTP endpoints, OpenAPI docs, MCP tools, browser API paths, and code graphs should share one reviewed source of truth.
-- Tool waits are schedulable compute: read-only speculation, prefetching, branch commits, and rollbacks belong in the harness scheduler.
-- Workflow eval is moving from final answers to stateful work products: retrieval state, formulas, workspace snapshots, process defects, and synthetic-data fidelity are the unit of trust.
+- Long-horizon agents need quantitative goal-persistence ledgers: target count, distinct work units, verifier result, duplicate keys, remaining backlog, and stop reason.
+- Operations agents need falsifiable fault-injection harnesses: controlled incidents, ground-truth scoring, agent-disabled baselines, and replayable `(state, action, outcome)` records.
+- Skill systems need validation discipline: bounded edits, held-out task checks, rejected-edit memory, artifact graders, loaded-skill hashes, and rollback.
+- Runtime trust needs live calibration and trajectory guardrails: per-agent reliability curves, router traces, offline trajectory-risk checks, and local storage/tool/memory permission separation.
 
 ## Browse by category
 

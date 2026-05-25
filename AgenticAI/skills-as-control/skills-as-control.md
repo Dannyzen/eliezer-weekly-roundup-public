@@ -1,6 +1,6 @@
 # Skills as Control
 
-Last updated: 2026-05-24
+Last updated: 2026-05-25
 
 Core sources:
 - From Research Question to Scientific Workflow: Leveraging Agentic AI for Science Automation: https://arxiv.org/abs/2604.21910v1
@@ -253,3 +253,24 @@ Sources:
 - [edwinjosechittilappilly/harnessapi](https://github.com/edwinjosechittilappilly/harnessapi)
 - [Unbrowse](https://github.com/unbrowse-ai/unbrowse)
 - [CodeGraph](https://github.com/colbymchenry/codegraph)
+
+## May 25 update: skills need optimizer discipline and ecosystem audits
+
+SkillOpt and OpenSkillEval push the skill layer from packaging into validation. SkillOpt treats a skill document as external trainable state for a frozen agent: proposed text edits are bounded, evaluated against rollout scores, and accepted only when a held-out validation score improves. OpenSkillEval adds the ecosystem audit shape: realistic artifact-generation tasks across reports, presentations, posters, data visualization, and web design.
+
+The practical correction is that skill updates should look more like software changes than memory consolidation:
+- candidate patch;
+- task fixture;
+- held-out validation result;
+- expected improvement;
+- at-risk regressions;
+- rejected-edit memory;
+- loaded skill hash in runtime traces;
+- rollback path.
+
+This keeps the skills thesis intact while removing the sloppy version. Skills are a control layer only when they are tested, scoped, and maintained. Untested self-editing skills are just mutable prompt debt.
+
+Sources:
+- [SkillOpt](https://arxiv.org/abs/2605.23904)
+- [OpenSkillEval](https://arxiv.org/abs/2605.23657)
+- [OpenSkillEval project](https://yingjiahao14.github.io/OpenSkillEval-Web/)

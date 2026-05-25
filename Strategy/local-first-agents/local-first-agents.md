@@ -157,6 +157,19 @@ Sources:
 ### Policy implication
 The sovereignty question is no longer only "can the model run locally?" It is also "what stays local by default, what triggers escalation, what gets privacy-filtered before escalation, and what operator surface keeps the human in control?"
 
+### Privileged local agents need trace governance, not local-first branding
+
+Security, Privacy, and Ethical Risks in OpenClaw updates the local-first thesis with a necessary warning. Running locally does not remove the trust problem when the agent has persistent local storage, plugin/tool invocation, cross-context aggregation, and multi-user interaction. Those features can make the local runtime more sensitive than a hosted chat product because it sits closer to files, apps, credentials, and user workflow state.
+
+Practical implication:
+- separate local storage, memory, plugin, and tool authority;
+- require trace evidence for privileged local actions;
+- keep local-first privacy benefits distinct from tool-safety claims;
+- test unconfirmed actions, cross-context aggregation, and over-privileged file access before enabling broad local automation.
+
+Source:
+- [Security, Privacy, and Ethical Risks in OpenClaw](https://arxiv.org/abs/2605.23330)
+
 ## Current read
 
-The important shift is not just that local models beat every hosted model. They do not. The shift is that local-first is now viable enough to become the default for a meaningful slice of agent workloads, especially when paired with explicit escalation rules, local privacy filters, and narrow multimodal action surfaces. That forces better architecture decisions: explicit routing, explicit scopes, explicit reasons for what leaves the device, and operator surfaces that preserve human supervision.
+The important shift is not just that local models beat every hosted model. They do not. The shift is that local-first is now viable enough to become the default for a meaningful slice of agent workloads, especially when paired with explicit escalation rules, local privacy filters, narrow multimodal action surfaces, and trace governance for privileged local tools. That forces better architecture decisions: explicit routing, explicit scopes, explicit reasons for what leaves the device, explicit evidence for what the agent did locally, and operator surfaces that preserve human supervision.

@@ -2,39 +2,24 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: 2026-05-23 Daily Scan
+## Most Recent Structured Update: 2026-05-25 Daily Scan
 
-### KV-cache sharing is an opaque data boundary
-Summary: LCGuard shows that multi-agent systems sharing KV caches can leak sensitive inputs through latent state even when no explicit text disclosure occurs. Text-only DLP is not enough once agents share model internals, embeddings, summaries, or compressed state.
+### Runtime trust needs confidence calibration plus trajectory guardrails
+Summary: MARGIN treats multi-agent trust as an online calibration problem instead of a fixed model-ranking problem. AgentDoG 1.5 and the OpenClaw risk analysis show why final-output moderation is too late for privileged local agents: the dangerous event can live in the trajectory, tool path, memory path, or local storage boundary.
 
-Analysis: [daily sovereignty analysis](2026-05-23/sovereignty.md#kv-cache-sharing-creates-an-opaque-data-boundary)
-Durable topic: [Agent Network Containment](agent-network-containment/agent-network-containment.md)
-Core source: [LCGuard](https://arxiv.org/abs/2605.22786v1)
+Analysis: [daily sovereignty analysis](2026-05-25/sovereignty.md#runtime-trust-needs-confidence-calibration-plus-trajectory-guardrails)
+Durable topics: [Model Router Governance](model-router-governance/model-router-governance.md), [Runtime Governance](runtime-governance/runtime-governance.md), [Local-First Agents](local-first-agents/local-first-agents.md)
+Core sources: [MARGIN](https://arxiv.org/abs/2605.22949), [AgentDoG 1.5](https://huggingface.co/AI45Research/AgentDoG1.5-Qwen3.5-4B), [OpenClaw risks](https://arxiv.org/abs/2605.23330)
 Implementable now:
-- classify KV caches, embeddings, summaries, and compressed memories as governed data artifacts;
-- forbid cross-principal latent-state sharing unless provenance, sensitivity, retention, and destination are explicit;
-- test reconstruction leakage before enabling latent communication;
-- keep latent-channel audit trails linked to text/tool traces.
+- log agent/model, task class, self-confidence, selected answer, verifier outcome, and human correction;
+- maintain per-agent confidence buckets before using learned routing;
+- preserve router traces with calibration and fallback reasons;
+- test trajectory-level guardrails offline on stored traces;
+- separate local-agent storage, tool, memory, and identity authority in policy.
 Tools, repos, and methodologies worth exploring:
-- latent-state provenance, adversarial reconstruction tests, data-class labels, cross-principal sharing policy, cache retention controls
-Implementability score: 0.42
-
-### Agent security needs whole-run evasion tests plus MCP client telemetry
-Summary: A3S-Bench tests temporal, spatial, and semantic evasions that only become dangerous across turns, artifacts, and context. The live MCP clients dataset shows client capabilities vary enough that gateway policy should inventory them instead of treating all MCP clients as equivalent.
-
-Analysis: [daily sovereignty analysis](2026-05-23/sovereignty.md#agent-security-needs-stateful-evasion-tests-plus-live-mcp-client-inventory)
-Durable topics: [Agent Network Containment](agent-network-containment/agent-network-containment.md), [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md)
-Core sources: [A3S-Bench](https://arxiv.org/abs/2605.22321v1), [Agent3Sigma-Stage](https://github.com/antgroup/Agent3Sigma-Stage), [MCP clients dataset](https://huggingface.co/datasets/evalstate/mcp-clients)
-Implementable now:
-- run multi-turn evasion fixtures against staging agents;
-- label trace influence paths across turns, files, web pages, memory, and tool outputs;
-- scan external artifacts as spatial-evasion carriers;
-- inventory MCP client name, version, and advertised capabilities;
-- gate UI rendering, elicitation, roots, sampling, tasks, and experimental auth by policy.
-Tools, repos, and methodologies worth exploring:
-- Agent3Sigma-Stage/A3S-Bench, MCP clients dataset, MCP Inspector, OPA/Cedar policy, canary traces, artifact sandboxes, client-capability allowlists
-Implementability score: 0.74
+- exponentially weighted calibration buckets, Brier/reliability curves, LiteLLM/Portkey-style router traces, OPA/Cedar, trajectory-level classifiers, permission manifests
+Implementability score: 0.57
 
 ## Previous structured update
 
-The prior Friday synthesis for 2026-05-22 focused on semantic API/MCP admission, memory as authority, managed agent infrastructure, and security coverage maps: [2026-05-22 sovereignty](2026-05-22/sovereignty.md).
+The prior Strategy daily scan for 2026-05-23 focused on latent-state data boundaries and stateful evasion/MCP-client telemetry: [2026-05-23 sovereignty](2026-05-23/sovereignty.md).

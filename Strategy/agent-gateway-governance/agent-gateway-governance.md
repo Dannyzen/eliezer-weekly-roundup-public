@@ -232,6 +232,24 @@ Practical lesson:
 Source:
 - [evalstate/mcp-clients](https://huggingface.co/datasets/evalstate/mcp-clients)
 
+## May 26 update: tool descriptions are part of the trusted computing base
+
+When the Manual Lies makes the MCP governance problem sharper. Tool Description Poisoning hides malicious instructions in a tool’s descriptive metadata instead of executable code. That is enough to compromise planning because the agent reads the description as operational truth. Attested Tool-Server Admission points toward the control-plane response: server admission, bounded tool subsets, sensitivity labels, and contracts outside raw MCP self-declaration.
+
+The gateway should treat tool descriptions, parameter docs, examples, and schemas as security-critical metadata. They need identity, versioning, diff review, semantic tests, and trace linkage.
+
+Practical lesson:
+- pin MCP server identity, tool list, schema digest, and description digest;
+- review tool-description diffs like code changes before production exposure;
+- maintain gateway-owned allowlists of admitted servers and tool subsets per workflow;
+- fuzz descriptions, examples, parameter docs, and error messages for hidden instructions or misleading semantics;
+- require declared data classes, side effects, and approval points in tool metadata;
+- log metadata version and digest with every tool-call trace.
+
+Sources:
+- [When the Manual Lies](https://arxiv.org/abs/2605.24069)
+- [Attested Tool-Server Admission](https://arxiv.org/abs/2605.24248)
+
 ## Implementability score
 
 0.76

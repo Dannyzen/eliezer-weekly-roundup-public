@@ -441,6 +441,22 @@ Practical lesson:
 Source:
 - [Mem-pi: Adaptive Memory through Learning When and What to Generate](https://arxiv.org/abs/2605.21463v1)
 
+## May 26 update: personalized memory starts at session admission
+
+Personalize-then-Store adds a user-specific correction to the memory stack. Universal memory policies are too blunt: a session that is durable signal for one person can be disposable noise for another. PerMemBench turns that into a benchmark shape with multi-year, multi-domain histories across personas, and the proposed session-level storage gate is the practical primitive.
+
+This extends the existing write-path thesis. Memory admission is not only “is this fact important?” It is “is this session worth memory operations for this user, this project, this privacy tier, and this future retrieval budget?”
+
+Practical lesson:
+- classify each session before durable writes: profile, project fact, reusable procedure, evidence event, ephemeral scratch, or reject;
+- store admission reason, confidence, persona/project scope, retention tier, and source episode;
+- keep raw evidence append-only while treating durable memories as derived artifacts;
+- evaluate memory under personalized retention budgets, false-positive write rates, and downstream continuity tasks;
+- make local-only and forgettable memory tiers explicit before adding cross-agent sharing.
+
+Source:
+- [Personalize-then-Store](https://arxiv.org/abs/2605.25535)
+
 ## Working conclusion
 
 The next generation of agents will be differentiated less by how eloquently they speak and more by how faithfully and safely they remember. The winning systems will preserve evidence, route memory writes explicitly, retrieve context adaptively, abstain when memory is unsafe, validate high-value writes, query local graphs when code structure matters, promote only the right lessons into durable guidance, attach enough context for updates and temporal reasoning, choose abstraction levels that transfer across tasks, keep the most sensitive memory close to the user and under policy control, run durable memory through a governed database-backed state core, separate evaluation memory from user-facing memory, and measure whether memories remain usable under scale, budgets, and writeback review.

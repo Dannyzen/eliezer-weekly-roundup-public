@@ -1,6 +1,6 @@
 # GUI-Tool Path Orchestration
 
-Last updated: 2026-05-24
+Last updated: 2026-05-26
 
 ## Overview
 
@@ -164,6 +164,24 @@ Practical update:
 Sources:
 - [Webwright: A Terminal Is All You Need For Web Agents](https://www.microsoft.com/en-us/research/articles/webwright-a-terminal-is-all-you-need-for-web-agents/)
 - [microsoft/Webwright](https://github.com/microsoft/Webwright)
+
+## May 26 update: computer-use environments need executable rewards
+
+CUA-Gym, MobileGym, and AgentHijack extend the GUI-tool path thesis from path choice into environment design. CUA-Gym co-generates task instructions, environment states, and reward functions so computer-use RLVR has deterministic feedback. MobileGym makes mobile GUI tasks controllable through structured JSON state and cheap parallel rollouts. AgentHijack adds the missing robustness lens: common environment corruptions such as popups, resolution changes, and competing applications can break agents even without adversarial intent.
+
+The practical lesson is that computer-use reliability needs state-checkable environments, not more clean screenshots. A benchmark should prove what changed, whether the final state is correct, how the path handled perturbations, and which side effects occurred.
+
+Practical update:
+- define deterministic final-state checks for GUI/browser/mobile tasks;
+- store environment state snapshots alongside screenshots and action traces;
+- add common-corruption cells: popup, focus loss, resolution change, stale tab, unexpected modal, delayed load, competing window;
+- score path length, verification, recovery, side effects, and final-state correctness separately;
+- keep synthetic/disposable environments between research training and real user accounts.
+
+Sources:
+- [CUA-Gym](https://arxiv.org/abs/2605.25624)
+- [MobileGym](https://arxiv.org/abs/2605.26114)
+- [AgentHijack](https://arxiv.org/abs/2605.25707)
 
 ## Core source links
 

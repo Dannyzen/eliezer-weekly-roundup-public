@@ -1,6 +1,6 @@
 # Skills as Control
 
-Last updated: 2026-05-25
+Last updated: 2026-05-26
 
 Core sources:
 - From Research Question to Scientific Workflow: Leveraging Agentic AI for Science Automation: https://arxiv.org/abs/2604.21910v1
@@ -24,6 +24,8 @@ Core sources:
 - HarnessAPI repository: https://github.com/edwinjosechittilappilly/harnessapi
 - Unbrowse: https://github.com/unbrowse-ai/unbrowse
 - CodeGraph: https://github.com/colbymchenry/codegraph
+- More Skills, Worse Agents?: https://arxiv.org/abs/2605.24050
+- CODESKILL: https://arxiv.org/abs/2605.25430
 
 ## Thesis
 
@@ -274,3 +276,21 @@ Sources:
 - [SkillOpt](https://arxiv.org/abs/2605.23904)
 - [OpenSkillEval](https://arxiv.org/abs/2605.23657)
 - [OpenSkillEval project](https://yingjiahao14.github.io/OpenSkillEval-Web/)
+
+## May 26 update: skill shadowing makes selection the bottleneck
+
+CODESKILL is the positive case for self-evolving skills: coding trajectories can be distilled into procedural skills, evolved from experience, and maintained as a compact skill bank with reinforcement learning from rubric and execution feedback. Skill Shadowing is the necessary warning label: expanding a library can degrade performance by up to 21% because agents select the wrong skill more often as the library grows.
+
+The immediate correction is that skill-bank quality is not the number of skills. It is selection precision under realistic tasks. If selection fails, better skill prose does not matter.
+
+Practical lesson:
+- evaluate skill selection separately from skill execution;
+- keep active skill candidates small through metadata retrieval, reranking, and a load/no-load gate;
+- run no-skill, thin-skill, and full-library baselines before claiming a skill library helps;
+- log selected skills, rejected candidates, loaded hashes, token cost, retries, and task outcomes;
+- require generated or self-edited skills to improve held-out tasks before entering default retrieval;
+- add “shadowing” fixtures with plausible but wrong skills to test router precision.
+
+Sources:
+- [CODESKILL](https://arxiv.org/abs/2605.25430)
+- [More Skills, Worse Agents?](https://arxiv.org/abs/2605.24050)

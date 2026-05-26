@@ -2,52 +2,50 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: 2026-05-25 Daily Scan
+## Most Recent Structured Update: 2026-05-26 Daily Scan
 
-### Quantitative goal persistence is the missing long-horizon agent metric
-Summary: PushBench turns a common long-horizon failure into a measurable defect: agents stop before an external verifier confirms enough distinct valid work units. The practical fix is an explicit progress ledger and verifier-owned completion gate outside model memory.
+### Personalized memory needs storage gates, not static retention
+Summary: PerMemBench and Personalize-then-Store make memory write policy personal. Different users and tasks need different retention behavior, so the next practical memory primitive is session-level storage gating before durable writes.
 
-Analysis: [daily reasoning analysis](2026-05-25/reasoning.md#quantitative-goal-persistence-is-the-missing-long-horizon-agent-metric)
-Durable topic: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
-Core source: [Push Your Agent](https://arxiv.org/abs/2605.23574)
+Analysis: [daily reasoning analysis](2026-05-26/reasoning.md#personalized-memory-needs-storage-gates-not-static-retention)
+Durable topic: [Memory Systems](memory-systems/memory-systems.md)
+Core source: [Personalize-then-Store](https://arxiv.org/abs/2605.25535)
 Implementable now:
-- add target-count, accepted-item, duplicate-key, verifier-result, and remaining-backlog fields to long-horizon tasks;
-- reject self-reported completion until verifier-owned criteria pass;
-- label false completion, duplicate submission, repeated work, and progress drift separately.
+- classify sessions before durable memory writes;
+- preserve raw episode evidence while storing derived memories with admission reasons;
+- evaluate personalized retention under fixed token and retrieval budgets.
 Tools, repos, and methodologies worth exploring:
-- verifier-owned work-unit ledgers, task-state machines, duplicate-key normalization, external completion validators, trajectory labels for repeated work
-Implementability score: 0.76
+- MemRouter-style write admission, MEMTIER-style tiers, SQLite/FTS, typed memory records, mem0/Qdrant/pgvector only after write policy exists, `fleet-memory` and `uncypher-context` as early watchlist repos
+Implementability score: 0.72
 
-### Operations agents need falsifiable fault-injection harnesses
-Summary: The agent-breakage paper argues that autonomous Kubernetes operations claims need controlled faults, ground-truth scoring, agent-disabled baselines, and outcome-labeled state/action tuples. Ops agents need the same kind of falsification substrate that tests gave coding agents.
+### Skill libraries need selection discipline before self-evolution
+Summary: CODESKILL shows how coding-agent trajectories can become reusable procedural skills; Skill Shadowing shows why bigger skill libraries can make agents worse. The bottleneck is selecting the right skill, not context length.
 
-Analysis: [daily reasoning analysis](2026-05-25/reasoning.md#operations-agents-need-falsifiable-fault-injection-harnesses)
-Durable topic: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
-Core sources: [agentic Kubernetes measurement paper](https://arxiv.org/abs/2605.23058), [agent-breakage repo](https://github.com/odmarkj/agent-breakage)
-Implementable now:
-- build a small disposable fault catalog for staging infrastructure;
-- compare autonomous agents against agent-disabled baselines;
-- score diagnosis, action correctness, recovery, and side effects separately;
-- store `(state, action, outcome)` tuples for regression and future training.
-Tools, repos, and methodologies worth exploring:
-- Kubernetes staging clusters, chaos engineering, OpenTelemetry, pre-registered scoring, agent-disabled baselines, `odmarkj/agent-breakage` as a read-only pattern
-Implementability score: 0.63
-
-### Skill systems are becoming trainable and auditable state
-Summary: SkillOpt treats a skill document as external trainable state with bounded edits, held-out validation, and rejected-edit memory. OpenSkillEval adds ecosystem-level skill auditing against realistic artifact-generation tasks. Skills need validation and rollback, not just more files.
-
-Analysis: [daily reasoning analysis](2026-05-25/reasoning.md#skill-systems-are-becoming-trainable-and-auditable-state)
+Analysis: [daily reasoning analysis](2026-05-26/reasoning.md#skill-libraries-need-selection-discipline-before-self-evolution)
 Durable topic: [Skills as Control](skills-as-control/skills-as-control.md)
-Core sources: [SkillOpt](https://arxiv.org/abs/2605.23904), [OpenSkillEval](https://arxiv.org/abs/2605.23657), [OpenSkillEval project](https://yingjiahao14.github.io/OpenSkillEval-Web/)
+Core sources: [CODESKILL](https://arxiv.org/abs/2605.25430), [More Skills, Worse Agents?](https://arxiv.org/abs/2605.24050)
 Implementable now:
-- add validation fixtures to high-value skills;
-- require proposed skill edits to list expected gains and at-risk regressions;
-- accept patches only after held-out tasks improve or review approves the tradeoff;
-- log loaded skill hashes and validation status in traces.
+- trace selected and rejected skills, loaded bodies, hashes, and task outcomes;
+- compare no-skill, thin-skill, and full-skill baselines;
+- accept generated or self-edited skills only after held-out improvement.
 Tools, repos, and methodologies worth exploring:
-- git-backed skills, held-out validation tasks, artifact graders, skill hash logging, Pydantic skill contracts, OpenSkillEval-style task categories
-Implementability score: 0.68
+- skill metadata indexes, reranking, load/no-load gates, held-out validation tasks, rejected-skill buffers, Git-backed review and rollback
+Implementability score: 0.74
+
+### Computer-use agents need verifiable environments, not more screenshots
+Summary: CUA-Gym, MobileGym, and AgentHijack all move computer-use agents toward deterministic state checks, executable reward functions, parallel synthetic environments, and ordinary-corruption robustness tests.
+
+Analysis: [daily reasoning analysis](2026-05-26/reasoning.md#computer-use-agents-need-verifiable-environments-not-more-screenshots)
+Durable topic: [GUI-Tool Path Orchestration](gui-tool-path-orchestration/gui-tool-path-orchestration.md)
+Core sources: [CUA-Gym](https://arxiv.org/abs/2605.25624), [MobileGym](https://arxiv.org/abs/2605.26114), [AgentHijack](https://arxiv.org/abs/2605.25707)
+Implementable now:
+- build small deterministic GUI/browser/mobile task fixtures;
+- add popup, resolution, focus, stale-tab, and modal corruption cells;
+- score final state, path length, verification, recovery, and side effects separately.
+Tools, repos, and methodologies worth exploring:
+- Playwright workspaces, OSWorld-style state snapshots, JSON state diffing, executable reward functions, OpenTelemetry/Langfuse/LangSmith or JSONL path traces
+Implementability score: 0.60
 
 ## Previous structured update
 
-The prior daily scan for 2026-05-24 focused on terminal-coded browser workspaces, API/MCP skill compilation, schedulable tool waits, and stateful work-product evaluation: [2026-05-24 reasoning](2026-05-24/reasoning.md).
+The prior daily scan for 2026-05-25 focused on quantitative goal-persistence ledgers, operations-agent fault-injection harnesses, and skill validation/auditing: [2026-05-25 reasoning](2026-05-25/reasoning.md).

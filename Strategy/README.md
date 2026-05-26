@@ -2,24 +2,23 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: 2026-05-25 Daily Scan
+## Most Recent Structured Update: 2026-05-26 Daily Scan
 
-### Runtime trust needs confidence calibration plus trajectory guardrails
-Summary: MARGIN treats multi-agent trust as an online calibration problem instead of a fixed model-ranking problem. AgentDoG 1.5 and the OpenClaw risk analysis show why final-output moderation is too late for privileged local agents: the dangerous event can live in the trajectory, tool path, memory path, or local storage boundary.
+### MCP tool metadata is now a security boundary
+Summary: Tool Description Poisoning hides malicious instructions inside the tool descriptions that agents use for planning. MCP admission has to authenticate, diff, review, and scope descriptions and schemas, not only executable code or OAuth tokens.
 
-Analysis: [daily sovereignty analysis](2026-05-25/sovereignty.md#runtime-trust-needs-confidence-calibration-plus-trajectory-guardrails)
-Durable topics: [Model Router Governance](model-router-governance/model-router-governance.md), [Runtime Governance](runtime-governance/runtime-governance.md), [Local-First Agents](local-first-agents/local-first-agents.md)
-Core sources: [MARGIN](https://arxiv.org/abs/2605.22949), [AgentDoG 1.5](https://huggingface.co/AI45Research/AgentDoG1.5-Qwen3.5-4B), [OpenClaw risks](https://arxiv.org/abs/2605.23330)
+Analysis: [daily sovereignty analysis](2026-05-26/sovereignty.md#mcp-tool-metadata-is-now-a-security-boundary)
+Durable topic: [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md)
+Core sources: [When the Manual Lies](https://arxiv.org/abs/2605.24069), [Attested Tool-Server Admission](https://arxiv.org/abs/2605.24248)
 Implementable now:
-- log agent/model, task class, self-confidence, selected answer, verifier outcome, and human correction;
-- maintain per-agent confidence buckets before using learned routing;
-- preserve router traces with calibration and fallback reasons;
-- test trajectory-level guardrails offline on stored traces;
-- separate local-agent storage, tool, memory, and identity authority in policy.
+- pin MCP server identity, tool list, schema digest, and description digest;
+- review description diffs before production exposure;
+- fuzz tool metadata for hidden instructions and misleading examples;
+- log metadata version in every tool-call trace.
 Tools, repos, and methodologies worth exploring:
-- exponentially weighted calibration buckets, Brier/reliability curves, LiteLLM/Portkey-style router traces, OPA/Cedar, trajectory-level classifiers, permission manifests
-Implementability score: 0.57
+- MCP admission registry, OPA/Cedar policy over tool metadata, JSON Schema/OpenAPI diffing, signed tool manifests, semantic-fuzzing fixtures, `modelcontextprotocol/inspector` for review, DataFew Shield as watchlist only
+Implementability score: 0.66
 
 ## Previous structured update
 
-The prior Strategy daily scan for 2026-05-23 focused on latent-state data boundaries and stateful evasion/MCP-client telemetry: [2026-05-23 sovereignty](2026-05-23/sovereignty.md).
+The prior Strategy daily scan for 2026-05-25 focused on runtime confidence calibration and trajectory guardrails: [2026-05-25 sovereignty](2026-05-25/sovereignty.md).

@@ -122,6 +122,22 @@ Sources:
 - [SpecHop](https://arxiv.org/abs/2605.21965)
 - [mehrdadsaberi/spechop](https://github.com/mehrdadsaberi/spechop)
 
+## May 27 update: retrieval configuration should be routed per query
+
+BRANE adds the cost-routing primitive this topic needed. Instead of asking whether a retrieval agent should use RAG at all, it treats the full retrieval setup as a runtime choice: model, retriever, document count, hop count, and synthesis strategy. The reported result is the right metric shape for production agents: matching the best fixed configuration's accuracy at up to 89% lower cost.
+
+The practical lesson is that retrieval quality and serving cost belong in the same harness policy. A fixed pipeline is easy to operate but wrong for heterogeneous traffic.
+
+Practical lesson:
+- define a bounded catalog of retrieval configurations before adding learned routing;
+- start with cheapest-first cascades and deterministic escalation on low evidence or low confidence;
+- log selected route, candidate routes, query features, cost, latency, evidence count, and answer verdict;
+- train a lightweight correctness predictor only after enough route-outcome telemetry exists;
+- report success-versus-cost Pareto curves, not only aggregate answer accuracy.
+
+Source:
+- [Natural Language Query to Configuration for Retrieval Agents](https://arxiv.org/abs/2605.27361)
+
 ## Related durable topics
 
 - [Agent Harness Architecture](../agent-harness-architecture/agent-harness-architecture.md)

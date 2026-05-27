@@ -250,6 +250,26 @@ Sources:
 - [When the Manual Lies](https://arxiv.org/abs/2605.24069)
 - [Attested Tool-Server Admission](https://arxiv.org/abs/2605.24248)
 
+## May 27 update: gateway policy must follow values across tools
+
+ChainCaps names the gateway failure mode that per-tool RBAC misses: permission laundering. An agent can read sensitive data with one allowed tool, transform it with another allowed tool, and send the transformed result through a third allowed tool. Each call can pass local authorization while the whole trajectory violates the intended data-flow policy.
+
+The practical correction is monotonic capability attenuation. Data should carry sink-specific authority through the tool chain. A transformation can preserve or reduce authority, but it should not create a new right to email, publish, exfiltrate, write to a database, or call an external API.
+
+AgentSecBench and Cordon-MAS point in the same direction from different surfaces. Prompt annotations are not enforcement, and RAG systems can detect poisoned or contradictory evidence while still letting it influence the final answer. The gateway has to enforce projection, capability restriction, value lineage, and compartmentalized evidence flow before generation or side effects.
+
+Practical lesson:
+- classify tool outputs by data class, source, and allowed sinks;
+- propagate capability metadata through tool results, summaries, transformations, and final actions;
+- intersect authority across composition instead of resetting permissions at each tool boundary;
+- require expert-reviewed manifests for high-risk tools because naive manifests collapse the guarantee;
+- build adversarial multi-tool fixtures that test read-transform-send laundering, RAG poisoning, and forbidden-action distinguishers.
+
+Sources:
+- [ChainCaps](https://arxiv.org/abs/2605.26542)
+- [AgentSecBench](https://arxiv.org/abs/2605.26269)
+- [Cordon-MAS](https://arxiv.org/abs/2605.26754)
+
 ## Implementability score
 
 0.76

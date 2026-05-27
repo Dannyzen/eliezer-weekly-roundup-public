@@ -6,26 +6,26 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Daily scan, 2026-05-26: [roundup](roundups/2026-05-26.md)
-- AgenticAI daily analysis: [2026-05-26](AgenticAI/2026-05-26/reasoning.md)
-- Strategy daily analysis: [2026-05-26](Strategy/2026-05-26/sovereignty.md)
+- Daily scan, 2026-05-27: [roundup](roundups/2026-05-27.md)
+- AgenticAI daily analysis: [2026-05-27](AgenticAI/2026-05-27/reasoning.md)
+- Strategy daily analysis: [2026-05-27](Strategy/2026-05-27/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
-- Related durable topics: [Memory Systems](AgenticAI/memory-systems/memory-systems.md), [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [GUI-Tool Path Orchestration](AgenticAI/gui-tool-path-orchestration/gui-tool-path-orchestration.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md)
+- Related durable topics: [Agentic Search and Retrieval](AgenticAI/agentic-search/agentic-search.md), [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md), [Agent Sandboxing](Strategy/agent-sandboxing/agent-sandboxing.md)
 - Prior Friday synthesis: [week ending 2026-05-22](roundups/2026-05-22.md)
 - Prior Friday synthesis: [week ending 2026-05-15](roundups/2026-05-15.md)
 - Earlier Friday synthesis: [week ending 2026-05-08](roundups/2026-05-08.md)
 
 ## Current thesis
 
-The agent stack is becoming a gated runtime. The useful question is not “how much memory, how many skills, how many tools, or how many screenshots?” It is “which memory, skill, tool, environment state, or metadata declaration is allowed to influence the run, and what evidence proves that gate worked?”
+The agent stack is becoming a routed and contained runtime. The useful question is not “which model/tool/memory is best?” It is “which retrieval route, skill, data-flow authority, or execution sandbox is permitted for this run, at this cost and risk level?”
 
-The 2026-05-26 scan adds four implementation patterns:
+The 2026-05-27 scan adds four implementation patterns:
 
-- Personalized memory needs session-level storage gates before durable writes.
-- Skill systems need selection and validation discipline before self-evolving libraries scale.
-- Computer-use agents need deterministic environments, executable rewards, and corruption tests, not more clean screenshots.
-- MCP governance has to treat tool descriptions and schemas as security-critical metadata.
+- Retrieval agents should select a pipeline configuration per query instead of paying a fixed RAG tax.
+- Skill systems should manage procedural knowledge as tested, rollbackable lifecycle assets.
+- Agent gateways need data-flow capability budgets so values cannot launder authority across individually allowed tools.
+- Local agent execution needs lightweight, rootless process confinement for routine generated commands.
 
 ## Browse by category
 

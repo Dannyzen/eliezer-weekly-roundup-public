@@ -1,6 +1,6 @@
 # Skills as Control
 
-Last updated: 2026-05-26
+Last updated: 2026-05-27
 
 Core sources:
 - From Research Question to Scientific Workflow: Leveraging Agentic AI for Science Automation: https://arxiv.org/abs/2604.21910v1
@@ -26,6 +26,7 @@ Core sources:
 - CodeGraph: https://github.com/colbymchenry/codegraph
 - More Skills, Worse Agents?: https://arxiv.org/abs/2605.24050
 - CODESKILL: https://arxiv.org/abs/2605.25430
+- MUSE-Autoskill: https://arxiv.org/abs/2605.27366
 
 ## Thesis
 
@@ -294,3 +295,20 @@ Practical lesson:
 Sources:
 - [CODESKILL](https://arxiv.org/abs/2605.25430)
 - [More Skills, Worse Agents?](https://arxiv.org/abs/2605.24050)
+
+## May 27 update: skills need lifecycle memory and promotion gates
+
+MUSE-Autoskill adds the lifecycle vocabulary for the skill stack: creation, memory, management, evaluation, and refinement. The useful part is not autonomous markdown generation. It is making each skill a long-lived asset with its own use history, failure cases, tests, runtime feedback, and transfer record.
+
+This sharpens the May 26 skill-shadowing warning. A skill library gets worse when it grows faster than its selection and validation system. The next implementation primitive is per-skill lifecycle memory plus promotion gates.
+
+Practical lesson:
+- store per-skill use history, rejected contexts, failures, patches, validators, and held-out fixtures;
+- evaluate selection quality separately from execution quality;
+- promote generated or patched skills only after held-out improvement;
+- keep active candidates small through metadata retrieval, reranking, and load/no-load gates;
+- quarantine stale or harmful skills before retrieval can select them.
+
+Source:
+- [MUSE-Autoskill](https://arxiv.org/abs/2605.27366)
+

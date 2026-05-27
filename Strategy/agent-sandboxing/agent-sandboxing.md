@@ -1,6 +1,6 @@
 # Agent Sandboxing
 
-Last updated: 2026-05-20
+Last updated: 2026-05-27
 
 Agent sandboxing is becoming a durable part of the agentic stack because coding agents are now powerful enough to make ordinary developer environments unsafe by default.
 
@@ -130,6 +130,23 @@ Sources:
 - [Announcing Claude Managed Agents on Cloudflare](https://blog.cloudflare.com/claude-managed-agents/)
 - [Cloudflare docs: Set up Claude Managed Agents](https://developers.cloudflare.com/sandbox/tutorials/claude-managed-agents/)
 - [cloudflare/claude-managed-agents](https://github.com/cloudflare/claude-managed-agents)
+
+## May 27 update: rootless process sandboxes fill the gap between wrappers and VMs
+
+Sandlock is useful because it targets the practical default for routine agent execution. Containers and microVMs are stronger isolation tools, but they add image, privilege, startup, and operational overhead. Simple wrappers are easier but usually cannot enforce syscall, filesystem, and network policy deeply enough. Sandlock's paper and repository describe a middle path: Landlock, seccomp-bpf, seccomp user notification, copy-on-write filesystem effects, and HTTP-level access control without root, cgroups, containers, or image builds.
+
+This does not replace stronger isolation for high-risk work. It does make a lower-friction default plausible for generated shell commands, tests, scripts, and local tooling where the alternative today is often an unconfined user shell.
+
+Practical lesson:
+- run generated commands under explicit read/write path policy instead of the human's whole home directory;
+- deny or mediate network egress by default;
+- preserve copy-on-write effects as reviewable diffs;
+- log filesystem, network, syscall, and resource denials with the agent trace;
+- escalate to Incus/LXC, containers, or microVMs when the workflow needs broader tools or stronger tenant isolation.
+
+Sources:
+- [Sandlock paper](https://arxiv.org/abs/2605.26298)
+- [multikernel/sandlock](https://github.com/multikernel/sandlock)
 
 ## Current read
 

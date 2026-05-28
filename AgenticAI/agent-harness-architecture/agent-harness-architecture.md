@@ -548,6 +548,24 @@ Sources:
 - [A measurement substrate for agentic Kubernetes operations](https://arxiv.org/abs/2605.23058)
 - [odmarkj/agent-breakage](https://github.com/odmarkj/agent-breakage)
 
+## May 28 update: harnesses are moving into incident response and pytest-native red teams
+
+ITBench-AA and RAMPART show the harness layer getting more operational. ITBench-AA tests agentic enterprise IT work through SRE-style Kubernetes incident response: read logs, trace dependencies, and identify root-cause entities in live-style infrastructure. The reported frontier-model ceiling remains below 50%, which makes it a useful unsaturated benchmark rather than another polished leaderboard.
+
+RAMPART is the complementary builder primitive: a pytest-native framework for agentic safety and security tests covering adversarial attacks, benign failures, harm categories, and assertion-driven evaluation. This matters because agent testing should live next to normal software tests, not only in a separate eval dashboard.
+
+Practical lesson:
+- turn real incidents into read-only fixtures with logs, dependency graphs, fault injections, and known root causes;
+- encode agent safety and security expectations as pytest assertions;
+- log false positives, turn count, tool count, latency, cost, and root-cause accuracy;
+- gate write-capable ops agents behind incident-diagnosis performance first;
+- keep benign-failure tests alongside adversarial tests because production breaks are often not attacks.
+
+Sources:
+- [ITBench-AA](https://huggingface.co/blog/ibm-research/itbench-aa)
+- [microsoft/RAMPART](https://github.com/microsoft/RAMPART)
+- [RAMPART on PyPI](https://pypi.org/project/RAMPART/)
+
 ## Working conclusion
 
-Agent harness architecture is becoming one of the clearest ways to tell whether a team is building a toy, a developer tool, or a real operating substrate. The winning systems will make context explicit, tool boundaries governable, restore paths safe, orchestration empirically justified and quality-gated, and evidence easy to inspect.
+Agent harness architecture is becoming one of the clearest ways to tell whether a team is building a toy, a developer tool, or a real operating substrate. The winning systems will make context explicit, tool boundaries governable, restore paths safe, orchestration empirically justified and quality-gated, evidence easy to inspect, environment-specific falsification surfaces routine, and incident-style plus pytest-native regression tests part of the normal delivery loop.

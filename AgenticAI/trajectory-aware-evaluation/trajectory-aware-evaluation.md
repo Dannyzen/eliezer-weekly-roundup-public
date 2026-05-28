@@ -462,6 +462,25 @@ This extends work-product evaluation. The artifact is not only the final deliver
 Source:
 - [Push Your Agent](https://arxiv.org/abs/2605.23574)
 
+## May 28 update: evaluation must control prior knowledge, infeasibility, and benchmark saturation
+
+LiveBrowseComp, feasibility-awareness evaluation, and TASTE all point at the same eval defect: final-answer accuracy is not enough to know whether an agent actually searched, knew when to stop, or exercised the tool surface broadly.
+
+LiveBrowseComp shows that agents can answer many BrowseComp questions without tools and can use search to verify internally generated hypotheses rather than discover evidence. Feasibility-awareness work shows that agents waste cost when required tools are unavailable and they fail to abstain. TASTE shows that hand-written natural-language scenarios under-cover the tool-sequence space and saturate too easily.
+
+Practical lesson:
+- run a closed-book baseline before crediting a search trajectory;
+- include freshness windows so answers depend on recent evidence, not model memory;
+- remove supporting evidence and check whether the agent degrades cleanly;
+- create tool-missing tasks where success means early abstention;
+- generate benchmark cases from real or synthetic tool-call sequences, then evolve difficulty;
+- score query origin, evidence use, tool count, turn count, abstention, and false completion.
+
+Sources:
+- [LiveBrowseComp](https://arxiv.org/abs/2605.28721)
+- [Do Agents Know What They Can't Do?](https://arxiv.org/abs/2605.28532)
+- [TASTE](https://arxiv.org/abs/2605.28556)
+
 ## Working conclusion
 
 Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, and scored across safety, robustness, parameter correctness, environment fidelity, runtime-specific harm dimensions, real-user collaboration traces, realistic workspace state, live workflow demand, cost, adversarial task quality, long-range state propagation, abstention, protocol conformance, tool-shortlist quality, environment-factory coverage, and quantitative goal persistence, improvement efforts will stay shallow and trust claims will stay unearned.

@@ -6,26 +6,26 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Daily scan, 2026-05-27: [roundup](roundups/2026-05-27.md)
-- AgenticAI daily analysis: [2026-05-27](AgenticAI/2026-05-27/reasoning.md)
-- Strategy daily analysis: [2026-05-27](Strategy/2026-05-27/sovereignty.md)
+- Daily scan, 2026-05-28: [roundup](roundups/2026-05-28.md)
+- AgenticAI daily analysis: [2026-05-28](AgenticAI/2026-05-28/reasoning.md)
+- Strategy daily analysis: [2026-05-28](Strategy/2026-05-28/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
-- Related durable topics: [Agentic Search and Retrieval](AgenticAI/agentic-search/agentic-search.md), [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md), [Agent Sandboxing](Strategy/agent-sandboxing/agent-sandboxing.md)
+- Related durable topics: [Memory Systems](AgenticAI/memory-systems/memory-systems.md), [Trajectory-Aware Evaluation](AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md)
 - Prior Friday synthesis: [week ending 2026-05-22](roundups/2026-05-22.md)
 - Prior Friday synthesis: [week ending 2026-05-15](roundups/2026-05-15.md)
 - Earlier Friday synthesis: [week ending 2026-05-08](roundups/2026-05-08.md)
 
 ## Current thesis
 
-The agent stack is becoming a routed and contained runtime. The useful question is not “which model/tool/memory is best?” It is “which retrieval route, skill, data-flow authority, or execution sandbox is permitted for this run, at this cost and risk level?”
+The agent stack is becoming a traceable and admission-controlled runtime. The useful question is not “which model/tool/memory is best?” It is “which tool artifact, memory operation, evidence route, or incident fixture is permitted, observable, and falsifiable for this run?”
 
-The 2026-05-27 scan adds four implementation patterns:
+The 2026-05-28 scan adds four implementation patterns:
 
-- Retrieval agents should select a pipeline configuration per query instead of paying a fixed RAG tax.
-- Skill systems should manage procedural knowledge as tested, rollbackable lifecycle assets.
-- Agent gateways need data-flow capability budgets so values cannot launder authority across individually allowed tools.
-- Local agent execution needs lightweight, rootless process confinement for routine generated commands.
+- Generated tools need validation-carrying admission before MCP exposure.
+- Memory systems need operation-level provenance and root-cause attribution.
+- Search-agent evals need freshness, infeasibility, and evidence-dependence controls.
+- Agent testing is moving into enterprise incident response and pytest-native red-team fixtures.
 
 ## Browse by category
 

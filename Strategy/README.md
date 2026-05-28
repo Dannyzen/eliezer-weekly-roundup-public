@@ -2,37 +2,22 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: 2026-05-27 Daily Scan
+## Most Recent Structured Update: 2026-05-28 Daily Scan
 
-### Permission laundering needs data-flow capability budgets
-Summary: ChainCaps shows that per-tool allowlists miss end-to-end data-flow risk. An agent can read confidential data, transform it, and send it elsewhere while every individual tool call looks permitted. Gateway policy has to propagate authority with values.
+### Tool artifacts need validation-carrying governance before MCP exposure
+Summary: Tool Forge treats tools as governed capsules with intent, capability contracts, tests, runtime validation evidence, dependency policy, credential bindings, lifecycle state, and routing metadata. The strategic point is admission control: generated code should not become an MCP capability without proof and scope.
 
-Analysis: [daily sovereignty analysis](2026-05-27/sovereignty.md#permission-laundering-needs-data-flow-capability-budgets)
+Analysis: [daily sovereignty analysis](2026-05-28/sovereignty.md#tool-artifacts-need-validation-carrying-governance-before-mcp-exposure)
 Durable topic: [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md)
-Core source: [ChainCaps](https://arxiv.org/abs/2605.26542)
-Supporting sources: [AgentSecBench](https://arxiv.org/abs/2605.26269), [Cordon-MAS](https://arxiv.org/abs/2605.26754)
+Core sources: [Tool Forge paper](https://arxiv.org/abs/2605.28000), [nextmoca/tool-forge](https://github.com/nextmoca/tool-forge)
 Implementable now:
-- classify tool outputs by data class and allowed sinks;
-- carry capability metadata through gateway traces;
-- block sink actions when transformed values lack the required authority.
+- require tool manifests, tests, dependency policy, sandbox validation, and lifecycle states;
+- bind credentials at the gateway instead of inside model-written code;
+- expose intent-scoped tool sessions instead of full schema catalogs.
 Tools, repos, and methodologies worth exploring:
-- MCP proxy/gateway layer, Open Policy Agent or Cedar, taint tracking, information-flow control, signed manifests, OpenTelemetry data-flow spans, adversarial multi-tool fixtures
-Implementability score: 0.62
-
-### Lightweight process sandboxing is becoming practical agent infrastructure
-Summary: Sandlock targets the gap between weak wrappers and heavyweight containers or microVMs. It uses Linux Landlock, seccomp-bpf, seccomp user notification, and copy-on-write effects to confine agent-generated code without root or image builds.
-
-Analysis: [daily sovereignty analysis](2026-05-27/sovereignty.md#lightweight-process-sandboxing-is-becoming-practical-agent-infrastructure)
-Durable topic: [Agent Sandboxing](agent-sandboxing/agent-sandboxing.md)
-Core sources: [Sandlock paper](https://arxiv.org/abs/2605.26298), [multikernel/sandlock](https://github.com/multikernel/sandlock)
-Implementable now:
-- run generated commands under explicit filesystem, syscall, and network policies;
-- keep mutable effects in reviewable overlays;
-- preserve denial events and final workspace diffs in the trace.
-Tools, repos, and methodologies worth exploring:
-- Linux Landlock, seccomp-bpf, seccomp user notification, COW filesystem overlays, dedicated agent users, egress allowlists, Incus/LXC or microVM escalation for higher-risk work
-Implementability score: 0.78
+- Tool Forge, MCP routers/proxies, Open Policy Agent, Cedar, sandbox validation, manifest signing, dependency pinning, OpenTelemetry route traces
+Implementability score: 0.74
 
 ## Previous structured update
 
-The prior Strategy daily scan for 2026-05-26 focused on MCP tool metadata as a security boundary: [2026-05-26 sovereignty](2026-05-26/sovereignty.md).
+The prior Strategy daily scan for 2026-05-27 focused on data-flow capability budgets and lightweight process sandboxing: [2026-05-27 sovereignty](2026-05-27/sovereignty.md).

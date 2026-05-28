@@ -457,6 +457,23 @@ Practical lesson:
 Source:
 - [Personalize-then-Store](https://arxiv.org/abs/2605.25535)
 
+## May 28 update: memory failures need operation-level attribution
+
+MemTrace makes the next memory-system requirement explicit: memory should be traceable as an evolving graph, not only queried as a blob. The paper models memory pipelines as executable memory evolution graphs so failures can be traced to operation-level causes such as information loss, retrieval misalignment, stale propagation, or corrupted synthesis.
+
+The practical lesson is that memory observability has to sit inside the pipeline. Final-answer scoring cannot tell whether a bad response came from bad retrieval, unsafe consolidation, lossy summarization, or a stale fact that should have been superseded. Every write, merge, summary, retrieval, and final-use event needs provenance.
+
+Implementation moves:
+- attach stable provenance IDs to memory writes, source spans, summaries, merges, retrieval decisions, and final answer citations;
+- store memory operations as append-only events before promoting compacted declarative memories;
+- classify failure cases by operation type instead of treating all bad answers as model failures;
+- use attributed failures to patch prompts, routing rules, or consolidation policy;
+- keep raw transcripts and evidence available for high-stakes recall.
+
+Sources:
+- [MemTrace](https://arxiv.org/abs/2605.28732)
+- [zjunlp/MemTrace](https://github.com/zjunlp/MemTrace)
+
 ## Working conclusion
 
-The next generation of agents will be differentiated less by how eloquently they speak and more by how faithfully and safely they remember. The winning systems will preserve evidence, route memory writes explicitly, retrieve context adaptively, abstain when memory is unsafe, validate high-value writes, query local graphs when code structure matters, promote only the right lessons into durable guidance, attach enough context for updates and temporal reasoning, choose abstraction levels that transfer across tasks, keep the most sensitive memory close to the user and under policy control, run durable memory through a governed database-backed state core, separate evaluation memory from user-facing memory, and measure whether memories remain usable under scale, budgets, and writeback review.
+The next generation of agents will be differentiated less by how eloquently they speak and more by how faithfully and safely they remember. The winning systems will preserve evidence, route memory writes explicitly, retrieve context adaptively, abstain when memory is unsafe, validate high-value writes, query local graphs when code structure matters, promote only the right lessons into durable guidance, attach enough context for updates and temporal reasoning, choose abstraction levels that transfer across tasks, keep the most sensitive memory close to the user and under policy control, run durable memory through a governed database-backed state core, separate evaluation memory from user-facing memory, measure whether memories remain usable under scale, budgets, and writeback review, and expose operation-level provenance so failures can be traced instead of guessed.

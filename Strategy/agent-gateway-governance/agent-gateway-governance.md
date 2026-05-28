@@ -270,8 +270,25 @@ Sources:
 - [AgentSecBench](https://arxiv.org/abs/2605.26269)
 - [Cordon-MAS](https://arxiv.org/abs/2605.26754)
 
+## May 28 update: tool catalogs need validation-carrying admission control
+
+Tool Forge adds a concrete admission-control pattern for MCP-era tools. It treats a tool as a capsule with intent, capability contract, implementation, dependency policy, tests, documentation, runtime validation evidence, lifecycle state, credential bindings, and routing metadata. The router exposes intent-scoped tool sessions instead of dumping a full schema catalog into every prompt.
+
+The gateway lesson is simple: generated code is not a capability until it has evidence. A serious agent gateway should distinguish generated, validated, reviewed, approved, deprecated, and revoked tools. Credential binding should happen at the gateway. Routing should include tool version, manifest digest, test status, and lifecycle state in the trace.
+
+Practical lesson:
+- require a `tool_card`-style manifest for every callable tool;
+- sandbox-validate implementation behavior before catalog admission;
+- pin dependency policy and credential scope separately from model-written code;
+- route by intent-scoped sessions to reduce context bloat and exposed authority;
+- log tool admission evidence and selected route with every invocation.
+
+Sources:
+- [Tool Forge paper](https://arxiv.org/abs/2605.28000)
+- [nextmoca/tool-forge](https://github.com/nextmoca/tool-forge)
+
 ## Implementability score
 
-0.76
+0.77
 
 The ingredients exist: MCP gateways, OAuth/OIDC, RBAC engines, OPA/Cedar, OpenTelemetry, Prometheus, and adversarial test harnesses. The hard part is integrating them into a coherent control plane without making the gateway unusable.

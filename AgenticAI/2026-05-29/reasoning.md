@@ -1,59 +1,133 @@
-# AgenticAI Daily Reasoning: 2026-05-29
+# AgenticAI Weekly Reasoning: Week ending 2026-05-29
 
-Today’s AgenticAI signal: the useful agent stack is shifting upstream and inward. Coding agents need to reason about specifications before code. Multi-agent systems need communication budgets, confidence gates, and topology repair instead of more unconstrained agent chatter.
+This week’s AgenticAI signal is runtime admission. Useful agents are not defined by larger prompts or bigger tool catalogs. They are defined by the gates that decide which specifications, skills, memories, retrieval settings, browser actions, and agent-team edges are allowed to influence execution.
 
 ## Findings
 
-### SpecBench moves coding-agent evaluation upstream to requirements
+### Agent evaluation is moving from answers to evidence packages
 
-SpecBench targets a blind spot in software-engineering agent evaluation. SWE-Bench-style tasks assume the specification is fixed, precise, and implementation-ready. Real engineering work is messier: design proposals are incomplete, ambiguous, inconsistent, or misaligned with project constraints before anyone should write code. SpecBench uses RFC-style project discussions and asks agents to identify specification deficiencies before implementation.
+The strongest AgenticAI evaluation pattern this week is evidence packaging. SpecBench moves evaluation upstream to RFC-style specification critique before implementation. Goal-persistence work measures long-horizon progress instead of one-shot success. Agent-breakage turns ops-agent evaluation into fault injection. LiveBrowseComp and related search-agent evals test whether web agents can handle freshness, feasibility, and source dependence. ITBench-AA and RAMPART bring enterprise incident response into agent evals.
 
-Why it matters: coding-agent evals that start from clean tickets reward patch generation, not engineering judgment. The costly failures in autonomous development often happen earlier: accepting vague requirements, missing non-functional constraints, ignoring prior design debate, or implementing an API that should have been challenged. A serious coding-agent harness should therefore include spec-review gates before code-edit gates.
+Why it matters: final-answer grading misses the failures that matter in autonomous systems. Agents can accept bad requirements, lose the plot mid-run, recover poorly from faults, cite stale evidence, or pass a toy benchmark while failing the operator’s actual incident workflow.
 
-How it fits into the stack: this belongs in the harness and evaluation layer. A production agent should move through a staged contract: proposal intake, spec critique, ambiguity resolution, implementation plan, code edit, test, and review. The trace should preserve which missing requirement or contradiction was found before the implementation run began.
-
-Implementable now:
-- build a small internal spec-review benchmark from past RFCs, design docs, issue threads, ADRs, and postmortems;
-- require agents to list omissions, ambiguities, contradictions, risk assumptions, and acceptance-test gaps before editing code;
-- block implementation until the spec-review output is accepted or explicitly waived;
-- score spec review separately from code success so “it passed tests” does not hide bad requirements handling.
-
-Tools, repos, and methodologies worth exploring:
-- RFC/ADR templates, design-review checklists, GitHub issue discussions, BDD acceptance criteria, property-based tests, static architecture decision records, SWE-Bench-style replay harnesses extended with a pre-code review stage
-
-Implementability score: 0.78
-
-Core source:
-- [SpecBench: Evaluating Specification-Level Reasoning for Software Engineering LLM Agents](https://arxiv.org/abs/2605.30314)
-
-### Multi-agent systems need confidence-gated topology, not chatty static crews
-
-Three May 28 multi-agent papers point at the same operational correction. CONCAT proposes training-free consensus and confidence gates: cluster initial answers, select high-confidence leaders, predict collaboration benefit, and prune low-value communication. DynaGraph argues that static topologies cascade errors while unconstrained dynamic agents create trajectory divergence and memory bloat; it uses confidence monitoring, fine-grained patching, and subgraph reconstruction. Meta-Team preserves distributed execution context and uses post-task communication to turn team experience into improvements to agent behavior, coordination, and organization.
-
-Why it matters: multi-agent systems are too often sold as “add more agents.” That is a cost bomb. The real design problem is deciding when agents should talk, which disagreement is worth resolving, which agent has local evidence, and when topology should change because the current path is failing.
-
-How it fits into the stack: orchestration needs a control layer above prompts. The orchestrator should collect initial answers, confidence, evidence provenance, role ownership, communication cost, and disagreement clusters before deciding whether to broadcast, route to a leader, reconstruct a subgraph, or stop.
+How it fits into the stack: evaluation should be an evidence pipeline attached to the harness. A run should emit the original spec, spec critique, plan, tool trace, state snapshots, intermediate artifacts, verifier outputs, cost data, final answer, and failure labels. The output is not just pass/fail; it is a reviewable package.
 
 Implementable now:
-- collect first-pass answers and confidence before opening multi-agent discussion;
-- cluster by answer/evidence agreement and route only high-value disagreements;
-- set communication budgets per task and stop all-agent chatter by default;
-- preserve per-agent execution context for postmortem credit assignment;
-- add topology events to the trace: leader chosen, edge pruned, subgraph rebuilt, patch attempted, consensus reached, or no further collaboration justified.
+- add a pre-code specification-review gate to coding-agent workflows;
+- save full traces, state snapshots, artifacts, verifier results, and final outputs;
+- build small fault-injection suites for operations agents;
+- add freshness, feasibility, and evidence-dependence controls to search-agent tasks;
+- score progress deltas and policy violations separately from final task completion.
 
 Tools, repos, and methodologies worth exploring:
-- LangGraph, AutoGen, CrewAI, Temporal/Pydantic state machines, OpenTelemetry spans for inter-agent edges, confidence calibration, debate/consensus ablations, trace-level cost accounting
+- RFC/ADR templates, BDD acceptance criteria, SWE-Bench-style replay harnesses, OpenTelemetry traces, LangSmith/Langfuse trajectory review, pytest fixtures, RAMPART, ITBench-AA, LiveBrowseComp-style freshness controls, internal incident/postmortem replay
 
-Implementability score: 0.60
+Implementability score: 0.82
 
 Core sources:
-- [CONCAT: Consensus- and Confidence-Driven Ad Hoc Teaming for Efficient LLM-Based Multi-Agent Systems](https://arxiv.org/abs/2605.29612)
-- [DynaGraph: Lightweight Multi-Model Interaction Framework via Dynamic Topological Reconfiguration](https://arxiv.org/abs/2605.29511)
-- [Evolve as a Team: Collaborative Self-Evolution for LLM-based Multi-Agent Systems](https://arxiv.org/abs/2605.29790)
+- [Goal-persistence metrics for long-horizon agents](https://arxiv.org/abs/2605.23574)
+- [Agent-breakage operations fault injection](https://arxiv.org/abs/2605.23058)
+- [agent-breakage repository](https://github.com/odmarkj/agent-breakage)
+- [LiveBrowseComp search-agent evaluation](https://arxiv.org/abs/2605.28721)
+- [ITBench-AA blog](https://huggingface.co/blog/ibm-research/itbench-aa)
+- [RAMPART](https://github.com/microsoft/RAMPART)
+- [SpecBench: specification-level reasoning](https://arxiv.org/abs/2605.30314)
+
+### Routing is now workflow, retrieval, wait-time, and team-topology control
+
+Routing is no longer just model selection. This week’s sources split routing across several layers: where workflow logic belongs, which retrieval policy fits a query, when tool wait time should be scheduled, and which agents should communicate during a multi-agent run. CONCAT, DynaGraph, and Meta-Team make the multi-agent point especially clear: more agents talking more is not a strategy. Confidence, consensus, topology repair, and communication budgets are the strategy.
+
+Why it matters: static orchestration wastes tokens, hides failure modes, and makes cost unpredictable. Fixed RAG pipelines retrieve the same way for every query. All-agent discussion creates noise and memory bloat. Tool-wait loops burn wall-clock without making wait decisions explicit.
+
+How it fits into the stack: routing should be a control-plane decision recorded in the trace. The system chooses model, retrieval policy, workflow placement, wait budget, communication graph, and stop conditions before and during execution.
+
+Implementable now:
+- expose retrieval knobs per query and log the selected retrieval policy;
+- classify tasks by whether the control logic belongs in a graph, prompt, gateway, code path, or trained adapter;
+- set explicit wait budgets for slow tools and record wait decisions;
+- collect first-pass answers and confidence before multi-agent discussion;
+- log topology events: leader selected, edge pruned, disagreement cluster opened, subgraph rebuilt, consensus reached, or collaboration denied.
+
+Tools, repos, and methodologies worth exploring:
+- LangGraph, AutoGen, CrewAI, Temporal, Pydantic state machines, LiteLLM/router traces, OpenTelemetry spans, retrieval-policy classifiers, confidence calibration, communication-budget ablations
+
+Implementability score: 0.74
+
+Core sources:
+- [Workflow placement source](https://arxiv.org/abs/2605.22566v1)
+- [Workflow compilation / BRANE-style source](https://arxiv.org/abs/2605.22502v1)
+- [Tool-wait scheduling source](https://arxiv.org/abs/2605.21965)
+- [IdleSpec-style tool wait source](https://arxiv.org/abs/2605.22154)
+- [Per-query retrieval configuration](https://arxiv.org/abs/2605.27361)
+- [CONCAT confidence-gated multi-agent teaming](https://arxiv.org/abs/2605.29612)
+- [DynaGraph topology reconfiguration](https://arxiv.org/abs/2605.29511)
+- [Meta-Team collaborative self-evolution](https://arxiv.org/abs/2605.29790)
+
+### Skills, tools, and memory need lifecycle governance, not bigger libraries
+
+The week kept attacking accumulation. Skill systems can degrade when they retrieve too many irrelevant procedures. Self-evolving skill libraries need selection and promotion gates. Generated tools need sandbox validation before MCP exposure. Memory systems need write admission and provenance graphs, not just larger retrieval stores.
+
+Why it matters: skills, tools, and memories are executable or semi-executable state. If they are admitted casually, they become hidden prompts, hidden APIs, hidden code, and hidden policy. The agent’s future behavior changes without a reviewable reason.
+
+How it fits into the stack: treat skills, generated tools, and memory entries as versioned runtime assets. They need schemas, tests, hashes, provenance, promotion criteria, loaded-state tracing, rollback, and deprecation.
+
+Implementable now:
+- require each skill/tool to carry a schema, usage contract, tests, and owner;
+- trace which skill/tool/memory versions are loaded into a run;
+- run held-out promotion checks before adding generated skills or tools to the active catalog;
+- quarantine failing or low-value skills instead of keeping every artifact forever;
+- require memory writes to preserve source evidence, operation type, author, confidence, and expiry/rollback path;
+- expose generated tools to MCP only after sandbox validation and catalog review.
+
+Tools, repos, and methodologies worth exploring:
+- skill registries, pytest fixtures, OpenAPI schemas, Pydantic, OPA/Cedar policy checks, Tool Forge, MemTrace, MCP Inspector, OpenTelemetry, content-addressed skill/tool packages, promotion/quarantine dashboards
+
+Implementability score: 0.72
+
+Core sources:
+- [Skills as API/MCP compilation units](https://arxiv.org/abs/2605.22733)
+- [OpenSkillEval](https://arxiv.org/abs/2605.23904)
+- [Skill lifecycle / selection source](https://arxiv.org/abs/2605.23657)
+- [Skill-library selection discipline](https://arxiv.org/abs/2605.25430)
+- [Skill self-evolution risks](https://arxiv.org/abs/2605.24050)
+- [Personalized memory storage gates](https://arxiv.org/abs/2605.25535)
+- [MemTrace memory provenance](https://arxiv.org/abs/2605.28732)
+- [MemTrace repository](https://github.com/zjunlp/MemTrace)
+- [Tool Forge validation-carrying generated tools](https://arxiv.org/abs/2605.28000)
+- [Tool Forge repository](https://github.com/nextmoca/tool-forge)
+
+### Computer-use agents need executable workspaces and verifiable environments
+
+Webwright’s core claim is practical: browser agents should produce and operate through terminal-coded workspaces, not only GUI clicks. Other computer-use and GUI-agent sources point in the same direction: environments need verifiable state, reward checks, corrupted-state tests, and reproducible artifacts. Sandlock adds a lightweight process-isolation option for risky local execution.
+
+Why it matters: GUI agents fail silently when their only evidence is a screenshot and a narration. Serious browser/desktop agents need runnable scripts, logs, downloaded artifacts, filesystem diffs, state assertions, and rollback boundaries.
+
+How it fits into the stack: computer-use should sit inside a packaged workflow workspace. The agent generates or edits code/scripts, executes them under policy, captures artifacts, verifies outcomes, and hands a review bundle to the operator.
+
+Implementable now:
+- require browser agents to leave runnable scripts, logs, screenshots, downloads, and assertions;
+- verify final state using DOM/file/API checks, not screenshots alone;
+- test against corrupted environments and ambiguous GUI state;
+- run untrusted browser/file/process actions in a sandbox;
+- package each browser workflow with manifest, checksums, and review instructions.
+
+Tools, repos, and methodologies worth exploring:
+- Webwright, Playwright, browser-use workspaces, OSWorld-style environment checks, pytest, file checksums, OpenTelemetry spans, Sandlock, container/VM fallbacks for high-risk tasks
+
+Implementability score: 0.76
+
+Core sources:
+- [Webwright article](https://www.microsoft.com/en-us/research/articles/webwright-a-terminal-is-all-you-need-for-web-agents/)
+- [microsoft/Webwright](https://github.com/microsoft/Webwright)
+- [Computer-use environment verification](https://arxiv.org/abs/2605.25624)
+- [GUI/computer-use reward validation](https://arxiv.org/abs/2605.26114)
+- [Verifiable computer-use environment source](https://arxiv.org/abs/2605.25707)
+- [Sandlock paper](https://arxiv.org/abs/2605.26298)
+- [multikernel/sandlock](https://github.com/multikernel/sandlock)
 
 ## Watchlist
 
-MarginGate is worth tracking for deterministic agent evaluation. It argues that temperature-zero BF16 inference can still change tokens between solo and batched decoding, and proposes low-margin token verification to restore deterministic decoding with lower overhead than verifying every token. This matters for eval reproducibility, but today’s stronger agent-stack signal was upstream spec reasoning plus multi-agent topology control.
+Source-level self-evolution remains strategically important but should stay gated. The MOSS paper is worth tracking, but the advertised code artifact was not verified this week. Treat self-modifying source loops as paper-only until a runnable artifact and promotion harness exist.
 
 Source:
-- [MarginGate: Sparse Margin-Triggered Verification for Batch-Invariant LLM Inference](https://arxiv.org/abs/2605.30218)
+- [MOSS/source-level self-evolution](https://arxiv.org/abs/2605.22794v1)

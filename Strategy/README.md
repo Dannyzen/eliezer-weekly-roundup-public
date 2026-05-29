@@ -2,36 +2,64 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: 2026-05-29 Daily Scan
+## Most Recent Structured Update: 2026-05-29 Friday Synthesis
 
-### Chrome Enterprise MCP turns browser-security admin into a governed agent surface
-Summary: Google’s Chrome Enterprise Premium MCP server exposes DLP, connector policy, browser telemetry, license management, and investigation workflows to MCP-compatible agents. This is privileged browser-security administration, so gateway policy and traceability are mandatory.
+### Agent gateways are becoming the real control plane
+Summary: MCP servers and generated tools are moving into privileged administration. Governance now means schema pinning, identity, OAuth scope, data-flow controls, mutation approvals, traces, and rollback.
 
-Analysis: [daily sovereignty analysis](2026-05-29/sovereignty.md#chrome-enterprise-mcp-turns-browser-security-admin-into-a-governed-agent-surface)
+Analysis: [weekly sovereignty analysis](2026-05-29/sovereignty.md#agent-gateways-are-becoming-the-real-control-plane)
 Durable topic: [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md)
-Core sources: [Google security post](https://blog.google/security/bringing-ai-agents-to-chrome-enterprise-security-management/), [google/chrome-enterprise-premium-mcp](https://github.com/google/chrome-enterprise-premium-mcp), [Pocket CEP example](https://github.com/google/ChromeBrowserEnterprise/tree/main/mcp-examples/pocket-cep)
+Core sources: [MCP metadata security](https://arxiv.org/abs/2605.24069), [permission laundering](https://arxiv.org/abs/2605.26542), [Tool Forge](https://arxiv.org/abs/2605.28000), [Chrome Enterprise MCP post](https://blog.google/security/bringing-ai-agents-to-chrome-enterprise-security-management/), [Chrome Enterprise MCP repo](https://github.com/google/chrome-enterprise-premium-mcp)
 Implementable now:
-- put privileged MCP servers behind identity, OAuth-scope, and approval gates;
-- split diagnosis from mutation tools;
-- trace before/after policy changes and label agent-created policies for rollback.
+- pin MCP server/tool identity and schemas;
+- validate generated tools before registration;
+- split diagnosis from mutation and approval-gate high-blast-radius changes.
 Tools, repos, and methodologies worth exploring:
-- Chrome Enterprise Premium MCP, Pocket CEP, MCP gateways, OPA/Cedar, approval artifacts, OpenTelemetry, DLP rollback tests
-Implementability score: 0.68
+- MCP gateways, MCP Inspector, Tool Forge, Chrome Enterprise Premium MCP, Pocket CEP, OPA/Cedar, OAuth scope review, OpenTelemetry, rollback tests
+Implementability score: 0.70
 
-### Sabotage auditing needs deployment scenarios, not abstract safety vibes
-Summary: Gram evaluates sabotage propensity across simulated coding and research deployments, then uses investigator-agent experiments to identify drivers of misbehavior. Governance needs scenario-shaped traces, not generic refusal screenshots.
+### Latent state and shared state are sovereignty boundaries
+Summary: KV caches, memories, summaries, embeddings, and shared clients can influence future actions without appearing as ordinary tool inputs. They need trust zones, provenance, expiry, and rollback semantics.
 
-Analysis: [daily sovereignty analysis](2026-05-29/sovereignty.md#sabotage-auditing-needs-deployment-scenarios-not-abstract-safety-vibes)
-Durable topic: [Runtime Governance](runtime-governance/runtime-governance.md)
-Core source: [Gram paper](https://arxiv.org/abs/2605.30322)
+Analysis: [weekly sovereignty analysis](2026-05-29/sovereignty.md#latent-state-and-shared-state-are-sovereignty-boundaries)
+Durable topics: [Runtime Governance](runtime-governance/runtime-governance.md), [Shared-State Agents](shared-state-agents/shared-state-agents.md)
+Core sources: [LCGuard / KV-cache leakage](https://arxiv.org/abs/2605.22786v1), [personalized memory gates](https://arxiv.org/abs/2605.25535), [MemTrace](https://arxiv.org/abs/2605.28732), [zjunlp/MemTrace](https://github.com/zjunlp/MemTrace)
 Implementable now:
-- create sabotage and overeagerness fixtures for high-trust agents;
-- score concealment, evidence manipulation, policy bypass, and unjustified goal pursuit;
-- run ablations on realism, tool scope, objective wording, and approval gates.
+- separate cache and memory trust zones;
+- log which memories, summaries, embeddings, or cached states affected a run;
+- require memory-write provenance, expiry, deletion, contradiction checks, and rollback.
 Tools, repos, and methodologies worth exploring:
-- DTap-style deployment fixtures, RAMPART/pytest-style adversarial tests, red-team scenario cards, LangSmith/Langfuse trajectory review, OpenTelemetry traces
-Implementability score: 0.54
+- MemTrace, append-only logs, pgvector provenance tables, taint labels, cache isolation, memory-write approval gates, contradiction checks
+Implementability score: 0.50
+
+### Deployment-shaped safety governance beats abstract safety scores
+Summary: A3S-Bench, MCP-client telemetry, ITBench-AA, RAMPART, and Gram all evaluate agents inside tool-bearing scenarios. Governance should score traces, concealment, evasion, incident response, and sabotage incentives.
+
+Analysis: [weekly sovereignty analysis](2026-05-29/sovereignty.md#deployment-shaped-safety-governance-beats-abstract-safety-scores)
+Durable topics: [Runtime Governance](runtime-governance/runtime-governance.md), [Agent Network Containment](agent-network-containment/agent-network-containment.md)
+Core sources: [A3S-Bench](https://arxiv.org/abs/2605.22321v1), [Agent3Sigma Stage](https://github.com/antgroup/Agent3Sigma-Stage), [MCP client telemetry](https://huggingface.co/datasets/evalstate/mcp-clients), [ITBench-AA](https://huggingface.co/blog/ibm-research/itbench-aa), [RAMPART](https://github.com/microsoft/RAMPART), [Gram](https://arxiv.org/abs/2605.30322)
+Implementable now:
+- build sabotage, overeagerness, evasion, and incident-response scenarios per agent role;
+- preserve full trajectories for review;
+- run ablations on realism, objective wording, tool scope, and approval gates.
+Tools, repos, and methodologies worth exploring:
+- A3S-Bench, Agent3Sigma Stage, RAMPART, pytest, red-team scenario cards, LangSmith/Langfuse, OpenTelemetry, approval-gate ablations
+Implementability score: 0.62
+
+### Sandboxing and data-flow budgets are the practical policy layer
+Summary: Permission laundering and lightweight process sandboxing show that policy has to track information movement and local effects, not just approve individual tool calls.
+
+Analysis: [weekly sovereignty analysis](2026-05-29/sovereignty.md#sandboxing-and-data-flow-budgets-are-the-practical-policy-layer)
+Durable topic: [Agent Sandboxing](agent-sandboxing/agent-sandboxing.md)
+Core sources: [permission laundering](https://arxiv.org/abs/2605.26542), [Sandlock paper](https://arxiv.org/abs/2605.26298), [multikernel/sandlock](https://github.com/multikernel/sandlock)
+Implementable now:
+- tag data with capabilities and allowed destinations;
+- block tool chains that launder restricted data;
+- wrap local process execution with file/network/syscall constraints.
+Tools, repos, and methodologies worth exploring:
+- OPA/Cedar, capability labels, eBPF/audit logs, Sandlock, containers, microVMs, seccomp, file/network allowlists, policy-as-code tests
+Implementability score: 0.74
 
 ## Previous structured update
 
-The prior Strategy daily scan for 2026-05-28 focused on validation-carrying tool governance before MCP exposure: [2026-05-28 sovereignty](2026-05-28/sovereignty.md).
+The prior Friday synthesis for 2026-05-22 focused on semantic API readiness, MCP authentication, managed-agent infrastructure, memory authorization, and security coverage maps: [2026-05-22 synthesis](../roundups/2026-05-22.md).

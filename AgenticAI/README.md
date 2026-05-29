@@ -2,50 +2,36 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: 2026-05-28 Daily Scan
+## Most Recent Structured Update: 2026-05-29 Daily Scan
 
-### Memory systems need provenance graphs, not just better retrieval
-Summary: MemTrace turns memory pipelines into executable evolution graphs so failures can be attributed to concrete operations: information loss, retrieval misalignment, stale merges, or unsafe writeback. Memory needs lineage before more abstraction.
+### SpecBench moves coding-agent evaluation upstream to requirements
+Summary: SpecBench evaluates whether software-engineering agents can critique incomplete RFC-style specifications before implementation. Coding agents need a pre-code requirements gate, not only patch-generation benchmarks.
 
-Analysis: [daily reasoning analysis](2026-05-28/reasoning.md#memory-systems-need-provenance-graphs-not-just-better-retrieval)
-Durable topic: [Memory Systems](memory-systems/memory-systems.md)
-Core sources: [MemTrace paper](https://arxiv.org/abs/2605.28732), [zjunlp/MemTrace](https://github.com/zjunlp/MemTrace)
-Implementable now:
-- attach provenance IDs to memory writes, summaries, merges, retrievals, and final-use events;
-- classify memory failures by operation, not just by bad final answers;
-- regression-test consolidation prompts with adversarial memory fixtures.
-Tools, repos, and methodologies worth exploring:
-- OpenTelemetry spans, append-only memory event logs, graph provenance tables, Mem0/EverMemOS-style baselines, prompt-optimization loops from attributed failures
-Implementability score: 0.58
-
-### Search-agent evals need freshness, feasibility, and evidence-dependence controls
-Summary: LiveBrowseComp shows that search agents can pass by verifying prior model knowledge. Feasibility-awareness and TASTE add missing controls: tasks where the right move is early abstention, and harder tasks generated from tool-sequence coverage.
-
-Analysis: [daily reasoning analysis](2026-05-28/reasoning.md#search-agent-evals-need-freshness-feasibility-and-evidence-dependence-controls)
-Durable topic: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
-Core sources: [LiveBrowseComp](https://arxiv.org/abs/2605.28721), [Feasibility Awareness](https://arxiv.org/abs/2605.28532), [TASTE](https://arxiv.org/abs/2605.28556)
-Implementable now:
-- run closed-book baselines before crediting search;
-- use fresh-fact questions and evidence-removal ablations;
-- add tool-missing tasks where the correct answer is to stop.
-Tools, repos, and methodologies worth exploring:
-- BrowseComp-style tasks, publication-date-filtered corpora, tool-mask fixtures, trajectory scoring, query-origin labels, abstention metrics
-Implementability score: 0.72
-
-### Agent harnesses are moving toward enterprise incidents and pytest-native red teams
-Summary: ITBench-AA reports frontier models below 50% on Kubernetes incident-response tasks. RAMPART gives builders a practical pytest-native way to encode adversarial, benign-failure, and harm-category tests for agents.
-
-Analysis: [daily reasoning analysis](2026-05-28/reasoning.md#agent-harnesses-are-moving-toward-enterprise-incidents-and-pytest-native-red-teams)
+Analysis: [daily reasoning analysis](2026-05-29/reasoning.md#specbench-moves-coding-agent-evaluation-upstream-to-requirements)
 Durable topic: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
-Core sources: [ITBench-AA](https://huggingface.co/blog/ibm-research/itbench-aa), [microsoft/RAMPART](https://github.com/microsoft/RAMPART), [RAMPART on PyPI](https://pypi.org/project/RAMPART/)
+Core source: [SpecBench paper](https://arxiv.org/abs/2605.30314)
 Implementable now:
-- build SRE-style incident fixtures with logs, dependency graphs, and known root causes;
-- put agent safety/security assertions into pytest;
-- score false positives, turn count, tool count, latency, and cost.
+- build an internal spec-review benchmark from RFCs, ADRs, issues, and postmortems;
+- require omissions, ambiguities, contradictions, and acceptance-test gaps before code edits;
+- score spec reasoning separately from patch success.
 Tools, repos, and methodologies worth exploring:
-- ITBench-AA, RAMPART, pytest, Kubernetes incident simulations, OpenTelemetry, chaos/fault-injection fixtures, CI regression gates
-Implementability score: 0.82
+- RFC/ADR templates, BDD acceptance criteria, issue-thread replay, SWE-Bench-style harnesses with a pre-code spec-review phase
+Implementability score: 0.78
+
+### Multi-agent systems need confidence-gated topology, not chatty static crews
+Summary: CONCAT, DynaGraph, and Meta-Team converge on a practical correction: multi-agent orchestration should use confidence, consensus, topology repair, and communication budgets instead of defaulting to all-agent discussion.
+
+Analysis: [daily reasoning analysis](2026-05-29/reasoning.md#multi-agent-systems-need-confidence-gated-topology-not-chatty-static-crews)
+Durable topic: [Multi-Agent Orchestration](multi-agent-orchestration/multi-agent-orchestration.md)
+Core sources: [CONCAT](https://arxiv.org/abs/2605.29612), [DynaGraph](https://arxiv.org/abs/2605.29511), [Meta-Team](https://arxiv.org/abs/2605.29790)
+Implementable now:
+- collect first-pass answers and confidence before opening discussion;
+- cluster disagreement and route only high-value communication;
+- preserve topology events and per-agent evidence for postmortem credit assignment.
+Tools, repos, and methodologies worth exploring:
+- LangGraph, AutoGen, CrewAI, Temporal/Pydantic state machines, OpenTelemetry inter-agent spans, confidence calibration, trace-level communication budgets
+Implementability score: 0.60
 
 ## Previous structured update
 
-The prior daily scan for 2026-05-27 focused on per-query retrieval configuration and skill lifecycle management: [2026-05-27 reasoning](2026-05-27/reasoning.md).
+The prior daily scan for 2026-05-28 focused on memory provenance, search-agent eval controls, and enterprise incident harnesses: [2026-05-28 reasoning](2026-05-28/reasoning.md).

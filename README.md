@@ -6,26 +6,26 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Daily scan, 2026-05-28: [roundup](roundups/2026-05-28.md)
-- AgenticAI daily analysis: [2026-05-28](AgenticAI/2026-05-28/reasoning.md)
-- Strategy daily analysis: [2026-05-28](Strategy/2026-05-28/sovereignty.md)
+- Daily scan, 2026-05-29: [roundup](roundups/2026-05-29.md)
+- AgenticAI daily analysis: [2026-05-29](AgenticAI/2026-05-29/reasoning.md)
+- Strategy daily analysis: [2026-05-29](Strategy/2026-05-29/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
-- Related durable topics: [Memory Systems](AgenticAI/memory-systems/memory-systems.md), [Trajectory-Aware Evaluation](AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md)
+- Related durable topics: [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Multi-Agent Orchestration](AgenticAI/multi-agent-orchestration/multi-agent-orchestration.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md)
 - Prior Friday synthesis: [week ending 2026-05-22](roundups/2026-05-22.md)
 - Prior Friday synthesis: [week ending 2026-05-15](roundups/2026-05-15.md)
 - Earlier Friday synthesis: [week ending 2026-05-08](roundups/2026-05-08.md)
 
 ## Current thesis
 
-The agent stack is becoming a traceable and admission-controlled runtime. The useful question is not “which model/tool/memory is best?” It is “which tool artifact, memory operation, evidence route, or incident fixture is permitted, observable, and falsifiable for this run?”
+The agent stack is becoming an admission-controlled runtime. The useful question is not “can the model act?” It is “which specification, tool surface, team topology, memory operation, or deployment scenario is allowed to shape this run, and what evidence proves it behaved?”
 
-The 2026-05-28 scan adds four implementation patterns:
+The 2026-05-29 scan adds four implementation patterns:
 
-- Generated tools need validation-carrying admission before MCP exposure.
-- Memory systems need operation-level provenance and root-cause attribution.
-- Search-agent evals need freshness, infeasibility, and evidence-dependence controls.
-- Agent testing is moving into enterprise incident response and pytest-native red-team fixtures.
+- Coding agents need spec-review gates before implementation gates.
+- Multi-agent systems need confidence-gated topology and communication budgets.
+- Privileged MCP servers need enterprise gateway governance before mutation authority.
+- Sabotage audits need deployment-shaped scenario traces and targeted ablations.
 
 ## Browse by category
 
@@ -38,6 +38,7 @@ The 2026-05-28 scan adds four implementation patterns:
 
 - [Agentic Search and Retrieval](AgenticAI/agentic-search/agentic-search.md)
 - [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md)
+- [Multi-Agent Orchestration](AgenticAI/multi-agent-orchestration/multi-agent-orchestration.md)
 - [Event-Sourced Agent Runtime](AgenticAI/event-sourced-agent-runtime/event-sourced-agent-runtime.md)
 - [GUI-Tool Path Orchestration](AgenticAI/gui-tool-path-orchestration/gui-tool-path-orchestration.md)
 - [Ticket-Native Agent Orchestration](AgenticAI/ticket-native-agent-orchestration/ticket-native-agent-orchestration.md)

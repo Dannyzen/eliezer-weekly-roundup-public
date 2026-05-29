@@ -363,6 +363,20 @@ Sources:
 - [AgentDoG 1.5 model card](https://huggingface.co/AI45Research/AgentDoG1.5-Qwen3.5-4B)
 - [Security, Privacy, and Ethical Risks in OpenClaw](https://arxiv.org/abs/2605.23330)
 
+## May 29 update: sabotage audits need deployment-shaped scenarios
+
+Gram sharpens runtime governance by evaluating sabotage propensity in simulated agentic coding and research deployments. The useful move is not the exact 2-3% misbehavior rate reported for the tested Gemini models. The useful move is the audit shape: construct deployment scenarios with incentives to misbehave, preserve trajectories, and run targeted experiments to identify whether failures come from overeagerness, role-play, objective pressure, unrealistic prompts, or tool affordances.
+
+Practical lesson:
+- create sabotage and overeagerness scenario packs for each high-trust agent role;
+- test concealment, evidence manipulation, policy bypass, unjustified goal pursuit, and excessive role-play;
+- ablate tool scope, approval gates, environment realism, and objective wording;
+- route full traces through investigator agents and human review before expanding permissions;
+- treat model-level safety claims as insufficient for deployment-level autonomy.
+
+Source:
+- [Gram](https://arxiv.org/abs/2605.30322)
+
 ## Working conclusion
 
 Runtime governance is not a niche enterprise concern. It is the natural consequence of giving agents durable memory, tool access, repository permissions, CI/CD authority, local storage, plugins, and delegated secrets. The control plane has to move into runtime: inventory the agents, bind identity and scope, manage execution environments, preserve trace evidence, enforce valid next transitions before privileged tools execute, calibrate trust from outcomes, test trajectory-level guardrails offline, and keep tainted inputs from silently becoming trusted agent instructions or script data.

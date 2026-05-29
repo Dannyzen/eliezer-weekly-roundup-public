@@ -292,3 +292,21 @@ Sources:
 0.77
 
 The ingredients exist: MCP gateways, OAuth/OIDC, RBAC engines, OPA/Cedar, OpenTelemetry, Prometheus, and adversarial test harnesses. The hard part is integrating them into a coherent control plane without making the gateway unusable.
+
+## May 29 update: privileged vendor MCP servers need gateway mediation
+
+Google’s Chrome Enterprise Premium MCP server turns browser-security administration into an agent-callable surface: DLP rules, content detectors, connector policies, browser telemetry, license management, health checks, policy optimization, and investigation workflows.
+
+That is useful and dangerous for the same reason. Enterprise browser security is a high-blast-radius admin plane. Exposing it through MCP should trigger gateway controls, not shortcut them. Diagnosis tools should not imply mutation authority. DLP and org-unit changes should have approval semantics, trace-linked before/after state, and rollback paths.
+
+Practical lesson:
+- put privileged MCP servers behind identity, scope, approval, and audit policy;
+- separate read-only diagnosis from policy mutation tools;
+- require scoped OAuth and per-workflow tool exposure;
+- label agent-created policies and preserve rollback metadata;
+- capture JSON-RPC/tool traces for operator review and compliance.
+
+Sources:
+- [Bringing AI agents to Chrome Enterprise security management](https://blog.google/security/bringing-ai-agents-to-chrome-enterprise-security-management/)
+- [google/chrome-enterprise-premium-mcp](https://github.com/google/chrome-enterprise-premium-mcp)
+- [Pocket CEP MCP example](https://github.com/google/ChromeBrowserEnterprise/tree/main/mcp-examples/pocket-cep)

@@ -1,6 +1,6 @@
 # Agent Harness Architecture
 
-Last updated: 2026-05-25
+Last updated: 2026-05-29
 
 Agent harness architecture is becoming the part of the agent stack that teams can actually standardize.
 
@@ -565,6 +565,22 @@ Sources:
 - [ITBench-AA](https://huggingface.co/blog/ibm-research/itbench-aa)
 - [microsoft/RAMPART](https://github.com/microsoft/RAMPART)
 - [RAMPART on PyPI](https://pypi.org/project/RAMPART/)
+
+## May 29 update: spec reasoning belongs before code generation
+
+SpecBench updates harness architecture at the requirements layer. Most coding-agent benchmarks hand the agent a fixed implementation task and then grade the patch. That misses a high-value engineering skill: recognizing that the task specification is incomplete, ambiguous, contradictory, or unsafe to implement without review.
+
+The practical harness correction is to add a pre-code stage. Before editing files, the agent should identify missing requirements, contradictory constraints, undefined acceptance criteria, non-functional risks, and project-history conflicts. That output should be scored and either accepted, revised, or explicitly waived before implementation starts.
+
+Practical lesson:
+- build spec-review fixtures from RFCs, ADRs, issue threads, and postmortems;
+- require the agent to produce omissions, ambiguities, contradictions, risks, and acceptance-test gaps before code edits;
+- score spec critique separately from final patch success;
+- preserve the spec-review artifact in the same trace as implementation and tests;
+- block high-risk implementation when the spec gate fails instead of relying on better code generation.
+
+Source:
+- [SpecBench](https://arxiv.org/abs/2605.30314)
 
 ## Working conclusion
 

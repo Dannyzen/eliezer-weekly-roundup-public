@@ -2,64 +2,52 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: 2026-05-29 Friday Synthesis
+## Most Recent Structured Update: 2026-05-30 Daily Scan
 
-### Agent evaluation is moving from answers to evidence packages
-Summary: Spec review, goal persistence, fault injection, search freshness, incident response, and sabotage audits all point to one rule: serious agent eval needs traces, artifacts, state snapshots, and verifier evidence, not just final answers.
+### Coding-agent reliability needs real-session misalignment labels
+Summary: Real-world coding-agent failures are mostly workflow misalignment and correction burden, not just benchmark misses. The practical harness should label failure form, cause, cost, resolution, and user correction.
 
-Analysis: [weekly reasoning analysis](2026-05-29/reasoning.md#agent-evaluation-is-moving-from-answers-to-evidence-packages)
-Durable topics: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
-Core sources: [Goal-persistence metrics](https://arxiv.org/abs/2605.23574), [Agent-breakage](https://arxiv.org/abs/2605.23058), [LiveBrowseComp](https://arxiv.org/abs/2605.28721), [ITBench-AA](https://huggingface.co/blog/ibm-research/itbench-aa), [RAMPART](https://github.com/microsoft/RAMPART), [SpecBench](https://arxiv.org/abs/2605.30314)
+Analysis: [daily reasoning analysis](2026-05-30/reasoning.md#coding-agent-reliability-needs-real-session-misalignment-labels)
+Durable topic: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
+Core sources: [How Coding Agents Fail Their Users](https://arxiv.org/abs/2605.29442v1), [Physics Is All You Need?](https://arxiv.org/abs/2605.30353v1), [clax-pt](https://github.com/MinhMPA/clax-pt)
 Implementable now:
-- require spec critique before code edits;
-- preserve traces, state snapshots, artifacts, verifier outputs, and failure labels;
-- run fault-injection and freshness/feasibility fixtures before expanding agent scope.
+- add structured misalignment labels to coding-agent traces;
+- require project-reading evidence before edits;
+- preserve user corrections as replay fixtures;
+- test beyond fiducial oracle cases and catch unphysical patches.
 Tools, repos, and methodologies worth exploring:
-- RFC/ADR review gates, SWE-Bench-style replay, OpenTelemetry, LangSmith/Langfuse, pytest, RAMPART, ITBench-AA, internal incident/postmortem replay
-Implementability score: 0.82
+- pytest/BDD replay fixtures, OpenTelemetry/LangSmith/Langfuse traces, spec-review gates, explicit correction labels, shared session changelogs, non-fiducial oracle tests
+Implementability score: 0.84
 
-### Routing is now workflow, retrieval, wait-time, and team-topology control
-Summary: Routing now covers graph/prompt/gateway/code/weight placement, per-query retrieval settings, tool-wait budgets, and confidence-gated multi-agent communication. Static RAG and all-agent chat are weak defaults.
+### Multi-component agents need runtime coherence checks
+Summary: Locally coherent agent components can compose into globally inconsistent decisions. Multi-agent systems need declared coupling constraints and deterministic coherence monitors, not only an aggregator LLM.
 
-Analysis: [weekly reasoning analysis](2026-05-29/reasoning.md#routing-is-now-workflow-retrieval-wait-time-and-team-topology-control)
-Durable topics: [Multi-Agent Orchestration](multi-agent-orchestration/multi-agent-orchestration.md), [Agentic Search and Retrieval](agentic-search/agentic-search.md)
-Core sources: [workflow placement](https://arxiv.org/abs/2605.22566v1), [workflow compilation](https://arxiv.org/abs/2605.22502v1), [per-query retrieval](https://arxiv.org/abs/2605.27361), [CONCAT](https://arxiv.org/abs/2605.29612), [DynaGraph](https://arxiv.org/abs/2605.29511), [Meta-Team](https://arxiv.org/abs/2605.29790)
+Analysis: [daily reasoning analysis](2026-05-30/reasoning.md#multi-component-agents-need-runtime-coherence-checks)
+Durable topic: [Multi-Agent Orchestration](multi-agent-orchestration/multi-agent-orchestration.md)
+Core source: [Locally Coherent, Globally Incoherent](https://arxiv.org/abs/2605.30335v1)
 Implementable now:
-- expose retrieval policy as a traceable per-query decision;
-- collect first-pass confidence before multi-agent discussion;
-- log topology changes, tool-wait decisions, and routing choices as first-class events.
+- emit typed claims, probabilities/confidence, evidence, and coupling assumptions;
+- run probability/constraint consistency checks;
+- log coherence residuals or proxy verdicts as topology events;
+- repair or escalate incoherent compositions.
 Tools, repos, and methodologies worth exploring:
-- LangGraph, AutoGen, CrewAI, Temporal, Pydantic state machines, LiteLLM, OpenTelemetry, confidence calibration, retrieval-policy classifiers
-Implementability score: 0.74
+- Pydantic claim schemas, probabilistic consistency checks, dependency graphs, LangGraph/Temporal, OpenTelemetry topology events, deterministic projection/repair passes
+Implementability score: 0.58
 
-### Skills, tools, and memory need lifecycle governance, not bigger libraries
-Summary: Larger skill libraries, generated tool catalogs, and memory stores are liabilities unless they are validated, versioned, traced, promoted, quarantined, and rollbackable.
+### MCP knowledge-graph tools should be schema-first and transcript-producing
+Summary: `mcp-proto-okn` shows a useful MCP pattern: graph discovery, schema inspection, SPARQL execution, ontology expansion, identifier bridging, multi-graph querying, and transcripts instead of opaque retrieval.
 
-Analysis: [weekly reasoning analysis](2026-05-29/reasoning.md#skills-tools-and-memory-need-lifecycle-governance-not-bigger-libraries)
-Durable topics: [Skills as Control](skills-as-control/skills-as-control.md), [Memory Systems](memory-systems/memory-systems.md)
-Core sources: [skills as API/MCP units](https://arxiv.org/abs/2605.22733), [OpenSkillEval](https://arxiv.org/abs/2605.23904), [personalized memory gates](https://arxiv.org/abs/2605.25535), [MemTrace](https://arxiv.org/abs/2605.28732), [zjunlp/MemTrace](https://github.com/zjunlp/MemTrace), [Tool Forge](https://github.com/nextmoca/tool-forge)
+Analysis: [daily reasoning analysis](2026-05-30/reasoning.md#mcp-knowledge-graph-tools-should-be-schema-first-and-transcript-producing)
+Durable topic: [Agent Gateway Governance](../Strategy/agent-gateway-governance/agent-gateway-governance.md)
+Core sources: [mcp-proto-okn paper](https://arxiv.org/abs/2605.30283v1), [sbl-sdsc/mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn)
 Implementable now:
-- attach schemas, tests, owners, and hashes to skills/tools;
-- trace loaded skill/tool/memory versions in every run;
-- promote generated tools only after sandbox validation and catalog review.
+- expose discovery and schema inspection before query execution;
+- require transcripts for generated SPARQL and multi-graph queries;
+- constrain identifier bridging and version graph/schema snapshots in traces.
 Tools, repos, and methodologies worth exploring:
-- pytest fixtures, Pydantic/OpenAPI schemas, Tool Forge, MemTrace, OPA/Cedar, MCP Inspector, OpenTelemetry, promotion/quarantine dashboards
+- FastMCP, SPARQL endpoints, OKN registries, schema-inspection tools, query validators, read-only MCP server admission, transcript generation
 Implementability score: 0.72
-
-### Computer-use agents need executable workspaces and verifiable environments
-Summary: Browser and desktop agents should leave runnable scripts, logs, artifacts, checksums, screenshots, and assertions. Screenshot-only automation is not a serious reliability story.
-
-Analysis: [weekly reasoning analysis](2026-05-29/reasoning.md#computer-use-agents-need-executable-workspaces-and-verifiable-environments)
-Durable topics: [GUI-Tool Path Orchestration](gui-tool-path-orchestration/gui-tool-path-orchestration.md), [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
-Core sources: [Webwright article](https://www.microsoft.com/en-us/research/articles/webwright-a-terminal-is-all-you-need-for-web-agents/), [microsoft/Webwright](https://github.com/microsoft/Webwright), [computer-use verification](https://arxiv.org/abs/2605.25624), [reward validation](https://arxiv.org/abs/2605.26114), [Sandlock](https://github.com/multikernel/sandlock)
-Implementable now:
-- require browser agents to emit scripts, logs, screenshots, downloads, and assertions;
-- verify final state with DOM/file/API checks;
-- run risky local execution in a process, container, or VM sandbox.
-Tools, repos, and methodologies worth exploring:
-- Webwright, Playwright, pytest, browser workflow manifests, file checksums, OpenTelemetry, Sandlock, container/VM fallbacks
-Implementability score: 0.76
 
 ## Previous structured update
 
-The prior Friday synthesis for 2026-05-22 focused on replayable agent infrastructure, evidence graphs, trace-aware eval, harness contracts, and MCP gateway governance: [2026-05-22 synthesis](../roundups/2026-05-22.md).
+The prior Friday synthesis for 2026-05-29 focused on evidence-package evaluation, routing/topology control, lifecycle-governed skills/tools/memory, and executable computer-use workspaces: [2026-05-29 synthesis](../roundups/2026-05-29.md).

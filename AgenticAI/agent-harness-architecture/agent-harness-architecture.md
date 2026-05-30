@@ -1,6 +1,6 @@
 # Agent Harness Architecture
 
-Last updated: 2026-05-29
+Last updated: 2026-05-30
 
 Agent harness architecture is becoming the part of the agent stack that teams can actually standardize.
 
@@ -582,6 +582,24 @@ Practical lesson:
 Source:
 - [SpecBench](https://arxiv.org/abs/2605.30314)
 
+## May 30 update: real-session misalignment labels belong in coding-agent traces
+
+The large-scale coding-agent misalignment study adds a missing harness primitive: labels for how an agent failed in the user’s real workflow. The useful unit is not only pass/fail on a patch. It is failure form, cause, cost, resolution, and whether the user had to correct the agent.
+
+The physicist-supervised scientific-software case study adds the oracle-test warning. An agent can pass a fiducial test while optimizing the wrong architecture or adding an unphysical numerical patch. Harnesses therefore need non-fiducial tests, shared changelogs, and explicit rules against symptom-fitting when the task has domain constraints.
+
+Practical lesson:
+- label project-reading failure, intent drift, rule violation, action overreach, execution error, inaccurate self-reporting, and user-correction burden;
+- preserve user corrections as replay fixtures and regression data;
+- require agents to cite project-reading evidence before edits;
+- test across parameter/diversity slices instead of only a fiducial oracle case;
+- keep session changelogs so repeated loops and stalled architectural exploration are visible.
+
+Sources:
+- [How Coding Agents Fail Their Users](https://arxiv.org/abs/2605.29442v1)
+- [Physics Is All You Need?](https://arxiv.org/abs/2605.30353v1)
+- [MinhMPA/clax-pt](https://github.com/MinhMPA/clax-pt)
+
 ## Working conclusion
 
-Agent harness architecture is becoming one of the clearest ways to tell whether a team is building a toy, a developer tool, or a real operating substrate. The winning systems will make context explicit, tool boundaries governable, restore paths safe, orchestration empirically justified and quality-gated, evidence easy to inspect, environment-specific falsification surfaces routine, and incident-style plus pytest-native regression tests part of the normal delivery loop.
+Agent harness architecture is becoming one of the clearest ways to tell whether a team is building a toy, a developer tool, or a real operating substrate. The winning systems will make context explicit, tool boundaries governable, restore paths safe, orchestration empirically justified and quality-gated, evidence easy to inspect, environment-specific falsification surfaces routine, real-session misalignment labels routine, and incident-style plus pytest-native regression tests part of the normal delivery loop.

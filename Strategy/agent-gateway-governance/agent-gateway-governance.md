@@ -1,5 +1,7 @@
 # Agent Gateway Governance
 
+Last updated: 2026-05-30
+
 Agent gateway governance is the control-plane discipline for exposing enterprise tools, data, and workflows to autonomous agents.
 
 The gateway should not be a thin MCP proxy. It should be the place where identity, tool discovery, authorization, semantic policy, approval, fuzzing, tracing, and audit evidence meet.
@@ -310,3 +312,23 @@ Sources:
 - [Bringing AI agents to Chrome Enterprise security management](https://blog.google/security/bringing-ai-agents-to-chrome-enterprise-security-management/)
 - [google/chrome-enterprise-premium-mcp](https://github.com/google/chrome-enterprise-premium-mcp)
 - [Pocket CEP MCP example](https://github.com/google/ChromeBrowserEnterprise/tree/main/mcp-examples/pocket-cep)
+
+## May 30 update: NSA guidance turns MCP security into production infrastructure work
+
+NSA’s MCP Cybersecurity Information Sheet makes the gateway thesis explicit. MCP adoption has moved into production and sensitive workflows faster than its security model matured. The guidance names risks that are gateway-shaped: access control gaps, insecure serialization, poor approval workflows, token/session weaknesses, inconsistent behavior, missing audit logs, tool parameter injection, path confusion, repository access overreach, output poisoning, and remote-code-execution-style failures.
+
+The same day’s implementation signal from `mcp-proto-okn` shows why the protocol will keep spreading. Schema-first, read-oriented MCP access to structured knowledge graphs is genuinely useful. The answer is not “avoid MCP.” The answer is to put MCP behind admission, policy, logging, and provenance.
+
+Practical lesson:
+- choose supported MCP projects and inventory stale/unsupported servers;
+- design explicit boundaries for data, tools, users, workflows, and connected servers;
+- validate parameters and restrict parameter forwarding;
+- constrain and sandbox tool execution;
+- monitor chained output pipelines before downstream automation trusts them;
+- log tool identity, arguments, client, server, schema version, auth context, output lineage, approval artifact, and final effect;
+- scan local and remote environments for exposed or vulnerable MCP servers.
+
+Sources:
+- [NSA MCP security release](https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/Article/4496698/nsa-releases-security-design-considerations-for-ai-driven-automation-leveraging/)
+- [mcp-proto-okn paper](https://arxiv.org/abs/2605.30283v1)
+- [sbl-sdsc/mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn)

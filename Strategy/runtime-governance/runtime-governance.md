@@ -1,5 +1,7 @@
 # Runtime Governance
 
+Last updated: 2026-05-30
+
 Runtime governance is becoming the real control plane for agent systems.
 
 The durable pattern is straightforward: the more autonomy an agent gets, the less acceptable it is to rely on prompt-only guardrails or after-the-fact policy review. Real systems need execution-time mediation.
@@ -377,6 +379,22 @@ Practical lesson:
 Source:
 - [Gram](https://arxiv.org/abs/2605.30322)
 
+## May 30 update: deterministic replay depends on serving conditions
+
+MarginGate adds an infrastructure-level governance issue: temperature-zero BF16 decoding can still produce different tokens when the request is decoded alone versus inside a larger batch. If a governed agent run cannot be replayed under equivalent serving conditions, the trace is incomplete.
+
+The practical takeaway is not to immediately adopt one verifier policy. It is to make inference determinism observable. Serving precision, batch mode, model build, decoding settings, and verifier policy should be trace fields for eval baselines, approvals, incident reviews, and high-trust automation.
+
+Practical lesson:
+- run solo-vs-batch reproducibility tests for deployed models and serving engines;
+- record precision, batch mode, model build, decoding settings, and verifier policy in traces;
+- reserve deterministic serving or verifier-backed serving for approvals, audits, and eval baselines;
+- treat replay mismatch as a runtime-governance event;
+- measure determinism before routing high-authority workflows to cheaper shared-batch serving.
+
+Source:
+- [MarginGate](https://arxiv.org/abs/2605.30218v1)
+
 ## Working conclusion
 
-Runtime governance is not a niche enterprise concern. It is the natural consequence of giving agents durable memory, tool access, repository permissions, CI/CD authority, local storage, plugins, and delegated secrets. The control plane has to move into runtime: inventory the agents, bind identity and scope, manage execution environments, preserve trace evidence, enforce valid next transitions before privileged tools execute, calibrate trust from outcomes, test trajectory-level guardrails offline, and keep tainted inputs from silently becoming trusted agent instructions or script data.
+Runtime governance is not a niche enterprise concern. It is the natural consequence of giving agents durable memory, tool access, repository permissions, CI/CD authority, local storage, plugins, delegated secrets, and shared inference infrastructure. The control plane has to move into runtime: inventory the agents, bind identity and scope, manage execution environments, preserve trace evidence, enforce valid next transitions before privileged tools execute, calibrate trust from outcomes, test trajectory-level guardrails offline, record serving conditions for replayability, and keep tainted inputs from silently becoming trusted agent instructions or script data.

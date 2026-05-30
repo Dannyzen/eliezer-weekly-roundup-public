@@ -1,6 +1,6 @@
 # Multi-Agent Orchestration
 
-Last updated: 2026-05-29
+Last updated: 2026-05-30
 
 Multi-agent orchestration is the control layer for deciding when multiple agents should collaborate, which evidence should move between them, and when communication costs exceed the expected benefit.
 
@@ -52,11 +52,27 @@ Meta-Team adds the learning loop: long-horizon multi-agent failures interleave i
 - OpenTelemetry spans for inter-agent messages and topology changes.
 - Small ablation suites comparing single-agent, broadcast multi-agent, confidence-gated multi-agent, and topology-repair variants.
 
+## May 30 update: local coherence is not global coherence
+
+The compositional-incoherence paper adds a hard check to the multi-agent orchestration thesis. A system can assemble locally coherent probabilistic claims from components that each saw only part of the problem and still violate the joint constraints of the full problem.
+
+The practical implication is that multi-agent orchestration needs declared coupling constraints and runtime composition checks. More retrieval, partition-aware prompting, or one final aggregator LLM is not enough if the composed output violates probability or dependency constraints.
+
+Practical lesson:
+- require subagents to emit typed claims, confidence/probability, evidence, and dependency assumptions;
+- declare cross-component coupling constraints before aggregation where possible;
+- run coherence checks or cheaper proxy checks before accepting a combined answer;
+- log coherence residuals, repairs, and escalations as topology events;
+- compare broadcast discussion against independent-first-pass plus coherence-check baselines.
+
+Source:
+- [Locally Coherent, Globally Incoherent](https://arxiv.org/abs/2605.30335v1)
+
 ## Implementability score
 
 0.60
 
-The first version is implementable with ordinary engineering: independent first passes, confidence fields, clustering, budget rules, and trace logging. Full dynamic topology repair and reliable self-evolution need deeper architecture and careful benchmark design.
+The first version is implementable with ordinary engineering: independent first passes, confidence fields, clustering, budget rules, claim schemas, cheap coherence checks, and trace logging. Full dynamic topology repair, formal projection repair, and reliable self-evolution need deeper architecture and careful benchmark design.
 
 ## Core sources
 

@@ -6,26 +6,26 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Friday synthesis, week ending 2026-05-29: [roundup](roundups/2026-05-29.md)
-- AgenticAI weekly analysis: [2026-05-29](AgenticAI/2026-05-29/reasoning.md)
-- Strategy weekly analysis: [2026-05-29](Strategy/2026-05-29/sovereignty.md)
+- Daily scan, 2026-05-30: [roundup](roundups/2026-05-30.md)
+- AgenticAI daily analysis: [2026-05-30](AgenticAI/2026-05-30/reasoning.md)
+- Strategy daily analysis: [2026-05-30](Strategy/2026-05-30/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
-- Related durable topics: [Trajectory-Aware Evaluation](AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Multi-Agent Orchestration](AgenticAI/multi-agent-orchestration/multi-agent-orchestration.md), [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md)
+- Related durable topics: [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Multi-Agent Orchestration](AgenticAI/multi-agent-orchestration/multi-agent-orchestration.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md)
+- Prior Friday synthesis: [week ending 2026-05-29](roundups/2026-05-29.md)
 - Prior Friday synthesis: [week ending 2026-05-22](roundups/2026-05-22.md)
 - Prior Friday synthesis: [week ending 2026-05-15](roundups/2026-05-15.md)
-- Earlier Friday synthesis: [week ending 2026-05-08](roundups/2026-05-08.md)
 
 ## Current thesis
 
-The agent stack is becoming an admission-controlled runtime. The useful question is not “can the model act?” It is “which specification, tool surface, team topology, memory operation, retrieval policy, browser workspace, or deployment scenario is allowed to shape this run, and what evidence proves it behaved?”
+The agent stack is becoming a trace-and-gateway discipline. The useful question is not “can the model act?” It is “which failure label, coherence check, schema boundary, gateway policy, inference setting, memory operation, or evidence package proves this run behaved?”
 
-The week ending 2026-05-29 adds four implementation patterns:
+The 2026-05-30 scan adds four implementation patterns:
 
-- Agent evals should produce evidence packages: specs, traces, state snapshots, artifacts, verifier outputs, and adversarial trajectories.
-- Routing now spans workflow placement, retrieval policy, tool wait budgets, and confidence-gated multi-agent topology.
-- Skills, generated tools, and memories need lifecycle governance before they become active runtime state.
-- Privileged MCP and browser-security surfaces need gateway identity, scope, approval, trace, and rollback controls.
+- Coding-agent reliability needs real-session misalignment labels and replayable user-correction evidence.
+- Multi-component agents need runtime coherence checks, not only more agents or aggregator prompts.
+- MCP should be treated as production automation infrastructure, with gateway-owned identity, validation, sandboxing, and audit logs.
+- Structured MCP data tools should be schema-first and transcript-producing; inference reproducibility should be trace policy.
 
 ## Browse by category
 

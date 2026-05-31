@@ -1,6 +1,6 @@
 # Agent Gateway Governance
 
-Last updated: 2026-05-30
+Last updated: 2026-05-31
 
 Agent gateway governance is the control-plane discipline for exposing enterprise tools, data, and workflows to autonomous agents.
 
@@ -332,3 +332,20 @@ Sources:
 - [NSA MCP security release](https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/Article/4496698/nsa-releases-security-design-considerations-for-ai-driven-automation-leveraging/)
 - [mcp-proto-okn paper](https://arxiv.org/abs/2605.30283v1)
 - [sbl-sdsc/mcp-proto-okn](https://github.com/sbl-sdsc/mcp-proto-okn)
+
+## May 31 update: authenticated principal binding belongs inside MCP transport sessions
+
+The official MCP Python SDK v1.27.2 release turns yesterday’s security guidance into a concrete implementation primitive: access tokens carry subject and claims, transport sessions bind to the authenticated principal, and experimental tasks are scoped to the session that created them.
+
+That is the right gateway direction. MCP governance cannot depend on an agent remembering who it is or a wrapper prompt describing trust boundaries. The runtime needs principal, client, server, session, task origin, and delegated authority as first-class fields that policy can enforce and traces can audit.
+
+Practical lesson:
+- require principal-bound transport sessions for privileged MCP servers;
+- log subject, claims, client identity, server identity, session ID, task origin, selected tool, and final effect;
+- scope background tasks, cancellation, resume, and message delivery to the creating session unless explicit delegation exists;
+- write cross-session access tests for task reads, task writes, cancellation, and resumed tool calls;
+- treat MCP SDK upgrades as security-relevant infrastructure changes, not routine dependency noise.
+
+Sources:
+- [modelcontextprotocol/python-sdk v1.27.2](https://github.com/modelcontextprotocol/python-sdk/releases/tag/v1.27.2)
+- [modelcontextprotocol/python-sdk](https://github.com/modelcontextprotocol/python-sdk)

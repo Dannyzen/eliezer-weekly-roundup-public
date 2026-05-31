@@ -6,26 +6,26 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Daily scan, 2026-05-30: [roundup](roundups/2026-05-30.md)
-- AgenticAI daily analysis: [2026-05-30](AgenticAI/2026-05-30/reasoning.md)
-- Strategy daily analysis: [2026-05-30](Strategy/2026-05-30/sovereignty.md)
+- Daily scan, 2026-05-31: [roundup](roundups/2026-05-31.md)
+- AgenticAI daily analysis: [2026-05-31](AgenticAI/2026-05-31/reasoning.md)
+- Strategy daily analysis: [2026-05-31](Strategy/2026-05-31/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
-- Related durable topics: [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Multi-Agent Orchestration](AgenticAI/multi-agent-orchestration/multi-agent-orchestration.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md)
+- Related durable topics: [Memory Systems](AgenticAI/memory-systems/memory-systems.md), [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md)
 - Prior Friday synthesis: [week ending 2026-05-29](roundups/2026-05-29.md)
 - Prior Friday synthesis: [week ending 2026-05-22](roundups/2026-05-22.md)
 - Prior Friday synthesis: [week ending 2026-05-15](roundups/2026-05-15.md)
 
 ## Current thesis
 
-The agent stack is becoming a trace-and-gateway discipline. The useful question is not “can the model act?” It is “which failure label, coherence check, schema boundary, gateway policy, inference setting, memory operation, or evidence package proves this run behaved?”
+The agent stack is becoming a stateful, fixture-driven operating discipline. The useful question is not “can the model act?” It is “which state transition, proposal gate, versioned fixture, trajectory grader, session binding, or gateway policy proves this run behaved?”
 
-The 2026-05-30 scan adds four implementation patterns:
+The 2026-05-31 scan adds four implementation patterns:
 
-- Coding-agent reliability needs real-session misalignment labels and replayable user-correction evidence.
-- Multi-component agents need runtime coherence checks, not only more agents or aggregator prompts.
-- MCP should be treated as production automation infrastructure, with gateway-owned identity, validation, sandboxing, and audit logs.
-- Structured MCP data tools should be schema-first and transcript-producing; inference reproducibility should be trace policy.
+- Long-horizon agents need belief-state gates that choose stay, update, or isolate before writing memory.
+- AI-scientist agents need proposal-soundness gates before expensive research or experiment loops.
+- Production agent evals should turn real failures into versioned fixtures with trajectory and outcome graders.
+- MCP sessions and tasks should be bound to authenticated principals at the SDK/runtime layer.
 
 ## Browse by category
 

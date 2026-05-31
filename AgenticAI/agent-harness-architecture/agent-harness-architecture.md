@@ -1,6 +1,6 @@
 # Agent Harness Architecture
 
-Last updated: 2026-05-30
+Last updated: 2026-05-31
 
 Agent harness architecture is becoming the part of the agent stack that teams can actually standardize.
 
@@ -600,6 +600,27 @@ Sources:
 - [Physics Is All You Need?](https://arxiv.org/abs/2605.30353v1)
 - [MinhMPA/clax-pt](https://github.com/MinhMPA/clax-pt)
 
+
+## May 31 update: agent evals need soundness gates and versioned failure fixtures
+
+SoundnessBench and AWS’s AgentCore/LangSmith evaluation posts converge on the same harness lesson: agent evaluation has to happen before and after action. Before action, proposal-stage gates should catch weak research ideas, bad experimental designs, missing baselines, and plausible-looking confounds. After action, production failures should become versioned fixtures with trajectory, assertion, and outcome checks.
+
+The SoundnessBench result is especially useful for AI-scientist and research-agent harnesses because it names optimism bias as a measurable failure. The AWS posts are the implementable counterpart: predefined scenarios for locked regression gates, user-simulation scenarios for exploration, multiple trials for nondeterminism, complete transcripts for debugging, and final environment outcomes for truth.
+
+Practical lesson:
+- add a pre-expense soundness gate for research, benchmark, and experiment proposals;
+- track false-positive optimism and false-negative rejection separately;
+- promote production failures into immutable fixture versions with expected tool paths, assertions, and final-state checks;
+- keep simulated-user scenarios in the discovery loop, then lock useful failures into the release gate;
+- grade trajectory, final answer, and environment outcome separately;
+- record model version, harness commit, grader version, dataset version, and trace ID with every eval run.
+
+Sources:
+- [SoundnessBench](https://arxiv.org/abs/2605.30329v1)
+- [SoundnessBench project](https://hosytuyen.github.io/projects/SoundnessBench)
+- [Build a test suite that grows with your agent with dataset management in Amazon Bedrock AgentCore](https://aws.amazon.com/blogs/machine-learning/build-a-test-suite-that-grows-with-your-agent-with-dataset-management-in-amazon-bedrock-agentcore/)
+- [Evaluating Deep Agents using LangSmith on AWS](https://aws.amazon.com/blogs/machine-learning/evaluating-deep-agents-using-langsmith-on-aws/)
+
 ## Working conclusion
 
-Agent harness architecture is becoming one of the clearest ways to tell whether a team is building a toy, a developer tool, or a real operating substrate. The winning systems will make context explicit, tool boundaries governable, restore paths safe, orchestration empirically justified and quality-gated, evidence easy to inspect, environment-specific falsification surfaces routine, real-session misalignment labels routine, and incident-style plus pytest-native regression tests part of the normal delivery loop.
+Agent harness architecture is becoming one of the clearest ways to tell whether a team is building a toy, a developer tool, or a real operating substrate. The winning systems will make context explicit, tool boundaries governable, restore paths safe, orchestration empirically justified and quality-gated, evidence easy to inspect, environment-specific falsification surfaces routine, real-session misalignment labels routine, proposal-soundness gates explicit, and production failures routinely promoted into versioned regression fixtures with trajectory and outcome graders.

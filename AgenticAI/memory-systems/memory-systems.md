@@ -474,6 +474,23 @@ Sources:
 - [MemTrace](https://arxiv.org/abs/2605.28732)
 - [zjunlp/MemTrace](https://github.com/zjunlp/MemTrace)
 
+
+## May 31 update: belief memory needs stay-update-isolate tests
+
+Contextual Belief Management adds the state-transition lens this memory topic needed. The important failure is not only “retrieved the wrong memory.” It is “updated when it should have stayed,” “stayed when it should have updated,” or “let irrelevant noise influence state.” BeliefTrack’s closed-world tasks make those failures measurable with symbolic verifiers.
+
+The practical lesson is that memory write policy should be tested like a state machine. Before a long-running agent changes durable state, it should record whether the incoming evidence triggers stay, update, or isolate; what source evidence justified that decision; and what old belief was superseded or preserved.
+
+Practical lesson:
+- model high-value memory as typed beliefs with source evidence, confidence, validity state, and supersession links;
+- add explicit stay/update/isolate decisions before durable writes or profile changes;
+- create small closed-world fixtures with distractors, contradictions, and delayed updates;
+- score Failed Stay, Failed Update, and Failed Isolation separately;
+- treat belief-state prompts as insufficient unless the trace shows the transition decision and evidence.
+
+Source:
+- [Contextual Belief Management / BeliefTrack](https://arxiv.org/abs/2605.30219v1)
+
 ## Working conclusion
 
-The next generation of agents will be differentiated less by how eloquently they speak and more by how faithfully and safely they remember. The winning systems will preserve evidence, route memory writes explicitly, retrieve context adaptively, abstain when memory is unsafe, validate high-value writes, query local graphs when code structure matters, promote only the right lessons into durable guidance, attach enough context for updates and temporal reasoning, choose abstraction levels that transfer across tasks, keep the most sensitive memory close to the user and under policy control, run durable memory through a governed database-backed state core, separate evaluation memory from user-facing memory, measure whether memories remain usable under scale, budgets, and writeback review, and expose operation-level provenance so failures can be traced instead of guessed.
+The next generation of agents will be differentiated less by how eloquently they speak and more by how faithfully and safely they remember. The winning systems will preserve evidence, route memory writes explicitly, retrieve context adaptively, abstain when memory is unsafe, validate high-value writes, query local graphs when code structure matters, promote only the right lessons into durable guidance, attach enough context for updates and temporal reasoning, choose abstraction levels that transfer across tasks, keep the most sensitive memory close to the user and under policy control, run durable memory through a governed database-backed state core, separate evaluation memory from user-facing memory, measure whether memories remain usable under scale, budgets, and writeback review, expose operation-level provenance, and test belief-state stay/update/isolate decisions so memory failures can be traced instead of guessed.

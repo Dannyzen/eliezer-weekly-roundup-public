@@ -1,6 +1,6 @@
 # Runtime Governance
 
-Last updated: 2026-05-30
+Last updated: 2026-06-01
 
 Runtime governance is becoming the real control plane for agent systems.
 
@@ -395,6 +395,25 @@ Practical lesson:
 Source:
 - [MarginGate](https://arxiv.org/abs/2605.30218v1)
 
+## June 1 update: sandboxing and AI-factory security are runtime policy
+
+NVIDIA's NemoClaw/OpenShell and DOCA security materials make the infrastructure version of runtime governance explicit. Always-on agents need sandbox lifecycle management, routed inference, network policy, runtime detection, data access control, and supply-chain controls around skills, images, and tool adapters. The DOCA post frames agentic AI as a new attack surface spanning infrastructure, software supply chains, models, data, and autonomous agents with growing authority to act.
+
+The practical lesson does not require adopting NVIDIA's full stack. It says privileged agents need platform controls below the prompt: constrained workers, governed inference endpoints, explicit egress policy, trace-linked network and tool decisions, and separate authority for diagnosis versus mutation.
+
+Practical lesson:
+- run privileged agents inside constrained worker or sandbox environments;
+- route inference through governed endpoints with model, data, budget, and locality policy;
+- enforce network egress policy per agent workflow;
+- log sandbox lifecycle, network decisions, tool calls, inference route, and final effect in one trace;
+- treat runtime images, skills, and tool adapters as supply-chain artifacts;
+- separate read-only diagnosis authority from mutation authority.
+
+Sources:
+- [NVIDIA NemoClaw](https://github.com/NVIDIA/NemoClaw)
+- [Enterprise Software Leaders Build AI Agents With NVIDIA](https://nvidianews.nvidia.com/news/enterprise-software-leaders-build-ai-agents-with-nvidia)
+- [NVIDIA DOCA in-silicon security for agentic AI](https://developer.nvidia.com/blog/advancing-ai-infrastructure-for-agentic-ai-with-nvidia-doca-in-silicon-security/)
+
 ## Working conclusion
 
-Runtime governance is not a niche enterprise concern. It is the natural consequence of giving agents durable memory, tool access, repository permissions, CI/CD authority, local storage, plugins, delegated secrets, and shared inference infrastructure. The control plane has to move into runtime: inventory the agents, bind identity and scope, manage execution environments, preserve trace evidence, enforce valid next transitions before privileged tools execute, calibrate trust from outcomes, test trajectory-level guardrails offline, record serving conditions for replayability, and keep tainted inputs from silently becoming trusted agent instructions or script data.
+Runtime governance is not a niche enterprise concern. It is the natural consequence of giving agents durable memory, tool access, repository permissions, CI/CD authority, local storage, plugins, delegated secrets, shared inference infrastructure, and sandboxed execution environments. The control plane has to move into runtime: inventory the agents, bind identity and scope, manage execution environments, preserve trace evidence, enforce valid next transitions before privileged tools execute, calibrate trust from outcomes, test trajectory-level guardrails offline, record serving conditions for replayability, constrain network and inference routes, and keep tainted inputs from silently becoming trusted agent instructions or script data.

@@ -2,53 +2,53 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: 2026-05-31 Daily Scan
+## Most Recent Structured Update: 2026-06-01 Daily Scan
 
-### Long-horizon agents need explicit belief-state gates
-Summary: BeliefTrack turns long-horizon state management into explicit stay/update/isolate decisions. Memory systems should test whether agents preserve valid beliefs, update when evidence changes, and ignore irrelevant noise.
+### Verified skills are becoming capability governance
+Summary: NVIDIA’s skills catalog, verified-skills blog, and physical-AI skills release push skills from prompt snippets into governed capability artifacts with provenance, scanning, signatures, skill cards, scope, and lifecycle state.
 
-Analysis: [daily reasoning analysis](2026-05-31/reasoning.md#long-horizon-agents-need-explicit-belief-state-gates)
+Analysis: [daily reasoning analysis](2026-06-01/reasoning.md#verified-skills-are-becoming-capability-governance-not-prompt-decoration)
+Durable topic: [Skills as Control](skills-as-control/skills-as-control.md)
+Core sources: [NVIDIA physical-AI skills release](https://nvidianews.nvidia.com/news/nvidia-releases-major-collection-of-open-source-agent-tools-and-skills-for-physical-ai), [NVIDIA skills repository](https://github.com/NVIDIA/skills), [verified skills governance blog](https://developer.nvidia.com/blog/nvidia-verified-agent-skills-provide-capability-governance-for-ai-agents/), [Cosmos 3 on Hugging Face](https://huggingface.co/blog/nvidia/cosmos-3-for-physical-ai)
+Implementable now:
+- add skill cards with owner, scope, dependencies, allowed tools, limitations, and validation status;
+- pin and review third-party skill sources before privileged use;
+- log selected skill, loaded body hash, source repo, and validation level in every run;
+- build regression fixtures for high-value skills.
+Tools, repos, and methodologies worth exploring:
+- `NVIDIA/skills`, `skills` CLI, skill cards, cryptographic signing, static risk scanning, semantic fuzzing, provenance manifests, Pydantic contracts, OpenTelemetry trace fields
+Implementability score: 0.91
+
+### Long-term memory evals need evolving heterogeneous life logs
+Summary: RHELM argues that static dialogue personas are too weak for long-running assistants. Memory evals should synchronize chats with documents, emails, evolving event trajectories, stale facts, and source-specific evidence.
+
+Analysis: [daily reasoning analysis](2026-06-01/reasoning.md#long-term-memory-benchmarks-need-heterogeneous-evolving-life-logs)
 Durable topic: [Memory Systems](memory-systems/memory-systems.md)
-Core source: [Contextual Belief Management](https://arxiv.org/abs/2605.30219v1)
+Core source: [RHELM](https://arxiv.org/abs/2605.31086)
 Implementable now:
-- store typed beliefs with source evidence and validity state;
-- add explicit stay/update/isolate decisions before state writes;
-- create closed-world fixtures with known transitions and distractors;
-- score Failed Stay, Failed Update, and Failed Isolation separately.
+- create mixed-source memory fixtures with chats, files, emails, and timeline events;
+- include supersessions, contradictions, stale evidence, and distractors;
+- score profile updates, forgetting, retrieval, and evidence citation separately;
+- require source evidence when answers use durable memory.
 Tools, repos, and methodologies worth exploring:
-- Pydantic state ledgers, LangGraph/Temporal state machines, symbolic verifier fixtures, OpenTelemetry trace fields, property-based state tests, memory admission policies
-Implementability score: 0.69
+- typed memory ledgers, event-sourced memory, pgvector plus exact search, temporal fixtures, profile-state tests, source-span citation, stay/update/isolate gates
+Implementability score: 0.66
 
-### AI-scientist agents need a proposal-soundness gate
-Summary: SoundnessBench shows frontier models are over-optimistic first-gate reviewers for weak research ideas. Research agents need calibrated proposal review before experiments, code generation, or expensive literature sweeps.
+### Retrieval evals need deterministic oracles and distractor controls
+Summary: SPECTRA gives a practical pattern for private-corpus retrieval testing: synthetic corpora with latent topics, deterministic relevance oracles, query intents, metadata controls, and adjustable distractor pressure.
 
-Analysis: [daily reasoning analysis](2026-05-31/reasoning.md#ai-scientist-agents-need-a-proposal-soundness-gate)
-Durable topic: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
-Core sources: [SoundnessBench paper](https://arxiv.org/abs/2605.30329v1), [project page](https://hosytuyen.github.io/projects/SoundnessBench), [repository](https://github.com/hosytuyen/SoundnessBench)
+Analysis: [daily reasoning analysis](2026-06-01/reasoning.md#retrieval-evals-need-deterministic-oracles-and-distractor-controls)
+Durable topic: [Agentic Search and Retrieval](agentic-search/agentic-search.md)
+Core source: [SPECTRA](https://arxiv.org/abs/2605.31575)
 Implementable now:
-- require methodological-risk review before expensive research loops;
-- track false-positive optimism and false-negative rejection separately;
-- preserve rejected weak proposals as regression fixtures;
-- keep human review on high-cost proposals until the rubric is calibrated.
+- generate synthetic corpora with known topic and relevance labels;
+- vary distractor ratio, metadata noise, stale documents, and near-duplicates;
+- compare exact, vector, hybrid, and routed retrieval under one oracle;
+- log query route, result set, follow-up reads, and cited evidence.
 Tools, repos, and methodologies worth exploring:
-- SoundnessBench, rubric-based proposal review, LLM critics with abstention, contamination controls, proposal templates, held-out weak-proposal fixtures
-Implementability score: 0.61
-
-### Agent eval suites should turn production failures into versioned fixtures
-Summary: AWS AgentCore dataset management and LangSmith-on-AWS eval guidance converge on the same practical loop: production traces become locked eval fixtures, simulated users discover gaps, and trajectory plus outcome graders replace final-answer-only scoring.
-
-Analysis: [daily reasoning analysis](2026-05-31/reasoning.md#agent-eval-suites-should-turn-production-failures-into-versioned-fixtures)
-Durable topic: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
-Core sources: [AgentCore dataset management](https://aws.amazon.com/blogs/machine-learning/build-a-test-suite-that-grows-with-your-agent-with-dataset-management-in-amazon-bedrock-agentcore/), [LangSmith on AWS](https://aws.amazon.com/blogs/machine-learning/evaluating-deep-agents-using-langsmith-on-aws/)
-Implementable now:
-- maintain immutable eval dataset versions and mutable production-failure drafts;
-- promote production traces into predefined scenarios with expected tool sequences and assertions;
-- use simulated users to discover unknown failures;
-- grade trajectory, final answer, and environment outcome separately.
-Tools, repos, and methodologies worth exploring:
-- pytest, LangSmith, Amazon Bedrock AgentCore datasets, OpenTelemetry, versioned fixtures, user simulation, pass@k/pass^k, trajectory/state/outcome graders
-Implementability score: 0.88
+- BM25/ripgrep baselines, pgvector, LanceDB/Qdrant, deterministic synthetic corpora, Cranfield/TREC-style evals, nDCG/MRR, property-based corpus generation
+Implementability score: 0.84
 
 ## Previous structured update
 
-The prior daily scan for 2026-05-30 focused on real-session coding-agent misalignment labels, multi-component coherence checks, schema-first MCP knowledge-graph tools, and inference reproducibility: [2026-05-30 roundup](../roundups/2026-05-30.md).
+The prior daily scan for 2026-05-31 focused on belief-state gates, proposal-soundness review, production-failure-to-fixture evals, and MCP principal binding: [2026-05-31 roundup](../roundups/2026-05-31.md).

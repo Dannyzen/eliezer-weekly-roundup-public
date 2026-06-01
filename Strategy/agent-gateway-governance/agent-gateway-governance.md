@@ -1,6 +1,6 @@
 # Agent Gateway Governance
 
-Last updated: 2026-05-31
+Last updated: 2026-06-01
 
 Agent gateway governance is the control-plane discipline for exposing enterprise tools, data, and workflows to autonomous agents.
 
@@ -349,3 +349,19 @@ Practical lesson:
 Sources:
 - [modelcontextprotocol/python-sdk v1.27.2](https://github.com/modelcontextprotocol/python-sdk/releases/tag/v1.27.2)
 - [modelcontextprotocol/python-sdk](https://github.com/modelcontextprotocol/python-sdk)
+
+## June 1 update: regulated agents need organization-scoped runtime context
+
+The organization-scoped cybersecurity-runtime paper turns gateway governance into a full runtime-context problem. A regulated SOC agent should not start from a generic prompt plus tool list. It should start from a typed Security Context created at every entry point, including SIEM/XDR notifications, and that context should be enforced across retrieval, tool calls, memory, structured findings, reports, human gates, and append-only audit.
+
+The practical correction is to stop treating enterprise tool access as a set of disconnected MCP permissions. The gateway needs to carry organization, analyst, trigger, data scope, evidence state, approval tier, and final-report obligations through the whole run.
+
+Practical lesson:
+- create typed organization/security context at every workflow entry point;
+- expose SIEM/XDR operations through governed adapters, not raw tool calls;
+- require evidence-linked structured findings before reports or response actions;
+- tier HITL gates by blast radius and evidence confidence;
+- store context creation, tool calls, approvals, findings, and report emissions in append-only audit.
+
+Source:
+- [An Organization-Scoped LLM Agent Runtime Architecture for Regulated Cybersecurity Operations](https://arxiv.org/abs/2605.30604)

@@ -6,26 +6,27 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Daily scan, 2026-05-31: [roundup](roundups/2026-05-31.md)
-- AgenticAI daily analysis: [2026-05-31](AgenticAI/2026-05-31/reasoning.md)
-- Strategy daily analysis: [2026-05-31](Strategy/2026-05-31/sovereignty.md)
+- Daily scan, 2026-06-01: [roundup](roundups/2026-06-01.md)
+- AgenticAI daily analysis: [2026-06-01](AgenticAI/2026-06-01/reasoning.md)
+- Strategy daily analysis: [2026-06-01](Strategy/2026-06-01/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
-- Related durable topics: [Memory Systems](AgenticAI/memory-systems/memory-systems.md), [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md)
+- Related durable topics: [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [Memory Systems](AgenticAI/memory-systems/memory-systems.md), [Agentic Search and Retrieval](AgenticAI/agentic-search/agentic-search.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md)
 - Prior Friday synthesis: [week ending 2026-05-29](roundups/2026-05-29.md)
 - Prior Friday synthesis: [week ending 2026-05-22](roundups/2026-05-22.md)
 - Prior Friday synthesis: [week ending 2026-05-15](roundups/2026-05-15.md)
 
 ## Current thesis
 
-The agent stack is becoming a stateful, fixture-driven operating discipline. The useful question is not “can the model act?” It is “which state transition, proposal gate, versioned fixture, trajectory grader, session binding, or gateway policy proves this run behaved?”
+The agent stack is becoming a governed runtime discipline. The useful question is no longer “can the model act?” It is “which capability artifact, memory state, retrieval oracle, sandbox boundary, organization context, and trace evidence proves this run behaved?”
 
-The 2026-05-31 scan adds four implementation patterns:
+The 2026-06-01 scan adds five implementation patterns:
 
-- Long-horizon agents need belief-state gates that choose stay, update, or isolate before writing memory.
-- AI-scientist agents need proposal-soundness gates before expensive research or experiment loops.
-- Production agent evals should turn real failures into versioned fixtures with trajectory and outcome graders.
-- MCP sessions and tasks should be bound to authenticated principals at the SDK/runtime layer.
+- Skills should be treated as governed capability packages with provenance, scanning, signing, cards, validation status, and loaded-hash traces.
+- Long-term memory evals should use heterogeneous, evolving source streams rather than static dialogue personas.
+- Retrieval and memory systems need deterministic relevance oracles plus controlled distractor pressure.
+- Regulated agents need typed organization/security context enforced across retrieval, tools, memory, findings, reports, approvals, and audit.
+- Privileged agents should run inside sandboxed, routed, network-constrained runtime infrastructure rather than relying on prompt-only governance.
 
 ## Browse by category
 

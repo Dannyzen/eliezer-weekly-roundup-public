@@ -1,6 +1,6 @@
 # Skills as Control
 
-Last updated: 2026-05-27
+Last updated: 2026-06-01
 
 Core sources:
 - From Research Question to Scientific Workflow: Leveraging Agentic AI for Science Automation: https://arxiv.org/abs/2604.21910v1
@@ -27,6 +27,9 @@ Core sources:
 - More Skills, Worse Agents?: https://arxiv.org/abs/2605.24050
 - CODESKILL: https://arxiv.org/abs/2605.25430
 - MUSE-Autoskill: https://arxiv.org/abs/2605.27366
+- NVIDIA skills: https://github.com/NVIDIA/skills
+- NVIDIA-Verified Agent Skills: https://developer.nvidia.com/blog/nvidia-verified-agent-skills-provide-capability-governance-for-ai-agents/
+- NVIDIA physical-AI skills release: https://nvidianews.nvidia.com/news/nvidia-releases-major-collection-of-open-source-agent-tools-and-skills-for-physical-ai
 
 ## Thesis
 
@@ -311,4 +314,22 @@ Practical lesson:
 
 Source:
 - [MUSE-Autoskill](https://arxiv.org/abs/2605.27366)
+
+## June 1 update: verified skills make capability governance concrete
+
+NVIDIA's public skills catalog and verified-skills governance blog turn the skills thesis into a vendor-backed operating pattern. Skills are portable instruction sets, but the important part is the metadata and verification envelope: provenance, risk scanning, cryptographic signing, skill cards, ownership, dependencies, limitations, and verification status.
+
+The physical-AI release makes the capability surface concrete. NVIDIA describes skills for turning complex robotics, autonomous-vehicle, vision-AI, and industrial digital-twin workflows into repeatable agent-executable instructions. That is the right abstraction: a skill is not merely advice. It is a reviewed capability package that can route the agent into a high-leverage domain workflow.
+
+Practical lesson:
+- treat high-value skills as supply-chain artifacts with owner, scope, dependency, risk, signature, and validation metadata;
+- log loaded skill hash, source repository, verification level, and selected version in every trace;
+- keep installable skill catalogs separate from production-admitted skill catalogs;
+- require domain-specific regression fixtures before a skill can operate near privileged tools or expensive workflows;
+- pair skill lifecycle memory with static verification so stale or harmful skills are quarantined before retrieval can select them.
+
+Sources:
+- [NVIDIA/skills](https://github.com/NVIDIA/skills)
+- [NVIDIA-Verified Agent Skills Provide Capability Governance for AI Agents](https://developer.nvidia.com/blog/nvidia-verified-agent-skills-provide-capability-governance-for-ai-agents/)
+- [NVIDIA physical-AI skills release](https://nvidianews.nvidia.com/news/nvidia-releases-major-collection-of-open-source-agent-tools-and-skills-for-physical-ai)
 

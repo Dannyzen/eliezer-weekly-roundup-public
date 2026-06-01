@@ -491,6 +491,22 @@ Practical lesson:
 Source:
 - [Contextual Belief Management / BeliefTrack](https://arxiv.org/abs/2605.30219v1)
 
+## June 1 update: memory evals need heterogeneous evolving source streams
+
+RHELM adds the realism constraint that memory benchmarks often avoid. Dialogue-only personas are too flat for long-running assistants. Real memory has to absorb conversations, documents, emails, and event trajectories that evolve over time. RHELM's LOOP construction — plan, rollout, evolve, prune — is useful because it makes temporal coherence and heterogeneous evidence part of the test, not background flavor.
+
+The implementation lesson is immediate: memory systems should be evaluated against mixed-source fixtures with supersessions, stale facts, contradictions, and source-specific evidence. A system that recalls a fact but cannot identify whether the email, document, or later conversation superseded it is not ready for durable personalization.
+
+Practical lesson:
+- build memory evals from chats, files, emails, notes, and calendar-like events, not only synthetic dialogue;
+- add explicit supersession, stale-evidence, contradiction, and distractor cases;
+- score profile-state updates, forgetting, evidence citation, and retrieval separately;
+- keep source evidence attached to memory-backed answers;
+- treat memory continuity as a temporal state problem, not a top-k recall problem.
+
+Source:
+- [RHELM: Beyond Static Dialogues](https://arxiv.org/abs/2605.31086)
+
 ## Working conclusion
 
-The next generation of agents will be differentiated less by how eloquently they speak and more by how faithfully and safely they remember. The winning systems will preserve evidence, route memory writes explicitly, retrieve context adaptively, abstain when memory is unsafe, validate high-value writes, query local graphs when code structure matters, promote only the right lessons into durable guidance, attach enough context for updates and temporal reasoning, choose abstraction levels that transfer across tasks, keep the most sensitive memory close to the user and under policy control, run durable memory through a governed database-backed state core, separate evaluation memory from user-facing memory, measure whether memories remain usable under scale, budgets, and writeback review, expose operation-level provenance, and test belief-state stay/update/isolate decisions so memory failures can be traced instead of guessed.
+The next generation of agents will be differentiated less by how eloquently they speak and more by how faithfully and safely they remember. The winning systems will preserve evidence, route memory writes explicitly, retrieve context adaptively, abstain when memory is unsafe, validate high-value writes, query local graphs when code structure matters, promote only the right lessons into durable guidance, attach enough context for updates and temporal reasoning, choose abstraction levels that transfer across tasks, keep the most sensitive memory close to the user and under policy control, run durable memory through a governed database-backed state core, separate evaluation memory from user-facing memory, measure whether memories remain usable under scale, budgets, and writeback review, expose operation-level provenance, test belief-state stay/update/isolate decisions, and evaluate memory against heterogeneous evolving source streams so failures can be traced instead of guessed.

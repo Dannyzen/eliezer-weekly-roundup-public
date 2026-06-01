@@ -138,6 +138,22 @@ Practical lesson:
 Source:
 - [Natural Language Query to Configuration for Retrieval Agents](https://arxiv.org/abs/2605.27361)
 
+## June 1 update: retrieval tests need deterministic oracles and distractor knobs
+
+SPECTRA adds a practical eval-construction pattern for private retrieval systems. Instead of waiting for expensive human-judged corpora, it generates synthetic text collections with latent topical structure, metadata controls, query intents, and deterministic relevance oracles. The key agentic-search lesson is controlled distraction: retrieval systems should be tested as near-miss, stale, duplicate, and cross-topic distractors increase.
+
+This fits the existing harness thesis. Retrieval quality is not only database recall. It is route choice, output handoff, evidence inspection, citation use, and robustness under irrelevant-but-plausible context. Synthetic corpora with known relevance labels give teams a cheap way to compare exact search, vector search, hybrid retrieval, and route policies before trusting a research or memory agent.
+
+Practical lesson:
+- generate synthetic corpora with known topic structure and deterministic relevance labels;
+- vary distractor ratio, near-duplicates, stale documents, and metadata noise;
+- compare BM25/ripgrep, vector, hybrid, and routed retrieval under one oracle;
+- log query route, result set, follow-up reads, discarded candidates, and cited evidence;
+- make distractor-resistance a regression metric for memory and research agents.
+
+Source:
+- [SPECTRA](https://arxiv.org/abs/2605.31575)
+
 ## Related durable topics
 
 - [Agent Harness Architecture](../agent-harness-architecture/agent-harness-architecture.md)

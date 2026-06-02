@@ -1,6 +1,6 @@
 # Skills as Control
 
-Last updated: 2026-06-01
+Last updated: 2026-06-02
 
 Core sources:
 - From Research Question to Scientific Workflow: Leveraging Agentic AI for Science Automation: https://arxiv.org/abs/2604.21910v1
@@ -30,6 +30,7 @@ Core sources:
 - NVIDIA skills: https://github.com/NVIDIA/skills
 - NVIDIA-Verified Agent Skills: https://developer.nvidia.com/blog/nvidia-verified-agent-skills-provide-capability-governance-for-ai-agents/
 - NVIDIA physical-AI skills release: https://nvidianews.nvidia.com/news/nvidia-releases-major-collection-of-open-source-agent-tools-and-skills-for-physical-ai
+- SkillHarm: https://arxiv.org/abs/2606.02540v1
 
 ## Thesis
 
@@ -332,4 +333,20 @@ Sources:
 - [NVIDIA/skills](https://github.com/NVIDIA/skills)
 - [NVIDIA-Verified Agent Skills Provide Capability Governance for AI Agents](https://developer.nvidia.com/blog/nvidia-verified-agent-skills-provide-capability-governance-for-ai-agents/)
 - [NVIDIA physical-AI skills release](https://nvidianews.nvidia.com/news/nvidia-releases-major-collection-of-open-source-agent-tools-and-skills-for-physical-ai)
+
+## June 2 update: skill attacks now span the whole lifecycle
+
+SkillHarm makes the next skill-security problem explicit. A malicious skill does not have to fire in the same task where it enters the system. Fixed-payload poisoning can compromise every session that invokes the skill, while self-mutating poisoning can start from a benign-looking execution, change persistent skill content, and defer harm until later reuse.
+
+The practical correction is to treat skill execution state and skill library state as separate authority surfaces. A skill should not be able to mutate itself, another skill, memory policy, tool configuration, or retrieval metadata just because the current task has file access. Production-admitted skills need immutable execution snapshots, reviewed patch paths, loaded-hash traces, and lifecycle tests that cover installation, retrieval, execution, update, reuse, quarantine, and rollback.
+
+Practical lesson:
+- freeze the loaded skill body during execution and record its hash;
+- block or route skill-file writes through a reviewed patch queue;
+- test fixed-payload and self-mutating skill poisoning separately;
+- treat memory writes and tool-config writes from a skill as high-risk side effects;
+- preserve source, version, manifest hash, body hash, verification level, and update path in every trace.
+
+Source:
+- [SkillHarm](https://arxiv.org/abs/2606.02540v1)
 

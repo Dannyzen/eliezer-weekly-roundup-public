@@ -481,6 +481,23 @@ Sources:
 - [Do Agents Know What They Can't Do?](https://arxiv.org/abs/2605.28532)
 - [TASTE](https://arxiv.org/abs/2605.28556)
 
+## June 2 update: eval needs controlled transfer and process/outcome separation
+
+AGENTCL adds a useful continual-learning test shape: build task streams where earlier sub-solutions, evidence, or workflows are intentionally reusable later, then measure whether the agent gains from that structure without dragging irrelevant past experience into the run. This is better than asking whether a memory system can retrieve old context. It tests whether prior experience becomes reusable capability.
+
+ClinEnv adds the process-scoring version of the same correction. In staged inpatient simulations, the model must query specialist agents before committing to medications, procedures, and diagnoses. The important general result is that outcome quality and process quality decouple: a plausible final answer can hide redundant evidence gathering, bad sequencing, and weak late-stage management decisions.
+
+Practical lesson:
+- build compositional task streams with known reusable sub-solutions;
+- compare no-memory, raw-retrieval, summarized-memory, and promoted-skill baselines;
+- score forward transfer, negative transfer, forgetting, retrieval precision, process quality, and cost separately;
+- build staged simulations where evidence gathering is required before irreversible commitments;
+- label redundant queries, missing evidence, bad sequencing, unsupported commitments, and late-stage management failures.
+
+Sources:
+- [AGENTCL](https://arxiv.org/abs/2606.02461v1)
+- [ClinEnv](https://arxiv.org/abs/2606.02568v1)
+
 ## Working conclusion
 
 Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, and scored across safety, robustness, parameter correctness, environment fidelity, runtime-specific harm dimensions, real-user collaboration traces, realistic workspace state, live workflow demand, cost, adversarial task quality, long-range state propagation, abstention, protocol conformance, tool-shortlist quality, environment-factory coverage, and quantitative goal persistence, improvement efforts will stay shallow and trust claims will stay unearned.

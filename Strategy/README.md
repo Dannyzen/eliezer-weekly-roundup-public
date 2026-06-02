@@ -2,40 +2,39 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: 2026-06-01 Daily Scan
+## Most Recent Structured Update: 2026-06-02 Daily Scan
 
-### Organization-scoped runtime is the regulated-agent shape
-Summary: A new SOC/runtime architecture paper argues that regulated agents need a typed organization/security context enforced across retrieval, tool calls, memory, findings, reports, approvals, and audit.
+### Ghost tool calls make precommit observation a privacy effect
+Summary: Speculative tool dispatch can leak inferred user intent to external services before the agent commits to a branch. Read-only status and allow-lists do not undo observation; the control has to happen at issue time.
 
-Analysis: [daily sovereignty analysis](2026-06-01/sovereignty.md#organization-scoped-runtime-is-the-regulated-agent-shape)
+Analysis: [daily sovereignty analysis](2026-06-02/sovereignty.md#ghost-tool-calls-make-observation-before-commit-a-privacy-effect)
 Durable topic: [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md)
-Core source: [Organization-Scoped LLM Agent Runtime Architecture](https://arxiv.org/abs/2605.30604)
+Core source: [Ghost Tool Calls](https://arxiv.org/abs/2606.02483v1)
 Implementable now:
-- create typed organization/security context for every workflow trigger;
-- pass context through retrieval, tools, memory writes, findings, and reports;
-- expose SIEM/XDR operations through governed adapters;
-- require evidence-linked findings and tiered HITL gates;
-- store append-only audit events for context, tools, approvals, and reports.
+- classify external observation as an effect, not only mutation;
+- keep speculative planning local when possible;
+- add issue-time policy before precommit external calls;
+- redact or project arguments before speculative dispatch;
+- log branch state, speculative calls, suppressed calls, argument projections, and final commit path.
 Tools, repos, and methodologies worth exploring:
-- MCP gateways, OPA/Cedar, SIEM/XDR adapters, OpenTelemetry, append-only audit logs, typed Security Context schemas, Temporal/LangGraph state machines
-Implementability score: 0.57
+- gateway-owned issue-time policy, OPA/Cedar, data-class labels, precommit/commit runtime states, argument projection, local tool simulators, speculative-call ledgers
+Implementability score: 0.60
 
-### Agent sandboxes are becoming infrastructure policy, not optional wrappers
-Summary: NVIDIA’s NemoClaw/OpenShell and DOCA security materials show the market direction for privileged agents: sandboxed execution, routed inference, network policy, runtime detection, data access control, lifecycle management, and trace evidence.
+### AgentOps is converging into versioned runtime control planes
+Summary: AWS AgentOps, Microsoft Agent Framework, and IBM’s agent-logic framing point at the same production shape: agents, tools, memory configs, identity, evals, traces, policies, and release gates become versioned runtime infrastructure.
 
-Analysis: [daily sovereignty analysis](2026-06-01/sovereignty.md#sandbox-and-ai-factory-security-are-moving-below-prompt-policy)
+Analysis: [daily sovereignty analysis](2026-06-02/sovereignty.md#agentops-is-converging-into-versioned-runtime-control-planes)
 Durable topic: [Runtime Governance](runtime-governance/runtime-governance.md)
-Core sources: [NVIDIA enterprise agent release](https://nvidianews.nvidia.com/news/enterprise-software-leaders-build-ai-agents-with-nvidia), [NVIDIA NemoClaw](https://github.com/NVIDIA/NemoClaw), [NVIDIA DOCA in-silicon security](https://developer.nvidia.com/blog/advancing-ai-infrastructure-for-agentic-ai-with-nvidia-doca-in-silicon-security/)
+Core sources: [AWS AgentOps](https://aws.amazon.com/blogs/machine-learning/agentops-operationalize-agentic-ai-at-scale-with-amazon-bedrock-agentcore/), [Microsoft Agent Framework at BUILD 2026](https://devblogs.microsoft.com/agent-framework/microsoft-agent-framework-at-build-2026/), [IBM agent logic](https://huggingface.co/blog/ibm-research/agent-logic-and-scalable-ai-adoption)
 Implementable now:
-- run privileged agents inside constrained worker/sandbox environments;
-- route inference through governed endpoints with model, cost, and data policy;
-- enforce network egress policy per workflow;
-- log sandbox lifecycle, network decisions, tool calls, and inference routing;
-- treat runtime images, skills, and tool adapters as supply-chain artifacts.
+- version agent definitions, tool manifests, memory configuration, prompts, policies, and eval fixtures together;
+- require pre-prod tests for identity propagation, tool authorization, memory access, HITL gates, and rollback;
+- register agents, tools, skills, MCP servers, and ownership metadata;
+- emit traces for decisions, tool calls, denied calls, memory use, cost, latency, errors, and outcomes.
 Tools, repos, and methodologies worth exploring:
-- `NVIDIA/NemoClaw`, OpenShell-style sandboxes, egress policy, MCP gateways, OpenTelemetry, OPA/Cedar, container/network policy, runtime detection
-Implementability score: 0.62
+- Amazon Bedrock AgentCore Runtime, Identity, Memory, Gateway, Observability, and Agent Registry; Microsoft Agent Framework and Foundry; OpenTelemetry; MCP; A2A; Playwright CLI; policy-as-code; CI/CD release gates
+Implementability score: 0.76
 
 ## Previous structured update
 
-The prior daily scan for 2026-05-31 focused on MCP Python SDK principal binding and session-scoped task authority: [2026-05-31 roundup](../roundups/2026-05-31.md).
+The prior daily scan for 2026-06-01 focused on organization-scoped runtime context and sandboxed AI-factory security: [2026-06-01 roundup](../roundups/2026-06-01.md).

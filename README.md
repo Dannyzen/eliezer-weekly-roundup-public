@@ -6,27 +6,26 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Daily scan, 2026-06-01: [roundup](roundups/2026-06-01.md)
-- AgenticAI daily analysis: [2026-06-01](AgenticAI/2026-06-01/reasoning.md)
-- Strategy daily analysis: [2026-06-01](Strategy/2026-06-01/sovereignty.md)
+- Daily scan, 2026-06-02: [roundup](roundups/2026-06-02.md)
+- AgenticAI daily analysis: [2026-06-02](AgenticAI/2026-06-02/reasoning.md)
+- Strategy daily analysis: [2026-06-02](Strategy/2026-06-02/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
-- Related durable topics: [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [Memory Systems](AgenticAI/memory-systems/memory-systems.md), [Agentic Search and Retrieval](AgenticAI/agentic-search/agentic-search.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md)
+- Related durable topics: [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [Trajectory-Aware Evaluation](AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md)
 - Prior Friday synthesis: [week ending 2026-05-29](roundups/2026-05-29.md)
 - Prior Friday synthesis: [week ending 2026-05-22](roundups/2026-05-22.md)
 - Prior Friday synthesis: [week ending 2026-05-15](roundups/2026-05-15.md)
 
 ## Current thesis
 
-The agent stack is becoming a governed runtime discipline. The useful question is no longer “can the model act?” It is “which capability artifact, memory state, retrieval oracle, sandbox boundary, organization context, and trace evidence proves this run behaved?”
+The agent stack is becoming a lifecycle-governed runtime discipline. The useful question is no longer “can the model act?” It is “which skill state, tool-observation policy, transfer evidence, process trace, runtime artifact, and release gate proves this run behaved?”
 
-The 2026-06-01 scan adds five implementation patterns:
+The 2026-06-02 scan adds four implementation patterns:
 
-- Skills should be treated as governed capability packages with provenance, scanning, signing, cards, validation status, and loaded-hash traces.
-- Long-term memory evals should use heterogeneous, evolving source streams rather than static dialogue personas.
-- Retrieval and memory systems need deterministic relevance oracles plus controlled distractor pressure.
-- Regulated agents need typed organization/security context enforced across retrieval, tools, memory, findings, reports, approvals, and audit.
-- Privileged agents should run inside sandboxed, routed, network-constrained runtime infrastructure rather than relying on prompt-only governance.
+- Skills need lifecycle security: immutable execution state, loaded hashes, reviewed patch paths, and self-mutation tests.
+- Speculative tool dispatch needs issue-time privacy policy because external observation happens before commit.
+- Continual and long-horizon evals need controlled transfer streams plus process scoring, not only final-answer grading.
+- Production agents should be released as versioned runtime artifacts: agents, tools, memory configs, identity, evals, traces, policies, and CI/CD gates.
 
 ## Browse by category
 

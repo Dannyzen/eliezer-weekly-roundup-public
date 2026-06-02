@@ -1,6 +1,6 @@
 # Agent Gateway Governance
 
-Last updated: 2026-06-01
+Last updated: 2026-06-02
 
 Agent gateway governance is the control-plane discipline for exposing enterprise tools, data, and workflows to autonomous agents.
 
@@ -365,3 +365,19 @@ Practical lesson:
 
 Source:
 - [An Organization-Scoped LLM Agent Runtime Architecture for Regulated Cybersecurity Operations](https://arxiv.org/abs/2605.30604)
+
+## June 2 update: speculative tool calls need issue-time privacy contracts
+
+Ghost Tool Calls names the privacy failure in latency-optimized agents. A tool-using agent can speculatively issue future tool calls before it commits to a branch. If the branch is abandoned, the external service still observed the request and can infer user intent. Read-only restrictions and allow-lists do not solve this because the leak is observation before commitment, not mutation after commitment.
+
+The gateway correction is to treat external observation as an effect. Speculative planning can happen locally, but speculative dispatch to an external service needs issue-time policy: suppress the call, change the destination, or project/redact the arguments before the observer sees them.
+
+Practical lesson:
+- separate local speculation from external speculative dispatch;
+- classify observation, mutation, and disclosure as distinct effects;
+- require issue-time policy before any precommit external tool call;
+- project or redact speculative arguments by data class and destination;
+- log branch state, speculative calls, suppressed calls, argument projection, observer, and final commit path.
+
+Source:
+- [Ghost Tool Calls](https://arxiv.org/abs/2606.02483v1)

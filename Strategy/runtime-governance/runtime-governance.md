@@ -414,6 +414,24 @@ Sources:
 - [Enterprise Software Leaders Build AI Agents With NVIDIA](https://nvidianews.nvidia.com/news/enterprise-software-leaders-build-ai-agents-with-nvidia)
 - [NVIDIA DOCA in-silicon security for agentic AI](https://developer.nvidia.com/blog/advancing-ai-infrastructure-for-agentic-ai-with-nvidia-doca-in-silicon-security/)
 
+## June 2 update: AgentOps makes agent artifacts deployable infrastructure
+
+AWS's AgentOps reference architecture turns production agent work into a release-engineering problem. It names four pillars — governance and security, build and operations, evaluation, and observability — and makes the deployable unit broader than a prompt: every agent, tool, and memory configuration should be versioned and tested through a pipeline. The operational telemetry includes decision traces, tool invocation patterns, latency, errors, memory usage, and cost per interaction.
+
+Microsoft's Build 2026 Agent Framework page points at the same runtime direction through hosted agents, triggers, state management, file access, governance patterns, evals, OpenTelemetry instrumentation, MCP, skills, Playwright CLI, Responses API, and A2A. IBM's agent-logic article adds the enterprise design rule: policy-as-code, knowledge graphs, program analysis, and workflow-specific logic should bound model behavior instead of pushing every constraint into context.
+
+Practical lesson:
+- version agent definitions, prompts, tool manifests, memory configuration, policies, and eval fixtures together;
+- run pre-prod tests for identity propagation, tool authorization, memory access, HITL gates, rollback, and agent-specific quality;
+- register agents, tools, skills, MCP servers, and ownership metadata in an internal catalog;
+- emit trace fields for decisions, tool calls, denied calls, memory use, cost, latency, errors, and final outcomes;
+- feed production telemetry and eval failures back into release gates instead of treating them as dashboard-only data.
+
+Sources:
+- [AWS AgentOps with Amazon Bedrock AgentCore](https://aws.amazon.com/blogs/machine-learning/agentops-operationalize-agentic-ai-at-scale-with-amazon-bedrock-agentcore/)
+- [Microsoft Agent Framework at BUILD 2026](https://devblogs.microsoft.com/agent-framework/microsoft-agent-framework-at-build-2026/)
+- [IBM agent logic and scalable AI adoption](https://huggingface.co/blog/ibm-research/agent-logic-and-scalable-ai-adoption)
+
 ## Working conclusion
 
 Runtime governance is not a niche enterprise concern. It is the natural consequence of giving agents durable memory, tool access, repository permissions, CI/CD authority, local storage, plugins, delegated secrets, shared inference infrastructure, and sandboxed execution environments. The control plane has to move into runtime: inventory the agents, bind identity and scope, manage execution environments, preserve trace evidence, enforce valid next transitions before privileged tools execute, calibrate trust from outcomes, test trajectory-level guardrails offline, record serving conditions for replayability, constrain network and inference routes, and keep tainted inputs from silently becoming trusted agent instructions or script data.

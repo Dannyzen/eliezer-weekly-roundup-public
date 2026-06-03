@@ -4,6 +4,22 @@
 
 The strategic signal is that MCP is becoming the agent data plane, not a convenience connector. Google’s GCS MCP server and AWS’s AgentCore Gateway posts show the same production requirement: data access, tool exposure, user identity, credential management, observability, and exfiltration control need to live in a gateway-owned runtime boundary.
 
+## Deep Dive Wednesday selection gateway-owned delegation and storage policy
+
+Winner: the gateway is becoming the identity-bound MCP data plane.
+
+This won the week because it connects the strongest signals across the last seven days: Tool Forge's validation-carrying tool admission, NSA's MCP security guidance, MCP Python SDK principal/session binding, Ghost Tool Calls' observation-before-commit problem, Google's GCS MCP server, AWS AgentCore Gateway's OAuth and policy layer, and the compositional-authorization paper's delegation/scope vocabulary.
+
+Deep dive: [Agent Gateway Governance](../agent-gateway-governance/agent-gateway-governance.md#deep-dive-wednesday-2026-06-03-gateway-as-identity-bound-mcp-data-plane)
+
+Why it beat the alternatives:
+- SkillGuard is crucial, but skill permissions eventually have to terminate in gateway-owned tool and data policy.
+- DMF is useful, but memory retention becomes strategically dangerous when memory stores and object stores become agent-callable.
+- SPOQ is practical for coding-agent orchestration, but dependency queues still need a governed tool/data boundary.
+- Gateway governance spans all of them: skills, memory, subagents, storage, SaaS, admin tools, and external observers.
+
+Implementability score: 0.76
+
 ## MCP data access is becoming identity-bound gateway infrastructure
 
 Google’s GCS MCP server post is a practical marker: object storage is becoming an agent-addressable tool surface. That is high leverage because cloud storage often holds documents, logs, media, datasets, reports, and unstructured operational evidence. It is also high risk because the object store is usually a broad data lake, not a narrow application API.
@@ -25,7 +41,7 @@ Implementable now:
 Tools, repos, and methodologies worth exploring:
 - Google Cloud Storage MCP server, Amazon Bedrock AgentCore Gateway, OAuth/OIDC auth code flow, PKCE, OPA/Cedar, OpenTelemetry, DLP labels, per-tool RBAC, canary/taint tests for data flow, MCP client capability inventory.
 
-Implementability score: 0.74
+Implementability score: 0.76
 
 Core sources:
 - Build AI agents faster with GCS MCP server: https://cloud.google.com/blog/topics/developers-practitioners/build-ai-agents-faster-with-gcs-google-cloud-storage-mcp-server/

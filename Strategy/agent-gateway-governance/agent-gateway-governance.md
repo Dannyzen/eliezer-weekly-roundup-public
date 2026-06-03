@@ -8,11 +8,16 @@ The gateway should not be a thin MCP proxy. It should be the place where identit
 
 ## Why this topic now
 
-Two current signals converge:
-- *From CRUD to Autonomous Agents* proposes a formally validated, zero-trust Semantic Gateway governed by MCP.
-- Jarvis Registry shows a practical open-source product shape for MCP/A2A gatewaying with identity, access control, discovery, audit, tracing, and metrics.
+The June 3 signal is stronger than the original gateway thesis. Google made object storage directly agent-addressable through the GCS MCP server. AWS framed AgentCore Gateway as the production control point for MCP servers. NSA's MCP guidance made the security case explicit. A same-day authorization paper supplied the formal vocabulary: recursive delegation, contextual scope, and capability attenuation.
+
+Older sources still matter: *From CRUD to Autonomous Agents* proposed a zero-trust Semantic Gateway governed by MCP, and Jarvis Registry showed a practical open-source product shape for MCP/A2A gatewaying with identity, access control, discovery, audit, tracing, and metrics.
 
 Core sources:
+- GCS MCP server: https://cloud.google.com/blog/topics/developers-practitioners/build-ai-agents-faster-with-gcs-google-cloud-storage-mcp-server/
+- AgentCore Gateway MCP support: https://aws.amazon.com/blogs/machine-learning/extending-mcp-support-for-amazon-bedrock-agentcore-gateway-2/
+- AgentCore Gateway auth code flow: https://aws.amazon.com/blogs/machine-learning/building-a-secure-auth-code-flow-setup-using-agentcore-gateway-with-mcp-clients/
+- Overlaying Governance: https://arxiv.org/abs/2606.03518
+- NSA MCP security release: https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/Article/4496698/nsa-releases-security-design-considerations-for-ai-driven-automation-leveraging/
 - Semantic Gateway paper: https://arxiv.org/abs/2604.25555v1
 - Jarvis Registry: https://github.com/ascending-llc/jarvis-registry
 
@@ -27,6 +32,81 @@ That means:
 - high-risk transitions require signed approval;
 - trajectories can be fuzzed against unauthorized-state goals;
 - traces record what was enabled, selected, denied, approved, and executed.
+
+## Deep Dive Wednesday 2026-06-03 gateway as identity-bound MCP data plane
+
+### Overview
+
+The strongest finding from the 2026-05-28 to 2026-06-03 window is that the agent gateway is becoming the identity-bound MCP data plane. Google made object storage agent-addressable through a GCS MCP server. AWS framed AgentCore Gateway as the centralized control point for production MCP servers: fine-grained access control, credential custody, observability, exfiltration controls, private connectivity, policy interceptors, and user-bound OAuth flows. NSA's MCP guidance and the new compositional-authorization paper explain why this has to be treated as infrastructure, not connector glue.
+
+This beat SkillGuard, DMF, SPOQ, and the other good AgenticAI findings because it sits at the blast-radius boundary. Skills, memory, subagents, and coding workflows eventually ask for tools, storage, SaaS, or admin systems. The gateway is where those requests become real effects.
+
+### Core innovation
+
+The important shift is from "the agent can call this tool" to "this principal, acting through this agent and session, may exercise this attenuated capability over this data boundary for this workflow, with this trace evidence."
+
+That requires four primitives:
+
+1. Principal binding: user, agent, client, server, session, task, and delegated authority are runtime fields, not prose in a system prompt.
+2. Capability attenuation: authority narrows as it moves through tools, storage prefixes, generated artifacts, summaries, subagents, and delegated tasks.
+3. Gateway-owned mediation: discovery, credentials, policy, interceptors, approvals, data projection, and exfiltration checks happen before the tool or storage system observes the full request.
+4. Replayable evidence: traces record selected tools, denied tools, object paths, argument projections, auth claims, policy IDs, approval artifacts, and final effects.
+
+### Why it matters
+
+MCP is crossing from developer convenience into enterprise data-plane infrastructure. Object storage is often the memory lake, document archive, dataset staging area, log store, and report warehouse. Browser-security MCP servers, GitHub MCP tools, cloud-agent configuration APIs, and object-storage MCP servers are not low-risk integrations. They are authority surfaces.
+
+If agents get broad storage, admin, or SaaS tools without gateway policy, the failure mode is not just a bad answer. It is data exposure, permission laundering, unreviewed policy mutation, credential sprawl, invisible external observation, or cross-session authority confusion.
+
+### How it fits into the strategic layer
+
+This belongs primarily in Strategy because the architectural decision is about sovereignty and operating model: who owns the boundary between agent intent and enterprise systems.
+
+For Danny's worldview, the pattern is clear: serious agent products should not compete on "more MCP servers" alone. They should compete on governed MCP surfaces: scoped discovery, identity propagation, delegated authority, storage/data policies, trace evidence, and red-team fixtures that prove forbidden data flows stay forbidden.
+
+### Practical tools, repos, and methodologies worth trying now
+
+- Amazon Bedrock AgentCore Gateway for centralized MCP routing, dynamic listing, OAuth flows, Lambda interceptors, AgentCore Policy, private connectivity, and observability.
+- Google Cloud Storage MCP server for testing object-store agents with IAM-backed access and Cloud Logging audit trails.
+- OAuth/OIDC with PKCE, subject/claim propagation, and user-bound transport sessions.
+- OpenFGA/Zanzibar-style relationship authorization for delegation chains and scoped resource graphs.
+- OPA or Cedar for deterministic policy checks over tool, data, workflow, and approval fields.
+- OpenTelemetry spans for gateway events: discovered tools, selected tools, denied tools, object paths, argument projection, auth claims, policy ID, approval artifact, and final effect.
+- Canary and taint tests for permission laundering: read sensitive object, summarize/transform, then attempt an external send or cross-bucket write.
+- MCP client capability inventory and remote-MCP auth scans before admitting third-party servers.
+
+### Implementation complexity
+
+The basic version is implementable now: put MCP servers behind a gateway, bind requests to identity, scope tools by workflow/data class, and log decisions.
+
+The harder version needs real architecture: attenuating authority across transformations, propagating data-class labels through summaries, preventing speculative external observation, supporting recursive delegation, and testing policy with adversarial multi-tool trajectories.
+
+### Implementability score
+
+0.76
+
+This is not a one-weekend script, but it is not speculative. The components exist. The hard work is integration discipline: policy schemas, identity propagation, gateway event models, test fixtures, and operator workflows.
+
+### Strategic implications
+
+- The winning agent platform is likely a governed data plane, not a chat UI with a large tool list.
+- MCP registries and skill catalogs need admission control, not just discovery UX.
+- Storage access is the new memory boundary. If object stores become agent-addressable, retention, provenance, data classification, and exfiltration policy have to move into the same runtime trace.
+- Vendor gateways are becoming strategically important because they own credentials, telemetry, policy, and private connectivity. Local-first systems need a comparable control plane if they want sovereignty instead of cloud lock-in.
+- Agentic products should sell replayable evidence: what the agent could see, what it could call, what it was denied, what data it touched, and why the final effect was allowed.
+
+### Core source links
+
+- Build AI agents faster with GCS MCP server: https://cloud.google.com/blog/topics/developers-practitioners/build-ai-agents-faster-with-gcs-google-cloud-storage-mcp-server/
+- Extending MCP support for Amazon Bedrock AgentCore Gateway: https://aws.amazon.com/blogs/machine-learning/extending-mcp-support-for-amazon-bedrock-agentcore-gateway-2/
+- Building a secure auth code flow setup using AgentCore Gateway with MCP clients: https://aws.amazon.com/blogs/machine-learning/building-a-secure-auth-code-flow-setup-using-agentcore-gateway-with-mcp-clients/
+- NSA MCP security design considerations release: https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/Article/4496698/nsa-releases-security-design-considerations-for-ai-driven-automation-leveraging/
+- Overlaying Governance: A Compositional Authorization Framework for Delegation and Scope in Agentic AI: https://arxiv.org/abs/2606.03518
+- MCP Python SDK v1.27.2 release: https://github.com/modelcontextprotocol/python-sdk/releases/tag/v1.27.2
+
+### What remains conceptual
+
+The compositional-authorization paper gives the right language for recursive delegation and scope attenuation, but the referenced implementation repository did not resolve during verification. Treat it as a formal design direction, not a drop-in library. The deployable path today is still gateway engineering with existing IAM, OAuth/OIDC, policy-as-code, relationship authorization, logs, and adversarial fixtures.
 
 ## Control layers
 

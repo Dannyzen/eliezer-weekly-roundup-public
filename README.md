@@ -6,6 +6,7 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
+- Deep Dive Wednesday, 2026-06-03: [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md#deep-dive-wednesday-2026-06-03-gateway-as-identity-bound-mcp-data-plane)
 - Daily scan, 2026-06-03: [roundup](roundups/2026-06-03.md)
 - AgenticAI daily analysis: [2026-06-03](AgenticAI/2026-06-03/reasoning.md)
 - Strategy daily analysis: [2026-06-03](Strategy/2026-06-03/sovereignty.md)
@@ -19,6 +20,8 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 ## Current thesis
 
 The agent stack is becoming a permissioned runtime-state discipline. The useful question is no longer “can the model use more context?” It is “which skill, memory, subagent, gateway session, identity, and validation artifact had authority to influence this run?”
+
+The 2026-06-03 deep dive picks the strongest weekly pattern: the gateway is becoming the identity-bound MCP data plane. Storage, SaaS, GitHub, browser-security administration, skills, memory, and subagents all become real effects at the gateway boundary.
 
 The 2026-06-03 scan adds four implementation patterns:
 

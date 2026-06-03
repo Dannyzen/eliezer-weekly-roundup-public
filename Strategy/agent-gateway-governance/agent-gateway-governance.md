@@ -1,6 +1,6 @@
 # Agent Gateway Governance
 
-Last updated: 2026-06-02
+Last updated: 2026-06-03
 
 Agent gateway governance is the control-plane discipline for exposing enterprise tools, data, and workflows to autonomous agents.
 
@@ -381,3 +381,21 @@ Practical lesson:
 
 Source:
 - [Ghost Tool Calls](https://arxiv.org/abs/2606.02483v1)
+
+## June 3 update: object storage MCP makes the gateway a data-plane boundary
+
+Google’s GCS MCP server shows that object storage is becoming directly agent-addressable. AWS’s AgentCore Gateway MCP posts show the necessary control envelope: user-bound authorization, fine-grained access control, centralized credentials, observability, and exfiltration controls. Together they move MCP from tool convenience into enterprise data-plane infrastructure.
+
+The gateway lesson is direct. A bucket, prefix, or enterprise storage namespace is not a harmless tool. It is often the memory lake, document archive, logs store, dataset staging area, and report warehouse. An agent should not receive broad storage tools because a prompt says it is helpful. It should receive scoped capabilities bound to user identity, workflow purpose, data class, and audit policy.
+
+Practical lesson:
+- put object-storage MCP servers behind gateway-owned identity and policy;
+- bind requests to user, agent, client, server, session, workflow, and delegated authority;
+- scope storage tools by bucket, prefix, data class, action type, and retention tier;
+- log object path, selected tool, denied tool, argument projection, auth claims, approval artifact, and final effect;
+- test overbroad prefix access, export exfiltration, permission laundering, weak OAuth registration, and missing audit fields.
+
+Sources:
+- [GCS MCP server](https://cloud.google.com/blog/topics/developers-practitioners/build-ai-agents-faster-with-gcs-google-cloud-storage-mcp-server/)
+- [AgentCore Gateway auth code flow](https://aws.amazon.com/blogs/machine-learning/building-a-secure-auth-code-flow-setup-using-agentcore-gateway-with-mcp-clients/)
+- [AgentCore Gateway MCP support](https://aws.amazon.com/blogs/machine-learning/extending-mcp-support-for-amazon-bedrock-agentcore-gateway-2/)

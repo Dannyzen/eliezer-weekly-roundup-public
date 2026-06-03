@@ -1,6 +1,6 @@
 # Skills as Control
 
-Last updated: 2026-06-02
+Last updated: 2026-06-03
 
 Core sources:
 - From Research Question to Scientific Workflow: Leveraging Agentic AI for Science Automation: https://arxiv.org/abs/2604.21910v1
@@ -31,6 +31,7 @@ Core sources:
 - NVIDIA-Verified Agent Skills: https://developer.nvidia.com/blog/nvidia-verified-agent-skills-provide-capability-governance-for-ai-agents/
 - NVIDIA physical-AI skills release: https://nvidianews.nvidia.com/news/nvidia-releases-major-collection-of-open-source-agent-tools-and-skills-for-physical-ai
 - SkillHarm: https://arxiv.org/abs/2606.02540v1
+- SkillGuard: https://arxiv.org/abs/2606.03024v1
 
 ## Thesis
 
@@ -349,4 +350,20 @@ Practical lesson:
 
 Source:
 - [SkillHarm](https://arxiv.org/abs/2606.02540v1)
+
+## June 3 update: skill permissions need context and side-effect planes
+
+SkillGuard supplies the runtime-policy primitive that SkillHarm implies. A skill should declare not only what it is for, but what context it may inject and what side effects it may induce. Those are separate planes. Context influence can steer the model toward a tool path even when the skill never calls a tool directly; action side effects are the concrete file, network, memory, tool, or external-observation consequences of that influence.
+
+The implementation correction is to bind runtime authority to the skill artifact itself. The trace should know which skill body and manifest were loaded, which sections influenced the plan, which tool calls or writes followed, and whether those effects stayed inside declared scope. A generic tool allow-list is too blunt; it says a tool is callable, not that this skill had authority to cause this call for this task.
+
+Practical lesson:
+- require skill manifests for context influence, tool scope, file scope, network scope, memory-write scope, and approval points;
+- bind side effects to the skill that influenced them, not only to the final agent message;
+- enforce deny-by-default behavior when runtime actions exceed the skill manifest;
+- test context-to-action escalation with adversarial skills that never explicitly ask for a forbidden call;
+- record skill manifest hash, body hash, authorization decision, and side-effect evidence in the run trace.
+
+Source:
+- [SkillGuard](https://arxiv.org/abs/2606.03024v1)
 

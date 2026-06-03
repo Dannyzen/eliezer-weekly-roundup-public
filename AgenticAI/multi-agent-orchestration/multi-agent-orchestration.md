@@ -1,6 +1,6 @@
 # Multi-Agent Orchestration
 
-Last updated: 2026-05-30
+Last updated: 2026-06-03
 
 Multi-agent orchestration is the control layer for deciding when multiple agents should collaborate, which evidence should move between them, and when communication costs exceed the expected benefit.
 
@@ -68,14 +68,31 @@ Practical lesson:
 Source:
 - [Locally Coherent, Globally Incoherent](https://arxiv.org/abs/2605.30335v1)
 
+## June 3 update: coding-agent teams need dependency waves and validation gates
+
+SPOQ adds a production-shaped pattern to multi-agent software engineering. The key abstraction is not a chat room. It is a task dependency graph with wave-based dispatch, planning validation before work starts, code validation before merge, and human specialists represented as first-class nodes for decomposition, escalation, and acceptance.
+
+This extends the existing confidence-gated topology thesis. Independent first passes and communication budgets still matter, but coding work also has hard ordering constraints. A reviewer agent cannot validate a patch that should not have been started because its prerequisite interface did not exist. A worker agent should not receive the entire issue stream if its next valid task is a small dependency-ready node.
+
+Practical lesson:
+- decompose work into typed tasks with dependency edges and readiness conditions;
+- dispatch only the current execution wave instead of broadcasting all context to all agents;
+- require planning validation before execution and artifact validation before merge;
+- assign human-as-agent nodes for decomposition, escalation, acceptance, or domain judgment;
+- log wave, dependency, validator, reviewer, retry, and merge-gate events as orchestration evidence.
+
+Source:
+- [SPOQ](https://arxiv.org/abs/2606.03115v1)
+
 ## Implementability score
 
-0.60
+0.64
 
-The first version is implementable with ordinary engineering: independent first passes, confidence fields, clustering, budget rules, claim schemas, cheap coherence checks, and trace logging. Full dynamic topology repair, formal projection repair, and reliable self-evolution need deeper architecture and careful benchmark design.
+The first version is implementable with ordinary engineering: independent first passes, confidence fields, dependency DAGs, execution waves, planning gates, artifact validators, clustering, budget rules, claim schemas, cheap coherence checks, and trace logging. Full dynamic topology repair, formal projection repair, and reliable self-evolution need deeper architecture and careful benchmark design.
 
 ## Core sources
 
 - CONCAT: Consensus- and Confidence-Driven Ad Hoc Teaming for Efficient LLM-Based Multi-Agent Systems: https://arxiv.org/abs/2605.29612
 - DynaGraph: Lightweight Multi-Model Interaction Framework via Dynamic Topological Reconfiguration: https://arxiv.org/abs/2605.29511
 - Evolve as a Team: Collaborative Self-Evolution for LLM-based Multi-Agent Systems: https://arxiv.org/abs/2605.29790
+- SPOQ: Specialist Orchestrated Queuing for Multi-Agent Software Engineering: https://arxiv.org/abs/2606.03115v1

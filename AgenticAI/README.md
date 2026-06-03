@@ -2,53 +2,53 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: 2026-06-02 Daily Scan
+## Most Recent Structured Update: 2026-06-03 Daily Scan
 
-### SkillHarm makes skill security lifecycle-aware
-Summary: SkillHarm shows that third-party skills can be attacked across installation, retrieval, execution, mutation, and reuse. The dangerous case is self-mutating poisoning: a benign-looking first run silently changes persistent skill content and defers harm to later tasks.
+### SkillGuard turns skills into permission-bearing runtime artifacts
+Summary: SkillGuard adds the missing runtime-control layer for agent skills: context influence and action side effects should both be governed by a skill-specific manifest, authorization policy, and trace evidence.
 
-Analysis: [daily reasoning analysis](2026-06-02/reasoning.md#skillharm-makes-skill-security-lifecycle-aware)
+Analysis: [daily reasoning analysis](2026-06-03/reasoning.md#skillguard-turns-skills-into-permission-bearing-runtime-artifacts)
 Durable topic: [Skills as Control](skills-as-control/skills-as-control.md)
-Core source: [SkillHarm](https://arxiv.org/abs/2606.02540v1)
+Core source: [SkillGuard](https://arxiv.org/abs/2606.03024v1)
 Implementable now:
-- make production-admitted skills immutable during execution;
-- record skill source, version, body hash, manifest hash, and verification level;
-- block skill self-modification outside reviewed patch paths;
-- add lifecycle tests for install, retrieval, execution, update, reuse, quarantine, and rollback.
+- add skill manifests with context, tool, file, network, memory-write, and approval scopes;
+- record loaded body and manifest hashes;
+- bind tool calls, file writes, memory writes, and external observations to the skill that influenced them;
+- deny runtime behavior that exceeds declared skill authority.
 Tools, repos, and methodologies worth exploring:
-- signed skill manifests, skill cards, semantic fuzzing, static risk scanners, file integrity checks, OPA/Cedar, OpenTelemetry trace fields, adversarial skill fixtures
-Implementability score: 0.82
+- skill manifests, signed skill cards, OPA/Cedar, capability labels, OpenTelemetry trace fields, static skill scanners, semantic fuzzing, deny-by-default monitors
+Implementability score: 0.78
 
-### Continual learning eval needs controlled transfer streams
-Summary: AGENTCL argues that lifelong-agent evaluation should construct streams where earlier sub-solutions, evidence, or workflows are intentionally reusable later, then measure transfer gain and interference instead of rewarding raw memory stuffing.
+### Deterministic memory should make pruning decisions auditable
+Summary: DMF argues that memory admission, retention, decay, and pruning should be deterministic, CPU-first, and replayable instead of hidden inside write-time LLM summarization.
 
-Analysis: [daily reasoning analysis](2026-06-02/reasoning.md#continual-learning-eval-has-to-separate-transfer-from-memory-stuffing)
-Durable topic: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
-Core source: [AGENTCL](https://arxiv.org/abs/2606.02461v1)
+Analysis: [daily reasoning analysis](2026-06-03/reasoning.md#deterministic-memory-should-make-pruning-decisions-auditable)
+Durable topic: [Memory Systems](memory-systems/memory-systems.md)
+Core source: [DMF](https://arxiv.org/abs/2606.03463v1)
 Implementable now:
-- create compositional task streams with known reusable pieces;
-- run no-memory, raw-retrieval, summarized-memory, and promoted-skill baselines;
-- score forward transfer, negative transfer, forgetting, retrieval precision, and cost;
-- log which prior episode or workflow influenced later tasks.
+- preserve raw episodes and treat summaries as derived artifacts;
+- compute deterministic retention scores from source, salience, recency, role, entity, action, and outcome signals;
+- attach score components and provenance to each memory;
+- make decay, pruning, and supersession replayable from stored events.
 Tools, repos, and methodologies worth exploring:
-- compositional task streams, non-parametric memory ablations, transfer-gain metrics, trajectory replay, held-out transfer fixtures, skill promotion gates
-Implementability score: 0.70
+- SQLite/Postgres event logs, pgvector/local embedding stores, deterministic feature extractors, temporal decay, provenance IDs, memory replay tests, belief-state fixtures
+Implementability score: 0.80
 
-### Interactive agent evals must score process separately from outcome
-Summary: ClinEnv builds staged inpatient simulations where models query specialist agents before committing to decisions. Its useful general lesson is that process quality and outcome quality can decouple; final-answer scoring hides redundant evidence gathering, poor sequencing, and weak late-stage management.
+### SPOQ makes multi-agent coding orchestration look like dependency queues, not chat
+Summary: SPOQ uses dependency-wave dispatch, planning validation, code validation, human-as-agent participation, and tiered model roles. AgentLens reinforces the eval side: passing tests can still hide low-quality lucky-pass trajectories.
 
-Analysis: [daily reasoning analysis](2026-06-02/reasoning.md#clinenv-shows-process-quality-and-outcome-quality-decouple-in-interactive-agent-benchmarks)
-Durable topic: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
-Core source: [ClinEnv](https://arxiv.org/abs/2606.02568v1)
+Analysis: [daily reasoning analysis](2026-06-03/reasoning.md#spoq-makes-multi-agent-coding-orchestration-look-like-dependency-queues-not-chat)
+Durable topic: [Multi-Agent Orchestration](multi-agent-orchestration/multi-agent-orchestration.md)
+Core sources: [SPOQ](https://arxiv.org/abs/2606.03115v1), [AgentLens](https://arxiv.org/abs/2605.12925v3)
 Implementable now:
-- build staged task environments with evidence-gathering checkpoints;
-- label irreversible commitments and late-stage management actions;
-- require evidence-query logs before final decisions;
-- score redundant queries, missing evidence, bad sequencing, and unsupported commitments.
+- decompose coding work into typed tasks with dependency edges;
+- dispatch only ready execution waves;
+- add planning validation before work and artifact validation before merge;
+- label process defects such as blind retry, missing verification, wasted exploration, and validation bypass.
 Tools, repos, and methodologies worth exploring:
-- staged simulation harnesses, ontology-grounded matchers, specialist subagent mocks, trace-level process scoring, irreversible-decision labels, evidence-query budgets
-Implementability score: 0.53
+- LangGraph, Temporal, issue DAGs, typed task contracts, Pydantic task/result schemas, reviewer agents, OpenTelemetry spans, process-defect labels
+Implementability score: 0.66
 
 ## Previous structured update
 
-The prior daily scan for 2026-06-01 focused on verified skills, heterogeneous evolving memory evals, and deterministic retrieval oracles: [2026-06-01 roundup](../roundups/2026-06-01.md).
+The prior daily scan for 2026-06-02 focused on skill lifecycle attacks, controlled transfer eval, and process/outcome separation: [2026-06-02 roundup](../roundups/2026-06-02.md).

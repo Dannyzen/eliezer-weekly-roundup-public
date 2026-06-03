@@ -28,6 +28,7 @@ Core sources:
 - Experience Compression Spectrum: https://arxiv.org/abs/2604.15877
 - StructMem: https://arxiv.org/abs/2604.21748
 - LightMem: https://github.com/zjunlp/LightMem
+- DMF: https://arxiv.org/abs/2606.03463v1
 
 ## Core thesis
 
@@ -507,6 +508,22 @@ Practical lesson:
 Source:
 - [RHELM: Beyond Static Dialogues](https://arxiv.org/abs/2605.31086)
 
+## June 3 update: deterministic retention beats hidden write-time summarization
+
+DMF adds a concrete systems pattern to the memory topic: treat retention, decay, and pruning as deterministic calculations over evidence and provenance before asking an LLM to summarize anything. The exact Survival Score formula is less important than the architectural boundary. A memory system should be able to replay why a fact, episode, or interaction survived, decayed, or disappeared.
+
+This complements recent warnings about faulty consolidation. LLM-written memory can still be useful, but it should be derived from raw evidence and guarded by reproducible scoring, not trusted as the only record. Deterministic scoring also makes local-first memory more practical because CPU-side feature extraction and simple vector geometry can run continuously without turning every write decision into another expensive model call.
+
+Practical lesson:
+- preserve raw episodes as append-only evidence;
+- compute retention from deterministic content, provenance, salience, recency, role, entity, action, and outcome features;
+- store score components, decay state, source span, and supersession links with each memory object;
+- replay pruning and decay decisions during audits or regression tests;
+- compare deterministic retention against LLM summaries and vector-only recall on the same long-horizon fixtures.
+
+Source:
+- [DMF](https://arxiv.org/abs/2606.03463v1)
+
 ## Working conclusion
 
-The next generation of agents will be differentiated less by how eloquently they speak and more by how faithfully and safely they remember. The winning systems will preserve evidence, route memory writes explicitly, retrieve context adaptively, abstain when memory is unsafe, validate high-value writes, query local graphs when code structure matters, promote only the right lessons into durable guidance, attach enough context for updates and temporal reasoning, choose abstraction levels that transfer across tasks, keep the most sensitive memory close to the user and under policy control, run durable memory through a governed database-backed state core, separate evaluation memory from user-facing memory, measure whether memories remain usable under scale, budgets, and writeback review, expose operation-level provenance, test belief-state stay/update/isolate decisions, and evaluate memory against heterogeneous evolving source streams so failures can be traced instead of guessed.
+The next generation of agents will be differentiated less by how eloquently they speak and more by how faithfully and safely they remember. The winning systems will preserve evidence, route memory writes explicitly, retrieve context adaptively, abstain when memory is unsafe, validate high-value writes, make retention and pruning decisions replayable, query local graphs when code structure matters, promote only the right lessons into durable guidance, attach enough context for updates and temporal reasoning, choose abstraction levels that transfer across tasks, keep the most sensitive memory close to the user and under policy control, run durable memory through a governed database-backed state core, separate evaluation memory from user-facing memory, measure whether memories remain usable under scale, budgets, and writeback review, expose operation-level provenance, test belief-state stay/update/isolate decisions, and evaluate memory against heterogeneous evolving source streams so failures can be traced instead of guessed.

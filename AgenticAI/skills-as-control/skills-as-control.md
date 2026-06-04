@@ -367,3 +367,19 @@ Practical lesson:
 Source:
 - [SkillGuard](https://arxiv.org/abs/2606.03024v1)
 
+## June 4 update: web-agent skill retrieval should be state-grounded
+
+State-Grounded Dynamic Retrieval sharpens the skill-control thesis. For web agents, the initial user task is not enough information to safely load a reusable skill. The agent's actual state after navigation, login, filters, modals, route changes, and errors determines whether a skill is relevant and whether it is safe to apply.
+
+The control lesson is that retrieval is an admission decision. A skill should load only when current-state evidence matches its preconditions and the workflow has authority for the skill's side effects. This moves skill systems away from broad semantic matching and toward stateful load gates.
+
+Practical lesson:
+- index skill preconditions by DOM/page state, route, visible controls, auth state, and task class;
+- retrieve skills at checkpoints, not only at task start;
+- log the load/no-load decision with state evidence and expected side effects;
+- add negative tests where a skill matches the site or task but not the current state;
+- connect skill failure history to retrieval so stale or harmful skills lose eligibility.
+
+Sources:
+- [Online Skill Learning for Web Agents via State-Grounded Dynamic Retrieval](https://arxiv.org/abs/2606.04391)
+- [plusnli/skill-dynamic-retrieval](https://github.com/plusnli/skill-dynamic-retrieval)

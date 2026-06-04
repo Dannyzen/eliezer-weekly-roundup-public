@@ -432,6 +432,25 @@ Sources:
 - [Microsoft Agent Framework at BUILD 2026](https://devblogs.microsoft.com/agent-framework/microsoft-agent-framework-at-build-2026/)
 - [IBM agent logic and scalable AI adoption](https://huggingface.co/blog/ibm-research/agent-logic-and-scalable-ai-adoption)
 
+## June 4 update: budget and workflow controls are becoming runtime artifacts
+
+Token Budgets frames runaway agent spend as an authority failure, not merely a billing problem. AWS Step Functions adding an AgentCore reasoning step, Microsoft packaging hosted agents, and GitHub adding Copilot sandboxes point in the same direction from the platform side: agent work is being wrapped in workflow steps, sessions, sandboxes, budgets, and traceable runtime policy.
+
+The practical governance lesson is to represent these controls as first-class runtime artifacts. A budget should be delegated once and spent once. A workflow step should have input and output contracts. A sandbox should have filesystem, network, and credential boundaries. A hosted agent should have version, session state, owner, policy, and rollback metadata.
+
+Practical lesson:
+- create per-workflow, per-agent, per-step, per-tool, and per-subagent budget leases;
+- log requested, granted, spent, denied, expired, and refunded budget events;
+- wrap high-risk agent work in state-machine steps with explicit retry, timeout, approval, and failure policy;
+- run tool execution inside local or cloud sandboxes with filesystem, network, and credential controls;
+- trace hosted-agent version, session state, sandbox identity, tool calls, approvals, spend, and final effects together.
+
+Sources:
+- [Token Budgets](https://arxiv.org/abs/2606.04056)
+- [AWS Step Functions adds AgentCore-powered agentic reasoning step](https://aws.amazon.com/about-aws/whats-new/2026/06/aws-step-functions-agentcore/)
+- [Microsoft Agent Framework at BUILD 2026](https://devblogs.microsoft.com/agent-framework/microsoft-agent-framework-at-build-2026-announce/)
+- [Cloud and local sandboxes for GitHub Copilot](https://github.blog/changelog/2026-06-02-cloud-and-local-sandboxes-for-github-copilot-now-in-public-preview/)
+
 ## Working conclusion
 
 Runtime governance is not a niche enterprise concern. It is the natural consequence of giving agents durable memory, tool access, repository permissions, CI/CD authority, local storage, plugins, delegated secrets, shared inference infrastructure, and sandboxed execution environments. The control plane has to move into runtime: inventory the agents, bind identity and scope, manage execution environments, preserve trace evidence, enforce valid next transitions before privileged tools execute, calibrate trust from outcomes, test trajectory-level guardrails offline, record serving conditions for replayability, constrain network and inference routes, and keep tainted inputs from silently becoming trusted agent instructions or script data.

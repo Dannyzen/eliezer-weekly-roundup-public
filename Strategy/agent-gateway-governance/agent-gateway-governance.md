@@ -479,3 +479,19 @@ Sources:
 - [GCS MCP server](https://cloud.google.com/blog/topics/developers-practitioners/build-ai-agents-faster-with-gcs-google-cloud-storage-mcp-server/)
 - [AgentCore Gateway auth code flow](https://aws.amazon.com/blogs/machine-learning/building-a-secure-auth-code-flow-setup-using-agentcore-gateway-with-mcp-clients/)
 - [AgentCore Gateway MCP support](https://aws.amazon.com/blogs/machine-learning/extending-mcp-support-for-amazon-bedrock-agentcore-gateway-2/)
+
+## June 4 update: MCP descriptions need behavior consistency checks
+
+The description-code inconsistency paper names a core MCP governance problem: the LLM selects tools from natural-language descriptions, but the server implementation may do something different. That turns documentation mismatch into a security issue. A tool description is not a contract unless the gateway has evidence that behavior matches it.
+
+The practical gateway correction is to make server admission evidence-based. Tool descriptions, schemas, implementation source/version, side-effect class, data class, and dynamic probe results should be stored together. A gateway should deny or downgrade tools whose descriptions hide mutation, external observation, credential use, broad data access, or network effects.
+
+Practical lesson:
+- require MCP server manifests with owner, source, version, schemas, side effects, and data classes;
+- run description-code consistency tests before production admission;
+- compare natural-language descriptions against argument schemas, static behavior, dynamic canary probes, and observed effects;
+- record description, implementation version, policy decision, arguments, observed effect, and trace ID for each tool call;
+- quarantine third-party MCP servers until they pass consistency and provenance checks.
+
+Source:
+- [Description-Code Inconsistency in Real-world MCP Servers](https://arxiv.org/abs/2606.04769)

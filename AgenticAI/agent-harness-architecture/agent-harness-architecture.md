@@ -621,6 +621,24 @@ Sources:
 - [Build a test suite that grows with your agent with dataset management in Amazon Bedrock AgentCore](https://aws.amazon.com/blogs/machine-learning/build-a-test-suite-that-grows-with-your-agent-with-dataset-management-in-amazon-bedrock-agentcore/)
 - [Evaluating Deep Agents using LangSmith on AWS](https://aws.amazon.com/blogs/machine-learning/evaluating-deep-agents-using-langsmith-on-aws/)
 
+## June 4 update: long-horizon R&E agents need artifact-loop benchmarks
+
+AutoLab moves agent harness design toward the loop that real research and engineering agents must run: propose a change, edit an artifact, run experiments, measure outcomes, and keep improving. That is more useful than another one-shot answer benchmark because it exposes budget drift, bad stopping criteria, weak experiment design, fragile measurement, and artifact-state mistakes.
+
+The implementation lesson is to make the artifact loop explicit. A serious harness should preserve patch IDs, commands, metric deltas, failed attempts, wall-clock time, token spend, and stopping decisions. If a model improves the artifact but burns an unlimited loop to do it, that is not the same capability as an agent that improves it under bounded time, budget, and authority.
+
+Practical lesson:
+- build internal artifact-loop fixtures around repo tasks, benchmark tuning, and infra optimization;
+- require experiment plans, patch IDs, commands, result summaries, failed attempts, and stopping reasons;
+- score improvement per dollar, tool call, and wall-clock minute;
+- record loop budgets, allowed mutation scope, and evaluation versions in the trace;
+- treat public benchmark execution as a manual next step until running external code is explicitly approved.
+
+Sources:
+- [AutoLab](https://arxiv.org/abs/2606.05080)
+- [autolabhq/autolab](https://github.com/autolabhq/autolab)
+- [AutoLab project site](https://autolab.moe/)
+
 ## Working conclusion
 
 Agent harness architecture is becoming one of the clearest ways to tell whether a team is building a toy, a developer tool, or a real operating substrate. The winning systems will make context explicit, tool boundaries governable, restore paths safe, orchestration empirically justified and quality-gated, evidence easy to inspect, environment-specific falsification surfaces routine, real-session misalignment labels routine, proposal-soundness gates explicit, and production failures routinely promoted into versioned regression fixtures with trajectory and outcome graders.

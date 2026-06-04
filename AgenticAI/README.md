@@ -2,53 +2,50 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: 2026-06-03 Daily Scan
+## Most Recent Structured Update: 2026-06-04 Daily Scan
 
-### SkillGuard turns skills into permission-bearing runtime artifacts
-Summary: SkillGuard adds the missing runtime-control layer for agent skills: context influence and action side effects should both be governed by a skill-specific manifest, authorization policy, and trace evidence.
+### AutoLab moves agent evaluation into long-horizon research and engineering loops
+Summary: AutoLab evaluates iterative artifact improvement: propose changes, edit, run experiments, measure results, and continue. That is the right shape for research and engineering agents because single-answer benchmarks hide loop control, measurement, budget, and stopping failures.
 
-Analysis: [daily reasoning analysis](2026-06-03/reasoning.md#skillguard-turns-skills-into-permission-bearing-runtime-artifacts)
-Durable topic: [Skills as Control](skills-as-control/skills-as-control.md)
-Core source: [SkillGuard](https://arxiv.org/abs/2606.03024v1)
+Analysis: [daily reasoning analysis](2026-06-04/reasoning.md#autolab-moves-agent-evaluation-into-long-horizon-research-and-engineering-loops)
+Durable topic: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md#june-4-update-long-horizon-re-agents-need-artifact-loop-benchmarks)
+Core sources: [AutoLab paper](https://arxiv.org/abs/2606.05080), [AutoLab repository](https://github.com/autolabhq/autolab), [AutoLab project site](https://autolab.moe/)
 Implementable now:
-- add skill manifests with context, tool, file, network, memory-write, and approval scopes;
-- record loaded body and manifest hashes;
-- bind tool calls, file writes, memory writes, and external observations to the skill that influenced them;
-- deny runtime behavior that exceeds declared skill authority.
+- create small internal artifact-loop fixtures;
+- require experiment plans, patch IDs, commands, metric deltas, failed attempts, and stopping reasons;
+- score improvement per dollar, tool call, and wall-clock minute.
 Tools, repos, and methodologies worth exploring:
-- skill manifests, signed skill cards, OPA/Cedar, capability labels, OpenTelemetry trace fields, static skill scanners, semantic fuzzing, deny-by-default monitors
-Implementability score: 0.78
+- AutoLab benchmark design, LangGraph, Temporal, pytest/bench harnesses, OpenTelemetry spans, cost ledgers, artifact diffs
+Implementability score: 0.58
 
-### Deterministic memory should make pruning decisions auditable
-Summary: DMF argues that memory admission, retention, decay, and pruning should be deterministic, CPU-first, and replayable instead of hidden inside write-time LLM summarization.
+### Web-agent skill retrieval should be grounded in live page state
+Summary: State-Grounded Dynamic Retrieval retrieves reusable web-agent skills from the current webpage state rather than only the initial task. This is the practical load gate for browser agents whose state changes after navigation, login, UI branching, or errors.
 
-Analysis: [daily reasoning analysis](2026-06-03/reasoning.md#deterministic-memory-should-make-pruning-decisions-auditable)
-Durable topic: [Memory Systems](memory-systems/memory-systems.md)
-Core source: [DMF](https://arxiv.org/abs/2606.03463v1)
+Analysis: [daily reasoning analysis](2026-06-04/reasoning.md#state-grounded-dynamic-retrieval-makes-web-agent-skills-depend-on-the-live-page-not-only-the-task)
+Durable topic: [Skills as Control](skills-as-control/skills-as-control.md#june-4-update-web-agent-skill-retrieval-should-be-state-grounded)
+Core sources: [State-Grounded Dynamic Retrieval paper](https://arxiv.org/abs/2606.04391), [skill-dynamic-retrieval repository](https://github.com/plusnli/skill-dynamic-retrieval)
 Implementable now:
-- preserve raw episodes and treat summaries as derived artifacts;
-- compute deterministic retention scores from source, salience, recency, role, entity, action, and outcome signals;
-- attach score components and provenance to each memory;
-- make decay, pruning, and supersession replayable from stored events.
+- index skill preconditions by DOM/page state, route, visible controls, auth state, and task class;
+- retrieve skills at checkpoints, not only at task start;
+- log each load/no-load decision with matching evidence.
 Tools, repos, and methodologies worth exploring:
-- SQLite/Postgres event logs, pgvector/local embedding stores, deterministic feature extractors, temporal decay, provenance IDs, memory replay tests, belief-state fixtures
-Implementability score: 0.80
+- state fingerprints, DOM snapshots, Playwright traces, browser-agent skills, vector plus rule retrieval, skill failure ledgers
+Implementability score: 0.70
 
-### SPOQ makes multi-agent coding orchestration look like dependency queues, not chat
-Summary: SPOQ uses dependency-wave dispatch, planning validation, code validation, human-as-agent participation, and tiered model roles. AgentLens reinforces the eval side: passing tests can still hide low-quality lucky-pass trajectories.
+### Token budgets need single-spend resource authority
+Summary: Token Budgets frames runaway agent spend as a resource-authority failure. Budgets should be delegated once, spent once, expired explicitly, and visible in the same trace as tools, subagents, and retries.
 
-Analysis: [daily reasoning analysis](2026-06-03/reasoning.md#spoq-makes-multi-agent-coding-orchestration-look-like-dependency-queues-not-chat)
-Durable topic: [Multi-Agent Orchestration](multi-agent-orchestration/multi-agent-orchestration.md)
-Core sources: [SPOQ](https://arxiv.org/abs/2606.03115v1), [AgentLens](https://arxiv.org/abs/2605.12925v3)
+Analysis: [daily reasoning analysis](2026-06-04/reasoning.md#token-budgets-need-single-spend-resource-authority)
+Durable topic: [Runtime Governance](../Strategy/runtime-governance/runtime-governance.md#june-4-update-budget-and-workflow-controls-are-becoming-runtime-artifacts)
+Core sources: [Token Budgets paper](https://arxiv.org/abs/2606.04056), [token-budgets artifact repository](https://github.com/sajjadanwar0/token-budgets)
 Implementable now:
-- decompose coding work into typed tasks with dependency edges;
-- dispatch only ready execution waves;
-- add planning validation before work and artifact validation before merge;
-- label process defects such as blind retry, missing verification, wasted exploration, and validation bypass.
+- create per-run, per-step, per-tool, and per-subagent budget leases;
+- halt retry loops when child budgets are exhausted;
+- test retry storms, orphaned subagents, stale leases, and recursive delegation.
 Tools, repos, and methodologies worth exploring:
-- LangGraph, Temporal, issue DAGs, typed task contracts, Pydantic task/result schemas, reviewer agents, OpenTelemetry spans, process-defect labels
-Implementability score: 0.66
+- budget ledgers, affine/linear-resource design, LiteLLM spend controls, OpenTelemetry cost attributes, Temporal workflow limits
+Implementability score: 0.76
 
 ## Previous structured update
 
-The prior daily scan for 2026-06-02 focused on skill lifecycle attacks, controlled transfer eval, and process/outcome separation: [2026-06-02 roundup](../roundups/2026-06-02.md).
+The prior daily scan for 2026-06-03 focused on skill permission planes, deterministic memory pruning, multi-agent dependency queues, and MCP storage gateways: [2026-06-03 roundup](../roundups/2026-06-03.md).

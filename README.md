@@ -6,29 +6,27 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Deep Dive Wednesday, 2026-06-03: [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md#deep-dive-wednesday-2026-06-03-gateway-as-identity-bound-mcp-data-plane)
-- Daily scan, 2026-06-03: [roundup](roundups/2026-06-03.md)
-- AgenticAI daily analysis: [2026-06-03](AgenticAI/2026-06-03/reasoning.md)
-- Strategy daily analysis: [2026-06-03](Strategy/2026-06-03/sovereignty.md)
+- Daily scan, 2026-06-04: [roundup](roundups/2026-06-04.md)
+- AgenticAI daily analysis: [2026-06-04](AgenticAI/2026-06-04/reasoning.md)
+- Strategy daily analysis: [2026-06-04](Strategy/2026-06-04/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
-- Related durable topics: [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [Memory Systems](AgenticAI/memory-systems/memory-systems.md), [Multi-Agent Orchestration](AgenticAI/multi-agent-orchestration/multi-agent-orchestration.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md)
+- Related durable topics: [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md)
+- Prior Deep Dive Wednesday, 2026-06-03: [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md#deep-dive-wednesday-2026-06-03-gateway-as-identity-bound-mcp-data-plane)
 - Prior Friday synthesis: [week ending 2026-05-29](roundups/2026-05-29.md)
 - Prior Friday synthesis: [week ending 2026-05-22](roundups/2026-05-22.md)
 - Prior Friday synthesis: [week ending 2026-05-15](roundups/2026-05-15.md)
 
 ## Current thesis
 
-The agent stack is becoming a permissioned runtime-state discipline. The useful question is no longer “can the model use more context?” It is “which skill, memory, subagent, gateway session, identity, and validation artifact had authority to influence this run?”
+The agent stack is moving from permissive context and tool catalogs to enforceable runtime contracts. The useful question is no longer only "can the model use more context?" It is "which tool description, budget lease, skill precondition, workflow step, sandbox, identity, and validation artifact had authority to influence this run?"
 
-The 2026-06-03 deep dive picks the strongest weekly pattern: the gateway is becoming the identity-bound MCP data plane. Storage, SaaS, GitHub, browser-security administration, skills, memory, and subagents all become real effects at the gateway boundary.
+The 2026-06-04 scan adds four implementation patterns:
 
-The 2026-06-03 scan adds four implementation patterns:
-
-- Skills need dual-plane permissioning: context influence and action side effects should both be governed by manifests and runtime policy.
-- Memory retention should be deterministic, auditable, and replayable before optional LLM summarization is trusted.
-- Multi-agent coding should be organized as dependency queues with validation gates, not broadcast conversation.
-- MCP servers that touch storage or enterprise systems should be treated as identity-bound data-plane endpoints behind a gateway.
+- MCP descriptions need behavior-consistency checks before they become production authority.
+- Runtime contracts now cover single-spend budget leases, workflow states, hosted agents, and sandboxes.
+- Web-agent skill retrieval should depend on live page state and explicit load gates.
+- Long-horizon research and engineering agents need artifact-loop benchmarks.
 
 ## Browse by category
 

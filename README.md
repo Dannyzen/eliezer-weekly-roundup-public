@@ -6,27 +6,27 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Daily scan, 2026-06-05: [roundup](roundups/2026-06-05.md)
-- AgenticAI daily analysis: [2026-06-05](AgenticAI/2026-06-05/reasoning.md)
-- Strategy daily analysis: [2026-06-05](Strategy/2026-06-05/sovereignty.md)
+- Friday synthesis, week ending 2026-06-05: [roundup](roundups/2026-06-05.md)
+- AgenticAI weekly analysis: [2026-06-05](AgenticAI/2026-06-05/reasoning.md)
+- Strategy weekly analysis: [2026-06-05](Strategy/2026-06-05/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
-- Related durable topics: [Trajectory-Aware Evaluation](AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [Context Economy](AgenticAI/context-economy/context-economy.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md)
-- Prior Deep Dive Wednesday, 2026-06-03: [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md#deep-dive-wednesday-2026-06-03-gateway-as-identity-bound-mcp-data-plane)
+- Related durable topics: [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [Trajectory-Aware Evaluation](AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Memory Systems](AgenticAI/memory-systems/memory-systems.md), [Context Economy](AgenticAI/context-economy/context-economy.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md)
+- Deep Dive Wednesday, 2026-06-03: [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md#deep-dive-wednesday-2026-06-03-gateway-as-identity-bound-mcp-data-plane)
 - Prior Friday synthesis: [week ending 2026-05-29](roundups/2026-05-29.md)
 - Prior Friday synthesis: [week ending 2026-05-22](roundups/2026-05-22.md)
 - Prior Friday synthesis: [week ending 2026-05-15](roundups/2026-05-15.md)
 
 ## Current thesis
 
-The agent stack is moving from permissive context and tool catalogs to evidence-bearing control layers. The useful question is no longer only "can the model use more tools or search more pages?" It is "which search result, skill, context reducer, tool surface, origin, budget, and validation artifact had authority to influence this run?"
+The agent stack is moving from permissive context and tool catalogs to evidence-bearing control layers. The useful question is no longer only "can the model use more tools, skills, search, memory, or context?" It is "which capability, source, runtime contract, identity, origin, budget, and validation artifact had authority to influence this run?"
 
-The 2026-06-05 scan adds four implementation patterns:
+The week ending 2026-06-05 adds four implementation patterns:
 
-- Deep-research evals need search-contamination controls and transparent retrieval traces.
-- WebMCP tool surfaces need origin-bound lifecycle and metadata-integrity controls.
-- Domain-specific skills and voice/tool scenarios need stateful fixtures with expected final state.
-- Context compression should become local-first middleware with answer-preservation tests.
+- Skills should be admitted like governed capability artifacts, with scope, permissions, hashes, tests, fixtures, and lifecycle controls.
+- Agent evaluation should grade trajectories, process quality, state transitions, search contamination, and production-regression fixtures, not only final answers.
+- Memory and context systems should preserve raw evidence and provenance before summarizing, pruning, or compressing active context.
+- MCP gateways, tool surfaces, budgets, workflows, and sandboxes are now runtime security boundaries.
 
 ## Browse by category
 

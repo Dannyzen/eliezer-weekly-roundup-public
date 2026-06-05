@@ -2,50 +2,64 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: 2026-06-05 Daily Scan
+## Most Recent Structured Update: Week ending 2026-06-05
 
-### Search-time contamination makes deep-research evals leaky
-Summary: Deep-research agents can search the web during inference and retrieve benchmark metadata, question context, or explicit answers. Search logs and contamination labels now belong inside the eval harness.
+### Skills should be governed capability artifacts, not prompt decorations
+Summary: Skills are becoming the procedural capability layer for agents. This week’s sources show the optimistic path, reusable verified skills, and the risk path, lifecycle attacks and permission failures. Treat skills as reviewed software artifacts, not context snippets.
 
-Analysis: [daily reasoning analysis](2026-06-05/reasoning.md#search-time-contamination-makes-deep-research-evals-leaky)
-Durable topic: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md#june-5-update-search-enabled-agent-evals-need-contamination-controls)
-Core source: [Search-Time Contamination in Deep Research Agents](https://arxiv.org/abs/2606.05241)
+Analysis: [weekly reasoning analysis](2026-06-05/reasoning.md#skills-should-be-governed-capability-artifacts-not-prompt-decorations)
+Durable topic: [Skills as Control](skills-as-control/skills-as-control.md)
+Core sources: [NVIDIA skills](https://github.com/NVIDIA/skills), [NVIDIA-Verified Agent Skills](https://developer.nvidia.com/blog/nvidia-verified-agent-skills-provide-capability-governance-for-ai-agents/), [SkillHarm](https://arxiv.org/abs/2606.02540v1), [SkillGuard](https://arxiv.org/abs/2606.03024v1), [State-Grounded Dynamic Retrieval](https://arxiv.org/abs/2606.04391)
 Implementable now:
-- run no-search baselines before crediting web-search trajectories;
-- store queries, retrieved URLs, snippets, and evidence paths;
-- isolate benchmark metadata and answer keys from the agent's search corpus.
+- require a skill card with owner, version, hash, scope, permissions, tests, fixtures, and retirement criteria;
+- gate skill loading by task fit, current state, access scope, and risk class;
+- log retrieved, loaded, rejected, and executed skills with outcomes.
 Tools, repos, and methodologies worth exploring:
-- network-isolated eval sandboxes, browser/search proxies, leakage classifiers, canary benchmark artifacts, OpenTelemetry traces
-Implementability score: 0.74
+- NVIDIA skills, SkillGuard-style permission manifests, state-grounded retrieval, Pydantic schemas, signed skill manifests, OpenTelemetry skill-selection traces
+Implementability score: 0.80
 
-### Domain-specific skills and voice-tool scenarios are becoming the agent eval substrate
-Summary: SciVisAgentSkills and EVA-Bench Data 2.0 show that serious agent evaluation needs domain tool grammars, backend state, expected final state, and reusable skill fixtures, not generic tool-use prompts.
+### Agent evals need trajectory, process, state, and contamination evidence
+Summary: Final-answer scoring is no longer enough. Agent evals now need traces, search logs, backend state, verifier outputs, process labels, repeated trials, and contamination controls.
 
-Analysis: [daily reasoning analysis](2026-06-05/reasoning.md#domain-specific-skills-and-voice-tool-scenarios-are-becoming-the-agent-eval-substrate)
-Durable topic: [Skills as Control](skills-as-control/skills-as-control.md#june-5-update-domain-skills-need-stateful-fixtures)
-Core sources: [SciVisAgentSkills paper](https://arxiv.org/abs/2606.05525), [SciVisAgentSkills repository](https://github.com/KuangshiAi/SciVisAgentSkills), [EVA-Bench Data 2.0](https://huggingface.co/blog/ServiceNow-AI/eva-bench-data), [ServiceNow-AI/eva-bench](https://huggingface.co/datasets/ServiceNow-AI/eva-bench)
+Analysis: [weekly reasoning analysis](2026-06-05/reasoning.md#agent-evals-need-trajectory-process-state-and-contamination-evidence)
+Durable topics: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Agentic Search and Retrieval](agentic-search/agentic-search.md)
+Core sources: [How Coding Agents Fail Their Users](https://arxiv.org/abs/2605.29442v1), [SoundnessBench](https://arxiv.org/abs/2605.30329v1), [AWS AgentCore dataset management](https://aws.amazon.com/blogs/machine-learning/build-a-test-suite-that-grows-with-your-agent-with-dataset-management-in-amazon-bedrock-agentcore/), [AutoLab](https://arxiv.org/abs/2606.05080), [Search-Time Contamination](https://arxiv.org/abs/2606.05241)
 Implementable now:
-- package one internal domain workflow as a skill plus fixture;
-- define initial state, allowed tools, expected final state, and negative cases;
-- score task completion, tool-call correctness, authentication, final state, and trace quality separately.
+- preserve tool traces, search queries, retrieved URLs, backend state, intermediate artifacts, and verifier outputs;
+- run no-search, no-skill, wrong-skill, and repeated-trial baselines;
+- score process quality, contamination, and final-state correctness separately.
 Tools, repos, and methodologies worth exploring:
-- SciVisAgentSkills, ServiceNow EVA-Bench, SyGra-style scenario generation, Pydantic schemas, verifier-guided review, domain-specific tool simulators
-Implementability score: 0.68
+- OpenTelemetry traces, browser/search proxies, LangSmith datasets, Amazon Bedrock AgentCore, canary benchmark artifacts, artifact-loop benchmarks
+Implementability score: 0.76
 
-### Headroom turns context compression into local-first agent middleware
-Summary: Headroom packages context compression as a library, proxy, MCP server, and agent wrapper for tool outputs, logs, files, RAG chunks, and conversation history. The claims need local smoke testing, but the middleware shape is useful now.
+### Memory and context systems should preserve evidence before compressing it
+Summary: Belief updates, retrieval, pruning, and compression are converging into one rule: preserve raw evidence and provenance before summarizing or shrinking context. Compression is useful only if originals remain auditable.
 
-Analysis: [daily reasoning analysis](2026-06-05/reasoning.md#headroom-turns-context-compression-into-local-first-agent-middleware)
-Durable topic: [Context Economy](context-economy/context-economy.md#june-5-update-context-compression-is-becoming-local-middleware)
-Core source: [chopratejas/headroom](https://github.com/chopratejas/headroom)
+Analysis: [weekly reasoning analysis](2026-06-05/reasoning.md#memory-and-context-systems-should-preserve-evidence-before-compressing-it)
+Durable topics: [Memory Systems](memory-systems/memory-systems.md), [Context Economy](context-economy/context-economy.md)
+Core sources: [BeliefTrack](https://arxiv.org/abs/2605.30219v1), [RHELM](https://arxiv.org/abs/2605.31086), [SPECTRA](https://arxiv.org/abs/2605.31575), [DMF](https://arxiv.org/abs/2606.03463v1), [Headroom](https://github.com/chopratejas/headroom)
 Implementable now:
-- measure token reduction and answer preservation on real tool outputs and logs;
-- keep originals outside the prompt and retrieve on demand;
-- add before/after context-token counters to traces.
+- preserve raw episodes, traces, and source evidence before promoting facts or summaries;
+- classify memory decisions as stay, update, or isolate;
+- test context compression against answer preservation and link compressed material back to original evidence IDs.
 Tools, repos, and methodologies worth exploring:
-- Headroom, MCP compression tools, reversible compression, content-aware routers, token-category telemetry, answer-preservation regression tests
-Implementability score: 0.86
+- belief-state gates, deterministic retention/pruning, retrieval-oracle fixtures, Headroom, pgvector or local vector stores, answer-preservation regression suites
+Implementability score: 0.79
+
+### Multi-agent coding should be dependency-wave orchestration, not broadcast chat
+Summary: More agents are not automatically better. This week’s multi-agent evidence points toward dependency DAGs, ready-wave dispatch, interface contracts, coherence checks, and process-quality scoring.
+
+Analysis: [weekly reasoning analysis](2026-06-05/reasoning.md#multi-agent-coding-should-be-dependency-wave-orchestration-not-broadcast-chat)
+Durable topic: [Multi-Agent Orchestration](multi-agent-orchestration/multi-agent-orchestration.md)
+Core sources: [Locally Coherent, Globally Incoherent](https://arxiv.org/abs/2605.30335v1), [SPOQ](https://arxiv.org/abs/2606.03115v1), [AgentLens](https://arxiv.org/abs/2605.12925v3)
+Implementable now:
+- decompose tasks into dependency DAGs before assigning agents;
+- dispatch only ready waves and require typed interface contracts;
+- run coherence checks at merge points and label process defects separately from final success.
+Tools, repos, and methodologies worth exploring:
+- DAG-based planners, kanban dependency gates, typed subclaims, merge validators, process-defect rubrics, trace-backed subagent summaries
+Implementability score: 0.64
 
 ## Previous structured update
 
-The prior daily scan for 2026-06-04 focused on MCP description consistency, token-budget leases, state-grounded web-agent skills, and AutoLab-style artifact-loop benchmarks: [2026-06-04 roundup](../roundups/2026-06-04.md).
+The prior Friday synthesis for week ending 2026-05-29 focused on admission-controlled runtimes: [2026-05-29 roundup](../roundups/2026-05-29.md).

@@ -498,6 +498,24 @@ Sources:
 - [AGENTCL](https://arxiv.org/abs/2606.02461v1)
 - [ClinEnv](https://arxiv.org/abs/2606.02568v1)
 
+## June 5 update: search-enabled agent evals need contamination controls
+
+Search-Time Contamination in Deep Research Agents adds a missing eval control for deep-research agents. Public benchmarks become leaky when an agent can search during inference and retrieve benchmark metadata, question context, or explicit answers. A final answer can look like reasoning while the trajectory is actually benchmark leakage.
+
+The practical lesson is to make search provenance part of the grade:
+- run no-search baselines before crediting search-enabled performance;
+- preserve queries, clicked URLs, snippets, timestamps, and evidence paths;
+- isolate benchmark metadata and known answer keys from the agent's search corpus;
+- add canary benchmark artifacts and contamination classifiers;
+- score contamination separately from answer correctness;
+- require citations to evidence that is not benchmark metadata or leaked answers.
+
+This pairs with EVA-Bench's stateful scenario design. A serious agent benchmark should control both the external information environment and the internal task state. Otherwise the score is measuring benchmark exposure, not capability.
+
+Sources:
+- [Search-Time Contamination in Deep Research Agents](https://arxiv.org/abs/2606.05241)
+- [EVA-Bench Data 2.0](https://huggingface.co/blog/ServiceNow-AI/eva-bench-data)
+
 ## Working conclusion
 
 Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, and scored across safety, robustness, parameter correctness, environment fidelity, runtime-specific harm dimensions, real-user collaboration traces, realistic workspace state, live workflow demand, cost, adversarial task quality, long-range state propagation, abstention, protocol conformance, tool-shortlist quality, environment-factory coverage, and quantitative goal persistence, improvement efforts will stay shallow and trust claims will stay unearned.

@@ -495,3 +495,19 @@ Practical lesson:
 
 Source:
 - [Description-Code Inconsistency in Real-world MCP Servers](https://arxiv.org/abs/2606.04769)
+
+## June 5 update: WebMCP tool surfaces need origin-bound lifecycle controls
+
+WebMCP Tool Surface Poisoning extends the gateway-governance problem from static tool descriptions to live web sessions. If websites can expose tools directly to agents, third-party scripts can potentially hijack the visible tool set or frame tool metadata while the session is active. The paper calls this Mid-Session Tool Injection and separates Tool Hijacking from Tool Framing.
+
+The practical correction is to treat the tool surface as mutable runtime state. A gateway should not trust a tool because it appeared in the page. It should know where the tool came from, when it registered, whether metadata changed, whether the origin is allowed, and whether the current workflow may call it.
+
+Practical lesson:
+- bind tool identity to origin, version, and registration event;
+- hash tool metadata fields such as name, description, readOnlyHint, and inputSchema;
+- freeze or revalidate the visible tool set at policy checkpoints;
+- separate first-party, third-party, read-only, and mutating tools in policy;
+- log registration, mutation, selected call, arguments, observed effect, and policy decision.
+
+Source:
+- [WebMCP Tool Surface Poisoning](https://arxiv.org/abs/2606.06387)

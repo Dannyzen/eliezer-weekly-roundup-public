@@ -383,3 +383,22 @@ Practical lesson:
 Sources:
 - [Online Skill Learning for Web Agents via State-Grounded Dynamic Retrieval](https://arxiv.org/abs/2606.04391)
 - [plusnli/skill-dynamic-retrieval](https://github.com/plusnli/skill-dynamic-retrieval)
+
+## June 5 update: domain skills need stateful fixtures
+
+SciVisAgentSkills and EVA-Bench Data 2.0 sharpen the skills-as-control thesis. Domain skills should not ship as loose instructions alone. They need fixtures that prove the skill works against realistic tools, backend state, expected final state, and negative cases.
+
+SciVisAgentSkills packages skills for ParaView, napari, VMD, and TTK, then evaluates them on expert-designed multi-step scientific visualization tasks. EVA-Bench extends voice-agent evaluation across airline, IT service management, and healthcare HR service delivery scenarios with tool schemas, user goals, initial databases, and expected final database states.
+
+Practical lesson:
+- pair every domain skill with initial state, allowed tools, expected final state, and validators;
+- run skill/no-skill and wrong-skill baselines;
+- score tool-call correctness, authentication, final state, and trace quality separately;
+- validate generated scenarios with schemas, LLM consistency checks, and human review;
+- treat domain skills as testable artifacts, not prompt decorations.
+
+Sources:
+- [SciVisAgentSkills](https://arxiv.org/abs/2606.05525)
+- [KuangshiAi/SciVisAgentSkills](https://github.com/KuangshiAi/SciVisAgentSkills)
+- [EVA-Bench Data 2.0](https://huggingface.co/blog/ServiceNow-AI/eva-bench-data)
+- [ServiceNow-AI/eva-bench](https://huggingface.co/datasets/ServiceNow-AI/eva-bench)

@@ -266,6 +266,20 @@ This is the same context accounting problem in a graph setting. The agent should
 Source:
 - [Why Neighborhoods Matter](https://arxiv.org/abs/2605.15109v1)
 
+## June 5 update: context compression is becoming local middleware
+
+Headroom is a practical context-economy signal. It packages compression as a library, proxy, MCP server, and agent wrapper for tool outputs, logs, files, RAG chunks, and conversation history. The implementation claims still need local smoke testing, but the architectural direction is right: context reduction should be a measured layer with retrieval and audit, not an instruction to the model to be concise.
+
+Practical lesson:
+- classify content before compression because logs, JSON, code, prose, and RAG chunks need different reducers;
+- keep originals outside the active prompt and retrieve them on demand;
+- record before/after token counts, compression method, source IDs, and retrieval IDs in traces;
+- run answer-preservation and failure-detection tests before deploying compression middleware;
+- make compression reversible enough that auditors can inspect the original evidence path.
+
+Source:
+- [chopratejas/headroom](https://github.com/chopratejas/headroom)
+
 ## Working conclusion
 
 The future agent stack is not context maximalism. It is context accounting. Systems that know what to admit, retrieve, compress, cache, update incrementally, and audit will beat systems that merely buy larger windows and hope the model sorts it out.

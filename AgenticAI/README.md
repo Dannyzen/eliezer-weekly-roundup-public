@@ -2,50 +2,50 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: 2026-06-04 Daily Scan
+## Most Recent Structured Update: 2026-06-05 Daily Scan
 
-### AutoLab moves agent evaluation into long-horizon research and engineering loops
-Summary: AutoLab evaluates iterative artifact improvement: propose changes, edit, run experiments, measure results, and continue. That is the right shape for research and engineering agents because single-answer benchmarks hide loop control, measurement, budget, and stopping failures.
+### Search-time contamination makes deep-research evals leaky
+Summary: Deep-research agents can search the web during inference and retrieve benchmark metadata, question context, or explicit answers. Search logs and contamination labels now belong inside the eval harness.
 
-Analysis: [daily reasoning analysis](2026-06-04/reasoning.md#autolab-moves-agent-evaluation-into-long-horizon-research-and-engineering-loops)
-Durable topic: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md#june-4-update-long-horizon-re-agents-need-artifact-loop-benchmarks)
-Core sources: [AutoLab paper](https://arxiv.org/abs/2606.05080), [AutoLab repository](https://github.com/autolabhq/autolab), [AutoLab project site](https://autolab.moe/)
+Analysis: [daily reasoning analysis](2026-06-05/reasoning.md#search-time-contamination-makes-deep-research-evals-leaky)
+Durable topic: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md#june-5-update-search-enabled-agent-evals-need-contamination-controls)
+Core source: [Search-Time Contamination in Deep Research Agents](https://arxiv.org/abs/2606.05241)
 Implementable now:
-- create small internal artifact-loop fixtures;
-- require experiment plans, patch IDs, commands, metric deltas, failed attempts, and stopping reasons;
-- score improvement per dollar, tool call, and wall-clock minute.
+- run no-search baselines before crediting web-search trajectories;
+- store queries, retrieved URLs, snippets, and evidence paths;
+- isolate benchmark metadata and answer keys from the agent's search corpus.
 Tools, repos, and methodologies worth exploring:
-- AutoLab benchmark design, LangGraph, Temporal, pytest/bench harnesses, OpenTelemetry spans, cost ledgers, artifact diffs
-Implementability score: 0.58
+- network-isolated eval sandboxes, browser/search proxies, leakage classifiers, canary benchmark artifacts, OpenTelemetry traces
+Implementability score: 0.74
 
-### Web-agent skill retrieval should be grounded in live page state
-Summary: State-Grounded Dynamic Retrieval retrieves reusable web-agent skills from the current webpage state rather than only the initial task. This is the practical load gate for browser agents whose state changes after navigation, login, UI branching, or errors.
+### Domain-specific skills and voice-tool scenarios are becoming the agent eval substrate
+Summary: SciVisAgentSkills and EVA-Bench Data 2.0 show that serious agent evaluation needs domain tool grammars, backend state, expected final state, and reusable skill fixtures, not generic tool-use prompts.
 
-Analysis: [daily reasoning analysis](2026-06-04/reasoning.md#state-grounded-dynamic-retrieval-makes-web-agent-skills-depend-on-the-live-page-not-only-the-task)
-Durable topic: [Skills as Control](skills-as-control/skills-as-control.md#june-4-update-web-agent-skill-retrieval-should-be-state-grounded)
-Core sources: [State-Grounded Dynamic Retrieval paper](https://arxiv.org/abs/2606.04391), [skill-dynamic-retrieval repository](https://github.com/plusnli/skill-dynamic-retrieval)
+Analysis: [daily reasoning analysis](2026-06-05/reasoning.md#domain-specific-skills-and-voice-tool-scenarios-are-becoming-the-agent-eval-substrate)
+Durable topic: [Skills as Control](skills-as-control/skills-as-control.md#june-5-update-domain-skills-need-stateful-fixtures)
+Core sources: [SciVisAgentSkills paper](https://arxiv.org/abs/2606.05525), [SciVisAgentSkills repository](https://github.com/KuangshiAi/SciVisAgentSkills), [EVA-Bench Data 2.0](https://huggingface.co/blog/ServiceNow-AI/eva-bench-data), [ServiceNow-AI/eva-bench](https://huggingface.co/datasets/ServiceNow-AI/eva-bench)
 Implementable now:
-- index skill preconditions by DOM/page state, route, visible controls, auth state, and task class;
-- retrieve skills at checkpoints, not only at task start;
-- log each load/no-load decision with matching evidence.
+- package one internal domain workflow as a skill plus fixture;
+- define initial state, allowed tools, expected final state, and negative cases;
+- score task completion, tool-call correctness, authentication, final state, and trace quality separately.
 Tools, repos, and methodologies worth exploring:
-- state fingerprints, DOM snapshots, Playwright traces, browser-agent skills, vector plus rule retrieval, skill failure ledgers
-Implementability score: 0.70
+- SciVisAgentSkills, ServiceNow EVA-Bench, SyGra-style scenario generation, Pydantic schemas, verifier-guided review, domain-specific tool simulators
+Implementability score: 0.68
 
-### Token budgets need single-spend resource authority
-Summary: Token Budgets frames runaway agent spend as a resource-authority failure. Budgets should be delegated once, spent once, expired explicitly, and visible in the same trace as tools, subagents, and retries.
+### Headroom turns context compression into local-first agent middleware
+Summary: Headroom packages context compression as a library, proxy, MCP server, and agent wrapper for tool outputs, logs, files, RAG chunks, and conversation history. The claims need local smoke testing, but the middleware shape is useful now.
 
-Analysis: [daily reasoning analysis](2026-06-04/reasoning.md#token-budgets-need-single-spend-resource-authority)
-Durable topic: [Runtime Governance](../Strategy/runtime-governance/runtime-governance.md#june-4-update-budget-and-workflow-controls-are-becoming-runtime-artifacts)
-Core sources: [Token Budgets paper](https://arxiv.org/abs/2606.04056), [token-budgets artifact repository](https://github.com/sajjadanwar0/token-budgets)
+Analysis: [daily reasoning analysis](2026-06-05/reasoning.md#headroom-turns-context-compression-into-local-first-agent-middleware)
+Durable topic: [Context Economy](context-economy/context-economy.md#june-5-update-context-compression-is-becoming-local-middleware)
+Core source: [chopratejas/headroom](https://github.com/chopratejas/headroom)
 Implementable now:
-- create per-run, per-step, per-tool, and per-subagent budget leases;
-- halt retry loops when child budgets are exhausted;
-- test retry storms, orphaned subagents, stale leases, and recursive delegation.
+- measure token reduction and answer preservation on real tool outputs and logs;
+- keep originals outside the prompt and retrieve on demand;
+- add before/after context-token counters to traces.
 Tools, repos, and methodologies worth exploring:
-- budget ledgers, affine/linear-resource design, LiteLLM spend controls, OpenTelemetry cost attributes, Temporal workflow limits
-Implementability score: 0.76
+- Headroom, MCP compression tools, reversible compression, content-aware routers, token-category telemetry, answer-preservation regression tests
+Implementability score: 0.86
 
 ## Previous structured update
 
-The prior daily scan for 2026-06-03 focused on skill permission planes, deterministic memory pruning, multi-agent dependency queues, and MCP storage gateways: [2026-06-03 roundup](../roundups/2026-06-03.md).
+The prior daily scan for 2026-06-04 focused on MCP description consistency, token-budget leases, state-grounded web-agent skills, and AutoLab-style artifact-loop benchmarks: [2026-06-04 roundup](../roundups/2026-06-04.md).

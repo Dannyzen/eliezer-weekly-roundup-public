@@ -2,64 +2,36 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: Week ending 2026-06-05
+## Most Recent Structured Update: Daily scan 2026-06-06
 
-### The agent gateway is becoming the identity-bound MCP data plane
-Summary: MCP is moving from connector convenience into infrastructure for storage, SaaS, browser security, cloud workflows, and local tools. The gateway is where identity, delegated authority, scoped discovery, credentials, data projection, approvals, and audit evidence have to meet.
+### Recuse signals are cooperative policy, not access control
+Summary: In-band access-deny messages can tell compliant agents to withdraw even when credentials technically work. Treat this as a robots.txt-style governance signal for live infrastructure, not as a security boundary.
 
-Analysis: [weekly sovereignty analysis](2026-06-05/sovereignty.md#the-agent-gateway-is-becoming-the-identity-bound-mcp-data-plane)
+Analysis: [daily sovereignty analysis](2026-06-06/sovereignty.md#recuse-signals-are-cooperative-policy-not-access-control)
 Durable topic: [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md)
-Core sources: [NSA MCP security release](https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/Article/4496698/nsa-releases-security-design-considerations-for-ai-driven-automation-leveraging/), [MCP Python SDK v1.27.2](https://github.com/modelcontextprotocol/python-sdk/releases/tag/v1.27.2), [GCS MCP server](https://cloud.google.com/blog/topics/developers-practitioners/build-ai-agents-faster-with-gcs-google-cloud-storage-mcp-server/), [AgentCore Gateway MCP support](https://aws.amazon.com/blogs/machine-learning/extending-mcp-support-for-amazon-bedrock-agentcore-gateway-2/), [Overlaying Governance](https://arxiv.org/abs/2606.03518)
+Core sources: [Will the Agent Recuse Itself?](https://arxiv.org/abs/2606.06460v1), [Recuse repo](https://github.com/mthamil107/Recuse)
 Implementable now:
-- put MCP servers behind a gateway instead of exposing them directly to clients;
-- bind user, agent, client, server, session, workflow, and delegated authority into each request;
-- scope tool discovery, project data before disclosure, and record policy evidence.
+- add SSH banner, database NOTICE, HTTP header, or MCP error-detail recuse canaries in non-production tests;
+- measure whether agents stop, ask, or proceed under different operator-authority framings;
+- log recuse-signal visibility and model response as policy evidence.
 Tools, repos, and methodologies worth exploring:
-- Amazon Bedrock AgentCore Gateway, Google Cloud Storage MCP server, MCP Python SDK, OAuth/OIDC with PKCE, OPA/Cedar, OpenTelemetry gateway spans, permission-laundering canaries
-Implementability score: 0.76
+- Recuse mini-standard, SSH/PAM banners, PostgreSQL NOTICE proxies, gateway issue-time policy, compliance canary suites
+Implementability score: 0.61
 
-### Tool surfaces and runtime contracts are now security boundaries
-Summary: MCP description mismatch, WebMCP poisoning, token-budget overruns, workflow engines, and sandboxes all say the same thing: tool metadata and runtime conditions decide what the model believes it can do.
+### Cloud coding agents are becoming programmable workflow resources
+Summary: GitHub's Agent tasks REST API and one-click Actions failure repair make cloud coding agents addressable from automation. The control problem shifts from chat UX to task IDs, status, provenance, CI scope, and merge policy.
 
-Analysis: [weekly sovereignty analysis](2026-06-05/sovereignty.md#tool-surfaces-and-runtime-contracts-are-now-security-boundaries)
-Durable topics: [Runtime Governance](runtime-governance/runtime-governance.md), [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md)
-Core sources: [MCP description-code inconsistency](https://arxiv.org/abs/2606.04769), [WebMCP Tool Surface Poisoning](https://arxiv.org/abs/2606.06387), [Token Budgets](https://arxiv.org/abs/2606.04056), [Microsoft Agent Framework](https://devblogs.microsoft.com/agent-framework/microsoft-agent-framework-at-build-2026-announce/), [GitHub Copilot sandboxes](https://github.blog/changelog/2026-06-02-cloud-and-local-sandboxes-for-github-copilot-now-in-public-preview/)
+Analysis: [daily sovereignty analysis](2026-06-06/sovereignty.md#cloud-coding-agents-are-becoming-programmable-workflow-resources)
+Durable topics: [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md), [Runtime Governance](runtime-governance/runtime-governance.md)
+Core sources: [Agent tasks REST API changelog](https://github.blog/changelog/2026-06-04-agent-tasks-rest-api-now-available-for-copilot-pro-pro-and-max/), [GitHub Agent tasks REST docs](https://docs.github.com/rest/agent-tasks/agent-tasks?apiVersion=2026-03-10#start-a-task), [Fix with Copilot for failing Actions](https://github.blog/changelog/2026-06-04-fix-with-copilot-for-failing-actions-now-in-pro-pro-and-max/)
 Implementable now:
-- hash and revalidate tool metadata, origin, version, and registration source;
-- freeze or revalidate visible tools at policy checkpoints;
-- enforce single-spend budget leases and trace workflow/sandbox contracts.
+- wrap cloud-agent task creation in an internal queue with repository, branch, issue, CI failure, and budget metadata;
+- require task status, trace, diff, test, and approval artifacts before merge;
+- restrict which workflows can ask an external cloud agent to mutate code.
 Tools, repos, and methodologies worth exploring:
-- signed tool manifests, metadata hashing, dynamic tool-surface diffing, browser isolation, token-budget ledgers, workflow engines, sandbox attestation, effect validators
-Implementability score: 0.81
-
-### Speculative external observation is an effect, not a harmless read
-Summary: Ghost tool calls show that external systems can observe sensitive intent before the agent commits a final mutation. A read or exploratory call may already leak the user’s plan.
-
-Analysis: [weekly sovereignty analysis](2026-06-05/sovereignty.md#speculative-external-observation-is-an-effect-not-a-harmless-read)
-Durable topic: [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md)
-Core source: [Ghost Tool Calls](https://arxiv.org/abs/2606.02483v1)
-Implementable now:
-- classify tools by external observability, not only read/write status;
-- redact or project sensitive arguments before exploratory calls;
-- require approval before calls that expose private intent to third parties.
-Tools, repos, and methodologies worth exploring:
-- issue-time policy engines, argument projection, local search mirrors, dry-run APIs, privacy labels for tools, OPA/Cedar policies
-Implementability score: 0.60
-
-### Runtime contracts now cover budgets, workflows, sandboxes, and serving conditions
-Summary: Production agent governance now includes batch invariance, org-scoped runtime context, token budgets, workflow retries, sandbox identity, hosted-agent versions, and rollback evidence.
-
-Analysis: [weekly sovereignty analysis](2026-06-05/sovereignty.md#runtime-contracts-now-cover-budgets-workflows-sandboxes-and-serving-conditions)
-Durable topic: [Runtime Governance](runtime-governance/runtime-governance.md)
-Core sources: [MarginGate](https://arxiv.org/abs/2605.30218v1), [Organization-scoped regulated-agent runtime](https://arxiv.org/abs/2605.30604), [NemoClaw](https://github.com/NVIDIA/NemoClaw), [AWS AgentOps](https://aws.amazon.com/blogs/machine-learning/agentops-operationalize-agentic-ai-at-scale-with-amazon-bedrock-agentcore/), [Token Budgets](https://arxiv.org/abs/2606.04056), [GitHub Copilot sandboxes](https://github.blog/changelog/2026-06-02-cloud-and-local-sandboxes-for-github-copilot-now-in-public-preview/)
-Implementable now:
-- record model, server version, batch conditions, retry policy, budget lease, and sandbox identity as trace metadata;
-- cap token, tool, cost, and wall-clock budgets with explicit lease IDs;
-- bind sandbox permissions to task, repo, network policy, credentials, and artifact paths.
-Tools, repos, and methodologies worth exploring:
-- AWS AgentOps, Microsoft Agent Framework, Step Functions AgentCore, GitHub Copilot sandboxes, NemoClaw, budget ledgers, workflow engines, OpenTelemetry, deterministic replay metadata
-Implementability score: 0.72
+- GitHub Agent tasks REST API, Copilot cloud agent, GitHub Actions failure repair, PR policy gates, task-state ledgers, OpenTelemetry workflow traces
+Implementability score: 0.74
 
 ## Previous structured update
 
-The prior Friday synthesis for week ending 2026-05-29 focused on gateways as admission-control and runtime-sovereignty boundaries: [2026-05-29 roundup](../roundups/2026-05-29.md).
+The prior Friday synthesis for week ending 2026-06-05 focused on identity-bound MCP gateways, tool-surface integrity, runtime contracts, and speculative external observation governance: [2026-06-05 roundup](../roundups/2026-06-05.md).

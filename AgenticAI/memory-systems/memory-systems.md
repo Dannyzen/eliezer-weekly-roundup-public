@@ -524,6 +524,24 @@ Practical lesson:
 Source:
 - [DMF](https://arxiv.org/abs/2606.03463v1)
 
+## June 6 update: memory now needs write-path and read-path profiling
+
+Agent Memory adds the missing systems lens to this topic. Long-horizon memory is not one feature. It is a workload with construction, retrieval, update, and generation phases. Different architectures move cost between write time, read time, prompt size, freshness, and fleet management. If those costs are not measured separately, a memory system can look helpful in a demo while becoming too slow or stale in production.
+
+TokenMizer supplies the practical companion pattern. It treats session history as a typed graph and serializes compact resume blocks, preserving decisions, file histories, task transitions, and rationale instead of flattening everything into a summary.
+
+Practical lesson:
+- profile memory construction, retrieval, update, compression, and generation as separate phases;
+- store session memory as typed events or graph nodes when decisions and rationale need to survive;
+- test resume blocks on decision recall, file recall, and rationale preservation, not only token reduction;
+- keep raw episodes and source spans behind compact active-context summaries;
+- measure freshness-latency tradeoffs before making memory writes synchronous.
+
+Sources:
+- [Agent Memory](https://arxiv.org/abs/2606.06448v1)
+- [TokenMizer](https://arxiv.org/abs/2606.06337v1)
+- [Shweta-Mishra-ai/tokenmizer](https://github.com/Shweta-Mishra-ai/tokenmizer)
+
 ## Working conclusion
 
 The next generation of agents will be differentiated less by how eloquently they speak and more by how faithfully and safely they remember. The winning systems will preserve evidence, route memory writes explicitly, retrieve context adaptively, abstain when memory is unsafe, validate high-value writes, make retention and pruning decisions replayable, query local graphs when code structure matters, promote only the right lessons into durable guidance, attach enough context for updates and temporal reasoning, choose abstraction levels that transfer across tasks, keep the most sensitive memory close to the user and under policy control, run durable memory through a governed database-backed state core, separate evaluation memory from user-facing memory, measure whether memories remain usable under scale, budgets, and writeback review, expose operation-level provenance, test belief-state stay/update/isolate decisions, and evaluate memory against heterogeneous evolving source streams so failures can be traced instead of guessed.

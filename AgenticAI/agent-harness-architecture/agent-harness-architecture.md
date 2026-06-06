@@ -1,6 +1,6 @@
 # Agent Harness Architecture
 
-Last updated: 2026-05-31
+Last updated: 2026-06-06
 
 Agent harness architecture is becoming the part of the agent stack that teams can actually standardize.
 
@@ -638,6 +638,22 @@ Sources:
 - [AutoLab](https://arxiv.org/abs/2606.05080)
 - [autolabhq/autolab](https://github.com/autolabhq/autolab)
 - [AutoLab project site](https://autolab.moe/)
+
+## June 6 update: tool exposure should be a causal frontier
+
+ToolChoiceConfusion sharpens the tool-system layer of harness architecture. The core correction is simple: semantic relevance is too weak for tool exposure. A tool may be related to the user goal while still being unnecessary, premature, or dangerous at the current state. Causal Minimal Tool Filtering uses lightweight precondition-effect contracts to expose only the minimal next-step frontier.
+
+That is an implementable harness primitive. The system should know current state, goal, tool preconditions, expected effects, and risk class before showing full schemas to the model. Tool gating then becomes auditable state transition logic instead of prompt-space search.
+
+Practical lesson:
+- attach precondition and effect contracts to non-trivial tools;
+- compute visible tools from current state and next admissible transitions;
+- log hidden tools, exposed tools, selected tools, wrong-tool calls, premature actions, and token cost;
+- add regression fixtures where semantically related tools should remain hidden until a precondition is satisfied;
+- treat the active tool surface as a versioned harness artifact.
+
+Source:
+- [ToolChoiceConfusion](https://arxiv.org/abs/2606.06284v1)
 
 ## Working conclusion
 

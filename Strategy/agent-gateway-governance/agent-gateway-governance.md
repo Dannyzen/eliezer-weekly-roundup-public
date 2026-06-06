@@ -1,6 +1,6 @@
 # Agent Gateway Governance
 
-Last updated: 2026-06-03
+Last updated: 2026-06-06
 
 Agent gateway governance is the control-plane discipline for exposing enterprise tools, data, and workflows to autonomous agents.
 
@@ -511,3 +511,38 @@ Practical lesson:
 
 Source:
 - [WebMCP Tool Surface Poisoning](https://arxiv.org/abs/2606.06387)
+
+## June 6 update: recuse signals are policy evidence, not access control
+
+Will the Agent Recuse Itself? proposes a useful cooperative-control primitive: a live service can emit an in-band deny signal over an existing protocol channel and ask automated agents to withdraw even when their credentials work. This belongs in gateway governance because it creates explicit evidence that the infrastructure told the agent the task was out of scope.
+
+The important caveat is non-negotiable. A recuse signal is not a security boundary. It is compliance evidence and a measurement surface. Hard authorization still belongs in IAM, network policy, database grants, and gateway enforcement.
+
+Practical lesson:
+- test recuse banners, notices, headers, or MCP error details in non-production environments;
+- log whether the agent saw the signal, stopped, asked, escalated, or proceeded;
+- separate recuse, require-approval, deny, and hard-fail outcomes in gateway policy;
+- use recuse canaries to evaluate agent compliance under different operator-authority framings;
+- never rely on recuse as the only protection for sensitive systems.
+
+Sources:
+- [Will the Agent Recuse Itself?](https://arxiv.org/abs/2606.06460v1)
+- [mthamil107/Recuse](https://github.com/mthamil107/Recuse)
+
+## June 6 update: cloud coding agents need task-state governance
+
+GitHub's Agent tasks REST API and Fix with Copilot for failing Actions move cloud coding agents from chat surfaces into programmable workflow resources. That is strategically important because API-addressable agents can be launched from queues, CI failures, or internal automations. The governance unit becomes the task, not the conversation.
+
+A serious deployment should treat cloud-agent dispatch as a privileged transition. The local control plane should preserve repository, branch, issue, CI run, failure signal, requested scope, model/agent identity, output branch, diff, tests, status, and approval evidence before any merge.
+
+Practical lesson:
+- wrap cloud-agent task creation in an internal policy queue;
+- attach repo, branch, issue, CI failure, budget, and requested authority to each task;
+- require task status, trace, diff review, test output, and approval before merge;
+- restrict which workflows can create external cloud-agent tasks;
+- reconcile cloud-agent task IDs with local audit logs and PR history.
+
+Sources:
+- [Agent tasks REST API changelog](https://github.blog/changelog/2026-06-04-agent-tasks-rest-api-now-available-for-copilot-pro-pro-and-max/)
+- [GitHub Agent tasks REST docs](https://docs.github.com/rest/agent-tasks/agent-tasks?apiVersion=2026-03-10#start-a-task)
+- [Fix with Copilot for failing Actions](https://github.blog/changelog/2026-06-04-fix-with-copilot-for-failing-actions-now-in-pro-pro-and-max/)

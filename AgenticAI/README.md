@@ -2,36 +2,50 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: Daily scan 2026-06-06
+## Most Recent Structured Update: Daily scan 2026-06-07
 
-### Memory has become a costed systems workload, not a recall feature
-Summary: Long-horizon memory now needs systems profiling. The useful unit is not only whether an agent remembered a fact, but which construction, retrieval, update, compression, and generation costs the memory design shifted into the run.
+### Failed trajectories should become harness repairs, not prompt patches
+Summary: A failed agent run should become a layer-attributed harness repair candidate. The first move is not another prompt tweak. It is trace replay across tools, context, lifecycle, verification, environment, policy, and model behavior.
 
-Analysis: [daily reasoning analysis](2026-06-06/reasoning.md#memory-has-become-a-costed-systems-workload-not-a-recall-feature)
-Durable topics: [Memory Systems](memory-systems/memory-systems.md), [Context Economy](context-economy/context-economy.md)
-Core sources: [Agent Memory](https://arxiv.org/abs/2606.06448v1), [TokenMizer](https://arxiv.org/abs/2606.06337v1), [TokenMizer repo](https://github.com/Shweta-Mishra-ai/tokenmizer)
+Analysis: [daily reasoning analysis](2026-06-07/reasoning.md#failed-trajectories-should-become-harness-repairs-not-prompt-patches)
+Durable topics: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
+Core source: [From Failed Trajectories to Reliable LLM Agents](https://arxiv.org/abs/2606.06324v1)
 Implementable now:
-- profile memory construction, retrieval, update, and generation as separate phases;
-- preserve graph or event structure for decisions, files, transitions, and rationale;
-- test resume blocks for decision recall, not just token compression.
+- capture trace IR with task state, tools, observations, verifiers, lifecycle events, and policy decisions;
+- replay failures before mutating prompts;
+- label the broken harness layer and promote repaired failures into regression fixtures.
 Tools, repos, and methodologies worth exploring:
-- phase-aware memory profiling, typed session graphs, resume-block regression tests, source-span IDs, OpenTelemetry memory spans, TokenMizer-style compact checkpoints
-Implementability score: 0.78
+- trace IRs, failed-trajectory replay, layer-attributed failure labels, OpenTelemetry spans, LangSmith-style traces, harness regression fixtures
+Implementability score: 0.82
 
-### Tool exposure should be a causal frontier, not a semantic search result
-Summary: Tool filtering should expose the minimal next-step frontier implied by current state and goal. Relevance search over tool descriptions is too loose because it can show tools that are related, premature, or actively distracting.
+### Multi-agent workflows need normalized baselines before more agents
+Summary: Multi-agent systems should beat matched single-agent baselines under the same loader, tool access, answer contract, usage accounting, and trajectory logging. Otherwise the topology is getting unearned credit.
 
-Analysis: [daily reasoning analysis](2026-06-06/reasoning.md#tool-exposure-should-be-a-causal-frontier-not-a-semantic-search-result)
-Durable topic: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
-Core source: [ToolChoiceConfusion](https://arxiv.org/abs/2606.06284v1)
+Analysis: [daily reasoning analysis](2026-06-07/reasoning.md#multi-agent-workflows-need-normalized-baselines-before-more-agents)
+Durable topic: [Multi-Agent Orchestration](multi-agent-orchestration/multi-agent-orchestration.md)
+Core sources: [Do More Agents Help?](https://arxiv.org/abs/2606.05670v1), [MASArena / BenchAgent](https://github.com/LINs-lab/MASArena/tree/BenchAgent)
 Implementable now:
-- attach lightweight precondition and effect contracts to tools;
-- compute the visible tool frontier from state transitions, not keyword overlap;
-- log visible tool count, rejected tools, wrong-tool calls, premature actions, and token cost.
+- compare single-agent, fixed-MAS, and evolving-MAS runs under identical protocols;
+- log inter-agent messages, tool calls, cost, latency, and final-state checks;
+- run topology ablations before adding broadcast collaboration.
 Tools, repos, and methodologies worth exploring:
-- precondition-effect schemas, state machines, causal-path filtering, Pydantic tool contracts, gateway candidate logs, tool-call confusion tests
-Implementability score: 0.84
+- BenchAgent-style protocol alignment, MASArena metadata, topology ablations, usage-normalized scorecards, inter-agent trace logs
+Implementability score: 0.75
+
+### Memory search needs policy and bitemporal conflict handling
+Summary: Personal-agent memory should not inject the nearest embedding by default. Retrieval needs policy gates, and persistent writes need bitemporal contradiction handling with evidence and supersession.
+
+Analysis: [daily reasoning analysis](2026-06-07/reasoning.md#memory-search-needs-policy-and-bitemporal-conflict-handling)
+Durable topic: [Memory Systems](memory-systems/memory-systems.md)
+Core sources: [Beyond Similarity](https://arxiv.org/abs/2606.06054v1), [TOKI](https://arxiv.org/abs/2606.06240v1), [TOKI repository](https://github.com/ZenAlexa/toki-bitemporal-memory)
+Implementable now:
+- gate memory retrieval by domain, sensitivity, consent, recency, confidence, and downstream tool action;
+- store bitemporal facts with evidence, valid time, transaction time, supersession, and conflict operator;
+- test stale, sensitive, contradictory, cross-domain, and action-triggering memories.
+Tools, repos, and methodologies worth exploring:
+- bitemporal fact stores, retrieval policy gates, evidence-linked memory rows, conflict-resolution operators, memory safety fixtures
+Implementability score: 0.69
 
 ## Previous structured update
 
-The prior Friday synthesis for week ending 2026-06-05 focused on governed skills, evidence-bearing evals, memory/context evidence preservation, and dependency-wave orchestration: [2026-06-05 roundup](../roundups/2026-06-05.md).
+The prior daily scan for 2026-06-06 focused on memory as a profiled systems workload and causal tool-frontier filtering: [2026-06-06 roundup](../roundups/2026-06-06.md).

@@ -1,6 +1,6 @@
 # Agent Gateway Governance
 
-Last updated: 2026-06-06
+Last updated: 2026-06-07
 
 Agent gateway governance is the control-plane discipline for exposing enterprise tools, data, and workflows to autonomous agents.
 
@@ -546,3 +546,23 @@ Sources:
 - [Agent tasks REST API changelog](https://github.blog/changelog/2026-06-04-agent-tasks-rest-api-now-available-for-copilot-pro-pro-and-max/)
 - [GitHub Agent tasks REST docs](https://docs.github.com/rest/agent-tasks/agent-tasks?apiVersion=2026-03-10#start-a-task)
 - [Fix with Copilot for failing Actions](https://github.blog/changelog/2026-06-04-fix-with-copilot-for-failing-actions-now-in-pro-pro-and-max/)
+
+## June 7 update: tool governance now starts in managed clients and CI
+
+GitHub's enterprise-managed plugins preview for VS Code and Copilot CLI turns agent-tool governance into client policy. Administrators can define plugin marketplaces in `.github-private/.github/copilot/settings.json`, auto-install plugins for licensed users, and keep hooks and MCP configurations always enabled across the enterprise. That means the tool surface can be governed before the agent reaches the runtime gateway.
+
+FastMCP and mcp-guard show the infrastructure and CI versions of the same pattern. FastMCP v3.4.1 floors Starlette to avoid CVE-affected dependency resolution and makes OAuthProxy refresh-token cache misses visible. v3.4.2 restores JWT compatibility for providers with private non-critical JWS headers while preserving critical-header rejection. mcp-guard moves prompt-injection and tool-poisoning checks over C# MCP tool descriptions into Roslyn diagnostics and CI gates.
+
+Practical lesson:
+- manage approved plugins, hooks, MCP configs, and marketplaces through enterprise client settings;
+- version client policy and log which policy was active during an agent run;
+- pin MCP server dependencies and treat auth-library releases as security-relevant;
+- regression-test OAuth/JWT behavior against the identity providers actually used;
+- statically scan tool descriptions, schemas, hidden Unicode, exfiltration phrasing, and description fingerprints before server release;
+- connect client policy, server version, tool-description hash, and gateway execution trace.
+
+Sources:
+- [GitHub enterprise-managed plugins in VS Code](https://github.blog/changelog/2026-06-05-enterprise-managed-plugins-in-vs-code-in-public-preview/)
+- [FastMCP v3.4.1](https://github.com/PrefectHQ/fastmcp/releases/tag/v3.4.1)
+- [FastMCP v3.4.2](https://github.com/PrefectHQ/fastmcp/releases/tag/v3.4.2)
+- [mcp-guard v1.0.0](https://github.com/diomonogatari/mcp-guard/releases/tag/v1.0.0)

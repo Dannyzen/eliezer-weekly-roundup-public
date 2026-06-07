@@ -1,6 +1,6 @@
 # Multi-Agent Orchestration
 
-Last updated: 2026-06-03
+Last updated: 2026-06-07
 
 Multi-agent orchestration is the control layer for deciding when multiple agents should collaborate, which evidence should move between them, and when communication costs exceed the expected benefit.
 
@@ -84,11 +84,28 @@ Practical lesson:
 Source:
 - [SPOQ](https://arxiv.org/abs/2606.03115v1)
 
+## June 7 update: more agents need protocol-aligned baselines
+
+Do More Agents Help? adds the evaluation discipline this topic needs. A multi-agent workflow should not claim improvement unless it beats a matched single-agent baseline under the same benchmark loader, tool access, answer contract, usage accounting, and trajectory logging. Otherwise, the topology may be getting credit for a looser protocol.
+
+The practical lesson is to normalize the substrate before optimizing the team. Compare single-agent, fixed multi-agent, and evolving multi-agent workflows with the same tools, budgets, contracts, and logging. Then inspect whether the extra messages, roles, retries, and coordination costs produced better outcomes under the same rules.
+
+Practical lesson:
+- run single-agent, fixed-MAS, and evolving-MAS baselines under identical tool access and answer contracts;
+- log inter-agent messages, tool calls, token spend, wall-clock time, retries, and final-state checks;
+- score quality, latency, cost, and coordination overhead together;
+- run topology ablations before adopting broadcast chat teams;
+- preserve protocol fields in the trace so future results are comparable.
+
+Sources:
+- [Do More Agents Help?](https://arxiv.org/abs/2606.05670v1)
+- [LINs-lab/MASArena BenchAgent branch](https://github.com/LINs-lab/MASArena/tree/BenchAgent)
+
 ## Implementability score
 
-0.64
+0.68
 
-The first version is implementable with ordinary engineering: independent first passes, confidence fields, dependency DAGs, execution waves, planning gates, artifact validators, clustering, budget rules, claim schemas, cheap coherence checks, and trace logging. Full dynamic topology repair, formal projection repair, and reliable self-evolution need deeper architecture and careful benchmark design.
+The first version is implementable with ordinary engineering: independent first passes, confidence fields, dependency DAGs, execution waves, planning gates, artifact validators, clustering, budget rules, claim schemas, cheap coherence checks, protocol-aligned baselines, and trace logging. Full dynamic topology repair, formal projection repair, and reliable self-evolution need deeper architecture and careful benchmark design.
 
 ## Core sources
 
@@ -96,3 +113,4 @@ The first version is implementable with ordinary engineering: independent first 
 - DynaGraph: Lightweight Multi-Model Interaction Framework via Dynamic Topological Reconfiguration: https://arxiv.org/abs/2605.29511
 - Evolve as a Team: Collaborative Self-Evolution for LLM-based Multi-Agent Systems: https://arxiv.org/abs/2605.29790
 - SPOQ: Specialist Orchestrated Queuing for Multi-Agent Software Engineering: https://arxiv.org/abs/2606.03115v1
+- Do More Agents Help? Controlled and Protocol-Aligned Evaluation of LLM Agent Workflows: https://arxiv.org/abs/2606.05670v1

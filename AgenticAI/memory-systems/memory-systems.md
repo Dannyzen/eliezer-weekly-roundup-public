@@ -542,6 +542,24 @@ Sources:
 - [TokenMizer](https://arxiv.org/abs/2606.06337v1)
 - [Shweta-Mishra-ai/tokenmizer](https://github.com/Shweta-Mishra-ai/tokenmizer)
 
+## June 7 update: memory search needs policy and contradiction semantics
+
+Beyond Similarity and TOKI sharpen the policy side of this topic. Similarity retrieval can find a semantically close memory that is still wrong for the current situation: stale, sensitive, cross-domain, consent-scoped, contradictory, or unsafe when paired with a downstream tool action. TOKI adds the write-side correction: persistent memory is a versioned substrate where contradictory claims need declared isolation and resolution semantics.
+
+The practical memory design is now two-stage. Before retrieval enters context, policy should check domain, sensitivity, consent, recency, confidence, and action class. Before a write mutates the durable store, the system should preserve evidence, valid time, transaction time, supersession, and the conflict operator used to resolve or defer contradiction.
+
+Practical lesson:
+- gate memory retrieval by domain, sensitivity, consent, recency, confidence, and downstream tool-action implications;
+- store memory facts with valid_from, valid_until, transaction time, supersession, and evidence pointers;
+- make conflict resolution explicit: last-writer-wins, evidence-weighted merge, await-confirmation, or policy-rule resolution;
+- add tests for stale, sensitive, contradictory, cross-domain, and action-triggering memories;
+- preserve raw evidence so policy and contradiction decisions can be audited later.
+
+Sources:
+- [Beyond Similarity](https://arxiv.org/abs/2606.06054v1)
+- [TOKI](https://arxiv.org/abs/2606.06240v1)
+- [ZenAlexa/toki-bitemporal-memory](https://github.com/ZenAlexa/toki-bitemporal-memory)
+
 ## Working conclusion
 
-The next generation of agents will be differentiated less by how eloquently they speak and more by how faithfully and safely they remember. The winning systems will preserve evidence, route memory writes explicitly, retrieve context adaptively, abstain when memory is unsafe, validate high-value writes, make retention and pruning decisions replayable, query local graphs when code structure matters, promote only the right lessons into durable guidance, attach enough context for updates and temporal reasoning, choose abstraction levels that transfer across tasks, keep the most sensitive memory close to the user and under policy control, run durable memory through a governed database-backed state core, separate evaluation memory from user-facing memory, measure whether memories remain usable under scale, budgets, and writeback review, expose operation-level provenance, test belief-state stay/update/isolate decisions, and evaluate memory against heterogeneous evolving source streams so failures can be traced instead of guessed.
+The next generation of agents will be differentiated less by how eloquently they speak and more by how faithfully and safely they remember. The winning systems will preserve evidence, route memory writes explicitly, retrieve context adaptively, abstain when memory is unsafe, validate high-value writes, make retention and pruning decisions replayable, query local graphs when code structure matters, promote only the right lessons into durable guidance, attach enough context for updates and temporal reasoning, choose abstraction levels that transfer across tasks, keep the most sensitive memory close to the user and under policy control, run durable memory through a governed database-backed state core, separate evaluation memory from user-facing memory, measure whether memories remain usable under scale, budgets, and writeback review, expose operation-level provenance, test belief-state stay/update/isolate decisions, gate retrieval by policy, resolve contradictions with bitemporal evidence, and evaluate memory against heterogeneous evolving source streams so failures can be traced instead of guessed.

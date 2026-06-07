@@ -655,6 +655,22 @@ Practical lesson:
 Source:
 - [ToolChoiceConfusion](https://arxiv.org/abs/2606.06284v1)
 
+## June 7 update: failed trajectories should repair the harness layer that broke
+
+From Failed Trajectories to Reliable LLM Agents adds the missing repair loop to harness architecture. A failed final answer is not enough evidence. The harness owns the execution environment, tool interfaces, context package, lifecycle rules, observability, verification, and governance surface, so a failure should be attributed to the layer that actually broke.
+
+The practical correction is to make failed runs replayable before prompt mutation. If a tool schema hid a side effect, patch the tool contract. If the verifier missed a final-state check, patch the verifier. If context routing omitted the decisive evidence, patch context assembly. If lifecycle orchestration retried or stopped at the wrong point, patch the lifecycle rule. The prompt may still be wrong, but it should not be the only thing allowed to change.
+
+Practical lesson:
+- store trace IR with task state, tool calls, observations, verifier outputs, lifecycle events, environment transitions, and policy decisions;
+- replay failed trajectories before prompt edits;
+- label failures by harness layer: tool-contract, context, lifecycle, verifier, environment, policy, or model;
+- promote repaired failures into regression fixtures with expected trace and outcome;
+- track which repair class actually improved future reliability.
+
+Source:
+- [From Failed Trajectories to Reliable LLM Agents](https://arxiv.org/abs/2606.06324v1)
+
 ## Working conclusion
 
-Agent harness architecture is becoming one of the clearest ways to tell whether a team is building a toy, a developer tool, or a real operating substrate. The winning systems will make context explicit, tool boundaries governable, restore paths safe, orchestration empirically justified and quality-gated, evidence easy to inspect, environment-specific falsification surfaces routine, real-session misalignment labels routine, proposal-soundness gates explicit, and production failures routinely promoted into versioned regression fixtures with trajectory and outcome graders.
+Agent harness architecture is becoming one of the clearest ways to tell whether a team is building a toy, a developer tool, or a real operating substrate. The winning systems will make context explicit, tool boundaries governable, restore paths safe, orchestration empirically justified and quality-gated, evidence easy to inspect, environment-specific falsification surfaces routine, real-session misalignment labels routine, proposal-soundness gates explicit, failed trajectories layer-attributed, and production failures routinely promoted into versioned regression fixtures with trajectory and outcome graders.

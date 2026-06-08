@@ -1,6 +1,6 @@
 # Skills as Control
 
-Last updated: 2026-06-03
+Last updated: 2026-06-08
 
 Core sources:
 - From Research Question to Scientific Workflow: Leveraging Agentic AI for Science Automation: https://arxiv.org/abs/2604.21910v1
@@ -402,3 +402,25 @@ Sources:
 - [KuangshiAi/SciVisAgentSkills](https://github.com/KuangshiAi/SciVisAgentSkills)
 - [EVA-Bench Data 2.0](https://huggingface.co/blog/ServiceNow-AI/eva-bench-data)
 - [ServiceNow-AI/eva-bench](https://huggingface.co/datasets/ServiceNow-AI/eva-bench)
+
+
+## June 8 update: skills need utility and maliciousness gates
+
+Declarative Skills and MalSkillBench sharpen the skills-as-control thesis from opposite sides. Declarative Skills shows that natural-language skill files can reduce procedural and orchestration errors when retrieval is already strong, but cannot compensate for missing evidence. MalSkillBench shows that the same skill format is now a supply-chain attack surface: prose, scripts, and tool permissions can cooperate in ways that pure code scanners or pure prompt-injection defenses miss.
+
+The combined lesson is that skill admission needs two gates, not one:
+1. **Utility gate:** does this skill improve task success, compliance, cost, and trace quality against no-skill, thin-skill, and imperative baselines under the same retrieval conditions?
+2. **Safety gate:** does this skill stay within declared context, file, network, memory, and tool side-effect scope under malicious-skill fixtures and runtime sandbox verification?
+
+Practical lesson:
+- evaluate skills under retrieval-quality tiers before attributing gains to the skill;
+- keep no-skill, thin-skill, full-skill, and imperative-state-machine baselines;
+- require skill manifests with source, version, body hash, script list, tool scope, file/network/memory scope, and approval points;
+- scan prose and code jointly, including mixed instruction-code attacks;
+- runtime-verify high-risk skills in a sandbox before production admission;
+- bind loaded skill hash to subsequent tool calls, file writes, memory writes, and external observations in the trace.
+
+Sources:
+- [Declarative Skills for AI Agents in Knowledge-Grounded Tool-Use Workflows](https://arxiv.org/abs/2606.06923v1)
+- [MalSkillBench](https://arxiv.org/abs/2606.07131v1)
+- [lxyeternal/MalSkillBench](https://github.com/lxyeternal/MalSkillBench)

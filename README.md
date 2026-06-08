@@ -6,13 +6,13 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Daily scan, 2026-06-07: [roundup](roundups/2026-06-07.md)
-- AgenticAI daily analysis: [2026-06-07](AgenticAI/2026-06-07/reasoning.md)
-- Strategy daily analysis: [2026-06-07](Strategy/2026-06-07/sovereignty.md)
+- Daily scan, 2026-06-08: [roundup](roundups/2026-06-08.md)
+- AgenticAI daily analysis: [2026-06-08](AgenticAI/2026-06-08/reasoning.md)
+- Strategy daily analysis: [2026-06-08](Strategy/2026-06-08/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
-- Related durable topics: [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Trajectory-Aware Evaluation](AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Multi-Agent Orchestration](AgenticAI/multi-agent-orchestration/multi-agent-orchestration.md), [Memory Systems](AgenticAI/memory-systems/memory-systems.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md)
-- Previous daily scan, 2026-06-06: [roundup](roundups/2026-06-06.md)
+- Related durable topics: [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [Agentic Search and Retrieval](AgenticAI/agentic-search/agentic-search.md), [Trajectory-Aware Evaluation](AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md)
+- Previous daily scan, 2026-06-07: [roundup](roundups/2026-06-07.md)
 - Friday synthesis, week ending 2026-06-05: [roundup](roundups/2026-06-05.md)
 - Deep Dive Wednesday, 2026-06-03: [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md#deep-dive-wednesday-2026-06-03-gateway-as-identity-bound-mcp-data-plane)
 - Prior Friday synthesis: [week ending 2026-05-29](roundups/2026-05-29.md)
@@ -21,14 +21,14 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Current thesis
 
-The agent stack is moving from permissive context and tool catalogs to evidence-bearing control layers. The useful question is no longer only "can the model use more tools, skills, search, memory, context, or agents?" It is "which protocol, capability, source, runtime contract, identity, origin, budget, and validation artifact had authority to influence this run?"
+The agent stack is moving from permissive context and tool catalogs to evidence-bearing control layers. The useful question is no longer only "can the model use more tools, skills, search, memory, context, or agents?" It is "which protocol, capability, source, runtime contract, identity, origin, budget, validation artifact, and trajectory evidence had authority to influence this run?"
 
-The 2026-06-07 scan adds four implementation patterns:
+The 2026-06-08 scan adds four implementation patterns:
 
-- Failed trajectories should become harness repairs, not prompt patches.
-- Multi-agent workflows need normalized single-agent and multi-agent baselines before adding more agents.
-- Memory search needs retrieval policy gates and bitemporal conflict handling, not similarity alone.
-- Agent toolchains are becoming governed client and CI surfaces through managed plugins, MCP auth hygiene, and static tool-description gates.
+- Declarative skills help only when retrieval is already good.
+- Repository exploration should be scored before patch success.
+- Agent skills are now runtime-verified supply-chain dependencies.
+- Sabotage monitors need cross-step evidence accumulation.
 
 ## Browse by category
 

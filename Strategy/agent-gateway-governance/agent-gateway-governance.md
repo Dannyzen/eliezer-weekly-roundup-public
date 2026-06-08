@@ -1,6 +1,6 @@
 # Agent Gateway Governance
 
-Last updated: 2026-06-07
+Last updated: 2026-06-08
 
 Agent gateway governance is the control-plane discipline for exposing enterprise tools, data, and workflows to autonomous agents.
 
@@ -566,3 +566,22 @@ Sources:
 - [FastMCP v3.4.1](https://github.com/PrefectHQ/fastmcp/releases/tag/v3.4.1)
 - [FastMCP v3.4.2](https://github.com/PrefectHQ/fastmcp/releases/tag/v3.4.2)
 - [mcp-guard v1.0.0](https://github.com/diomonogatari/mcp-guard/releases/tag/v1.0.0)
+
+
+## June 8 update: skills are gateway-admitted supply-chain artifacts
+
+MalSkillBench turns skill governance into a gateway problem. A skill is not passive documentation. It can inject instructions, ship scripts, request tool permissions, influence memory writes, and steer future actions. The paper's benchmark is useful because it treats malicious skills as hybrid artifacts: code injection, prompt injection, and mixed instruction-code attacks.
+
+The gateway implication is that skill admission should look like tool admission. Provenance, signatures, and static scans are useful, but production authority should require behavioral evidence and trace binding.
+
+Practical lesson:
+- maintain a production-admitted skill catalog separate from an installable skill catalog;
+- require owner, source, version, body hash, script hash, declared scopes, and approval points;
+- scan prose, scripts, metadata, and tool declarations jointly;
+- sandbox-verify high-risk or community skills before they can influence privileged runs;
+- log loaded skill hash, granted scope, selected tools, memory writes, file writes, external observations, and policy verdicts;
+- quarantine skills whose runtime side effects exceed their manifests.
+
+Sources:
+- [MalSkillBench](https://arxiv.org/abs/2606.07131v1)
+- [lxyeternal/MalSkillBench](https://github.com/lxyeternal/MalSkillBench)

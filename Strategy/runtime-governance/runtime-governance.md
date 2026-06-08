@@ -1,6 +1,6 @@
 # Runtime Governance
 
-Last updated: 2026-06-01
+Last updated: 2026-06-08
 
 Runtime governance is becoming the real control plane for agent systems.
 
@@ -450,6 +450,23 @@ Sources:
 - [AWS Step Functions adds AgentCore-powered agentic reasoning step](https://aws.amazon.com/about-aws/whats-new/2026/06/aws-step-functions-agentcore/)
 - [Microsoft Agent Framework at BUILD 2026](https://devblogs.microsoft.com/agent-framework/microsoft-agent-framework-at-build-2026-announce/)
 - [Cloud and local sandboxes for GitHub Copilot](https://github.blog/changelog/2026-06-02-cloud-and-local-sandboxes-for-github-copilot-now-in-public-preview/)
+
+
+## June 8 update: sabotage monitors need cross-step evidence accumulation
+
+TRACE sharpens runtime governance for long-horizon agents. Some malicious objectives are not visible in any single tool call. The agent can gather information, transform it, test policy edges, and only later attempt the harmful effect. Each action may look locally benign while the sequence is not.
+
+The runtime-governance correction is to pair deterministic policy gates with accumulated trajectory evidence. Policy still blocks clear violations. The monitor handles ambiguous cross-step patterns by preserving a hypothesis ledger: suspicious regions, inspected evidence, linked steps, weakening evidence, verdict, and recommended operator action.
+
+Practical lesson:
+- emit typed trace events for every observation, tool call, argument, result, policy decision, approval, denial, and external effect;
+- triage suspicious regions cheaply before expensive semantic review;
+- accumulate evidence across steps instead of resetting risk at window boundaries;
+- keep trajectory verdicts cite-linked to concrete trace events;
+- use offline sabotage and permission-laundering fixtures before enabling live blocking.
+
+Source:
+- [TRACE](https://arxiv.org/abs/2606.07054v1)
 
 ## Working conclusion
 

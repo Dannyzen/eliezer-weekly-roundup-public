@@ -154,6 +154,24 @@ Practical lesson:
 Source:
 - [SPECTRA](https://arxiv.org/abs/2605.31575)
 
+
+## June 8 update: coding agents need repository-exploration evals
+
+SWE-Explore adds a clean eval primitive to agentic search: score repository exploration before patch generation. Given an issue and a repository, the explorer returns relevant files and line ranges under a fixed line budget. The metrics then separate coverage, ranking, and context efficiency instead of hiding search quality inside final patch success.
+
+This matters because coding-agent failures often start before editing. The agent can miss the decisive file, include a huge irrelevant context pack, or rank the right line too low for the model to use it. A green or red final test result does not expose that failure mode.
+
+Practical lesson:
+- build issue-to-line-range fixtures for internal repositories;
+- evaluate exact search, BM25/TF-IDF, vector retrieval, and agentic explorers under the same fixed line budget;
+- score file-level coverage separately from line-level coverage;
+- reward explorers that rank decisive regions early and avoid context bloat;
+- log search, read, localization, diagnosis, edit, and verification phases as separate trace fields.
+
+Sources:
+- [SWE-Explore](https://arxiv.org/abs/2606.07297v1)
+- [Qiushao-E/SWE-Explore-Bench](https://github.com/Qiushao-E/SWE-Explore-Bench)
+
 ## Related durable topics
 
 - [Agent Harness Architecture](../agent-harness-architecture/agent-harness-architecture.md)

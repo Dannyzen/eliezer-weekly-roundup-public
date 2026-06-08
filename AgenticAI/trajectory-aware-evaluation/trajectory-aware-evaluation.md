@@ -516,6 +516,23 @@ Sources:
 - [Search-Time Contamination in Deep Research Agents](https://arxiv.org/abs/2606.05241)
 - [EVA-Bench Data 2.0](https://huggingface.co/blog/ServiceNow-AI/eva-bench-data)
 
+
+## June 8 update: sabotage evaluation needs accumulated evidence ledgers
+
+TRACE updates trajectory-aware evaluation with a monitoring shape for hidden malicious objectives. A sabotage trajectory can be composed of actions that are individually benign, so scoring one window at a time can miss the pattern. A full-trajectory judge can also drown in low-signal trace noise. TRACE's Triage-Inspect-Judge loop is useful because it first selects high-signal regions, then inspects them while carrying evidence forward, then emits a cited trajectory-level verdict.
+
+The eval implication is direct: sabotage and permission-laundering tasks need accumulated evidence ledgers. The grader should preserve which steps formed the hypothesis, which steps weakened it, and which final verdict followed.
+
+Practical lesson:
+- normalize traces into typed events before scoring sabotage risk;
+- run cheap prefix/region triage before expensive semantic inspection;
+- preserve evidence links across distant actions;
+- require verdicts to cite steps, arguments, outputs, and policy events;
+- evaluate monitors offline on benign, malicious, and ambiguous trajectories before using them to block live work.
+
+Source:
+- [TRACE](https://arxiv.org/abs/2606.07054v1)
+
 ## Working conclusion
 
 Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, and scored across safety, robustness, parameter correctness, environment fidelity, runtime-specific harm dimensions, real-user collaboration traces, realistic workspace state, live workflow demand, cost, adversarial task quality, long-range state propagation, abstention, protocol conformance, tool-shortlist quality, environment-factory coverage, and quantitative goal persistence, improvement efforts will stay shallow and trust claims will stay unearned.

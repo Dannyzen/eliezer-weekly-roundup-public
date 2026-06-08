@@ -2,50 +2,36 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: Daily scan 2026-06-07
+## Most Recent Structured Update: Daily scan 2026-06-08
 
-### Failed trajectories should become harness repairs, not prompt patches
-Summary: A failed agent run should become a layer-attributed harness repair candidate. The first move is not another prompt tweak. It is trace replay across tools, context, lifecycle, verification, environment, policy, and model behavior.
+### Declarative skills help only when retrieval is already good
+Summary: Skill files can reduce procedural and orchestration errors, but they do not fix missing or skewed evidence. Retrieval quality is the first bottleneck; declarative skill control is useful only after the evidence substrate is good enough.
 
-Analysis: [daily reasoning analysis](2026-06-07/reasoning.md#failed-trajectories-should-become-harness-repairs-not-prompt-patches)
-Durable topics: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
-Core source: [From Failed Trajectories to Reliable LLM Agents](https://arxiv.org/abs/2606.06324v1)
+Analysis: [daily reasoning analysis](2026-06-08/reasoning.md#declarative-skills-help-only-when-retrieval-is-already-good)
+Durable topic: [Skills as Control](skills-as-control/skills-as-control.md)
+Core source: [Declarative Skills for AI Agents in Knowledge-Grounded Tool-Use Workflows](https://arxiv.org/abs/2606.06923v1)
 Implementable now:
-- capture trace IR with task state, tools, observations, verifiers, lifecycle events, and policy decisions;
-- replay failures before mutating prompts;
-- label the broken harness layer and promote repaired failures into regression fixtures.
+- write compact workflow skills with preconditions, procedural rules, examples, and validators;
+- run no-skill, thin-skill, full-skill, and imperative-state-machine baselines under identical retrieval;
+- trace retrieved evidence, loaded skill hash, cited skill section, and verifier outcome.
 Tools, repos, and methodologies worth exploring:
-- trace IRs, failed-trajectory replay, layer-attributed failure labels, OpenTelemetry spans, LangSmith-style traces, harness regression fixtures
-Implementability score: 0.82
+- skill load/no-load gates, retrieval-quality tiers, orchestration-error labels, skill/no-skill baselines, evidence coverage tests
+Implementability score: 0.84
 
-### Multi-agent workflows need normalized baselines before more agents
-Summary: Multi-agent systems should beat matched single-agent baselines under the same loader, tool access, answer contract, usage accounting, and trajectory logging. Otherwise the topology is getting unearned credit.
+### Repository exploration should be scored before patch success
+Summary: Coding-agent eval should isolate repository exploration before full patch generation. A fixed line budget, coverage, ranking, and context-efficiency score reveal whether the agent found the right code regions before editing.
 
-Analysis: [daily reasoning analysis](2026-06-07/reasoning.md#multi-agent-workflows-need-normalized-baselines-before-more-agents)
-Durable topic: [Multi-Agent Orchestration](multi-agent-orchestration/multi-agent-orchestration.md)
-Core sources: [Do More Agents Help?](https://arxiv.org/abs/2606.05670v1), [MASArena / BenchAgent](https://github.com/LINs-lab/MASArena/tree/BenchAgent)
+Analysis: [daily reasoning analysis](2026-06-08/reasoning.md#repository-exploration-should-be-scored-before-patch-success)
+Durable topic: [Agentic Search and Retrieval](agentic-search/agentic-search.md)
+Core sources: [SWE-Explore](https://arxiv.org/abs/2606.07297v1), [SWE-Explore-Bench](https://github.com/Qiushao-E/SWE-Explore-Bench)
 Implementable now:
-- compare single-agent, fixed-MAS, and evolving-MAS runs under identical protocols;
-- log inter-agent messages, tool calls, cost, latency, and final-state checks;
-- run topology ablations before adding broadcast collaboration.
+- create internal issue-to-line-range exploration fixtures;
+- compare ripgrep/BM25, vector retrieval, and agentic explorers under a fixed line budget;
+- log search, read, localization, diagnosis, edit, and verification as separate trace phases.
 Tools, repos, and methodologies worth exploring:
-- BenchAgent-style protocol alignment, MASArena metadata, topology ablations, usage-normalized scorecards, inter-agent trace logs
-Implementability score: 0.75
-
-### Memory search needs policy and bitemporal conflict handling
-Summary: Personal-agent memory should not inject the nearest embedding by default. Retrieval needs policy gates, and persistent writes need bitemporal contradiction handling with evidence and supersession.
-
-Analysis: [daily reasoning analysis](2026-06-07/reasoning.md#memory-search-needs-policy-and-bitemporal-conflict-handling)
-Durable topic: [Memory Systems](memory-systems/memory-systems.md)
-Core sources: [Beyond Similarity](https://arxiv.org/abs/2606.06054v1), [TOKI](https://arxiv.org/abs/2606.06240v1), [TOKI repository](https://github.com/ZenAlexa/toki-bitemporal-memory)
-Implementable now:
-- gate memory retrieval by domain, sensitivity, consent, recency, confidence, and downstream tool action;
-- store bitemporal facts with evidence, valid time, transaction time, supersession, and conflict operator;
-- test stale, sensitive, contradictory, cross-domain, and action-triggering memories.
-Tools, repos, and methodologies worth exploring:
-- bitemporal fact stores, retrieval policy gates, evidence-linked memory rows, conflict-resolution operators, memory safety fixtures
-Implementability score: 0.69
+- fixed-line-budget repo exploration, line-level coverage, ranking metrics, context-efficiency scorecards, SWE-Explore-Bench as read-only reference
+Implementability score: 0.80
 
 ## Previous structured update
 
-The prior daily scan for 2026-06-06 focused on memory as a profiled systems workload and causal tool-frontier filtering: [2026-06-06 roundup](../roundups/2026-06-06.md).
+The prior daily scan for 2026-06-07 focused on failed-trajectory harness repair, normalized multi-agent baselines, and memory retrieval policy plus bitemporal conflict handling: [2026-06-07 roundup](../roundups/2026-06-07.md).

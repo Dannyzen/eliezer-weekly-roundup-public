@@ -2,36 +2,22 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: Daily scan 2026-06-08
+## Most Recent Structured Update: Daily scan 2026-06-09
 
-### Agent skills are now runtime-verified supply-chain dependencies
-Summary: A skill is a hybrid dependency: natural-language instruction, executable code, and authority hint. Scanning only prompt text or only scripts misses mixed instruction-code attacks.
+### Artifact provenance gaps are now an agent attack surface
+Summary: Tool-using agents persist files, logs, memories, summaries, plans, and other artifacts that later steps may treat as neutral context. If the runtime does not preserve artifact lineage, cross-context jailbreak fragments can become dangerous only when recomposed by the workflow.
 
-Analysis: [daily sovereignty analysis](2026-06-08/sovereignty.md#agent-skills-are-now-runtime-verified-supply-chain-dependencies)
-Durable topic: [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md)
-Core sources: [MalSkillBench paper](https://arxiv.org/abs/2606.07131v1), [MalSkillBench repository](https://github.com/lxyeternal/MalSkillBench)
+Analysis: [daily sovereignty analysis](2026-06-09/sovereignty.md#artifact-provenance-gaps-are-now-an-agent-attack-surface)
+Durable topics: [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md), [Runtime Governance](runtime-governance/runtime-governance.md)
+Core source: [Context-Fractured Decomposition Attacks](https://arxiv.org/abs/2606.09084v1)
 Implementable now:
-- require skill manifests with source, version, body hash, scripts, tool scope, file/network/memory scope, and approval points;
-- statically scan prose, scripts, tool declarations, hidden instructions, and permission claims;
-- runtime-verify high-risk community skills in a sandbox before production admission.
+- attach origin, author, tool, session, task, trust level, and transformation lineage to durable artifacts;
+- keep user data, tool outputs, generated plans, memories, scripts, and logs in separate trust classes;
+- propagate taint labels into later reads, summaries, code/config generation, and privileged tool arguments.
 Tools, repos, and methodologies worth exploring:
-- MalSkillBench taxonomy, generated and in-the-wild malicious skill fixtures, sandbox verification, loaded-skill side-effect traces, quarantine gates
-Implementability score: 0.78
-
-### Sabotage monitors need cross-step evidence accumulation
-Summary: Long-horizon sabotage can be split across individually benign actions. Safety monitors need triage, targeted inspection, accumulated evidence, and cited-step trajectory verdicts.
-
-Analysis: [daily sovereignty analysis](2026-06-08/sovereignty.md#sabotage-monitors-need-cross-step-evidence-accumulation)
-Durable topics: [Runtime Governance](runtime-governance/runtime-governance.md), [Trajectory-Aware Evaluation](../AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md)
-Core source: [TRACE](https://arxiv.org/abs/2606.07054v1)
-Implementable now:
-- normalize traces into typed events for observations, tools, arguments, results, policy decisions, and external effects;
-- run cheap triage before expensive LLM inspection;
-- preserve an accumulated evidence ledger that links distant actions into a trajectory-level risk hypothesis.
-Tools, repos, and methodologies worth exploring:
-- triage-inspect-judge loops, SHADE-Arena-style sabotage fixtures, permission-laundering tests, trajectory evidence ledgers, offline calibration before online blocking
-Implementability score: 0.66
+- provenance graphs, artifact taint, trace-linked artifact reads/writes, trust-class validators, policy gates before artifact-to-instruction promotion, cross-step attack fixtures
+Implementability score: 0.72
 
 ## Previous structured update
 
-The prior daily scan for 2026-06-07 focused on managed-client and CI governance for agent toolchains: [2026-06-07 roundup](../roundups/2026-06-07.md).
+The prior daily scan for 2026-06-08 focused on malicious skill supply-chain admission and cross-step sabotage evidence accumulation: [2026-06-08 roundup](../roundups/2026-06-08.md).

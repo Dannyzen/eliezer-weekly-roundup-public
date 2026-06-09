@@ -1,6 +1,6 @@
 # Skills as Control
 
-Last updated: 2026-06-08
+Last updated: 2026-06-09
 
 Core sources:
 - From Research Question to Scientific Workflow: Leveraging Agentic AI for Science Automation: https://arxiv.org/abs/2604.21910v1
@@ -424,3 +424,17 @@ Sources:
 - [Declarative Skills for AI Agents in Knowledge-Grounded Tool-Use Workflows](https://arxiv.org/abs/2606.06923v1)
 - [MalSkillBench](https://arxiv.org/abs/2606.07131v1)
 - [lxyeternal/MalSkillBench](https://github.com/lxyeternal/MalSkillBench)
+
+## June 9 update: skill compression needs cost-aware anchors
+
+What Should a Skill Remember? adds the cost model that skill governance was missing. A shorter skill is not automatically better. If compression removes sparse anchors such as API names, command shapes, workflow guards, formulas, examples, pitfalls, or recovery paths, the agent may spend more total budget exploring, retrying, debugging, or calling the wrong tool.
+
+The practical lesson is to make skill rewriting a measured transformation, not a style preference:
+- tag each skill section by operational function before rewriting;
+- preserve API/code anchors, workflow guards, rules/formulas, examples, validators, and recovery paths deliberately;
+- evaluate original, short, anchor-preserving, guard-preserving, and rule-preserving rewrites on the same tasks;
+- measure total run cost: prompt tokens, tool calls, retries, wall-clock time, verifier outcome, and user correction burden;
+- keep rewrite lineage, body hash, and rollback path in the skill registry.
+
+Source:
+- [What Should a Skill Remember?](https://arxiv.org/abs/2606.09421v1)

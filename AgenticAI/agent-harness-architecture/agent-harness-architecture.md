@@ -1,6 +1,6 @@
 # Agent Harness Architecture
 
-Last updated: 2026-06-06
+Last updated: 2026-06-09
 
 Agent harness architecture is becoming the part of the agent stack that teams can actually standardize.
 
@@ -670,6 +670,24 @@ Practical lesson:
 
 Source:
 - [From Failed Trajectories to Reliable LLM Agents](https://arxiv.org/abs/2606.06324v1)
+
+## June 9 update: OpenEnv makes agentic RL environments a harness interface
+
+OpenEnv turns environment design into a harness contract. The useful move is not another agent framework. It is a common interface between harness, environment, and trainer, with Gymnasium-style `reset`, `step`, and `state`, client/server deployment, HTTP/WebSocket transport, Docker packaging, and MCP compatibility.
+
+That matters because open-source agent training needs comparable task surfaces. If every harness has a private environment adapter, models learn the harness instead of the task. A shared socket lets teams vary the model, trainer, reward library, and infrastructure while holding the environment contract stable.
+
+Practical lesson:
+- wrap internal tasks as environment contracts before trying to train on them;
+- keep reward definition and trainer logic outside the environment interface;
+- make MCP servers and environment actions consistent between train/eval and production modes;
+- attach tasksets to datasets so environments and benchmark cases compose;
+- auto-validate environment quality before treating it as a learning signal.
+
+Sources:
+- [The Open Source Community is backing OpenEnv for Agentic RL](https://huggingface.co/blog/openenv-agentic-rl)
+- [huggingface/OpenEnv](https://github.com/huggingface/OpenEnv)
+
 
 ## Working conclusion
 

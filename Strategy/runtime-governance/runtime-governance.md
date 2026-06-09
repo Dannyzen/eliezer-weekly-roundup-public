@@ -1,6 +1,6 @@
 # Runtime Governance
 
-Last updated: 2026-06-08
+Last updated: 2026-06-09
 
 Runtime governance is becoming the real control plane for agent systems.
 
@@ -467,6 +467,23 @@ Practical lesson:
 
 Source:
 - [TRACE](https://arxiv.org/abs/2606.07054v1)
+
+## June 9 update: provenance gaps make artifacts runtime state
+
+Context-Fractured Decomposition Attacks extends the June 8 TRACE lesson. Cross-step risk does not only live in the trajectory. It can be stored in artifacts that survive across modules and time. A runtime that treats files, logs, scratchpads, summaries, memories, and generated scripts as neutral context is missing part of the attack surface.
+
+The runtime-governance correction is to make artifact state typed and trace-linked. When an artifact is created, transformed, read, trusted, or promoted into an instruction or executable input, that transition should appear in the same trace as tool calls and policy decisions.
+
+Practical lesson:
+- emit artifact-created, artifact-read, artifact-transformed, artifact-promoted, and artifact-executed events;
+- attach origin, trust class, data class, transformation lineage, and policy verdict;
+- separate evidence artifacts from instruction artifacts until policy explicitly promotes them;
+- quarantine generated scripts/configs from untrusted artifact lineage;
+- add replay fixtures for cross-context jailbreaks and artifact-laundering paths.
+
+Source:
+- [Context-Fractured Decomposition Attacks](https://arxiv.org/abs/2606.09084v1)
+
 
 ## Working conclusion
 

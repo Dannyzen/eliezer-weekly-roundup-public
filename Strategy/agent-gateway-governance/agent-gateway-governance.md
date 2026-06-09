@@ -1,6 +1,6 @@
 # Agent Gateway Governance
 
-Last updated: 2026-06-08
+Last updated: 2026-06-09
 
 Agent gateway governance is the control-plane discipline for exposing enterprise tools, data, and workflows to autonomous agents.
 
@@ -585,3 +585,19 @@ Practical lesson:
 Sources:
 - [MalSkillBench](https://arxiv.org/abs/2606.07131v1)
 - [lxyeternal/MalSkillBench](https://github.com/lxyeternal/MalSkillBench)
+
+## June 9 update: artifact provenance needs gateway lineage
+
+Context-Fractured Decomposition Attacks names a gateway failure mode that current tool policies often miss: artifact provenance gaps. A tool-using agent can write files, logs, scratchpads, plans, summaries, memories, or generated configs that later become context for a different module. If the gateway only sees the later artifact and not its origin, adversarial fragments can be recomposed across contexts.
+
+The gateway implication is that artifact lineage is part of authorization. A durable artifact should carry origin, author, tool, session, task, trust level, and transformation history. When the agent later reads that artifact, summarizes it, turns it into code, or passes it as a privileged tool argument, policy should evaluate the lineage, not just the current text.
+
+Practical lesson:
+- track artifact reads and writes as gateway events, not only filesystem events;
+- label user input, tool output, model-generated plans, logs, memories, scripts, and summaries as separate trust classes;
+- propagate taint through summarization, rewriting, format conversion, and code/config generation;
+- gate artifact-to-instruction and artifact-to-execution promotion;
+- test cross-context attacks where each fragment is benign until later recomposition.
+
+Source:
+- [Context-Fractured Decomposition Attacks](https://arxiv.org/abs/2606.09084v1)

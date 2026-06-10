@@ -485,6 +485,26 @@ Source:
 - [Context-Fractured Decomposition Attacks](https://arxiv.org/abs/2606.09084v1)
 
 
+## June 10 update: security evaluation needs executable environments and trace-safe evidence release
+
+AgentCanary and RedAct sharpen both sides of runtime governance. AgentCanary says agent security evals need real executable environments with persistent state and full-trajectory scoring, because static prompts and mocked tools miss system compromise. RedAct says raw traces are not harmless audit logs; they can leak reusable procedural skills unless trace release preserves verifier-critical evidence while redacting protected capability details.
+
+GitHub's third-party coding-agent validation turns the same pattern into platform behavior: generated code from Claude, OpenAI Codex, and other third-party coding agents now gets CodeQL, dependency advisory, and secret-scanning validation before PR finalization.
+
+Practical lesson:
+- build executable security fixtures with real tools, stateful artifacts, and trajectory-level scoring;
+- score outcome safety, security awareness, task utility, tool arguments, denied actions, and final effects separately;
+- run CodeQL, dependency advisory checks, and secret scanning on agent-generated PRs;
+- redact traces by protected capability class while preserving verifier-critical audit evidence;
+- watermark released traces or summaries when provenance matters;
+- require trace IDs, scan result IDs, and approval artifacts before agent code reaches production.
+
+Sources:
+- [AgentCanary](https://arxiv.org/abs/2606.10484v1)
+- [RedAct](https://arxiv.org/abs/2606.10813v1)
+- [XuShuwenn/RedAct](https://github.com/XuShuwenn/RedAct)
+- [Security validation for third-party coding agents](https://github.blog/changelog/2026-06-09-security-validation-for-third-party-coding-agents)
+
 ## Working conclusion
 
 Runtime governance is not a niche enterprise concern. It is the natural consequence of giving agents durable memory, tool access, repository permissions, CI/CD authority, local storage, plugins, delegated secrets, shared inference infrastructure, and sandboxed execution environments. The control plane has to move into runtime: inventory the agents, bind identity and scope, manage execution environments, preserve trace evidence, enforce valid next transitions before privileged tools execute, calibrate trust from outcomes, test trajectory-level guardrails offline, record serving conditions for replayability, constrain network and inference routes, and keep tainted inputs from silently becoming trusted agent instructions or script data.

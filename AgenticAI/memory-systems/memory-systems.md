@@ -29,6 +29,7 @@ Core sources:
 - StructMem: https://arxiv.org/abs/2604.21748
 - LightMem: https://github.com/zjunlp/LightMem
 - DMF: https://arxiv.org/abs/2606.03463v1
+- Infini Memory: https://arxiv.org/abs/2606.10677v1
 
 ## Core thesis
 
@@ -559,6 +560,20 @@ Sources:
 - [Beyond Similarity](https://arxiv.org/abs/2606.06054v1)
 - [TOKI](https://arxiv.org/abs/2606.06240v1)
 - [ZenAlexa/toki-bitemporal-memory](https://github.com/ZenAlexa/toki-bitemporal-memory)
+
+## June 10 update: topic documents need staged consolidation and iterative inspection
+
+Infini Memory gives this topic a practical document-shape: maintain long-term memory as topic-structured documents with staged observations, metadata, fact revision, and iterative evidence inspection. That is the missing middle between raw episodes and one-shot retrieval. The agent should not blindly inject a nearest chunk; it should inspect a maintained topic surface, then drill into source evidence when needed.
+
+Practical lesson:
+- maintain one topic document per recurring entity, project, workflow, or decision area;
+- stage new observations in a buffer before promotion to canonical memory;
+- preserve source span, timestamp, author/tool, confidence, supersession, and conflict metadata;
+- let retrieval return topic neighborhoods, then allow iterative inspection through memory tools;
+- evaluate memory on update tracking, contradiction handling, and evidence citation, not only top-k recall.
+
+Source:
+- [Infini Memory](https://arxiv.org/abs/2606.10677v1)
 
 ## Working conclusion
 

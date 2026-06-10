@@ -31,6 +31,7 @@ Core sources:
 - Claude Context: https://github.com/zilliztech/claude-context
 - StructMem: https://arxiv.org/abs/2604.21748
 - LightMem: https://github.com/zjunlp/LightMem
+- Less Context, Better Agents: https://arxiv.org/abs/2606.10209v1
 
 ## The context budget is multi-dimensional
 
@@ -279,6 +280,20 @@ Practical lesson:
 
 Source:
 - [chopratejas/headroom](https://github.com/chopratejas/headroom)
+
+## June 10 update: tool-response history should be pruned and summarized, not retained wholesale
+
+Less Context, Better Agents turns context economy into an operational benchmark. In a Microsoft Dynamics 365 MCP expense workflow, full conversation history improved over no user model, but pruning to recent tool calls plus compact summaries did better on both reliability and efficiency. The lesson is not that five calls is magic. It is that tool-response history needs retention policy, not prompt maximalism.
+
+Practical lesson:
+- preserve full tool transcripts outside the prompt for audit and replay;
+- keep only recent high-value tool state active unless older state is requested;
+- summarize older tool interactions with source IDs, freshness labels, and links back to raw records;
+- measure completion, tokens, stale-state errors, retries, and wall-clock time by retention policy;
+- run full-history, last-N, summary-only, and last-N-plus-summary ablations before changing production context handling.
+
+Source:
+- [Less Context, Better Agents](https://arxiv.org/abs/2606.10209v1)
 
 ## Working conclusion
 

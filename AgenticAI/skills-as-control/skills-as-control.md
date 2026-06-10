@@ -1,6 +1,6 @@
 # Skills as Control
 
-Last updated: 2026-06-09
+Last updated: 2026-06-10
 
 Core sources:
 - From Research Question to Scientific Workflow: Leveraging Agentic AI for Science Automation: https://arxiv.org/abs/2604.21910v1
@@ -32,6 +32,7 @@ Core sources:
 - NVIDIA physical-AI skills release: https://nvidianews.nvidia.com/news/nvidia-releases-major-collection-of-open-source-agent-tools-and-skills-for-physical-ai
 - SkillHarm: https://arxiv.org/abs/2606.02540v1
 - SkillGuard: https://arxiv.org/abs/2606.03024v1
+- Context Rot in AI-Assisted Software Development: https://arxiv.org/abs/2606.09090v1
 
 ## Thesis
 
@@ -438,3 +439,17 @@ The practical lesson is to make skill rewriting a measured transformation, not a
 
 Source:
 - [What Should a Skill Remember?](https://arxiv.org/abs/2606.09421v1)
+
+## June 10 update: AI configuration files need context-rot checks
+
+Context Rot in AI-Assisted Software Development makes stale agent guidance a measurable maintenance problem. `AGENTS.md`, `CLAUDE.md`, `.cursorrules`, skills, and prompt templates contain references to paths, commands, APIs, symbols, architecture, and conventions. When those references rot, the agent receives obsolete instructions with operator-level authority.
+
+Practical lesson:
+- extract paths, symbols, commands, API names, environment variables, tool names, and architecture claims from AI-facing guidance files;
+- compare them against the live repository tree, language-server symbols, package manifests, tests, and docs;
+- fail CI or open review tasks for high-confidence stale references;
+- record guidance-file hash, repository commit, and last validation date in agent traces;
+- maintain fixtures where files are renamed, APIs are deleted, commands change, and workflows become obsolete.
+
+Source:
+- [Context Rot in AI-Assisted Software Development](https://arxiv.org/abs/2606.09090v1)

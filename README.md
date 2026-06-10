@@ -6,13 +6,13 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Daily scan, 2026-06-09: [roundup](roundups/2026-06-09.md)
-- AgenticAI daily analysis: [2026-06-09](AgenticAI/2026-06-09/reasoning.md)
-- Strategy daily analysis: [2026-06-09](Strategy/2026-06-09/sovereignty.md)
+- Daily scan, 2026-06-10: [roundup](roundups/2026-06-10.md)
+- AgenticAI daily analysis: [2026-06-10](AgenticAI/2026-06-10/reasoning.md)
+- Strategy daily analysis: [2026-06-10](Strategy/2026-06-10/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
-- Related durable topics: [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [Agent Serving Runtime](AgenticAI/agent-serving-runtime/agent-serving-runtime.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md)
-- Previous daily scan, 2026-06-08: [roundup](roundups/2026-06-08.md)
+- Related durable topics: [Context Economy](AgenticAI/context-economy/context-economy.md), [Memory Systems](AgenticAI/memory-systems/memory-systems.md), [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md)
+- Previous daily scan, 2026-06-09: [roundup](roundups/2026-06-09.md)
 - Friday synthesis, week ending 2026-06-05: [roundup](roundups/2026-06-05.md)
 - Deep Dive Wednesday, 2026-06-03: [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md#deep-dive-wednesday-2026-06-03-gateway-as-identity-bound-mcp-data-plane)
 - Prior Friday synthesis: [week ending 2026-05-29](roundups/2026-05-29.md)
@@ -21,14 +21,14 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Current thesis
 
-The agent stack is moving from permissive context and tool catalogs to evidence-bearing control layers. The useful question is no longer only "can the model use more tools, skills, search, memory, context, or agents?" It is "which environment socket, skill anchor, serving state, protocol, capability, source, runtime contract, identity, origin, budget, validation artifact, and trajectory evidence had authority to influence this run?"
+The agent stack is moving from permissive context and tool catalogs to maintained state and evidence-bearing controls. The useful question is no longer only "can the model use more memory, context, tools, skills, or agents?" It is "which retained state, source, tool response, memory topic, configuration artifact, validation result, trace, and policy decision had authority to influence this run?"
 
-The 2026-06-09 scan adds four implementation patterns:
+The 2026-06-10 scan adds four implementation patterns:
 
-- OpenEnv turns agentic RL environments into a shared socket.
-- Skill rewriting should preserve operational anchors, not only tokens.
-- Agent serving needs program-level simulation, not request-level throughput math.
-- Artifact provenance gaps are now an agent attack surface.
+- Pruned tool history plus compact summaries can beat full-context retention.
+- Topic documents are becoming the maintainable primitive for long-term agent memory.
+- AI configuration files need context-rot checks because stale guidance can become operational authority.
+- Agent security is moving toward executable validation, platform-side scans, and trace controls.
 
 ## Browse by category
 

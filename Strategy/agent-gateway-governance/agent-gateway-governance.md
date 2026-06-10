@@ -601,3 +601,19 @@ Practical lesson:
 
 Source:
 - [Context-Fractured Decomposition Attacks](https://arxiv.org/abs/2606.09084v1)
+
+## June 10 update: third-party coding agents need platform-side validation
+
+GitHub's third-party coding-agent validation is a gateway-governance signal. Once external coding agents can work directly in repositories, security validation cannot depend only on the agent's own prompt or vendor claims. The platform that receives the pull request should run the same validation regardless of which agent wrote the code.
+
+GitHub says third-party coding-agent output now receives CodeQL analysis, dependency checks against the GitHub Advisory Database, and secret scanning for sensitive information such as API keys and tokens. If issues are found, the agent attempts to resolve them before finalizing the pull request. That is the right shape: agent-generated code is not done until the host platform has produced independent security evidence.
+
+Practical lesson:
+- require host-side security validation for every coding-agent PR, regardless of agent vendor;
+- record agent identity, repository, branch, validation tools, alert IDs, remediation attempts, and final reviewer decision;
+- keep security validation on by default and tied to repository policy, not optional agent behavior;
+- merge only after CodeQL, dependency advisory, secret scanning, tests, and human review pass for the relevant risk tier;
+- reconcile external-agent task IDs with local audit logs and PR metadata.
+
+Source:
+- [Security validation for third-party coding agents](https://github.blog/changelog/2026-06-09-security-validation-for-third-party-coding-agents)

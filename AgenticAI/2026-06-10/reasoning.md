@@ -2,6 +2,27 @@
 
 Today's useful signal is context discipline. The strongest findings all say the same thing in different layers: agent systems should stop treating memory, tool history, and configuration text as passive prompt material. They are maintained state, and maintained state needs staging, pruning, summarization, and rot checks.
 
+## Deep Dive Wednesday selection: Enterprise MCP orchestration needs compiled run contracts
+
+Queen-Bee Agents is the strongest finding from the last seven days because it turns several scattered stack problems into one architecture object: a compiled, auditable, scoped execution contract between planning and side effects.
+
+The paper proposes a Queen control plane that retrieves capabilities, plans task-scoped execution, and emits BeeSpecs for specialized Bee agents. Each BeeSpec carries role, domain, tenant scope, memory scope, attached skills, allowed MCP tools, policy profile, and optional approval gate. Bees then execute under those constraints through tenant-scoped MCP connectors.
+
+This matters more than the week's other strong findings because it connects them. Skills need admission and side-effect scope. Context needs retention policy. Secure tool use needs read/write boundaries. Multi-agent systems need role and topology evidence. MCP gateways need identity and tenant policy. A BeeSpec-style run contract is where those controls meet.
+
+Deep dive: [Enterprise MCP Orchestration](../enterprise-mcp-orchestration/enterprise-mcp-orchestration.md)
+
+Core source:
+- Queen-Bee Agents: A BeeSpec-Centered Architecture for Governed Enterprise MCP Orchestration: https://arxiv.org/abs/2606.06545v1
+
+Implementable now:
+- define a Pydantic or JSON Schema work-order object with tenant, memory, tools, skills, policy, approval, and output contract fields;
+- put two or three MCP tools behind FastMCP or another local server and require every worker invocation to receive a scoped contract;
+- compare broad single-agent, static worker, retrieval-provisioned worker, and no-policy variants on synthetic cross-tenant and sensitive-data tasks;
+- log work-order hash, selected tools, denied tools, policy checks, approval artifacts, summaries, and final effects.
+
+Implementability score: 0.72
+
 ## Findings
 
 ### Pruned tool history plus compact summaries can beat full context

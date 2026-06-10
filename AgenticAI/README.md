@@ -2,7 +2,22 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: Daily scan 2026-06-10
+## Most Recent Structured Update: Deep Dive Wednesday 2026-06-10
+
+### Enterprise MCP orchestration needs compiled run contracts
+Summary: Queen-Bee Agents turns enterprise MCP orchestration into a scoped work-order architecture: a control plane retrieves capabilities and emits BeeSpecs with role, tenant scope, memory scope, attached skills, allowed tools, policy profile, and approval gates before any specialized worker acts.
+
+Analysis: [daily reasoning analysis](2026-06-10/reasoning.md#deep-dive-wednesday-selection-enterprise-mcp-orchestration-needs-compiled-run-contracts)
+Deep dive: [Enterprise MCP Orchestration](enterprise-mcp-orchestration/enterprise-mcp-orchestration.md)
+Core source: [Queen-Bee Agents](https://arxiv.org/abs/2606.06545v1)
+Implementable now:
+- define a Pydantic or JSON Schema run contract for subagent execution;
+- expose a small MCP registry with tenant, domain, risk, skill, and approval metadata;
+- dispatch workers only with scoped tool and memory access;
+- compare broad single-agent, static worker, retrieval-provisioned worker, and no-policy baselines on cross-tenant and sensitive-data tasks.
+Tools, repos, and methodologies worth exploring:
+- BeeSpec-style work orders, FastMCP, Pydantic/JSON Schema, LangGraph/Temporal/Prefect, OPA/Cedar/OpenFGA, OpenTelemetry traces, SecureClaw PREVIEW→COMMIT boundaries
+Implementability score: 0.72
 
 ### Pruned tool history plus compact summaries can beat full context
 Summary: Full conversation history is not automatically the best agent context. In a Microsoft Dynamics 365 MCP workflow, keeping the last five tool call/response pairs plus compact summaries beat full-context retention on completion rate, tokens, and runtime.

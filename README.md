@@ -6,12 +6,13 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
+- Deep Dive Wednesday, 2026-06-10: [Enterprise MCP Orchestration](AgenticAI/enterprise-mcp-orchestration/enterprise-mcp-orchestration.md)
 - Daily scan, 2026-06-10: [roundup](roundups/2026-06-10.md)
 - AgenticAI daily analysis: [2026-06-10](AgenticAI/2026-06-10/reasoning.md)
 - Strategy daily analysis: [2026-06-10](Strategy/2026-06-10/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
-- Related durable topics: [Context Economy](AgenticAI/context-economy/context-economy.md), [Memory Systems](AgenticAI/memory-systems/memory-systems.md), [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md)
+- Related durable topics: [Enterprise MCP Orchestration](AgenticAI/enterprise-mcp-orchestration/enterprise-mcp-orchestration.md), [Context Economy](AgenticAI/context-economy/context-economy.md), [Memory Systems](AgenticAI/memory-systems/memory-systems.md), [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md)
 - Previous daily scan, 2026-06-09: [roundup](roundups/2026-06-09.md)
 - Friday synthesis, week ending 2026-06-05: [roundup](roundups/2026-06-05.md)
 - Deep Dive Wednesday, 2026-06-03: [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md#deep-dive-wednesday-2026-06-03-gateway-as-identity-bound-mcp-data-plane)
@@ -23,8 +24,9 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 The agent stack is moving from permissive context and tool catalogs to maintained state and evidence-bearing controls. The useful question is no longer only "can the model use more memory, context, tools, skills, or agents?" It is "which retained state, source, tool response, memory topic, configuration artifact, validation result, trace, and policy decision had authority to influence this run?"
 
-The 2026-06-10 scan adds four implementation patterns:
+The 2026-06-10 scan and Deep Dive Wednesday add five implementation patterns:
 
+- Enterprise MCP orchestration needs compiled run contracts before workers receive tools.
 - Pruned tool history plus compact summaries can beat full-context retention.
 - Topic documents are becoming the maintainable primitive for long-term agent memory.
 - AI configuration files need context-rot checks because stale guidance can become operational authority.
@@ -39,6 +41,7 @@ The 2026-06-10 scan adds four implementation patterns:
 
 ### AgenticAI
 
+- [Enterprise MCP Orchestration](AgenticAI/enterprise-mcp-orchestration/enterprise-mcp-orchestration.md)
 - [Agentic Search and Retrieval](AgenticAI/agentic-search/agentic-search.md)
 - [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md)
 - [Agent Serving Runtime](AgenticAI/agent-serving-runtime/agent-serving-runtime.md)

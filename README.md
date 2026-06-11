@@ -6,14 +6,14 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Deep Dive Wednesday, 2026-06-10: [Enterprise MCP Orchestration](AgenticAI/enterprise-mcp-orchestration/enterprise-mcp-orchestration.md)
-- Daily scan, 2026-06-10: [roundup](roundups/2026-06-10.md)
-- AgenticAI daily analysis: [2026-06-10](AgenticAI/2026-06-10/reasoning.md)
-- Strategy daily analysis: [2026-06-10](Strategy/2026-06-10/sovereignty.md)
+- Daily scan, 2026-06-11: [roundup](roundups/2026-06-11.md)
+- AgenticAI daily analysis: [2026-06-11](AgenticAI/2026-06-11/reasoning.md)
+- Strategy daily analysis: [2026-06-11](Strategy/2026-06-11/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
-- Related durable topics: [Enterprise MCP Orchestration](AgenticAI/enterprise-mcp-orchestration/enterprise-mcp-orchestration.md), [Context Economy](AgenticAI/context-economy/context-economy.md), [Memory Systems](AgenticAI/memory-systems/memory-systems.md), [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md)
-- Previous daily scan, 2026-06-09: [roundup](roundups/2026-06-09.md)
+- Related durable topics: [Memory Systems](AgenticAI/memory-systems/memory-systems.md), [Event-Sourced Agent Runtime](AgenticAI/event-sourced-agent-runtime/event-sourced-agent-runtime.md), [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md)
+- Previous daily scan, 2026-06-10: [roundup](roundups/2026-06-10.md)
+- Deep Dive Wednesday, 2026-06-10: [Enterprise MCP Orchestration](AgenticAI/enterprise-mcp-orchestration/enterprise-mcp-orchestration.md)
 - Friday synthesis, week ending 2026-06-05: [roundup](roundups/2026-06-05.md)
 - Deep Dive Wednesday, 2026-06-03: [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md#deep-dive-wednesday-2026-06-03-gateway-as-identity-bound-mcp-data-plane)
 - Prior Friday synthesis: [week ending 2026-05-29](roundups/2026-05-29.md)
@@ -22,15 +22,14 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Current thesis
 
-The agent stack is moving from permissive context and tool catalogs to maintained state and evidence-bearing controls. The useful question is no longer only "can the model use more memory, context, tools, skills, or agents?" It is "which retained state, source, tool response, memory topic, configuration artifact, validation result, trace, and policy decision had authority to influence this run?"
+The agent stack is moving from permissive context and tool catalogs to evented control. The useful question is no longer only "can the model use more memory, context, tools, skills, or agents?" It is "which retained event, deterministic scaffold layer, skill probe, policy decision, evidence record, and enforcement plane had authority to influence this run?"
 
-The 2026-06-10 scan and Deep Dive Wednesday add five implementation patterns:
+The 2026-06-11 scan adds four implementation patterns:
 
-- Enterprise MCP orchestration needs compiled run contracts before workers receive tools.
-- Pruned tool history plus compact summaries can beat full-context retention.
-- Topic documents are becoming the maintainable primitive for long-term agent memory.
-- AI configuration files need context-rot checks because stale guidance can become operational authority.
-- Agent security is moving toward executable validation, platform-side scans, and trace controls.
+- Coding-agent memory should be local, append-only, projected into compact context, and able to judge proposed actions.
+- Deterministic no-LLM layer slices catch scaffold regressions that aggregate task scores hide.
+- Skills need targeted runtime probes because harmful behavior can depend on local assets, state, and multi-step tool paths.
+- Production-agent governance needs a five-plane control plane across reasoning, network, identity, endpoint, and data.
 
 ## Browse by category
 

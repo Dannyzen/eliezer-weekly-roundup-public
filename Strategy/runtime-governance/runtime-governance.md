@@ -1,6 +1,6 @@
 # Runtime Governance
 
-Last updated: 2026-06-09
+Last updated: 2026-06-11
 
 Runtime governance is becoming the real control plane for agent systems.
 
@@ -504,6 +504,22 @@ Sources:
 - [RedAct](https://arxiv.org/abs/2606.10813v1)
 - [XuShuwenn/RedAct](https://github.com/XuShuwenn/RedAct)
 - [Security validation for third-party coding agents](https://github.blog/changelog/2026-06-09-security-validation-for-third-party-coding-agents)
+
+## June 11 update: five-plane governance turns policy into runtime composition
+
+A Five-Plane Reference Architecture for Runtime Governance of Production AI Agents gives runtime governance a useful enterprise shape. Agents are not only crossing data boundaries. They are composing workflows. An individually permitted read, transformation, tool call, and write can still become an unauthorized business process when sequenced by an agent.
+
+The proposed split is a reasoning plane plus network, identity, endpoint, and data enforcement planes. The reasoning plane adjudicates intent against composite principal and session state. The enforcement planes realize that decision through existing infrastructure. A composed evidence record binds the policy decision to the realized effects.
+
+Practical lesson:
+- model user, agent, subagent, tenant, workflow, and tool as composite principals with attenuated authority;
+- mediate at planning, retrieval, tool selection, tool execution, effect commit, memory write, and audit emission;
+- use a verdict vocabulary broader than allow/deny: redact, require approval, defer, isolate, or request more evidence;
+- connect reasoning-plane decisions to identity, network, endpoint, data, and gateway enforcement adapters;
+- preserve one composed evidence record per material action so audit can replay the policy path.
+
+Source:
+- [A Five-Plane Reference Architecture for Runtime Governance of Production AI Agents](https://arxiv.org/abs/2606.12320v1)
 
 ## Working conclusion
 

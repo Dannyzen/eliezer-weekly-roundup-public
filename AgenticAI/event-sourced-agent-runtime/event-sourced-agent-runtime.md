@@ -1,6 +1,6 @@
 # Event-Sourced Agent Runtime
 
-Last updated: 2026-05-22
+Last updated: 2026-06-11
 
 Event-sourced agent runtime is the design discipline of making the agent’s durable state an append-only event history, then deriving working state, memory views, audit trails, and replayable traces from that history.
 
@@ -75,6 +75,20 @@ Avoid these traps:
 0.84
 
 The first useful version is implementable now: append events, project graph state, record lineage, and replay one workflow. Production-grade determinism, cached model replay, fork/diff UX, policy integration, and self-modification controls require real architecture work.
+
+## June 11 update: project memory makes event sourcing an agent-facing primitive
+
+PROJECTMEM applies the event-sourced runtime pattern at the coding-agent project level. The useful move is the projection boundary: raw events remain local and append-only, while the agent receives compact summaries and action warnings through MCP. That keeps provenance intact without stuffing the whole history into the prompt.
+
+Practical lesson:
+- define typed event classes for issues, attempts, fixes, decisions, notes, fragile files, and rejected proposals;
+- project summaries, risk flags, and next-action constraints from the event log;
+- expose those projections through MCP or local files, not by giving the agent uncontrolled write access to the source log;
+- treat failed attempts and policy denials as events that future runs can query before acting.
+
+Sources:
+- [PROJECTMEM](https://arxiv.org/abs/2606.12329v1)
+- [riponcm/projectmem](https://github.com/riponcm/projectmem)
 
 ## Strategic implication
 

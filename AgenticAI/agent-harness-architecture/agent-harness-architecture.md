@@ -1,6 +1,6 @@
 # Agent Harness Architecture
 
-Last updated: 2026-06-09
+Last updated: 2026-06-11
 
 Agent harness architecture is becoming the part of the agent stack that teams can actually standardize.
 
@@ -688,6 +688,22 @@ Sources:
 - [The Open Source Community is backing OpenEnv for Agentic RL](https://huggingface.co/blog/openenv-agentic-rl)
 - [huggingface/OpenEnv](https://github.com/huggingface/OpenEnv)
 
+
+## June 11 update: deterministic scaffold slices should gate agent changes
+
+Layer-Isolated Evaluation adds a practical CI pattern to harness architecture. Instead of relying only on end-to-end agent success, decompose the deterministic scaffold into layers: ontology or state normalization, intent, routing, decomposition, escalation, safety, memory, and envelope/defense. Each layer gets a no-LLM assertion slice against a locked baseline.
+
+The important result is masking. A local scaffold regression may barely move the aggregate pass rate while the relevant slice collapses. That means aggregate dashboards are too slow and too vague for scaffold changes.
+
+Practical lesson:
+- write pure deterministic tests for routing, memory, safety, verifier, lifecycle, and tool-boundary code;
+- run those slices before expensive model-in-the-loop evals;
+- report which layer failed, not only whether the whole agent failed;
+- use controlled regression injection to validate that each slice localizes the failure it claims to catch;
+- bind layer-test version and harness commit into every agent release record.
+
+Source:
+- [Layer-Isolated Evaluation](https://arxiv.org/abs/2606.11686v1)
 
 ## Working conclusion
 

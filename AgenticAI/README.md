@@ -2,65 +2,50 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: Deep Dive Wednesday 2026-06-10
+## Most Recent Structured Update: Daily scan 2026-06-11
 
-### Enterprise MCP orchestration needs compiled run contracts
-Summary: Queen-Bee Agents turns enterprise MCP orchestration into a scoped work-order architecture: a control plane retrieves capabilities and emits BeeSpecs with role, tenant scope, memory scope, attached skills, allowed tools, policy profile, and approval gates before any specialized worker acts.
+### Project memory should be an event log plus a pre-action judge
+Summary: PROJECTMEM makes coding-agent memory local, append-only, typed, and action-aware. It records issues, attempts, fixes, decisions, and notes as a plain-text event log, projects compact MCP summaries, and warns before repeated failed fixes or edits to fragile files.
 
-Analysis: [daily reasoning analysis](2026-06-10/reasoning.md#deep-dive-wednesday-selection-enterprise-mcp-orchestration-needs-compiled-run-contracts)
-Deep dive: [Enterprise MCP Orchestration](enterprise-mcp-orchestration/enterprise-mcp-orchestration.md)
-Core source: [Queen-Bee Agents](https://arxiv.org/abs/2606.06545v1)
+Analysis: [daily reasoning analysis](2026-06-11/reasoning.md#project-memory-should-be-an-event-log-plus-a-pre-action-judge)
+Durable topics: [Memory Systems](memory-systems/memory-systems.md), [Event-Sourced Agent Runtime](event-sourced-agent-runtime/event-sourced-agent-runtime.md)
+Core sources: [PROJECTMEM](https://arxiv.org/abs/2606.12329v1), [riponcm/projectmem](https://github.com/riponcm/projectmem)
 Implementable now:
-- define a Pydantic or JSON Schema run contract for subagent execution;
-- expose a small MCP registry with tenant, domain, risk, skill, and approval metadata;
-- dispatch workers only with scoped tool and memory access;
-- compare broad single-agent, static worker, retrieval-provisioned worker, and no-policy baselines on cross-tenant and sensitive-data tasks.
+- log project events as typed append-only records;
+- project summaries for active agent context through MCP or local files;
+- gate proposed edits against known failed attempts and fragile-file records.
 Tools, repos, and methodologies worth exploring:
-- BeeSpec-style work orders, FastMCP, Pydantic/JSON Schema, LangGraph/Temporal/Prefect, OPA/Cedar/OpenFGA, OpenTelemetry traces, SecureClaw PREVIEW→COMMIT boundaries
-Implementability score: 0.72
+- projectmem, MCP summary tools, SQLite or plain-text event logs, pre-action validators, trace-linked memory events
+Implementability score: 0.86
 
-### Pruned tool history plus compact summaries can beat full context
-Summary: Full conversation history is not automatically the best agent context. In a Microsoft Dynamics 365 MCP workflow, keeping the last five tool call/response pairs plus compact summaries beat full-context retention on completion rate, tokens, and runtime.
+### Deterministic layer slices catch regressions that aggregate agent scores hide
+Summary: Layer-Isolated Evaluation decomposes an agent into deterministic scaffold layers and tests each with no-LLM assertion slices. The key lesson is that aggregate task success can hide local routing, memory, safety, or lifecycle failures.
 
-Analysis: [daily reasoning analysis](2026-06-10/reasoning.md#pruned-tool-history-plus-compact-summaries-can-beat-full-context)
-Durable topic: [Context Economy for Agents](context-economy/context-economy.md)
-Core source: [Less Context, Better Agents](https://arxiv.org/abs/2606.10209v1)
+Analysis: [daily reasoning analysis](2026-06-11/reasoning.md#deterministic-layer-slices-catch-regressions-that-aggregate-agent-scores-hide)
+Durable topic: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
+Core source: [Layer-Isolated Evaluation](https://arxiv.org/abs/2606.11686v1)
 Implementable now:
-- preserve raw tool transcripts out-of-band, but keep only recent state and compact summaries active;
-- run last-N, summary, and full-history ablations on internal MCP workflows;
-- log token cost, stale-state errors, retries, completion rate, and wall-clock time by retention policy.
+- define harness layers for routing, memory, decomposition, safety, escalation, verifier, and envelope logic;
+- run per-layer deterministic tests in CI;
+- inject controlled regressions to verify localization.
 Tools, repos, and methodologies worth exploring:
-- MCP tool-response retention policies, summary windows, source IDs, trace-linked raw transcripts, context-retention ablation harnesses, OpenTelemetry-style token/category metrics
-Implementability score: 0.88
+- no-LLM pure test mode, locked per-layer baselines, CI slice dashboards, regression-injection fixtures
+Implementability score: 0.91
 
-### Topic documents are becoming the maintainable memory primitive
-Summary: Infini Memory treats long-term agent memory as maintainable topic documents with staged observations, metadata, fact revision, and iterative evidence inspection instead of isolated records or summary blobs.
+### Skill security needs targeted runtime probes, not static inspection
+Summary: Runtime Skill Audit shows that skill risk can be environment-dependent. A skill may look harmless until it sees a specific local file, persistent state, user request, or multi-step tool path, so admission needs targeted runtime probing.
 
-Analysis: [daily reasoning analysis](2026-06-10/reasoning.md#topic-documents-are-becoming-the-maintainable-memory-primitive)
-Durable topic: [Memory Systems](memory-systems/memory-systems.md)
-Core source: [Infini Memory](https://arxiv.org/abs/2606.10677v1)
-Implementable now:
-- keep per-topic memory pages for recurring entities, projects, workflows, and decisions;
-- stage new observations before promotion to canonical memory;
-- attach source spans, timestamps, confidence, supersession, and conflict metadata.
-Tools, repos, and methodologies worth exploring:
-- topic documents, staged memory buffers, background consolidation, iterative memory inspection, source-span citations, bitemporal update semantics, memory-neighborhood retrieval
-Implementability score: 0.80
-
-### AI configuration files now need context-rot checks
-Summary: AI-facing configuration artifacts such as `AGENTS.md`, `CLAUDE.md`, `.cursorrules`, skills, and prompt templates can go stale as code changes. Documentation-consistency tooling can be repurposed to catch stale references before agents obey them.
-
-Analysis: [daily reasoning analysis](2026-06-10/reasoning.md#ai-configuration-files-now-need-context-rot-checks)
+Analysis: [daily reasoning analysis](2026-06-11/reasoning.md#skill-security-needs-targeted-runtime-probes-not-static-inspection)
 Durable topic: [Skills as Control](skills-as-control/skills-as-control.md)
-Core source: [Context Rot in AI-Assisted Software Development](https://arxiv.org/abs/2606.09090v1)
+Core sources: [Runtime Skill Audit](https://arxiv.org/abs/2606.11671v1), [snyk/agent-scan](https://github.com/snyk/agent-scan)
 Implementable now:
-- extract paths, symbols, commands, API names, tool names, and environment variables from AI guidance files;
-- compare them against the live repository tree, language-server index, manifests, and docs;
-- fail CI or open review tasks for high-confidence stale references.
+- profile skill risk interfaces before admission;
+- run sandbox probes against file, network, shell, memory, and credential surfaces;
+- store verdict, probe set, skill hash, trace ID, and allowed scopes.
 Tools, repos, and methodologies worth exploring:
-- documentation consistency checkers, Tree-sitter/LSP symbol indexes, AGENTS.md/CLAUDE.md linters, skill-body hash validation, stale-reference fixtures
-Implementability score: 0.83
+- RSA-style targeted probes, Snyk Agent Scan, skill risk manifests, sandboxed test contexts, trace-based labels
+Implementability score: 0.80
 
 ## Previous structured update
 
-The prior daily scan for 2026-06-09 focused on OpenEnv environment sockets, cost-aware skill rewriting, and program-level agent-serving simulation: [2026-06-09 roundup](../roundups/2026-06-09.md).
+The prior daily scan for 2026-06-10 focused on pruned tool history, topic-document memory, context-rot checks, and executable security validation: [2026-06-10 roundup](../roundups/2026-06-10.md).

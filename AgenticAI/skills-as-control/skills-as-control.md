@@ -1,6 +1,6 @@
 # Skills as Control
 
-Last updated: 2026-06-10
+Last updated: 2026-06-11
 
 Core sources:
 - From Research Question to Scientific Workflow: Leveraging Agentic AI for Science Automation: https://arxiv.org/abs/2604.21910v1
@@ -453,3 +453,18 @@ Practical lesson:
 
 Source:
 - [Context Rot in AI-Assisted Software Development](https://arxiv.org/abs/2606.09090v1)
+
+## June 11 update: skill admission needs targeted runtime probes
+
+Runtime Skill Audit makes explicit why skill review cannot stop at prose linting or static file inspection. A skill can be harmless until it receives a particular user request, local file, persistent state, or multi-step tool interaction. The correct test is behavior under targeted runtime conditions.
+
+Practical lesson:
+- profile each skill's risk interfaces before admission: file, shell, network, memory, credential, external API, and persistent state;
+- generate targeted sandbox probes for the risky interfaces instead of one generic task;
+- label the resulting trace for exfiltration, unauthorized writes, hidden resource use, deceptive summaries, and permission laundering;
+- store probe set, verdict, trace ID, body hash, and allowed scopes in the skill registry;
+- rerun probes after skill edits, dependency changes, or runtime/tool-surface changes.
+
+Sources:
+- [Runtime Skill Audit](https://arxiv.org/abs/2606.11671v1)
+- [snyk/agent-scan](https://github.com/snyk/agent-scan)

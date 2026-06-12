@@ -295,6 +295,23 @@ Practical lesson:
 Source:
 - [Less Context, Better Agents](https://arxiv.org/abs/2606.10209v1)
 
+## June 12 update: tool execution granularity is context policy
+
+HyperTool updates context economy at the tool-execution boundary. If a deterministic workflow requires five tool calls, four intermediate values, and one final answer, the model should not necessarily see every internal transition. The active context should contain the task-level operation, compact result, source IDs, and enough evidence to audit the block.
+
+GitHub's Copilot CLI language-server post is the practical mirror. Code agents should ask semantic infrastructure for definitions, references, and type resolution instead of spending context and tool calls on brittle text search.
+
+Practical lesson:
+- wrap deterministic multi-tool subroutines as auditable executable blocks;
+- preserve original tool schemas and local operation logs inside the block;
+- return compact outputs with source IDs and failure summaries;
+- give coding agents LSP-backed symbol tools before they fall back to grep;
+- compare atomic-call, post-hoc summary, and executable-block modes on token cost, latency, retries, and answer quality.
+
+Sources:
+- [HyperTool](https://arxiv.org/abs/2606.13663v1)
+- [GitHub Copilot CLI language servers](https://github.blog/ai-and-ml/github-copilot/give-github-copilot-cli-real-code-intelligence-with-language-servers/)
+
 ## Working conclusion
 
 The future agent stack is not context maximalism. It is context accounting. Systems that know what to admit, retrieve, compress, cache, update incrementally, and audit will beat systems that merely buy larger windows and hope the model sorts it out.

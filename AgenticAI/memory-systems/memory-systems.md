@@ -592,6 +592,23 @@ Sources:
 - [PROJECTMEM](https://arxiv.org/abs/2606.12329v1)
 - [riponcm/projectmem](https://github.com/riponcm/projectmem)
 
+## June 12 update: memory access is not compliance
+
+Getting Better at Working With You and Selection Integrity for LLM Graph Memory both push memory toward enforcement. Trace shows that a remembered correction can still be violated unless it becomes an applicability check plus runtime verifier. Selection Integrity shows that graph-memory structure can steer which authenticated facts are selected, even when the final citations are clean.
+
+The memory lesson is blunt: write-path and read-path controls matter as much as recall quality. Some memories should become executable checks. Some graph writes should be barred from steering high-authority selection. The system should preserve not only what was retrieved, but why that memory was allowed to influence the run.
+
+Practical lesson:
+- compile repeated user corrections into atomic rules, applicability checks, and final-state verifiers;
+- store source correction, body hash, last-fired event, and false-positive notes with each rule;
+- label graph edges, merges, and selection features by writer principal and trust tier;
+- log memory-selection paths in addition to final retrieved facts;
+- separate advisory memory from memory that can affect tool authorization, policy creation, external sends, or durable profile changes.
+
+Sources:
+- [Getting Better at Working With You](https://arxiv.org/abs/2606.13174v1)
+- [Selection Integrity for LLM Graph Memory](https://arxiv.org/abs/2606.12290v1)
+
 ## Working conclusion
 
 The next generation of agents will be differentiated less by how eloquently they speak and more by how faithfully and safely they remember. The winning systems will preserve evidence, route memory writes explicitly, retrieve context adaptively, abstain when memory is unsafe, validate high-value writes, make retention and pruning decisions replayable, query local graphs when code structure matters, promote only the right lessons into durable guidance, attach enough context for updates and temporal reasoning, choose abstraction levels that transfer across tasks, keep the most sensitive memory close to the user and under policy control, run durable memory through a governed database-backed state core, separate evaluation memory from user-facing memory, measure whether memories remain usable under scale, budgets, and writeback review, expose operation-level provenance, test belief-state stay/update/isolate decisions, gate retrieval by policy, resolve contradictions with bitemporal evidence, and evaluate memory against heterogeneous evolving source streams so failures can be traced instead of guessed.

@@ -1,6 +1,6 @@
 # Multi-Agent Orchestration
 
-Last updated: 2026-06-07
+Last updated: 2026-06-12
 
 Multi-agent orchestration is the control layer for deciding when multiple agents should collaborate, which evidence should move between them, and when communication costs exceed the expected benefit.
 
@@ -100,6 +100,22 @@ Practical lesson:
 Sources:
 - [Do More Agents Help?](https://arxiv.org/abs/2606.05670v1)
 - [LINs-lab/MASArena BenchAgent branch](https://github.com/LINs-lab/MASArena/tree/BenchAgent)
+
+## June 12 update: harness recursion is not broadcast collaboration
+
+Recursive Agent Harnesses sharpens the multi-agent thesis. The useful pattern is not more agents talking. It is programmatic fan-out where a parent assigns bounded child harnesses independent work, collects typed evidence, and aggregates under a declared contract.
+
+This is a different topology from debate or role-play. Each child has a workspace, tool scope, context window, and output path. The parent controls partitioning, concurrency, and merge policy. That makes recursion useful for long-context evidence extraction, file-batch inspection, and independent verification, but dangerous for open-ended autonomous branching.
+
+Practical lesson:
+- model subagent spawning as a topology event with depth, budget, and authority;
+- require child outputs to include answer, evidence, confidence, failure mode, and scope used;
+- preserve disagreement instead of forcing premature consensus;
+- compare fan-out gains against coordination cost and aggregation failure;
+- block unbounded recursive delegation unless an operator explicitly authorizes it.
+
+Source:
+- [Recursive Agent Harnesses](https://arxiv.org/abs/2606.13643v1)
 
 ## Implementability score
 

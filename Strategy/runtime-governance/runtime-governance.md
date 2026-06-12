@@ -1,6 +1,6 @@
 # Runtime Governance
 
-Last updated: 2026-06-11
+Last updated: 2026-06-12
 
 Runtime governance is becoming the real control plane for agent systems.
 
@@ -520,6 +520,24 @@ Practical lesson:
 
 Source:
 - [A Five-Plane Reference Architecture for Runtime Governance of Production AI Agents](https://arxiv.org/abs/2606.12320v1)
+
+## June 12 update: governance has to meter trajectory state, not only actions
+
+OCELOT and Selection Integrity sharpen runtime governance at the state layer. OCELOT says privacy loss accumulates across releases, observations, sinks, and injected content. Selection Integrity says graph-memory structure can steer future selection without appearing in final citations. OpenAI's Ona acquisition announcement is the market signal that this state will increasingly live inside persistent cloud workspaces.
+
+The governance implication is straightforward: per-action approval is not enough. The runtime needs budgets, taint, selection-path logs, and workspace lineage that survive across steps.
+
+Practical lesson:
+- maintain per-sink disclosure ledgers and charge releases against privacy budgets;
+- include release, redact, coarsen, defer, ask, and keep-local as first-class policy verdicts;
+- label memory graph structure by writer principal and trust tier;
+- log graph-selection paths before final facts reach the model;
+- bind persistent cloud workspaces to owner, tenant, project, policy, checkpoint, credential, and trace metadata.
+
+Sources:
+- [OCELOT](https://arxiv.org/abs/2606.12341v1)
+- [Selection Integrity for LLM Graph Memory](https://arxiv.org/abs/2606.12290v1)
+- [OpenAI to acquire Ona](https://openai.com/index/openai-to-acquire-ona)
 
 ## Working conclusion
 

@@ -1,6 +1,6 @@
 # Skills as Control
 
-Last updated: 2026-06-11
+Last updated: 2026-06-12
 
 Core sources:
 - From Research Question to Scientific Workflow: Leveraging Agentic AI for Science Automation: https://arxiv.org/abs/2604.21910v1
@@ -468,3 +468,19 @@ Practical lesson:
 Sources:
 - [Runtime Skill Audit](https://arxiv.org/abs/2606.11671v1)
 - [snyk/agent-scan](https://github.com/snyk/agent-scan)
+
+## June 12 update: user corrections can become executable skill checks
+
+Trace turns user correction handling into a skills-as-control pattern. A correction should not stay as passive prose in memory. If it is stable and repeatedly applicable, it should become a small rule package: applicability predicate, verifier, source correction, examples, counterexamples, and trace evidence.
+
+That matters because skills already carry operational authority. A correction-derived skill can enforce Danny-specific or project-specific standards before task completion, but it also needs the same safety discipline as any other skill: scoped applicability, false-positive review, versioning, and rollback.
+
+Practical lesson:
+- mine repeated corrections into atomic rules rather than broad preference blobs;
+- compile rules into executable checks where possible;
+- keep correction-derived skills separate from generic skills until they have enough evidence;
+- log every rule firing, suppression, failure, and override;
+- rerun correction fixtures after skill edits, model changes, or tool-surface changes.
+
+Source:
+- [Getting Better at Working With You](https://arxiv.org/abs/2606.13174v1)

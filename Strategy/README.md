@@ -2,36 +2,50 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: Daily scan 2026-06-11
+## Most Recent Structured Update: Daily scan 2026-06-12
 
-### Runtime governance needs a five-plane control plane
-Summary: Production agents turn risk into stateful workflows. The five-plane reference architecture argues that governance needs a reasoning plane that adjudicates intent, then coordinated enforcement across network, identity, endpoint, and data planes.
+### Privacy is a trajectory budget, not an output filter
+Summary: OCELOT reframes agent privacy as cumulative posterior-risk control. The question is not whether one output contains a secret. It is how much a sink or colluding sinks can infer after a whole trajectory of observations, tool calls, and releases.
 
-Analysis: [daily sovereignty analysis](2026-06-11/sovereignty.md#runtime-governance-needs-a-five-plane-control-plane-not-per-tool-approvals)
+Analysis: [daily sovereignty analysis](2026-06-12/sovereignty.md#privacy-is-a-trajectory-budget-not-an-output-filter)
 Durable topic: [Runtime Governance](runtime-governance/runtime-governance.md)
-Core source: [A Five-Plane Reference Architecture for Runtime Governance of Production AI Agents](https://arxiv.org/abs/2606.12320v1)
+Core source: [OCELOT](https://arxiv.org/abs/2606.12341v1)
 Implementable now:
-- model composite principals for user, agent, subagent, tenant, and delegated authority;
-- add stop-anywhere mediation before planning, retrieval, tool calls, effect commits, memory writes, and audit emission;
-- preserve one composed evidence record per material action.
+- keep per-sink release ledgers;
+- add release, redact, coarsen, defer, ask, and keep-local variants;
+- charge disclosure decisions against trace-linked privacy budgets.
 Tools, repos, and methodologies worth exploring:
-- OPA, Cedar, OpenFGA, MCP gateways, identity providers, endpoint sandboxes, network egress controls, trace evidence records
-Implementability score: 0.67
+- deterministic declassification checks, release ledgers, append-only disclosure records, cumulative-inference fixtures
+Implementability score: 0.57
 
-### Skill probes and deterministic layer tests are governance surfaces
-Summary: Runtime Skill Audit and Layer-Isolated Evaluation make governance testable. Dynamic skill probes show what a skill-mediated agent actually does. Deterministic layer slices show where an agent scaffold regressed.
+### Graph memory selection is a write-path security boundary
+Summary: Selection Integrity shows that graph memory can be poisoned through structure rather than retrieved content. Final citations may all be authenticated while untrusted edges or merges influenced which facts were selected.
 
-Analysis: [daily sovereignty analysis](2026-06-11/sovereignty.md#skill-probes-and-deterministic-layer-tests-are-governance-surfaces)
+Analysis: [daily sovereignty analysis](2026-06-12/sovereignty.md#graph-memory-selection-is-a-write-path-security-boundary)
 Durable topics: [Runtime Governance](runtime-governance/runtime-governance.md), [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md)
-Core sources: [Runtime Skill Audit](https://arxiv.org/abs/2606.11671v1), [Layer-Isolated Evaluation](https://arxiv.org/abs/2606.11686v1), [snyk/agent-scan](https://github.com/snyk/agent-scan)
+Core source: [Selection Integrity for LLM Graph Memory](https://arxiv.org/abs/2606.12290v1)
 Implementable now:
-- run risk-based skill probes before production admission;
-- add no-LLM CI slices for routing, memory, safety, escalation, and tool boundaries;
-- bind skill hash, probe result, policy verdict, and trace ID together.
+- label graph edges and selection features by writer principal and trust tier;
+- log graph-selection paths, not only final retrieved facts;
+- prevent untrusted structure from steering authorization, policy, memory promotion, or external-send decisions.
 Tools, repos, and methodologies worth exploring:
-- Snyk Agent Scan, CodeQL, dependency advisory checks, secret scanning, sandbox probes, CI slice dashboards
-Implementability score: 0.74
+- graph provenance, taint-aware selection, policy-gated memory writes, poisoned-edge regression fixtures
+Implementability score: 0.61
+
+### Persistent cloud agents make stateful governance unavoidable
+Summary: OpenAI's Ona acquisition announcement is market signal that coding agents are moving into secure, customer-controlled, persistent cloud environments for long-running work. That makes runtime state, checkpoint policy, and customer-visible evidence strategic boundaries.
+
+Analysis: [daily sovereignty analysis](2026-06-12/sovereignty.md#persistent-cloud-agents-make-stateful-governance-unavoidable)
+Durable topic: [Runtime Governance](runtime-governance/runtime-governance.md)
+Core source: [OpenAI to acquire Ona](https://openai.com/index/openai-to-acquire-ona)
+Implementable now:
+- bind owner, tenant, project, model, policy, and checkpoint metadata to persistent workspaces;
+- implement pause, resume, revoke, and handoff semantics;
+- export customer-controlled traces and artifacts.
+Tools, repos, and methodologies worth exploring:
+- cloud/local parity tests, scoped credentials, workspace lineage, checkpoint audit, long-running task budgets
+Implementability score: 0.66
 
 ## Previous structured update
 
-The prior daily scan for 2026-06-10 focused on executable security validation, platform-side scans, and trace-safe evidence release: [2026-06-10 roundup](../roundups/2026-06-10.md).
+The prior daily scan for 2026-06-11 focused on five-plane runtime governance and runtime evidence surfaces: [2026-06-11 roundup](../roundups/2026-06-11.md).

@@ -1,6 +1,6 @@
 # Agent Harness Architecture
 
-Last updated: 2026-06-11
+Last updated: 2026-06-12
 
 Agent harness architecture is becoming the part of the agent stack that teams can actually standardize.
 
@@ -704,6 +704,20 @@ Practical lesson:
 
 Source:
 - [Layer-Isolated Evaluation](https://arxiv.org/abs/2606.11686v1)
+
+## June 12 update: recursive harness spawning needs manifests and budgets
+
+Recursive Agent Harnesses makes subagent spawning a harness primitive. The recursive unit is a full agent harness with tools, workspace, planning, context, and result contract, not a raw model call. That is powerful because it lets a parent split large context or file-batch tasks into bounded child runs. It is risky because recursive harnesses can multiply spend, writes, and authority if the runtime treats them as ordinary tool calls.
+
+Practical lesson:
+- require a parent-child run manifest before spawning: depth, budget, workspace, tool scope, model, and output schema;
+- fan out only when the task has independent work units and a typed aggregation rule;
+- cap recursion depth, wall-clock, tool calls, token spend, and filesystem writes;
+- preserve parent-child trace links, child evidence, and disagreement at aggregation time;
+- compare recursive harnesses against matched single-agent and naive multi-agent baselines before deploying them.
+
+Source:
+- [Recursive Agent Harnesses](https://arxiv.org/abs/2606.13643v1)
 
 ## Working conclusion
 

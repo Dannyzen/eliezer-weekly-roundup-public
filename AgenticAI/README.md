@@ -2,50 +2,50 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: Daily scan 2026-06-11
+## Most Recent Structured Update: Daily scan 2026-06-12
 
-### Project memory should be an event log plus a pre-action judge
-Summary: PROJECTMEM makes coding-agent memory local, append-only, typed, and action-aware. It records issues, attempts, fixes, decisions, and notes as a plain-text event log, projects compact MCP summaries, and warns before repeated failed fixes or edits to fragile files.
+### HyperTool moves context control into tool execution
+Summary: HyperTool argues that agents waste context by unfolding deterministic tool workflows into many model-visible atomic calls. The better interface is an executable MCP-style block that calls existing tools locally, manages intermediate state, and returns only the task-relevant result.
 
-Analysis: [daily reasoning analysis](2026-06-11/reasoning.md#project-memory-should-be-an-event-log-plus-a-pre-action-judge)
-Durable topics: [Memory Systems](memory-systems/memory-systems.md), [Event-Sourced Agent Runtime](event-sourced-agent-runtime/event-sourced-agent-runtime.md)
-Core sources: [PROJECTMEM](https://arxiv.org/abs/2606.12329v1), [riponcm/projectmem](https://github.com/riponcm/projectmem)
+Analysis: [daily reasoning analysis](2026-06-12/reasoning.md#hypertool-moves-context-control-into-tool-execution)
+Durable topics: [Context Economy](context-economy/context-economy.md), [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
+Core sources: [HyperTool](https://arxiv.org/abs/2606.13663v1), [GitHub Copilot CLI LSP setup](https://github.blog/ai-and-ml/github-copilot/give-github-copilot-cli-real-code-intelligence-with-language-servers/)
 Implementable now:
-- log project events as typed append-only records;
-- project summaries for active agent context through MCP or local files;
-- gate proposed edits against known failed attempts and fragile-file records.
+- build macro-tools for deterministic read-only subroutines;
+- preserve original tool schemas inside the executable boundary;
+- return compact outputs with source IDs and intermediate-operation logs.
 Tools, repos, and methodologies worth exploring:
-- projectmem, MCP summary tools, SQLite or plain-text event logs, pre-action validators, trace-linked memory events
-Implementability score: 0.86
+- MCP-style tool wrappers, language-server tools, macro-actions, trace compaction, tool-call ablation suites
+Implementability score: 0.82
 
-### Deterministic layer slices catch regressions that aggregate agent scores hide
-Summary: Layer-Isolated Evaluation decomposes an agent into deterministic scaffold layers and tests each with no-LLM assertion slices. The key lesson is that aggregate task success can hide local routing, memory, safety, or lifecycle failures.
+### Recursive agent harnesses turn subagent spawning into a harness primitive
+Summary: Recursive Agent Harnesses names a practical pattern: the recursive unit is a full agent harness with filesystem, execution, planning, context, and result contracts, not a raw model call or role-play chat.
 
-Analysis: [daily reasoning analysis](2026-06-11/reasoning.md#deterministic-layer-slices-catch-regressions-that-aggregate-agent-scores-hide)
-Durable topic: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
-Core source: [Layer-Isolated Evaluation](https://arxiv.org/abs/2606.11686v1)
+Analysis: [daily reasoning analysis](2026-06-12/reasoning.md#recursive-agent-harnesses-turn-subagent-spawning-into-a-harness-primitive)
+Durable topics: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Multi-Agent Orchestration](multi-agent-orchestration/multi-agent-orchestration.md)
+Core source: [Recursive Agent Harnesses](https://arxiv.org/abs/2606.13643v1)
 Implementable now:
-- define harness layers for routing, memory, decomposition, safety, escalation, verifier, and envelope logic;
-- run per-layer deterministic tests in CI;
-- inject controlled regressions to verify localization.
+- create parent-child run manifests;
+- cap recursion depth, tokens, wall-clock, tool calls, and filesystem writes;
+- preserve typed child outputs and disagreement instead of flattening results.
 Tools, repos, and methodologies worth exploring:
-- no-LLM pure test mode, locked per-layer baselines, CI slice dashboards, regression-injection fixtures
-Implementability score: 0.91
+- recursive harness manifests, bounded subagent pools, parent-child traces, parallel evidence extraction, topology ablations
+Implementability score: 0.69
 
-### Skill security needs targeted runtime probes, not static inspection
-Summary: Runtime Skill Audit shows that skill risk can be environment-dependent. A skill may look harmless until it sees a specific local file, persistent state, user request, or multi-step tool path, so admission needs targeted runtime probing.
+### User corrections should compile into runtime checks
+Summary: Trace shows that storing user preferences is not enough. User corrections should become atomic rules with applicability checks and runtime verifiers that gate future task completion.
 
-Analysis: [daily reasoning analysis](2026-06-11/reasoning.md#skill-security-needs-targeted-runtime-probes-not-static-inspection)
-Durable topic: [Skills as Control](skills-as-control/skills-as-control.md)
-Core sources: [Runtime Skill Audit](https://arxiv.org/abs/2606.11671v1), [snyk/agent-scan](https://github.com/snyk/agent-scan)
+Analysis: [daily reasoning analysis](2026-06-12/reasoning.md#user-corrections-should-compile-into-runtime-checks)
+Durable topics: [Memory Systems](memory-systems/memory-systems.md), [Skills as Control](skills-as-control/skills-as-control.md)
+Core source: [Getting Better at Working With You](https://arxiv.org/abs/2606.13174v1)
 Implementable now:
-- profile skill risk interfaces before admission;
-- run sandbox probes against file, network, shell, memory, and credential surfaces;
-- store verdict, probe set, skill hash, trace ID, and allowed scopes.
+- mine corrections from real repeated-friction cases;
+- compile applicability checks and final-state verifiers;
+- store rule source, hash, last-fired date, false positives, and trace evidence.
 Tools, repos, and methodologies worth exploring:
-- RSA-style targeted probes, Snyk Agent Scan, skill risk manifests, sandboxed test contexts, trace-based labels
-Implementability score: 0.80
+- skill-layer rule libraries, executable checks, correction-derived regression fixtures, preference-compliance dashboards
+Implementability score: 0.85
 
 ## Previous structured update
 
-The prior daily scan for 2026-06-10 focused on pruned tool history, topic-document memory, context-rot checks, and executable security validation: [2026-06-10 roundup](../roundups/2026-06-10.md).
+The prior daily scan for 2026-06-11 focused on evented project memory, deterministic layer slices, and targeted runtime skill probes: [2026-06-11 roundup](../roundups/2026-06-11.md).

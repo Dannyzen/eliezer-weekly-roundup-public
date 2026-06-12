@@ -1,69 +1,115 @@
-# Strategy Daily Analysis: 2026-06-12
+# Strategy Weekly Analysis: Week ending 2026-06-12
 
-Today's strategy signal is stateful mediation. Persistent agents do not create risk one output at a time. They accumulate releases, memories, graph structure, tool calls, cloud sessions, and delegated authority over trajectories.
+This week’s strategy signal is stateful mediation. Persistent agents do not create risk one output at a time. They accumulate memories, graph structure, artifacts, cloud sessions, delegated subtasks, tool calls, privacy disclosures, and user corrections over trajectories.
 
-## Privacy is a trajectory budget, not an output filter
+The strategic boundary is no longer only the prompt or the tool list. It is the runtime that decides which state transition is allowed, which evidence survives, and which principal is accountable.
 
-OCELOT is the strongest Strategy finding today because it treats agent privacy as cumulative posterior-risk control. The paper argues that LLM-agent privacy is not a property of one answer. It is a property of an entire trajectory in which the agent reads personal files, calls tools, receives untrusted observations, and releases information to multiple sinks.
+## Stateful runtime governance is the strategic control plane
 
-The paper names three hard properties. Leakage is cumulative: individually harmless releases can combine into a protected inference. Leakage is bidirectional: a malicious observation can inject instructions that cause later releases. Leakage is task-dependent: the same field can be necessary for one recipient and gratuitous for another.
+Five-Plane Runtime Governance is the week’s clearest control-plane frame. The paper argues that agents can transform individually permitted actions into unauthorized workflows, so governance has to mediate across reasoning, network, identity, endpoint, and data planes. Per-tool approval is too small. The real object is a composed action with intent, context, data, destination, identity, and trace evidence.
 
-Why it matters: per-output redaction is structurally too small. A travel agent, finance agent, coding agent, or personal operator can leak private state without ever printing a single obvious secret. The strategic boundary is the cumulative state of what each external sink can infer after the sequence.
+OCELOT makes the same point for privacy. Privacy is not a property of one output. It is cumulative posterior risk across a trajectory: what each sink can infer after observations, tool calls, releases, and possible collusion. Sabotage-monitor work adds the temporal version of the same failure: harmful intent can be distributed across individually benign steps. Executable validation and trace-control work adds the engineering move: security checks need stateful fixtures and audit traces, not only prompt review.
 
-How it fits into the stack: this is runtime governance and local-first agent strategy. OCELOT proposes a runtime mediator with Witness-Verified Declassification and leakage budgets. A deterministic verifier audits declassification operators and charges certified min-entropy cost. The practical lesson is to make disclosure a budgeted transition in the run trace, not a model-only judgment.
+Why it matters: the old safety model says “filter the response” or “approve the tool.” The new runtime model says “mediate the transition.” A serious agent platform needs composite principals, per-sink disclosure ledgers, richer verdicts than allow/deny, stop-anywhere checkpoints, and evidence records for material actions.
+
+How it fits into the stack: this strengthens [Runtime Governance](../runtime-governance/runtime-governance.md), [Agent Gateway Governance](../agent-gateway-governance/agent-gateway-governance.md), and the local-first agent strategy. Local-first does not mean unmanaged. It means authority and evidence can remain under the operator’s control.
 
 Practical tools, repos, and methodologies worth exploring now:
-- per-sink release ledgers that track what each external service has learned;
-- semantic variants for release, redact, coarsen, defer, ask, or keep local;
-- deterministic privacy-budget checks before external sends, tool calls, memory writes, and report publication;
-- Merkle-chained or append-only evidence records for disclosure decisions;
-- adversarial fixtures for cumulative inference, sink collusion, and injected observations.
+- represent each material action as principal, intent, data, destination, tool, policy, budget, and evidence;
+- keep per-sink release ledgers and charge disclosures against privacy budgets;
+- use richer verdicts: allow, deny, redact, coarsen, defer, ask, sandbox, local-only, or require human approval;
+- run sabotage and privacy fixtures over typed traces, not only final outputs;
+- preserve trace evidence while redacting procedural or sensitive details for release.
 
-Implementability score: 0.57
+Implementability score: 0.63
 
-Core source:
+Core sources:
+- [Five-Plane Runtime Governance](https://arxiv.org/abs/2606.12320v1)
 - [OCELOT: Inference-Leakage Budgets for Privacy-Preserving LLM Agents](https://arxiv.org/abs/2606.12341v1)
+- [Agent sabotage monitoring](https://arxiv.org/abs/2606.07054v1)
+- [Agent security executable validation](https://arxiv.org/abs/2606.10484v1)
+- [Trace-safe release controls](https://arxiv.org/abs/2606.10813v1)
+- [GitHub security validation for third-party coding agents](https://github.blog/changelog/2026-06-09-security-validation-for-third-party-coding-agents)
 
-## Graph memory selection is a write-path security boundary
+## Memory, artifacts, and skills are now policy write paths
 
-Selection Integrity for LLM Graph Memory is the sharper memory-governance warning today. The paper argues that provenance checks over retrieved records miss a different attack surface: graph structure can influence which authenticated facts are selected before any cited record enters the prompt.
+Selection Integrity for LLM Graph Memory names a governance bug that simple provenance cannot catch. An untrusted principal can write graph structure, such as edges, merges, rankings, or imported relations. Later, a selector can use that structure to choose authenticated records. The final citations can all be legitimate while the selection path was steered by untrusted graph state.
 
-The bad case is subtle. An untrusted principal writes structure into graph memory: edges, entity merges, rankings, or tool-imported relations. Later, the selector uses that structure to choose authenticated facts. The final citations can all be legitimate while the selection path was steered by untrusted structure. Provenance of final records is necessary, but it is not selection integrity.
+The artifact-provenance work shows the same pattern outside graph memory. A jailbreak or instruction can be split across files, logs, summaries, and time, then become dangerous only when an agent recomposes artifacts later. MalSkillBench and Runtime Skill Audit make skills part of the same write path. A skill’s prose, code, preconditions, loaded hash, local files, and tool route can all influence future behavior. Context-rot findings add a quieter but common failure: guidance files become stale but remain authoritative.
 
-Why it matters: agent memory is moving toward graphs because flat vector recall cannot handle relationships and evolving state. But graph selection makes memory writes consequential even when the written item is never cited. That turns the memory write path into a policy surface.
+Why it matters: security teams tend to inspect the object that appears in the prompt or final citation. The real attack often lives upstream in selection, promotion, rewrite, or recomposition. That makes memory writes, artifact promotion, skill loading, and guidance-file updates policy events.
+
+How it fits into the stack: this strengthens [Agent Gateway Governance](../agent-gateway-governance/agent-gateway-governance.md), [Runtime Governance](../runtime-governance/runtime-governance.md), and [Skills as Control](../../AgenticAI/skills-as-control/skills-as-control.md).
 
 Practical tools, repos, and methodologies worth exploring now:
-- label graph edges, merges, and selection features by writer principal and trust tier;
-- log graph-selection paths, not only final retrieved facts;
-- prevent untrusted structure from steering high-authority decisions such as tool authorization, policy creation, credential use, or memory promotion;
-- add tests where poisoned edges change retrieval without appearing in final citations;
-- separate advisory retrieval from trusted-fact override, policy creation, and external-send decisions.
+- label memory edges, artifact transforms, skill loads, and guidance files by writer principal, trust tier, hash, and source;
+- log graph-selection paths and artifact lineage, not only final cited facts;
+- prevent untrusted structure from steering authorization, policy creation, memory promotion, credential use, or external sends;
+- require skill manifests, static checks, sandbox probes, and trace binding from skill to side effects;
+- validate `AGENTS.md`, `CLAUDE.md`, `.cursorrules`, and skill files against the live repository.
 
-Implementability score: 0.61
+Implementability score: 0.72
 
-Core source:
+Core sources:
 - [Selection Integrity for LLM Graph Memory](https://arxiv.org/abs/2606.12290v1)
+- [Artifact provenance gaps in agents](https://arxiv.org/abs/2606.09084v1)
+- [MalSkillBench](https://arxiv.org/abs/2606.07131v1)
+- [Runtime Skill Audit](https://arxiv.org/abs/2606.11671v1)
+- [Snyk Agent Scan](https://github.com/snyk/agent-scan)
+- [AI configuration context rot](https://arxiv.org/abs/2606.09090v1)
 
-## Persistent cloud agents make stateful governance unavoidable
+## Cloud and persistent agents make workspace authority the product boundary
 
-OpenAI's announcement that it will acquire Ona is not a research result, but it is a strong market signal. The post frames the target as secure, customer-controlled cloud infrastructure for long-running Codex agents across software and knowledge work. It says the valuable work is increasingly unfolding over hours or days rather than minutes, with users checking progress, providing direction, making decisions, and reviewing results from anywhere.
+GitHub’s Agent Tasks REST API and Fix with Copilot signal that cloud coding agents are becoming programmable workflow resources. OpenAI’s announcement that it will acquire Ona is a stronger market signal: long-running agents are moving into secure, customer-controlled cloud environments across software and knowledge work. GitHub’s third-party coding-agent validation update adds the governance companion: the platform has to validate agent-generated work before it is trusted.
 
-Why it matters: once agents leave the local terminal and continue in persistent cloud environments, runtime state becomes the product boundary. Identity, filesystem scope, network policy, memory, progress checkpoints, approvals, audit evidence, and customer-controlled execution all become strategic differentiators.
+Why it matters: once agents leave the local terminal and continue in persistent cloud workspaces, runtime state becomes the product boundary. The strategic moat is not only model quality. It is workspace lineage, scoped credentials, branch and CI policy, checkpoint metadata, exportable logs, pause/resume/revoke semantics, and customer-controlled audit evidence.
 
-How it fits into the stack: this reinforces the local-first and runtime-governance thesis. A persistent cloud workspace can be useful, but only if it exposes the same evidence and control surfaces a serious operator needs locally: scoped credentials, tenant boundary, workspace lineage, checkpoint policy, tool-call audit, and exportable traces.
+How it fits into the stack: this strengthens [Runtime Governance](../runtime-governance/runtime-governance.md), [Agent Gateway Governance](../agent-gateway-governance/agent-gateway-governance.md), and [Local-First Agents](../local-first-agents/local-first-agents.md). Persistent cloud can be useful, but only when it exposes the same authority and trace surfaces a serious local operator needs.
 
 Practical tools, repos, and methodologies worth exploring now:
-- persistent workspaces with explicit owner, tenant, project, model, policy, and checkpoint metadata;
-- cloud/local parity tests for filesystem, network, credential, and approval behavior;
-- customer-controlled logs and artifact export instead of vendor-only observability;
-- long-running task budgets with pause, resume, revoke, and handoff semantics;
-- threat models where a stale cloud agent continues after user intent or authorization changed.
+- wrap cloud-agent task creation in an internal queue with repo, branch, issue, CI failure, user, and policy metadata;
+- bind persistent workspaces to owner, tenant, project, model, policy, checkpoint, and credential scope;
+- export customer-controlled traces, artifacts, logs, and verifier results;
+- enforce pause, resume, revoke, and handoff semantics;
+- run cloud/local parity tests for filesystem, network, credential, sandbox, and approval behavior.
 
-Implementability score: 0.66
+Implementability score: 0.76
 
-Core source:
+Core sources:
+- [GitHub Agent Tasks REST API](https://github.blog/changelog/2026-06-04-agent-tasks-rest-api-now-available-for-copilot-pro-pro-and-max/)
+- [GitHub Agent Tasks API docs](https://docs.github.com/rest/agent-tasks/agent-tasks?apiVersion=2026-03-10#start-a-task)
+- [Fix with Copilot for failing Actions](https://github.blog/changelog/2026-06-04-fix-with-copilot-for-failing-actions-now-in-pro-pro-and-max/)
 - [OpenAI to acquire Ona](https://openai.com/index/openai-to-acquire-ona)
+- [GitHub security validation for third-party coding agents](https://github.blog/changelog/2026-06-09-security-validation-for-third-party-coding-agents)
+
+## MCP and toolchain governance are becoming enterprise release surfaces
+
+The week’s toolchain updates are less flashy than the papers, but they are highly implementable. GitHub Enterprise managed plugins make client-side agent capabilities administratively configurable. FastMCP release activity and mcp-guard v1.0.0 show MCP servers and guards maturing into release-managed infrastructure. Recuse gives sites a cooperative “do not automate this” signal, but the important caveat is that cooperation is not enforcement. AgentBeats suggests that agent evaluation may also converge on standard A2A plus MCP interfaces.
+
+Why it matters: tool governance is moving from local developer preference to enterprise release management. The attack surface includes client defaults, plugin policy, MCP server dependencies, auth behavior, tool descriptions, CI scans, and benchmark harness glue.
+
+How it fits into the stack: this strengthens [Agent Gateway Governance](../agent-gateway-governance/agent-gateway-governance.md) and [Runtime Governance](../runtime-governance/runtime-governance.md). The gateway should decide what a user, agent, session, tenant, client, and workflow can discover and invoke.
+
+Practical tools, repos, and methodologies worth exploring now:
+- centralize approved plugins and MCP configs;
+- pin MCP dependencies and scan server descriptions before release;
+- regression-test OAuth, JWT, session, and principal behavior;
+- treat recuse notices as cooperative policy signals, not security boundaries;
+- use A2A and MCP-style interfaces for benchmark compatibility only when trace and scope evidence are preserved.
+
+Implementability score: 0.82
+
+Core sources:
+- [GitHub Enterprise managed plugins in VS Code public preview](https://github.blog/changelog/2026-06-05-enterprise-managed-plugins-in-vs-code-in-public-preview/)
+- [FastMCP v3.4.1](https://github.com/PrefectHQ/fastmcp/releases/tag/v3.4.1)
+- [FastMCP v3.4.2](https://github.com/PrefectHQ/fastmcp/releases/tag/v3.4.2)
+- [mcp-guard v1.0.0](https://github.com/diomonogatari/mcp-guard/releases/tag/v1.0.0)
+- [Recuse](https://arxiv.org/abs/2606.06460v1)
+- [Recuse repository](https://github.com/mthamil107/Recuse)
+- [AgentBeats](https://arxiv.org/abs/2606.13608v1)
 
 ## Strategic readout
 
-The strategic pattern is now consistent: the winning agent platform is the one that mediates state transitions, not only messages. Disclosure, graph-memory writes, persistent cloud sessions, recursive delegation, and compiled user corrections all need the same product shape: bounded authority, traceable state, deterministic checks where possible, and evidence that survives the run.
+The week’s strategic answer is not “more safety layers.” It is “make state transitions first-class.” The same product shape keeps appearing: bind authority before action, mediate state changes during the run, preserve evidence after the run, and treat memory, skills, tools, artifacts, cloud workspaces, and privacy disclosures as policy-bearing objects.
+
+That is implementable today in pieces. The hard part is product integration: one runtime evidence package that follows every material action from user intent to final artifact.

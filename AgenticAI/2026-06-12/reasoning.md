@@ -1,84 +1,134 @@
-# AgenticAI Daily Analysis: 2026-06-12
+# AgenticAI Weekly Analysis: Week ending 2026-06-12
 
-Today's agent-stack signal is granularity control. The strongest findings are not asking agents to think harder inside one giant trace. They change the unit of work: tool calls become executable blocks, delegation becomes recursive harness spawning, and user corrections become runtime checks.
+This week’s agent-stack signal is operational granularity. The strongest work is not asking one model to carry more context, more tools, more memories, and more subagents in a single undifferentiated loop. It changes the unit of execution: deterministic tool chains become auditable executable blocks, failed traces become harness repairs, memories become typed event projections, and user corrections become runtime checks.
 
-## HyperTool moves context control into tool execution
+The practical model is simple: choose the right operational unit before the model spends context or authority, then preserve enough trace evidence to test whether that unit behaved.
 
-HyperTool is the strongest implementation finding today because it attacks the hidden cost of tool-augmented agents: deterministic tool workflows are still unfolded into repeated model-visible steps. Each atomic call, observation, intermediate value, and data handoff lands in the reasoning trace. The paper calls this an execution-granularity mismatch.
+## Tool execution should be raised from atomic calls to auditable macro-actions
 
-The proposed interface is a unified executable MCP-style tool surface. A model invokes HyperTool with a code block that can call existing tools through their original schemas, manipulate returned values locally, and return only the task-relevant result. The point is not to hide all execution. The point is to move low-level deterministic dataflow out of the main reasoning loop while preserving the original tool schemas and evidence path.
+HyperTool is the cleanest expression of the week’s context-economy shift. The paper argues that tool-augmented agents suffer from an execution-granularity mismatch: deterministic tool workflows are forced through repeated model-visible atomic calls, intermediate observations, and value handoffs. HyperTool instead exposes a unified executable MCP-style tool surface. The model emits a code block that can call existing tools through their original schemas, manipulate intermediate values locally, and return only the task-relevant result.
 
-Why it matters: context compression after the trace is already bloated is a weak fix. The better fix is execution-time control over what becomes model-visible. HyperTool reports MCP-Universe average accuracy rising from 15.69% to 35.29% on Qwen3-32B after HyperTool-format training. Treat the number as early, but the design direction is strong: agents need macro-actions that are auditable, typed, and cheaper than a dozen atomic tool turns.
+The same theme repeats elsewhere. Less Context, Better Agents reports that pruned tool history plus compact summaries can beat full-context retention in a Dynamics 365 MCP benchmark. ToolChoiceConfusion argues that the visible tool set should follow the causal next-step frontier rather than broad semantic relatedness. The week’s skill-rewriting work adds the same warning from another angle: shrinking a skill is useful only if the rewrite preserves the operational anchors that prevent retries and wrong tool paths. GitHub’s Copilot CLI language-server post is the production-shaped companion signal: coding agents need semantic code intelligence instead of brute-force text scraping.
 
-How it fits into the stack: this belongs between context economy and harness architecture. The harness should expose a small number of task-level executable actions instead of pushing the model through every local variable transfer. GitHub's Copilot CLI LSP post is the practical adjacent signal: give coding agents precise language-server answers instead of making them scrape code with brute-force text heuristics.
+Why it matters: context compression after the trace is already bloated is weaker than preventing the bloat. The right harness exposes task-level actions, not every local variable transfer. This is implementable now for deterministic, bounded, mostly read-only workflows such as code inspection, API fan-out, evidence extraction, data shaping, and report assembly.
+
+How it fits into the stack: this strengthens [Context Economy](../context-economy/context-economy.md), [Agent Harness Architecture](../agent-harness-architecture/agent-harness-architecture.md), and [Skills as Control](../skills-as-control/skills-as-control.md). The key abstraction is not “summarize everything.” It is “make the tool boundary match the task boundary.”
 
 Practical tools, repos, and methodologies worth exploring now:
-- design macro-tools for deterministic multi-step subroutines, especially read-only code inspection, data shaping, and API fan-out;
-- preserve the original tool schemas inside the macro-tool boundary instead of inventing opaque shortcuts;
-- return compact task-relevant outputs with source IDs, intermediate-operation logs, and failure summaries;
-- pair HyperTool-style blocks with language-server tools for definition, reference, type, and symbol lookup;
-- measure trace length, tool calls, retries, and answer quality under atomic-call, summarized-trace, and executable-block variants.
+- build macro-tools for deterministic multi-step subroutines while preserving the underlying tool schemas;
+- return compact outputs with source IDs, intermediate-operation logs, and failure summaries;
+- expose only tools whose preconditions match the current state frontier;
+- add language-server tools for definitions, references, symbols, types, and diagnostics;
+- compare atomic-call, summarized-trace, and executable-block variants on trace length, retries, runtime, and answer quality.
 
-Implementability score: 0.82
+Implementability score: 0.84
 
 Core sources:
 - [HyperTool: Beyond Step-Wise Tool Calls for Tool-Augmented Agents](https://arxiv.org/abs/2606.13663v1)
+- [Less Context, Better Agents: Finding the Right Context for Agents with Long Tool Response](https://arxiv.org/abs/2606.10209v1)
+- [ToolChoiceConfusion](https://arxiv.org/abs/2606.06284v1)
+- [Do LLM Agents Need Declarative Skills?](https://arxiv.org/abs/2606.06923v1)
+- [Optimizing Agentic System Prompts](https://arxiv.org/abs/2606.09421v1)
 - [Give GitHub Copilot CLI real code intelligence with language servers](https://github.blog/ai-and-ml/github-copilot/give-github-copilot-cli-real-code-intelligence-with-language-servers/)
 
-## Recursive agent harnesses turn subagent spawning into a harness primitive
+## Harnesses should be delegated and evaluated as runtimes, not chats
 
-Recursive Agent Harnesses names the pattern sitting between recursive language models and modern coding agents: the recursive unit is not a raw model call. It is a full agent harness with filesystem tools, execution, planning, context, and its own result contract.
+Recursive Agent Harnesses names the pattern hiding under many multi-agent experiments: the recursive unit is a full harness with filesystem tools, execution, planning, context, and result contracts, not a raw model call or role-play persona. The paper’s result is useful less as a leaderboard claim than as an architectural claim. Delegation becomes code or structured tool spawning, with child workspaces, instructions, tools, model choice, output contracts, and parent aggregation.
 
-The paper evaluates a parent agent that writes executable spawning code or uses structured tool-call spawning for small batches. Each child is a full harness, not a miniature prompt. On Oolong-Synthetic, with GPT-5 held fixed to match the Codex baseline, the paper reports improvement from 71.75% to 81.36%; with Claude Sonnet 4.5, the same design reaches 89.77%. The important claim is architectural, not leaderboard bragging: recursion is becoming a harness-level control surface.
+The week’s evaluation work pushes in the same direction. Layer-Isolated Evaluation shows that no-LLM deterministic scaffold slices can expose routing, memory, safety, escalation, decomposition, and envelope regressions that aggregate scores hide. The failed-trajectory and harness-repair work says failed runs should be replayed into layer-local fixes instead of patched with vague prompt changes. MASArena and BenchAgent make the coordination-cost problem explicit by requiring normalized single-agent and multi-agent baselines. OpenEnv moves agentic RL environments toward a shared `reset`, `step`, `state` socket, while AGENTSERVESIM warns that serving multi-turn agents as request-level throughput math misses state, cache, routing, and tool-gap effects.
 
-Why it matters: agent teams are often implemented as chatty role play. RAH is more disciplined. It says delegation should be explicit code or structured calls, with per-child workspaces, instructions, tools, context windows, output paths, and concurrency choices. That makes delegation cheaper to audit and easier to budget.
+Why it matters: multi-agent and recursive systems are easy to demo and hard to govern. The harness has to own decomposition, budgets, workspace scope, concurrency, trace lineage, output contracts, and failure labels. Otherwise recursion becomes spend explosion with nicer logs.
 
-How it fits into the stack: this extends multi-agent orchestration and agent harness architecture. The parent should not simply ask a crowd of agents to discuss. It should partition work, spawn bounded harnesses, collect typed outputs, and preserve parent-child traces. The risk is obvious: recursive harnesses can explode spend, filesystem mutation, and authority if the runtime does not enforce depth, budgets, scopes, and aggregation rules.
+How it fits into the stack: this deepens [Agent Harness Architecture](../agent-harness-architecture/agent-harness-architecture.md), [Multi-Agent Orchestration](../multi-agent-orchestration/multi-agent-orchestration.md), [Trajectory-Aware Evaluation](../trajectory-aware-evaluation/trajectory-aware-evaluation.md), and [Agent Serving Runtime](../agent-serving-runtime/agent-serving-runtime.md).
 
 Practical tools, repos, and methodologies worth exploring now:
 - parent-child run manifests with depth, budget, workspace, tool scope, model, and expected output schema;
-- fan-out only for tasks with natural decomposition, such as file batches, evidence extraction, or independent verification;
-- hard recursion-depth, wall-clock, token, tool-call, and filesystem-write limits;
-- parent aggregation that cites each child result and preserves disagreement rather than flattening it away;
-- replay fixtures comparing single-agent, naive multi-agent, and recursive-harness execution under identical budgets.
+- deterministic per-layer CI tests for routing, memory, escalation, decomposition, safety, and envelope logic;
+- replay failed trajectories, label the broken harness layer, and promote fixes into regression fixtures;
+- run single-agent, naive multi-agent, and recursive-harness baselines under the same budget and tools;
+- replay traces through a serving simulator before changing cache, routing, or model policy.
 
-Implementability score: 0.69
+Implementability score: 0.76
 
-Core source:
+Core sources:
 - [Recursive Agent Harnesses](https://arxiv.org/abs/2606.13643v1)
+- [Layer-Isolated Evaluation](https://arxiv.org/abs/2606.11686v1)
+- [Harness repair from failed trajectories](https://arxiv.org/abs/2606.06324v1)
+- [MASArena and BenchAgent](https://arxiv.org/abs/2606.05670v1)
+- [OpenEnv: An Open Platform for Environments in Agentic RL](https://huggingface.co/blog/openenv-agentic-rl)
+- [OpenEnv repository](https://github.com/huggingface/OpenEnv)
+- [AGENTSERVESIM](https://arxiv.org/abs/2606.09613v1)
 
-## User corrections should compile into runtime checks
+## Memory should be evented, typed, and gated before it reaches the prompt
 
-Getting Better at Working With You is the best memory-and-skills update today. The paper's blunt finding is that memory access is not preference compliance. In tasks derived from real user-friction cases, Mem0 memory still leaves 57.5% of applicable preference checks violated. The proposed Trace pipeline mines user corrections, rewrites them as atomic rules, and compiles them into runtime checks that must pass before the agent completes future tasks.
+The week’s memory work converges on a sober design: memory is not a blob to retrieve. It is a state system with write paths, event logs, policy gates, validity windows, and projections. PROJECTMEM is the most immediately useful pattern. It treats coding-agent memory as an append-only local event log projected into compact MCP summaries, then adds a pre-action judge so agents do not repeat failed fixes or blindly edit fragile files.
 
-Why it matters: long-term memory often stores what the user said, then hopes the next answering model remembers to obey. That is too soft for repeated corrections. If a user says "do not use sed to edit files" or "always cite source URLs in this report," the system should not merely retrieve that sentence. It should run an applicability check and a verifier before reporting completion.
+Infini Memory pushes toward topic documents with staged consolidation, metadata, and revision history. MemoryScale and TokenMizer make memory a costed systems workload across construction, retrieval, update, compression, and generation. The bitemporal memory work adds valid time, transaction time, supersession, and conflict operators. The graph-memory selection-integrity paper belongs partly in Strategy, but it matters technically too: graph structure can steer fact selection even when final cited records are authenticated.
 
-How it fits into the stack: this bridges memory systems and skills-as-control. A correction becomes procedural state: rule, applicability predicate, verifier, trace evidence, and pass/fail record. The paper reports Trace reducing held-out preference violations on ClawArena from 100.0% to 37.6% in-distribution and from 100.0% to 2.0% out-of-distribution, while preserving task success.
+Why it matters: memory failures are no longer just “bad recall.” A memory can be stale, overbroad, cross-domain, consent-scoped, contradictory, poisoned through graph structure, or operationally irrelevant. The harness should decide which memory can influence which kind of action.
+
+How it fits into the stack: this strengthens [Memory Systems](../memory-systems/memory-systems.md), [Event-Sourced Agent Runtime](../event-sourced-agent-runtime/event-sourced-agent-runtime.md), and [Context Economy](../context-economy/context-economy.md).
+
+Practical tools, repos, and methodologies worth exploring now:
+- log issues, attempts, fixes, decisions, fragile files, and failures as typed local events;
+- project compact summaries into the prompt while preserving raw episodes outside it;
+- stage observations before promotion into durable topic memory;
+- attach evidence IDs, valid time, transaction time, supersession, and conflict operators;
+- gate memory influence by task, principal, source trust, sensitivity, and action authority.
+
+Implementability score: 0.80
+
+Core sources:
+- [PROJECTMEM](https://arxiv.org/abs/2606.12329v1)
+- [PROJECTMEM repository](https://github.com/riponcm/projectmem)
+- [Infini Memory](https://arxiv.org/abs/2606.10677v1)
+- [MemoryScale](https://arxiv.org/abs/2606.06448v1)
+- [TokenMizer repository](https://github.com/Shweta-Mishra-ai/tokenmizer)
+- [Bitemporal memory search](https://arxiv.org/abs/2606.06240v1)
+- [Toki bitemporal memory](https://github.com/ZenAlexa/toki-bitemporal-memory)
+- [Selection Integrity for LLM Graph Memory](https://arxiv.org/abs/2606.12290v1)
+
+## Skills and user preferences should compile into verifiers
+
+The week’s skills signal is that prose procedures are becoming runtime dependencies. Getting Better at Working With You is the sharpest version. The paper finds that memory access is not preference compliance: Mem0 still violates 57.5% of applicable preference checks in real-friction-derived tasks. Its Trace pipeline mines user corrections, rewrites them as atomic rules, and compiles them into runtime checks that must pass before the agent completes future tasks.
+
+Other findings reinforce the same control surface. Declarative skills reduce procedural and orchestration errors only when retrieval quality is already good. Prompt and skill rewriting must preserve operational anchors, not only reduce tokens. MalSkillBench shows that malicious skills mix prose, code, and tool authority. Runtime Skill Audit argues for targeted sandbox probes because dangerous behavior may only appear with local files, persistent state, or multi-step tool paths. The context-rot work says AI guidance files like `AGENTS.md`, `CLAUDE.md`, `.cursorrules`, and skill files need live checks against the repository they claim to describe.
+
+Why it matters: a skill is not harmless context. It can decide tools, sequencing, safety posture, file edits, and completion criteria. A user correction is not just a memory. It is a future verifier.
+
+How it fits into the stack: this strengthens [Skills as Control](../skills-as-control/skills-as-control.md), [Memory Systems](../memory-systems/memory-systems.md), and [Agent Harness Architecture](../agent-harness-architecture/agent-harness-architecture.md).
 
 Practical tools, repos, and methodologies worth exploring now:
 - extract corrections into atomic rules with examples and counterexamples;
-- attach applicability checks so rules fire only on relevant tasks;
-- compile final-state verifiers that gate completion, not just prompt reminders;
-- store per-user and per-project rule libraries with body hash, source correction, last-fired date, and false-positive notes;
-- add regression fixtures from real repeated-friction cases.
+- attach applicability predicates and final-state verifiers;
+- store rule body hash, source correction, last-fired date, false-positive notes, and trace evidence;
+- require skill manifests, loaded-body hashes, static prose/code checks, and runtime probes for high-risk skills;
+- run context-rot checks that validate commands, paths, symbols, APIs, and environment variables against the live repo.
 
-Implementability score: 0.85
+Implementability score: 0.83
 
-Core source:
-- [Getting Better at Working With You: Compiling User Corrections into Runtime Enforcement for Coding Agents](https://arxiv.org/abs/2606.13174v1)
+Core sources:
+- [Getting Better at Working With You](https://arxiv.org/abs/2606.13174v1)
+- [Do LLM Agents Need Declarative Skills?](https://arxiv.org/abs/2606.06923v1)
+- [Optimizing Agentic System Prompts](https://arxiv.org/abs/2606.09421v1)
+- [MalSkillBench](https://arxiv.org/abs/2606.07131v1)
+- [Runtime Skill Audit](https://arxiv.org/abs/2606.11671v1)
+- [Snyk Agent Scan](https://github.com/snyk/agent-scan)
+- [AI configuration context rot](https://arxiv.org/abs/2606.09090v1)
 
 ## Watchlist: standardized agent assessment interfaces
 
-AgentBeats is worth tracking because it pushes evaluation toward agent-agnostic protocols: A2A for task management and MCP for tool access. I did not make it a top finding because it is more interface standardization than immediate architecture, but the direction matters. If benchmarks and agents meet through stable protocols, evaluation stops requiring one-off harness glue for every agent system.
+AgentBeats is worth tracking because it pushes evaluation toward agent-agnostic protocols: A2A for task management and MCP for tool access. I did not make it a top week-level finding because it is more interface standardization than an immediate architecture pattern. But if benchmarks and agents meet through stable protocols, evaluation stops requiring one-off harness glue for every agent system.
 
 Source:
 - [AgentBeats](https://arxiv.org/abs/2606.13608v1)
 
 ## Implementation readout
 
-The build pattern is clear:
+The build pattern for the week is:
 1. Raise the unit of tool execution from atomic calls to auditable executable blocks.
-2. Raise the unit of delegation from chat roles to bounded recursive harnesses.
-3. Raise the unit of memory from retrieved advice to compiled runtime checks.
+2. Raise the unit of delegation from role-play chats to bounded harnesses with manifests and traces.
+3. Raise the unit of memory from retrieved snippets to typed event projections with write gates.
+4. Raise the unit of preference compliance from recalled advice to runtime verifiers.
 
-That is the daily thesis: better agents are not just better reasoners. They are better at choosing the right operational granularity before the model spends context, delegates work, or claims it learned from a correction.
+That is the AgenticAI thesis for the week: better agents are not only better reasoners. They are better runtimes that choose the right operational unit, then test it.

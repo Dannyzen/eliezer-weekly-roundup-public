@@ -6,30 +6,28 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Daily scan, 2026-06-12: [roundup](roundups/2026-06-12.md)
-- AgenticAI daily analysis: [2026-06-12](AgenticAI/2026-06-12/reasoning.md)
-- Strategy daily analysis: [2026-06-12](Strategy/2026-06-12/sovereignty.md)
+- Friday synthesis, week ending 2026-06-12: [roundup](roundups/2026-06-12.md)
+- AgenticAI weekly analysis: [2026-06-12](AgenticAI/2026-06-12/reasoning.md)
+- Strategy weekly analysis: [2026-06-12](Strategy/2026-06-12/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
-- Related durable topics: [Context Economy](AgenticAI/context-economy/context-economy.md), [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Multi-Agent Orchestration](AgenticAI/multi-agent-orchestration/multi-agent-orchestration.md), [Memory Systems](AgenticAI/memory-systems/memory-systems.md), [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md)
-- Previous daily scan, 2026-06-11: [roundup](roundups/2026-06-11.md)
+- Related durable topics: [Context Economy](AgenticAI/context-economy/context-economy.md), [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Multi-Agent Orchestration](AgenticAI/multi-agent-orchestration/multi-agent-orchestration.md), [Memory Systems](AgenticAI/memory-systems/memory-systems.md), [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [Event-Sourced Agent Runtime](AgenticAI/event-sourced-agent-runtime/event-sourced-agent-runtime.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md)
 - Deep Dive Wednesday, 2026-06-10: [Enterprise MCP Orchestration](AgenticAI/enterprise-mcp-orchestration/enterprise-mcp-orchestration.md)
-- Friday synthesis, week ending 2026-06-05: [roundup](roundups/2026-06-05.md)
-- Deep Dive Wednesday, 2026-06-03: [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md#deep-dive-wednesday-2026-06-03-gateway-as-identity-bound-mcp-data-plane)
+- Previous Friday synthesis, week ending 2026-06-05: [roundup](roundups/2026-06-05.md)
 - Prior Friday synthesis: [week ending 2026-05-29](roundups/2026-05-29.md)
 - Prior Friday synthesis: [week ending 2026-05-22](roundups/2026-05-22.md)
 - Prior Friday synthesis: [week ending 2026-05-15](roundups/2026-05-15.md)
 
 ## Current thesis
 
-The agent stack is moving from permissive context and tool catalogs to explicit granularity control. The useful question is no longer only "can the model use more memory, context, tools, skills, or agents?" It is "what is the right operational unit for this action, and what evidence proves that unit stayed within scope?"
+The agent stack is moving from permissive context and tool catalogs to trace-governed operational units. The useful question is no longer only "can the model use more memory, context, tools, skills, or agents?" It is "what operational unit should have authority here, what state transition did it perform, and what evidence proves it stayed within scope?"
 
-The 2026-06-12 scan adds four implementation patterns:
+The 2026-06-12 Friday synthesis adds four implementation patterns:
 
-- Tool workflows should become auditable executable blocks when atomic tool calls only bloat the trace.
-- Recursive delegation should spawn bounded child harnesses with manifests, budgets, scopes, and typed outputs.
-- User corrections should compile into runtime checks, not remain passive memories.
-- Privacy and graph-memory governance need trajectory-level budgets and selection-path integrity, not only final-output filtering or final citation provenance.
+- Tool workflows should become auditable executable blocks when atomic calls only bloat the trace.
+- Harnesses should be delegated and evaluated as runtimes with manifests, budgets, deterministic slices, and replayable traces.
+- Memory, skills, and user corrections should become typed state with write gates and verifiers, not passive prompt context.
+- Cloud agents, MCP toolchains, privacy disclosures, graph memory, and artifacts need state-transition mediation with customer-controlled evidence.
 
 ## Browse by category
 

@@ -617,3 +617,24 @@ Practical lesson:
 
 Source:
 - [Security validation for third-party coding agents](https://github.blog/changelog/2026-06-09-security-validation-for-third-party-coding-agents)
+
+## June 13 update: gateway tests need stakeholder harm and workflow-source evidence
+
+Who Pays the Price? and PI-Hunter sharpen gateway governance at the web-agent boundary. Prompt injection is not only a malicious string that the model obeys. It is a source-localized contamination event that can create asymmetric harms for users, sellers, platforms, and third parties while the delegated task may still appear to succeed.
+
+The practical gateway correction is to enrich security traces. A prompt-injection test should record affected stakeholder, attack objective, source location, contaminated process step, final outcome, and whether user task integrity survived. PI-Hunter’s source-aware auditing frame adds the needed localization: identify the external source or artifact that carried the latent malicious instruction and preserve that in the trace.
+
+GitHub Agentic Workflows adds the production version of the same gateway lesson. A natural-language workflow definition that compiles into Actions YAML is a deployable automation surface. It should carry owner, repository, runner group, policy constraints, sandbox/firewall state, safe-output result, threat-detection result, and final change lineage.
+
+Practical lesson:
+- label prompt-injection fixtures by harmed stakeholder and source locality;
+- log URL, DOM node, artifact, memory, tool output, or retrieved chunk that carried untrusted instructions;
+- score process contamination separately from final attack success;
+- treat agent workflow definitions as gateway-admitted automation artifacts;
+- preserve compiled workflow, runner policy, sandbox evidence, safe-output verdict, and threat-detection result before mutation.
+
+Sources:
+- [Who Pays the Price?](https://arxiv.org/abs/2606.13385v1)
+- [StakeBench/SBC](https://github.com/StakeBench/SBC)
+- [PI-Hunter](https://arxiv.org/abs/2606.12737v1)
+- [GitHub Agentic Workflows public preview](https://github.blog/changelog/2026-06-11-github-agentic-workflows-is-now-in-public-preview)

@@ -539,6 +539,22 @@ Sources:
 - [Selection Integrity for LLM Graph Memory](https://arxiv.org/abs/2606.12290v1)
 - [OpenAI to acquire Ona](https://openai.com/index/openai-to-acquire-ona)
 
+## June 13 update: agentic workflows are governed runtime units
+
+GitHub Agentic Workflows moves runtime governance from abstract architecture into a familiar CI surface. Teams define reasoning-based automations in Markdown, GitHub compiles them into Actions YAML, and the workflows reuse runner groups and policy constraints. The important part is the control envelope: read-only defaults, integrity filter rules, sandboxed containers, an Agent Workflow Firewall, safe-output validation, and a dedicated threat-detection job before changes are applied.
+
+The runtime lesson is transferable even outside GitHub. An agentic workflow definition is not a prompt. It is a deployable runtime unit with an author, compiled artifact, runner identity, sandbox policy, repository scope, output validator, threat detector, and final mutation path.
+
+Practical lesson:
+- treat agentic workflow definitions and compiled artifacts as code;
+- bind workflow, repository, actor, runner group, sandbox image, policy constraint, and model/agent identity in the trace;
+- default to read-only access and require explicit gates for mutation;
+- preserve safe-output and threat-detection results before applying changes;
+- test workflow definitions for privilege escalation, prompt injection, overbroad repository access, and unsafe artifact promotion.
+
+Source:
+- [GitHub Agentic Workflows public preview](https://github.blog/changelog/2026-06-11-github-agentic-workflows-is-now-in-public-preview)
+
 ## Working conclusion
 
-Runtime governance is not a niche enterprise concern. It is the natural consequence of giving agents durable memory, tool access, repository permissions, CI/CD authority, local storage, plugins, delegated secrets, shared inference infrastructure, and sandboxed execution environments. The control plane has to move into runtime: inventory the agents, bind identity and scope, manage execution environments, preserve trace evidence, enforce valid next transitions before privileged tools execute, calibrate trust from outcomes, test trajectory-level guardrails offline, record serving conditions for replayability, constrain network and inference routes, and keep tainted inputs from silently becoming trusted agent instructions or script data.
+Runtime governance is not a niche enterprise concern. It is the natural consequence of giving agents durable memory, tool access, repository permissions, CI/CD authority, local storage, plugins, delegated secrets, shared inference infrastructure, sandboxed execution environments, and workflow definitions that compile into automations. The control plane has to move into runtime: inventory the agents, bind identity and scope, manage execution environments, preserve trace evidence, enforce valid next transitions before privileged tools execute, calibrate trust from outcomes, test trajectory-level guardrails offline, record serving conditions for replayability, constrain network and inference routes, and keep tainted inputs from silently becoming trusted agent instructions or script data.

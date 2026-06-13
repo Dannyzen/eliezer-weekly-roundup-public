@@ -484,3 +484,24 @@ Practical lesson:
 
 Source:
 - [Getting Better at Working With You](https://arxiv.org/abs/2606.13174v1)
+
+## June 13 update: skill topology and scanners make admission measurable
+
+SkillJuror and SkillCAT sharpen the skill-control thesis from the usability side. A skill library is not only a set of instructions. Its topology changes runtime behavior. Progressive disclosure can make agents touch more relevant resources and pass more verifiers than a flat skill file when the supporting resources are actionable. SkillCAT adds the promotion discipline: compare successful and failed trajectories, replay candidate skill patches before keeping them, and route only the relevant sub-skill nodes at inference.
+
+NVIDIA SkillSpector supplies the practical admission layer. Its README describes scanning AI agent skills for prompt injection, data exfiltration, privilege escalation, memory poisoning, tool misuse, MCP least privilege, MCP tool poisoning, and related risks, with JSON, Markdown, and SARIF outputs. Trending skill catalogs such as `addyosmani/agent-skills` and `obra/superpowers` show demand, but the conclusion is not “install more skills.” It is “treat skills like dependencies with topology, tests, scanner output, hashes, and rollback.”
+
+Practical lesson:
+- measure skill organization separately from skill content;
+- compare progressive-disclosure, flat, no-skill, and wrong-skill variants under matched tasks;
+- store resource-touch and effective-uptake events in the trace;
+- replay candidate skill patches before promotion;
+- scan community or generated skills for prose, script, tool, MCP, and memory-write risk before production admission.
+
+Sources:
+- [SkillJuror](https://arxiv.org/abs/2606.11543v1)
+- [zhiyuchen-ai/skill-juror](https://github.com/zhiyuchen-ai/skill-juror)
+- [SkillCAT](https://arxiv.org/abs/2606.13317v1)
+- [NVIDIA/SkillSpector](https://github.com/NVIDIA/SkillSpector)
+- [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills)
+- [obra/superpowers](https://github.com/obra/superpowers)

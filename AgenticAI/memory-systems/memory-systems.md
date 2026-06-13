@@ -609,6 +609,24 @@ Sources:
 - [Getting Better at Working With You](https://arxiv.org/abs/2606.13174v1)
 - [Selection Integrity for LLM Graph Memory](https://arxiv.org/abs/2606.12290v1)
 
+## June 13 update: memory evolution needs compression and poisoning gates
+
+EvoArena, MemRefine, and SMSR turn the June memory thesis into a tighter runtime requirement. Memory is not only a derived summary, topic document, or retrieval policy. It is an evolving state system that has to survive environment change, storage budgets, and adversarial writes.
+
+EvoArena makes the evaluation dynamic: terminal, software, and social-preference domains change over time, and agents have to preserve complete evolving environment states. MemRefine makes memory compression a policy decision, not a similarity cleanup job: delete, merge, and preserve decisions should be judged by factual value under a storage budget. SMSR adds the security floor: persistent memory writes need provenance, and retrieval needs influence controls because multi-session poisoning can steer future runs without touching model weights or code.
+
+Practical lesson:
+- store memory patches or update histories instead of overwriting canonical state silently;
+- keep storage budgets explicit and log delete, merge, preserve, and abstain decisions;
+- attach writer principal, source hash, trust tier, and validity metadata to every durable memory write;
+- test memory poisoning separately for unsigned, authenticated, and agent-written poison;
+- bound read-path influence with randomized ablation, voting, or equivalent canaries before memory affects high-authority actions.
+
+Sources:
+- [EvoArena](https://arxiv.org/abs/2606.13681v1)
+- [MemRefine](https://arxiv.org/abs/2606.13177v1)
+- [SMSR](https://arxiv.org/abs/2606.12703v1)
+
 ## Working conclusion
 
-The next generation of agents will be differentiated less by how eloquently they speak and more by how faithfully and safely they remember. The winning systems will preserve evidence, route memory writes explicitly, retrieve context adaptively, abstain when memory is unsafe, validate high-value writes, make retention and pruning decisions replayable, query local graphs when code structure matters, promote only the right lessons into durable guidance, attach enough context for updates and temporal reasoning, choose abstraction levels that transfer across tasks, keep the most sensitive memory close to the user and under policy control, run durable memory through a governed database-backed state core, separate evaluation memory from user-facing memory, measure whether memories remain usable under scale, budgets, and writeback review, expose operation-level provenance, test belief-state stay/update/isolate decisions, gate retrieval by policy, resolve contradictions with bitemporal evidence, and evaluate memory against heterogeneous evolving source streams so failures can be traced instead of guessed.
+The next generation of agents will be differentiated less by how eloquently they speak and more by how faithfully and safely they remember. The winning systems will preserve evidence, route memory writes explicitly, retrieve context adaptively, abstain when memory is unsafe, validate high-value writes, make retention and pruning decisions replayable, query local graphs when code structure matters, promote only the right lessons into durable guidance, attach enough context for updates and temporal reasoning, choose abstraction levels that transfer across tasks, keep the most sensitive memory close to the user and under policy control, run durable memory through a governed database-backed state core, separate evaluation memory from user-facing memory, measure whether memories remain usable under scale, budgets, and writeback review, expose operation-level provenance, test belief-state stay/update/isolate decisions, gate retrieval by policy, resolve contradictions with bitemporal evidence, evaluate memory against heterogeneous evolving source streams, and defend memory write/read paths against poisoning so failures can be traced instead of guessed.

@@ -1,17 +1,19 @@
 # Eliezer Weekly Roundup
 
 A living, category-first research system for the agentic stack: agents, tools, memory, orchestration, evaluation, local-first infrastructure, and strategy.
-
 The primary lens is the agentic stack itself, not generic AI news. The repo tracks research and releases that change how a builder should design autonomous systems: orchestration, prompting, tool use, memory, deterministic testing, observability, multi-agent systems, model routing, and sovereign or self-hosted infrastructure.
 
 ## Latest update
 
+- Daily scan, 2026-06-14: [roundup](roundups/2026-06-14.md)
+- AgenticAI daily analysis: [2026-06-14](AgenticAI/2026-06-14/reasoning.md)
+- Strategy daily analysis: [2026-06-14](Strategy/2026-06-14/sovereignty.md)
+- Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
+- Fresh Strategy index: [Strategy README](Strategy/README.md)
+- Related durable topics: [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Agent Serving Runtime](AgenticAI/agent-serving-runtime/agent-serving-runtime.md), [Model Router Governance](Strategy/model-router-governance/model-router-governance.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md), [Event-Sourced Agent Runtime](AgenticAI/event-sourced-agent-runtime/event-sourced-agent-runtime.md)
 - Daily scan, 2026-06-13: [roundup](roundups/2026-06-13.md)
 - AgenticAI daily analysis: [2026-06-13](AgenticAI/2026-06-13/reasoning.md)
 - Strategy daily analysis: [2026-06-13](Strategy/2026-06-13/sovereignty.md)
-- Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
-- Fresh Strategy index: [Strategy README](Strategy/README.md)
-- Related durable topics: [Memory Systems](AgenticAI/memory-systems/memory-systems.md), [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md), [Event-Sourced Agent Runtime](AgenticAI/event-sourced-agent-runtime/event-sourced-agent-runtime.md), [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md)
 - Friday synthesis, week ending 2026-06-12: [roundup](roundups/2026-06-12.md)
 - Deep Dive Wednesday, 2026-06-10: [Enterprise MCP Orchestration](AgenticAI/enterprise-mcp-orchestration/enterprise-mcp-orchestration.md)
 - Previous Friday synthesis, week ending 2026-06-05: [roundup](roundups/2026-06-05.md)
@@ -23,8 +25,12 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 The agent stack is moving from permissive context and tool catalogs to trace-governed operational units with admission-controlled memory, skills, and workflow automation. The useful question is no longer only "can the model use more memory, context, tools, skills, or agents?" It is "what operational unit should have authority here, what state transition did it perform, and what evidence proves it stayed within scope?"
 
-The 2026-06-13 daily scan adds four implementation patterns:
+The 2026-06-14 daily scan adds three implementation patterns:
+- Tool execution folds into executable MCP-style subroutines that the model invokes as single admission events.
+- The harness becomes the recursive unit: parent agents spawn child harnesses via executable scripts with explicit resource bounds.
+- Model routing gets capability geometry: six-dimension capability vectors, difficulty estimation, and cost-penalized geometric dispatch.
 
+The 2026-06-13 daily scan adds four implementation patterns:
 - Memory systems need update histories, compression budgets, provenance, and poisoning gates.
 - Skill libraries should be treated as dependency graphs with topology tests, scanners, runtime probes, and admission evidence.
 - Prompt-injection evaluation should score harmed stakeholders and source locality, not only attack success.
@@ -79,7 +85,6 @@ The 2026-06-13 daily scan adds four implementation patterns:
 ## What gets selected
 
 Selected items usually have at least one of these properties:
-
 - they change agent orchestration, tool use, memory, or evaluation practice;
 - they expose a repeatable implementation pattern that can be tried now;
 - they show where local-first or self-hosted infrastructure is becoming practical;

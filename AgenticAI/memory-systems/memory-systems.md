@@ -1,5 +1,7 @@
 # Memory Systems
 
+Last updated: 2026-06-15
+
 Memory is becoming the real architecture question for long-lived agents.
 
 The durable pattern across recent work is simple: agents become more useful when memory preserves ground truth, retrieves broader context than a single chunk, and distinguishes between what should stay local, what should become durable profile data, and what should remain ephemeral. The new wrinkle is that the best systems are no longer treating memory as transcript storage. They are turning experience into portable guidance and giving operators much better control over what gets written and recalled.
@@ -627,6 +629,23 @@ Sources:
 - [MemRefine](https://arxiv.org/abs/2606.13177v1)
 - [SMSR](https://arxiv.org/abs/2606.12703v1)
 
+## June 15 update: reasoning memory needs version control and local retention
+
+GitOfThoughts and TencentDB Agent Memory converge on a practical memory substrate: local, replayable, and history-aware. GitOfThoughts proposes representing reasoning as a git repository where scored thoughts are commits, scores are notes, outcomes are tags, and retrieval is history inspection. TencentDB Agent Memory is the tooling demand signal: local long-term memory for agents with no external API dependency.
+
+The implementation lesson is that durable memory should not be a hidden prompt cache. High-value memories should behave like state transitions: append-only evidence, diffable changes, rollback path, writer identity, and local retention by default.
+
+Practical lesson:
+- store promoted memories as append-only events with stable IDs;
+- add diff, blame, rollback, and merge semantics before allowing memory to steer privileged actions;
+- keep sensitive project and user memory local unless explicitly exported;
+- record source episode, writer, timestamp, trust tier, and observed outcome with every memory write;
+- run memory replay tests after schema, compression, or retrieval-policy changes.
+
+Sources:
+- [GitOfThoughts](https://arxiv.org/abs/2606.14470v1)
+- [TencentDB Agent Memory](https://github.com/TencentCloud/TencentDB-Agent-Memory)
+
 ## Working conclusion
 
-The next generation of agents will be differentiated less by how eloquently they speak and more by how faithfully and safely they remember. The winning systems will preserve evidence, route memory writes explicitly, retrieve context adaptively, abstain when memory is unsafe, validate high-value writes, make retention and pruning decisions replayable, query local graphs when code structure matters, promote only the right lessons into durable guidance, attach enough context for updates and temporal reasoning, choose abstraction levels that transfer across tasks, keep the most sensitive memory close to the user and under policy control, run durable memory through a governed database-backed state core, separate evaluation memory from user-facing memory, measure whether memories remain usable under scale, budgets, and writeback review, expose operation-level provenance, test belief-state stay/update/isolate decisions, gate retrieval by policy, resolve contradictions with bitemporal evidence, evaluate memory against heterogeneous evolving source streams, and defend memory write/read paths against poisoning so failures can be traced instead of guessed.
+The next generation of agents will be differentiated less by how eloquently they speak and more by how faithfully and safely they remember. The winning systems will preserve evidence, route memory writes explicitly, retrieve context adaptively, abstain when memory is unsafe, validate high-value writes, make retention and pruning decisions replayable, query local graphs when code structure matters, promote only the right lessons into durable guidance, attach enough context for updates and temporal reasoning, choose abstraction levels that transfer across tasks, keep the most sensitive memory close to the user and under policy control, run durable memory through a governed database-backed state core, separate evaluation memory from user-facing memory, measure whether memories remain usable under scale, budgets, and writeback review, expose operation-level provenance, make reasoning history diffable, test belief-state stay/update/isolate decisions, gate retrieval by policy, resolve contradictions with bitemporal evidence, evaluate memory against heterogeneous evolving source streams, and defend memory write/read paths against poisoning so failures can be traced instead of guessed.

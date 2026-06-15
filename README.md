@@ -5,15 +5,16 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
+- Daily scan, 2026-06-15: [roundup](roundups/2026-06-15.md)
+- AgenticAI daily analysis: [2026-06-15](AgenticAI/2026-06-15/reasoning.md)
+- Strategy daily analysis: [2026-06-15](Strategy/2026-06-15/sovereignty.md)
+- Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
+- Fresh Strategy index: [Strategy README](Strategy/README.md)
+- Related durable topics: [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Memory Systems](AgenticAI/memory-systems/memory-systems.md), [Multi-Agent Orchestration](AgenticAI/multi-agent-orchestration/multi-agent-orchestration.md), [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md)
 - Daily scan, 2026-06-14: [roundup](roundups/2026-06-14.md)
 - AgenticAI daily analysis: [2026-06-14](AgenticAI/2026-06-14/reasoning.md)
 - Strategy daily analysis: [2026-06-14](Strategy/2026-06-14/sovereignty.md)
-- Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
-- Fresh Strategy index: [Strategy README](Strategy/README.md)
-- Related durable topics: [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Agent Serving Runtime](AgenticAI/agent-serving-runtime/agent-serving-runtime.md), [Model Router Governance](Strategy/model-router-governance/model-router-governance.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md), [Event-Sourced Agent Runtime](AgenticAI/event-sourced-agent-runtime/event-sourced-agent-runtime.md)
 - Daily scan, 2026-06-13: [roundup](roundups/2026-06-13.md)
-- AgenticAI daily analysis: [2026-06-13](AgenticAI/2026-06-13/reasoning.md)
-- Strategy daily analysis: [2026-06-13](Strategy/2026-06-13/sovereignty.md)
 - Friday synthesis, week ending 2026-06-12: [roundup](roundups/2026-06-12.md)
 - Deep Dive Wednesday, 2026-06-10: [Enterprise MCP Orchestration](AgenticAI/enterprise-mcp-orchestration/enterprise-mcp-orchestration.md)
 - Previous Friday synthesis, week ending 2026-06-05: [roundup](roundups/2026-06-05.md)
@@ -25,16 +26,16 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 The agent stack is moving from permissive context and tool catalogs to trace-governed operational units with admission-controlled memory, skills, and workflow automation. The useful question is no longer only "can the model use more memory, context, tools, skills, or agents?" It is "what operational unit should have authority here, what state transition did it perform, and what evidence proves it stayed within scope?"
 
-The 2026-06-14 daily scan adds three implementation patterns:
+The 2026-06-15 daily scan adds four implementation patterns:
+- Harnesses are becoming typed foundries: prompts, tools, memory, reflection, action, and verification should be swappable runtime components.
+- Reasoning memory wants version control: replay, diff, merge, rollback, provenance, and local retention matter before memory steers future actions.
+- Heterogeneous agents can collaborate through file protocols before a universal shared runtime exists.
+- Skills and guardrails are runtime components that need manifests, probes, scanners, and resource budgets.
+
+The 2026-06-14 daily scan added three implementation patterns:
 - Tool execution folds into executable MCP-style subroutines that the model invokes as single admission events.
 - The harness becomes the recursive unit: parent agents spawn child harnesses via executable scripts with explicit resource bounds.
 - Model routing gets capability geometry: six-dimension capability vectors, difficulty estimation, and cost-penalized geometric dispatch.
-
-The 2026-06-13 daily scan adds four implementation patterns:
-- Memory systems need update histories, compression budgets, provenance, and poisoning gates.
-- Skill libraries should be treated as dependency graphs with topology tests, scanners, runtime probes, and admission evidence.
-- Prompt-injection evaluation should score harmed stakeholders and source locality, not only attack success.
-- Agentic workflows should be governed like CI resources: reviewed definitions, compiled artifacts, runner policy, sandboxing, safe outputs, and threat detection.
 
 ## Browse by category
 

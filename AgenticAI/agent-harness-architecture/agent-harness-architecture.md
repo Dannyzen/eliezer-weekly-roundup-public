@@ -1,6 +1,6 @@
 # Agent Harness Architecture
 
-Last updated: 2026-06-12
+Last updated: 2026-06-15
 
 Agent harness architecture is becoming the part of the agent stack that teams can actually standardize.
 
@@ -719,6 +719,23 @@ Practical lesson:
 Source:
 - [Recursive Agent Harnesses](https://arxiv.org/abs/2606.13643v1)
 
+## June 15 update: harnesses need typed foundries and component interfaces
+
+HarnessX and AgentSpec extend the harness thesis from replayable scaffolds into typed component systems. HarnessX treats the harness as prompts, tools, memory, and control flow assembled from typed primitives, then adapted through trace-driven evolution. AgentSpec applies the same discipline to embodied agents by standardizing component interfaces for perception, memory, reasoning, reflection, action, and optional learning.
+
+The practical correction is to stop treating the harness as one prompt-shaped blob. A real harness should expose component boundaries, version each component, trace which version ran, and allow controlled one-component swaps before bigger architecture changes.
+
+Practical lesson:
+- define internal harness interfaces for perception, context, memory, tool selection, action, verification, and final answer;
+- log component version, config, and input/output schema with every run;
+- replay the same tasks with one component changed at a time;
+- require harness patches to cite failed trace evidence, expected fix, and regression risk;
+- keep autonomous harness evolution behind review until attribution, rollback, and eval coverage are strong.
+
+Sources:
+- [HarnessX](https://arxiv.org/abs/2606.14249v1)
+- [AgentSpec](https://arxiv.org/abs/2606.14674v1)
+
 ## Working conclusion
 
-Agent harness architecture is becoming one of the clearest ways to tell whether a team is building a toy, a developer tool, or a real operating substrate. The winning systems will make context explicit, tool boundaries governable, restore paths safe, orchestration empirically justified and quality-gated, evidence easy to inspect, environment-specific falsification surfaces routine, real-session misalignment labels routine, proposal-soundness gates explicit, failed trajectories layer-attributed, and production failures routinely promoted into versioned regression fixtures with trajectory and outcome graders.
+Agent harness architecture is becoming one of the clearest ways to tell whether a team is building a toy, a developer tool, or a real operating substrate. The winning systems will make context explicit, tool boundaries governable, restore paths safe, typed component interfaces inspectable, orchestration empirically justified and quality-gated, evidence easy to inspect, environment-specific falsification surfaces routine, real-session misalignment labels routine, proposal-soundness gates explicit, failed trajectories layer-attributed, and production failures routinely promoted into versioned regression fixtures with trajectory and outcome graders.

@@ -1,6 +1,6 @@
 # Runtime Governance
 
-Last updated: 2026-06-12
+Last updated: 2026-06-15
 
 Runtime governance is becoming the real control plane for agent systems.
 
@@ -555,6 +555,24 @@ Practical lesson:
 Source:
 - [GitHub Agentic Workflows public preview](https://github.blog/changelog/2026-06-11-github-agentic-workflows-is-now-in-public-preview)
 
+## June 15 update: guardrails need resource budgets, not only policy intent
+
+From Shield to Target makes an uncomfortable governance point: an LLM-based guardrail can itself be attacked as a reasoning resource. If crafted payloads can force the guardrail into extended reasoning loops, then guardrails are not free safety checks. They are runtime components that need budgets, circuit breakers, observability, and fail-closed states.
+
+This pairs with SkillMutator and SkillAudit. Skills and guardrails both sit on the enforcement path, but both can be manipulated. The governance layer should defend the policy mechanism, not only the downstream tool call.
+
+Practical lesson:
+- put token, wall-clock, recursion, and tool-call budgets around LLM guardrails;
+- classify guardrail exits as allow, deny, require approval, budget exhausted, timeout, loop suspected, or uncertain;
+- treat guardrail budget exhaustion as a policy event, not a silent retry;
+- include adversarial resource-exhaustion payloads in safety-gate regression suites;
+- preserve guardrail prompt, model, budget, elapsed time, verdict, and failure class in the trace.
+
+Sources:
+- [From Shield to Target](https://arxiv.org/abs/2606.14517v1)
+- [SkillMutator](https://arxiv.org/abs/2606.14154v1)
+- [SkillAudit](https://arxiv.org/abs/2606.14239v1)
+
 ## Working conclusion
 
-Runtime governance is not a niche enterprise concern. It is the natural consequence of giving agents durable memory, tool access, repository permissions, CI/CD authority, local storage, plugins, delegated secrets, shared inference infrastructure, sandboxed execution environments, and workflow definitions that compile into automations. The control plane has to move into runtime: inventory the agents, bind identity and scope, manage execution environments, preserve trace evidence, enforce valid next transitions before privileged tools execute, calibrate trust from outcomes, test trajectory-level guardrails offline, record serving conditions for replayability, constrain network and inference routes, and keep tainted inputs from silently becoming trusted agent instructions or script data.
+Runtime governance is not a niche enterprise concern. It is the natural consequence of giving agents durable memory, tool access, repository permissions, CI/CD authority, local storage, plugins, delegated secrets, shared inference infrastructure, sandboxed execution environments, and workflow definitions that compile into automations. The control plane has to move into runtime: inventory the agents, bind identity and scope, manage execution environments, preserve trace evidence, enforce valid next transitions before privileged tools execute, calibrate trust from outcomes, test trajectory-level guardrails offline, budget the guardrails themselves, record serving conditions for replayability, constrain network and inference routes, and keep tainted inputs from silently becoming trusted agent instructions or script data.

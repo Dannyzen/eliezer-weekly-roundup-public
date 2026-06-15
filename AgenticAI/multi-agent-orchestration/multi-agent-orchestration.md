@@ -1,6 +1,6 @@
 # Multi-Agent Orchestration
 
-Last updated: 2026-06-12
+Last updated: 2026-06-15
 
 Multi-agent orchestration is the control layer for deciding when multiple agents should collaborate, which evidence should move between them, and when communication costs exceed the expected benefit.
 
@@ -116,6 +116,23 @@ Practical lesson:
 
 Source:
 - [Recursive Agent Harnesses](https://arxiv.org/abs/2606.13643v1)
+
+## June 15 update: file protocols are the lowest-friction heterogeneous-agent substrate
+
+tap adds a useful, deliberately boring orchestration primitive: let agents from different vendors collaborate through files in the shared workspace before trying to force them into one runtime. The protocol is useful because Claude, Codex, and future agents can keep their own harnesses and tools while exchanging requests, evidence, reviews, and final artifacts through agreed file shapes.
+
+agentsview supplies the complementary operator surface. If multiple coding agents are active, local search, session analytics, token usage, and cross-agent visibility are not optional. They are how the operator decides whether a handoff, fan-out, or reviewer loop helped.
+
+Practical lesson:
+- create a small `agents/` or `.agents/` workspace with typed request, evidence, review, and handoff files;
+- require each agent to write status, scope, evidence, confidence, and open questions as artifacts;
+- preserve vendor-native logs locally, then normalize them into one trace view;
+- compare single-agent, file-handoff, and parallel-agent variants on quality, latency, token spend, and review burden;
+- keep repository mutation authority in branch policy, tests, and human review instead of peer-agent persuasion.
+
+Sources:
+- [tap](https://arxiv.org/abs/2606.14445v1)
+- [agentsview](https://github.com/kenn-io/agentsview)
 
 ## Implementability score
 

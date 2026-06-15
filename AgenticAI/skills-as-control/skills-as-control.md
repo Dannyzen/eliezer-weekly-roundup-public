@@ -1,6 +1,6 @@
 # Skills as Control
 
-Last updated: 2026-06-12
+Last updated: 2026-06-15
 
 Core sources:
 - From Research Question to Scientific Workflow: Leveraging Agentic AI for Science Automation: https://arxiv.org/abs/2604.21910v1
@@ -505,3 +505,21 @@ Sources:
 - [NVIDIA/SkillSpector](https://github.com/NVIDIA/SkillSpector)
 - [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills)
 - [obra/superpowers](https://github.com/obra/superpowers)
+
+## June 15 update: skill lifecycle control needs cross-modal mutation tests
+
+SkillMutator and SkillAudit close two gaps in the skills-as-control thesis. SkillMutator shows that skills are not just prompt-injection artifacts or static code artifacts. They are cross-modal instruction-code packages where benign-looking prose and harmless-looking scripts can cooperate to produce unauthorized behavior. SkillAudit shows that even non-malicious skills need evolution discipline: compare paired trajectories with and without a skill when no held-out ground truth is available.
+
+NVIDIA SkillSpector remains the practical admission layer. The direction is clear: skills should enter production only through a lifecycle gate that scans, probes, compares, hashes, and rechecks after edits.
+
+Practical lesson:
+- scan `SKILL.md`, scripts, resources, tool declarations, MCP permissions, and memory-write behavior jointly;
+- generate cross-modal adversarial fixtures where prose and code are individually plausible but jointly harmful;
+- compare with-skill and without-skill trajectories on the same task before promoting a skill update;
+- store scanner output, sandbox trace ID, paired-audit verdict, body hash, script hash, and allowed scopes in the skill registry;
+- rerun probes when tool surfaces, runtime policy, or the skill body changes.
+
+Sources:
+- [SkillMutator](https://arxiv.org/abs/2606.14154v1)
+- [SkillAudit](https://arxiv.org/abs/2606.14239v1)
+- [NVIDIA SkillSpector](https://github.com/NVIDIA/SkillSpector)

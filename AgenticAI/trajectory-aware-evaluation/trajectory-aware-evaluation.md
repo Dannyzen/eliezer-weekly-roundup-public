@@ -533,6 +533,24 @@ Practical lesson:
 Source:
 - [TRACE](https://arxiv.org/abs/2606.07054v1)
 
+## June 16 update: procedure fingerprints turn traces into routing features
+
+Agent trajectories as programs and ProcGrep turn trace capture into behavioral comparison. The key move is to normalize action sequences into atoms, learn recurring procedures, and compare agents by procedural distribution. That makes it possible to ask whether two agents solve tasks the same way, whether a fine-tune changed behavior, whether a run is drifting toward a known failure prefix, and whether a routing decision should prefer an agent with the right procedural habits.
+
+PACT adds the training-side implication. Expert traces can guide optimization without becoming runtime hints, which preserves deployment realism while still giving dense process supervision.
+
+Practical lesson:
+- normalize action traces into a shared action alphabet before scoring;
+- store procedure fingerprints next to success, cost, latency, retries, and human correction;
+- compare agents by procedural divergence and failure-pattern frequency, not only pass rate;
+- use early bad-prefix matches as soft interrupts or escalation signals;
+- keep privileged expert traces as training/evaluation assets unless runtime replay is explicitly intended.
+
+Sources:
+- [Agent trajectories as programs](https://arxiv.org/abs/2606.16988v1)
+- [ProcGrep](https://github.com/hamidahoderinwale/procgrep)
+- [PACT](https://arxiv.org/abs/2606.16215v1)
+
 ## Working conclusion
 
-Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, and scored across safety, robustness, parameter correctness, environment fidelity, runtime-specific harm dimensions, real-user collaboration traces, realistic workspace state, live workflow demand, cost, adversarial task quality, long-range state propagation, abstention, protocol conformance, tool-shortlist quality, environment-factory coverage, and quantitative goal persistence, improvement efforts will stay shallow and trust claims will stay unearned.
+Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, fingerprinted, and scored across safety, robustness, parameter correctness, environment fidelity, runtime-specific harm dimensions, real-user collaboration traces, realistic workspace state, live workflow demand, cost, adversarial task quality, long-range state propagation, abstention, protocol conformance, tool-shortlist quality, environment-factory coverage, quantitative goal persistence, and procedural behavior, improvement efforts will stay shallow and trust claims will stay unearned.

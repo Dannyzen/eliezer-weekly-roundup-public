@@ -5,15 +5,14 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Daily scan, 2026-06-15: [roundup](roundups/2026-06-15.md)
-- AgenticAI daily analysis: [2026-06-15](AgenticAI/2026-06-15/reasoning.md)
-- Strategy daily analysis: [2026-06-15](Strategy/2026-06-15/sovereignty.md)
+- Daily scan, 2026-06-16: [roundup](roundups/2026-06-16.md)
+- AgenticAI daily analysis: [2026-06-16](AgenticAI/2026-06-16/reasoning.md)
+- Strategy daily analysis: [2026-06-16](Strategy/2026-06-16/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
-- Related durable topics: [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Memory Systems](AgenticAI/memory-systems/memory-systems.md), [Multi-Agent Orchestration](AgenticAI/multi-agent-orchestration/multi-agent-orchestration.md), [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md)
+- Related durable topics: [Trajectory-Aware Evaluation](AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Context Economy](AgenticAI/context-economy/context-economy.md), [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md), [Model Router Governance](Strategy/model-router-governance/model-router-governance.md)
+- Daily scan, 2026-06-15: [roundup](roundups/2026-06-15.md)
 - Daily scan, 2026-06-14: [roundup](roundups/2026-06-14.md)
-- AgenticAI daily analysis: [2026-06-14](AgenticAI/2026-06-14/reasoning.md)
-- Strategy daily analysis: [2026-06-14](Strategy/2026-06-14/sovereignty.md)
 - Daily scan, 2026-06-13: [roundup](roundups/2026-06-13.md)
 - Friday synthesis, week ending 2026-06-12: [roundup](roundups/2026-06-12.md)
 - Deep Dive Wednesday, 2026-06-10: [Enterprise MCP Orchestration](AgenticAI/enterprise-mcp-orchestration/enterprise-mcp-orchestration.md)
@@ -24,18 +23,19 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Current thesis
 
-The agent stack is moving from permissive context and tool catalogs to trace-governed operational units with admission-controlled memory, skills, and workflow automation. The useful question is no longer only "can the model use more memory, context, tools, skills, or agents?" It is "what operational unit should have authority here, what state transition did it perform, and what evidence proves it stayed within scope?"
+The agent stack is moving from permissive context and tool catalogs to trace-governed operational units with admission-controlled memory, skills, workflow automation, and router paths. The useful question is no longer only "can the model use more memory, context, tools, skills, or agents?" It is "which operational artifact has authority here, what state transition did it perform, and what evidence proves it stayed within scope?"
 
-The 2026-06-15 daily scan adds four implementation patterns:
+The 2026-06-16 daily scan adds four implementation patterns:
+- Agent traces are becoming programmable data: procedure fingerprints can support routing, monitoring, early failure detection, and cost analysis.
+- Tool and context selection now has to preserve both intention fit and cache continuity.
+- Skill systems are moving from runtime markdown toward searched skill trees and learned behavior modules, but the audited source and hashes still matter.
+- Router and skill trust boundaries need hardening below the prompt: sealed or constrained API proxy paths and read-only skill mounts.
+
+The 2026-06-15 daily scan added four implementation patterns:
 - Harnesses are becoming typed foundries: prompts, tools, memory, reflection, action, and verification should be swappable runtime components.
 - Reasoning memory wants version control: replay, diff, merge, rollback, provenance, and local retention matter before memory steers future actions.
 - Heterogeneous agents can collaborate through file protocols before a universal shared runtime exists.
 - Skills and guardrails are runtime components that need manifests, probes, scanners, and resource budgets.
-
-The 2026-06-14 daily scan added three implementation patterns:
-- Tool execution folds into executable MCP-style subroutines that the model invokes as single admission events.
-- The harness becomes the recursive unit: parent agents spawn child harnesses via executable scripts with explicit resource bounds.
-- Model routing gets capability geometry: six-dimension capability vectors, difficulty estimation, and cost-penalized geometric dispatch.
 
 ## Browse by category
 

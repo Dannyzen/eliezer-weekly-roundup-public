@@ -83,6 +83,22 @@ This extends the May 11 tool-call routing lesson. Tool-call correctness, schema 
 Source:
 - [MARGIN](https://arxiv.org/abs/2605.22949)
 
+## June 16 update: routers are plaintext authority unless the data path is constrained
+
+The Proxy Knows Too Much adds the missing security floor for model-router governance. A router that terminates client TLS and opens a new upstream session sees the whole agent interaction in plaintext. That means it can rewrite tool calls, alter dependencies, trigger conditional attacks, or passively exfiltrate secrets. In agent workflows, those are not chat-integrity defects. They are action-integrity defects.
+
+AEGIS is architecture-heavy, but its lesson is immediately useful: split the router into a constrained data path and an untrusted management plane. The first version can be simpler than a TEE, but the policy should be the same: route destinations fixed by policy, no silent rewriting, full route trace, and a clear boundary before plaintext leaves the client side.
+
+Practical lesson:
+- treat routers and compatibility shims as privileged software, not only price optimizers;
+- restrict upstream hosts, model mappings, request fields, and tool-call translation behavior;
+- log requested model, effective model, route, provider destination, policy decision, and fallback reason;
+- pin and verify router images before production use;
+- evaluate attested pass-through or enclave-backed paths for high-sensitivity work.
+
+Source:
+- [The Proxy Knows Too Much](https://arxiv.org/abs/2606.16358v1)
+
 ## Minimum governance checklist
 
 ### 1. Artifact trust

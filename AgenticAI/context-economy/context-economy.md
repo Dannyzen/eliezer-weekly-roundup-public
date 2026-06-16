@@ -312,6 +312,24 @@ Sources:
 - [HyperTool](https://arxiv.org/abs/2606.13663v1)
 - [GitHub Copilot CLI language servers](https://github.blog/ai-and-ml/github-copilot/give-github-copilot-cli-real-code-intelligence-with-language-servers/)
 
+## June 16 update: context policy has to preserve both intention and cache continuity
+
+SING and TokenPilot add two constraints to the context-economy thesis. SING shows that tool discovery should follow evolving task intention instead of static schema stuffing. TokenPilot shows that context pruning can accidentally destroy prefix-cache continuity, turning apparent token savings into hidden serving cost. LightMem2 makes the TokenPilot direction concrete as a runtime component for long-horizon agents.
+
+The practical lesson is that context policy is no longer just "select fewer tokens." It has to decide which tools deserve full schema exposure, which segments should stay in a stable prefix, which segments can be compacted at ingestion, and which segments can be evicted only after their lifecycle expires.
+
+Practical lesson:
+- maintain compact tool summaries with preconditions, scopes, and collaboration hints;
+- promote full tool schemas only when intent, state, and policy justify them;
+- preserve stable prompt prefixes for recurring run scaffolds;
+- separate ingestion-aware compaction from lifecycle-aware eviction;
+- log schema exposure, context operations, token deltas, and cache-stability assumptions in the trace.
+
+Sources:
+- [SING](https://arxiv.org/abs/2606.16591v1)
+- [TokenPilot](https://arxiv.org/abs/2606.17016v1)
+- [LightMem2](https://github.com/zjunlp/LightMem2)
+
 ## Working conclusion
 
-The future agent stack is not context maximalism. It is context accounting. Systems that know what to admit, retrieve, compress, cache, update incrementally, and audit will beat systems that merely buy larger windows and hope the model sorts it out.
+The future agent stack is not context maximalism. It is context accounting. Systems that know what to admit, retrieve, compress, cache, update incrementally, preserve prefix continuity, and audit will beat systems that merely buy larger windows and hope the model sorts it out.

@@ -1,6 +1,6 @@
 # Skills as Control
 
-Last updated: 2026-06-15
+Last updated: 2026-06-16
 
 Core sources:
 - From Research Question to Scientific Workflow: Leveraging Agentic AI for Science Automation: https://arxiv.org/abs/2604.21910v1
@@ -523,3 +523,21 @@ Sources:
 - [SkillMutator](https://arxiv.org/abs/2606.14154v1)
 - [SkillAudit](https://arxiv.org/abs/2606.14239v1)
 - [NVIDIA SkillSpector](https://github.com/NVIDIA/SkillSpector)
+
+## June 16 update: searched and learned skills still need audited source control
+
+OpenClaw-Skill and Skill-to-LoRA extend the skills-as-control thesis beyond runtime markdown. OpenClaw-Skill searches for reusable skill nodes through collective generation and assessment. Skill-to-LoRA uses full `skill.md` content offline to synthesize demonstrations, then loads a skill-specific adapter online instead of reinjecting the full document. That is a plausible token-efficiency path for high-volume skills.
+
+The control problem gets sharper, not weaker. If a skill body produces a tree node, training set, adapter, or compiled behavior, the audited markdown source still has to remain tied to the runtime representation. Dynamic Malicious Skills adds the operational boundary: a skill file should not be mutable while the agent is executing it.
+
+Practical lesson:
+- keep the markdown skill body as the audited source of truth;
+- tie generated examples, skill-tree nodes, adapters, and compiled surfaces to body hash, source commit, evaluator version, and test result;
+- compare no-skill, full-skill, wrong-skill, and compiled-skill variants before promotion;
+- mount admitted skill directories read-only during execution;
+- block runtime skill mutation and log hard failures as policy evidence.
+
+Sources:
+- [OpenClaw-Skill](https://arxiv.org/abs/2606.16774v1)
+- [Skill-to-LoRA](https://arxiv.org/abs/2606.16769v1)
+- [Dynamic Malicious Skills](https://arxiv.org/abs/2606.16287v1)

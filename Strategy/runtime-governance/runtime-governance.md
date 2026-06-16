@@ -573,6 +573,23 @@ Sources:
 - [SkillMutator](https://arxiv.org/abs/2606.14154v1)
 - [SkillAudit](https://arxiv.org/abs/2606.14239v1)
 
+## June 16 update: mutable skills and plaintext routers need hard runtime boundaries
+
+Dynamic Malicious Skills and The Proxy Knows Too Much reinforce the same runtime-governance rule from opposite sides. A skill file that can be rewritten during execution is not a stable control surface. A model router that sees plaintext and can rewrite tool calls is not only a cost optimizer, it is an action-path authority.
+
+The practical runtime boundary has to drop below the prompt. Skill directories should be immutable while admitted. Router paths should be constrained, logged, and treated as privileged infrastructure. For high-sensitivity paths, AEGIS-style attestation is the right design reference even if the first deployable step is signed images, host allowlists, and strict route logging.
+
+Practical lesson:
+- mount skill directories read-only during execution and verify mutation attempts fail;
+- log skill body hash, script hash, mount mode, and loaded-skill ID in every run;
+- treat LLM API routers and compatibility shims as privileged runtime components;
+- restrict provider destinations and route parameters before plaintext leaves the client boundary;
+- evaluate attestation or enclave-backed pass-through for high-sensitivity router traffic.
+
+Sources:
+- [Dynamic Malicious Skills](https://arxiv.org/abs/2606.16287v1)
+- [The Proxy Knows Too Much](https://arxiv.org/abs/2606.16358v1)
+
 ## Working conclusion
 
-Runtime governance is not a niche enterprise concern. It is the natural consequence of giving agents durable memory, tool access, repository permissions, CI/CD authority, local storage, plugins, delegated secrets, shared inference infrastructure, sandboxed execution environments, and workflow definitions that compile into automations. The control plane has to move into runtime: inventory the agents, bind identity and scope, manage execution environments, preserve trace evidence, enforce valid next transitions before privileged tools execute, calibrate trust from outcomes, test trajectory-level guardrails offline, budget the guardrails themselves, record serving conditions for replayability, constrain network and inference routes, and keep tainted inputs from silently becoming trusted agent instructions or script data.
+Runtime governance is not a niche enterprise concern. It is the natural consequence of giving agents durable memory, tool access, repository permissions, CI/CD authority, local storage, plugins, delegated secrets, shared inference infrastructure, sandboxed execution environments, mutable skills, router paths, and workflow definitions that compile into automations. The control plane has to move into runtime: inventory the agents, bind identity and scope, manage execution environments, preserve trace evidence, enforce valid next transitions before privileged tools execute, calibrate trust from outcomes, test trajectory-level guardrails offline, budget the guardrails themselves, record serving conditions for replayability, constrain network and inference routes, keep skills immutable while active, and keep tainted inputs from silently becoming trusted agent instructions or script data.

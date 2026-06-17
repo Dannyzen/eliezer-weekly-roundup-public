@@ -1,6 +1,6 @@
 # Skills as Control
 
-Last updated: 2026-06-16
+Last updated: 2026-06-17
 
 Core sources:
 - From Research Question to Scientific Workflow: Leveraging Agentic AI for Science Automation: https://arxiv.org/abs/2604.21910v1
@@ -33,6 +33,8 @@ Core sources:
 - SkillHarm: https://arxiv.org/abs/2606.02540v1
 - SkillGuard: https://arxiv.org/abs/2606.03024v1
 - Context Rot in AI-Assisted Software Development: https://arxiv.org/abs/2606.09090v1
+- Compositional Skill Routing for LLM Agents: https://arxiv.org/abs/2606.18051v1
+- A Framework for Evaluating Agentic Skills at Scale: https://arxiv.org/abs/2606.17819v1
 
 ## Thesis
 
@@ -541,3 +543,21 @@ Sources:
 - [OpenClaw-Skill](https://arxiv.org/abs/2606.16774v1)
 - [Skill-to-LoRA](https://arxiv.org/abs/2606.16769v1)
 - [Dynamic Malicious Skills](https://arxiv.org/abs/2606.16287v1)
+
+## June 17 update: skill libraries need compositional routing and utility baselines
+
+Compositional Skill Routing and the agentic skills evaluation framework turn skill control into a two-stage discipline. First, the runtime has to solve the routing problem: decompose the task into atomic skill needs, retrieve candidate skills, and compose a dependency-aware plan. Second, the library owner has to solve the evidence problem: prove that a skill improves realistic tasks against no-skill, wrong-skill, thin-skill, and full-skill baselines.
+
+The practical correction is to stop treating semantic skill retrieval as enough. SkillWeaver shows that decomposition quality is the bottleneck, not only retriever quality. The skill-eval framework shows that skill usefulness varies by model and task, so promotion should be measured before a skill gets default authority.
+
+Practical lesson:
+- index compact skill metadata separately from full skill bodies;
+- decompose complex requests into atomic skill needs before retrieval;
+- compose selected skills into a DAG with explicit dependencies, preconditions, validators, and expected artifacts;
+- generate small skill-specific eval suites with instruction-following and goal-completion rubrics;
+- compare no-skill, wrong-skill, thin-skill, and full-skill variants before promotion;
+- log retrieved skill IDs, loaded body hashes, decomposition steps, plan edges, validator outcomes, and post-run skill utility.
+
+Sources:
+- [Compositional Skill Routing](https://arxiv.org/abs/2606.18051v1)
+- [A Framework for Evaluating Agentic Skills at Scale](https://arxiv.org/abs/2606.17819v1)

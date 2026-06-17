@@ -1,6 +1,6 @@
 # Agent Harness Architecture
 
-Last updated: 2026-06-15
+Last updated: 2026-06-17
 
 Agent harness architecture is becoming the part of the agent stack that teams can actually standardize.
 
@@ -736,6 +736,26 @@ Sources:
 - [HarnessX](https://arxiv.org/abs/2606.14249v1)
 - [AgentSpec](https://arxiv.org/abs/2606.14674v1)
 
+## June 17 update: skill routing and test oracles are harness gates
+
+Compositional Skill Routing and All Smoke, No Alarm both push harness architecture toward explicit pre-action gates. A skill-capable harness should not just retrieve a plausible skill and proceed. It should decompose the task, select skills, compose a dependency-aware plan, and record validators for the resulting artifact. A coding-agent harness should not accept "tests were added" as verification. It should inspect whether the tests contain real oracle signals.
+
+This makes two harness components first-class:
+1. **Skill planner:** task decomposition, skill retrieval, DAG composition, dependency checking, and loaded-skill hash logging.
+2. **Verification oracle gate:** test-oracle classification, mutation/property checks where practical, and CI failure for smoke-only agent tests.
+
+Practical lesson:
+- make skill decomposition output a versioned harness artifact;
+- store selected skill IDs, body hashes, dependency edges, and expected validators in the trace;
+- run no-skill and wrong-skill baselines for high-value harness skills;
+- classify agent-authored tests by assertion, expected output, property, mutation-kill potential, and self-mocking risk;
+- block merge or task completion when tests only execute code without checking behavior.
+
+Sources:
+- [Compositional Skill Routing](https://arxiv.org/abs/2606.18051v1)
+- [A Framework for Evaluating Agentic Skills at Scale](https://arxiv.org/abs/2606.17819v1)
+- [All Smoke, No Alarm](https://arxiv.org/abs/2606.18168v1)
+
 ## Working conclusion
 
-Agent harness architecture is becoming one of the clearest ways to tell whether a team is building a toy, a developer tool, or a real operating substrate. The winning systems will make context explicit, tool boundaries governable, restore paths safe, typed component interfaces inspectable, orchestration empirically justified and quality-gated, evidence easy to inspect, environment-specific falsification surfaces routine, real-session misalignment labels routine, proposal-soundness gates explicit, failed trajectories layer-attributed, and production failures routinely promoted into versioned regression fixtures with trajectory and outcome graders.
+Agent harness architecture is becoming one of the clearest ways to tell whether a team is building a toy, a developer tool, or a real operating substrate. The winning systems will make context explicit, tool boundaries governable, restore paths safe, typed component interfaces inspectable, orchestration empirically justified and quality-gated, skill routing compositional, test-oracle strength machine-checkable, evidence easy to inspect, environment-specific falsification surfaces routine, real-session misalignment labels routine, proposal-soundness gates explicit, failed trajectories layer-attributed, and production failures routinely promoted into versioned regression fixtures with trajectory and outcome graders.

@@ -1,6 +1,6 @@
 # Agent Gateway Governance
 
-Last updated: 2026-06-09
+Last updated: 2026-06-17
 
 Agent gateway governance is the control-plane discipline for exposing enterprise tools, data, and workflows to autonomous agents.
 
@@ -638,3 +638,21 @@ Sources:
 - [StakeBench/SBC](https://github.com/StakeBench/SBC)
 - [PI-Hunter](https://arxiv.org/abs/2606.12737v1)
 - [GitHub Agentic Workflows public preview](https://github.blog/changelog/2026-06-11-github-agentic-workflows-is-now-in-public-preview)
+
+## June 17 update: MCP gateways need source-owned claim evidence
+
+ProvenanceGuard makes a gateway requirement explicit: source attribution is not a formatting detail. MCP agents can pool evidence from search, APIs, databases, clinical records, documents, and internal tools. If the gateway cannot preserve which source produced which evidence, the answer layer can conflate sources while still sounding grounded.
+
+The gateway correction is to make claim evidence an owned object. Tool outputs should carry stable tool IDs, source IDs, raw-output references, trust class, and data-class labels. Answer claims should point back to source-specific evidence, not only to a retrieved context blob. Policy should be able to block or downgrade an answer whose claim is supported somewhere but attributed to the wrong source.
+
+Practical lesson:
+- require MCP servers and wrappers to emit stable tool IDs, source IDs, and raw-output references;
+- keep source identity through summarization, claim decomposition, answer repair, and citation rendering;
+- score support and attribution separately;
+- log claim ID, source ID, evidence span, support verdict, attribution verdict, repair action, and final answer ID;
+- use vendor agent registries, AI brokers, and access graphs as design references, but keep the evidence schema portable across gateways.
+
+Sources:
+- [ProvenanceGuard](https://arxiv.org/abs/2606.18037v1)
+- [Zscaler agentic AI security platform](https://www.zscaler.com/press/zscaler-unveils-new-product-innovations-secure-agentic-ai)
+- [Salesforce Agentforce Multi-Agent Orchestration](https://www.salesforce.com/agentforce/multi-agent-orchestration/)

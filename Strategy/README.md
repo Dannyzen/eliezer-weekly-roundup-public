@@ -2,7 +2,25 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: Daily scan, 2026-06-16
+## Most Recent Structured Update: Daily scan, 2026-06-17
+
+### Evidence provenance is becoming the control-plane primitive
+
+Summary: ProvenanceGuard and All Smoke, No Alarm show the same governance defect on different surfaces: sourced answers and agent-written tests can look verified while lacking claim-to-source or oracle-strength evidence. Zscaler and Salesforce reinforce the market direction: agent identity, access graphs, MCP/A2A brokers, multi-agent routing, observability, and policy controls are becoming control-plane features.
+
+Analysis: [daily sovereignty analysis](2026-06-17/sovereignty.md#evidence-provenance-is-becoming-the-control-plane-primitive)
+Durable topics: [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md), [Runtime Governance](runtime-governance/runtime-governance.md), [Skills as Control](../AgenticAI/skills-as-control/skills-as-control.md), [Trajectory-Aware Evaluation](../AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md)
+Core sources: [ProvenanceGuard](https://arxiv.org/abs/2606.18037v1), [All Smoke, No Alarm](https://arxiv.org/abs/2606.18168v1), [Zscaler agentic AI security platform](https://www.zscaler.com/press/zscaler-unveils-new-product-innovations-secure-agentic-ai), [Salesforce Agentforce Multi-Agent Orchestration](https://www.salesforce.com/agentforce/multi-agent-orchestration/)
+Implementable now:
+- require high-risk answers to carry claim-to-source evidence, not only citations
+- make MCP source IDs stable enough for replay and audit
+- run oracle-aware checks on agent-authored tests before merge
+- log agent identity, selected specialist, delegated task, tool surface, policy verdict, and output evidence for multi-agent handoffs
+Tools, repos, and methodologies worth exploring:
+- MCP trace schemas, source-aware factuality checks, claim decomposition, test-oracle linters, mutation testing, CodeQL or AST rules, OpenTelemetry spans, OPA/Cedar policy, OpenFGA-style relationship graphs, agent registries, access graphs
+Implementability score: 0.78
+
+## Previous structured update: Daily scan, 2026-06-16
 
 ### Skills and API routers now need tamper-resistant data paths
 
@@ -11,14 +29,6 @@ Summary: AEGIS frames LLM API routers as plaintext man-in-the-middle infrastruct
 Analysis: [daily sovereignty analysis](2026-06-16/sovereignty.md#skills-and-api-routers-now-need-tamper-resistant-data-paths)
 Durable topics: [Runtime Governance](runtime-governance/runtime-governance.md), [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md), [Model Router Governance](model-router-governance/model-router-governance.md), [Skills as Control](../AgenticAI/skills-as-control/skills-as-control.md)
 Core sources: [The Proxy Knows Too Much](https://arxiv.org/abs/2606.16358v1), [Dynamic Malicious Skills](https://arxiv.org/abs/2606.16287v1), [Agent trajectories as programs](https://arxiv.org/abs/2606.16988v1)
-Implementable now:
-- treat API routers and OpenAI/Anthropic-compatible proxies as privileged infrastructure
-- pin router images, restrict upstream provider hosts, and log route decisions
-- mount admitted skill directories read-only during execution
-- include skill body hash, script hash, mount mode, and loaded-skill ID in traces
-- run canary tests that try to mutate a skill at runtime and expect hard failure
-Tools, repos, and methodologies worth exploring:
-- read-only bind mounts, OverlayFS, container read-only filesystems, seccomp/AppArmor, signed router images, mTLS, provider host allowlists, LiteLLM or Portkey policy logs, remote attestation patterns, ProcGrep-style trace drift checks
 Implementability score: 0.69
 
 ## Previous structured update: Daily scan, 2026-06-15
@@ -31,21 +41,3 @@ Analysis: [daily sovereignty analysis](2026-06-15/sovereignty.md#skill-and-guard
 Durable topics: [Runtime Governance](runtime-governance/runtime-governance.md), [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md), [Skills as Control](../AgenticAI/skills-as-control/skills-as-control.md)
 Core sources: [SkillMutator](https://arxiv.org/abs/2606.14154v1), [SkillAudit](https://arxiv.org/abs/2606.14239v1), [From Shield to Target](https://arxiv.org/abs/2606.14517v1), [NVIDIA SkillSpector](https://github.com/NVIDIA/SkillSpector)
 Implementability score: 0.78
-
-## Previous structured update: Daily scan, 2026-06-14
-
-### Five-plane reference architecture governs the agent runtime, not the data perimeter
-
-Summary: The Five-Plane Reference Architecture maps production agent governance across substrate, control, data, agent, and policy planes. The governance unit is the workflow runtime, not only the data perimeter.
-
-Analysis: [daily sovereignty analysis](2026-06-14/sovereignty.md#five-plane-reference-architecture-governs-the-agent-runtime-not-the-data-perimeter)
-Core sources: [Five-Plane Architecture](https://arxiv.org/abs/2606.12320v1)
-Implementability score: 0.65
-
-### TRACE compiles user corrections into runtime enforcement for coding agents
-
-Summary: TRACE mines user corrections into atomic rules and compiles them into deterministic task-completion checks, moving preference compliance out of passive memory and into runtime enforcement.
-
-Analysis: [daily sovereignty analysis](2026-06-14/sovereignty.md#trace-compiles-user-corrections-into-runtime-enforcement-for-coding-agents)
-Core sources: [TRACE](https://arxiv.org/abs/2606.13174v1)
-Implementability score: 0.80

@@ -551,6 +551,21 @@ Sources:
 - [ProcGrep](https://github.com/hamidahoderinwale/procgrep)
 - [PACT](https://arxiv.org/abs/2606.16215v1)
 
+## June 17 update: trajectory preferences and oracle signals expose fake progress
+
+Offline Preference-Based Trajectory Evaluation and All Smoke, No Alarm update this topic at two different layers. Preference-based trajectory evaluation shows that terminal success creates too many ties and wastes partial-progress information. Comparing trajectories by progress and time-to-return can reduce tied comparisons from roughly 75% to roughly 35% across agentic and interactive benchmarks. All Smoke, No Alarm shows the coding-agent analog: a test file can exist while providing weak or no verification. In its public PR study, 80.2% of agent-authored test patches had weak or no explicit oracle signals.
+
+The practical lesson is that evaluation should preserve proof strength, not just proof existence:
+- store progress checkpoints, partial returns, retries, and time-to-return profiles;
+- compare near-miss trajectories instead of flattening them into failed equals;
+- classify agent-authored tests by explicit oracle signals, not only file count;
+- reject assertion-free, output-free, and self-mocking test theater before merge;
+- bind trajectory preference labels and oracle-strength labels to the same run trace.
+
+Sources:
+- [Offline Preference-Based Trajectory Evaluation](https://arxiv.org/abs/2606.17541v1)
+- [All Smoke, No Alarm](https://arxiv.org/abs/2606.18168v1)
+
 ## Working conclusion
 
-Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, fingerprinted, and scored across safety, robustness, parameter correctness, environment fidelity, runtime-specific harm dimensions, real-user collaboration traces, realistic workspace state, live workflow demand, cost, adversarial task quality, long-range state propagation, abstention, protocol conformance, tool-shortlist quality, environment-factory coverage, quantitative goal persistence, and procedural behavior, improvement efforts will stay shallow and trust claims will stay unearned.
+Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, fingerprinted, and scored across safety, robustness, parameter correctness, environment fidelity, runtime-specific harm dimensions, real-user collaboration traces, realistic workspace state, live workflow demand, cost, adversarial task quality, long-range state propagation, abstention, protocol conformance, tool-shortlist quality, environment-factory coverage, quantitative goal persistence, procedural behavior, partial-progress preference, and oracle strength, improvement efforts will stay shallow and trust claims will stay unearned.

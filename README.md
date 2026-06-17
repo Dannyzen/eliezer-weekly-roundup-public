@@ -6,11 +6,12 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 ## Latest update
 
 - Daily scan, 2026-06-17: [roundup](roundups/2026-06-17.md)
+- Deep Dive Wednesday, 2026-06-17: [Evidence Provenance Control Plane](Strategy/evidence-provenance-control-plane/evidence-provenance-control-plane.md)
 - AgenticAI daily analysis: [2026-06-17](AgenticAI/2026-06-17/reasoning.md)
 - Strategy daily analysis: [2026-06-17](Strategy/2026-06-17/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
-- Related durable topics: [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [Trajectory-Aware Evaluation](AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md)
+- Related durable topics: [Evidence Provenance Control Plane](Strategy/evidence-provenance-control-plane/evidence-provenance-control-plane.md), [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [Trajectory-Aware Evaluation](AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md)
 - Daily scan, 2026-06-16: [roundup](roundups/2026-06-16.md)
 - Daily scan, 2026-06-15: [roundup](roundups/2026-06-15.md)
 - Daily scan, 2026-06-14: [roundup](roundups/2026-06-14.md)
@@ -25,6 +26,8 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 ## Current thesis
 
 The agent stack is moving from permissive context and tool catalogs to trace-governed operational units with admission-controlled memory, skills, workflow automation, router paths, and evidence provenance. The useful question is no longer only "can the model use more memory, context, tools, skills, or agents?" It is "which operational artifact has authority here, what state transition did it perform, which source owns the claim, and what verifier proved the result?"
+
+The 2026-06-17 Deep Dive Wednesday asset turns evidence provenance into a durable control-plane model: every high-risk claim, tool output, test, skill, route, policy verdict, and delegated handoff needs source-owned proof that can be replayed.
 
 The 2026-06-17 daily scan adds four implementation patterns:
 - MCP factuality needs source ownership, not pooled support. Stable tool IDs, source IDs, raw outputs, and claim-to-source verdicts are now core trace fields.
@@ -66,6 +69,7 @@ The 2026-06-16 daily scan added four implementation patterns:
 
 ### Strategy
 
+- [Evidence Provenance Control Plane](Strategy/evidence-provenance-control-plane/evidence-provenance-control-plane.md)
 - [RL Training Governance](Strategy/rl-training-governance/rl-training-governance.md)
 - [Agent Network Containment](Strategy/agent-network-containment/agent-network-containment.md)
 - [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md)

@@ -9,7 +9,7 @@ This index tracks the most recent structured update. Each finding includes a sho
 Summary: ProvenanceGuard catches a failure mode that normal source-grounded scoring misses: a claim can be supported somewhere in pooled evidence while being attributed to the wrong source. MCP agents need stable tool IDs, source IDs, raw outputs, claim routing, and per-claim source verdicts.
 
 Analysis: [daily reasoning analysis](2026-06-17/reasoning.md#mcp-factuality-needs-source-ownership-not-pooled-support)
-Durable topics: [Agent Gateway Governance](../Strategy/agent-gateway-governance/agent-gateway-governance.md), [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
+Durable topics: [Evidence Provenance Control Plane](../Strategy/evidence-provenance-control-plane/evidence-provenance-control-plane.md), [Agent Gateway Governance](../Strategy/agent-gateway-governance/agent-gateway-governance.md), [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
 Core sources: [ProvenanceGuard](https://arxiv.org/abs/2606.18037v1), [Zscaler agentic AI security platform](https://www.zscaler.com/press/zscaler-unveils-new-product-innovations-secure-agentic-ai)
 Implementable now:
 - require MCP tools to emit stable tool IDs, source IDs, and raw output references

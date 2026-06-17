@@ -2,23 +2,23 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: Daily scan, 2026-06-17
+## Most Recent Structured Update: Deep Dive Wednesday, 2026-06-17
 
 ### Evidence provenance is becoming the control-plane primitive
 
-Summary: ProvenanceGuard and All Smoke, No Alarm show the same governance defect on different surfaces: sourced answers and agent-written tests can look verified while lacking claim-to-source or oracle-strength evidence. Zscaler and Salesforce reinforce the market direction: agent identity, access graphs, MCP/A2A brokers, multi-agent routing, observability, and policy controls are becoming control-plane features.
+Summary: ProvenanceGuard won the week because it names the primitive underneath the week's best findings: source-owned evidence. Sourced answers, agent-written tests, skill routing, trajectory scoring, and multi-agent delegation all need replayable proof of which source, oracle, skill, policy, route, or trace segment carried the claim.
 
 Analysis: [daily sovereignty analysis](2026-06-17/sovereignty.md#evidence-provenance-is-becoming-the-control-plane-primitive)
-Durable topics: [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md), [Runtime Governance](runtime-governance/runtime-governance.md), [Skills as Control](../AgenticAI/skills-as-control/skills-as-control.md), [Trajectory-Aware Evaluation](../AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md)
+Durable topics: [Evidence Provenance Control Plane](evidence-provenance-control-plane/evidence-provenance-control-plane.md), [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md), [Runtime Governance](runtime-governance/runtime-governance.md), [Skills as Control](../AgenticAI/skills-as-control/skills-as-control.md), [Trajectory-Aware Evaluation](../AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md)
 Core sources: [ProvenanceGuard](https://arxiv.org/abs/2606.18037v1), [All Smoke, No Alarm](https://arxiv.org/abs/2606.18168v1), [Zscaler agentic AI security platform](https://www.zscaler.com/press/zscaler-unveils-new-product-innovations-secure-agentic-ai), [Salesforce Agentforce Multi-Agent Orchestration](https://www.salesforce.com/agentforce/multi-agent-orchestration/)
 Implementable now:
-- require high-risk answers to carry claim-to-source evidence, not only citations
+- require high-risk answers to carry source-owned evidence packets, not only citations
 - make MCP source IDs stable enough for replay and audit
 - run oracle-aware checks on agent-authored tests before merge
 - log agent identity, selected specialist, delegated task, tool surface, policy verdict, and output evidence for multi-agent handoffs
 Tools, repos, and methodologies worth exploring:
 - MCP trace schemas, source-aware factuality checks, claim decomposition, test-oracle linters, mutation testing, CodeQL or AST rules, OpenTelemetry spans, OPA/Cedar policy, OpenFGA-style relationship graphs, agent registries, access graphs
-Implementability score: 0.78
+Implementability score: 0.76
 
 ## Previous structured update: Daily scan, 2026-06-16
 

@@ -10,9 +10,13 @@ Core sources:
 - Zscaler agentic AI security platform announcement: https://www.zscaler.com/press/zscaler-unveils-new-product-innovations-secure-agentic-ai
 - Salesforce Agentforce Multi-Agent Orchestration: https://www.salesforce.com/agentforce/multi-agent-orchestration/
 
+Durable deep dive: [Evidence Provenance Control Plane](../evidence-provenance-control-plane/evidence-provenance-control-plane.md)
+
 ProvenanceGuard and All Smoke, No Alarm describe the same governance problem from two execution surfaces. In MCP-grounded answers, pooled evidence can hide cross-source conflation: a claim may be true somewhere while attributed to the wrong source. In coding-agent pull requests, test-file presence can hide weak verification: 80.2% of analyzed agent-authored test patches contained weak or no explicit oracle signals. Both cases break naive governance dashboards. A system can look sourced or tested while the actual evidence chain is missing.
 
 The market is moving in the same direction. Zscaler is packaging an AI Broker, Agent Registry, and AI Access Graph around MCP/A2A traffic, agent permissions, identity, and data lineage. Salesforce's multi-agent orchestration page frames the primary agent as a routing point to specialist agents with observability and policy controls. The vendor language is not proof of product maturity, but it validates the strategic category: the agent platform is becoming a governed evidence and delegation plane.
+
+Deep Dive Wednesday selected this finding over the skill-routing, trajectory-evaluation, and coding-test candidates because evidence provenance is the shared control-plane primitive. Skills need admission evidence. Trajectories need progress evidence. Tests need oracle evidence. MCP answers need source-owned claim evidence. Delegated agents need route and return-packet evidence.
 
 Why it matters: the enterprise control boundary is no longer just user identity or network access. It is claim provenance, tool provenance, skill provenance, test provenance, and delegation provenance. If those records are absent, the organization cannot distinguish real verification from theater.
 
@@ -32,7 +36,7 @@ Implementable now:
 Tools, repos, and methodologies worth exploring:
 - MCP trace schemas, source-aware factuality checks, source IDs, claim decomposition, NLI or entailment checks, test-oracle linters, mutation testing, CodeQL/AST rules, OpenTelemetry spans, OPA/Cedar policy, OpenFGA-style relationship graphs, agent registries, access graphs.
 
-Implementability score: 0.78
+Implementability score: 0.76
 
 ## Strategic implication
 

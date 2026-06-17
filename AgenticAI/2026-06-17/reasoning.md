@@ -8,6 +8,8 @@ Core sources:
 - ProvenanceGuard: Source-Aware Factuality Verification for MCP-Based LLM Agents: https://arxiv.org/abs/2606.18037v1
 - Zscaler agentic AI security platform announcement: https://www.zscaler.com/press/zscaler-unveils-new-product-innovations-secure-agentic-ai
 
+Durable deep dive: [Evidence Provenance Control Plane](../../Strategy/evidence-provenance-control-plane/evidence-provenance-control-plane.md)
+
 ProvenanceGuard names a failure mode that source-grounded agents can hide: cross-source conflation. A claim can be supported somewhere in a pooled evidence packet while being attributed to the wrong source. That is especially relevant for MCP agents because they can query search, APIs, databases, clinical records, formulary tools, and enterprise systems in one run. The paper's verifier consumes captured MCP traces with stable tool IDs, source IDs, and raw outputs, decomposes answers into atomic claims, routes each claim to source-specific evidence, checks support, and compares the stated attribution against the routed source.
 
 The verified result is useful but also humbling. On a 40-trace held-out split, ProvenanceGuard reaches block F1 0.802 and source accuracy 0.858 over 260 source-eligible claims. On a harder multi-source benchmark, block F1 remains 0.846, but source-plus-relation accuracy drops to 0.229. Exact source ownership is hard when sources are semantically close.

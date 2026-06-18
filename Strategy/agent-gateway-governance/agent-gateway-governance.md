@@ -1,6 +1,6 @@
 # Agent Gateway Governance
 
-Last updated: 2026-06-17
+Last updated: 2026-06-18
 
 Agent gateway governance is the control-plane discipline for exposing enterprise tools, data, and workflows to autonomous agents.
 
@@ -656,3 +656,21 @@ Sources:
 - [ProvenanceGuard](https://arxiv.org/abs/2606.18037v1)
 - [Zscaler agentic AI security platform](https://www.zscaler.com/press/zscaler-unveils-new-product-innovations-secure-agentic-ai)
 - [Salesforce Agentforce Multi-Agent Orchestration](https://www.salesforce.com/agentforce/multi-agent-orchestration/)
+
+## June 18 update: tool contracts are gateway authority
+
+ContractGuard makes the contract layer itself part of gateway governance. A gateway that hides dangerous tools still trusts declared preconditions, effects, risk, and authorization. If an attacker can forge effects in the registry, the dangerous tool can be routed onto the causal path before the admissibility gate ever checks risk.
+
+WitnessAI's Agentic Control is the product-shaped version of the same idea: discover agents, MCP servers, tools, and downstream systems, then enforce allow and block policy at the moment an agent acts. C-Trace adds the compliance variant: formal policy predicates over trace events, with a runtime monitor that intercepts tool invocations and model outputs.
+
+Practical lesson:
+- treat MCP tool manifests, skill manifests, and workflow definitions as signed authority artifacts;
+- log manifest hash, declared effects, policy scope, principal, purpose, and final effect in the gateway trace;
+- fuzz effect forgery and authorization-field tampering, not only prompt injection;
+- keep runtime effect verification separate from rollback: once an external action has happened, the gateway can prevent downstream state contamination but may not undo the real-world side effect;
+- expose one policy surface for human users, IDE agents, chat agents, custom agents, tools, and MCP servers.
+
+Sources:
+- [ContractGuard](https://arxiv.org/abs/2606.18550v1)
+- [Runtime Compliance Verification for AI Agents](https://arxiv.org/abs/2606.19242v1)
+- [WitnessAI Agentic Control](https://witness.ai/blog/introducing-witnessai-agentic-control-one-control-plane-for-every-agent-tool-and-mcp-server/)

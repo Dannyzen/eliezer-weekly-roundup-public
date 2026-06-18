@@ -5,13 +5,14 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Daily scan, 2026-06-17: [roundup](roundups/2026-06-17.md)
-- Deep Dive Wednesday, 2026-06-17: [Evidence Provenance Control Plane](Strategy/evidence-provenance-control-plane/evidence-provenance-control-plane.md)
-- AgenticAI daily analysis: [2026-06-17](AgenticAI/2026-06-17/reasoning.md)
-- Strategy daily analysis: [2026-06-17](Strategy/2026-06-17/sovereignty.md)
+- Daily scan, 2026-06-18: [roundup](roundups/2026-06-18.md)
+- AgenticAI daily analysis: [2026-06-18](AgenticAI/2026-06-18/reasoning.md)
+- Strategy daily analysis: [2026-06-18](Strategy/2026-06-18/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
-- Related durable topics: [Evidence Provenance Control Plane](Strategy/evidence-provenance-control-plane/evidence-provenance-control-plane.md), [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [Trajectory-Aware Evaluation](AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md)
+- Related durable topics: [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md), [Memory Systems](AgenticAI/memory-systems/memory-systems.md), [Shared-State Agents](Strategy/shared-state-agents/shared-state-agents.md), [Agentic Search and Retrieval](AgenticAI/agentic-search/agentic-search.md), [Agent Sandboxing](Strategy/agent-sandboxing/agent-sandboxing.md), [Evidence Provenance Control Plane](Strategy/evidence-provenance-control-plane/evidence-provenance-control-plane.md)
+- Daily scan, 2026-06-17: [roundup](roundups/2026-06-17.md)
+- Deep Dive Wednesday, 2026-06-17: [Evidence Provenance Control Plane](Strategy/evidence-provenance-control-plane/evidence-provenance-control-plane.md)
 - Daily scan, 2026-06-16: [roundup](roundups/2026-06-16.md)
 - Daily scan, 2026-06-15: [roundup](roundups/2026-06-15.md)
 - Daily scan, 2026-06-14: [roundup](roundups/2026-06-14.md)
@@ -25,21 +26,22 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Current thesis
 
-The agent stack is moving from permissive context and tool catalogs to trace-governed operational units with admission-controlled memory, skills, workflow automation, router paths, and evidence provenance. The useful question is no longer only "can the model use more memory, context, tools, skills, or agents?" It is "which operational artifact has authority here, what state transition did it perform, which source owns the claim, and what verifier proved the result?"
+The agent stack is moving from permissive context and tool catalogs to contract-mediated operational units. The useful question is no longer only "can the model use more memory, search, tools, skills, or agents?" It is "which runtime contract grants authority here, which evidence dimensions were measured, which source owns the claim, and what verifier can stop the action before harm?"
+
+The 2026-06-18 daily scan adds five implementation patterns:
+- Tool gates need contract integrity, not only hidden tools. Manifest effects, scopes, and policy predicates are authority-bearing runtime inputs.
+- Compliance is becoming trace-time enforcement. Runtime monitors should intercept tool calls and model outputs before external mutation.
+- Shared memory needs governance scores, not only recall. Utility, access-control violation, and active-forgetting failure have to be measured together.
+- Grounding and web-agent verification need explicit evidence paths. Search route, source rendering, cache behavior, page state, and final-claim linkage should be visible control-plane fields.
+- Sandboxes need bounded claims and weakest-link evidence. A sandbox only proves the dimensions it actually measures.
 
 The 2026-06-17 Deep Dive Wednesday asset turns evidence provenance into a durable control-plane model: every high-risk claim, tool output, test, skill, route, policy verdict, and delegated handoff needs source-owned proof that can be replayed.
 
-The 2026-06-17 daily scan adds four implementation patterns:
+The 2026-06-17 daily scan added four implementation patterns:
 - MCP factuality needs source ownership, not pooled support. Stable tool IDs, source IDs, raw outputs, and claim-to-source verdicts are now core trace fields.
 - Skill systems need compositional routing plus per-skill utility evals. Decompose tasks, retrieve skill candidates, compose a dependency DAG, and test skills against no-skill baselines before promotion.
 - Evaluation needs trajectory preferences and oracle-aware test gates. Progress-sensitive comparisons and explicit test-oracle checks are more informative than terminal pass/fail or test-file counts.
 - Evidence provenance is becoming the control-plane primitive. Agent registries, access graphs, source IDs, policy verdicts, and delegation traces should converge into one audit substrate.
-
-The 2026-06-16 daily scan added four implementation patterns:
-- Agent traces are becoming programmable data: procedure fingerprints can support routing, monitoring, early failure detection, and cost analysis.
-- Tool and context selection now has to preserve both intention fit and cache continuity.
-- Skill systems are moving from runtime markdown toward searched skill trees and learned behavior modules, but the audited source and hashes still matter.
-- Router and skill trust boundaries need hardening below the prompt: sealed or constrained API proxy paths and read-only skill mounts.
 
 ## Browse by category
 

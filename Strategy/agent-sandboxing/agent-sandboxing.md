@@ -1,6 +1,6 @@
 # Agent Sandboxing
 
-Last updated: 2026-05-27
+Last updated: 2026-06-18
 
 Agent sandboxing is becoming a durable part of the agentic stack because coding agents are now powerful enough to make ordinary developer environments unsafe by default.
 
@@ -147,6 +147,22 @@ Practical lesson:
 Sources:
 - [Sandlock paper](https://arxiv.org/abs/2605.26298)
 - [multikernel/sandlock](https://github.com/multikernel/sandlock)
+
+## June 18 update: sandbox claims need weakest-link evidence
+
+AI Sandboxes reframes sandboxing as a bounded evidence claim, not a generic safety label. Isolation, simulation, instrumentation, supervision, and evidence capture each prove different things. For physical AI, cyber-physical systems, and increasingly capable agent workspaces, a sandbox should name what it validates and what it does not.
+
+The paper's weakest-link rule is the useful operational idea: a deployment claim is only as strong as the weakest required measurement dimension. If fidelity, containment, observability, reproducibility, or governance artifacts are missing, the claim should narrow instead of pretending the sandbox proves broad safety.
+
+Practical lesson:
+- write the deployment claim before choosing the sandbox backend;
+- score fidelity, controllability, observability, containment, reproducibility, timing, network realism, fault injection, openness, and governance artifacts separately;
+- preserve evidence artifacts for each dimension, not only final pass/fail;
+- block promotion when a required dimension is unmeasured or weak;
+- treat attacks on the assurance apparatus itself as in-scope.
+
+Source:
+- [AI Sandboxes](https://arxiv.org/abs/2606.18532v1)
 
 ## Current read
 

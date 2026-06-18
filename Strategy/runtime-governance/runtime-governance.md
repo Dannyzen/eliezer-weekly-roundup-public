@@ -1,6 +1,6 @@
 # Runtime Governance
 
-Last updated: 2026-06-15
+Last updated: 2026-06-18
 
 Runtime governance is becoming the real control plane for agent systems.
 
@@ -589,6 +589,23 @@ Practical lesson:
 Sources:
 - [Dynamic Malicious Skills](https://arxiv.org/abs/2606.16287v1)
 - [The Proxy Knows Too Much](https://arxiv.org/abs/2606.16358v1)
+
+## June 18 update: compliance and contracts have to fire during execution
+
+C-Trace and ContractGuard converge on the same runtime-governance correction. Static red-team prompts, policy documents, and post-hoc logs are not enough once agents call tools and handle personal data. Compliance rules and tool contracts need to be predicates over the execution trace, and they need to block model outputs or tool calls before external mutation.
+
+C-Trace expresses consent, purpose limitation, data minimization, and erasure as formal policy checks over events such as user messages, assistant messages, tool calls, tool returns, consent, and erasure. ContractGuard does the same kind of hardening for tool eligibility: signed provenance, typed contract attestation, and runtime effect verification.
+
+Practical lesson:
+- define trace event schemas for consent, purpose, erasure, tool call, tool return, model output, contract hash, declared effect, and policy verdict;
+- place runtime monitors before tool execution and before externally visible model output;
+- treat extractor uncertainty, monitor timeout, and contract mismatch as explicit policy outcomes;
+- test policies with attack dialogues and mutated tool contracts;
+- distinguish state-integrity blocking from real-world rollback for irreversible effects.
+
+Sources:
+- [Runtime Compliance Verification for AI Agents](https://arxiv.org/abs/2606.19242v1)
+- [ContractGuard](https://arxiv.org/abs/2606.18550v1)
 
 ## Working conclusion
 

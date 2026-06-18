@@ -172,6 +172,23 @@ Sources:
 - [SWE-Explore](https://arxiv.org/abs/2606.07297v1)
 - [Qiushao-E/SWE-Explore-Bench](https://github.com/Qiushao-E/SWE-Explore-Bench)
 
+## June 18 update: grounding should be an owned gateway path
+
+Decoupled Search Grounding gives this topic a sharper systems boundary. Native model search is convenient, but it fuses retrieval policy, provider choice, evidence injection, cost, latency, and generation behavior behind one vendor interface. An agent runtime that cares about replay, strict output contracts, or source policy should own the grounding path.
+
+HANSEL adds the web-agent verification shape: users do not need giant trajectory logs. They need compact evidence breadcrumbs that preserve page state, snippets, filters, queries, and scroll positions tied to the final answer.
+
+Practical lesson:
+- route grounding through an explicit search gateway when source control or output contracts matter;
+- log provider, query, retrieval depth, cache hit, fallback path, source IDs, rendered context, and final evidence use;
+- compare native search against owned grounding on cost, latency, source coverage, and strict-output compliance;
+- extract web-agent breadcrumbs from visited pages and bind them to final answer claims;
+- preserve browser state snapshots for high-risk user decisions.
+
+Sources:
+- [Decoupled Search Grounding](https://arxiv.org/abs/2606.18947v1)
+- [HANSEL](https://arxiv.org/abs/2606.18671v1)
+
 ## Related durable topics
 
 - [Agent Harness Architecture](../agent-harness-architecture/agent-harness-architecture.md)

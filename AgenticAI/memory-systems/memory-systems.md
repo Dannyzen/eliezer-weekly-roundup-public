@@ -1,6 +1,6 @@
 # Memory Systems
 
-Last updated: 2026-06-15
+Last updated: 2026-06-18
 
 Memory is becoming the real architecture question for long-lived agents.
 
@@ -645,6 +645,23 @@ Practical lesson:
 Sources:
 - [GitOfThoughts](https://arxiv.org/abs/2606.14470v1)
 - [TencentDB Agent Memory](https://github.com/TencentCloud/TencentDB-Agent-Memory)
+
+## June 18 update: shared memory needs utility, access, and forgetting together
+
+GateMem turns memory safety into a measurable shared-state problem. Long-lived assistants in hospitals, offices, schools, and households are not single-user recall systems. Multiple principals write to one memory pool and query it under different roles, scopes, and relationships. A memory system that answers legitimate questions but leaks protected information or reconstructs deleted data is not deployment-ready.
+
+The useful metric shape is multiplicative: utility times one minus access-control violation rate times one minus active-forgetting failure rate. That prevents a system from hiding leakage behind high recall or hiding uselessness behind strict denial.
+
+Practical lesson:
+- tag memory writes by principal, role, relationship, source event, trust tier, and deletion state;
+- keep deletion tombstones and test whether the agent reconstructs or confirms deleted facts;
+- run authorized recall, unauthorized access, and active-forgetting checkpoints in the same eval;
+- compare long-context, naive RAG, policy-aware RAG, and external-memory systems under one governance score;
+- log memory-selection paths and policy verdicts before retrieved memories influence high-authority actions.
+
+Sources:
+- [GateMem](https://arxiv.org/abs/2606.18829v1)
+- [rzhub/GateMem](https://github.com/rzhub/GateMem)
 
 ## Working conclusion
 

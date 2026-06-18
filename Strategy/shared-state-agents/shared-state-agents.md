@@ -1,5 +1,7 @@
 # Shared-State Agents
 
+Last updated: 2026-06-18
+
 The durable lesson from recent personal-agent work is simple: chat is not enough. If an agent ecosystem has no shared state substrate, every generated tool becomes another isolated island.
 
 ## Core thesis
@@ -67,6 +69,23 @@ Avoid these traps:
 - letting tools mutate shared state without explicit contracts
 - conflating identity, memory, and capability into one opaque agent state blob
 - assuming local execution alone creates sovereignty
+
+## June 18 update: shared memory is governed state, not shared recall
+
+GateMem strengthens the shared-state thesis. A common memory pool is only useful if every read and write carries ownership, role, scope, relationship, source, and deletion semantics. Otherwise a shared-state layer becomes a shared leak surface.
+
+The practical correction is to make memory governance part of the state schema. Utility, access control, and active forgetting should be measured together. Deleted information should leave tombstones that prevent reconstruction, not just disappear from one vector index. Authorized reads should be useful, unauthorized reads should fail, and every result should be replayable to the source state transition that made it available.
+
+Practical lesson:
+- store principal, role, relationship, scope, source event, and deletion state with shared artifacts;
+- make write-back and deletion first-class state transitions;
+- test memory access with hidden checkpoints for legitimate use, unauthorized leakage, and deletion bypass;
+- attach policy verdicts to memory reads before they become prompt context;
+- separate shared local state from globally visible or team-wide state by default.
+
+Sources:
+- [GateMem](https://arxiv.org/abs/2606.18829v1)
+- [rzhub/GateMem](https://github.com/rzhub/GateMem)
 
 ## Working conclusion
 

@@ -5,43 +5,29 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Daily scan, 2026-06-19: [roundup](roundups/2026-06-19.md)
-- AgenticAI daily analysis: [2026-06-19](AgenticAI/2026-06-19/reasoning.md)
-- Strategy daily analysis: [2026-06-19](Strategy/2026-06-19/sovereignty.md)
+- Friday synthesis, week ending 2026-06-19: [roundup](roundups/2026-06-19.md)
+- AgenticAI weekly analysis: [2026-06-19](AgenticAI/2026-06-19/reasoning.md)
+- Strategy weekly analysis: [2026-06-19](Strategy/2026-06-19/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
-- Related durable topics: [Event-Sourced Agent Runtime](AgenticAI/event-sourced-agent-runtime/event-sourced-agent-runtime.md), [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [Trajectory-Aware Evaluation](AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md), [Agent Sandboxing](Strategy/agent-sandboxing/agent-sandboxing.md)
-- Daily scan, 2026-06-18: [roundup](roundups/2026-06-18.md)
-- Daily scan, 2026-06-17: [roundup](roundups/2026-06-17.md)
 - Deep Dive Wednesday, 2026-06-17: [Evidence Provenance Control Plane](Strategy/evidence-provenance-control-plane/evidence-provenance-control-plane.md)
-- Daily scan, 2026-06-16: [roundup](roundups/2026-06-16.md)
-- Daily scan, 2026-06-15: [roundup](roundups/2026-06-15.md)
-- Daily scan, 2026-06-14: [roundup](roundups/2026-06-14.md)
-- Daily scan, 2026-06-13: [roundup](roundups/2026-06-13.md)
-- Friday synthesis, week ending 2026-06-12: [roundup](roundups/2026-06-12.md)
-- Deep Dive Wednesday, 2026-06-10: [Enterprise MCP Orchestration](AgenticAI/enterprise-mcp-orchestration/enterprise-mcp-orchestration.md)
-- Previous Friday synthesis, week ending 2026-06-05: [roundup](roundups/2026-06-05.md)
+- Daily scan inputs in this synthesis window: [2026-06-13](roundups/2026-06-13.md), [2026-06-14](roundups/2026-06-14.md), [2026-06-15](roundups/2026-06-15.md), [2026-06-16](roundups/2026-06-16.md), [2026-06-17](roundups/2026-06-17.md), [2026-06-18](roundups/2026-06-18.md); the 2026-06-19 files were promoted into the Friday synthesis above
+- Previous Friday synthesis: [week ending 2026-06-12](roundups/2026-06-12.md)
+- Prior Friday synthesis: [week ending 2026-06-05](roundups/2026-06-05.md)
 - Prior Friday synthesis: [week ending 2026-05-29](roundups/2026-05-29.md)
 - Prior Friday synthesis: [week ending 2026-05-22](roundups/2026-05-22.md)
-- Prior Friday synthesis: [week ending 2026-05-15](roundups/2026-05-15.md)
 
 ## Current thesis
 
-The agent stack is moving from permissive context and tool catalogs to runtime-owned objects: session state, scoped discovery, compiled tool intent, staged eval evidence, and brokered mutation authority. The useful question is no longer only "can the model use more memory, search, tools, skills, or agents?" It is "which runtime object owns the state, capability, evidence, and authority here?"
+The agent stack is moving from permissive prompts and ad hoc tool catalogs to runtime-owned objects. The useful question is no longer only "can the model use more memory, search, tools, skills, or agents?" It is "which runtime object owns the state, capability, evidence, and authority here?"
 
-The 2026-06-19 daily scan adds four implementation patterns:
-- Session should be the runtime primitive. Branch, replay, tool evidence, memory references, sandbox placement, and lineage belong in the object agents transform.
-- Tool surfaces need discovery and executable intent. Search capabilities before exposing them, then compile repeated service workflows into effect-typed programs when appropriate.
-- Agent evaluation needs staged harm and effort telemetry. Measure semantic acceptance, audit-visible harm, sandbox state harm, turns, tokens, time, errors, and marker adoption separately.
-- Mutation authority belongs in brokers. Agents should propose actions; brokers should verify certificates, mint short-lived scoped credentials, and record signed outcomes.
-
-The 2026-06-18 daily scan added contract-mediated runtime control: tool contracts, compliance predicates, memory governance, owned grounding paths, and bounded sandbox evidence.
-
-The 2026-06-17 daily scan added four implementation patterns:
-- MCP factuality needs source ownership, not pooled support. Stable tool IDs, source IDs, raw outputs, and claim-to-source verdicts are now core trace fields.
-- Skill systems need compositional routing plus per-skill utility evals. Decompose tasks, retrieve skill candidates, compose a dependency DAG, and test skills against no-skill baselines before promotion.
-- Evaluation needs trajectory preferences and oracle-aware test gates. Progress-sensitive comparisons and explicit test-oracle checks are more informative than terminal pass/fail or test-file counts.
-- Evidence provenance is becoming the control-plane primitive. Agent registries, access graphs, source IDs, policy verdicts, and delegation traces should converge into one audit substrate.
+The 2026-06-19 Friday synthesis promotes six week-level patterns:
+- Sessioned state replaces scattered memory, context, and handoff logs. Branch, replay, memory references, tool evidence, workspace placement, and lineage belong in the object agents transform.
+- Tool surfaces become discovered, compiled, and cache-aware. Search capabilities before exposing them, then compile repeated service workflows into effect-typed programs where appropriate.
+- Skills become admitted and measured behavior modules. Scan, route, benchmark, freeze, and regression-test skills before they influence a run.
+- Evaluation shifts from final outcome to trajectory, oracle, harm, and effort telemetry. Measure the path, evidence, state delta, and effort, not only the answer.
+- Governance moves to evidence provenance and runtime contracts. Source IDs, raw outputs, contract hashes, policy verdicts, and correction-derived checks should be trace fields.
+- Mutation authority leaves agents for brokers and tamper-resistant paths. Agents should propose actions; brokers should validate certificates, mint short-lived credentials, and record signed outcomes.
 
 ## Browse by category
 

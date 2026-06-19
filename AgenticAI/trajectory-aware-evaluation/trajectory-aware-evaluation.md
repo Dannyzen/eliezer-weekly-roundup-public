@@ -566,6 +566,26 @@ Sources:
 - [Offline Preference-Based Trajectory Evaluation](https://arxiv.org/abs/2606.17541v1)
 - [All Smoke, No Alarm](https://arxiv.org/abs/2606.18168v1)
 
+
+## June 19 update: staged harm and effort telemetry beat final pass/fail
+
+SafeClawBench and Hugging Face's tool-specific agent benchmark update this topic with two practical scoring corrections. First, tool-agent security needs endpoint separation: semantic attack acceptance, audit-visible harm evidence, and sandbox-observed state harm can disagree. Second, tool and library quality should be measured by agent effort, not only final correctness. Turns, tokens, wall time, error rate, deprecated API use, and intended CLI or API marker adoption reveal whether a tool surface is actually agent-usable.
+
+OpenAI's Deployment Simulation adds the rollout version of the same principle: realistic historical interactions can be replayed with a candidate model to estimate deployment-like behavior before release, including agentic workflows with tool use.
+
+Practical lesson:
+- score semantic, audit, and sandbox harm as separate endpoints;
+- preserve environment state deltas and tool effects for adversarial tasks;
+- extract trace markers for intended API path, CLI use, deprecated APIs, silent failures, and fallback behavior;
+- compare bare, clone, and skill/documented support tiers for internal tools;
+- replay representative historical workflows before changing model, scaffold, policy, or tool surface.
+
+Sources:
+- [SafeClawBench](https://arxiv.org/abs/2606.18356v1)
+- [SafeClawBench dataset](https://huggingface.co/datasets/sairights/safeclawbench)
+- [Is it agentic enough?](https://huggingface.co/blog/is-it-agentic-enough)
+- [OpenAI Deployment Simulation](https://openai.com/index/deployment-simulation)
+
 ## Working conclusion
 
-Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, fingerprinted, and scored across safety, robustness, parameter correctness, environment fidelity, runtime-specific harm dimensions, real-user collaboration traces, realistic workspace state, live workflow demand, cost, adversarial task quality, long-range state propagation, abstention, protocol conformance, tool-shortlist quality, environment-factory coverage, quantitative goal persistence, procedural behavior, partial-progress preference, and oracle strength, improvement efforts will stay shallow and trust claims will stay unearned.
+Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, fingerprinted, and scored across safety, robustness, parameter correctness, environment fidelity, runtime-specific harm dimensions, staged semantic/audit/sandbox harm, agent-effort telemetry, real-user collaboration traces, realistic workspace state, live workflow demand, cost, adversarial task quality, long-range state propagation, abstention, protocol conformance, tool-shortlist quality, environment-factory coverage, quantitative goal persistence, procedural behavior, partial-progress preference, and oracle strength, improvement efforts will stay shallow and trust claims will stay unearned.

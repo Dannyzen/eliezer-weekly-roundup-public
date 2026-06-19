@@ -1,6 +1,6 @@
 # Event-Sourced Agent Runtime
 
-Last updated: 2026-06-11
+Last updated: 2026-06-19
 
 Event-sourced agent runtime is the design discipline of making the agent’s durable state an append-only event history, then deriving working state, memory views, audit trails, and replayable traces from that history.
 
@@ -95,3 +95,19 @@ Sources:
 This is a local-first and governance-friendly primitive. If the agent’s state is an inspectable event log, the operator can keep it on their own infrastructure, sync selected projections, audit risky actions, and replay failures without trusting a vendor dashboard as the only source of truth.
 
 The durable bet: future serious agents will look less like chat transcripts and more like event-sourced operating systems with model calls inside them.
+
+
+## June 19 update: session becomes the runtime value
+
+OpenRath strengthens this topic by making Session the first-class object that flows through agents, workflows, sandboxes, tools, memory, and selectors. The key design correction is that the event log and the active runtime value should not be unrelated artifacts. Session should carry enough lineage, evidence, placement, and pending-work metadata that fork, merge, compression, replay, and branch comparison are normal runtime operations.
+
+Practical lesson:
+- pass a structured Session or run-state object through every agent transformation;
+- store branch ID, parent session ID, sandbox placement, token usage, tool evidence, memory references, and pending work;
+- keep raw events append-only, then project compact Session views into prompts;
+- make fork, merge, replay, compression, and selector decisions explicit operations;
+- link final artifacts to the session branch and tool evidence that produced them.
+
+Sources:
+- [OpenRath](https://arxiv.org/abs/2606.19409v1)
+- [Rath-Team/OpenRath](https://github.com/Rath-Team/OpenRath)

@@ -1,6 +1,6 @@
 # Skills as Control
 
-Last updated: 2026-06-17
+Last updated: 2026-06-19
 
 Core sources:
 - From Research Question to Scientific Workflow: Leveraging Agentic AI for Science Automation: https://arxiv.org/abs/2604.21910v1
@@ -561,3 +561,20 @@ Practical lesson:
 Sources:
 - [Compositional Skill Routing](https://arxiv.org/abs/2606.18051v1)
 - [A Framework for Evaluating Agentic Skills at Scale](https://arxiv.org/abs/2606.17819v1)
+
+
+## June 19 update: capability discovery needs source and effect contracts
+
+Agentic Resource Discovery and ToolPro extend skills-as-control from local packages to ecosystem discovery and execution. A skill or MCP server should not become visible because it happened to be installed. It should be found through a registry with source metadata, publisher identity, representative queries, tags, and compliance signals. If the selected capability becomes a multi-step service workflow, the next object should be an effect-typed tool program, not an improvised chain of endpoint calls.
+
+Practical lesson:
+- index compact capability metadata separately from full skill bodies and tool cards;
+- make discovery scoped by principal, workflow, tenant, and data class;
+- keep source URL, publisher, generated artifact type, manifest hash, and runtime stage with every loaded capability;
+- distinguish READ and WRITE effects before a skill or tool program can mutate state;
+- test capability search for false positives, missing source metadata, stale manifests, and unsafe write exposure.
+
+Sources:
+- [Agentic Resource Discovery](https://huggingface.co/blog/agentic-resource-discovery-launch)
+- [huggingface/hf-discover](https://github.com/huggingface/hf-discover)
+- [ToolPro](https://arxiv.org/abs/2606.19992v1)

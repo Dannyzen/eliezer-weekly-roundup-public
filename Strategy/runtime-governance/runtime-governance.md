@@ -1,6 +1,6 @@
 # Runtime Governance
 
-Last updated: 2026-06-18
+Last updated: 2026-06-19
 
 Runtime governance is becoming the real control plane for agent systems.
 
@@ -416,7 +416,7 @@ Sources:
 
 ## June 2 update: AgentOps makes agent artifacts deployable infrastructure
 
-AWS's AgentOps reference architecture turns production agent work into a release-engineering problem. It names four pillars — governance and security, build and operations, evaluation, and observability — and makes the deployable unit broader than a prompt: every agent, tool, and memory configuration should be versioned and tested through a pipeline. The operational telemetry includes decision traces, tool invocation patterns, latency, errors, memory usage, and cost per interaction.
+AWS's AgentOps reference architecture turns production agent work into a release-engineering problem. It names four pillars, governance and security, build and operations, evaluation, and observability, and makes the deployable unit broader than a prompt: every agent, tool, and memory configuration should be versioned and tested through a pipeline. The operational telemetry includes decision traces, tool invocation patterns, latency, errors, memory usage, and cost per interaction.
 
 Microsoft's Build 2026 Agent Framework page points at the same runtime direction through hosted agents, triggers, state management, file access, governance patterns, evals, OpenTelemetry instrumentation, MCP, skills, Playwright CLI, Responses API, and A2A. IBM's agent-logic article adds the enterprise design rule: policy-as-code, knowledge graphs, program analysis, and workflow-specific logic should bound model behavior instead of pushing every constraint into context.
 
@@ -607,6 +607,24 @@ Sources:
 - [Runtime Compliance Verification for AI Agents](https://arxiv.org/abs/2606.19242v1)
 - [ContractGuard](https://arxiv.org/abs/2606.18550v1)
 
+
+## June 19 update: execution brokers remove standing mutation credentials
+
+Sovereign Execution Brokers sharpen the runtime-governance boundary. If an agent or wrapper holds standing production credentials, an admission certificate can be bypassed. The broker has to be the only accepted mutation path: verify the action certificate, check scope, validity window, policy epoch, revocation epoch, and live-state drift, mint a short-lived scoped credential, invoke the infrastructure API, and record the signed outcome.
+
+Google DeepMind's AI Control Roadmap supplies the monitoring side: treat capable agents as potentially imperfectly aligned, define AI-specific threat models, monitor trajectories, and measure coverage, recall, and time-to-response.
+
+Practical lesson:
+- remove reusable write credentials from agent runtimes where possible;
+- require production mutation APIs to reject non-broker identities;
+- bind broker checks to action contract, principal, scope, policy epoch, revocation epoch, and live-state hash;
+- mint short-lived scoped credentials only after validation;
+- record proposal, admission, broker decision, credential mint, mutation request, mutation result, and monitor verdict in one trace.
+
+Sources:
+- [Sovereign Execution Brokers](https://arxiv.org/abs/2606.20520v1)
+- [Google DeepMind AI Control Roadmap](https://deepmind.google/blog/securing-the-future-of-ai-agents/)
+
 ## Working conclusion
 
-Runtime governance is not a niche enterprise concern. It is the natural consequence of giving agents durable memory, tool access, repository permissions, CI/CD authority, local storage, plugins, delegated secrets, shared inference infrastructure, sandboxed execution environments, mutable skills, router paths, and workflow definitions that compile into automations. The control plane has to move into runtime: inventory the agents, bind identity and scope, manage execution environments, preserve trace evidence, enforce valid next transitions before privileged tools execute, calibrate trust from outcomes, test trajectory-level guardrails offline, budget the guardrails themselves, record serving conditions for replayability, constrain network and inference routes, keep skills immutable while active, and keep tainted inputs from silently becoming trusted agent instructions or script data.
+Runtime governance is not a niche enterprise concern. It is the natural consequence of giving agents durable memory, tool access, repository permissions, CI/CD authority, local storage, plugins, delegated secrets, shared inference infrastructure, sandboxed execution environments, mutable skills, router paths, and workflow definitions that compile into automations, and broker-mediated mutation paths. The control plane has to move into runtime: inventory the agents, bind identity and scope, manage execution environments, preserve trace evidence, enforce valid next transitions before privileged tools execute, calibrate trust from outcomes, test trajectory-level guardrails offline, budget the guardrails themselves, record serving conditions for replayability, constrain network and inference routes, keep skills immutable while active, and keep tainted inputs from silently becoming trusted agent instructions or script data.

@@ -1,6 +1,6 @@
 # Agent Gateway Governance
 
-Last updated: 2026-06-18
+Last updated: 2026-06-19
 
 Agent gateway governance is the control-plane discipline for exposing enterprise tools, data, and workflows to autonomous agents.
 
@@ -263,7 +263,7 @@ Source:
 
 ## May 19 update: managed coding agents need repo-level configuration inventory
 
-GitHub’s Copilot cloud-agent configuration API makes a core governance requirement explicit: operators need repo-level inventory before they can safely delegate work to cloud agents at scale. The API exposes MCP server configuration, enabled tools, GitHub Actions workflow policy, and firewall configuration. The adjacent releases — one-click Actions fixes and cheaper model choices for simple delegated tasks — make the inventory even more important because the agent is now part of CI repair and model-routing policy.
+GitHub’s Copilot cloud-agent configuration API makes a core governance requirement explicit: operators need repo-level inventory before they can safely delegate work to cloud agents at scale. The API exposes MCP server configuration, enabled tools, GitHub Actions workflow policy, and firewall configuration. The adjacent releases, one-click Actions fixes and cheaper model choices for simple delegated tasks, make the inventory even more important because the agent is now part of CI repair and model-routing policy.
 
 The enterprise direction is broader than GitHub. OpenAI and Dell’s Codex partnership frames coding agents as hybrid/on-prem enterprise infrastructure near codebases, documents, systems of record, and operational knowledge. That reinforces the same gateway thesis: agent placement, data boundary, tool authority, model choice, and audit trail have to be governed together.
 
@@ -674,3 +674,21 @@ Sources:
 - [ContractGuard](https://arxiv.org/abs/2606.18550v1)
 - [Runtime Compliance Verification for AI Agents](https://arxiv.org/abs/2606.19242v1)
 - [WitnessAI Agentic Control](https://witness.ai/blog/introducing-witnessai-agentic-control-one-control-plane-for-every-agent-tool-and-mcp-server/)
+
+
+## June 19 update: discovery and execution are gateway authority surfaces
+
+Agentic Resource Discovery, ToolPro, and Sovereign Execution Brokers make the gateway larger than a thin MCP proxy. The gateway should govern what capabilities the agent can find, what generated skill or MCP card it loads, what effect-typed program it submits, and what brokered authority is allowed to mutate production.
+
+Practical lesson:
+- make capability search permissioned by principal, tenant, workflow, data class, and risk tier;
+- log registry query, selected capability, source URL, publisher identity, manifest hash, media type, and loaded artifact ID;
+- require READ/WRITE effect typing before compiled tool programs run;
+- route state-changing programs and infrastructure mutations through policy and broker checks;
+- preserve discovery, compiled intent, certificate, scoped credential, and final effect in one trace.
+
+Sources:
+- [Agentic Resource Discovery](https://huggingface.co/blog/agentic-resource-discovery-launch)
+- [huggingface/hf-discover](https://github.com/huggingface/hf-discover)
+- [ToolPro](https://arxiv.org/abs/2606.19992v1)
+- [Sovereign Execution Brokers](https://arxiv.org/abs/2606.20520v1)

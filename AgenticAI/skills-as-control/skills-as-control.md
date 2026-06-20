@@ -1,6 +1,6 @@
 # Skills as Control
 
-Last updated: 2026-06-19
+Last updated: 2026-06-20
 
 Core sources:
 - From Research Question to Scientific Workflow: Leveraging Agentic AI for Science Automation: https://arxiv.org/abs/2604.21910v1
@@ -578,3 +578,20 @@ Sources:
 - [Agentic Resource Discovery](https://huggingface.co/blog/agentic-resource-discovery-launch)
 - [huggingface/hf-discover](https://github.com/huggingface/hf-discover)
 - [ToolPro](https://arxiv.org/abs/2606.19992v1)
+
+
+## June 20 update: mined skills are diagnostics until replay proves transfer
+
+Automating SKILL.md Generation for Computer-Using Agents via Interaction Trajectory Mining is useful precisely because it does not overclaim. Mining GUI trajectories can recover readable candidate skill clusters, with five of eight clusters reaching at least 0.95 purity against InteraSkill Workflows labels. But the downstream policy gains are weak: GRPO moves IW skill-step accuracy only from 18.5% to 20.5%, BrowseComp+ remains essentially unchanged, and trivial frequency priors beat the method on key source-domain metrics.
+
+The control lesson is clear. Skill mining should feed the review queue, not the production skill catalog. Readable clusters are evidence for candidate structure, not evidence that the skill should influence future actions.
+
+Practical lesson:
+- mine trajectories to identify repeated workflows, missing docs, and candidate skills;
+- preserve segment boundaries, temporal order, source benchmark, and cluster purity as metadata;
+- require held-out replay improvement before generated skills enter default retrieval;
+- compare no-skill, frequency-prior, mined-skill, and reviewed-skill variants;
+- keep failed transfer cases as negative fixtures for skill routers and promotion gates.
+
+Source:
+- [Automating SKILL.md Generation for Computer-Using Agents via Interaction Trajectory Mining](https://arxiv.org/abs/2606.20363)

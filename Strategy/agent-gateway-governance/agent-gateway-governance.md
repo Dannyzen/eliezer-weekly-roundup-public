@@ -1,6 +1,6 @@
 # Agent Gateway Governance
 
-Last updated: 2026-06-19
+Last updated: 2026-06-20
 
 Agent gateway governance is the control-plane discipline for exposing enterprise tools, data, and workflows to autonomous agents.
 
@@ -692,3 +692,22 @@ Sources:
 - [huggingface/hf-discover](https://github.com/huggingface/hf-discover)
 - [ToolPro](https://arxiv.org/abs/2606.19992v1)
 - [Sovereign Execution Brokers](https://arxiv.org/abs/2606.20520v1)
+
+
+## June 20 update: repo-native instructions and issue fields are gateway state
+
+GitHub's June 18 changes make ordinary repository surfaces part of the agent gateway. Copilot code review now reads root `AGENTS.md`, and the official GitHub MCP server can read and write issue fields such as priority, area, dates, and custom metadata.
+
+The gateway lesson is that repository instructions and ticket fields are not harmless text. They influence review behavior, work routing, prioritization, and downstream automation. If agents can read and mutate them through MCP, they need the same identity, scope, trace, and review discipline as other tool calls.
+
+Practical lesson:
+- treat `AGENTS.md` as a reviewed policy artifact, not a casual prompt note;
+- scope GitHub MCP issue-field writes by principal, repository, workflow, and field class;
+- log agent-originated changes to priority, area, due date, and status fields;
+- keep project-field schemas stable enough that agents do not infer semantics from labels alone;
+- pair agent writable issue metadata with host-side checks such as branch protection, CODEOWNERS, CodeQL, secret scanning, and audit logs.
+
+Sources:
+- [Copilot code review: AGENTS.md support and UI improvements](https://github.blog/changelog/2026-06-18-copilot-code-review-agents-md-support-and-ui-improvements)
+- [Detecting Duplicate Issues and issue fields MCP support for GitHub Issues](https://github.blog/changelog/2026-06-18-duplicate-detection-and-issue-fields-mcp-support-for-github-issues)
+- [github/github-mcp-server](https://github.com/github/github-mcp-server)

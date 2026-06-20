@@ -1,6 +1,6 @@
 # Event-Sourced Agent Runtime
 
-Last updated: 2026-06-19
+Last updated: 2026-06-20
 
 Event-sourced agent runtime is the design discipline of making the agent’s durable state an append-only event history, then deriving working state, memory views, audit trails, and replayable traces from that history.
 
@@ -111,3 +111,20 @@ Practical lesson:
 Sources:
 - [OpenRath](https://arxiv.org/abs/2606.19409v1)
 - [Rath-Team/OpenRath](https://github.com/Rath-Team/OpenRath)
+
+
+## June 20 update: task ledgers are the compact state projection before side effects
+
+LedgerAgent is an event-sourced runtime pattern in small. It does not require a full replay engine to be useful. It maintains observed task state as a separate ledger of facts, identifiers, constraints, and conditions, renders that ledger into the prompt, and checks state-dependent policy constraints before environment-changing tools execute.
+
+The runtime lesson is that a ledger is a current-state projection with authority implications. Raw events still matter for replay and audit, but the agent needs a compact, typed state object at decision time. Policy needs the same object before mutation.
+
+Practical lesson:
+- store raw observations and tool returns as append-only events;
+- project them into a compact task ledger with source event IDs and validity metadata;
+- render the ledger into the prompt as state, not as unstructured transcript context;
+- attach ledger snapshot hash, policy ID, and verdict to every side-effecting tool call;
+- treat ledger schema changes as runtime migrations because they can change policy outcomes.
+
+Source:
+- [LedgerAgent](https://arxiv.org/abs/2606.20529)

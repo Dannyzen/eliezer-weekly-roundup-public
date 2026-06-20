@@ -1,6 +1,6 @@
 # Runtime Governance
 
-Last updated: 2026-06-19
+Last updated: 2026-06-20
 
 Runtime governance is becoming the real control plane for agent systems.
 
@@ -624,6 +624,22 @@ Practical lesson:
 Sources:
 - [Sovereign Execution Brokers](https://arxiv.org/abs/2606.20520v1)
 - [Google DeepMind AI Control Roadmap](https://deepmind.google/blog/securing-the-future-of-ai-agents/)
+
+## June 20 update: policy ledgers make state checks executable
+
+LedgerAgent sharpens runtime governance from another angle: state-dependent policy should fire before a side-effecting tool call, not after the agent has already acted. The ledger holds facts, identifiers, constraints, and conditions observed across user turns and tool returns. Policy checks read that ledger before environment-changing calls execute.
+
+The control-plane lesson is direct. Prompts can tell an agent to obey policy, but a ledger plus pre-mutation check can block a tool call. That turns governance into an execution-path component.
+
+Practical lesson:
+- split observation, state projection, action proposal, and action approval into separate trace events;
+- keep ledger entries tied to source event IDs and validity metadata;
+- check side-effecting tool calls against current ledger state before execution;
+- record ledger snapshot hash, policy ID, verdict, rejected arguments, and remediation path;
+- treat ledger extraction failures as policy outcomes, not hidden model uncertainty.
+
+Source:
+- [LedgerAgent](https://arxiv.org/abs/2606.20529)
 
 ## Working conclusion
 

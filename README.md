@@ -5,29 +5,27 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Friday synthesis, week ending 2026-06-19: [roundup](roundups/2026-06-19.md)
-- AgenticAI weekly analysis: [2026-06-19](AgenticAI/2026-06-19/reasoning.md)
-- Strategy weekly analysis: [2026-06-19](Strategy/2026-06-19/sovereignty.md)
+- Daily scan, 2026-06-20: [roundup](roundups/2026-06-20.md)
+- AgenticAI daily analysis: [2026-06-20](AgenticAI/2026-06-20/reasoning.md)
+- Strategy daily analysis: [2026-06-20](Strategy/2026-06-20/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
+- Previous Friday synthesis: [week ending 2026-06-19](roundups/2026-06-19.md)
 - Deep Dive Wednesday, 2026-06-17: [Evidence Provenance Control Plane](Strategy/evidence-provenance-control-plane/evidence-provenance-control-plane.md)
-- Daily scan inputs in this synthesis window: [2026-06-13](roundups/2026-06-13.md), [2026-06-14](roundups/2026-06-14.md), [2026-06-15](roundups/2026-06-15.md), [2026-06-16](roundups/2026-06-16.md), [2026-06-17](roundups/2026-06-17.md), [2026-06-18](roundups/2026-06-18.md); the 2026-06-19 files were promoted into the Friday synthesis above
-- Previous Friday synthesis: [week ending 2026-06-12](roundups/2026-06-12.md)
+- Prior Friday synthesis: [week ending 2026-06-12](roundups/2026-06-12.md)
 - Prior Friday synthesis: [week ending 2026-06-05](roundups/2026-06-05.md)
 - Prior Friday synthesis: [week ending 2026-05-29](roundups/2026-05-29.md)
-- Prior Friday synthesis: [week ending 2026-05-22](roundups/2026-05-22.md)
 
 ## Current thesis
 
 The agent stack is moving from permissive prompts and ad hoc tool catalogs to runtime-owned objects. The useful question is no longer only "can the model use more memory, search, tools, skills, or agents?" It is "which runtime object owns the state, capability, evidence, and authority here?"
 
-The 2026-06-19 Friday synthesis promotes six week-level patterns:
-- Sessioned state replaces scattered memory, context, and handoff logs. Branch, replay, memory references, tool evidence, workspace placement, and lineage belong in the object agents transform.
-- Tool surfaces become discovered, compiled, and cache-aware. Search capabilities before exposing them, then compile repeated service workflows into effect-typed programs where appropriate.
-- Skills become admitted and measured behavior modules. Scan, route, benchmark, freeze, and regression-test skills before they influence a run.
-- Evaluation shifts from final outcome to trajectory, oracle, harm, and effort telemetry. Measure the path, evidence, state delta, and effort, not only the answer.
-- Governance moves to evidence provenance and runtime contracts. Source IDs, raw outputs, contract hashes, policy verdicts, and correction-derived checks should be trace fields.
-- Mutation authority leaves agents for brokers and tamper-resistant paths. Agents should propose actions; brokers should validate certificates, mint short-lived credentials, and record signed outcomes.
+The 2026-06-20 daily scan adds five concrete objects to that model:
+- Task ledgers own current state for policy-adherent tool calls.
+- Skill candidates mined from trajectories are diagnostic artifacts until held-out replay proves utility.
+- Shared trajectory repositories turn agent experience into population-level memory.
+- Repo-native `AGENTS.md` and issue fields make GitHub a governed agent substrate.
+- Enterprise agent populations need queueing, preemption, and capability discovery discipline before they need more agents.
 
 ## Browse by category
 

@@ -1,6 +1,6 @@
 # Memory Systems
 
-Last updated: 2026-06-18
+Last updated: 2026-06-20
 
 Memory is becoming the real architecture question for long-lived agents.
 
@@ -662,6 +662,22 @@ Practical lesson:
 Sources:
 - [GateMem](https://arxiv.org/abs/2606.18829v1)
 - [rzhub/GateMem](https://github.com/rzhub/GateMem)
+
+## June 20 update: transactive memory makes trajectories reusable across agents
+
+Multi-Agent Transactive Memory extends the memory thesis from individual recall to population-level experience sharing. The memory object is a completed trajectory, not just a summary or extracted fact. Producer agents contribute traces; consumer agents retrieve relevant traces to improve task execution in interactive environments such as ALFWorld and WebArena.
+
+The practical correction is that shared memory needs both utility and authority controls. A trajectory can encode a useful procedure, but it can also encode stale state, private data, unsafe shortcuts, or tenant-specific assumptions. Treat retrieved trajectories as examples and warnings, not direct instructions.
+
+Practical lesson:
+- store completed trajectories with task, environment, tool sequence, state deltas, outcome, failure notes, and source-agent metadata;
+- index trajectories by intent, environment state, tools touched, artifacts changed, and outcome quality;
+- retrieve trajectories with policy checks over principal, tenant, data class, deletion state, and source trust;
+- run ablations with and without retrieved trajectories before promoting a trajectory repository as default context;
+- preserve memory influence in the trace so harmful cross-agent reuse can be debugged.
+
+Source:
+- [Multi-Agent Transactive Memory](https://arxiv.org/abs/2606.19911)
 
 ## Working conclusion
 

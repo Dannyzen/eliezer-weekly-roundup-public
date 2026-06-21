@@ -2,49 +2,49 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: Daily scan, 2026-06-20
+## Most Recent Structured Update: Daily scan, 2026-06-21
 
-### Repo-native instructions and issue-field MCP make GitHub a governed agent substrate
+### Agentic Resource Discovery makes capability discovery governable
 
-Summary: GitHub Copilot code review now reads root `AGENTS.md`, and the GitHub MCP server can read/write issue fields. Repository instructions and structured work metadata are becoming agent authority surfaces.
+Summary: GitHub Agent Finder and the ARD specification turn MCP servers, skills, tools, agents, APIs, and workflows into discoverable resources. The strategic control point is not only what the agent can call, but what it can find.
 
-Analysis: [daily sovereignty analysis](2026-06-20/sovereignty.md#repo-native-instructions-and-issue-field-mcp-make-github-a-governed-agent-substrate)
-Durable topics: [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md), [Runtime Governance](runtime-governance/runtime-governance.md), [Ticket-Native Agent Orchestration](../AgenticAI/ticket-native-agent-orchestration/ticket-native-agent-orchestration.md)
-Core sources: [AGENTS.md support](https://github.blog/changelog/2026-06-18-copilot-code-review-agents-md-support-and-ui-improvements), [issue fields MCP support](https://github.blog/changelog/2026-06-18-duplicate-detection-and-issue-fields-mcp-support-for-github-issues), [github/github-mcp-server](https://github.com/github/github-mcp-server)
+Analysis: [daily sovereignty analysis](2026-06-21/sovereignty.md#agentic-resource-discovery-makes-capability-discovery-a-governed-plane)
+Durable topics: [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md), [Runtime Governance](runtime-governance/runtime-governance.md), [Agent Discovery](../AgenticAI/agent-discovery/agent-discovery.md)
+Core sources: [GitHub Agent Finder](https://github.blog/changelog/2026-06-17-agent-finder-for-github-copilot-now-available/), [ARD specification](https://commandline.microsoft.com/agentic-resource-discovery-specification-ard/), [GitHub Agent Finder docs](https://docs.github.com/en/copilot/concepts/mcp-management#agent-finder), [huggingface/hf-discover](https://github.com/huggingface/hf-discover)
 Implementable now:
-- add concise root `AGENTS.md` files to repos where agents review code
-- scope issue-field MCP writes by workflow identity
-- log field mutations as work-state changes
+- create a private registry of approved MCP servers, skills, agents, and workflows
+- scope discovery by principal, tenant, repo, workflow, and risk tier
+- log discovery query, returned capability IDs, selected resource, publisher, media type, and install decision
 Tools, repos, and methodologies worth exploring:
-- GitHub MCP server, GitHub Projects custom fields, CODEOWNERS, branch protection, CodeQL, secret scanning, repository audit logs
-Implementability score: 0.90
+- GitHub Agent Finder, `ards-project/connectors`, `huggingface/hf-discover`, MCP registries, allowlist enforcement, OpenTelemetry discovery spans
+Implementability score: 0.84
 
-### Policy ledgers move governance before mutation
+### Least-privilege tool choice needs explicit evaluation and routing policy
 
-Summary: LedgerAgent makes governance executable by checking typed task state before side-effecting tools run. This is stronger than prompt-only policy because the policy has a structured state object to inspect.
+Summary: ToolPrivBench shows that agents often choose or escalate to higher-privilege tools even when lower-privilege alternatives are enough. General safety alignment and prompt controls do not reliably solve least-privilege tool routing.
 
-Analysis: [daily sovereignty analysis](2026-06-20/sovereignty.md#policy-ledgers-move-governance-before-mutation)
-Durable topics: [Runtime Governance](runtime-governance/runtime-governance.md), [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md), [Evidence Provenance Control Plane](evidence-provenance-control-plane/evidence-provenance-control-plane.md)
-Core source: [LedgerAgent](https://arxiv.org/abs/2606.20529)
+Analysis: [daily sovereignty analysis](2026-06-21/sovereignty.md#least-privilege-tool-choice-is-not-solved-by-general-safety-alignment)
+Durable topics: [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md), [Runtime Governance](runtime-governance/runtime-governance.md), [Agent Network Containment](agent-network-containment/agent-network-containment.md)
+Core sources: [ToolPrivBench paper](https://arxiv.org/abs/2606.20023v1), [AISafetyHub/agent-tool-selection-bias](https://github.com/AISafetyHub/agent-tool-selection-bias)
 Implementable now:
-- split state observation from final action generation
-- run policy checks against ledger fields before mutation tools
-- record ledger snapshot hash, policy ID, verdict, and arguments in the trace
+- split tools into read, limited-write, broad-write, admin, and external-effect tiers
+- require escalation justification when lower-privilege tools are available
+- test transient-failure paths because failures amplify privilege escalation
 Tools, repos, and methodologies worth exploring:
-- OPA, Cedar, signed tool manifests, OpenTelemetry policy spans, broker-mediated execution
-Implementability score: 0.82
+- ToolPrivBench-style paired tool tests, OPA or Cedar policy, gateway traces with lower-privilege alternatives and escalation reason
+Implementability score: 0.77
 
-### Multi-agent scale creates an operations problem before it creates an intelligence problem
+### Phoenix reinforces host-state policy for coding autonomy
 
-Summary: Enterprise-scale orchestration degrades because agent discovery noise grows with the population. The strategic layer needs service-catalog discipline, queueing, preemption, and assignment telemetry before it needs more specialist agents.
+Summary: Phoenix's issue-to-PR system shows that coding autonomy should sit behind labels, baseline tests, state transitions, permission boundaries, and PR review, not inside an unconstrained agent loop.
 
-Analysis: [daily sovereignty analysis](2026-06-20/sovereignty.md#multi-agent-scale-creates-an-operations-problem-before-it-creates-an-intelligence-problem)
-Durable topics: [Runtime Governance](runtime-governance/runtime-governance.md), [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md), [Agent Network Containment](agent-network-containment/agent-network-containment.md)
-Core source: [Autonomous Event-Driven Multi-Agent Orchestration](https://arxiv.org/abs/2606.20058)
+Analysis: [daily sovereignty analysis](2026-06-21/sovereignty.md#phoenix-reinforces-that-coding-autonomy-belongs-behind-host-state-policy)
+Durable topics: [Runtime Governance](runtime-governance/runtime-governance.md), [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md), [Ticket-Native Agent Orchestration](../AgenticAI/ticket-native-agent-orchestration/ticket-native-agent-orchestration.md)
+Core source: [Phoenix](https://arxiv.org/abs/2606.20243v1)
 Implementable now:
-- cap visible agents per workflow using capability metadata and reliability
-- add priority, related-event merge, and preemption before large-agent planning
-- make discovery failure and queue latency operating metrics
+- gate generated PRs through labels, issue fields, baseline/post-patch tests, branch protection, and CODEOWNERS
+- preserve operational failure states such as WAF filtering, token expiry, permission denial, and flaky CI
+- use generated PR review queues rather than silent merge paths
 Tools, repos, and methodologies worth exploring:
-- service catalogs, Temporal/Inngest/PubSub queues, OpenTelemetry, routing postmortems
-Implementability score: 0.57
+- GitHub webhooks, issue fields, GitHub Actions, Checks API, SWE-bench Lite, CODEOWNERS, branch protection
+Implementability score: 0.72

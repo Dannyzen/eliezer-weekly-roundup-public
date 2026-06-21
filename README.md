@@ -5,9 +5,9 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Daily scan, 2026-06-20: [roundup](roundups/2026-06-20.md)
-- AgenticAI daily analysis: [2026-06-20](AgenticAI/2026-06-20/reasoning.md)
-- Strategy daily analysis: [2026-06-20](Strategy/2026-06-20/sovereignty.md)
+- Daily scan, 2026-06-21: [roundup](roundups/2026-06-21.md)
+- AgenticAI daily analysis: [2026-06-21](AgenticAI/2026-06-21/reasoning.md)
+- Strategy daily analysis: [2026-06-21](Strategy/2026-06-21/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
 - Previous Friday synthesis: [week ending 2026-06-19](roundups/2026-06-19.md)
@@ -18,14 +18,13 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Current thesis
 
-The agent stack is moving from permissive prompts and ad hoc tool catalogs to runtime-owned objects. The useful question is no longer only "can the model use more memory, search, tools, skills, or agents?" It is "which runtime object owns the state, capability, evidence, and authority here?"
+The agent stack is moving from permissive prompts and ad hoc tool catalogs to tested authority surfaces. The useful question is no longer only "can the model use more memory, search, tools, skills, or agents?" It is "which runtime object owns discovery, guidance, privilege, state, and proof before the agent acts?"
 
-The 2026-06-20 daily scan adds five concrete objects to that model:
-- Task ledgers own current state for policy-adherent tool calls.
-- Skill candidates mined from trajectories are diagnostic artifacts until held-out replay proves utility.
-- Shared trajectory repositories turn agent experience into population-level memory.
-- Repo-native `AGENTS.md` and issue fields make GitHub a governed agent substrate.
-- Enterprise agent populations need queueing, preemption, and capability discovery discipline before they need more agents.
+The 2026-06-21 daily scan adds four concrete control surfaces to that model:
+- Repository guidance should be probe-tuned like an operational artifact, not written once as prompt prose.
+- Issue-to-PR agents need label/state machines, baseline tests, and host-side safety gates.
+- Agentic Resource Discovery makes capability search a governed plane, not only a context-saving feature.
+- Least-privilege tool routing needs explicit tests because general safety alignment does not reliably teach it.
 
 ## Browse by category
 

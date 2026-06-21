@@ -1,11 +1,14 @@
 # Agent Discovery
 
-Last updated: 2026-04-27
+Last updated: 2026-06-21
 
 Core sources:
 - AgentSearchBench: https://arxiv.org/abs/2604.22436
 - Bingo-W/AgentSearchBench: https://github.com/Bingo-W/AgentSearchBench
 - AgentSearchBench task dataset: https://huggingface.co/datasets/AgentSearch/AgentSearchBench-Tasks/viewer/single-agent_task_query
+- GitHub Agent Finder: https://github.blog/changelog/2026-06-17-agent-finder-for-github-copilot-now-available/
+- Agentic Resource Discovery specification: https://commandline.microsoft.com/agentic-resource-discovery-specification-ard/
+- huggingface/hf-discover: https://github.com/huggingface/hf-discover
 
 ## Thesis
 
@@ -45,6 +48,26 @@ This matters because the same pattern appears across tool routing, MCP server se
 - LangGraph, Temporal, or Prefect for deterministic probe workflows.
 - OpenTelemetry for spans around selection, probe execution, routing, and result quality.
 - Policy engines such as Open Policy Agent for authorization checks before delegation.
+
+## June 21 update: ARD makes discovery a governed registry problem
+
+GitHub Agent Finder and the Agentic Resource Discovery specification move agent discovery from benchmark pattern into product infrastructure. An AI client can ask a registry for MCP servers, skills, tools, agents, APIs, and workflows that fit a task. GitHub exposes this through Copilot Agent Finder, and Hugging Face released `hf-discover` as an ARD client/server reference.
+
+The important correction is that discovery is not authorization. Relevance score is not trust score. A serious registry should expose enough metadata for policy: publisher, media type, invocation method, authority level, hosting location, source registry, and whether the resource is approved for this principal and workflow.
+
+Practical lesson:
+- maintain a private capability registry for approved resources;
+- scope discovery by principal, tenant, repo, workflow, and risk tier;
+- log query, result set, selected resource, publisher, media type, score, and install decision;
+- never auto-install a discovered resource without policy or human approval;
+- evaluate discovery using both retrieval quality and downstream completion/safety outcomes.
+
+Sources:
+- [GitHub Agent Finder](https://github.blog/changelog/2026-06-17-agent-finder-for-github-copilot-now-available/)
+- [Agentic Resource Discovery specification](https://commandline.microsoft.com/agentic-resource-discovery-specification-ard/)
+- [GitHub Agent Finder docs](https://docs.github.com/en/copilot/concepts/mcp-management#agent-finder)
+- [ards-project/connectors](https://github.com/ards-project/connectors)
+- [huggingface/hf-discover](https://github.com/huggingface/hf-discover)
 
 ## Pitfalls
 

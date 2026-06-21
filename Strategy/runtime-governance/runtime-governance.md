@@ -1,6 +1,6 @@
 # Runtime Governance
 
-Last updated: 2026-06-20
+Last updated: 2026-06-21
 
 Runtime governance is becoming the real control plane for agent systems.
 
@@ -640,6 +640,23 @@ Practical lesson:
 
 Source:
 - [LedgerAgent](https://arxiv.org/abs/2606.20529)
+
+## June 21 update: least privilege needs runtime evidence, not only IAM
+
+ToolPrivBench turns least privilege into an agent-runtime evaluation problem. The failure is not that a tool lacks IAM. The failure is that the agent selects or escalates to a higher-privilege tool when a lower-privilege path is sufficient, especially after a transient failure.
+
+The runtime-governance correction is to log the decision context around tool choice: available alternatives, privilege tier, reason for escalation, failure class, retry count, and final effect. A router that cannot explain why lower privilege was insufficient should not get the higher-privilege tool by default.
+
+Practical lesson:
+- add privilege tiers and effect classes to every agent-visible tool;
+- include available lower-privilege alternatives in the trace;
+- distinguish transient failure from semantic insufficiency;
+- require explicit escalation reasons and policy verdicts;
+- build paired tool-choice fixtures into runtime regression tests.
+
+Sources:
+- [ToolPrivBench](https://arxiv.org/abs/2606.20023v1)
+- [AISafetyHub/agent-tool-selection-bias](https://github.com/AISafetyHub/agent-tool-selection-bias)
 
 ## Working conclusion
 

@@ -1,6 +1,6 @@
 # Agent Gateway Governance
 
-Last updated: 2026-06-20
+Last updated: 2026-06-21
 
 Agent gateway governance is the control-plane discipline for exposing enterprise tools, data, and workflows to autonomous agents.
 
@@ -20,6 +20,8 @@ Core sources:
 - NSA MCP security release: https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/Article/4496698/nsa-releases-security-design-considerations-for-ai-driven-automation-leveraging/
 - Semantic Gateway paper: https://arxiv.org/abs/2604.25555v1
 - Jarvis Registry: https://github.com/ascending-llc/jarvis-registry
+- Agentic Resource Discovery: https://commandline.microsoft.com/agentic-resource-discovery-specification-ard/
+- ToolPrivBench: https://arxiv.org/abs/2606.20023v1
 
 ## Core thesis
 
@@ -711,3 +713,25 @@ Sources:
 - [Copilot code review: AGENTS.md support and UI improvements](https://github.blog/changelog/2026-06-18-copilot-code-review-agents-md-support-and-ui-improvements)
 - [Detecting Duplicate Issues and issue fields MCP support for GitHub Issues](https://github.blog/changelog/2026-06-18-duplicate-detection-and-issue-fields-mcp-support-for-github-issues)
 - [github/github-mcp-server](https://github.com/github/github-mcp-server)
+
+## June 21 update: discovery and privilege choice are gateway decisions
+
+GitHub Agent Finder, ARD, and ToolPrivBench sharpen two gateway responsibilities that are easy to miss.
+
+First, discovery is authority. If an agent can search an approved registry for tools, skills, MCP servers, and workflows, the gateway must scope what can appear in that result set. Relevance ranking cannot stand in for trust or authorization.
+
+Second, least privilege is not guaranteed by a safety prompt. ToolPrivBench shows that agents frequently select or escalate to higher-privilege tools even when lower-privilege alternatives are sufficient, especially after transient failures.
+
+Practical lesson:
+- treat capability discovery as a policy-mediated gateway call;
+- keep relevance scores separate from trust and authorization scores;
+- add privilege tier, declared effects, owner, publisher, registry, and approved workflow to tool metadata;
+- require escalation reasons when lower-privilege tools are available;
+- log transient failures separately from true tool insufficiency;
+- test paired lower/higher privilege alternatives before exposing broad-write or admin tools.
+
+Sources:
+- [GitHub Agent Finder](https://github.blog/changelog/2026-06-17-agent-finder-for-github-copilot-now-available/)
+- [Agentic Resource Discovery specification](https://commandline.microsoft.com/agentic-resource-discovery-specification-ard/)
+- [ToolPrivBench](https://arxiv.org/abs/2606.20023v1)
+- [AISafetyHub/agent-tool-selection-bias](https://github.com/AISafetyHub/agent-tool-selection-bias)

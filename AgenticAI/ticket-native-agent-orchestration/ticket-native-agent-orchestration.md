@@ -1,12 +1,14 @@
 # Ticket-Native Agent Orchestration
 
-Last updated: 2026-04-28
+Last updated: 2026-06-21
 
 Core sources:
 - OpenAI Symphony announcement: https://openai.com/index/open-source-codex-orchestration-symphony
 - openai/symphony: https://github.com/openai/symphony
 - Symphony SPEC.md: https://github.com/openai/symphony/blob/main/SPEC.md
 - Codex App Server: https://developers.openai.com/codex/app-server/
+- Probe-and-Refine Tuning of Repository Guidance for Coding Agents: https://arxiv.org/abs/2606.20512v1
+- Phoenix: Safe GitHub Issue Resolution via Multi-Agent LLMs: https://arxiv.org/abs/2606.20243v1
 
 ## Thesis
 
@@ -73,6 +75,24 @@ Do not confuse orchestration with safety. A Symphony-style loop still needs:
 - per-ticket devcontainers, worktrees, or disposable VMs
 - OpenTelemetry traces over dispatch, agent turns, CI, and review
 - CI/CD gates that can be read and repaired by agents
+
+## June 21 update: guidance and PR safety should be probed before autonomy
+
+Probe-and-Refine and Phoenix extend this topic from orchestration shape into operational quality control.
+
+Probe-and-Refine shows that repo-owned guidance should be tuned with synthetic bug-fix probes. The useful metric is not whether the guidance sounds complete. It is whether it helps the coding agent locate files, choose tests, and produce evaluable patches without reducing precision.
+
+Phoenix shows the issue-to-PR side. A production path needs label/state transitions, role separation, baseline-aware tests, layered safety controls, and explicit handling of WAF filtering, token expiry, permission boundaries, flaky CI, and planner localization failures.
+
+Practical lesson:
+- treat `AGENTS.md` or equivalent repo guidance as a tested artifact;
+- add synthetic issue probes before trusting guidance in live ticket automation;
+- route generated PRs through labels, baseline tests, post-patch comparison, branch protection, and CODEOWNERS;
+- preserve failed localization and failed CI as fixtures for the next guidance refinement pass.
+
+Sources:
+- [Probe-and-Refine Tuning of Repository Guidance for Coding Agents](https://arxiv.org/abs/2606.20512v1)
+- [Phoenix](https://arxiv.org/abs/2606.20243v1)
 
 ## Implementability score
 

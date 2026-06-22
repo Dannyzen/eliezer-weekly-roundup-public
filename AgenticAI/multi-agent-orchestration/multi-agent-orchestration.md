@@ -1,6 +1,6 @@
 # Multi-Agent Orchestration
 
-Last updated: 2026-06-15
+Last updated: 2026-06-22
 
 Multi-agent orchestration is the control layer for deciding when multiple agents should collaborate, which evidence should move between them, and when communication costs exceed the expected benefit.
 
@@ -133,6 +133,22 @@ Practical lesson:
 Sources:
 - [tap](https://arxiv.org/abs/2606.14445v1)
 - [agentsview](https://github.com/kenn-io/agentsview)
+
+## June 22 update: enterprise agent teams should be blueprint-owned
+
+UnifAI adds an implementation-shaped correction to the orchestration thesis. The useful enterprise abstraction is not a free-form group chat. It is a blueprint: named agents, approved tools, retrievers, protocol bridges, graph edges, execution backend, and streaming behavior visible before the run.
+
+That matters because enterprise multi-agent work usually fails at the boundaries: which source was retrieved, which agent had authority to call which tool, whether local testing used the same topology as distributed production, and whether the final trace can explain the route. YAML or visual blueprints make those boundaries reviewable.
+
+Practical lesson:
+- represent each agent team as a versioned graph or YAML blueprint;
+- separate local graph execution from durable distributed workflow execution;
+- require blueprint diffs before adding agents, tools, retrievers, or MCP/A2A endpoints;
+- preserve graph node, edge, retriever, protocol, and backend IDs in every trace;
+- compare blueprint variants against single-agent and simpler graph baselines before promoting them.
+
+Source:
+- [UnifAI](https://github.com/redhat-community-ai-tools/UnifAI)
 
 ## Implementability score
 

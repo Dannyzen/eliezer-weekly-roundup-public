@@ -1,6 +1,6 @@
 # Agent Serving Runtime
 
-Last updated: 2026-06-09
+Last updated: 2026-06-22
 
 Core sources:
 - AGENTSERVESIM: https://arxiv.org/abs/2606.09613v1
@@ -24,6 +24,16 @@ The useful lesson is to connect the agent trace to the serving layer. If a trace
 - Compare policies by task-level latency, wall-clock time, dollar cost, failure rate, and user-visible wait, not only tokens per second.
 - Treat tool-induced gaps as scheduling opportunities, but preserve privacy and tenant isolation when reusing cache or moving workloads.
 - Calibrate simulator predictions against live serving telemetry before trusting them for online routing.
+
+## June 22 update: serving policy needs runtime-level trace fields, not framework names
+
+Google ADK and tRPC-Agent-Go reinforce the serving-runtime point from the application side. If an agent framework exposes graph workflows, tasks, sessions, memory, tool calls, retries, and cancellation, the serving layer can treat an agent as a stateful program rather than a pile of unrelated chat completions.
+
+The practical move is to preserve serving-relevant fields regardless of framework: workflow node, agent role, model call, selected model, session ID, memory touch, tool wait, retry reason, cancellation, human pause, cache reuse, latency, and cost. Without those fields, model routing and capacity planning stay blind.
+
+Sources:
+- [ADK docs](https://adk.dev/)
+- [tRPC-Agent-Go](https://github.com/trpc-group/trpc-agent-go)
 
 ## What to avoid
 

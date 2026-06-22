@@ -1,6 +1,6 @@
 # Agent Harness Architecture
 
-Last updated: 2026-06-17
+Last updated: 2026-06-22
 
 Agent harness architecture is becoming the part of the agent stack that teams can actually standardize.
 
@@ -227,6 +227,26 @@ Sources:
 - [ActiveGraph site](https://activegraph.ai/)
 - [Adapting the Interface, Not the Model](https://arxiv.org/abs/2605.22166)
 - [Event-Sourced Agent Runtime](../event-sourced-agent-runtime/event-sourced-agent-runtime.md)
+
+## June 22 update: production agent frameworks are becoming service-language infrastructure
+
+Google ADK and tRPC-Agent-Go update the harness architecture thesis from the implementation side. Agent frameworks are starting to look less like demo scaffolds and more like ordinary service runtimes: graph workflows, typed tasks, sessions, memory services, tool calls, human pauses, cancellation, evaluation hooks, and OpenTelemetry-style observability.
+
+The durable lesson is to evaluate frameworks by their control surfaces, not their agent branding. A service team should be able to inspect where state lives, how graph topology is reviewed, how tool calls are traced, how retries and HITL pauses are represented, and how the runtime deploys inside existing platform standards.
+
+Practical lesson:
+- choose a framework by service ownership, trace coverage, workflow typing, cancellation behavior, and deployment fit;
+- keep graph workflow definitions in code review;
+- require session, memory, tool, model, retry, and cancellation metadata in traces;
+- test task delegation and human approval as workflow nodes instead of side-channel chat messages;
+- compare Python, Go, and Java surfaces on the same small replay suite before standardizing.
+
+Sources:
+- [ADK docs](https://adk.dev/)
+- [google/adk-python](https://github.com/google/adk-python)
+- [google/adk-go](https://github.com/google/adk-go)
+- [google/adk-java](https://github.com/google/adk-java)
+- [tRPC-Agent-Go](https://github.com/trpc-group/trpc-agent-go)
 
 ## Core thesis
 

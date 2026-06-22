@@ -586,6 +586,25 @@ Sources:
 - [Is it agentic enough?](https://huggingface.co/blog/is-it-agentic-enough)
 - [OpenAI Deployment Simulation](https://openai.com/index/deployment-simulation)
 
+## June 22 update: domain benchmarks need tools, specialists, and replay
+
+AssetOpsBench is useful because it moves domain-agent evaluation away from generic final-answer scoring. The benchmark includes industrial scenarios, domain-specific MCP servers, specialist agents, orchestration blueprints, trajectory replay, and failure taxonomy analysis. That is the shape real vertical-agent products need.
+
+The portable lesson is to build eval worlds around the domain's actual tools and workflow roles. A maintenance agent, finance agent, medical admin agent, or internal ops agent should be scored on evidence gathered, tool parameters, specialist handoffs, intermediate decisions, final work product, and replayable failure labels.
+
+Practical lesson:
+- start with 20 to 50 realistic scenarios from one operating domain;
+- expose domain tools as typed adapters or MCP-style servers;
+- score intermediate steps separately from final answers;
+- preserve trajectory replays and failure labels as engineering inputs;
+- compare plan-and-execute against agents-as-tools on the same scenarios.
+
+Sources:
+- [IBM/AssetOpsBench](https://github.com/IBM/AssetOpsBench)
+- [IBM Research AssetOpsBench writeup](https://research.ibm.com/blog/asset-ops-benchmark)
+- [AssetOpsBench paper](https://arxiv.org/abs/2506.03828v1)
+- [AssetOpsBench Hugging Face article](https://huggingface.co/blog/ibm-research/assetopsbench-playground-on-hugging-face)
+
 ## Working conclusion
 
 Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, fingerprinted, and scored across safety, robustness, parameter correctness, environment fidelity, runtime-specific harm dimensions, staged semantic/audit/sandbox harm, agent-effort telemetry, real-user collaboration traces, realistic workspace state, live workflow demand, cost, adversarial task quality, long-range state propagation, abstention, protocol conformance, tool-shortlist quality, environment-factory coverage, quantitative goal persistence, procedural behavior, partial-progress preference, and oracle strength, improvement efforts will stay shallow and trust claims will stay unearned.

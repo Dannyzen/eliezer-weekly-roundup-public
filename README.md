@@ -5,11 +5,11 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Daily scan, 2026-06-21: [roundup](roundups/2026-06-21.md)
-- AgenticAI daily analysis: [2026-06-21](AgenticAI/2026-06-21/reasoning.md)
-- Strategy daily analysis: [2026-06-21](Strategy/2026-06-21/sovereignty.md)
+- Daily scan, 2026-06-22: [roundup](roundups/2026-06-22.md)
+- AgenticAI daily analysis: [2026-06-22](AgenticAI/2026-06-22/reasoning.md)
+- Latest Strategy analysis: [2026-06-21](Strategy/2026-06-21/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
-- Fresh Strategy index: [Strategy README](Strategy/README.md)
+- Current Strategy index: [Strategy README](Strategy/README.md)
 - Previous Friday synthesis: [week ending 2026-06-19](roundups/2026-06-19.md)
 - Deep Dive Wednesday, 2026-06-17: [Evidence Provenance Control Plane](Strategy/evidence-provenance-control-plane/evidence-provenance-control-plane.md)
 - Prior Friday synthesis: [week ending 2026-06-12](roundups/2026-06-12.md)
@@ -18,13 +18,12 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Current thesis
 
-The agent stack is moving from permissive prompts and ad hoc tool catalogs to tested authority surfaces. The useful question is no longer only "can the model use more memory, search, tools, skills, or agents?" It is "which runtime object owns discovery, guidance, privilege, state, and proof before the agent acts?"
+The agent stack is moving from permissive prompts and ad hoc tool catalogs to tested authority surfaces. The useful question is no longer only "can the model use more memory, search, tools, skills, or agents?" It is "which runtime object owns discovery, guidance, privilege, state, topology, and proof before the agent acts?"
 
-The 2026-06-21 daily scan adds four concrete control surfaces to that model:
-- Repository guidance should be probe-tuned like an operational artifact, not written once as prompt prose.
-- Issue-to-PR agents need label/state machines, baseline tests, and host-side safety gates.
-- Agentic Resource Discovery makes capability search a governed plane, not only a context-saving feature.
-- Least-privilege tool routing needs explicit tests because general safety alignment does not reliably teach it.
+The 2026-06-22 daily scan adds three implementation surfaces to that model:
+- Production agent runtimes are moving into service-language SDKs with graph workflows, sessions, memory, observability, and deployment controls.
+- Enterprise multi-agent workflows should be blueprint-owned, with roles, tools, retrievers, protocol bridges, and execution backend visible before runtime.
+- Domain-agent evaluation should copy AssetOpsBench's shape: realistic scenarios, domain tools, specialist roles, intermediate-step scoring, trajectory replay, and failure labels.
 
 ## Browse by category
 

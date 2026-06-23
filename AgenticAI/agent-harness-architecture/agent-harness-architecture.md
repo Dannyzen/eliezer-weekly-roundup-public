@@ -1,10 +1,10 @@
 # Agent Harness Architecture
 
-Last updated: 2026-06-22
+Last updated: 2026-06-23
 
 Agent harness architecture is becoming the part of the agent stack that teams can actually standardize.
 
-The durable pattern across recent work is simple: the interesting engineering differences are no longer only inside the model. They sit in the non-LLM infrastructure around it — context services, tool mediation, delegation, isolation, orchestration, and safety controls. Once those choices become explicit, agent systems stop looking like prompt tricks and start looking like software architecture.
+The durable pattern across recent work is simple: the interesting engineering differences are no longer only inside the model. They sit in the non-LLM infrastructure around it: context services, tool mediation, delegation, isolation, orchestration, and safety controls. Once those choices become explicit, agent systems stop looking like prompt tricks and start looking like software architecture.
 
 ## Why this topic now
 
@@ -776,6 +776,23 @@ Sources:
 - [A Framework for Evaluating Agentic Skills at Scale](https://arxiv.org/abs/2606.17819v1)
 - [All Smoke, No Alarm](https://arxiv.org/abs/2606.18168v1)
 
+## June 23 update: coding harnesses need process rubrics, not only tests
+
+RigorBench adds a harness-level quality gate this topic needed. A coding-agent harness should not be judged only by the final diff or final test result. It should expose whether the agent planned before mutation, verified its own work, recovered from errors without thrashing, abstained when context was insufficient, and preserved atomic step integrity.
+
+GroundEval adds the evidence-path version of the same correction. The harness has to keep enough trace structure to prove which artifact supported the final claim or patch rationale.
+
+Practical lesson:
+- make plan-before-mutation a harness event;
+- log verifier runs and skipped-verifier reasons;
+- detect repeated failed fixes and tool thrashing as process failures;
+- add an abstention route for insufficient context or risky mutations;
+- tie final answers and patch rationales back to retrieved artifacts in the trace.
+
+Sources:
+- [RigorBench](https://arxiv.org/abs/2606.22678v1)
+- [GroundEval](https://arxiv.org/abs/2606.22737v1)
+
 ## Working conclusion
 
-Agent harness architecture is becoming one of the clearest ways to tell whether a team is building a toy, a developer tool, or a real operating substrate. The winning systems will make context explicit, tool boundaries governable, restore paths safe, typed component interfaces inspectable, orchestration empirically justified and quality-gated, skill routing compositional, test-oracle strength machine-checkable, evidence easy to inspect, environment-specific falsification surfaces routine, real-session misalignment labels routine, proposal-soundness gates explicit, failed trajectories layer-attributed, and production failures routinely promoted into versioned regression fixtures with trajectory and outcome graders.
+Agent harness architecture is becoming one of the clearest ways to tell whether a team is building a toy, a developer tool, or a real operating substrate. The winning systems will make context explicit, tool boundaries governable, restore paths safe, typed component interfaces inspectable, orchestration empirically justified and quality-gated, skill routing compositional, test-oracle strength machine-checkable, evidence easy to inspect, environment-specific falsification surfaces routine, real-session misalignment labels routine, proposal-soundness gates explicit, failed trajectories layer-attributed, process discipline measurable, and production failures routinely promoted into versioned regression fixtures with trajectory and outcome graders.

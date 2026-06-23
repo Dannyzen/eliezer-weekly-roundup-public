@@ -2,49 +2,34 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: Daily scan, 2026-06-21
+## Most Recent Structured Update: Daily scan, 2026-06-23
 
-### Agentic Resource Discovery makes capability discovery governable
+### AgentRiskBOM makes agent authority a machine-readable artifact
 
-Summary: GitHub Agent Finder and the ARD specification turn MCP servers, skills, tools, agents, APIs, and workflows into discoverable resources. The strategic control point is not only what the agent can call, but what it can find.
+Summary: AgentRiskBOM fills the gap left by SBOM, AIBOM, and MLBOM artifacts: deployed agents need a structured record of autonomy level, tools, memory, credentials, approval gates, audit signals, delegation, and external effects.
 
-Analysis: [daily sovereignty analysis](2026-06-21/sovereignty.md#agentic-resource-discovery-makes-capability-discovery-a-governed-plane)
-Durable topics: [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md), [Runtime Governance](runtime-governance/runtime-governance.md), [Agent Discovery](../AgenticAI/agent-discovery/agent-discovery.md)
-Core sources: [GitHub Agent Finder](https://github.blog/changelog/2026-06-17-agent-finder-for-github-copilot-now-available/), [ARD specification](https://commandline.microsoft.com/agentic-resource-discovery-specification-ard/), [GitHub Agent Finder docs](https://docs.github.com/en/copilot/concepts/mcp-management#agent-finder), [huggingface/hf-discover](https://github.com/huggingface/hf-discover)
+Analysis: [daily sovereignty analysis](2026-06-23/sovereignty.md#agentriskbom-makes-agent-authority-a-machine-readable-artifact)
+Durable topics: [Agent Authority Manifests](agent-authority-manifests/agent-authority-manifests.md), [Runtime Governance](runtime-governance/runtime-governance.md), [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md)
+Core source: [AgentRiskBOM](https://arxiv.org/abs/2606.21877v1)
 Implementable now:
-- create a private registry of approved MCP servers, skills, agents, and workflows
-- scope discovery by principal, tenant, repo, workflow, and risk tier
-- log discovery query, returned capability IDs, selected resource, publisher, media type, and install decision
+- define a compact authority manifest for each agent workflow
+- diff manifests across deployments and block unreviewed authority expansion
+- map high-risk capabilities to policy checks, approvals, sandboxes, rate limits, or logging requirements
 Tools, repos, and methodologies worth exploring:
-- GitHub Agent Finder, `ards-project/connectors`, `huggingface/hf-discover`, MCP registries, allowlist enforcement, OpenTelemetry discovery spans
-Implementability score: 0.84
+- JSON Schema authority manifests, CycloneDX/SPDX adjacency, OPA, Cedar, OpenFGA, OpenTelemetry authority spans, CI authority-drift checks
+Implementability score: 0.82
 
-### Least-privilege tool choice needs explicit evaluation and routing policy
+### PORTICO closes the lingering-authority gap with revocable capabilities
 
-Summary: ToolPrivBench shows that agents often choose or escalate to higher-privilege tools even when lower-privilege alternatives are enough. General safety alignment and prompt controls do not reliably solve least-privilege tool routing.
+Summary: Lingering Authority shows that coding agents often retain file, git, network, or write authority after the subgoal that justified it has closed. PORTICO uses task contracts, closure predicates, and epoch-bound handles to revoke temporary capabilities.
 
-Analysis: [daily sovereignty analysis](2026-06-21/sovereignty.md#least-privilege-tool-choice-is-not-solved-by-general-safety-alignment)
-Durable topics: [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md), [Runtime Governance](runtime-governance/runtime-governance.md), [Agent Network Containment](agent-network-containment/agent-network-containment.md)
-Core sources: [ToolPrivBench paper](https://arxiv.org/abs/2606.20023v1), [AISafetyHub/agent-tool-selection-bias](https://github.com/AISafetyHub/agent-tool-selection-bias)
+Analysis: [daily sovereignty analysis](2026-06-23/sovereignty.md#portico-closes-the-lingering-authority-gap-with-revocable-capabilities)
+Durable topics: [Agent Authority Manifests](agent-authority-manifests/agent-authority-manifests.md), [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md), [Runtime Governance](runtime-governance/runtime-governance.md)
+Core source: [Lingering Authority](https://arxiv.org/abs/2606.22504v1)
 Implementable now:
-- split tools into read, limited-write, broad-write, admin, and external-effect tiers
-- require escalation justification when lower-privilege tools are available
-- test transient-failure paths because failures amplify privilege escalation
+- issue opaque capability handles instead of exposing broad credentials or ambient tool access
+- bind grants to principal, workflow, tool, resource, effect, and epoch
+- remove closed handles from the next planner context and reject stale replay before execution
 Tools, repos, and methodologies worth exploring:
-- ToolPrivBench-style paired tool tests, OPA or Cedar policy, gateway traces with lower-privilege alternatives and escalation reason
-Implementability score: 0.77
-
-### Phoenix reinforces host-state policy for coding autonomy
-
-Summary: Phoenix's issue-to-PR system shows that coding autonomy should sit behind labels, baseline tests, state transitions, permission boundaries, and PR review, not inside an unconstrained agent loop.
-
-Analysis: [daily sovereignty analysis](2026-06-21/sovereignty.md#phoenix-reinforces-that-coding-autonomy-belongs-behind-host-state-policy)
-Durable topics: [Runtime Governance](runtime-governance/runtime-governance.md), [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md), [Ticket-Native Agent Orchestration](../AgenticAI/ticket-native-agent-orchestration/ticket-native-agent-orchestration.md)
-Core source: [Phoenix](https://arxiv.org/abs/2606.20243v1)
-Implementable now:
-- gate generated PRs through labels, issue fields, baseline/post-patch tests, branch protection, and CODEOWNERS
-- preserve operational failure states such as WAF filtering, token expiry, permission denial, and flaky CI
-- use generated PR review queues rather than silent merge paths
-Tools, repos, and methodologies worth exploring:
-- GitHub webhooks, issue fields, GitHub Actions, Checks API, SWE-bench Lite, CODEOWNERS, branch protection
-Implementability score: 0.72
+- reference monitors, typed tool catalogs, task contracts, OPA/Cedar policies over task stage and capability epoch, scoped git/filesystem/network grants, OpenTelemetry grant and closure events
+Implementability score: 0.76

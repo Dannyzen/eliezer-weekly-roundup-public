@@ -5,11 +5,12 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Daily scan, 2026-06-22: [roundup](roundups/2026-06-22.md)
-- AgenticAI daily analysis: [2026-06-22](AgenticAI/2026-06-22/reasoning.md)
-- Latest Strategy analysis: [2026-06-21](Strategy/2026-06-21/sovereignty.md)
+- Daily scan, 2026-06-23: [roundup](roundups/2026-06-23.md)
+- AgenticAI daily analysis: [2026-06-23](AgenticAI/2026-06-23/reasoning.md)
+- Strategy daily analysis: [2026-06-23](Strategy/2026-06-23/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
-- Current Strategy index: [Strategy README](Strategy/README.md)
+- Fresh Strategy index: [Strategy README](Strategy/README.md)
+- Previous daily scan: [2026-06-22](roundups/2026-06-22.md)
 - Previous Friday synthesis: [week ending 2026-06-19](roundups/2026-06-19.md)
 - Deep Dive Wednesday, 2026-06-17: [Evidence Provenance Control Plane](Strategy/evidence-provenance-control-plane/evidence-provenance-control-plane.md)
 - Prior Friday synthesis: [week ending 2026-06-12](roundups/2026-06-12.md)
@@ -20,10 +21,11 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 The agent stack is moving from permissive prompts and ad hoc tool catalogs to tested authority surfaces. The useful question is no longer only "can the model use more memory, search, tools, skills, or agents?" It is "which runtime object owns discovery, guidance, privilege, state, topology, and proof before the agent acts?"
 
-The 2026-06-22 daily scan adds three implementation surfaces to that model:
-- Production agent runtimes are moving into service-language SDKs with graph workflows, sessions, memory, observability, and deployment controls.
-- Enterprise multi-agent workflows should be blueprint-owned, with roles, tools, retrievers, protocol bridges, and execution backend visible before runtime.
-- Domain-agent evaluation should copy AssetOpsBench's shape: realistic scenarios, domain tools, specialist roles, intermediate-step scoring, trajectory replay, and failure labels.
+The 2026-06-23 daily scan adds four implementation surfaces to that model:
+- Agent workflows need machine-readable authority manifests that state what the agent can access, remember, change, delegate, and prove.
+- Temporary file, git, network, and external-effect permissions should become revocable capability handles, not ambient task-long access.
+- Stateful agent evaluation should verify the evidence path through search, fetch, citation, and access-control traces before using LLM judges.
+- Coding-agent evaluation should score planning, verification, recovery, abstention, and atomic transitions, not only final test pass.
 
 ## Browse by category
 
@@ -53,6 +55,7 @@ The 2026-06-22 daily scan adds three implementation surfaces to that model:
 
 ### Strategy
 
+- [Agent Authority Manifests](Strategy/agent-authority-manifests/agent-authority-manifests.md)
 - [Evidence Provenance Control Plane](Strategy/evidence-provenance-control-plane/evidence-provenance-control-plane.md)
 - [RL Training Governance](Strategy/rl-training-governance/rl-training-governance.md)
 - [Agent Network Containment](Strategy/agent-network-containment/agent-network-containment.md)

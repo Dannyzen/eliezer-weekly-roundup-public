@@ -1,6 +1,6 @@
 # Agent Gateway Governance
 
-Last updated: 2026-06-21
+Last updated: 2026-06-23
 
 Agent gateway governance is the control-plane discipline for exposing enterprise tools, data, and workflows to autonomous agents.
 
@@ -735,3 +735,18 @@ Sources:
 - [Agentic Resource Discovery specification](https://commandline.microsoft.com/agentic-resource-discovery-specification-ard/)
 - [ToolPrivBench](https://arxiv.org/abs/2606.20023v1)
 - [AISafetyHub/agent-tool-selection-bias](https://github.com/AISafetyHub/agent-tool-selection-bias)
+
+## June 23 update: gateway policy needs authority manifests and revocation epochs
+
+AgentRiskBOM and Lingering Authority extend gateway governance from tool admission to authority lifecycle management. The gateway should not only decide whether a tool is visible or callable. It should know which manifest authorized the capability, which task episode granted it, which closure predicate revoked it, and whether the current handle is stale.
+
+Practical lesson:
+- attach authority-manifest IDs to gateway sessions;
+- scope discovery and execution by manifest, principal, workflow, data class, and task stage;
+- issue opaque, epoch-bound handles for temporary grants;
+- record grant, invoke, close, denial, and stale-replay events in gateway traces;
+- diff authority manifests before changing a workflow's MCP servers, credentials, memory scope, or external effects.
+
+Sources:
+- [AgentRiskBOM](https://arxiv.org/abs/2606.21877v1)
+- [Lingering Authority](https://arxiv.org/abs/2606.22504v1)

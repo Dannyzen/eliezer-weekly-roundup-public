@@ -605,6 +605,21 @@ Sources:
 - [AssetOpsBench paper](https://arxiv.org/abs/2506.03828v1)
 - [AssetOpsBench Hugging Face article](https://huggingface.co/blog/ibm-research/assetopsbench-playground-on-hugging-face)
 
+## June 23 update: evidence-path and process-discipline scoring move eval below the answer
+
+GroundEval and RigorBench update this topic with two practical corrections. First, stateful agent evaluation should deterministically check the evidence path: what the agent searched, fetched, cited, and was permitted to access. Second, coding-agent evaluation should score process discipline: planning, verification, recovery, abstention, and atomic step integrity.
+
+Practical lesson:
+- store `source_id`, `raw_output_ref`, retrieval time, access scope, and final-claim dependency in the trace;
+- fail answers that depend on artifacts the agent never fetched;
+- build silence, perspective, and counterfactual fixtures before relying on LLM judges;
+- score coding runs for explicit plans, verifier use, recovery quality, abstention, and doom-loop avoidance;
+- treat a reckless lucky pass as lower quality than a disciplined pass.
+
+Sources:
+- [GroundEval](https://arxiv.org/abs/2606.22737v1)
+- [RigorBench](https://arxiv.org/abs/2606.22678v1)
+
 ## Working conclusion
 
-Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, fingerprinted, and scored across safety, robustness, parameter correctness, environment fidelity, runtime-specific harm dimensions, staged semantic/audit/sandbox harm, agent-effort telemetry, real-user collaboration traces, realistic workspace state, live workflow demand, cost, adversarial task quality, long-range state propagation, abstention, protocol conformance, tool-shortlist quality, environment-factory coverage, quantitative goal persistence, procedural behavior, partial-progress preference, and oracle strength, improvement efforts will stay shallow and trust claims will stay unearned.
+Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, fingerprinted, and scored across safety, robustness, parameter correctness, environment fidelity, runtime-specific harm dimensions, staged semantic/audit/sandbox harm, agent-effort telemetry, real-user collaboration traces, realistic workspace state, live workflow demand, cost, adversarial task quality, long-range state propagation, abstention, protocol conformance, tool-shortlist quality, environment-factory coverage, quantitative goal persistence, procedural behavior, partial-progress preference, oracle strength, deterministic evidence paths, and coding-process discipline, improvement efforts will stay shallow and trust claims will stay unearned.

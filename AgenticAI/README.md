@@ -2,49 +2,34 @@
 
 This index tracks the most recent structured update. Each finding includes a short human-readable summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: Daily scan, 2026-06-22
+## Most Recent Structured Update: Daily scan, 2026-06-23
 
-### Service-language agent runtimes are becoming real infrastructure
+### GroundEval makes evidence-path evaluation deterministic
 
-Summary: Google ADK and tRPC-Agent-Go show agent frameworks moving into normal service-language runtimes with graph workflows, sessions, memory, tool calling, evaluation, and observability.
+Summary: GroundEval replaces LLM-as-judge scoring for stateful agents with deterministic checks over what the agent searched, fetched, cited, and was allowed to access. It catches plausible answers that are not supported by the actual trace.
 
-Analysis: [daily reasoning analysis](2026-06-22/reasoning.md#service-language-agent-runtimes-are-becoming-real-infrastructure)
-Durable topics: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Agent Serving Runtime](agent-serving-runtime/agent-serving-runtime.md), [Enterprise MCP Orchestration](enterprise-mcp-orchestration/enterprise-mcp-orchestration.md)
-Core sources: [ADK docs](https://adk.dev/), [google/adk-python](https://github.com/google/adk-python), [google/adk-go](https://github.com/google/adk-go), [google/adk-java](https://github.com/google/adk-java), [tRPC-Agent-Go](https://github.com/trpc-group/trpc-agent-go)
+Analysis: [daily reasoning analysis](2026-06-23/reasoning.md#groundeval-makes-evidence-path-evaluation-deterministic)
+Durable topics: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Evidence Provenance Control Plane](../Strategy/evidence-provenance-control-plane/evidence-provenance-control-plane.md)
+Core source: [GroundEval](https://arxiv.org/abs/2606.22737v1)
 Implementable now:
-- prototype one internal workflow in ADK or tRPC-Agent-Go
-- require workflow node, agent role, tool call, session, memory, retry, and cancellation trace fields
-- keep graph topology under code review instead of letting prompts invent orchestration at runtime
+- add `source_id`, `raw_output_ref`, `retrieval_time`, and `access_scope` fields to agent traces
+- fail evaluation when a final answer depends on an artifact absent from the trace
+- build silence, perspective, and counterfactual tests before relying on judge models
 Tools, repos, and methodologies worth exploring:
-- Google ADK, tRPC-Agent-Go, OpenTelemetry spans, graph workflow replay fixtures, A2A and MCP adapters after local state and traces are explicit
-Implementability score: 0.82
+- JSONL/OpenTelemetry trace exports, deterministic evidence-path evaluators, source-aware claim checks, access-scope tests, absence-claim regression suites
+Implementability score: 0.84
 
-### UnifAI makes enterprise multi-agent orchestration blueprint-driven
+### RigorBench measures coding-agent process discipline
 
-Summary: UnifAI packages enterprise RAG, pluggable agents, YAML or visual blueprints, A2A/MCP protocol support, local LangGraph execution, and distributed Temporal execution. The core pattern is reviewable workflow topology.
+Summary: RigorBench scores autonomous coding agents on planning, verification, recovery, abstention, and atomic step integrity, not only whether the final patch passes. It gives teams a rubric for catching reckless successful runs.
 
-Analysis: [daily reasoning analysis](2026-06-22/reasoning.md#unifai-shows-enterprise-multi-agent-orchestration-is-becoming-blueprint-driven)
-Durable topics: [Multi-Agent Orchestration](multi-agent-orchestration/multi-agent-orchestration.md), [Enterprise MCP Orchestration](enterprise-mcp-orchestration/enterprise-mcp-orchestration.md), [Agentic Search and Retrieval](agentic-search/agentic-search.md)
-Core source: [redhat-community-ai-tools/UnifAI](https://github.com/redhat-community-ai-tools/UnifAI)
+Analysis: [daily reasoning analysis](2026-06-23/reasoning.md#rigorbench-measures-how-coding-agents-work-not-only-whether-they-pass)
+Durable topics: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Skills as Control](skills-as-control/skills-as-control.md)
+Core source: [RigorBench](https://arxiv.org/abs/2606.22678v1)
 Implementable now:
-- represent agent teams as YAML or graph blueprints with explicit roles, retrievers, tools, protocols, and execution backend
-- require blueprint diffs and trace IDs before deployment
-- separate local graph execution from distributed durable workflow execution
+- add process-rubric checks to coding-agent replay suites
+- require explicit plans before non-trivial mutations
+- score verification coverage, recovery behavior, doom loops, and abstention quality
 Tools, repos, and methodologies worth exploring:
-- UnifAI, LangGraph, Temporal, enterprise vector stores, approved Slack/Jira/document/wiki connectors, MCP/A2A gateway policy
-Implementability score: 0.70
-
-### AssetOpsBench makes domain agent eval concrete enough to copy
-
-Summary: IBM's AssetOpsBench gives a domain benchmark shape for industrial agents: realistic scenarios, domain-specific MCP servers, specialist agents, orchestration blueprints, trajectory replay, and failure taxonomy analysis.
-
-Analysis: [daily reasoning analysis](2026-06-22/reasoning.md#assetopsbench-makes-domain-agent-eval-concrete-enough-to-copy)
-Durable topics: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Multi-Agent Orchestration](multi-agent-orchestration/multi-agent-orchestration.md)
-Core sources: [IBM/AssetOpsBench](https://github.com/IBM/AssetOpsBench), [IBM Research writeup](https://research.ibm.com/blog/asset-ops-benchmark), [AssetOpsBench paper](https://arxiv.org/abs/2506.03828v1), [Hugging Face article](https://huggingface.co/blog/ibm-research/assetopsbench-playground-on-hugging-face)
-Implementable now:
-- create a 20 to 50 scenario benchmark for one real operating domain
-- expose domain tools as MCP-style servers or typed adapters
-- score intermediate steps, tool parameters, specialist handoffs, final decisions, and work-product quality separately
-Tools, repos, and methodologies worth exploring:
-- AssetOpsBench, Agent Trajectory Explorer-style replay, domain-specific MCP servers, trajectory failure taxonomies, scenario suites from real workflows
-Implementability score: 0.64
+- RigorBench-style rubrics, coding-agent trajectory analysis, CI evidence gates, plan-before-mutation checks, agent-authored-diff review policy
+Implementability score: 0.74

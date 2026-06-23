@@ -1,6 +1,6 @@
 # Runtime Governance
 
-Last updated: 2026-06-21
+Last updated: 2026-06-23
 
 Runtime governance is becoming the real control plane for agent systems.
 
@@ -658,6 +658,22 @@ Sources:
 - [ToolPrivBench](https://arxiv.org/abs/2606.20023v1)
 - [AISafetyHub/agent-tool-selection-bias](https://github.com/AISafetyHub/agent-tool-selection-bias)
 
+## June 23 update: authority manifests make runtime governance diffable
+
+AgentRiskBOM and Lingering Authority make runtime governance concrete at two levels. AgentRiskBOM says each deployed agent should have a machine-readable account of autonomy level, tools, memory scope, credentials, approvals, audit signals, delegation, and external effects. Lingering Authority says temporary capabilities must expire when the subgoal that justified them closes.
+
+Practical lesson:
+- ship an authority manifest with every agent workflow;
+- diff tools, credentials, memory scopes, external effects, and delegation rights across releases;
+- compile task contracts into temporary capability handles;
+- revoke handles on trusted closure predicates;
+- reject stale handle replay before side effects occur;
+- log grant, invoke, close, deny, and stale-replay events as runtime governance evidence.
+
+Sources:
+- [AgentRiskBOM](https://arxiv.org/abs/2606.21877v1)
+- [Lingering Authority](https://arxiv.org/abs/2606.22504v1)
+
 ## Working conclusion
 
-Runtime governance is not a niche enterprise concern. It is the natural consequence of giving agents durable memory, tool access, repository permissions, CI/CD authority, local storage, plugins, delegated secrets, shared inference infrastructure, sandboxed execution environments, mutable skills, router paths, and workflow definitions that compile into automations, and broker-mediated mutation paths. The control plane has to move into runtime: inventory the agents, bind identity and scope, manage execution environments, preserve trace evidence, enforce valid next transitions before privileged tools execute, calibrate trust from outcomes, test trajectory-level guardrails offline, budget the guardrails themselves, record serving conditions for replayability, constrain network and inference routes, keep skills immutable while active, and keep tainted inputs from silently becoming trusted agent instructions or script data.
+Runtime governance is not a niche enterprise concern. It is the natural consequence of giving agents durable memory, tool access, repository permissions, CI/CD authority, local storage, plugins, delegated secrets, shared inference infrastructure, sandboxed execution environments, mutable skills, router paths, workflow definitions that compile into automations, broker-mediated mutation paths, authority manifests, and revocable capability handles. The control plane has to move into runtime: inventory the agents, bind identity and scope, manage execution environments, preserve trace evidence, enforce valid next transitions before privileged tools execute, calibrate trust from outcomes, test trajectory-level guardrails offline, budget the guardrails themselves, record serving conditions for replayability, constrain network and inference routes, keep skills immutable while active, and keep tainted inputs from silently becoming trusted agent instructions or script data.

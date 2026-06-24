@@ -4,6 +4,24 @@
 
 Memory has become an authority surface. If stored memories can steer future actions, then memory systems need origin-bound authority, scoped retrieval, temporal supersession, provenance, and policy-governed propagation before the agent sees the memory as context.
 
+## Deep Dive Wednesday: Memory authority control plane
+
+Today's durable finding is that long-term memory has crossed from convenience feature into an authority plane. If a recalled memory can influence a future tool call, file write, credential use, customer action, or delegation decision, then it needs the same kind of scoped authority as any other capability.
+
+The winning source is `Securing LLM-Agent Long-Term Memory Against Poisoning`. It beats the other strong findings this week because it explains how authority survives across time. Handoff logs and GUI/CLI skill coverage improve execution. Origin-bound memory authority changes the trust model underneath future recall.
+
+The practical control plane is clear:
+
+- bind authority at memory write time to origin principal, source event, scope, and allowed effects;
+- preserve authority through summaries, embeddings, handoff files, and tool echoes;
+- require independent trusted corroboration before untrusted memory can be elevated;
+- enforce the same policy on semantic search, direct reads, propagation jobs, and action authorization;
+- test laundering fixtures before trusted memory reaches tools.
+
+Deep dive: [Memory Authority Control Plane](../memory-authority-control-plane/memory-authority-control-plane.md)
+Implementation artifact: [MEM-INV-Bench / TMA-NM](https://github.com/yedidel/mem-inv-bench)
+Implementability score: 0.66
+
 ## Top findings
 
 ### Origin-bound memory authority closes laundering attacks

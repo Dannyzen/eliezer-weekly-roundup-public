@@ -5,6 +5,10 @@ Last updated: 2026-06-24
 Core sources:
 - AgentRiskBOM: A Risk-Scoping Security Bill of Materials for Agentic AI Systems: https://arxiv.org/abs/2606.21877v1
 - Lingering Authority: Revocable Resource-and-Effect Capabilities for Coding Agents: https://arxiv.org/abs/2606.22504v1
+- Securing LLM-Agent Long-Term Memory Against Poisoning: https://arxiv.org/abs/2606.24322v1
+
+Related deep dive:
+- [Memory Authority Control Plane](../memory-authority-control-plane/memory-authority-control-plane.md)
 
 ## Core thesis
 

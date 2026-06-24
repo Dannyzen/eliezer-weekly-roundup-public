@@ -1,6 +1,6 @@
 # Event-Sourced Agent Runtime
 
-Last updated: 2026-06-20
+Last updated: 2026-06-24
 
 Event-sourced agent runtime is the design discipline of making the agent’s durable state an append-only event history, then deriving working state, memory views, audit trails, and replayable traces from that history.
 
@@ -128,3 +128,18 @@ Practical lesson:
 
 Source:
 - [LedgerAgent](https://arxiv.org/abs/2606.20529)
+
+
+## June 24 update: conversational handoff memory belongs in the event log
+
+ESAA-Conversational applies the event-sourced runtime thesis directly to coding-agent handoffs. The useful correction is that `handoff.md`, `state.md`, `decisions.md`, and `tasks.json` should be projections, not hand-written summaries. The source of truth is an append-only conversation event log such as `activity.jsonl`.
+
+Practical lesson:
+- capture visible agent turns as typed events with source, actor, timestamp, and workspace scope;
+- project compact handoff and state views deterministically from the log;
+- keep durable decisions and task curation explicit instead of letting every summary become authority;
+- test that a known event log regenerates the same projections;
+- let heterogeneous coding agents collaborate through local projections rather than private vendor logs.
+
+Source:
+- [ESAA-Conversational](https://arxiv.org/abs/2606.23752)

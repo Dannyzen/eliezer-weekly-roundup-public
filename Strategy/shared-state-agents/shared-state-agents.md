@@ -1,6 +1,6 @@
 # Shared-State Agents
 
-Last updated: 2026-06-18
+Last updated: 2026-06-24
 
 The durable lesson from recent personal-agent work is simple: chat is not enough. If an agent ecosystem has no shared state substrate, every generated tool becomes another isolated island.
 
@@ -86,6 +86,21 @@ Practical lesson:
 Sources:
 - [GateMem](https://arxiv.org/abs/2606.18829v1)
 - [rzhub/GateMem](https://github.com/rzhub/GateMem)
+
+
+## June 24 update: fleet memory needs policy-governed propagation
+
+Governed Shared Memory for Multi-Agent LLM Systems strengthens the shared-state thesis by turning shared memory into a policy service. The important primitives are scoped retrieval, temporal supersession, provenance tracking, and policy-governed propagation. The live MemClaw evaluation matters because it found failures design reviews often miss: direct reads can bypass sub-tenant scope, and pipeline ordering can block contradiction supersession.
+
+Practical lesson:
+- enforce the same policy checks for search retrieval and direct object reads;
+- store writer identity, source event, fleet scope, and derivation chain on memory objects;
+- run contradiction and supersession checks before near-duplicate gates suppress useful updates;
+- test propagation with stale-state, leakage, contradiction, and provenance-reconstruction probes;
+- treat shared memory failures as runtime-governance failures, not only retrieval-quality bugs.
+
+Source:
+- [Governed Shared Memory](https://arxiv.org/abs/2606.24535)
 
 ## Working conclusion
 

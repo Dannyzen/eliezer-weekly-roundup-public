@@ -5,12 +5,12 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Daily scan, 2026-06-23: [roundup](roundups/2026-06-23.md)
-- AgenticAI daily analysis: [2026-06-23](AgenticAI/2026-06-23/reasoning.md)
-- Strategy daily analysis: [2026-06-23](Strategy/2026-06-23/sovereignty.md)
+- Daily scan, 2026-06-24: [roundup](roundups/2026-06-24.md)
+- AgenticAI daily analysis: [2026-06-24](AgenticAI/2026-06-24/reasoning.md)
+- Strategy daily analysis: [2026-06-24](Strategy/2026-06-24/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
-- Previous daily scan: [2026-06-22](roundups/2026-06-22.md)
+- Previous daily scan: [2026-06-23](roundups/2026-06-23.md)
 - Previous Friday synthesis: [week ending 2026-06-19](roundups/2026-06-19.md)
 - Deep Dive Wednesday, 2026-06-17: [Evidence Provenance Control Plane](Strategy/evidence-provenance-control-plane/evidence-provenance-control-plane.md)
 - Prior Friday synthesis: [week ending 2026-06-12](roundups/2026-06-12.md)
@@ -19,13 +19,13 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Current thesis
 
-The agent stack is moving from permissive prompts and ad hoc tool catalogs to tested authority surfaces. The useful question is no longer only "can the model use more memory, search, tools, skills, or agents?" It is "which runtime object owns discovery, guidance, privilege, state, topology, and proof before the agent acts?"
+The agent stack is moving from opaque memory and ad hoc execution surfaces to governed runtime state. The useful question is no longer only "can the agent remember more or use more tools?" It is "which runtime object owns memory authority, shared-state policy, handoff continuity, and execution-surface verification before the agent acts?"
 
-The 2026-06-23 daily scan adds four implementation surfaces to that model:
-- Agent workflows need machine-readable authority manifests that state what the agent can access, remember, change, delegate, and prove.
-- Temporary file, git, network, and external-effect permissions should become revocable capability handles, not ambient task-long access.
-- Stateful agent evaluation should verify the evidence path through search, fetch, citation, and access-control traces before using LLM judges.
-- Coding-agent evaluation should score planning, verification, recovery, abstention, and atomic transitions, not only final test pass.
+The 2026-06-24 daily scan adds four implementation surfaces to that model:
+- Durable memories need origin-bound authority that survives summarization, embeddings, retrieval, and tool echoes.
+- Shared memory for fleets needs scoped retrieval, temporal supersession, provenance tracking, and policy-governed propagation.
+- Coding-agent handoff should be projected from append-only event logs, not recreated from private transcripts.
+- Computer-use reliability depends on matched GUI, CLI, skill-augmented CLI, and hybrid evaluations with final-state verifiers.
 
 ## Browse by category
 

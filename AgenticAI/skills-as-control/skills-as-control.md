@@ -1,6 +1,6 @@
 # Skills as Control
 
-Last updated: 2026-06-20
+Last updated: 2026-06-24
 
 Core sources:
 - From Research Question to Scientific Workflow: Leveraging Agentic AI for Science Automation: https://arxiv.org/abs/2604.21910v1
@@ -595,3 +595,18 @@ Practical lesson:
 
 Source:
 - [Automating SKILL.md Generation for Computer-Using Agents via Interaction Trajectory Mining](https://arxiv.org/abs/2606.20363)
+
+
+## June 24 update: skill coverage is an execution bottleneck
+
+GUI vs. CLI sharpens the skills-as-control thesis from the execution side. In a matched desktop benchmark, original-skill CLI agents lag screen-only GUI agents, but verifier-guided skill augmentation reverses the result. That means missing skill coverage can masquerade as weak model capability.
+
+Practical lesson:
+- evaluate GUI-only, original-skill CLI, augmented-skill CLI, and hybrid agents on the same tasks;
+- use final-state verifiers to identify missing or incomplete skills;
+- promote skills only after held-out verifier improvement, not after a single successful trajectory;
+- track skill coverage by application, workflow category, side effect, and verifier;
+- keep no-skill and wrong-skill baselines so skill libraries prove utility instead of adding context weight.
+
+Source:
+- [GUI vs. CLI](https://arxiv.org/abs/2606.24551)

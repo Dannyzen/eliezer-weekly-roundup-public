@@ -1,6 +1,6 @@
 # Agent Authority Manifests
 
-Last updated: 2026-06-23
+Last updated: 2026-06-24
 
 Core sources:
 - AgentRiskBOM: A Risk-Scoping Security Bill of Materials for Agentic AI Systems: https://arxiv.org/abs/2606.21877v1
@@ -100,3 +100,18 @@ The thin version is implementable now with JSON Schema, policy-as-code, gateway 
 ## Strategic implication
 
 The winning agent platform will not only advertise more tools. It will show a diffable map of what each agent can do, why that authority exists, when it expires, and which trace proves enforcement. Authority manifests are the missing bridge between agent demos and governed deployment.
+
+
+## June 24 update: memory authority must be origin-bound
+
+Securing LLM-Agent Long-Term Memory Against Poisoning extends authority manifests into the memory layer. A memory record can steer future action, so its authority cannot be inferred from content or fragile lineage alone. It has to be bound at write time to origin, scope, and elevation rules that survive summarization, embeddings, retrieval, and tool echoes.
+
+Practical lesson:
+- add memory-authority fields to workflow manifests: origin principal, source event, authority tier, scope, expiration, and elevation rule;
+- prevent summaries from upgrading an untrusted memory into trusted guidance;
+- treat trusted-tool echoes as derived evidence, not as independent authority;
+- require independent corroboration before a memory is promoted into action-authorizing context;
+- test memory laundering through summarization, echo, and repeated mentions.
+
+Source:
+- [Securing LLM-Agent Long-Term Memory Against Poisoning](https://arxiv.org/abs/2606.24322)

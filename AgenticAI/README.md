@@ -2,34 +2,34 @@
 
 This index tracks the most recent structured update. Each finding includes a short human-readable summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: Daily scan, 2026-06-23
+## Most Recent Structured Update: Daily scan, 2026-06-24
 
-### GroundEval makes evidence-path evaluation deterministic
+### ESAA-Conversational turns agent handoff memory into an event log
 
-Summary: GroundEval replaces LLM-as-judge scoring for stateful agents with deterministic checks over what the agent searched, fetched, cited, and was allowed to access. It catches plausible answers that are not supported by the actual trace.
+Summary: ESAA-Conversational treats coding-agent continuity as an append-only event log plus deterministic projections. Instead of trusting private vendor transcripts, agents can consume `handoff.md`, `state.md`, `decisions.md`, and `tasks.json` views generated from `activity.jsonl`.
 
-Analysis: [daily reasoning analysis](2026-06-23/reasoning.md#groundeval-makes-evidence-path-evaluation-deterministic)
-Durable topics: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Evidence Provenance Control Plane](../Strategy/evidence-provenance-control-plane/evidence-provenance-control-plane.md)
-Core source: [GroundEval](https://arxiv.org/abs/2606.22737v1)
+Analysis: [daily reasoning analysis](2026-06-24/reasoning.md#esaa-conversational-turns-agent-handoff-memory-into-an-event-log)
+Durable topics: [Event-Sourced Agent Runtime](event-sourced-agent-runtime/event-sourced-agent-runtime.md), [Memory Systems](memory-systems/memory-systems.md), [Multi-Agent Orchestration](multi-agent-orchestration/multi-agent-orchestration.md)
+Core source: [ESAA-Conversational](https://arxiv.org/abs/2606.23752)
 Implementable now:
-- add `source_id`, `raw_output_ref`, `retrieval_time`, and `access_scope` fields to agent traces
-- fail evaluation when a final answer depends on an artifact absent from the trace
-- build silence, perspective, and counterfactual tests before relying on judge models
+- capture visible conversation turns into a local JSONL or SQLite event store
+- project handoff and state files deterministically from the event log
+- require agents to read projected state before acting after a handoff
 Tools, repos, and methodologies worth exploring:
-- JSONL/OpenTelemetry trace exports, deterministic evidence-path evaluators, source-aware claim checks, access-scope tests, absence-claim regression suites
-Implementability score: 0.84
+- JSONL event logs, SQLite append-only tables, deterministic projectors, `handoff.md`, `state.md`, OpenTelemetry trace IDs, projection regression tests
+Implementability score: 0.88
 
-### RigorBench measures coding-agent process discipline
+### GUI vs CLI shows that skill coverage controls computer-use reliability
 
-Summary: RigorBench scores autonomous coding agents on planning, verification, recovery, abstention, and atomic step integrity, not only whether the final patch passes. It gives teams a rubric for catching reckless successful runs.
+Summary: A matched 440-task desktop benchmark shows screen-only GUI agents at 59.1%, original-skill CLI agents at 48.2%, and verifier-guided skill-augmented CLI agents at 69.3%. The practical bottleneck is often skill coverage, not whether the agent clicks or calls commands.
 
-Analysis: [daily reasoning analysis](2026-06-23/reasoning.md#rigorbench-measures-how-coding-agents-work-not-only-whether-they-pass)
-Durable topics: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Skills as Control](skills-as-control/skills-as-control.md)
-Core source: [RigorBench](https://arxiv.org/abs/2606.22678v1)
+Analysis: [daily reasoning analysis](2026-06-24/reasoning.md#gui-vs-cli-shows-that-skill-coverage-controls-computer-use-reliability)
+Durable topics: [Skills as Control](skills-as-control/skills-as-control.md), [GUI-Tool Path Orchestration](gui-tool-path-orchestration/gui-tool-path-orchestration.md), [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
+Core source: [GUI vs. CLI](https://arxiv.org/abs/2606.24551)
 Implementable now:
-- add process-rubric checks to coding-agent replay suites
-- require explicit plans before non-trivial mutations
-- score verification coverage, recovery behavior, doom loops, and abstention quality
+- run GUI-only, original-skill CLI, augmented-skill CLI, and hybrid baselines on the same tasks
+- use final-state verifiers to identify missing skills
+- log path labels for GUI steps, skill calls, verification, recovery, and abstention
 Tools, repos, and methodologies worth exploring:
-- RigorBench-style rubrics, coding-agent trajectory analysis, CI evidence gates, plan-before-mutation checks, agent-authored-diff review policy
-Implementability score: 0.74
+- desktop sandboxes, final-state verifiers, skill coverage maps, held-out skill augmentation tests, OSWorld-style tasks, JSONL action-path traces
+Implementability score: 0.78

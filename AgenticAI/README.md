@@ -2,34 +2,51 @@
 
 This index tracks the most recent structured update. Each finding includes a short human-readable summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: Daily scan, 2026-06-24
+## Most Recent Structured Update: Daily scan, 2026-06-25
 
-### ESAA-Conversational turns agent handoff memory into an event log
+### ToolBench-X turns tool-use eval into recovery testing
 
-Summary: ESAA-Conversational treats coding-agent continuity as an append-only event log plus deterministic projections. Instead of trusting private vendor transcripts, agents can consume `handoff.md`, `state.md`, `decisions.md`, and `tasks.json` views generated from `activity.jsonl`.
+Summary: ToolBench-X injects recoverable hazards into multi-step tool tasks: specification drift, invocation error, execution failure, output drift, and cross-source conflict. The useful metric is no longer function-call accuracy alone. It is whether the agent diagnoses the hazard and recovers.
 
-Analysis: [daily reasoning analysis](2026-06-24/reasoning.md#esaa-conversational-turns-agent-handoff-memory-into-an-event-log)
-Durable topics: [Event-Sourced Agent Runtime](event-sourced-agent-runtime/event-sourced-agent-runtime.md), [Memory Systems](memory-systems/memory-systems.md), [Multi-Agent Orchestration](multi-agent-orchestration/multi-agent-orchestration.md)
-Core source: [ESAA-Conversational](https://arxiv.org/abs/2606.23752)
+Analysis: [daily reasoning analysis](2026-06-25/reasoning.md#toolbench-x-turns-tool-use-eval-into-recovery-testing)
+Durable topics: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Skills as Control](skills-as-control/skills-as-control.md)
+Core source: [ToolBench-X paper](https://arxiv.org/abs/2606.25819v1)
+Implementation artifact: [Foreverskyou/ToolBench-X](https://github.com/Foreverskyou/ToolBench-X)
 Implementable now:
-- capture visible conversation turns into a local JSONL or SQLite event store
-- project handoff and state files deterministically from the event log
-- require agents to read projected state before acting after a handoff
+- create deterministic tool doubles for high-value internal workflows
+- inject specification drift, invocation errors, execution failures, output drift, and cross-source conflict
+- score diagnosis, retry, fallback, verification, and cross-checking separately from final answers
 Tools, repos, and methodologies worth exploring:
-- JSONL event logs, SQLite append-only tables, deterministic projectors, `handoff.md`, `state.md`, OpenTelemetry trace IDs, projection regression tests
-Implementability score: 0.88
+- ToolBench-X design, pytest fixtures, OpenTelemetry recovery spans, golden answers, targeted recovery-hint ablations
+Implementability score: 0.68
 
-### GUI vs CLI shows that skill coverage controls computer-use reliability
+### Constraint Tax shows tool calling and JSON Schema can interfere
 
-Summary: A matched 440-task desktop benchmark shows screen-only GUI agents at 59.1%, original-skill CLI agents at 48.2%, and verifier-guided skill-augmented CLI agents at 69.3%. The practical bottleneck is often skill coverage, not whether the agent clicks or calls commands.
+Summary: Constraint Tax reports Tool Suppression when open-weight models run tool calling and JSON Schema constrained decoding together. The mitigation is Transparent Two-Pass Execution: let the agent use tools first, then serialize the verified result under a strict schema.
 
-Analysis: [daily reasoning analysis](2026-06-24/reasoning.md#gui-vs-cli-shows-that-skill-coverage-controls-computer-use-reliability)
-Durable topics: [Skills as Control](skills-as-control/skills-as-control.md), [GUI-Tool Path Orchestration](gui-tool-path-orchestration/gui-tool-path-orchestration.md), [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
-Core source: [GUI vs. CLI](https://arxiv.org/abs/2606.24551)
+Analysis: [daily reasoning analysis](2026-06-25/reasoning.md#constraint-tax-shows-tool-calling-and-json-schema-can-interfere)
+Durable topics: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Context Economy](context-economy/context-economy.md), [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
+Core source: [Constraint Tax](https://arxiv.org/abs/2606.25605v1)
 Implementable now:
-- run GUI-only, original-skill CLI, augmented-skill CLI, and hybrid baselines on the same tasks
-- use final-state verifiers to identify missing skills
-- log path labels for GUI steps, skill calls, verification, recovery, and abstention
+- add joint tests for tool calling plus structured output, not only separate tests
+- split action selection from schema serialization when tools disappear under constraints
+- log allowed tools, schema mode, serving backend, selected tool path, and final serializer mode
 Tools, repos, and methodologies worth exploring:
-- desktop sandboxes, final-state verifiers, skill coverage maps, held-out skill augmentation tests, OSWorld-style tasks, JSONL action-path traces
+- two-pass execution scaffolds, structured-output regression fixtures, serving-backend comparison matrices, decoder-mode telemetry
 Implementability score: 0.78
+
+### DESIGN.md makes agent UI context a validated artifact
+
+Summary: DESIGN.md defines a small, lintable format for giving coding agents persistent visual-identity context: YAML design tokens plus Markdown rationale. The broader lesson is that agent context files should be versioned, validated, and diffed like code.
+
+Analysis: [daily reasoning analysis](2026-06-25/reasoning.md#designmd-makes-agent-ui-context-a-validated-artifact)
+Durable topics: [Context Economy](context-economy/context-economy.md), [Skills as Control](skills-as-control/skills-as-control.md)
+Core source: [google-labs-code/design.md](https://github.com/google-labs-code/design.md)
+Package metadata: [@google/design.md](https://registry.npmjs.org/%40google%2Fdesign.md)
+Implementable now:
+- add `DESIGN.md` to UI-heavy repos
+- require agents to read it before UI edits
+- lint and diff design-token changes in CI
+Tools, repos, and methodologies worth exploring:
+- `@google/design.md`, design-token CI, context-file linting, context diff review, agent-readable contracts for security and runbooks
+Implementability score: 0.92

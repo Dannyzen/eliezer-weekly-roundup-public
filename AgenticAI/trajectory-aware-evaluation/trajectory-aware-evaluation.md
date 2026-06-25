@@ -620,6 +620,22 @@ Sources:
 - [GroundEval](https://arxiv.org/abs/2606.22737v1)
 - [RigorBench](https://arxiv.org/abs/2606.22678v1)
 
+## June 25 update: tool reliability needs hazard and constraint interaction tests
+
+ToolBench-X and Constraint Tax update trajectory-aware evaluation from two sides. ToolBench-X shows that a clean function-call benchmark is too forgiving because real tool environments drift, fail, and contradict themselves. Constraint Tax shows that even the decoding mode can become part of the trajectory: a strict JSON Schema mask can suppress tool invocation when tool calling and structured output are enabled together.
+
+Practical lesson:
+- inject recoverable tool hazards into benchmark tasks and score diagnosis, retry, fallback, verification, and cross-check behavior;
+- test tool use and structured output in the same serving mode used in production;
+- log schema constraint mode, available tools, selected tool path, and serializer pass as trace fields;
+- compare test-time scaling against targeted recovery hints and two-pass execution;
+- treat a model that passes tool and JSON tests separately but fails the joint mode as not production-ready.
+
+Sources:
+- [ToolBench-X](https://arxiv.org/abs/2606.25819v1)
+- [Foreverskyou/ToolBench-X](https://github.com/Foreverskyou/ToolBench-X)
+- [Constraint Tax](https://arxiv.org/abs/2606.25605v1)
+
 ## Working conclusion
 
 Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, fingerprinted, and scored across safety, robustness, parameter correctness, environment fidelity, runtime-specific harm dimensions, staged semantic/audit/sandbox harm, agent-effort telemetry, real-user collaboration traces, realistic workspace state, live workflow demand, cost, adversarial task quality, long-range state propagation, abstention, protocol conformance, tool-shortlist quality, environment-factory coverage, quantitative goal persistence, procedural behavior, partial-progress preference, oracle strength, deterministic evidence paths, and coding-process discipline, improvement efforts will stay shallow and trust claims will stay unearned.

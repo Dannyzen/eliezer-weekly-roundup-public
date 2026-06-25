@@ -330,6 +330,21 @@ Sources:
 - [TokenPilot](https://arxiv.org/abs/2606.17016v1)
 - [LightMem2](https://github.com/zjunlp/LightMem2)
 
+## June 25 update: design context should be a validated file, not prompt lore
+
+DESIGN.md is a useful context-economy pattern because it gives agents a compact, validated artifact instead of a long taste prompt. YAML front matter carries normative tokens. Markdown carries rationale. Linting and diffing make the context reviewable before the agent edits UI code.
+
+Practical lesson:
+- put high-value agent context in files with schemas, not only in hidden prompts;
+- distinguish normative machine-readable fields from human rationale;
+- lint context files before agent runs and diff them during review;
+- require agents to cite the context artifact they used when making UI or product changes;
+- reuse the shape for other operational contexts such as security boundaries, data policies, runbooks, and repository conventions.
+
+Sources:
+- [google-labs-code/design.md](https://github.com/google-labs-code/design.md)
+- [@google/design.md npm metadata](https://registry.npmjs.org/%40google%2Fdesign.md)
+
 ## Working conclusion
 
 The future agent stack is not context maximalism. It is context accounting. Systems that know what to admit, retrieve, compress, cache, update incrementally, preserve prefix continuity, and audit will beat systems that merely buy larger windows and hope the model sorts it out.

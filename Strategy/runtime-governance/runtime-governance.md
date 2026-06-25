@@ -1,6 +1,6 @@
 # Runtime Governance
 
-Last updated: 2026-06-23
+Last updated: 2026-06-25
 
 Runtime governance is becoming the real control plane for agent systems.
 
@@ -673,6 +673,23 @@ Practical lesson:
 Sources:
 - [AgentRiskBOM](https://arxiv.org/abs/2606.21877v1)
 - [Lingering Authority](https://arxiv.org/abs/2606.22504v1)
+
+## June 25 update: execution-time safety needs a path the agent cannot fire
+
+The Unfireable Safety Kernel sharpens runtime governance into an only-path requirement. A guardrail inside the agent runtime can request safe behavior, but it cannot be the hard control boundary if the agent can reach the tools, files, APIs, or self-modification seam that the guardrail is supposed to constrain.
+
+The practical target is a separate reference monitor on the mutation path: the agent proposes, the monitor validates authority and policy, the tool accepts only monitor-mediated requests, and the trace preserves the verdict. That is the runtime-governance version of least privilege.
+
+Practical lesson:
+- place high-risk side effects behind a process-separated monitor;
+- require privileged tools to reject direct calls from the agent process;
+- fail closed on parse failure, policy timeout, missing scope, stale epoch, or absent approval evidence;
+- sign or make tamper-evident the allow, deny, timeout, and fail-closed decisions;
+- test bypass attempts, stale capability reuse, guardrail mutation, and direct-tool invocation as runtime fixtures.
+
+Sources:
+- [The Unfireable Safety Kernel](https://arxiv.org/abs/2606.26057v1)
+- [Can Trustless Agents Be Trusted?](https://arxiv.org/abs/2606.26028v1)
 
 ## Working conclusion
 

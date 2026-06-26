@@ -5,13 +5,13 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Daily scan, 2026-06-26: [roundup](roundups/2026-06-26.md)
-- AgenticAI daily analysis: [2026-06-26](AgenticAI/2026-06-26/reasoning.md)
-- Strategy daily analysis: [2026-06-26](Strategy/2026-06-26/sovereignty.md)
-- New durable AgenticAI topic: [Coding Agent Control Plane](AgenticAI/coding-agent-control-plane/coding-agent-control-plane.md)
-- Deep Dive Wednesday, 2026-06-24: [Memory Authority Control Plane](Strategy/memory-authority-control-plane/memory-authority-control-plane.md)
+- Friday synthesis, week ending 2026-06-26: [roundup](roundups/2026-06-26.md)
+- AgenticAI weekly analysis: [2026-06-26](AgenticAI/2026-06-26/reasoning.md)
+- Strategy weekly analysis: [2026-06-26](Strategy/2026-06-26/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
+- New durable AgenticAI topic from this week: [Coding Agent Control Plane](AgenticAI/coding-agent-control-plane/coding-agent-control-plane.md)
+- Deep Dive Wednesday, 2026-06-24: [Memory Authority Control Plane](Strategy/memory-authority-control-plane/memory-authority-control-plane.md)
 - Previous daily scan: [2026-06-25](roundups/2026-06-25.md)
 - Previous Friday synthesis: [week ending 2026-06-19](roundups/2026-06-19.md)
 - Prior Deep Dive Wednesday, 2026-06-17: [Evidence Provenance Control Plane](Strategy/evidence-provenance-control-plane/evidence-provenance-control-plane.md)
@@ -21,15 +21,18 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Current thesis
 
-The agent stack is moving from prompt-managed behavior to explicit control surfaces that can be versioned, compiled, tested, and enforced outside the model's private reasoning loop.
+The agent stack is moving from prompt-managed behavior to explicit control surfaces that can be versioned, compiled, tested, scoped, revoked, and enforced outside the model's private reasoning loop.
 
-The 2026-06-26 daily scan adds four implementation surfaces to that model:
-- Coding-agent configs need deterministic provenance, permissioning, and drift control.
-- Natural-language agent instructions can be compiled into policy-as-code and enforced before actions execute.
-- MCP tool catalogs need set-level security analysis because malicious intent can be split across tools.
-- Agentic RAG red-teaming needs novelty-aware cross-surface search, not recycled attack templates.
+The 2026-06-26 Friday synthesis adds six implementation and governance surfaces to that model:
 
-The 2026-06-24 Deep Dive Wednesday update remains the strategic foundation underneath today's governance items: memory and instructions are policy-bearing authority objects, not just context.
+- Repo-local agent control is becoming a supply-chain surface: `AGENTS.md`, `DESIGN.md`, IDE rules, and coding-agent configs need probes, hashes, permissions, and drift checks.
+- Agent services are becoming blueprint-owned runtimes: workflow topology, tools, retrievers, execution backend, and traces should be reviewable before deployment.
+- Evaluation is moving from final answers to evidence paths: route quality, recovery, process discipline, novelty, and final-state verification matter.
+- Agent state is becoming ledgered and event-sourced: task state, handoff, trajectory reuse, and shared memory need explicit records.
+- Authority is becoming manifest-shaped and revocable: agent risk is a machine-readable bundle of tools, memory, credentials, grants, discovery scope, and external effects.
+- Sovereignty lives in policy gates and mutation monitors: prompts can guide, but external systems must enforce.
+
+The 2026-06-24 Deep Dive Wednesday update remains the strategic foundation underneath this week's governance findings: memory is a policy-bearing authority object, not just context.
 
 ## Browse by category
 
@@ -84,6 +87,7 @@ The 2026-06-24 Deep Dive Wednesday update remains the strategic foundation under
 ## What gets selected
 
 Selected items usually have at least one of these properties:
+
 - they change agent orchestration, tool use, memory, or evaluation practice;
 - they expose a repeatable implementation pattern that can be tried now;
 - they show where local-first or self-hosted infrastructure is becoming practical;

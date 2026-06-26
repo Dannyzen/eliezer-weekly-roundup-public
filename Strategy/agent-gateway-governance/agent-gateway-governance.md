@@ -1,6 +1,6 @@
 # Agent Gateway Governance
 
-Last updated: 2026-06-23
+Last updated: 2026-06-26
 
 Agent gateway governance is the control-plane discipline for exposing enterprise tools, data, and workflows to autonomous agents.
 
@@ -750,3 +750,17 @@ Practical lesson:
 Sources:
 - [AgentRiskBOM](https://arxiv.org/abs/2606.21877v1)
 - [Lingering Authority](https://arxiv.org/abs/2606.22504v1)
+
+## June 26 update: MCP poisoning has to be analyzed across tool sets
+
+ShareLock updates gateway governance from single-tool review to enabled-set analysis. The attack splits hidden malicious instructions across multiple benign-looking MCP tool descriptions and reconstructs intent only when enough tools are observed together. That means a gateway that reviews each description independently can admit a malicious catalog without ever seeing an obviously malicious tool.
+
+Practical lesson:
+- diff MCP tool descriptions on every server update
+- inspect enabled-tool combinations, not only individual tools
+- fuzz candidate tool subsets for reconstructed intent
+- record catalog version, update epoch, enabled set, selected tools, and denied combinations in gateway traces
+- require review for untrusted tool-description updates, especially from newly admitted MCP servers
+
+Source:
+- [ShareLock](https://arxiv.org/abs/2606.27027v1)

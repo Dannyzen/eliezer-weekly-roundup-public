@@ -2,24 +2,40 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: Daily scan, 2026-06-25
+## Most Recent Structured Update: Daily scan, 2026-06-26
 
-### Execution-time safety kernels move alignment below prompts
+### Agent instructions are becoming policy-as-code
 
-Summary: The Unfireable Safety Kernel argues that agent controls inside the agent runtime are reachable by the thing being controlled. Serious safety needs process separation, pre-action only-path enforcement, fail-closed behavior, and external evidence before privileged tools execute.
+Summary: Autoformalization of Agent Instructions into Policy-as-Code turns prompts, MCP tool definitions, and written policy documents into Cedar policies through a generator-critic loop, then enforces them with an external deterministic policy engine before tool execution.
 
-Analysis: [daily sovereignty analysis](2026-06-25/sovereignty.md#execution-time-safety-kernels-move-alignment-below-prompts)
-Durable topics: [Runtime Governance](runtime-governance/runtime-governance.md), [Agent Authority Manifests](agent-authority-manifests/agent-authority-manifests.md), [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md), [Agent Sandboxing](agent-sandboxing/agent-sandboxing.md)
-Core source: [The Unfireable Safety Kernel](https://arxiv.org/abs/2606.26057v1)
-Supporting source: [Can Trustless Agents Be Trusted?](https://arxiv.org/abs/2606.26028v1)
+Analysis: [daily sovereignty analysis](2026-06-26/sovereignty.md#agent-instructions-are-becoming-policy-as-code)
+Durable topics: [Runtime Governance](runtime-governance/runtime-governance.md), [Agent Authority Manifests](agent-authority-manifests/agent-authority-manifests.md), [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md)
+Core source: [Autoformalization of Agent Instructions into Policy-as-Code](https://arxiv.org/abs/2606.26649v1)
+Implementation artifact: [sondera-ai/sondera-harness-python](https://github.com/sondera-ai/sondera-harness-python)
 Implementable now:
-- wrap one high-risk tool with an external reference monitor
-- force all side-effecting calls through the monitor, not the agent process
-- fail closed on policy timeout, missing scope, parse failure, stale epoch, or missing approval
-- preserve signed or tamper-evident policy verdicts in the trace
+- put Cedar or OPA in front of one privileged tool
+- compile natural-language rules into explicit action, resource, and context fields
+- return deterministic denial reasons to the agent
+- log policy ID, input fields, verdict, and final effect with the trace
 Tools, repos, and methodologies worth exploring:
-- reference monitors, policy-as-code, broker-only mutation paths, signed policy verdicts, fail-closed tests, self-modification bypass fixtures
-Implementability score: 0.54
+- Cedar, Sondera Harness, generator-critic policy compilation, schema hard critics, semantic coverage review, policy-denial recovery loops
+Implementability score: 0.76
+
+### ShareLock shows MCP poisoning is a multi-tool problem
+
+Summary: ShareLock splits hidden malicious instructions across multiple benign-looking MCP tool descriptions using threshold sharing. The operational lesson is that MCP security has to inspect enabled-tool sets and update epochs, not only individual tools.
+
+Analysis: [daily sovereignty analysis](2026-06-26/sovereignty.md#sharelock-shows-mcp-poisoning-is-a-multi-tool-problem)
+Durable topics: [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md), [Runtime Governance](runtime-governance/runtime-governance.md), [Agent Authority Manifests](agent-authority-manifests/agent-authority-manifests.md)
+Core source: [ShareLock](https://arxiv.org/abs/2606.27027v1)
+Implementable now:
+- diff MCP tool descriptions on every server update
+- analyze enabled-tool combinations, not just single tool records
+- fuzz tool subsets for reconstructed intent and hidden coordination
+- record tool catalog version, update epoch, selected tools, and denied combinations in gateway traces
+Tools, repos, and methodologies worth exploring:
+- MCP catalog scanners, cross-tool prompt-injection classifiers, canary tool bundles, update gates, enabled-tool graph analysis
+Implementability score: 0.46
 
 ## Supporting recent Strategy context
 

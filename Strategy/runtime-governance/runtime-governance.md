@@ -1,6 +1,6 @@
 # Runtime Governance
 
-Last updated: 2026-06-25
+Last updated: 2026-06-26
 
 Runtime governance is becoming the real control plane for agent systems.
 
@@ -694,3 +694,17 @@ Sources:
 ## Working conclusion
 
 Runtime governance is not a niche enterprise concern. It is the natural consequence of giving agents durable memory, tool access, repository permissions, CI/CD authority, local storage, plugins, delegated secrets, shared inference infrastructure, sandboxed execution environments, mutable skills, router paths, workflow definitions that compile into automations, broker-mediated mutation paths, authority manifests, and revocable capability handles. The control plane has to move into runtime: inventory the agents, bind identity and scope, manage execution environments, preserve trace evidence, enforce valid next transitions before privileged tools execute, calibrate trust from outcomes, test trajectory-level guardrails offline, budget the guardrails themselves, record serving conditions for replayability, constrain network and inference routes, keep skills immutable while active, and keep tainted inputs from silently becoming trusted agent instructions or script data.
+
+## June 26 update: agent instructions can compile into external policy
+
+Autoformalization of Agent Instructions into Policy-as-Code strengthens the central runtime-governance thesis: prompts are not the enforcement boundary. The useful pattern is LLM-assisted compilation from prompts, MCP tool definitions, and written policy docs into Cedar policies, followed by deterministic parsing, schema checks, contradiction checks, semantic review, and external runtime enforcement before an action executes.
+
+Practical lesson:
+- treat LLM policy generation as a compiler front-end, not as authority
+- enforce policies outside the agent process
+- store policy ID, input fields, verdict, denial reason, and final effect in the trace
+- return denial reasons to the agent as recoverable feedback
+
+Sources:
+- [Autoformalization of Agent Instructions into Policy-as-Code](https://arxiv.org/abs/2606.26649v1)
+- [sondera-ai/sondera-harness-python](https://github.com/sondera-ai/sondera-harness-python)

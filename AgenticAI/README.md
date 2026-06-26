@@ -2,51 +2,36 @@
 
 This index tracks the most recent structured update. Each finding includes a short human-readable summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: Daily scan, 2026-06-25
+## Most Recent Structured Update: Daily scan, 2026-06-26
 
-### ToolBench-X turns tool-use eval into recovery testing
+### Coding-agent configs need a deterministic control plane
 
-Summary: ToolBench-X injects recoverable hazards into multi-step tool tasks: specification drift, invocation error, execution failure, output drift, and cross-source conflict. The useful metric is no longer function-call accuracy alone. It is whether the agent diagnoses the hazard and recovers.
+Summary: A repo-scale study argues that coding-agent rules files, IDE markdown, and agent definitions are propagating like undeclared dependencies. The fix is to treat agent configuration as a managed control-plane artifact: content-addressed, permission-bearing, compiled to client targets, and checked for drift.
 
-Analysis: [daily reasoning analysis](2026-06-25/reasoning.md#toolbench-x-turns-tool-use-eval-into-recovery-testing)
-Durable topics: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Skills as Control](skills-as-control/skills-as-control.md)
-Core source: [ToolBench-X paper](https://arxiv.org/abs/2606.25819v1)
-Implementation artifact: [Foreverskyou/ToolBench-X](https://github.com/Foreverskyou/ToolBench-X)
+Analysis: [daily reasoning analysis](2026-06-26/reasoning.md#coding-agent-configs-need-a-deterministic-control-plane)
+Durable topics: [Coding Agent Control Plane](coding-agent-control-plane/coding-agent-control-plane.md), [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Skills as Control](skills-as-control/skills-as-control.md), [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
+Core source: [A Deterministic Control Plane for LLM Coding Agents](https://arxiv.org/abs/2606.26924v1)
 Implementable now:
-- create deterministic tool doubles for high-value internal workflows
-- inject specification drift, invocation errors, execution failures, output drift, and cross-source conflict
-- score diagnosis, retry, fallback, verification, and cross-checking separately from final answers
+- hash and lock repo-local agent configuration
+- require permission declarations for shell, file, network, and memory authority
+- compile one canonical agent definition into client-specific files
+- log config hash, target client, permission profile, and drift verdict with each run
 Tools, repos, and methodologies worth exploring:
-- ToolBench-X design, pytest fixtures, OpenTelemetry recovery spans, golden answers, targeted recovery-hint ablations
-Implementability score: 0.68
+- git-backed config registries, SHA-256 lockfiles, CI config linters, OpenTelemetry spans, policy-as-code, replay packs
+Implementability score: 0.64
 
-### Constraint Tax shows tool calling and JSON Schema can interfere
+### MIRROR makes agentic RAG red-teaming cross-surface and novelty-aware
 
-Summary: Constraint Tax reports Tool Suppression when open-weight models run tool calling and JSON Schema constrained decoding together. The mitigation is Transparent Two-Pass Execution: let the agent use tools first, then serialize the verified result under a strict schema.
+Summary: MIRROR uses memory-guided MCTS plus a deterministic novelty gate to red-team multimodal agentic RAG across text poisoning, image injection, direct-query attacks, and orchestrator-level tool manipulation. The useful correction is that red-team systems must report novelty and duplicate rates, not just attack success.
 
-Analysis: [daily reasoning analysis](2026-06-25/reasoning.md#constraint-tax-shows-tool-calling-and-json-schema-can-interfere)
-Durable topics: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Context Economy](context-economy/context-economy.md), [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
-Core source: [Constraint Tax](https://arxiv.org/abs/2606.25605v1)
+Analysis: [daily reasoning analysis](2026-06-26/reasoning.md#mirror-makes-agentic-rag-red-teaming-cross-surface-and-novelty-aware)
+Durable topics: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Agentic Search and Retrieval](agentic-search/agentic-search.md)
+Core source: [MIRROR paper](https://arxiv.org/abs/2606.26793v1)
+Implementation artifact: [FujitsuResearch/mirror](https://github.com/FujitsuResearch/mirror)
 Implementable now:
-- add joint tests for tool calling plus structured output, not only separate tests
-- split action selection from schema serialization when tools disappear under constraints
-- log allowed tools, schema mode, serving backend, selected tool path, and final serializer mode
+- add novelty gates to prompt-injection and RAG-poisoning test suites
+- red-team retrieval context, image payloads, direct queries, and tool selection together
+- report duplicate rates, attack success, novelty-adjusted success, query cost, and cross-surface variance separately
 Tools, repos, and methodologies worth exploring:
-- two-pass execution scaffolds, structured-output regression fixtures, serving-backend comparison matrices, decoder-mode telemetry
-Implementability score: 0.78
-
-### DESIGN.md makes agent UI context a validated artifact
-
-Summary: DESIGN.md defines a small, lintable format for giving coding agents persistent visual-identity context: YAML design tokens plus Markdown rationale. The broader lesson is that agent context files should be versioned, validated, and diffed like code.
-
-Analysis: [daily reasoning analysis](2026-06-25/reasoning.md#designmd-makes-agent-ui-context-a-validated-artifact)
-Durable topics: [Context Economy](context-economy/context-economy.md), [Skills as Control](skills-as-control/skills-as-control.md)
-Core source: [google-labs-code/design.md](https://github.com/google-labs-code/design.md)
-Package metadata: [@google/design.md](https://registry.npmjs.org/%40google%2Fdesign.md)
-Implementable now:
-- add `DESIGN.md` to UI-heavy repos
-- require agents to read it before UI edits
-- lint and diff design-token changes in CI
-Tools, repos, and methodologies worth exploring:
-- `@google/design.md`, design-token CI, context-file linting, context diff review, agent-readable contracts for security and runbooks
-Implementability score: 0.92
+- MIRROR novelty gate, memory-guided PUCT search, DupBench-style diagnostics, payload-free public artifact patterns
+Implementability score: 0.72

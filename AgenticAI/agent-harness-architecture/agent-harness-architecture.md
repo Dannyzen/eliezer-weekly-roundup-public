@@ -1,6 +1,6 @@
 # Agent Harness Architecture
 
-Last updated: 2026-06-23
+Last updated: 2026-06-26
 
 Agent harness architecture is becoming the part of the agent stack that teams can actually standardize.
 
@@ -796,3 +796,12 @@ Sources:
 ## Working conclusion
 
 Agent harness architecture is becoming one of the clearest ways to tell whether a team is building a toy, a developer tool, or a real operating substrate. The winning systems will make context explicit, tool boundaries governable, restore paths safe, typed component interfaces inspectable, orchestration empirically justified and quality-gated, skill routing compositional, test-oracle strength machine-checkable, evidence easy to inspect, environment-specific falsification surfaces routine, real-session misalignment labels routine, proposal-soundness gates explicit, failed trajectories layer-attributed, process discipline measurable, and production failures routinely promoted into versioned regression fixtures with trajectory and outcome graders.
+
+## June 26 update: coding-agent configuration needs deterministic control-plane treatment
+
+Dedicated topic: [Coding Agent Control Plane](../coding-agent-control-plane/coding-agent-control-plane.md)
+
+A deterministic control plane for coding agents updates this topic at the configuration layer. Agent harnesses are not only prompts, tools, and traces. They also include the repo-local rules files and IDE-specific markdown that tell the agent how to behave. Those files now need provenance, hashes, lockfiles, permission declarations, compiled targets, CI drift checks, and trace binding.
+
+Source:
+- [A Deterministic Control Plane for LLM Coding Agents](https://arxiv.org/abs/2606.26924v1)

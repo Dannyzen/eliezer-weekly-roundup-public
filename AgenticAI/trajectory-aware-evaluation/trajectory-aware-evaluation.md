@@ -639,3 +639,16 @@ Sources:
 ## Working conclusion
 
 Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, fingerprinted, and scored across safety, robustness, parameter correctness, environment fidelity, runtime-specific harm dimensions, staged semantic/audit/sandbox harm, agent-effort telemetry, real-user collaboration traces, realistic workspace state, live workflow demand, cost, adversarial task quality, long-range state propagation, abstention, protocol conformance, tool-shortlist quality, environment-factory coverage, quantitative goal persistence, procedural behavior, partial-progress preference, oracle strength, deterministic evidence paths, and coding-process discipline, improvement efforts will stay shallow and trust claims will stay unearned.
+
+## June 26 update: RAG red-teaming needs novelty and cross-surface traces
+
+MIRROR adds a useful evaluation correction for agentic RAG. A red-team run should not only report attack success. It should report whether attacks are novel, whether they duplicate known prompts, which surface failed, and how much query budget was spent. The relevant surfaces now include text poisoning, image injection, direct-query attacks, and orchestrator-level tool manipulation.
+
+Practical lesson:
+- add novelty gates to internal RAG red-team suites
+- score duplicate rate, attack success, novelty-adjusted success, query cost, and cross-surface variance separately
+- preserve trajectory evidence for retrieval, context assembly, modality handling, tool choice, and final response
+
+Sources:
+- [MIRROR](https://arxiv.org/abs/2606.26793v1)
+- [FujitsuResearch/mirror](https://github.com/FujitsuResearch/mirror)

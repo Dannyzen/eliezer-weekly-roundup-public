@@ -1,6 +1,6 @@
 # Model Router Governance
 
-Last updated: 2026-05-11
+Last updated: 2026-06-27
 
 Core sources:
 - LiteLLM v1.83.13-nightly: https://github.com/BerriAI/litellm/releases/tag/v1.83.13-nightly
@@ -98,6 +98,20 @@ Practical lesson:
 
 Source:
 - [The Proxy Knows Too Much](https://arxiv.org/abs/2606.16358v1)
+
+## June 27 update: measure co-failure before adding router complexity
+
+When Does Combining Language Models Help? adds a missing precondition for router governance: estimate the all-wrong rate before routing, voting, cascading, or mixture-of-agents design. If every candidate model fails on the same query, no router that returns one member answer can beat that co-failure ceiling.
+
+Practical lesson:
+- score candidate models on identical workflow-specific tasks before deployment;
+- compute beta, the all-wrong rate, alongside best-model accuracy and oracle accuracy;
+- require a query-level routing signal before adding router complexity;
+- route by measured non-overlap, policy, latency, cost, and calibrated reliability, not provider diversity alone;
+- kill mixture-of-agents designs when measured headroom is too small to justify cost and latency.
+
+Source:
+- [When Does Combining Language Models Help?](https://arxiv.org/abs/2606.27288v1)
 
 ## Minimum governance checklist
 

@@ -1,6 +1,6 @@
 # Agent Harness Architecture
 
-Last updated: 2026-06-26
+Last updated: 2026-06-27
 
 Agent harness architecture is becoming the part of the agent stack that teams can actually standardize.
 
@@ -805,3 +805,19 @@ A deterministic control plane for coding agents updates this topic at the config
 
 Source:
 - [A Deterministic Control Plane for LLM Coding Agents](https://arxiv.org/abs/2606.26924v1)
+
+## June 27 update: process harnesses preserve workflow authority
+
+CUGA FLO adds a useful enterprise harness pattern: place a policy-governed agentic layer around a deterministic workflow engine, and intercept only designated control points. The harness contributes reasoning, adaptation, and oversight, but the workflow engine keeps structural authority over ordering, state transitions, and compliance.
+
+Practical lesson:
+- map workflow hook points before assigning agents;
+- keep TaskAgent, DecisionAgent, and FlowAgent responsibilities separate;
+- bind allowed tools, data scope, escalation rule, audit event, and rollback path to each hook;
+- make the deterministic engine own ordering and required approvals;
+- compare harness overlays against workflow replacement, because replacement often destroys the compliance surface the enterprise still needs.
+
+Sources:
+- [A Process Harness for Uplifting Legacy Workflows to Agentic BPM](https://arxiv.org/abs/2606.27188v1)
+- [IBM CUGA examples](https://huggingface.co/blog/ibm-research/cuga-apps)
+- [cuga-project/cuga-agent](https://github.com/cuga-project/cuga-agent)

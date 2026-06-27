@@ -1,6 +1,6 @@
 # Agent Gateway Governance
 
-Last updated: 2026-06-26
+Last updated: 2026-06-27
 
 Agent gateway governance is the control-plane discipline for exposing enterprise tools, data, and workflows to autonomous agents.
 
@@ -764,3 +764,17 @@ Practical lesson:
 
 Source:
 - [ShareLock](https://arxiv.org/abs/2606.27027v1)
+
+## June 27 update: catalog source control is part of gateway policy
+
+GitHub's `strictKnownMarketplaces` support for Copilot CLI and VS Code reinforces the same gateway lesson as ShareLock: tool and plugin catalogs are pre-execution authority surfaces. Enterprises should control where plugins can come from before an agent or developer can install them, and gateways should treat MCP servers, skills, and plugins as catalog entries with source, publisher, update epoch, and enabled-set risk.
+
+Practical lesson:
+- maintain allowed-source lists for plugins, MCP servers, and skills;
+- bind installed marketplace, publisher, catalog version, and enabled set into run traces;
+- deny untrusted marketplace sources before plugin or tool descriptions enter agent context;
+- pair source allowlists with set-level poisoning tests for tool combinations;
+- separate relevance ranking from trust and authorization ranking during discovery.
+
+Source:
+- [GitHub strictKnownMarketplaces changelog](https://github.blog/changelog/2026-06-25-enterprise-managed-settings-now-support-strictknownmarketplaces-in-vs-code-and-the-cli)

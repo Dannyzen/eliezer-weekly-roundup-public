@@ -2,72 +2,40 @@
 
 This index tracks the most recent structured update. Each finding includes a short human-readable summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: Week ending 2026-06-26
+## Most Recent Structured Update: Daily scan 2026-06-27
 
-### Repository-local agent control becomes a tested supply-chain artifact
+### Semantic early stopping cuts agent-loop spend without quality loss
 
-Summary: Repo-local agent instructions are becoming a real control surface. `AGENTS.md`, `DESIGN.md`, IDE rules, and coding-agent configs need probes, hashes, permission declarations, drift checks, and compiled targets instead of living as unmanaged prose.
+Summary: Fixed `max_iterations` is a wasteful default for iterative agent loops. Semantic stopping uses draft-embedding distance plus patience to halt when meaning stops changing, and the reported judge-free version cut operational tokens by 38 percent at parity quality on a HotpotQA split.
 
-Analysis: [weekly reasoning analysis](2026-06-26/reasoning.md#repository-local-agent-control-becomes-a-tested-supply-chain-artifact)
-Durable topics: [Coding Agent Control Plane](coding-agent-control-plane/coding-agent-control-plane.md), [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Skills as Control](skills-as-control/skills-as-control.md), [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
-Core sources: [Probe-and-Refine](https://arxiv.org/abs/2606.20512v1), [A Deterministic Control Plane for LLM Coding Agents](https://arxiv.org/abs/2606.26924v1), [GitHub AGENTS.md support](https://github.blog/changelog/2026-06-18-copilot-code-review-agents-md-support-and-ui-improvements), [DESIGN.md](https://github.com/google-labs-code/design.md)
+Analysis: [daily reasoning analysis](2026-06-27/reasoning.md#semantic-early-stopping-cuts-agent-loop-spend-without-quality-loss)
+Durable topics: [Sessionful Agent Loops](sessionful-agent-loops/sessionful-agent-loops.md), [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Context Economy for Agents](context-economy/context-economy.md), [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
+Core sources: [Semantic Early-Stopping](https://arxiv.org/abs/2606.27009v1), [semantic-halting-problem repo](https://github.com/SahilShrivastava-Dev/semantic-halting-problem)
 Implementable now:
-- add concise `AGENTS.md` files and test them with synthetic bug-fix probes
-- maintain `DESIGN.md` or equivalent UI context as a linted artifact
-- hash and lock agent rules, skill references, tool permissions, and generated client targets
-- log config hash, target client, permission profile, and drift verdict with each run
+- add embedding-distance stopping to one writer-critic, RAG, or code-review loop
+- replay fixed-cap, semantic-stop, quality-gated, and oracle selectors over the same cached trajectories
+- log operational tokens separately from judge or measurement tokens
+- tune patience and distance thresholds per workflow class
 Tools, repos, and methodologies worth exploring:
-- `AGENTS.md`, `DESIGN.md`, repo guidance probes, SHA-256 lockfiles, CI config linters, OpenTelemetry config spans, content-addressed agent definitions
-Implementability score: 0.82
+- draft embeddings, cosine-distance patience windows, replayed trajectory caches, operational-token accounting, round-selection ablations
+Implementability score: 0.86
 
-### Runtime blueprints and tool tests make agent services reviewable
+### Process harnesses put agents around workflows instead of replacing them
 
-Summary: Agent services are becoming normal platform surfaces. ADK, tRPC-Agent-Go, UnifAI, AssetOpsBench, ToolBench-X, and Constraint Tax all point toward reviewable workflow topology, explicit tools, session state, traces, recovery tests, and separation between tool reasoning and strict serialization.
+Summary: CUGA FLO gives the right enterprise migration pattern: keep the deterministic workflow engine structurally authoritative, then let policy-governed agents reason only at designated task, decision, and flow hooks.
 
-Analysis: [weekly reasoning analysis](2026-06-26/reasoning.md#runtime-blueprints-and-tool-tests-make-agent-services-reviewable)
-Durable topics: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Multi-Agent Orchestration](multi-agent-orchestration/multi-agent-orchestration.md), [Agent Serving Runtime](agent-serving-runtime/agent-serving-runtime.md), [Agent Gateway Governance](../Strategy/agent-gateway-governance/agent-gateway-governance.md)
-Core sources: [Google ADK](https://adk.dev/), [tRPC-Agent-Go](https://github.com/trpc-group/trpc-agent-go), [UnifAI](https://github.com/redhat-community-ai-tools/UnifAI), [ToolBench-X](https://arxiv.org/abs/2606.25819v1), [Constraint Tax](https://arxiv.org/abs/2606.25605v1)
+Analysis: [daily reasoning analysis](2026-06-27/reasoning.md#process-harnesses-put-agents-around-workflows-instead-of-replacing-them)
+Durable topics: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Agent Serving Runtime](agent-serving-runtime/agent-serving-runtime.md), [Multi-Agent Orchestration](multi-agent-orchestration/multi-agent-orchestration.md), [Governed Workflow Substrates](../Strategy/governed-workflow-substrates/governed-workflow-substrates.md)
+Core sources: [CUGA FLO process harness](https://arxiv.org/abs/2606.27188v1), [IBM CUGA examples](https://huggingface.co/blog/ibm-research/cuga-apps), [cuga-project/cuga-agent](https://github.com/cuga-project/cuga-agent)
 Implementable now:
-- put graph or YAML workflow definitions under code review
-- require trace IDs, tool contracts, retriever declarations, execution backend, and owner before deployment
-- add unreliable-tool fixtures for high-value workflows
-- test tool calling plus strict schema output jointly, then use two-pass execution where needed
+- choose one deterministic workflow and mark only the control points where reasoning is allowed
+- define TaskAgent, DecisionAgent, and FlowAgent responsibilities before writing prompts
+- make the workflow engine own ordering, state transitions, and required approvals
+- attach policy fields to every hook: tools, data scope, escalation, audit event, and rollback path
 Tools, repos, and methodologies worth exploring:
-- Google ADK, tRPC-Agent-Go, UnifAI, ToolBench-X, AssetOpsBench, Temporal, LangGraph, A2A/MCP integration contracts, two-pass structured output
+- CUGA, process-harness overlays, TDF-style hook maps, process FRAME policy bundles, OpenAPI/MCP integration behind workflow control
 Implementability score: 0.74
-
-### Evaluation moves to evidence paths, recovery, and novelty
-
-Summary: Final-answer grading is too lossy for agents. GroundEval, RigorBench, ToolBench-X, MIRROR, and GUI-vs-CLI evals make source paths, raw evidence, process discipline, recovery behavior, novelty, and final-state verification the useful scoring layer.
-
-Analysis: [weekly reasoning analysis](2026-06-26/reasoning.md#evaluation-moves-to-evidence-paths-recovery-and-novelty)
-Durable topics: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Agentic Search and Retrieval](agentic-search/agentic-search.md), [Evidence Provenance Control Plane](../Strategy/evidence-provenance-control-plane/evidence-provenance-control-plane.md)
-Core sources: [GroundEval](https://arxiv.org/abs/2606.22737v1), [RigorBench](https://arxiv.org/abs/2606.22678v1), [ToolBench-X](https://arxiv.org/abs/2606.25819v1), [MIRROR](https://arxiv.org/abs/2606.26793v1), [GUI vs. CLI](https://arxiv.org/abs/2606.24551)
-Implementable now:
-- attach source IDs, raw-output references, access scope, and retrieval timestamps to traces
-- add deterministic evidence-path checks before LLM-as-judge scoring
-- score planning, verification, recovery, abstention, and atomic transition integrity
-- report duplicate rates and novelty-adjusted red-team success, not only attack success
-Tools, repos, and methodologies worth exploring:
-- GroundEval-style validators, RigorBench-style process rubrics, ToolBench-X recovery tests, MIRROR novelty gates, final-state verifiers, OpenTelemetry trace fields
-Implementability score: 0.80
-
-### Agent state becomes ledgered, event-sourced, and reusable
-
-Summary: Agents should not reconstruct state from transcripts. LedgerAgent, ESAA-Conversational, Multi-Agent Transactive Memory, and governed shared memory converge on typed ledgers, append-only event logs, deterministic handoff projections, and indexed trajectory reuse.
-
-Analysis: [weekly reasoning analysis](2026-06-26/reasoning.md#agent-state-becomes-ledgered-event-sourced-and-reusable)
-Durable topics: [Event-Sourced Agent Runtime](event-sourced-agent-runtime/event-sourced-agent-runtime.md), [Memory Systems](memory-systems/memory-systems.md), [Multi-Agent Orchestration](multi-agent-orchestration/multi-agent-orchestration.md), [Shared-State Agents](../Strategy/shared-state-agents/shared-state-agents.md)
-Core sources: [LedgerAgent](https://arxiv.org/abs/2606.20529), [ESAA-Conversational](https://arxiv.org/abs/2606.23752), [Multi-Agent Transactive Memory](https://arxiv.org/abs/2606.19911), [Governed Shared Memory](https://arxiv.org/abs/2606.24535)
-Implementable now:
-- define typed task ledgers for high-risk workflows
-- check ledger conditions before write, refund, delete, send, deploy, or PR actions
-- store visible agent events in append-only JSONL or database tables
-- regenerate handoff files and working state from the event log before another agent consumes them
-Tools, repos, and methodologies worth exploring:
-- SQLite or Postgres event tables, JSONL activity logs, deterministic projection scripts, policy checks over ledger fields, indexed trajectory repositories
-Implementability score: 0.78
 
 ## Supporting recent AgenticAI context
 
-The 2026-06-26 durable topic [Coding Agent Control Plane](coding-agent-control-plane/coding-agent-control-plane.md) is the newest implementation surface. The 2026-06-24 Strategy deep dive [Memory Authority Control Plane](../Strategy/memory-authority-control-plane/memory-authority-control-plane.md) is the strongest cross-category governance foundation for state and memory work.
+The 2026-06-26 weekly synthesis remains the broadest current map: [weekly reasoning analysis](2026-06-26/reasoning.md). The new 2026-06-27 daily scan narrows the implementation lesson: shrink uncontrolled loops and wrap real workflows with explicit hooks instead of adding orchestration by default.

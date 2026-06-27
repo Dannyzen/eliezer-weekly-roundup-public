@@ -5,11 +5,12 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Friday synthesis, week ending 2026-06-26: [roundup](roundups/2026-06-26.md)
-- AgenticAI weekly analysis: [2026-06-26](AgenticAI/2026-06-26/reasoning.md)
-- Strategy weekly analysis: [2026-06-26](Strategy/2026-06-26/sovereignty.md)
+- Daily scan, 2026-06-27: [roundup](roundups/2026-06-27.md)
+- AgenticAI daily analysis: [2026-06-27](AgenticAI/2026-06-27/reasoning.md)
+- Strategy daily analysis: [2026-06-27](Strategy/2026-06-27/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
+- Friday synthesis, week ending 2026-06-26: [roundup](roundups/2026-06-26.md)
 - New durable AgenticAI topic from this week: [Coding Agent Control Plane](AgenticAI/coding-agent-control-plane/coding-agent-control-plane.md)
 - Deep Dive Wednesday, 2026-06-24: [Memory Authority Control Plane](Strategy/memory-authority-control-plane/memory-authority-control-plane.md)
 - Previous daily scan: [2026-06-25](roundups/2026-06-25.md)
@@ -23,16 +24,16 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 The agent stack is moving from prompt-managed behavior to explicit control surfaces that can be versioned, compiled, tested, scoped, revoked, and enforced outside the model's private reasoning loop.
 
-The 2026-06-26 Friday synthesis adds six implementation and governance surfaces to that model:
+The 2026-06-27 daily scan adds a sharper operational point: scale is not a substitute for evidence. Bigger loops, more models, and larger tool catalogs only help when the harness can prove improvement, stop waste, preserve workflow authority, and govern pre-execution authority surfaces.
 
-- Repo-local agent control is becoming a supply-chain surface: `AGENTS.md`, `DESIGN.md`, IDE rules, and coding-agent configs need probes, hashes, permissions, and drift checks.
-- Agent services are becoming blueprint-owned runtimes: workflow topology, tools, retrievers, execution backend, and traces should be reviewable before deployment.
-- Evaluation is moving from final answers to evidence paths: route quality, recovery, process discipline, novelty, and final-state verification matter.
-- Agent state is becoming ledgered and event-sourced: task state, handoff, trajectory reuse, and shared memory need explicit records.
-- Authority is becoming manifest-shaped and revocable: agent risk is a machine-readable bundle of tools, memory, credentials, grants, discovery scope, and external effects.
-- Sovereignty lives in policy gates and mutation monitors: prompts can guide, but external systems must enforce.
+The latest four implementation and governance surfaces are:
 
-The 2026-06-24 Deep Dive Wednesday update remains the strategic foundation underneath this week's governance findings: memory is a policy-bearing authority object, not just context.
+- Iterative agent loops need semantic stopping, cached trajectory replay, and operational-token accounting.
+- Legacy workflows should be uplifted through policy-governed agent hooks while deterministic engines keep structural authority.
+- Model routers need all-wrong co-failure measurement before routing, voting, or mixture-of-agents complexity is justified.
+- Tool and plugin catalogs need source allowlists, update epochs, enabled-set analysis, and poisoning fixtures before agents consume them.
+
+The 2026-06-26 Friday synthesis remains the broadest current weekly map, and the 2026-06-24 Deep Dive Wednesday update remains the strategic foundation underneath memory and authority work: memory is a policy-bearing authority object, not just context.
 
 ## Browse by category
 

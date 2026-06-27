@@ -78,6 +78,21 @@ Avoid these traps:
 - open-source comparators like `huggingface/ml-intern`
 - run analytics, trace retention, and suspension controls for shared agents
 
+## June 27 update: loops need semantic stop policies, not fixed caps
+
+Semantic Early-Stopping for Iterative LLM Agent Loops adds a practical runtime governor for sessionful loops. A loop should not run until an arbitrary `max_iterations` cap. It should stop when consecutive drafts stop changing meaning, and the harness should prove the quality-cost tradeoff by replaying policies over the same cached trajectories.
+
+Practical lesson:
+- attach a stop policy to every recurring writer-critic, RAG, review, or multi-agent revision loop;
+- log semantic distance, patience window, selected round, operational tokens, and wall time;
+- evaluate stopping policies by replaying identical full trajectories, not by comparing noisy separate runs;
+- separate operational-token cost from evaluation-token cost;
+- treat round selection as the next open problem after cheap stopping is working.
+
+Sources:
+- [Semantic Early-Stopping for Iterative LLM Agent Loops](https://arxiv.org/abs/2606.27009v1)
+- [semantic-halting-problem](https://github.com/SahilShrivastava-Dev/semantic-halting-problem)
+
 ## Working conclusion
 
-The agent loop is becoming a sessionful service. Teams that keep thinking in one-turn prompts will keep paying reconstruction costs, losing state, and bolting governance on after the fact. Teams that design for long-lived runs, explicit workspaces, compaction, approvals, and replay will have a much more stable foundation for everything else in the agent stack.
+The agent loop is becoming a sessionful service. Teams that keep thinking in one-turn prompts will keep paying reconstruction costs, losing state, and bolting governance on after the fact. Teams that design for long-lived runs, explicit workspaces, compaction, approvals, replay, and semantic stop policies will have a much more stable foundation for everything else in the agent stack.

@@ -130,3 +130,18 @@ Implications:
 - Cloudflare Agent Cloud press release: https://www.cloudflare.com/press/press-releases/2026/cloudflare-expands-its-agent-cloud-to-power-the-next-generation-of-agents/
 - Cloudflare Agents docs: https://developers.cloudflare.com/agents/index.md
 - Claw-Eval for the evaluation side of the same control-plane shift: https://arxiv.org/abs/2604.06132
+
+## June 27 update: process harnesses are the migration path for legacy workflows
+
+CUGA FLO clarifies how governed workflow substrates should enter legacy enterprises: do not replace the workflow engine first. Add a process harness that intercepts designated control points, contributes agentic reasoning under policy, and leaves structural control with the deterministic engine.
+
+Practical lesson:
+- use workflow-first design for existing business processes;
+- mark agent hook points as task, decision, or flow hooks;
+- attach policy, audit, rollback, and escalation to every hook;
+- preserve deterministic process state as the source of truth;
+- evaluate agent overlays against the baseline workflow before expanding autonomy.
+
+Sources:
+- [A Process Harness for Uplifting Legacy Workflows to Agentic BPM](https://arxiv.org/abs/2606.27188v1)
+- [cuga-project/cuga-agent](https://github.com/cuga-project/cuga-agent)

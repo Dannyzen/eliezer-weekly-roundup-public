@@ -1,6 +1,6 @@
 # Memory Systems
 
-Last updated: 2026-06-20
+Last updated: 2026-06-28
 
 Memory is becoming the real architecture question for long-lived agents.
 
@@ -678,6 +678,20 @@ Practical lesson:
 
 Source:
 - [Multi-Agent Transactive Memory](https://arxiv.org/abs/2606.19911)
+
+## June 28 update: stale facts need deterministic validity ledgers
+
+Temporal Validity in Retrieval Memory makes the memory update problem concrete. If a function name, API endpoint, port, dependency version, or user fact changes, the old and new statements can remain embedding-near. The paper reports cosine AUROC 0.59 for separating contradictions from duplicates, near chance, and argues that staleness is a write-path state problem rather than a retrieval-threshold problem.
+
+Practical lesson:
+- store structured facts with valid-from, valid-until, superseded-by, source event, and writer principal;
+- apply deterministic subject-relation-object supersession rules for high-value typed memories;
+- preserve retired facts as lineage rather than deleting them;
+- keep vector search for candidate recall, not for deciding current truth;
+- evaluate memory on marker-free evolving facts, including code mutation, config migration, dependency bumps, and API evolution.
+
+Source:
+- [Temporal Validity in Retrieval Memory](https://arxiv.org/abs/2606.26511v1)
 
 ## Working conclusion
 

@@ -1,6 +1,6 @@
 # Ticket-Native Agent Orchestration
 
-Last updated: 2026-06-21
+Last updated: 2026-06-28
 
 Core sources:
 - OpenAI Symphony announcement: https://openai.com/index/open-source-codex-orchestration-symphony
@@ -93,6 +93,20 @@ Practical lesson:
 Sources:
 - [Probe-and-Refine Tuning of Repository Guidance for Coding Agents](https://arxiv.org/abs/2606.20512v1)
 - [Phoenix](https://arxiv.org/abs/2606.20243v1)
+
+## June 28 update: external agent work should enter as knowledge, not code authority
+
+Knowledge-Based Pull Requests extends ticket-native orchestration across trust boundaries. The useful boundary object is not an external patch that the receiving project must merge or reject. It is a provenance-bearing knowledge package distilled from external code, tests, cleaned agent traces, discussion, and human corrections.
+
+Practical lesson:
+- use tickets or PR-like records to accept knowledge separately from code;
+- require package fields for intent, evidence, tests, risks, constraints, uncertainty, and source traces;
+- let maintainers review the knowledge package before project-owned regeneration;
+- run the inner trusted coding agent in a clean checkout under repository policy, tests, and conventions;
+- compare regenerated code against the accepted knowledge package and preserve any mismatches as review evidence.
+
+Source:
+- [Knowledge-Based Pull Requests](https://arxiv.org/abs/2606.26721v1)
 
 ## Implementability score
 

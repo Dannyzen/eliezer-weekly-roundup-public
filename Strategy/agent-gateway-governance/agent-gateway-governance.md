@@ -1,6 +1,6 @@
 # Agent Gateway Governance
 
-Last updated: 2026-06-27
+Last updated: 2026-06-28
 
 Agent gateway governance is the control-plane discipline for exposing enterprise tools, data, and workflows to autonomous agents.
 
@@ -778,3 +778,17 @@ Practical lesson:
 
 Source:
 - [GitHub strictKnownMarketplaces changelog](https://github.blog/changelog/2026-06-25-enterprise-managed-settings-now-support-strictknownmarketplaces-in-vs-code-and-the-cli)
+
+## June 28 update: prompt-injection defenses need adaptive gateway tests
+
+Adaptive Evaluation of Out-of-Band Defenses sharpens gateway governance after the recent wave of prompt-injection defenses. Capabilities, taint labels, information-flow control, and reference monitors are the right family of defenses, but fixed benchmark success is not enough. Gateways need defense-aware attacks in the regression suite.
+
+Practical lesson:
+- keep static and adaptive prompt-injection test suites separate;
+- rerun adaptive tests after gateway policy, model, prompt, tool, or catalog changes;
+- report task utility, attack success, policy denial, tool denial, model refusal, and false positives separately;
+- use least-privilege capability handles rather than broad tool access;
+- treat indirect prompt injection as an authorization problem at the action boundary, not a text-classification problem.
+
+Source:
+- [Adaptive Evaluation of Out-of-Band Defenses](https://arxiv.org/abs/2606.26479v1)

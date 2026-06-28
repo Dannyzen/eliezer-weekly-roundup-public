@@ -2,40 +2,40 @@
 
 This index tracks the most recent structured update. Each finding includes a short human-readable summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: Daily scan 2026-06-27
+## Most Recent Structured Update: Daily scan 2026-06-28
 
-### Semantic early stopping cuts agent-loop spend without quality loss
+### Knowledge-based pull requests make external code evidence, not authority
 
-Summary: Fixed `max_iterations` is a wasteful default for iterative agent loops. Semantic stopping uses draft-embedding distance plus patience to halt when meaning stops changing, and the reported judge-free version cut operational tokens by 38 percent at parity quality on a HotpotQA split.
+Summary: External agent work should cross project boundaries as a provenance-bearing knowledge package, not as the default merge candidate. KPR separates knowledge acceptance from code acceptance, then lets a project-owned inner agent regenerate code inside the receiving repository's policy, tests, and conventions.
 
-Analysis: [daily reasoning analysis](2026-06-27/reasoning.md#semantic-early-stopping-cuts-agent-loop-spend-without-quality-loss)
-Durable topics: [Sessionful Agent Loops](sessionful-agent-loops/sessionful-agent-loops.md), [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Context Economy for Agents](context-economy/context-economy.md), [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
-Core sources: [Semantic Early-Stopping](https://arxiv.org/abs/2606.27009v1), [semantic-halting-problem repo](https://github.com/SahilShrivastava-Dev/semantic-halting-problem)
+Analysis: [daily reasoning analysis](2026-06-28/reasoning.md#knowledge-based-pull-requests-make-external-code-evidence-not-authority)
+Durable topics: [Ticket-Native Agent Orchestration](ticket-native-agent-orchestration/ticket-native-agent-orchestration.md), [Coding Agent Control Plane](coding-agent-control-plane/coding-agent-control-plane.md), [Event-Sourced Agent Runtime](event-sourced-agent-runtime/event-sourced-agent-runtime.md)
+Core source: [Knowledge-Based Pull Requests](https://arxiv.org/abs/2606.26721v1)
 Implementable now:
-- add embedding-distance stopping to one writer-critic, RAG, or code-review loop
-- replay fixed-cap, semantic-stop, quality-gated, and oracle selectors over the same cached trajectories
-- log operational tokens separately from judge or measurement tokens
-- tune patience and distance thresholds per workflow class
+- define a KPR package schema with claim, evidence, tests, risk, constraints, uncertainty, and trace fields
+- accept external diffs as evidence, not direct merge candidates, for high-context contributions
+- run an internal coding agent in a clean checkout after human knowledge acceptance
+- compare regenerated code against the accepted knowledge package and project-side tests
 Tools, repos, and methodologies worth exploring:
-- draft embeddings, cosine-distance patience windows, replayed trajectory caches, operational-token accounting, round-selection ablations
-Implementability score: 0.86
+- GitHub Issues or Linear state machines, structured reviewer briefs, risk checklists, clean worktrees, branch protection, CODEOWNERS, CI, secret scanning, dependency scanning
+Implementability score: 0.72
 
-### Process harnesses put agents around workflows instead of replacing them
+### Temporal validity turns memory updates into ledger operations
 
-Summary: CUGA FLO gives the right enterprise migration pattern: keep the deterministic workflow engine structurally authoritative, then let policy-governed agents reason only at designated task, decision, and flow hooks.
+Summary: Stale facts are write-path failures. MemStrata shows vector similarity cannot reliably separate contradictions from duplicates, then uses deterministic subject-relation-object supersession in a bi-temporal ledger to retire stale values before retrieval.
 
-Analysis: [daily reasoning analysis](2026-06-27/reasoning.md#process-harnesses-put-agents-around-workflows-instead-of-replacing-them)
-Durable topics: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Agent Serving Runtime](agent-serving-runtime/agent-serving-runtime.md), [Multi-Agent Orchestration](multi-agent-orchestration/multi-agent-orchestration.md), [Governed Workflow Substrates](../Strategy/governed-workflow-substrates/governed-workflow-substrates.md)
-Core sources: [CUGA FLO process harness](https://arxiv.org/abs/2606.27188v1), [IBM CUGA examples](https://huggingface.co/blog/ibm-research/cuga-apps), [cuga-project/cuga-agent](https://github.com/cuga-project/cuga-agent)
+Analysis: [daily reasoning analysis](2026-06-28/reasoning.md#temporal-validity-turns-memory-updates-into-ledger-operations)
+Durable topics: [Memory Systems](memory-systems/memory-systems.md), [Context Economy for Agents](context-economy/context-economy.md), [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
+Core source: [Temporal Validity in Retrieval Memory](https://arxiv.org/abs/2606.26511v1)
 Implementable now:
-- choose one deterministic workflow and mark only the control points where reasoning is allowed
-- define TaskAgent, DecisionAgent, and FlowAgent responsibilities before writing prompts
-- make the workflow engine own ordering, state transitions, and required approvals
-- attach policy fields to every hook: tools, data scope, escalation, audit event, and rollback path
+- add valid-from, valid-until, superseded-by, source event, and writer principal fields to structured memories
+- apply deterministic supersession for typed project facts, preferences, config values, and API metadata
+- preserve retired values as lineage rather than deleting them
+- add marker-free stale-fact tests to memory evals
 Tools, repos, and methodologies worth exploring:
-- CUGA, process-harness overlays, TDF-style hook maps, process FRAME policy bundles, OpenAPI/MCP integration behind workflow control
-Implementability score: 0.74
+- SQLite or Postgres bi-temporal ledgers, append-only memory events, active fact projections, write-path contradiction checks, stale-fact benchmarks
+Implementability score: 0.83
 
 ## Supporting recent AgenticAI context
 
-The 2026-06-26 weekly synthesis remains the broadest current map: [weekly reasoning analysis](2026-06-26/reasoning.md). The new 2026-06-27 daily scan narrows the implementation lesson: shrink uncontrolled loops and wrap real workflows with explicit hooks instead of adding orchestration by default.
+The 2026-06-26 weekly synthesis remains the broadest current map: [weekly reasoning analysis](2026-06-26/reasoning.md). The 2026-06-27 daily scan tightened loop economics and workflow harnesses. The new 2026-06-28 scan tightens boundary objects: external code becomes evidence packages, and memory updates become ledger mutations.

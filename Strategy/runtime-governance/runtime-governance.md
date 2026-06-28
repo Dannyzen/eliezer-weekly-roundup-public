@@ -1,6 +1,6 @@
 # Runtime Governance
 
-Last updated: 2026-06-26
+Last updated: 2026-06-28
 
 Runtime governance is becoming the real control plane for agent systems.
 
@@ -708,3 +708,18 @@ Practical lesson:
 Sources:
 - [Autoformalization of Agent Instructions into Policy-as-Code](https://arxiv.org/abs/2606.26649v1)
 - [sondera-ai/sondera-harness-python](https://github.com/sondera-ai/sondera-harness-python)
+
+## June 28 update: runtime monitors must see trace obligations, not only calls
+
+VIGIL and the adaptive out-of-band defense evaluation reinforce the same runtime-governance rule. Enforcement belongs outside the model, but an action-level allowlist is too shallow when the violation depends on event order, value flow, stale authority, or adversarial adaptation.
+
+Practical lesson:
+- represent high-risk obligations as trace policies, not only prompt instructions;
+- collect typed events for tool calls, artifacts, arguments, outputs, statuses, policy IDs, and consuming calls;
+- block or escalate before a violating invocation's effects land;
+- test monitors against adaptive, defense-aware attacks rather than static attack strings alone;
+- preserve allow, deny, timeout, false positive, false negative, and task-utility outcomes in the regression history.
+
+Sources:
+- [VIGIL](https://arxiv.org/abs/2606.26524v1)
+- [Adaptive Evaluation of Out-of-Band Defenses](https://arxiv.org/abs/2606.26479v1)

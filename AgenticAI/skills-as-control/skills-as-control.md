@@ -1,6 +1,6 @@
 # Skills as Control
 
-Last updated: 2026-06-24
+Last updated: 2026-06-28
 
 Core sources:
 - From Research Question to Scientific Workflow: Leveraging Agentic AI for Science Automation: https://arxiv.org/abs/2604.21910v1
@@ -610,3 +610,19 @@ Practical lesson:
 
 Source:
 - [GUI vs. CLI](https://arxiv.org/abs/2606.24551)
+
+## June 28 update: skill specifications need executable trace monitors
+
+VIGIL strengthens the skills-as-control thesis: a skill specification that only lives in prose is not a boundary. Skills increasingly declare access permissions, disclosure limits, execution privileges, and required preconditions, but the runtime often trusts the agent to honor them.
+
+The implementation lesson is that high-risk skills need monitors over typed execution traces. The monitor should check event order, argument relationships, artifact IDs, temporal dependencies, and cross-call value flow before effects land.
+
+Practical lesson:
+- compile skill specs into finite-trace obligations where possible;
+- log skill invocations, arguments, outputs, statuses, artifact IDs, and consuming calls;
+- enforce prerequisite, validation, disclosure, and artifact-binding rules across multiple calls;
+- return structured denial feedback so the agent can replan;
+- test violations that look benign at the single-tool-call level but fail across the trace.
+
+Source:
+- [VIGIL](https://arxiv.org/abs/2606.26524v1)

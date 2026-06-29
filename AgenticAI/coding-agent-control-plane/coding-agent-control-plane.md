@@ -1,6 +1,6 @@
 # Coding Agent Control Plane
 
-Last updated: 2026-06-26
+Last updated: 2026-06-29
 
 Coding-agent control planes are the missing governance layer between repo-local agent instructions and real file or shell authority.
 
@@ -83,3 +83,18 @@ A useful first version is straightforward: inventory, hash, generate, lint, trac
 - A Deterministic Control Plane for LLM Coding Agents: https://arxiv.org/abs/2606.26924v1
 - Autoformalization of Agent Instructions into Policy-as-Code: https://arxiv.org/abs/2606.26649v1
 - Sondera Harness Python: https://github.com/sondera-ai/sondera-harness-python
+
+## June 29 update: repository outcomes are part of the coding-agent control plane
+
+Govern the Repository, Not the Agent and NOVA extend this topic from configuration governance into outcome governance. The control plane should not only know which rules file guided the agent. It should know whether agent work increased repository friction, whether architecture mutations passed verifier cascades, and whether failed attempts became reusable diagnostics.
+
+Practical lesson:
+- attach agent run ID, config hash, policy profile, and verifier version to pull requests;
+- track merge delay, review churn, CI retries, conflicts, rollbacks, and post-merge defects by repository and component;
+- require verifier cascades for architecture-changing patches;
+- store proposal, diagnostics, metric delta, promotion decision, and human override in the trajectory;
+- expand autonomy only where repository-level outcomes justify it.
+
+Sources:
+- [Govern the Repository, Not the Agent](https://arxiv.org/abs/2606.28235v1)
+- [NOVA](https://arxiv.org/abs/2606.27243v2)

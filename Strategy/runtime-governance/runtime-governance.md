@@ -1,6 +1,6 @@
 # Runtime Governance
 
-Last updated: 2026-06-28
+Last updated: 2026-06-29
 
 Runtime governance is becoming the real control plane for agent systems.
 
@@ -723,3 +723,18 @@ Practical lesson:
 Sources:
 - [VIGIL](https://arxiv.org/abs/2606.26524v1)
 - [Adaptive Evaluation of Out-of-Band Defenses](https://arxiv.org/abs/2606.26479v1)
+
+## June 29 update: privacy and prompt injection are information-flow problems
+
+ToolPrivacyBench and the prompt-injection inseparability theorem sharpen runtime governance around information flow. The runtime must decide what private atoms can move to which tools, and it must prevent untrusted data from becoming authority for tool grants, policy routing, or memory writes. Prompt-only controls cannot guarantee that separation.
+
+Practical lesson:
+- represent sensitive fields as private atoms with purpose-bound policies;
+- record field movement through tool arguments, backend writes, and memory operations;
+- attach provenance and taint metadata to every untrusted input and retrieved artifact;
+- enforce authority-bearing actions outside the shared prompt channel;
+- regression-test both over-disclosure and control-plane bypass.
+
+Sources:
+- [ToolPrivacyBench](https://arxiv.org/abs/2606.28061v1)
+- [On the Inseparability of Instructions and Data](https://arxiv.org/abs/2606.27567v1)

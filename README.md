@@ -5,17 +5,17 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Daily scan, 2026-06-28: [roundup](roundups/2026-06-28.md)
-- AgenticAI daily analysis: [2026-06-28](AgenticAI/2026-06-28/reasoning.md)
-- Strategy daily analysis: [2026-06-28](Strategy/2026-06-28/sovereignty.md)
+- Daily scan, 2026-06-29: [roundup](roundups/2026-06-29.md)
+- AgenticAI daily analysis: [2026-06-29](AgenticAI/2026-06-29/reasoning.md)
+- Strategy daily analysis: [2026-06-29](Strategy/2026-06-29/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
+- Previous daily scan: [2026-06-28](roundups/2026-06-28.md)
 - Friday synthesis, week ending 2026-06-26: [roundup](roundups/2026-06-26.md)
 - New durable AgenticAI topic from this week: [Coding Agent Control Plane](AgenticAI/coding-agent-control-plane/coding-agent-control-plane.md)
 - Deep Dive Wednesday, 2026-06-24: [Memory Authority Control Plane](Strategy/memory-authority-control-plane/memory-authority-control-plane.md)
-- Previous daily scan: [2026-06-27](roundups/2026-06-27.md)
-- Previous Friday synthesis: [week ending 2026-06-19](roundups/2026-06-19.md)
 - Prior Deep Dive Wednesday, 2026-06-17: [Evidence Provenance Control Plane](Strategy/evidence-provenance-control-plane/evidence-provenance-control-plane.md)
+- Prior Friday synthesis: [week ending 2026-06-19](roundups/2026-06-19.md)
 - Prior Friday synthesis: [week ending 2026-06-12](roundups/2026-06-12.md)
 - Prior Friday synthesis: [week ending 2026-06-05](roundups/2026-06-05.md)
 - Prior Friday synthesis: [week ending 2026-05-29](roundups/2026-05-29.md)
@@ -24,14 +24,14 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 The agent stack is moving from prompt-managed behavior to explicit control surfaces that can be versioned, compiled, tested, scoped, revoked, and enforced outside the model's private reasoning loop.
 
-The 2026-06-28 daily scan adds the boundary-object version of that thesis: generated artifacts should not cross trust boundaries as authority. External code becomes a knowledge package. Memory updates become validity-ledger mutations. Skill specs become runtime policy. Prompt-injection defenses become adaptive regression suites.
+The 2026-06-29 daily scan adds the repository and information-flow version of that thesis: coding-agent risk accumulates at the repository, architecture-changing agents need verifier cascades, private fields need purpose-bound tool policies, and prompt injection is a control-data separation problem rather than a prompt-hardening problem.
 
 The latest four implementation and governance surfaces are:
 
-- Agent-mediated pull requests need evidence packages, project-side regeneration, and fidelity checks before code acceptance.
-- Retrieval memory needs valid-time state, deterministic supersession, retired-value lineage, and stale-fact benchmarks.
-- Skills need trace-time reference monitors over event order, argument constraints, artifact flow, and temporal obligations.
-- Prompt-injection defenses need defense-aware adaptive tests, not only static AgentDojo-style scores.
+- Coding-agent evaluations need repository-level friction metrics, not only task pass rates.
+- Architecture-evolution agents need verifier cascades, attempt ledgers, and human approval for high-risk promotions.
+- Tool privacy needs field-level purpose policies and argument audit logs across the trajectory.
+- Authority-bearing actions need provenance, taint, capability, and external policy boundaries.
 
 The 2026-06-26 Friday synthesis remains the broadest current weekly map, and the 2026-06-24 Deep Dive Wednesday update remains the strategic foundation underneath memory and authority work: memory is a policy-bearing authority object, not just context.
 

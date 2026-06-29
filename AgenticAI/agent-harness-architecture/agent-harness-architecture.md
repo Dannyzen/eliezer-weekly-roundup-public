@@ -1,6 +1,6 @@
 # Agent Harness Architecture
 
-Last updated: 2026-06-27
+Last updated: 2026-06-29
 
 Agent harness architecture is becoming the part of the agent stack that teams can actually standardize.
 
@@ -821,3 +821,18 @@ Sources:
 - [A Process Harness for Uplifting Legacy Workflows to Agentic BPM](https://arxiv.org/abs/2606.27188v1)
 - [IBM CUGA examples](https://huggingface.co/blog/ibm-research/cuga-apps)
 - [cuga-project/cuga-agent](https://github.com/cuga-project/cuga-agent)
+
+## June 29 update: verifier cascades make architecture changes harness-owned
+
+NOVA and repository-level risk measurement add a sharper rule for harness architecture: architecture-changing agents need promotion gates, and coding-agent performance needs repository outcome metrics. A harness that only returns a patch and a test result is too shallow for production architecture work.
+
+Practical lesson:
+- define mutation classes and invariants before letting agents alter architecture;
+- run proposed changes through static checks, local execution, offline metrics, compatibility checks, and human approval where needed;
+- preserve failed proposals and verifier diagnostics as trajectory memory;
+- track repository-level integration friction as a harness outcome;
+- judge autonomy by sustained repo health, not isolated benchmark wins.
+
+Sources:
+- [NOVA](https://arxiv.org/abs/2606.27243v2)
+- [Govern the Repository, Not the Agent](https://arxiv.org/abs/2606.28235v1)

@@ -792,3 +792,18 @@ Practical lesson:
 
 Source:
 - [Adaptive Evaluation of Out-of-Band Defenses](https://arxiv.org/abs/2606.26479v1)
+
+## June 29 update: gateway privacy has to be purpose-bound
+
+ToolPrivacyBench moves gateway privacy from final-output review to field-level trajectory audit. A gateway should know which private atom may be sent to which tool for which purpose, then compare actual tool arguments and backend writes against that policy. The prompt-injection inseparability result reinforces the same architecture: the model cannot be the only boundary between untrusted data and control-authoritative actions.
+
+Practical lesson:
+- label private atoms and bind them to authorized tools, purposes, and sinks;
+- audit actual tool arguments and backend writes, not only final answers;
+- preserve provenance and taint labels across retrieved content, tool output, memory, and policy routing;
+- route tool grants, policy changes, and memory writes through deterministic gateway checks;
+- test prompt injection as a control-plane bypass attempt.
+
+Sources:
+- [ToolPrivacyBench](https://arxiv.org/abs/2606.28061v1)
+- [On the Inseparability of Instructions and Data](https://arxiv.org/abs/2606.27567v1)

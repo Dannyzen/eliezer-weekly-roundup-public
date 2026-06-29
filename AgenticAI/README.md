@@ -2,40 +2,40 @@
 
 This index tracks the most recent structured update. Each finding includes a short human-readable summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: Daily scan 2026-06-28
+## Most Recent Structured Update: Daily scan 2026-06-29
 
-### Knowledge-based pull requests make external code evidence, not authority
+### Repository-level risk means coding-agent evals have to measure the repo
 
-Summary: External agent work should cross project boundaries as a provenance-bearing knowledge package, not as the default merge candidate. KPR separates knowledge acceptance from code acceptance, then lets a project-owned inner agent regenerate code inside the receiving repository's policy, tests, and conventions.
+Summary: Agent-authored pull requests can pass local task checks while the repository accumulates integration friction. The repository, not the individual agent, should become the measurement unit for merge delay, review churn, conflict rate, CI retries, rollbacks, and post-merge defects.
 
-Analysis: [daily reasoning analysis](2026-06-28/reasoning.md#knowledge-based-pull-requests-make-external-code-evidence-not-authority)
-Durable topics: [Ticket-Native Agent Orchestration](ticket-native-agent-orchestration/ticket-native-agent-orchestration.md), [Coding Agent Control Plane](coding-agent-control-plane/coding-agent-control-plane.md), [Event-Sourced Agent Runtime](event-sourced-agent-runtime/event-sourced-agent-runtime.md)
-Core source: [Knowledge-Based Pull Requests](https://arxiv.org/abs/2606.26721v1)
+Analysis: [daily reasoning analysis](2026-06-29/reasoning.md#repository-level-risk-means-coding-agent-evals-have-to-measure-the-repo)
+Durable topics: [Coding Agent Control Plane](coding-agent-control-plane/coding-agent-control-plane.md), [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
+Core source: [Govern the Repository, Not the Agent](https://arxiv.org/abs/2606.28235v1)
 Implementable now:
-- define a KPR package schema with claim, evidence, tests, risk, constraints, uncertainty, and trace fields
-- accept external diffs as evidence, not direct merge candidates, for high-context contributions
-- run an internal coding agent in a clean checkout after human knowledge acceptance
-- compare regenerated code against the accepted knowledge package and project-side tests
+- bind agent run IDs and config hashes to PRs, commits, reviews, CI, and rollbacks
+- track repository-level integration friction rather than only task pass rate
+- compare agent-authored and human-authored changes by repo and component
+- use repo-level risk before expanding autonomy
 Tools, repos, and methodologies worth exploring:
-- GitHub Issues or Linear state machines, structured reviewer briefs, risk checklists, clean worktrees, branch protection, CODEOWNERS, CI, secret scanning, dependency scanning
-Implementability score: 0.72
+- GitHub PR metadata, merge queues, CODEOWNERS, branch protection, CI retry analysis, multilevel models, repository-risk dashboards
+Implementability score: 0.70
 
-### Temporal validity turns memory updates into ledger operations
+### Verification-aware harnesses turn architecture work into a checked loop
 
-Summary: Stale facts are write-path failures. MemStrata shows vector similarity cannot reliably separate contradictions from duplicates, then uses deterministic subject-relation-object supersession in a bi-temporal ledger to retire stale values before retrieval.
+Summary: NOVA shows the architecture-evolution version of an agent harness: the agent proposes, but verifier cascades check semantics, executability, offline metrics, production constraints, and high-risk handoff before a change advances.
 
-Analysis: [daily reasoning analysis](2026-06-28/reasoning.md#temporal-validity-turns-memory-updates-into-ledger-operations)
-Durable topics: [Memory Systems](memory-systems/memory-systems.md), [Context Economy for Agents](context-economy/context-economy.md), [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
-Core source: [Temporal Validity in Retrieval Memory](https://arxiv.org/abs/2606.26511v1)
+Analysis: [daily reasoning analysis](2026-06-29/reasoning.md#verification-aware-harnesses-turn-agentic-architecture-work-into-a-checked-loop)
+Durable topics: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Coding Agent Control Plane](coding-agent-control-plane/coding-agent-control-plane.md)
+Core source: [NOVA](https://arxiv.org/abs/2606.27243v2)
 Implementable now:
-- add valid-from, valid-until, superseded-by, source event, and writer principal fields to structured memories
-- apply deterministic supersession for typed project facts, preferences, config values, and API metadata
-- preserve retired values as lineage rather than deleting them
-- add marker-free stale-fact tests to memory evals
+- define allowed mutation classes for one architecture surface
+- build a verifier cascade before promotion
+- store proposal, diagnostics, metric delta, and decision for every attempt
+- require human approval for high-risk architecture moves
 Tools, repos, and methodologies worth exploring:
-- SQLite or Postgres bi-temporal ledgers, append-only memory events, active fact projections, write-path contradiction checks, stale-fact benchmarks
-Implementability score: 0.83
+- project packs, offline-to-online gates, metric regression checks, compatibility checks, trajectory memory, human-attended promotion gates
+Implementability score: 0.66
 
 ## Supporting recent AgenticAI context
 
-The 2026-06-26 weekly synthesis remains the broadest current map: [weekly reasoning analysis](2026-06-26/reasoning.md). The 2026-06-27 daily scan tightened loop economics and workflow harnesses. The new 2026-06-28 scan tightens boundary objects: external code becomes evidence packages, and memory updates become ledger mutations.
+The 2026-06-26 weekly synthesis remains the broadest current map: [weekly reasoning analysis](2026-06-26/reasoning.md). The 2026-06-28 daily scan tightened boundary objects. The new 2026-06-29 scan moves the implementation focus to repository-level coding-agent risk and verifier-owned harness loops.

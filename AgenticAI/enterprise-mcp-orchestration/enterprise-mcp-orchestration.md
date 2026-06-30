@@ -1,6 +1,6 @@
 # Enterprise MCP Orchestration
 
-Last updated: 2026-06-10
+Last updated: 2026-06-30
 
 Core sources:
 - Queen-Bee Agents: A BeeSpec-Centered Architecture for Governed Enterprise MCP Orchestration: https://arxiv.org/abs/2606.06545v1
@@ -175,6 +175,20 @@ Queen-Bee won because it gives the stack a unifying object: a compiled, auditabl
 - Less Context, Better Agents: Efficient Context Engineering for Long-Horizon Tool-Using LLM Agents: https://arxiv.org/abs/2606.10209v1
 - Extending MCP support for Amazon Bedrock AgentCore Gateway: https://aws.amazon.com/blogs/machine-learning/extending-mcp-support-for-amazon-bedrock-agentcore-gateway-2/
 - From Failed Trajectories to Reliable LLM Agents: Diagnosing and Repairing Harness Flaws: https://arxiv.org/abs/2606.06324v1
+
+## June 30 update: MCP server patterns make the run contract easier to audit
+
+MCP Server Architecture Patterns strengthens the run-contract thesis with a production taxonomy. A work order should not only list allowed tools. It should also know whether a tool came from a Resource Gateway, Tool Orchestrator, Stateful Session Server, Proxy Aggregator, or Domain-Specific Adapter.
+
+Practical lesson:
+- tag every MCP server in the capability registry by architecture pattern, owner, auth mode, transport, version, and observed latency;
+- cap visible tools by workflow and target model instead of exposing a whole registry;
+- treat Proxy Aggregators and Stateful Session Servers as higher-review surfaces because they can multiply authority and context confusion;
+- run tool-count ablations per target model before expanding an execution contract.
+
+Sources:
+- [MCP Server Architecture Patterns](https://arxiv.org/abs/2606.30317v1)
+- [rodriguescarson/mcp-patterns-icsme2026](https://github.com/rodriguescarson/mcp-patterns-icsme2026)
 
 ## Working conclusion
 

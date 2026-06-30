@@ -1,6 +1,6 @@
 # Model Router Governance
 
-Last updated: 2026-06-27
+Last updated: 2026-06-30
 
 Core sources:
 - LiteLLM v1.83.13-nightly: https://github.com/BerriAI/litellm/releases/tag/v1.83.13-nightly
@@ -112,6 +112,19 @@ Practical lesson:
 
 Source:
 - [When Does Combining Language Models Help?](https://arxiv.org/abs/2606.27288v1)
+
+## June 30 update: multi-agent routers need measured capability, not description trust
+
+Linguistic Firewall adds a multi-agent security version of router governance. A router that trusts agent self-descriptions or static embeddings is routing on attacker-controlled or stale metadata. ANTAP's active-testing approach points to the safer primitive: observed capability evidence stored in a registry and used at routing time.
+
+Practical lesson:
+- run active probes before admitting workers, skills, tools, or subagents into trusted routing;
+- store capability scores with test suite, date, model, prompt, skill version, and policy version;
+- rerun probes after any worker, model, prompt, or tool change;
+- route by measured capability, calibrated reliability, policy, latency, and cost, not by self-description alone.
+
+Source:
+- [Linguistic Firewall](https://arxiv.org/abs/2606.30555v1)
 
 ## Minimum governance checklist
 

@@ -1,6 +1,6 @@
 # Agent Serving Runtime
 
-Last updated: 2026-06-22
+Last updated: 2026-06-30
 
 Core sources:
 - AGENTSERVESIM: https://arxiv.org/abs/2606.09613v1
@@ -34,6 +34,21 @@ The practical move is to preserve serving-relevant fields regardless of framewor
 Sources:
 - [ADK docs](https://adk.dev/)
 - [tRPC-Agent-Go](https://github.com/trpc-group/trpc-agent-go)
+
+## June 30 update: TraceLab turns coding-agent serving into a measured workload
+
+TraceLab gives this topic the missing public baseline. The paper reports roughly 4,300 coding-agent sessions, about 350,000 LLM steps, and about 430,000 tool calls from Claude Code and Codex usage. The project page exposes a public pool with 357,161 agent steps and 432,510 tool calls.
+
+Practical lesson:
+- log agent steps, model calls, tool calls, prefix-cache reuse, append length, compactions, human waits, retries, and costs as first-class serving fields;
+- compare local coding-agent traces against TraceLab before changing cache, batching, or model-routing policy;
+- make tool latency and human-paced gaps scheduler inputs, not analytics afterthoughts;
+- optimize by task-level wall-clock, cost, and failure rate, not only tokens per second.
+
+Source:
+- [TraceLab](https://arxiv.org/abs/2606.30560v1)
+- [SyFI TraceLab project](https://tracelab.cs.washington.edu/)
+- [uw-syfi/TraceLab](https://github.com/uw-syfi/TraceLab)
 
 ## What to avoid
 

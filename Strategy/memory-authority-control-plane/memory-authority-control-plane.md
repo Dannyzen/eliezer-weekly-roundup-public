@@ -1,6 +1,6 @@
 # Memory Authority Control Plane
 
-Last updated: 2026-06-24
+Last updated: 2026-06-30
 
 Primary layer: Strategy / runtime governance
 
@@ -116,6 +116,19 @@ This also changes the sales and governance story:
 - For FriendVM-style agent nodes: each node can own its memory authority policy, while shared memory needs explicit propagation contracts.
 
 The durable worldview update is this: memory is not a store. Memory is a policy-bearing runtime object.
+
+## June 30 update: poisoning detectors should watch memory-to-effect transitions
+
+Forensic Trajectory Signatures for Agent Memory Poisoning Detection moves this topic from authority modeling into runtime detection. The important object is the transition from recalled memory to effectful action. In the evaluated architecture, successful exfiltration attacks required a memory recall before an email send, and that transition was enough for a strong detector.
+
+Practical lesson:
+- add memory recall, direct memory read, memory-derived summary, and effectful sink events to one trace schema;
+- define deny or review rules for recall-to-email, recall-to-export, recall-to-deploy, recall-to-payment, and recall-to-external-post paths;
+- train classifiers only after simple invariants and labels exist;
+- preserve enough provenance to distinguish memory-channel poisoning from ordinary prompt injection.
+
+Source:
+- [Forensic Trajectory Signatures for Agent Memory Poisoning Detection](https://arxiv.org/abs/2606.30566v1)
 
 ## Implementation checklist
 

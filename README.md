@@ -10,11 +10,12 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 - Strategy daily analysis: [2026-07-01](Strategy/2026-07-01/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
+- Deep Dive Wednesday, 2026-07-01: [Agent Execution Control Plane](Strategy/agent-execution-control-plane/agent-execution-control-plane.md)
 - New durable Strategy topic: [Agent Community Governance](Strategy/agent-community-governance/agent-community-governance.md)
 - Previous daily scan: [2026-06-30](roundups/2026-06-30.md)
 - Friday synthesis, week ending 2026-06-26: [roundup](roundups/2026-06-26.md)
 - New durable AgenticAI topic from last week: [Coding Agent Control Plane](AgenticAI/coding-agent-control-plane/coding-agent-control-plane.md)
-- Deep Dive Wednesday, 2026-06-24: [Memory Authority Control Plane](Strategy/memory-authority-control-plane/memory-authority-control-plane.md)
+- Prior Deep Dive Wednesday, 2026-06-24: [Memory Authority Control Plane](Strategy/memory-authority-control-plane/memory-authority-control-plane.md)
 - Prior Deep Dive Wednesday, 2026-06-17: [Evidence Provenance Control Plane](Strategy/evidence-provenance-control-plane/evidence-provenance-control-plane.md)
 - Prior Friday synthesis: [week ending 2026-06-19](roundups/2026-06-19.md)
 - Prior Friday synthesis: [week ending 2026-06-12](roundups/2026-06-12.md)
@@ -25,13 +26,13 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 The agent stack is moving from prompt-managed behavior to explicit control surfaces that can be versioned, compiled, tested, scoped, revoked, enforced, and measured outside the model's private reasoning loop.
 
-The 2026-07-01 daily scan adds the work-surface version of that thesis: memory selection, sandbox execution, lifecycle skills, and group decisions are becoming artifacts. The stack is less about giving an agent more tools and more about making each tool-bearing surface traceable, governable, and replaceable.
+The 2026-07-01 Deep Dive adds the execution-control version of that thesis: connection protocols are not authority boundaries. Memory selection, sandbox execution, lifecycle skills, and group decisions all need a runtime layer that binds principal, grant, resource, capability, data handle, approval, policy decision, and audit evidence before side effects happen.
 
 The latest four implementation and governance surfaces are:
 
+- Tool access needs an execution-control broker, not only MCP-style connectivity.
 - Long-horizon memory should preserve source-indexed turn records so context pruning remains learnable.
 - Code agents need sandbox substrates with network policy, credential mediation, audit logs, and snapshot semantics.
-- Agent delivery should be packaged as lifecycle skills plus deterministic commands, not improvised from model memory.
 - Multi-agent communities need membership, dissent, escalation, and replay evidence above interop protocols.
 
 The 2026-06-26 Friday synthesis remains the broad current weekly map, and the 2026-06-24 Deep Dive Wednesday update remains the strategic foundation underneath memory and authority work: memory is a policy-bearing authority object, not just context.
@@ -65,6 +66,7 @@ The 2026-06-26 Friday synthesis remains the broad current weekly map, and the 20
 
 ### Strategy
 
+- [Agent Execution Control Plane](Strategy/agent-execution-control-plane/agent-execution-control-plane.md)
 - [Agent Community Governance](Strategy/agent-community-governance/agent-community-governance.md)
 - [Memory Authority Control Plane](Strategy/memory-authority-control-plane/memory-authority-control-plane.md)
 - [Agent Authority Manifests](Strategy/agent-authority-manifests/agent-authority-manifests.md)

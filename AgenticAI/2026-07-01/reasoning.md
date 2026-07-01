@@ -83,6 +83,10 @@ Implementability score: 0.88
 
 It is immediately tryable if the target stack is ADK or Google Cloud. The downside is platform specificity: the skill package is a strong pattern even when the actual CLI is not the right backend.
 
+## Deep-dive cross-link
+
+Today's Strategy deep dive, [Agent Execution Control Plane](../../Strategy/agent-execution-control-plane/agent-execution-control-plane.md), is the authority layer underneath these implementation findings. ECHO produces source-indexed memory, CubeSandbox supplies isolated execution, and agents-cli packages lifecycle skills. HCP-style execution control is what decides which principal may route which memory, sandbox, or skill output into a real tool effect.
+
 ## Near misses and watchlist
 
 DA-Studio is a solid demo architecture for sandboxed, inspectable data-analysis agents, but today's CubeSandbox and agents-cli sources are more directly usable as stack primitives. The Microsoft SkillOpt blog is useful, but the repo already covered SkillOpt in May. The latest MCP tool-poisoning news reinforces the June gateway-governance thesis rather than adding a new implementation pattern today.

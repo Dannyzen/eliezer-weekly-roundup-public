@@ -54,4 +54,4 @@ Implementability score: 0.88
 
 ## Supporting recent AgenticAI context
 
-The 2026-06-26 weekly synthesis remains the broad current implementation map: [weekly reasoning analysis](2026-06-26/reasoning.md). The 2026-06-30 scan added real workload traces and MCP server-pattern inventory. The 2026-07-01 scan adds the work-surface version: memory selection, sandbox execution, and lifecycle skills are all becoming explicit artifacts that a runtime can test.
+The 2026-06-26 weekly synthesis remains the broad current implementation map: [weekly reasoning analysis](2026-06-26/reasoning.md). The 2026-06-30 scan added real workload traces and MCP server-pattern inventory. The 2026-07-01 scan adds the work-surface version: memory selection, sandbox execution, and lifecycle skills are all becoming explicit artifacts that a runtime can test. The matching Strategy deep dive is [Agent Execution Control Plane](../Strategy/agent-execution-control-plane/agent-execution-control-plane.md), which is the authority layer underneath those implementation surfaces.

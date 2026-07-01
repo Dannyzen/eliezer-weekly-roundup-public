@@ -1,6 +1,6 @@
 # Skills as Control
 
-Last updated: 2026-06-28
+Last updated: 2026-07-01
 
 Core sources:
 - From Research Question to Scientific Workflow: Leveraging Agentic AI for Science Automation: https://arxiv.org/abs/2604.21910v1
@@ -626,3 +626,21 @@ Practical lesson:
 
 Source:
 - [VIGIL](https://arxiv.org/abs/2606.26524v1)
+
+## July 1 update: lifecycle skills are becoming productized control surfaces
+
+Google's agents-cli is a concrete product signal for this topic. It gives existing coding assistants a skill pack and CLI commands for the agent delivery lifecycle: scaffold, ADK code patterns, evals, deployment, publishing, and observability. The coding agent does not have to reconstruct the Google Cloud agent stack from general model memory. It gets installable procedural context plus deterministic commands.
+
+The useful pattern generalizes beyond Google Cloud. Agent teams should package lifecycle knowledge as skills, pair those skills with CLI commands, and evaluate whether the skill package improves delivery against a no-skill baseline.
+
+Practical lesson:
+- package scaffold, eval, deploy, publish, and observe workflows as explicit skills rather than relying on ad hoc agent memory;
+- pair each lifecycle skill with deterministic CLI commands and schemas;
+- compare plain coding-agent runs against skills-plus-CLI runs on the same agent-building task;
+- log which lifecycle skills loaded, which commands ran, which traces were graded, and which deployment path was chosen;
+- treat vendor skill packs as useful patterns, but pin and audit them before production adoption.
+
+Sources:
+- [google/agents-cli](https://github.com/google/agents-cli)
+- [agents-cli getting started](https://google.github.io/agents-cli/guide/getting-started/)
+- [agents-cli v0.6.1 release](https://github.com/google/agents-cli/releases/tag/v0.6.1)

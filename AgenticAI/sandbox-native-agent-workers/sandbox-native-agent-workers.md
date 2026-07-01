@@ -1,5 +1,7 @@
 # Sandbox-Native Agent Workers
 
+Last updated: 2026-07-01
+
 ## Overview
 
 The strongest finding from the last 7 days is that the execution substrate itself is becoming a first-class product surface for serious agents.
@@ -120,6 +122,24 @@ Implications:
 - [File-as-Bus Workspaces](../file-as-bus-workspaces/file-as-bus-workspaces.md)
 - [Agent Harness Architecture](../agent-harness-architecture/agent-harness-architecture.md)
 - Microsoft Agent Framework python-1.1.0: https://github.com/microsoft/agent-framework/releases/tag/python-1.1.0
+
+## July 1 update: sandbox workers need egress and credential policy in the substrate
+
+CubeSandbox extends this topic from worker abstraction into infrastructure ownership. The repo describes a KVM and RustVMM sandbox service for AI agents with E2B SDK compatibility, templates, snapshots, and a v0.4 CubeEgress proxy for outbound HTTP and HTTPS policy.
+
+The important part is not only fast boot or hardware isolation. It is that the sandbox substrate can own secrets and egress decisions. CubeEgress injects credentials at the proxy layer so raw keys do not enter the sandbox, filters destinations by L7 rules, and emits per-request audit logs. That is the right default for code agents that call external APIs.
+
+Practical lesson:
+- evaluate sandbox backends on egress policy, credential handling, audit logs, snapshot semantics, and SDK compatibility, not only boot latency;
+- keep API keys outside the sandbox environment and inject them through a mediated egress layer;
+- attach egress decisions and denied requests to the agent run trace;
+- test rollback and clone behavior as part of the harness, not as an ops afterthought;
+- run any CubeSandbox evaluation on a disposable host before trusting isolation or performance claims.
+
+Sources:
+- [CubeSandbox](https://github.com/TencentCloud/CubeSandbox)
+- [CubeSandbox v0.4.0 changelog](https://github.com/TencentCloud/CubeSandbox/blob/master/docs/changelog/v0.4.0.md)
+- [CubeSandbox security proxy guide](https://github.com/TencentCloud/CubeSandbox/blob/master/docs/guide/security-proxy.md)
 
 ## Working conclusion
 

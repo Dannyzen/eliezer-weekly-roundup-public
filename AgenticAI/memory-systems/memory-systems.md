@@ -1,6 +1,6 @@
 # Memory Systems
 
-Last updated: 2026-06-28
+Last updated: 2026-07-01
 
 Memory is becoming the real architecture question for long-lived agents.
 
@@ -692,6 +692,22 @@ Practical lesson:
 
 Source:
 - [Temporal Validity in Retrieval Memory](https://arxiv.org/abs/2606.26511v1)
+
+## July 1 update: selective turn memory needs source-indexed reconstruction
+
+ECHO sharpens the memory-system thesis from another angle: pruning context should not erase the evidence path. It compresses completed environment turns into compact memory records, reconstructs bounded policy contexts by selecting records, and uses the selected source indices to route outcome credit back to supporting evidence.
+
+The implementation lesson is direct. A memory object that can influence an action should carry a source pointer. If the system cannot reconstruct which original turn supported a final answer, it also cannot evaluate whether the memory policy helped or harmed the trajectory.
+
+Practical lesson:
+- store completed turns as compact records with stable source IDs, hashes, timestamps, tool outputs, and outcome labels;
+- log selected memory IDs every time a bounded context is reconstructed;
+- compare full history, rolling summaries, selected turn memory, and no-memory variants before changing compaction policy;
+- keep memory-selection traces available for offline credit assignment, not only prompt reconstruction;
+- treat lossy summaries as derived views, not as the only training or audit substrate.
+
+Source:
+- [ECHO](https://arxiv.org/abs/2606.31650v1)
 
 ## Working conclusion
 

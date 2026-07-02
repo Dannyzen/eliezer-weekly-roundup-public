@@ -2,56 +2,56 @@
 
 This index tracks the most recent structured update. Each finding includes a short human-readable summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: Daily scan 2026-07-01
+## Most Recent Structured Update: Daily scan 2026-07-02
 
-### ECHO turns context pruning into traceable credit assignment
+### AutoMem makes memory management a trainable action space
 
-Summary: ECHO compresses completed turns into source-indexed memory records, reconstructs bounded policy contexts by selecting records, and routes outcome credit back to the evidence that supported successful answers. The useful implementation pattern is compact memory for action plus source pointers for learning.
+Summary: AutoMem promotes file-system memory operations to first-class agent actions, then optimizes both the memory scaffold and a dedicated memory specialist from long-horizon traces. The useful pattern is not just external memory. It is memory decisions as traceable, trainable actions.
 
-Analysis: [daily reasoning analysis](2026-07-01/reasoning.md#echo-turns-context-pruning-into-traceable-credit-assignment)
+Analysis: [daily reasoning analysis](2026-07-02/reasoning.md#automem-makes-memory-management-a-trainable-action-space)
 Durable topics: [Memory Systems](memory-systems/memory-systems.md), [Context Economy](context-economy/context-economy.md), [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Agent Serving Runtime](agent-serving-runtime/agent-serving-runtime.md)
-Core source: [ECHO paper](https://arxiv.org/abs/2606.31650v1)
+Core sources: [AutoMem paper](https://arxiv.org/abs/2607.01224v1), [project page](https://autolearnmem.github.io/), [repository](https://github.com/autoLearnMem/AutoMem)
 Implementable now:
-- add stable source IDs to turn-level memory records
-- log which memory IDs are selected into every bounded context
-- compare full history, rolling summaries, selected turn memory, and no-memory variants
-- use source-indexed selections as eval data before changing memory or compaction policy
+- log memory operations as first-class trace events
+- evaluate memory writes and retrievals against later outcomes
+- ablate no memory, rolling summary, fixed file memory, learned scaffold, and trained memory specialist
+- treat memory schemas and action vocabulary as versioned harness components
 Tools, repos, and methodologies worth exploring:
-- turn-level memory ledgers, JSONL trajectory logs, offline memory-selection ablations, credit assignment over selected evidence
-Implementability score: 0.74
+- AutoMem, file-backed memory APIs, JSONL trajectory logs, scaffold optimization, LoRA or SFT over memory-action decisions
+Implementability score: 0.63
 
-### CubeSandbox makes agent sandboxes an egress-governed substrate
+### Coding-agent benchmarks need runtime-enforced validity
 
-Summary: CubeSandbox is a read-only verified open-source runtime candidate for code agents: KVM/RustVMM isolation, E2B SDK compatibility, templates, snapshots, and a v0.4 CubeEgress proxy for credential injection, domain filtering, and egress audit logs.
+Summary: RepoRescue and the performance-optimization benchmark audit both show that coding-agent scores need stronger admissibility rules. Block test edits at runtime when source repair is required, rerun source-only patches, replay performance reference patches across machine profiles, and expose per-task score weights.
 
-Analysis: [daily reasoning analysis](2026-07-01/reasoning.md#cubesandbox-makes-agent-sandboxes-an-egress-governed-substrate)
-Durable topics: [Sandbox-Native Agent Workers](sandbox-native-agent-workers/sandbox-native-agent-workers.md), [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Agent Serving Runtime](agent-serving-runtime/agent-serving-runtime.md), [Strategy Agent Sandboxing](../Strategy/agent-sandboxing/agent-sandboxing.md)
-Core sources: [CubeSandbox repo](https://github.com/TencentCloud/CubeSandbox), [v0.4 changelog](https://github.com/TencentCloud/CubeSandbox/blob/master/docs/changelog/v0.4.0.md), [security proxy guide](https://github.com/TencentCloud/CubeSandbox/blob/master/docs/guide/security-proxy.md)
+Analysis: [daily reasoning analysis](2026-07-02/reasoning.md#coding-agent-benchmarks-need-runtime-enforced-validity-not-only-leaderboard-scores)
+Durable topics: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Coding Agent Control Plane](coding-agent-control-plane/coding-agent-control-plane.md), [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Event-Sourced Agent Runtime](event-sourced-agent-runtime/event-sourced-agent-runtime.md)
+Core sources: [RepoRescue](https://arxiv.org/abs/2607.01213v1), [performance benchmark audit](https://arxiv.org/abs/2607.01211v1)
 Implementable now:
-- evaluate CubeSandbox on a disposable KVM host, without trusting repo claims blindly
-- test E2B compatibility against existing sandbox client code
-- model secrets as egress-injected credentials rather than sandbox environment variables
-- attach egress audit JSONL to agent run traces
+- enforce edit allowlists in the runtime, not only in prompts
+- strip test edits and rerun patches for source-only repair scoring
+- replay performance tasks across multiple machine profiles
+- report per-task score contribution, variance, and reference-patch validity
 Tools, repos, and methodologies worth exploring:
-- CubeSandbox, E2B SDK compatibility, KVM/RustVMM, CubeEgress, domain allowlists, credential-injection rules, sandbox snapshots
-Implementability score: 0.86
+- source-only replay, runtime patch guards, cross-machine performance replay, score-weight audits, practical-use validation
+Implementability score: 0.82
 
-### agents-cli packages agent delivery as skills plus commands
+### Agent skills need supply-chain manifests and lockfiles
 
-Summary: Google's agents-cli turns a coding assistant into an operator for the ADK and Gemini Enterprise Agent Platform lifecycle. It ships skills and commands for scaffolding, evaluation, deployment, publishing, and observability.
+Summary: Skills Are Not Islands treats skills as dependency-bearing artifacts across skill, package, and service edges. The correction is concrete: skill runtimes need manifests, lockfiles, transitive dependency graphs, and risk-warning audit commands before broad skill packs get production authority.
 
-Analysis: [daily reasoning analysis](2026-07-01/reasoning.md#agents-cli-packages-agent-delivery-as-skills-plus-commands)
-Durable topics: [Skills as Control](skills-as-control/skills-as-control.md), [Coding Agent Control Plane](coding-agent-control-plane/coding-agent-control-plane.md), [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
-Core sources: [google/agents-cli](https://github.com/google/agents-cli), [getting started docs](https://google.github.io/agents-cli/guide/getting-started/), [v0.6.1 release](https://github.com/google/agents-cli/releases/tag/v0.6.1)
+Analysis: [daily reasoning analysis](2026-07-02/reasoning.md#agent-skills-need-supply-chain-manifests-and-lockfiles)
+Durable topics: [Skills as Control](skills-as-control/skills-as-control.md), [Agent Discovery](agent-discovery/agent-discovery.md), [Strategy Runtime Governance](../Strategy/runtime-governance/runtime-governance.md), [Strategy Agent Gateway Governance](../Strategy/agent-gateway-governance/agent-gateway-governance.md)
+Core source: [Skills Are Not Islands](https://arxiv.org/abs/2607.01136v1)
 Implementable now:
-- try `uvx google-agents-cli setup` in a disposable project
-- install skills only with `npx skills add google/agents-cli` for comparison
-- run scaffold, eval generate, eval grade, eval analyze, and deploy on a toy ADK agent
-- compare plain coding-agent output against skills-plus-CLI output on the same task
+- add owner, source, version, dependency, service, tool, and side-effect fields to skill manifests
+- write lockfile-like records for installed skills and transitive dependencies
+- log loaded skill hash, manifest hash, dependency graph hash, and service authority
+- run transitive risk audits before production admission
 Tools, repos, and methodologies worth exploring:
-- agents-cli, ADK templates, local eval datasets, trace generation, LLM-as-judge grading, Cloud Trace, lifecycle skills
-Implementability score: 0.88
+- skill SBOMs, lockfiles, dependency-cluster analysis, registry audit commands, supply-chain risk warnings
+Implementability score: 0.73
 
 ## Supporting recent AgenticAI context
 
-The 2026-06-26 weekly synthesis remains the broad current implementation map: [weekly reasoning analysis](2026-06-26/reasoning.md). The 2026-06-30 scan added real workload traces and MCP server-pattern inventory. The 2026-07-01 scan adds the work-surface version: memory selection, sandbox execution, and lifecycle skills are all becoming explicit artifacts that a runtime can test. The matching Strategy deep dive is [Agent Execution Control Plane](../Strategy/agent-execution-control-plane/agent-execution-control-plane.md), which is the authority layer underneath those implementation surfaces.
+The 2026-06-26 weekly synthesis remains the broad current implementation map: [weekly reasoning analysis](2026-06-26/reasoning.md). The 2026-07-01 scan made work surfaces explicit with source-indexed memory, egress-governed sandboxes, and lifecycle skills. The 2026-07-02 scan adds the artifact-governance version: memory actions, source-only patches, benchmark replays, and skill dependency graphs are all becoming inspectable runtime objects.

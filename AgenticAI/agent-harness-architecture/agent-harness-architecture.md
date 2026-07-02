@@ -836,3 +836,18 @@ Practical lesson:
 Sources:
 - [NOVA](https://arxiv.org/abs/2606.27243v2)
 - [Govern the Repository, Not the Agent](https://arxiv.org/abs/2606.28235v1)
+
+## July 2 update: benchmark scores need admissibility gates
+
+RepoRescue and the performance-benchmark audit add a hard rule to harness architecture: benchmark scores should not be accepted unless the harness can prove what was editable, how the patch was replayed, and how stable the scoring rule is.
+
+Practical lesson:
+- enforce source-only or no-test-edit regimes in the runtime, not only in prompts;
+- rerun patches after removing test edits when source repair is the target;
+- replay performance tasks across machine profiles before trusting small deltas;
+- report reference-patch validity, per-task score weight, and variance with every benchmark score;
+- treat benchmark submissions as evidence packets with admissibility fields.
+
+Sources:
+- [RepoRescue](https://arxiv.org/abs/2607.01213v1)
+- [Are Performance-Optimization Benchmarks Reliably Measuring Coding Agents?](https://arxiv.org/abs/2607.01211v1)

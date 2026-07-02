@@ -1,6 +1,6 @@
 # Runtime Governance
 
-Last updated: 2026-06-29
+Last updated: 2026-07-02
 
 Runtime governance is becoming the real control plane for agent systems.
 
@@ -738,3 +738,17 @@ Practical lesson:
 Sources:
 - [ToolPrivacyBench](https://arxiv.org/abs/2606.28061v1)
 - [On the Inseparability of Instructions and Data](https://arxiv.org/abs/2606.27567v1)
+
+## July 2 update: skill supply chains belong on the runtime policy path
+
+Skills Are Not Islands adds a runtime-governance requirement: a loaded skill should carry its transitive dependency graph into the policy path. A runtime cannot enforce least privilege if a skill's package, service, and skill dependencies are invisible.
+
+Practical lesson:
+- admit skills through manifests and lockfiles, not loose markdown alone;
+- include skill, package, service, tool, credential, browser, repository, and memory authority in the dependency graph;
+- fail CI when the dependency graph changes without review;
+- emit risk warnings when transitive dependencies add shell, network, credential, or external-service authority;
+- bind policy decisions to the loaded skill hash and dependency graph hash.
+
+Source:
+- [Skills Are Not Islands](https://arxiv.org/abs/2607.01136v1)

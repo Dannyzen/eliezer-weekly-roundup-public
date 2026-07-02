@@ -1,6 +1,6 @@
 # Evidence Provenance Control Plane
 
-Last updated: 2026-06-17
+Last updated: 2026-07-02
 
 Core sources:
 - ProvenanceGuard: Source-Aware Factuality Verification for MCP-Based LLM Agents: https://arxiv.org/abs/2606.18037v1
@@ -171,6 +171,21 @@ ProvenanceGuard won because it names the primitive that all of those findings ne
 - Salesforce Agentforce Multi-Agent Orchestration: https://www.salesforce.com/agentforce/multi-agent-orchestration/
 - Hugging Face, From the Hub to robot hardware with Strands Agents and LeRobot: https://huggingface.co/blog/amazon/strands-lerobot-hub-to-hardware
 - Hugging Face, olmo-eval: An evaluation workbench for the model development loop: https://huggingface.co/blog/allenai/olmo-eval
+
+## July 2 update: reasoning transitions need evidence licenses
+
+Theoria sharpens this topic by moving from claim-level provenance to transition-level provenance. A final answer can look supported while hiding an unsupported mutation between reasoning states. Theoria's completeness-of-change invariant says every difference between consecutive states needs an explicit license, such as a citation, computation, or problem-given fact.
+
+Practical lesson:
+- represent high-risk reasoning, memory updates, and final recommendations as state transitions;
+- diff consecutive states and require each change to cite a license type and evidence ID;
+- treat hidden premises, fabricated citations, stale source swaps, and unsupported memory updates as verifier fixtures;
+- preserve transition-ledger verdicts in the same trace as tool calls and policy decisions;
+- use holistic LLM judges as coverage aids, not as the only proof surface.
+
+Sources:
+- [Theoria](https://arxiv.org/abs/2607.01223v1)
+- [zaladbar/theoria](https://github.com/zaladbar/theoria)
 
 ## Working conclusion
 

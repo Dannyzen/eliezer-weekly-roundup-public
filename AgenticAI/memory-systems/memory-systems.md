@@ -709,6 +709,22 @@ Practical lesson:
 Source:
 - [ECHO](https://arxiv.org/abs/2606.31650v1)
 
+## July 2 update: memory management is becoming an action policy
+
+AutoMem strengthens the memory-systems thesis by making memory operations part of the agent's action space. The important move is not the file system itself. It is that read, write, search, append, and map-update decisions become traceable decisions that can be reviewed, optimized, and trained separately from task actions.
+
+Practical lesson:
+- expose memory operations through a narrow action API with typed events;
+- log memory decisions with source episode, target file, operation, selected evidence, and downstream outcome;
+- optimize memory scaffolds as versioned components, not hidden prompt edits;
+- train or tune memory proficiency from successful memory decisions only after the trace can prove which decisions helped;
+- keep task competence and memory competence separable in ablations.
+
+Sources:
+- [AutoMem](https://arxiv.org/abs/2607.01224v1)
+- [AutoMem project](https://autolearnmem.github.io/)
+- [autoLearnMem/AutoMem](https://github.com/autoLearnMem/AutoMem)
+
 ## Working conclusion
 
 The next generation of agents will be differentiated less by how eloquently they speak and more by how faithfully and safely they remember. The winning systems will preserve evidence, route memory writes explicitly, retrieve context adaptively, abstain when memory is unsafe, validate high-value writes, make retention and pruning decisions replayable, query local graphs when code structure matters, promote only the right lessons into durable guidance, attach enough context for updates and temporal reasoning, choose abstraction levels that transfer across tasks, keep the most sensitive memory close to the user and under policy control, run durable memory through a governed database-backed state core, separate evaluation memory from user-facing memory, measure whether memories remain usable under scale, budgets, and writeback review, expose operation-level provenance, make reasoning history diffable, test belief-state stay/update/isolate decisions, gate retrieval by policy, resolve contradictions with bitemporal evidence, evaluate memory against heterogeneous evolving source streams, and defend memory write/read paths against poisoning so failures can be traced instead of guessed.

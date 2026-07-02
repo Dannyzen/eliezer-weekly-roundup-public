@@ -5,14 +5,14 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Daily scan, 2026-07-01: [roundup](roundups/2026-07-01.md)
-- AgenticAI daily analysis: [2026-07-01](AgenticAI/2026-07-01/reasoning.md)
-- Strategy daily analysis: [2026-07-01](Strategy/2026-07-01/sovereignty.md)
+- Daily scan, 2026-07-02: [roundup](roundups/2026-07-02.md)
+- AgenticAI daily analysis: [2026-07-02](AgenticAI/2026-07-02/reasoning.md)
+- Strategy daily analysis: [2026-07-02](Strategy/2026-07-02/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
+- Durable topics touched today: [Memory Systems](AgenticAI/memory-systems/memory-systems.md), [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [Evidence Provenance Control Plane](Strategy/evidence-provenance-control-plane/evidence-provenance-control-plane.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md)
 - Deep Dive Wednesday, 2026-07-01: [Agent Execution Control Plane](Strategy/agent-execution-control-plane/agent-execution-control-plane.md)
-- New durable Strategy topic: [Agent Community Governance](Strategy/agent-community-governance/agent-community-governance.md)
-- Previous daily scan: [2026-06-30](roundups/2026-06-30.md)
+- Previous daily scan: [2026-07-01](roundups/2026-07-01.md)
 - Friday synthesis, week ending 2026-06-26: [roundup](roundups/2026-06-26.md)
 - New durable AgenticAI topic from last week: [Coding Agent Control Plane](AgenticAI/coding-agent-control-plane/coding-agent-control-plane.md)
 - Prior Deep Dive Wednesday, 2026-06-24: [Memory Authority Control Plane](Strategy/memory-authority-control-plane/memory-authority-control-plane.md)
@@ -26,16 +26,16 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 The agent stack is moving from prompt-managed behavior to explicit control surfaces that can be versioned, compiled, tested, scoped, revoked, enforced, and measured outside the model's private reasoning loop.
 
-The 2026-07-01 Deep Dive adds the execution-control version of that thesis: connection protocols are not authority boundaries. Memory selection, sandbox execution, lifecycle skills, and group decisions all need a runtime layer that binds principal, grant, resource, capability, data handle, approval, policy decision, and audit evidence before side effects happen.
+The 2026-07-02 scan adds the proof-bearing artifact version of that thesis: memory operations, reasoning-state transitions, source-only patches, benchmark replays, and skill dependency graphs are becoming the objects that policy and evaluation can attach to.
 
 The latest four implementation and governance surfaces are:
 
-- Tool access needs an execution-control broker, not only MCP-style connectivity.
-- Long-horizon memory should preserve source-indexed turn records so context pruning remains learnable.
-- Code agents need sandbox substrates with network policy, credential mediation, audit logs, and snapshot semantics.
-- Multi-agent communities need membership, dissent, escalation, and replay evidence above interop protocols.
+- Memory management can be trained separately when memory operations are first-class actions.
+- Reasoning verification needs typed state transitions licensed by citation, computation, or problem-given fact.
+- Coding-agent benchmarks need runtime-enforced source-only repair, replayable environments, and transparent score rules.
+- Skill catalogs need manifests, lockfiles, dependency graphs, and transitive risk audits before they get production authority.
 
-The 2026-06-26 Friday synthesis remains the broad current weekly map, and the 2026-06-24 Deep Dive Wednesday update remains the strategic foundation underneath memory and authority work: memory is a policy-bearing authority object, not just context.
+The 2026-07-01 Deep Dive remains the control-plane foundation underneath this scan: connection protocols are not authority boundaries. The 2026-06-26 Friday synthesis remains the broad current weekly map, and the 2026-06-24 Deep Dive remains the strategic foundation underneath memory and authority work.
 
 ## Browse by category
 

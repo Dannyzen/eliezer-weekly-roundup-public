@@ -644,3 +644,17 @@ Sources:
 - [google/agents-cli](https://github.com/google/agents-cli)
 - [agents-cli getting started](https://google.github.io/agents-cli/guide/getting-started/)
 - [agents-cli v0.6.1 release](https://github.com/google/agents-cli/releases/tag/v0.6.1)
+
+## July 2 update: skills now need supply-chain metadata
+
+Skills Are Not Islands turns the skills thesis into dependency governance. A skill can depend on other skills, packages, and services, and those transitive edges can carry security-relevant authority even when the root skill looks harmless.
+
+Practical lesson:
+- require skill manifests with owner, source, version, dependencies, service requirements, tool scope, and side-effect scope;
+- write lockfile-like records for installed skill packs;
+- record loaded skill hash, manifest hash, dependency graph hash, and service authority in traces;
+- audit transitive shell, network, browser, credential, repository, and memory authority before production admission;
+- review dependency-cluster changes like package-lock changes, not like prose edits.
+
+Source:
+- [Skills Are Not Islands](https://arxiv.org/abs/2607.01136v1)

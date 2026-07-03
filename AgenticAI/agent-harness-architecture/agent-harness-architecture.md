@@ -1,6 +1,6 @@
 # Agent Harness Architecture
 
-Last updated: 2026-06-29
+Last updated: 2026-07-03
 
 Agent harness architecture is becoming the part of the agent stack that teams can actually standardize.
 
@@ -851,3 +851,17 @@ Practical lesson:
 Sources:
 - [RepoRescue](https://arxiv.org/abs/2607.01213v1)
 - [Are Performance-Optimization Benchmarks Reliably Measuring Coding Agents?](https://arxiv.org/abs/2607.01211v1)
+
+## July 3 update: action-boundary oracles are harness gates
+
+UnderSpecBench adds a practical harness rule: task completion is not enough when the instruction is underspecified and the action has side effects. A harness should score Safe Success, Wrong Target, and OverScope separately, and it should classify non-action as clarification, refusal, or deferment rather than flattening all non-completion into failure.
+
+Practical lesson:
+- vary intent clarity, target certainty, and blast radius independently in regression fixtures;
+- require target identity and scope fields before effectful tool calls;
+- preserve deterministic side-effect oracles for wrong-target and overscope outcomes;
+- reward clarification and deferment when safe action is not identifiable;
+- route high-blast-radius actions through approval or policy before commit.
+
+Source:
+- [Coding Agents Are Guessing](https://arxiv.org/abs/2607.02294v1)

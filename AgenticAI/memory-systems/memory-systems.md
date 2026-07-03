@@ -1,6 +1,6 @@
 # Memory Systems
 
-Last updated: 2026-07-01
+Last updated: 2026-07-03
 
 Memory is becoming the real architecture question for long-lived agents.
 
@@ -724,6 +724,20 @@ Sources:
 - [AutoMem](https://arxiv.org/abs/2607.01224v1)
 - [AutoMem project](https://autolearnmem.github.io/)
 - [autoLearnMem/AutoMem](https://github.com/autoLearnMem/AutoMem)
+
+## July 3 update: bounded memory contracts beat transcript stuffing
+
+AgenticSTS adds an experimental shape this topic needed: memory should be evaluated as a per-decision visibility contract. Instead of appending every prior observation, tool call, and reflection to each prompt, the harness assembles a fresh prompt through typed retrieval and preserves condition tags, frozen memory snapshots, skill snapshots, and prompt records.
+
+Practical lesson:
+- define which memory layers each decision is allowed to see;
+- store retrieved item IDs, memory layer IDs, prompt records, and skill snapshot IDs with the trajectory;
+- run no-store, full-history, typed-retrieval, and skill-triggered ablations on the same task;
+- treat memory snapshots as versioned harness artifacts;
+- score memory by downstream decision quality, not by retrieval plausibility alone.
+
+Source:
+- [AgenticSTS](https://arxiv.org/abs/2607.02255v1)
 
 ## Working conclusion
 

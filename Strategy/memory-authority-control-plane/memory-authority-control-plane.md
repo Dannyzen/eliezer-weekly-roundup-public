@@ -1,6 +1,6 @@
 # Memory Authority Control Plane
 
-Last updated: 2026-06-30
+Last updated: 2026-07-03
 
 Primary layer: Strategy / runtime governance
 
@@ -129,6 +129,21 @@ Practical lesson:
 
 Source:
 - [Forensic Trajectory Signatures for Agent Memory Poisoning Detection](https://arxiv.org/abs/2606.30566v1)
+
+## July 3 update: governed context vaults are memory authority infrastructure
+
+ContextNest adds the retrieval-facing version of memory authority. A knowledge object should not influence an agent only because it is semantically relevant. It should be eligible: approved for AI use, current, attributable, integrity-verified, and reconstructable at the point it was consumed.
+
+Practical lesson:
+- add approval state, source identity, version ID, and integrity hash to AI-consumable knowledge records;
+- route semantic retrieval through a deterministic eligibility selector first;
+- preserve point-in-time context sets so later audits can reconstruct what the agent saw;
+- treat MCP source nodes as authority-bearing inputs, not neutral connectors;
+- fail closed when a context artifact is stale, unapproved, or unverifiable.
+
+Sources:
+- [ContextNest](https://arxiv.org/abs/2607.02116v1)
+- [PromptOwl/ContextNest](https://github.com/PromptOwl/ContextNest)
 
 ## Implementation checklist
 

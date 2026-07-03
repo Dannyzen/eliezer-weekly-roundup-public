@@ -1,6 +1,6 @@
 # Evidence Provenance Control Plane
 
-Last updated: 2026-07-02
+Last updated: 2026-07-03
 
 Core sources:
 - ProvenanceGuard: Source-Aware Factuality Verification for MCP-Based LLM Agents: https://arxiv.org/abs/2606.18037v1
@@ -186,6 +186,22 @@ Practical lesson:
 Sources:
 - [Theoria](https://arxiv.org/abs/2607.01223v1)
 - [zaladbar/theoria](https://github.com/zaladbar/theoria)
+
+## July 3 update: context eligibility comes before retrieval relevance
+
+ContextNest strengthens the evidence-provenance topic by putting governance below retrieval. The question is not only whether an answer cites a source. It is whether that source version was approved, current, integrity-verified, attributable, and reconstructable when the agent consumed it.
+
+Practical lesson:
+- pre-filter retrieval through deterministic context selectors;
+- preserve document version IDs, integrity hashes, approval state, and source identity;
+- store context consumption audit traces alongside answer or action evidence;
+- use graph checkpoints or equivalent snapshots for point-in-time reconstruction;
+- treat dense retrieval over an ungoverned corpus as relevance, not proof.
+
+Sources:
+- [ContextNest](https://arxiv.org/abs/2607.02116v1)
+- [PromptOwl/ContextNest](https://github.com/PromptOwl/ContextNest)
+- [PromptOwl/context-nest-spec](https://github.com/PromptOwl/context-nest-spec)
 
 ## Working conclusion
 

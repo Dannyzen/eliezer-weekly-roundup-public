@@ -1,6 +1,6 @@
 # Runtime Governance
 
-Last updated: 2026-07-02
+Last updated: 2026-07-03
 
 Runtime governance is becoming the real control plane for agent systems.
 
@@ -752,3 +752,18 @@ Practical lesson:
 
 Source:
 - [Skills Are Not Islands](https://arxiv.org/abs/2607.01136v1)
+
+## July 3 update: persistent state and underspecification require stateful boundary checks
+
+Distributed Attacks in Persistent-State AI Control and UnderSpecBench sharpen the same runtime-governance point. A dangerous agent action can be unsafe because it completes a prior cross-PR buildup, or because the current instruction leaves target, scope, or blast radius ambiguous. In both cases, a prompt-level request to be careful is too weak.
+
+Practical lesson:
+- preserve cross-PR suspicion state and prior monitor warnings;
+- track whether a new diff completes dormant hooks, delayed activation paths, or repeated sensitive-file touches;
+- require target identity and scope fields before DevOps mutations;
+- treat clarification and deferment as valid safe outcomes under underspecification;
+- score Wrong Target and OverScope separately from task failure.
+
+Sources:
+- [Distributed Attacks in Persistent-State AI Control](https://arxiv.org/abs/2607.02514v1)
+- [Coding Agents Are Guessing](https://arxiv.org/abs/2607.02294v1)

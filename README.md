@@ -5,38 +5,32 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Daily scan, 2026-07-03: [roundup](roundups/2026-07-03.md)
-- AgenticAI daily analysis: [2026-07-03](AgenticAI/2026-07-03/reasoning.md)
-- Strategy daily analysis: [2026-07-03](Strategy/2026-07-03/sovereignty.md)
+- Friday synthesis, week ending 2026-07-03: [roundup](roundups/2026-07-03.md)
+- AgenticAI weekly analysis: [2026-07-03](AgenticAI/2026-07-03/reasoning.md)
+- Strategy weekly sovereignty: [2026-07-03](Strategy/2026-07-03/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
-- New durable Strategy topic: [Persistent-State Agent Control](Strategy/persistent-state-agent-control/persistent-state-agent-control.md)
-- Durable topics touched today: [Memory Systems](AgenticAI/memory-systems/memory-systems.md), [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md), [Evidence Provenance Control Plane](Strategy/evidence-provenance-control-plane/evidence-provenance-control-plane.md), [Memory Authority Control Plane](Strategy/memory-authority-control-plane/memory-authority-control-plane.md)
-- Previous daily scan: [2026-07-02](roundups/2026-07-02.md)
+- New durable Strategy topic from the week: [Persistent-State Agent Control](Strategy/persistent-state-agent-control/persistent-state-agent-control.md)
 - Deep Dive Wednesday, 2026-07-01: [Agent Execution Control Plane](Strategy/agent-execution-control-plane/agent-execution-control-plane.md)
-- Friday synthesis, week ending 2026-06-26: [roundup](roundups/2026-06-26.md)
-- New durable AgenticAI topic from last week: [Coding Agent Control Plane](AgenticAI/coding-agent-control-plane/coding-agent-control-plane.md)
+- Prior Friday synthesis: [week ending 2026-06-26](roundups/2026-06-26.md)
 - Prior Deep Dive Wednesday, 2026-06-24: [Memory Authority Control Plane](Strategy/memory-authority-control-plane/memory-authority-control-plane.md)
 - Prior Deep Dive Wednesday, 2026-06-17: [Evidence Provenance Control Plane](Strategy/evidence-provenance-control-plane/evidence-provenance-control-plane.md)
-- Prior Friday synthesis: [week ending 2026-06-19](roundups/2026-06-19.md)
-- Prior Friday synthesis: [week ending 2026-06-12](roundups/2026-06-12.md)
-- Prior Friday synthesis: [week ending 2026-06-05](roundups/2026-06-05.md)
-- Prior Friday synthesis: [week ending 2026-05-29](roundups/2026-05-29.md)
+- Earlier Friday syntheses: [2026-06-19](roundups/2026-06-19.md), [2026-06-12](roundups/2026-06-12.md), [2026-06-05](roundups/2026-06-05.md), [2026-05-29](roundups/2026-05-29.md)
 
 ## Current thesis
 
 The agent stack is moving from prompt-managed behavior to explicit control surfaces that can be versioned, compiled, tested, scoped, revoked, enforced, and measured outside the model's private reasoning loop.
 
-The 2026-07-03 scan adds the bounded-state version of that thesis: persistent codebases, governed context vaults, underspecified DevOps tasks, and long-horizon memory layers all need explicit state and action contracts before agents mutate the world.
+The 2026-07-03 Friday synthesis updates that thesis: autonomy becomes governable only where runtime state is explicit. The implementable frontier is now traces, stop rules, source-only repair checks, context eligibility, skill manifests, sandbox workers, and execution grants.
 
-The latest four implementation and governance surfaces are:
+The latest six implementation and governance surfaces are:
 
-- Persistent coding-agent workspaces need stateful cross-PR monitors, not only diff-local review.
-- RAG needs deterministic context governance before semantic retrieval.
-- DevOps agents need target, scope, and blast-radius checks before effectful actions.
-- Long-horizon memory needs per-decision visibility contracts and ablation-ready traces.
-
-The 2026-07-01 Deep Dive remains the control-plane foundation underneath this scan: connection protocols are not authority boundaries. The 2026-06-26 Friday synthesis remains the broad current weekly map, and the 2026-06-24 Deep Dive remains the strategic foundation underneath memory and authority work.
+- Agent loops need trace economics: stop rules, token accounting, tool latency, cache behavior, and replay.
+- Repository-scale coding work needs repo-level and source-only evaluation, not only benchmark pass rates.
+- Memory needs typed state ledgers, validity windows, visibility contracts, and ablation-ready traces.
+- Skills and tool catalogs need manifests, lockfiles, allowlists, and runtime reference monitors.
+- Execution control needs principals, grants, targets, scopes, side-effect oracles, and durable audit trails.
+- Routers and agent communities need failure-correlation evidence, capability probes, membership rules, and revocation records.
 
 ## Browse by category
 

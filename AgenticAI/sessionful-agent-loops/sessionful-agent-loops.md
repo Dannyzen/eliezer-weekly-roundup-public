@@ -93,6 +93,20 @@ Sources:
 - [Semantic Early-Stopping for Iterative LLM Agent Loops](https://arxiv.org/abs/2606.27009v1)
 - [semantic-halting-problem](https://github.com/SahilShrivastava-Dev/semantic-halting-problem)
 
+## July 4 update: loops need static bound coverage before runtime
+
+IAL-Scan adds the static-analysis complement to semantic stop policies. A loop can look bounded at the product surface while the actual feedback path still reaches model calls, tools, handoffs, retries, state growth, or external effects without a real bound. That makes loop safety a preflight property, not only a runtime metric.
+
+Practical lesson:
+- recover agentic feedback paths from framework-specific code before deployment;
+- classify repeated operations by model cost, tool side effect, memory growth, and external action;
+- prove that max turns, recursion limits, retry limits, and approval gates cover the actual repeated path;
+- store loop-bound coverage with the Agent BOM and run trace;
+- keep semantic early stopping as a cost-quality policy, but do not confuse it with safety coverage.
+
+Source:
+- [When Agents Do Not Stop](https://arxiv.org/abs/2607.01641v1)
+
 ## Working conclusion
 
-The agent loop is becoming a sessionful service. Teams that keep thinking in one-turn prompts will keep paying reconstruction costs, losing state, and bolting governance on after the fact. Teams that design for long-lived runs, explicit workspaces, compaction, approvals, replay, and semantic stop policies will have a much more stable foundation for everything else in the agent stack.
+The agent loop is becoming a sessionful service. Teams that keep thinking in one-turn prompts will keep paying reconstruction costs, losing state, and bolting governance on after the fact. Teams that design for long-lived runs, explicit workspaces, compaction, approvals, replay, semantic stop policies, and static loop-bound coverage will have a much more stable foundation for everything else in the agent stack.

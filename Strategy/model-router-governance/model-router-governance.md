@@ -1,6 +1,6 @@
 # Model Router Governance
 
-Last updated: 2026-06-30
+Last updated: 2026-07-04
 
 Core sources:
 - LiteLLM v1.83.13-nightly: https://github.com/BerriAI/litellm/releases/tag/v1.83.13-nightly
@@ -8,6 +8,9 @@ Core sources:
 - OpenAI GPT-5.5: https://openai.com/index/introducing-gpt-5-5
 - Alishahryar1/free-claude-code: https://github.com/Alishahryar1/free-claude-code
 - Switchcraft: https://arxiv.org/abs/2605.07112
+- PACE: https://arxiv.org/abs/2607.02032v1
+- PACE code: https://github.com/neulab/pace
+- PACE-Bench dataset: https://huggingface.co/datasets/neulab/pace-bench
 - GitHub token efficiency in agentic workflows: https://github.blog/ai-and-ml/github-copilot/improving-token-efficiency-in-github-agentic-workflows/
 
 ## Thesis
@@ -125,6 +128,22 @@ Practical lesson:
 
 Source:
 - [Linguistic Firewall](https://arxiv.org/abs/2606.30555v1)
+
+## July 4 update: proxy evals make router evidence cheap enough to run continuously
+
+PACE adds a practical evidence source for router governance. Full agentic evaluations are too expensive to run on every model, prompt, tool, or harness change. PACE-Bench predicts expensive target benchmarks from compact non-agentic proxy instances, with public code and dataset artifacts.
+
+Practical lesson:
+- treat proxy evals as router smoke tests, not final release gates;
+- run candidate models through compact workflow-specific proxy suites before changing online routing;
+- log predicted full-agent score, confidence, cost, latency, and target benchmark mapping;
+- calibrate proxy predictions against occasional full agent evals;
+- refuse learned routing changes that lack fresh proxy or full-eval evidence.
+
+Sources:
+- [PACE](https://arxiv.org/abs/2607.02032v1)
+- [neulab/pace](https://github.com/neulab/pace)
+- [PACE-Bench](https://huggingface.co/datasets/neulab/pace-bench)
 
 ## Minimum governance checklist
 

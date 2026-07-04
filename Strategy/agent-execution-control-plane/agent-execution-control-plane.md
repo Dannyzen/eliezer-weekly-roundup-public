@@ -1,6 +1,6 @@
 # Agent Execution Control Plane
 
-Last updated: 2026-07-01
+Last updated: 2026-07-04
 
 Core finding: MCP-style connection is not execution control. A serious agent runtime needs a separate layer that binds principal, grant, resource, capability, handle, data flow, policy decision, and audit evidence before tools create side effects.
 
@@ -102,6 +102,21 @@ For Hermes, FriendVM, and any local-first agent product, the execution-control p
 - MCP servers should be admitted as providers behind the broker, not trusted as the broker.
 
 This reframes agent sovereignty. Sovereignty is not only self-hosting models or running tools locally. It is owning the runtime boundary where intent becomes authority.
+
+## July 4 update: permission UX creates grant evidence
+
+Janus adds the user-facing half of the execution-control plane. HCP-style grants, handles, and audit objects define authority, but real agents still need a permission interface that decides when user context is necessary and when repeated prompting becomes fatigue. Janus makes that design space testable with multiple permission assistants, scenarios, responder profiles, and metrics.
+
+Practical lesson:
+- represent permission requests as typed actor, resource, capability, action, risk, source-evidence, and proposed-effect objects;
+- test multiple permission modes instead of relying on one generic approval dialog;
+- model user fatigue and alignment behavior in harness fixtures;
+- convert approvals into scoped grant records and denials into durable reason-coded audit events;
+- measure false approvals, false denials, prompts per task, completion, and attack resistance.
+
+Sources:
+- [Janus paper](https://arxiv.org/abs/2607.01510v1)
+- [GraceBrigham/Janus](https://github.com/GraceBrigham/Janus)
 
 ## What remains conceptual or unproven
 

@@ -1,6 +1,6 @@
 # Skills as Control
 
-Last updated: 2026-07-01
+Last updated: 2026-07-04
 
 Core sources:
 - From Research Question to Scientific Workflow: Leveraging Agentic AI for Science Automation: https://arxiv.org/abs/2604.21910v1
@@ -35,6 +35,7 @@ Core sources:
 - Context Rot in AI-Assisted Software Development: https://arxiv.org/abs/2606.09090v1
 - Compositional Skill Routing for LLM Agents: https://arxiv.org/abs/2606.18051v1
 - A Framework for Evaluating Agentic Skills at Scale: https://arxiv.org/abs/2606.17819v1
+- Cloak and Detonate: Scanner Evasion and Dynamic Detection of Agent Skill Malware: https://arxiv.org/abs/2607.02357v1
 
 ## Thesis
 
@@ -658,3 +659,17 @@ Practical lesson:
 
 Source:
 - [Skills Are Not Islands](https://arxiv.org/abs/2607.01136v1)
+
+## July 4 update: skill admission needs behavior detonation
+
+Cloak and Detonate breaks the assumption that static scanners can carry skill admission alone. SkillCloak preserves malicious behavior while changing visible payload form, and the reported bypass rates are high enough to force a control-plane change: untrusted skills need dynamic detonation before they inherit workspace authority.
+
+Practical lesson:
+- keep static scanners as cheap triage, not final approval;
+- execute untrusted skills in a sandbox with fake secrets, marker files, fake repositories, and network traps;
+- observe file, process, network, environment, prompt-context, and credential flows during execution;
+- store scanner verdict, sandbox trace ID, skill hash, script hash, egress verdict, and admission decision in the skill registry;
+- rerun detonation when skill code, dependencies, runtime policy, or tool surfaces change.
+
+Source:
+- [Cloak and Detonate](https://arxiv.org/abs/2607.02357v1)

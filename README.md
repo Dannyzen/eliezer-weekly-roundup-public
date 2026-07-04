@@ -5,32 +5,34 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Friday synthesis, week ending 2026-07-03: [roundup](roundups/2026-07-03.md)
-- AgenticAI weekly analysis: [2026-07-03](AgenticAI/2026-07-03/reasoning.md)
-- Strategy weekly sovereignty: [2026-07-03](Strategy/2026-07-03/sovereignty.md)
+- Daily scan, 2026-07-04: [roundup](roundups/2026-07-04.md)
+- AgenticAI daily analysis: [2026-07-04](AgenticAI/2026-07-04/reasoning.md)
+- Strategy daily sovereignty: [2026-07-04](Strategy/2026-07-04/sovereignty.md)
+- New durable AgenticAI topic: [Agent Static Analysis](AgenticAI/agent-static-analysis/agent-static-analysis.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
-- New durable Strategy topic from the week: [Persistent-State Agent Control](Strategy/persistent-state-agent-control/persistent-state-agent-control.md)
+- Friday synthesis, week ending 2026-07-03: [roundup](roundups/2026-07-03.md)
+- Prior durable Strategy topic from the week: [Persistent-State Agent Control](Strategy/persistent-state-agent-control/persistent-state-agent-control.md)
 - Deep Dive Wednesday, 2026-07-01: [Agent Execution Control Plane](Strategy/agent-execution-control-plane/agent-execution-control-plane.md)
 - Prior Friday synthesis: [week ending 2026-06-26](roundups/2026-06-26.md)
 - Prior Deep Dive Wednesday, 2026-06-24: [Memory Authority Control Plane](Strategy/memory-authority-control-plane/memory-authority-control-plane.md)
 - Prior Deep Dive Wednesday, 2026-06-17: [Evidence Provenance Control Plane](Strategy/evidence-provenance-control-plane/evidence-provenance-control-plane.md)
-- Earlier Friday syntheses: [2026-06-19](roundups/2026-06-19.md), [2026-06-12](roundups/2026-06-12.md), [2026-06-05](roundups/2026-06-05.md), [2026-05-29](roundups/2026-05-29.md)
 
 ## Current thesis
 
 The agent stack is moving from prompt-managed behavior to explicit control surfaces that can be versioned, compiled, tested, scoped, revoked, enforced, and measured outside the model's private reasoning loop.
 
-The 2026-07-03 Friday synthesis updates that thesis: autonomy becomes governable only where runtime state is explicit. The implementable frontier is now traces, stop rules, source-only repair checks, context eligibility, skill manifests, sandbox workers, and execution grants.
+The 2026-07-03 Friday synthesis updated that thesis: autonomy becomes governable only where runtime state is explicit. The 2026-07-04 daily scan narrows the next build layer: preflight static analysis, cheap proxy eval, permission UX harnesses, and behavior-based skill admission now need to sit before tool authority.
 
-The latest six implementation and governance surfaces are:
+The latest implementation and governance surfaces are:
 
-- Agent loops need trace economics: stop rules, token accounting, tool latency, cache behavior, and replay.
-- Repository-scale coding work needs repo-level and source-only evaluation, not only benchmark pass rates.
+- Agent programs need static dependency graphs, Agent BOMs, prompt-to-tool taint checks, and loop-bound coverage.
+- Agent routing needs cheap proxy evals that can run continuously, not only rare full benchmark rollouts.
+- Runtime permissions need typed grant requests, user-context escalation, fatigue-aware UX, and durable denial evidence.
+- Skill admission needs static triage plus sandbox detonation against fake secrets, marker files, and egress traps.
+- Repository-scale coding work still needs repo-level and source-only evaluation, not only benchmark pass rates.
 - Memory needs typed state ledgers, validity windows, visibility contracts, and ablation-ready traces.
-- Skills and tool catalogs need manifests, lockfiles, allowlists, and runtime reference monitors.
 - Execution control needs principals, grants, targets, scopes, side-effect oracles, and durable audit trails.
-- Routers and agent communities need failure-correlation evidence, capability probes, membership rules, and revocation records.
 
 ## Browse by category
 
@@ -41,6 +43,7 @@ The latest six implementation and governance surfaces are:
 
 ### AgenticAI
 
+- [Agent Static Analysis](AgenticAI/agent-static-analysis/agent-static-analysis.md)
 - [Coding Agent Control Plane](AgenticAI/coding-agent-control-plane/coding-agent-control-plane.md)
 - [Enterprise MCP Orchestration](AgenticAI/enterprise-mcp-orchestration/enterprise-mcp-orchestration.md)
 - [Agentic Search and Retrieval](AgenticAI/agentic-search/agentic-search.md)

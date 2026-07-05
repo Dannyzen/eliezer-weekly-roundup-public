@@ -1,6 +1,6 @@
 # Model Router Governance
 
-Last updated: 2026-07-04
+Last updated: 2026-07-05
 
 Core sources:
 - LiteLLM v1.83.13-nightly: https://github.com/BerriAI/litellm/releases/tag/v1.83.13-nightly
@@ -11,6 +11,8 @@ Core sources:
 - PACE: https://arxiv.org/abs/2607.02032v1
 - PACE code: https://github.com/neulab/pace
 - PACE-Bench dataset: https://huggingface.co/datasets/neulab/pace-bench
+- Reasoning effort, not tool access: https://arxiv.org/abs/2607.02436v1
+- Retrospective board eval artifacts: https://doi.org/10.5281/zenodo.21134406
 - GitHub token efficiency in agentic workflows: https://github.blog/ai-and-ml/github-copilot/improving-token-efficiency-in-github-agentic-workflows/
 
 ## Thesis
@@ -144,6 +146,21 @@ Sources:
 - [PACE](https://arxiv.org/abs/2607.02032v1)
 - [neulab/pace](https://github.com/neulab/pace)
 - [PACE-Bench](https://huggingface.co/datasets/neulab/pace-bench)
+
+## July 5 update: reasoning effort is a router knob before tool expansion
+
+The retrospective-board coding-agent study adds a concrete routing rule: extra tool access is not automatically better capability. In the reported 90-run experiment, browser-based testing raised cost by 42 to 68 percent without improving functional score or first-try reliability. Raising reasoning effort from High to xHigh lifted first-try perfect runs from 28 percent to 89 percent and cut corrective prompts about fivefold.
+
+Practical lesson:
+- classify failures before changing model, reasoning effort, tool exposure, verifier depth, or approval mode;
+- raise reasoning effort before broadening browser, shell, network, or repository authority when planning defects dominate;
+- log requested and effective reasoning mode, tool surface, per-criterion failure, cost, and corrective prompts;
+- keep style prompts, browser verifiers, and functional reliability as separate router dimensions;
+- require fresh matched-task evidence before a router policy grants broader tool access.
+
+Sources:
+- [Reasoning effort, not tool access](https://arxiv.org/abs/2607.02436v1)
+- [Zenodo evaluation artifacts](https://doi.org/10.5281/zenodo.21134406)
 
 ## Minimum governance checklist
 

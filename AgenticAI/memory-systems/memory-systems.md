@@ -1,6 +1,6 @@
 # Memory Systems
 
-Last updated: 2026-07-03
+Last updated: 2026-07-05
 
 Memory is becoming the real architecture question for long-lived agents.
 
@@ -497,7 +497,7 @@ Source:
 
 ## June 1 update: memory evals need heterogeneous evolving source streams
 
-RHELM adds the realism constraint that memory benchmarks often avoid. Dialogue-only personas are too flat for long-running assistants. Real memory has to absorb conversations, documents, emails, and event trajectories that evolve over time. RHELM's LOOP construction — plan, rollout, evolve, prune — is useful because it makes temporal coherence and heterogeneous evidence part of the test, not background flavor.
+RHELM adds the realism constraint that memory benchmarks often avoid. Dialogue-only personas are too flat for long-running assistants. Real memory has to absorb conversations, documents, emails, and event trajectories that evolve over time. RHELM's LOOP construction, plan, rollout, evolve, prune, is useful because it makes temporal coherence and heterogeneous evidence part of the test, not background flavor.
 
 The implementation lesson is immediate: memory systems should be evaluated against mixed-source fixtures with supersessions, stale facts, contradictions, and source-specific evidence. A system that recalls a fact but cannot identify whether the email, document, or later conversation superseded it is not ready for durable personalization.
 
@@ -738,6 +738,22 @@ Practical lesson:
 
 Source:
 - [AgenticSTS](https://arxiv.org/abs/2607.02255v1)
+
+## July 5 update: memory must be tested by influence, not only recall
+
+MemSyco-Bench and A-TMA sharpen the memory thesis from two sides. MemSyco-Bench shows that retrieved memories can induce sycophancy: the agent over-applies user preference, ignores objective evidence, or treats scoped personalization as fact. A-TMA shows the state version of the same failure: old, current, and transition facts can coexist in memory, mix during retrieval, and produce ghost-state answers.
+
+Practical lesson:
+- add memory tests where the correct behavior is to ignore, scope, or override a recalled memory;
+- tag memory packets as current, superseded, historical, transition, conflicting, or personalization-only;
+- evaluate bank maintenance, retrieval, and answer-time resolution separately;
+- preserve source event and supersession lineage through summaries and derived memories;
+- score memory by downstream decision quality, not only by storage and retrieval accuracy.
+
+Sources:
+- [MemSyco-Bench](https://arxiv.org/abs/2607.01071v2)
+- [XMUDeepLIT/MemSyco-Bench](https://github.com/XMUDeepLIT/MemSyco-Bench)
+- [A-TMA](https://arxiv.org/abs/2607.01935v1)
 
 ## Working conclusion
 

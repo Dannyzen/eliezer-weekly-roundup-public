@@ -1,6 +1,6 @@
 # Memory Authority Control Plane
 
-Last updated: 2026-07-03
+Last updated: 2026-07-05
 
 Primary layer: Strategy / runtime governance
 
@@ -144,6 +144,21 @@ Practical lesson:
 Sources:
 - [ContextNest](https://arxiv.org/abs/2607.02116v1)
 - [PromptOwl/ContextNest](https://github.com/PromptOwl/ContextNest)
+
+## July 5 update: valid memory still needs state and scope authority
+
+MemSyco-Bench and A-TMA extend this topic beyond poisoning. A memory can come from a legitimate user and still be unsafe for the current action if it is stale, out of scope, contradicted by stronger evidence, or only valid as personalization. That means memory authority must include state and scope, not only origin.
+
+Practical lesson:
+- treat preference memory as scoped influence, not general factual authority;
+- require current, historical, transition, superseded, and conflict labels for high-value memory records;
+- block or downgrade memory influence when the task requires objective evidence;
+- preserve supersession lineage through summaries, embeddings, handoffs, and direct reads;
+- add authority checks before memory-derived context can affect external actions.
+
+Sources:
+- [MemSyco-Bench](https://arxiv.org/abs/2607.01071v2)
+- [A-TMA](https://arxiv.org/abs/2607.01935v1)
 
 ## Implementation checklist
 

@@ -1,6 +1,6 @@
 # Skills as Control
 
-Last updated: 2026-07-04
+Last updated: 2026-07-05
 
 Core sources:
 - From Research Question to Scientific Workflow: Leveraging Agentic AI for Science Automation: https://arxiv.org/abs/2604.21910v1
@@ -673,3 +673,17 @@ Practical lesson:
 
 Source:
 - [Cloak and Detonate](https://arxiv.org/abs/2607.02357v1)
+
+## July 5 update: skill composition is a fuzzing surface
+
+SkillFuzz adds the composition gate that skill admission was missing. Individually benign skills can redirect an agent when they are co-activated, because their combined instructions, preconditions, tools, and side effects create implicit intents that are absent from isolated review.
+
+Practical lesson:
+- test skill compositions as first-class units, not only individual skill files;
+- extract skill contracts with purpose, preconditions, side effects, tool scope, file scope, memory scope, and validators;
+- compare plans with and without a composed skill set before execution;
+- prioritize high-risk co-activations with contract-guided search;
+- store composition verdicts, deny lists, and review decisions in the skill registry.
+
+Source:
+- [SkillFuzz](https://arxiv.org/abs/2607.02345v1)

@@ -1,6 +1,6 @@
 # Agent Harness Architecture
 
-Last updated: 2026-07-03
+Last updated: 2026-07-05
 
 Agent harness architecture is becoming the part of the agent stack that teams can actually standardize.
 
@@ -865,3 +865,22 @@ Practical lesson:
 
 Source:
 - [Coding Agents Are Guessing](https://arxiv.org/abs/2607.02294v1)
+
+## July 5 update: tests and prompts need coupled coverage gates
+
+TestEvo-Bench and Prompt Coverage Adequacy add two useful harness gates for coding agents. TestEvo-Bench evaluates whether code changes and tests evolve together, using executable test-generation and test-update tasks mined from real repositories. Prompt Coverage Adequacy treats the task description itself as a coverage target, so generated tests are judged against expressed requirements rather than code lines alone.
+
+The reasoning-effort study adds a routing companion: if first-run failures come from weak reasoning, extra browser testing can add cost without improving reliability. The harness should know which knob it is turning.
+
+Practical lesson:
+- mine internal code-plus-test evolution fixtures from real commit histories;
+- score test generation and test update separately;
+- record task timestamp, environment, pass rate, coverage, mutation score, cost, and training-cutoff eligibility;
+- add prompt or requirement coverage checks for agent-authored tests;
+- route reasoning effort, verifier depth, and tool exposure based on observed failure class.
+
+Sources:
+- [TestEvo-Bench](https://arxiv.org/abs/2607.02469v1)
+- [TestEvo-Bench site](https://www.testevo-bench.com/)
+- [Prompt Coverage Adequacy](https://arxiv.org/abs/2607.02057v1)
+- [Reasoning effort, not tool access](https://arxiv.org/abs/2607.02436v1)

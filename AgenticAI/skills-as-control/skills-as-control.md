@@ -1,6 +1,6 @@
 # Skills as Control
 
-Last updated: 2026-07-05
+Last updated: 2026-07-06
 
 Core sources:
 - From Research Question to Scientific Workflow: Leveraging Agentic AI for Science Automation: https://arxiv.org/abs/2604.21910v1
@@ -687,3 +687,19 @@ Practical lesson:
 
 Source:
 - [SkillFuzz](https://arxiv.org/abs/2607.02345v1)
+
+## July 6 update: skill quality needs process rubrics
+
+SkillCoach adds the missing scoring layer above skill admission and composition fuzzing. A task can pass its final verifier while the agent selected distractor skills, skipped required steps, composed workflows incorrectly, or omitted final checks. That means final success is not enough evidence that the skill layer worked.
+
+The practical move is to score skill trajectories along process dimensions: skill selection, skill following, skill composition, and skill-grounded reflection. Keep the external verifier separate as an outcome signal. A good skill registry should know whether a skill helped, distracted, was ignored, or was followed only after wasteful recovery.
+
+Practical lesson:
+- record retrieved skills, selected skills, rejected candidates, loaded body hashes, validator checks, and final outcome;
+- score selection, following, composition, and reflection separately;
+- use process-rubric failures to quarantine, rewrite, retire, or demote skills;
+- review evolved rubrics before they become production gates;
+- treat skill utility as trace evidence, not as a belief inferred from final pass rate.
+
+Source:
+- [SkillCoach](https://arxiv.org/abs/2607.01874v1)

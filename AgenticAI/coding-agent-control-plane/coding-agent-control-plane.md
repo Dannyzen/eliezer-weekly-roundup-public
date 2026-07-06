@@ -1,6 +1,6 @@
 # Coding Agent Control Plane
 
-Last updated: 2026-06-29
+Last updated: 2026-07-06
 
 Coding-agent control planes are the missing governance layer between repo-local agent instructions and real file or shell authority.
 
@@ -98,3 +98,19 @@ Practical lesson:
 Sources:
 - [Govern the Repository, Not the Agent](https://arxiv.org/abs/2606.28235v1)
 - [NOVA](https://arxiv.org/abs/2606.27243v2)
+
+## July 6 update: coding chats need regression gates and constrained substrates
+
+Regression Accumulation and Steerability via constraints extend this topic from repo-config governance into turn-by-turn coding authority. A coding-agent session creates commitments. Later turns should not be accepted unless they preserve earlier behavior. A coding-agent workspace also needs substrate constraints so the agent has fewer unsafe paths and reviewers have better evidence.
+
+Practical lesson:
+- store accepted requirements as session contracts;
+- convert prior requirements into replayable tests, assertions, or invariants;
+- run old and new checks on every later turn, then rollback and retry on regression;
+- treat cross-turn conflict as a first-class failure label;
+- default coding agents into constrained file, network, dependency, and command surfaces;
+- expose local docs, architecture rules, and code maps to reviewer agents.
+
+Sources:
+- [Regression Accumulation in Multi-Turn LLM Programming Conversations](https://arxiv.org/abs/2607.01855v1)
+- [Steerability via constraints](https://arxiv.org/abs/2607.02389v1)

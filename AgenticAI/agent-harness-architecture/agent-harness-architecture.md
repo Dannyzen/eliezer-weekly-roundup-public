@@ -1,6 +1,6 @@
 # Agent Harness Architecture
 
-Last updated: 2026-07-05
+Last updated: 2026-07-06
 
 Agent harness architecture is becoming the part of the agent stack that teams can actually standardize.
 
@@ -884,3 +884,17 @@ Sources:
 - [TestEvo-Bench site](https://www.testevo-bench.com/)
 - [Prompt Coverage Adequacy](https://arxiv.org/abs/2607.02057v1)
 - [Reasoning effort, not tool access](https://arxiv.org/abs/2607.02436v1)
+
+## July 6 update: conversation regressions are harness failures
+
+Regression Accumulation makes multi-turn coding a harness problem. The issue is not only whether the latest patch passes the latest request. The harness has to preserve prior accepted behavior as the conversation evolves. Without that, a coding agent can produce a locally plausible final answer that violates the session contract.
+
+Practical lesson:
+- maintain a turn-indexed requirement ledger;
+- convert accepted requirements into tests, invariants, or oracle checks before later edits;
+- replay prior checks on every turn;
+- rollback and retry when new code violates old commitments;
+- record regression origin turn, broken requirement, mitigation path, and final verifier outcome in the trace.
+
+Source:
+- [Regression Accumulation in Multi-Turn LLM Programming Conversations](https://arxiv.org/abs/2607.01855v1)

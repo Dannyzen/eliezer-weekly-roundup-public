@@ -5,15 +5,15 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Daily scan, 2026-07-05: [roundup](roundups/2026-07-05.md)
-- AgenticAI daily analysis: [2026-07-05](AgenticAI/2026-07-05/reasoning.md)
-- Strategy daily sovereignty: [2026-07-05](Strategy/2026-07-05/sovereignty.md)
+- Daily scan, 2026-07-06: [roundup](roundups/2026-07-06.md)
+- AgenticAI daily analysis: [2026-07-06](AgenticAI/2026-07-06/reasoning.md)
+- Strategy daily sovereignty: [2026-07-06](Strategy/2026-07-06/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
-- Prior daily scan, 2026-07-04: [roundup](roundups/2026-07-04.md)
-- Recent durable AgenticAI topic: [Agent Static Analysis](AgenticAI/agent-static-analysis/agent-static-analysis.md)
+- Prior daily scan, 2026-07-05: [roundup](roundups/2026-07-05.md)
+- Recent durable AgenticAI topics: [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [Coding Agent Control Plane](AgenticAI/coding-agent-control-plane/coding-agent-control-plane.md), [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md)
+- Recent durable Strategy topics: [Agent Execution Control Plane](Strategy/agent-execution-control-plane/agent-execution-control-plane.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md)
 - Friday synthesis, week ending 2026-07-03: [roundup](roundups/2026-07-03.md)
-- Prior durable Strategy topic from the week: [Persistent-State Agent Control](Strategy/persistent-state-agent-control/persistent-state-agent-control.md)
 - Deep Dive Wednesday, 2026-07-01: [Agent Execution Control Plane](Strategy/agent-execution-control-plane/agent-execution-control-plane.md)
 - Prior Deep Dive Wednesday, 2026-06-24: [Memory Authority Control Plane](Strategy/memory-authority-control-plane/memory-authority-control-plane.md)
 - Prior Deep Dive Wednesday, 2026-06-17: [Evidence Provenance Control Plane](Strategy/evidence-provenance-control-plane/evidence-provenance-control-plane.md)
@@ -22,17 +22,18 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 The agent stack is moving from prompt-managed behavior to explicit control surfaces that can be versioned, compiled, tested, scoped, revoked, enforced, and measured outside the model's private reasoning loop.
 
-The 2026-07-03 Friday synthesis updated that thesis: autonomy becomes governable only where runtime state is explicit. The 2026-07-05 daily scan narrows the next layer: memory influence, reasoning effort, test evolution, and skill composition all need explicit evidence before the runtime grants more authority.
+The 2026-07-03 Friday synthesis updated that thesis: autonomy becomes governable only where runtime state is explicit. The 2026-07-06 daily scan tightens the next layer: trust should be process-bound. Skill use, coding conversations, workspace substrates, and database sessions need process evidence before they gain authority.
 
 The latest implementation and governance surfaces are:
 
+- Skill-use evaluation needs process rubrics for selection, following, composition, and reflection, not only final verifier wins.
+- Multi-turn coding agents need regression gates that replay prior commitments before accepting later edits.
+- Coding-agent oversight should move into constrained substrates: file scope, network policy, typed checks, architecture rules, and local docs surfaces.
+- Approved enterprise tasks should compile into budgeted database sessions with signed tokens, row and column scope, query budgets, disclosure budgets, and receipts.
 - Memory needs failure-mode tests for sycophancy, stale state, evidence conflict, scope control, and supersession.
 - Agent routing should buy reasoning effort before broad tool exposure when the failure class is planning or integration.
 - Coding-agent harnesses need live code-plus-test evolution tasks and prompt-level requirement coverage, not only final pass rates.
 - Skill marketplaces need composition fuzzing in addition to provenance, static scanning, and behavior detonation.
-- Agent programs need static dependency graphs, Agent BOMs, prompt-to-tool taint checks, and loop-bound coverage.
-- Agent routing still needs cheap proxy evals that can run continuously, not only rare full benchmark rollouts.
-- Runtime permissions need typed grant requests, user-context escalation, fatigue-aware UX, and durable denial evidence.
 - Execution control needs principals, grants, targets, scopes, side-effect oracles, and durable audit trails.
 
 ## Browse by category

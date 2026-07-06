@@ -2,56 +2,72 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: Daily scan, 2026-07-05
+## Most Recent Structured Update: Daily scan, 2026-07-06
 
-### Memory authority now includes sycophancy and ghost-state control
+### Oversight should constrain the substrate, not inspect unconstrained work
 
-Summary: MemSyco-Bench and A-TMA extend memory governance beyond poisoning. A memory can be non-malicious and still be unsafe when it overrules objective evidence, escapes its scope, or mixes current and superseded state. Memory authority now needs state, scope, supersession, and downstream-use policy.
+Summary: Steerability via constraints moves coding-agent oversight into the workspace substrate. Constrained files, network, dependencies, docs, type checks, architecture checks, and deterministic inspection tools make bad work harder to produce and easier to catch.
 
-Analysis: [daily sovereignty analysis](2026-07-05/sovereignty.md#memory-authority-now-includes-sycophancy-and-ghost-state-control)
-Durable topics: [Memory Authority Control Plane](memory-authority-control-plane/memory-authority-control-plane.md), [Runtime Governance](runtime-governance/runtime-governance.md), [Shared-State Agents](shared-state-agents/shared-state-agents.md), [AgenticAI Memory Systems](../AgenticAI/memory-systems/memory-systems.md)
-Core sources: [MemSyco-Bench paper](https://arxiv.org/abs/2607.01071v2), [MemSyco-Bench repo](https://github.com/XMUDeepLIT/MemSyco-Bench), [A-TMA](https://arxiv.org/abs/2607.01935v1)
+Analysis: [daily sovereignty analysis](2026-07-06/sovereignty.md#oversight-should-constrain-the-substrate-not-inspect-unconstrained-work)
+Durable topics: [Runtime Governance](runtime-governance/runtime-governance.md), [Agent Execution Control Plane](agent-execution-control-plane/agent-execution-control-plane.md), [AgenticAI Coding Agent Control Plane](../AgenticAI/coding-agent-control-plane/coding-agent-control-plane.md), [AgenticAI Agent Static Analysis](../AgenticAI/agent-static-analysis/agent-static-analysis.md)
+Core source: [Steerability via constraints](https://arxiv.org/abs/2607.02389v1)
 Implementable now:
-- tag memory records by current, superseded, historical, transition, conflict, and personalization-only state
-- downgrade preference memory when objective evidence or current state outranks it
-- preserve supersession lineage through summaries and derived memories
-- evaluate bank, retrieval, and answer layers separately
+- treat workspace constraints as governance controls
+- default coding agents to least-privilege file, network, package, and command surfaces
+- compile conventions into linters, type checks, architecture checks, and protected-path rules
+- give reviewer agents deterministic repo-inspection tools and local docs
 Tools, repos, and methodologies worth exploring:
-- MemSyco-Bench, ATMA-style state labels, conflict-heavy temporal fixtures, memory gateway policy over scope and state
-Implementability score: 0.67
+- OPA or Cedar policy, protected paths, architecture tests, repo-local docs CLIs, security fixtures with inserted flaws
+Implementability score: 0.74
 
-### Router policy should buy reasoning before buying tool surface
+### Approved enterprise tasks should compile into budgeted database sessions
 
-Summary: The retrospective-board study shows that extra browser testing can raise cost without improving reliability, while higher reasoning effort can dramatically improve first-try success. More tools are not a substitute for the right reasoning budget.
+Summary: SessionBound turns enterprise approval into short-lived, budgeted, auditable database sessions. Signed task tokens bind safe views, row scope, denied fields, operation limits, query budgets, disclosure budgets, and receipts before agent-generated SQL executes.
 
-Analysis: [daily sovereignty analysis](2026-07-05/sovereignty.md#router-policy-should-buy-reasoning-before-buying-tool-surface)
-Durable topics: [Model Router Governance](model-router-governance/model-router-governance.md), [Runtime Governance](runtime-governance/runtime-governance.md), [AgenticAI Coding Agent Control Plane](../AgenticAI/coding-agent-control-plane/coding-agent-control-plane.md)
-Core sources: [reasoning effort study](https://arxiv.org/abs/2607.02436v1), [Zenodo artifacts](https://doi.org/10.5281/zenodo.21134406)
+Analysis: [daily sovereignty analysis](2026-07-06/sovereignty.md#approved-enterprise-tasks-should-compile-into-budgeted-database-sessions)
+Durable topics: [Agent Execution Control Plane](agent-execution-control-plane/agent-execution-control-plane.md), [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md), [Runtime Governance](runtime-governance/runtime-governance.md), [Evidence Provenance Control Plane](evidence-provenance-control-plane/evidence-provenance-control-plane.md)
+Core sources: [SessionBound paper](https://arxiv.org/abs/2607.00751v1), [SessionBound repo](https://github.com/SessionBound/sessionbound)
 Implementable now:
-- classify failures before changing model, reasoning effort, tools, verifier, or approval mode
-- log cost and reliability deltas for each routing knob
-- require justification before expanding browser, shell, network, credential, or repo-wide authority
-- separate style prompts from functional verification
+- define task templates before agents touch data
+- bind approval to principal, task, data scope, operation class, query budget, disclosure budget, expiry, and receipt sink
+- enforce row, column, operation, and budget limits at the database or gateway runtime
+- log denied queries as audit evidence
 Tools, repos, and methodologies worth exploring:
-- per-criterion coding-agent rubrics, first-try reliability metrics, effective-token logging, matched routing A/B tests
+- SessionBound reference repo, database views, row-level security, column masking, signed task tokens, receipts
+Implementability score: 0.61
+
+### Skill rubrics are governance evidence, not only training signals
+
+Summary: SkillCoach implies that skill registries should store process verdicts. A platform should know whether a skill was selected correctly, followed correctly, composed safely, and verified before final submission. Passing the final task is not enough.
+
+Analysis: [daily sovereignty analysis](2026-07-06/sovereignty.md#skill-rubrics-are-governance-evidence-not-only-training-signals)
+Durable topics: [Runtime Governance](runtime-governance/runtime-governance.md), [Agent Community Governance](agent-community-governance/agent-community-governance.md), [AgenticAI Skills as Control](../AgenticAI/skills-as-control/skills-as-control.md)
+Core source: [SkillCoach](https://arxiv.org/abs/2607.01874v1)
+Implementable now:
+- add process-rubric scores to skill registry records
+- separate final verifier success from skill-use quality
+- track distractor skill selection and omitted validation checks as registry health metrics
+- quarantine, rewrite, or retire skills that repeatedly fail process rubrics
+Tools, repos, and methodologies worth exploring:
+- SkillCoach-style rubrics, registry utility dashboards, trace queries over skill hash and validator outcomes
+Implementability score: 0.66
+
+### Verification gates are conversational memory policy for code
+
+Summary: Multi-turn coding chat creates commitments. Regression Accumulation shows those commitments need to become executable tests or invariants, because later turns can satisfy the newest request while breaking earlier requirements.
+
+Analysis: [daily sovereignty analysis](2026-07-06/sovereignty.md#verification-gates-are-conversational-memory-policy-for-code)
+Durable topics: [Runtime Governance](runtime-governance/runtime-governance.md), [Evidence Provenance Control Plane](evidence-provenance-control-plane/evidence-provenance-control-plane.md), [AgenticAI Coding Agent Control Plane](../AgenticAI/coding-agent-control-plane/coding-agent-control-plane.md)
+Core sources: [Regression Accumulation](https://arxiv.org/abs/2607.01855v1), [artifact repository](https://anonymous.4open.science/r/multi-turn-llm-regression-E73E)
+Implementable now:
+- convert accepted requirements into tests, assertions, or invariant checks
+- preserve checks across turns and subagent handoffs
+- rollback changes that break prior commitments
+- store regression evidence in traces and PR history
+Tools, repos, and methodologies worth exploring:
+- Verification Gate policy, turn-indexed requirement ledgers, patch-stack rollback, multi-turn regression taxonomy
 Implementability score: 0.79
-
-### Skill marketplaces need composition policy, not isolated review
-
-Summary: SkillFuzz makes the skill-catalog control problem explicit: risk can emerge only when skills are co-activated. Marketplace governance therefore needs per-composition verdicts, not only per-skill provenance and static scans.
-
-Analysis: [daily sovereignty analysis](2026-07-05/sovereignty.md#skill-marketplaces-need-composition-policy-not-isolated-review)
-Durable topics: [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md), [Runtime Governance](runtime-governance/runtime-governance.md), [Agent Community Governance](agent-community-governance/agent-community-governance.md), [AgenticAI Skills as Control](../AgenticAI/skills-as-control/skills-as-control.md)
-Core source: [SkillFuzz](https://arxiv.org/abs/2607.02345v1)
-Implementable now:
-- store individual skill verdicts and composition verdicts separately
-- generate high-risk pairs and triples from overlapping tools, files, memory access, and goals
-- use planner diffs before expensive detonation runs
-- block combinations that expand side effects beyond declared scope
-Tools, repos, and methodologies worth exploring:
-- contract-guided composition fuzzing, composition deny lists, differential planning oracles, sandbox detonation for high-risk combinations
-Implementability score: 0.60
 
 ## Supporting recent Strategy context
 
-The 2026-07-01 Deep Dive remains the foundation: connection is not authority. The 2026-07-05 daily scan sharpens the next governance layer: memory state, reasoning effort, and skill composition should become policy-bearing objects before they influence action.
+The 2026-07-01 Deep Dive remains the foundation: connection is not authority. The 2026-07-06 scan extends that rule from tool connections to process authority. Skills, coding sessions, workspace constraints, and database sessions should all become policy-bearing evidence objects before they influence real effects.

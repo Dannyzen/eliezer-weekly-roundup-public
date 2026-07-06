@@ -1,6 +1,6 @@
 # Agent Gateway Governance
 
-Last updated: 2026-06-28
+Last updated: 2026-07-06
 
 Agent gateway governance is the control-plane discipline for exposing enterprise tools, data, and workflows to autonomous agents.
 
@@ -807,3 +807,18 @@ Practical lesson:
 Sources:
 - [ToolPrivacyBench](https://arxiv.org/abs/2606.28061v1)
 - [On the Inseparability of Instructions and Data](https://arxiv.org/abs/2606.27567v1)
+
+## July 6 update: database sessions are gateway-grade policy objects
+
+SessionBound is a concrete example of what the gateway should produce for data systems: not raw credentials, not prompt-based guardrails, but a short-lived execution session with signed scope, operation limits, budgets, and receipts. The agent can still generate useful SQL, but the database or gateway enforces what the approved task permits.
+
+Practical lesson:
+- convert approved tasks into per-system session tokens;
+- bind tokens to principal, task, data scope, operation class, budget, expiry, and receipt sink;
+- enforce safe views, row scope, denied fields, and query budgets before execution;
+- preserve denied queries and disclosure-budget exhaustion in gateway traces;
+- reuse the same pattern for storage, CRM, ticketing, email, and analytics tools.
+
+Sources:
+- [SessionBound](https://arxiv.org/abs/2607.00751v1)
+- [SessionBound/sessionbound](https://github.com/SessionBound/sessionbound)

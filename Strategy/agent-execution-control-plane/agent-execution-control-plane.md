@@ -1,6 +1,6 @@
 # Agent Execution Control Plane
 
-Last updated: 2026-07-04
+Last updated: 2026-07-06
 
 Core finding: MCP-style connection is not execution control. A serious agent runtime needs a separate layer that binds principal, grant, resource, capability, handle, data flow, policy decision, and audit evidence before tools create side effects.
 
@@ -9,6 +9,7 @@ Core sources:
 - HCP reference repository: https://github.com/SymbolicLight-AGI/handle-capability-protocol
 - HCP security invariants: https://github.com/SymbolicLight-AGI/handle-capability-protocol/blob/main/docs/security-invariants.md
 - HCP threat model: https://github.com/SymbolicLight-AGI/handle-capability-protocol/blob/main/docs/threat-model.md
+- SessionBound: https://arxiv.org/abs/2607.00751v1
 
 ## Overview
 
@@ -117,6 +118,23 @@ Practical lesson:
 Sources:
 - [Janus paper](https://arxiv.org/abs/2607.01510v1)
 - [GraceBrigham/Janus](https://github.com/GraceBrigham/Janus)
+
+## July 6 update: approved tasks should become budgeted sessions
+
+SessionBound maps directly onto the execution-control thesis. A business approval should not become ambient database authority. It should compile into a short-lived task session with a signed token, safe views, row scope, denied fields, operation limits, query budgets, disclosure budgets, and receipts.
+
+The general lesson extends beyond SQL. Email, object storage, CRM, ticketing, analytics, and admin consoles should all move from broad credentials to task-scoped execution sessions where the runtime enforces the bounds deterministically.
+
+Practical lesson:
+- bind approval to principal, task, resource scope, operation class, budget, expiry, and receipt sink;
+- enforce scope at the provider or gateway, not in model instructions;
+- log denied attempts as first-class audit evidence;
+- make budget exhaustion and disclosure limits recoverable planning feedback;
+- treat approval as a signed grant input, not as the grant itself.
+
+Sources:
+- [SessionBound](https://arxiv.org/abs/2607.00751v1)
+- [SessionBound/sessionbound](https://github.com/SessionBound/sessionbound)
 
 ## What remains conceptual or unproven
 

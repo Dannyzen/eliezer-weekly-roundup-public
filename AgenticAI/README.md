@@ -2,72 +2,57 @@
 
 This index tracks the most recent structured update. Each finding includes a short human-readable summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: Daily scan, 2026-07-05
+## Most Recent Structured Update: Daily scan, 2026-07-06
 
-### Memory systems need failure-mode tests, not only recall tests
+### Skill use needs process rubrics, not final verifier wins
 
-Summary: MemSyco-Bench and A-TMA show that memory evals must measure downstream decision influence, not only recall. The system has to know when to ignore preference memory, when external evidence wins, and whether a recalled fact is current, historical, transition, conflicting, or scoped personalization.
+Summary: SkillCoach shows that final task success is too coarse for skill-using agents. A trajectory can pass after selecting distractor skills, skipping required steps, composing workflows incorrectly, or omitting final checks. Skill quality needs process rubrics for selection, following, composition, and reflection.
 
-Analysis: [daily reasoning analysis](2026-07-05/reasoning.md#memory-systems-need-failure-mode-tests-not-only-recall-tests)
-Durable topics: [Memory Systems](memory-systems/memory-systems.md), [Context Economy](context-economy/context-economy.md), [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Strategy Memory Authority](../Strategy/memory-authority-control-plane/memory-authority-control-plane.md)
-Core sources: [MemSyco-Bench paper](https://arxiv.org/abs/2607.01071v2), [MemSyco-Bench repo](https://github.com/XMUDeepLIT/MemSyco-Bench), [A-TMA](https://arxiv.org/abs/2607.01935v1)
+Analysis: [daily reasoning analysis](2026-07-06/reasoning.md#skill-use-needs-process-rubrics-not-final-verifier-wins)
+Durable topics: [Skills as Control](skills-as-control/skills-as-control.md), [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
+Core source: [SkillCoach](https://arxiv.org/abs/2607.01874v1)
 Implementable now:
-- run memory tests where the right behavior is to ignore, scope, or override a recalled memory
-- tag memory packets with current, superseded, historical, transition, conflict, and personalization-only state
-- evaluate bank maintenance, retrieval, and answer-time resolution separately
-- preserve source event and supersession lineage through summaries and derived memories
+- log retrieved skill IDs, loaded body hashes, selected skills, rejected skills, validation checks, and final verifier results
+- score skill selection, following, composition, and reflection separately
+- keep final success as outcome evidence, not a proxy for process quality
+- evolve rubrics from real rollouts, then review rubric changes before they become gates
 Tools, repos, and methodologies worth exploring:
-- XMUDeepLIT/MemSyco-Bench, ATMA-style state labels, conflict-heavy temporal fixtures, Graphiti-style temporal memory with explicit state roles
-Implementability score: 0.76
+- SkillCoach-style rubrics, per-skill validators, registry dashboards for distractor selection and omitted checks
+Implementability score: 0.70
 
-### Reasoning budgets should be routed before extra tools
+### Multi-turn coding agents need regression gates
 
-Summary: A 90-run coding-agent study found that browser-based testing increased cost without improving reliability, while higher reasoning effort sharply improved first-try perfect runs. The practical routing rule is to classify the failure first, then buy the cheapest knob that addresses it.
+Summary: Regression Accumulation shows that coding chat reliability is stateful. Across six models on 8-turn requirement-evolution chains, 40 to 73 percent of tasks lose previously correct behavior. The robust mitigation is Verification Gate: replay earlier tests on every later turn, then rollback and retry when old behavior breaks.
 
-Analysis: [daily reasoning analysis](2026-07-05/reasoning.md#reasoning-budgets-should-be-routed-before-extra-tools)
-Durable topics: [Coding Agent Control Plane](coding-agent-control-plane/coding-agent-control-plane.md), [Agent Serving Runtime](agent-serving-runtime/agent-serving-runtime.md), [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Strategy Model Router Governance](../Strategy/model-router-governance/model-router-governance.md)
-Core sources: [reasoning effort study](https://arxiv.org/abs/2607.02436v1), [Zenodo artifacts](https://doi.org/10.5281/zenodo.21134406)
+Analysis: [daily reasoning analysis](2026-07-06/reasoning.md#multi-turn-coding-agents-need-regression-gates)
+Durable topics: [Coding Agent Control Plane](coding-agent-control-plane/coding-agent-control-plane.md), [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Sessionful Agent Loops](sessionful-agent-loops/sessionful-agent-loops.md), [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
+Core sources: [Regression Accumulation](https://arxiv.org/abs/2607.01855v1), [artifact repository](https://anonymous.4open.science/r/multi-turn-llm-regression-E73E), [bug taxonomy](https://anonymous.4open.science/r/multiturn-code-bugs)
 Implementable now:
-- log reasoning effort, tool exposure, per-criterion failures, cost, corrective prompts, and first-run pass status
-- raise reasoning effort before broadening tool access when planning and integration failures dominate
-- keep browser tools targeted to UI-visible or browser-state defects
-- evaluate design prompts separately from functional correctness
+- store accepted requirements as session contracts
+- convert prior requirements into replayable tests or invariants
+- run prior tests plus new tests on every turn
+- rollback and retry when prior behavior fails
+- record the turn that introduced each regression and the gate that caught it
 Tools, repos, and methodologies worth exploring:
-- the Zenodo retrospective-board artifact set, first-try perfect-run metrics, matched A/B harness runs, router policies over reasoning effort versus tool exposure
-Implementability score: 0.81
+- Verification Gate policy, turn-indexed requirement ledgers, patch-stack rollback, multi-turn regression taxonomies
+Implementability score: 0.84
 
-### Live test co-evolution benchmarks expose coding-agent regressions
+### Coding-agent steerability belongs in the substrate
 
-Summary: TestEvo-Bench evaluates whether agents update tests with code, using executable tasks mined from real repository histories. Prompt Coverage Adequacy adds the metric pressure: tests should cover the requirements in the prompt, not only lines in the code.
+Summary: Steerability via constraints argues that coding agents should be governed by the engineering substrate: access control, network policy, typed boundaries, strict conventions, layered docs, and deterministic tools. In a controlled backdoor-review experiment, constrained substrate plus a small docs CLI improved reviewer recall from 54.5 percent to 90.9 percent.
 
-Analysis: [daily reasoning analysis](2026-07-05/reasoning.md#live-test-co-evolution-benchmarks-expose-coding-agent-regressions)
-Durable topics: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Coding Agent Control Plane](coding-agent-control-plane/coding-agent-control-plane.md)
-Core sources: [TestEvo-Bench](https://arxiv.org/abs/2607.02469v1), [TestEvo-Bench site](https://www.testevo-bench.com/), [Prompt Coverage Adequacy](https://arxiv.org/abs/2607.02057v1)
+Analysis: [daily reasoning analysis](2026-07-06/reasoning.md#coding-agent-steerability-belongs-in-the-substrate)
+Durable topics: [Coding Agent Control Plane](coding-agent-control-plane/coding-agent-control-plane.md), [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Agent Static Analysis](agent-static-analysis/agent-static-analysis.md), [Strategy Runtime Governance](../Strategy/runtime-governance/runtime-governance.md)
+Core source: [Steerability via constraints](https://arxiv.org/abs/2607.02389v1)
 Implementable now:
-- mine internal code-plus-test evolution tasks
-- score test generation and test update separately
-- record task timestamps to reduce training-cutoff leakage
-- add prompt or requirement coverage checks for agent-authored tests
+- default coding agents into constrained workspaces
+- enforce style, type, dependency, and architecture constraints with tools
+- maintain repo-local docs and code-map surfaces for reviewer agents
+- compare reviewer quality under constrained and unconstrained substrates
 Tools, repos, and methodologies worth exploring:
-- TestEvo-Bench's live benchmark methodology, mutation testing, prompt coverage metrics, post-cutoff internal regression packs
-Implementability score: 0.68
-
-### Skill composition needs fuzzing before marketplace admission
-
-Summary: SkillFuzz shows that individually benign skills can compose into implicit intents. Skill catalogs need composition tests, planner diffs, and registry-level verdicts before co-activated skills inherit production authority.
-
-Analysis: [daily reasoning analysis](2026-07-05/reasoning.md#skill-composition-needs-fuzzing-before-marketplace-admission)
-Durable topics: [Skills as Control](skills-as-control/skills-as-control.md), [Strategy Agent Gateway Governance](../Strategy/agent-gateway-governance/agent-gateway-governance.md), [Strategy Runtime Governance](../Strategy/runtime-governance/runtime-governance.md)
-Core source: [SkillFuzz](https://arxiv.org/abs/2607.02345v1)
-Implementable now:
-- extract skill contracts with purpose, preconditions, side effects, and scopes
-- compare plans with and without composed skill sets
-- prioritize risky combinations with contract-guided search
-- store composition verdicts alongside individual skill verdicts
-Tools, repos, and methodologies worth exploring:
-- contract-guided fuzzing, differential planning oracles, Monte Carlo Tree Search over co-activation graphs, composition deny lists
-Implementability score: 0.62
+- linters, type checkers, protected paths, network-deny defaults, architecture tests, local docs CLI surfaces
+Implementability score: 0.78
 
 ## Supporting recent AgenticAI context
 
-The 2026-07-04 daily scan added preflight control: static agent graphs, proxy evals, permission harnesses, and skill detonation. The 2026-07-05 scan adds the state layer underneath that: memory state, reasoning budget, test evolution, and skill composition all need explicit evidence before the runtime grants more authority.
+The 2026-07-05 scan added selective state: memory influence, reasoning budget, test evolution, and skill composition need evidence gates. The 2026-07-06 scan adds process preservation: the agent stack has to prove that skills, code changes, and oversight paths preserved the right commitments before granting more authority.

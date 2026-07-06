@@ -1,6 +1,6 @@
 # Runtime Governance
 
-Last updated: 2026-07-03
+Last updated: 2026-07-06
 
 Runtime governance is becoming the real control plane for agent systems.
 
@@ -767,3 +767,20 @@ Practical lesson:
 Sources:
 - [Distributed Attacks in Persistent-State AI Control](https://arxiv.org/abs/2607.02514v1)
 - [Coding Agents Are Guessing](https://arxiv.org/abs/2607.02294v1)
+
+## July 6 update: process gates are runtime governance
+
+SkillCoach, Regression Accumulation, Steerability via constraints, and SessionBound all point to the same runtime-governance shape: the runtime should enforce process boundaries before an effect lands. Final success, chat approval, or reviewer confidence is not enough.
+
+Practical lesson:
+- score skill process separately from final outcome;
+- replay prior coding commitments before accepting later edits;
+- put coding agents inside constrained substrates rather than reviewing unconstrained work after the fact;
+- compile enterprise task approvals into signed, budgeted execution sessions;
+- log process denials, budget exhaustion, regression rollbacks, and omitted checks as governance events.
+
+Sources:
+- [SkillCoach](https://arxiv.org/abs/2607.01874v1)
+- [Regression Accumulation in Multi-Turn LLM Programming Conversations](https://arxiv.org/abs/2607.01855v1)
+- [Steerability via constraints](https://arxiv.org/abs/2607.02389v1)
+- [SessionBound](https://arxiv.org/abs/2607.00751v1)

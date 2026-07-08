@@ -1,6 +1,6 @@
 # Agent Execution Control Plane
 
-Last updated: 2026-07-06
+Last updated: 2026-07-08
 
 Core finding: MCP-style connection is not execution control. A serious agent runtime needs a separate layer that binds principal, grant, resource, capability, handle, data flow, policy decision, and audit evidence before tools create side effects.
 
@@ -135,6 +135,21 @@ Practical lesson:
 Sources:
 - [SessionBound](https://arxiv.org/abs/2607.00751v1)
 - [SessionBound/sessionbound](https://github.com/SessionBound/sessionbound)
+
+
+## July 8 update: writable context needs typed releases before execution
+
+Context-to-Execution Integrity adds a practical rule to the execution-control plane: writable context can inform an agent, but it should not directly populate protected sink fields. Protected arguments need typed releases from opaque evidence slots to specific destinations under deterministic gates.
+
+Practical lesson:
+- mark protected sink fields on privileged tools before exposing them to agents;
+- keep attacker-writable values in opaque slots until a validator releases a narrow value;
+- bind each release to principal, task, destination, expiry, and reason;
+- log allowed and denied releases as audit events;
+- add fixtures where issue bodies, README files, CI logs, memories, and tool outputs contain plausible but unauthorized values.
+
+Source:
+- [Context-to-Execution Integrity for LLM Agents](https://arxiv.org/abs/2607.06000v1)
 
 ## What remains conceptual or unproven
 

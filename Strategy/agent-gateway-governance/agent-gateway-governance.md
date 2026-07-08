@@ -1,6 +1,6 @@
 # Agent Gateway Governance
 
-Last updated: 2026-07-06
+Last updated: 2026-07-08
 
 Agent gateway governance is the control-plane discipline for exposing enterprise tools, data, and workflows to autonomous agents.
 
@@ -822,3 +822,18 @@ Practical lesson:
 Sources:
 - [SessionBound](https://arxiv.org/abs/2607.00751v1)
 - [SessionBound/sessionbound](https://github.com/SessionBound/sessionbound)
+
+
+## July 8 update: approval-view fidelity is a gateway invariant
+
+Unicode TAG-block concealment turns MCP metadata into a concrete gateway test. The user approval view, canonical metadata text, raw byte sequence, and model-context injection path must match in security-relevant ways. If the approval dialog hides bytes that the model later receives, approval is not evidence.
+
+Practical lesson:
+- canonicalize and hash tool metadata at admission time;
+- scan for invisible Unicode, TAG-block characters, bidi controls, zero-width characters, and control bytes;
+- compare rendered approval text against the model-context string and raw bytes;
+- require re-approval when metadata hashes drift;
+- treat MCP tool descriptions as untrusted data even after server installation.
+
+Source:
+- [Unicode TAG-Block Concealment of Tool-Metadata Payloads in MCP](https://arxiv.org/abs/2607.05744v1)

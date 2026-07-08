@@ -1,6 +1,6 @@
 # Agent Harness Architecture
 
-Last updated: 2026-07-06
+Last updated: 2026-07-08
 
 Agent harness architecture is becoming the part of the agent stack that teams can actually standardize.
 
@@ -898,3 +898,19 @@ Practical lesson:
 
 Source:
 - [Regression Accumulation in Multi-Turn LLM Programming Conversations](https://arxiv.org/abs/2607.01855v1)
+
+
+## July 8 update: language-specific SWE-bench packs make harness eval operational
+
+Kotlin SWE-bench is useful because it turns a language ecosystem into an executable harness artifact. The benchmark packages repository-level Kotlin tasks with issue instructions, base commits, gold patches, hidden regression tests, and containerized validators. That is the shape serious coding-agent evaluation should copy.
+
+Practical lesson:
+- build small domain-specific replay packs before arguing from generic leaderboard results;
+- record agent, model, effort setting, cost, wall time, validation command, and failure phase for every run;
+- treat task packaging as harness infrastructure, not one-off benchmark glue;
+- use language-specific suites to catch framework, build-system, style, and test-layout failures that generic SWE tasks miss.
+
+Sources:
+- [JetBrains Kotlin Benchmark release](https://blog.jetbrains.com/kotlin/2026/07/introducing-the-kotlin-benchmark-evaluate-ai-coding-agents-on-real-world-kotlin-tasks/)
+- [Kotlin SWE-bench](https://github.com/Kotlin/kotlin-swe-bench)
+- [Kotlin Benchmark leaderboard](https://kotlinlang.org/benchmark/)

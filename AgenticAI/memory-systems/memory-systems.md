@@ -1,6 +1,6 @@
 # Memory Systems
 
-Last updated: 2026-07-05
+Last updated: 2026-07-08
 
 Memory is becoming the real architecture question for long-lived agents.
 
@@ -758,3 +758,19 @@ Sources:
 ## Working conclusion
 
 The next generation of agents will be differentiated less by how eloquently they speak and more by how faithfully and safely they remember. The winning systems will preserve evidence, route memory writes explicitly, retrieve context adaptively, abstain when memory is unsafe, validate high-value writes, make retention and pruning decisions replayable, query local graphs when code structure matters, promote only the right lessons into durable guidance, attach enough context for updates and temporal reasoning, choose abstraction levels that transfer across tasks, keep the most sensitive memory close to the user and under policy control, run durable memory through a governed database-backed state core, separate evaluation memory from user-facing memory, measure whether memories remain usable under scale, budgets, and writeback review, expose operation-level provenance, make reasoning history diffable, test belief-state stay/update/isolate decisions, gate retrieval by policy, resolve contradictions with bitemporal evidence, evaluate memory against heterogeneous evolving source streams, and defend memory write/read paths against poisoning so failures can be traced instead of guessed.
+
+
+## July 8 update: multi-agent memory should preserve conflicts
+
+StateFuse sharpens the memory-systems thesis for multi-agent runtimes. Branches, retries, and replicas should not silently overwrite each other. The memory contract should preserve immutable operations, evidence-linked claims, explicit conflicts, correction handles, and deterministic materialized views.
+
+Practical lesson:
+- treat disagreement as a first-class memory object;
+- store claim provenance and evidence links with every durable assertion;
+- use exact IDs and semantic handles for correction and retraction;
+- materialize task-specific views from a canonical operation log instead of mutating shared truth in place;
+- keep resolver output separate from the underlying conflict record.
+
+Sources:
+- [StateFuse paper](https://arxiv.org/abs/2607.05844v1)
+- [nZiben/statefuse](https://github.com/nZiben/statefuse)

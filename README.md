@@ -5,15 +5,14 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Daily scan, 2026-07-07: [roundup](roundups/2026-07-07.md)
-- AgenticAI daily analysis: [2026-07-07](AgenticAI/2026-07-07/reasoning.md)
-- Strategy daily sovereignty: [2026-07-07](Strategy/2026-07-07/sovereignty.md)
+- Daily scan, 2026-07-08: [roundup](roundups/2026-07-08.md)
+- AgenticAI daily analysis: [2026-07-08](AgenticAI/2026-07-08/reasoning.md)
+- Strategy daily sovereignty: [2026-07-08](Strategy/2026-07-08/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
-- New durable Strategy topic: [Untrusted Data Boundaries](Strategy/untrusted-data-boundaries/untrusted-data-boundaries.md)
-- Prior daily scan, 2026-07-06: [roundup](roundups/2026-07-06.md)
-- Recent durable AgenticAI topics: [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md), [Coding Agent Control Plane](AgenticAI/coding-agent-control-plane/coding-agent-control-plane.md)
-- Recent durable Strategy topics: [Untrusted Data Boundaries](Strategy/untrusted-data-boundaries/untrusted-data-boundaries.md), [Agent Execution Control Plane](Strategy/agent-execution-control-plane/agent-execution-control-plane.md), [Runtime Governance](Strategy/runtime-governance/runtime-governance.md)
+- Updated durable AgenticAI topics: [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Memory Systems](AgenticAI/memory-systems/memory-systems.md)
+- Updated durable Strategy topics: [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md), [Agent Execution Control Plane](Strategy/agent-execution-control-plane/agent-execution-control-plane.md)
+- Prior daily scan, 2026-07-07: [roundup](roundups/2026-07-07.md)
 - Friday synthesis, week ending 2026-07-03: [roundup](roundups/2026-07-03.md)
 - Deep Dive Wednesday, 2026-07-01: [Agent Execution Control Plane](Strategy/agent-execution-control-plane/agent-execution-control-plane.md)
 - Prior Deep Dive Wednesday, 2026-06-24: [Memory Authority Control Plane](Strategy/memory-authority-control-plane/memory-authority-control-plane.md)
@@ -23,17 +22,20 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 The agent stack is moving from prompt-managed behavior to explicit control surfaces that can be versioned, compiled, tested, scoped, revoked, enforced, and measured outside the model's private reasoning loop.
 
-The 2026-07-03 Friday synthesis updated that thesis: autonomy becomes governable only where runtime state is explicit. The 2026-07-07 daily scan tightens the input layer: observation is not authority. Browser content, tool outputs, retrieved memories, and platform-mediated signals need trust classes, quarantine paths, and evidence-to-effect gates before they can shape real actions.
+The 2026-07-03 Friday synthesis updated that thesis: autonomy becomes governable only where runtime state is explicit. The 2026-07-08 daily scan tightens the representation layer: evaluation packs, shared memory, approval views, and execution arguments all need canonical artifacts that can be replayed, compared, and gated.
 
 The latest implementation and governance surfaces are:
 
+- Kotlin SWE-bench makes language-specific coding-agent evaluation executable with public task packs, containerized validators, and leaderboard metadata.
+- MCP approval dialogs need byte-level fidelity checks so hidden Unicode or metadata drift cannot make the model see something the user did not approve.
+- Multi-agent memory should preserve conflicts, corrections, evidence, and deterministic projections instead of collapsing disagreement into last-write-wins state.
+- Context-to-Execution Integrity separates writable context from protected tool sinks with typed releases and deterministic gates.
 - Untrusted web content should be masked before the planner sees it, with typed quarantine reads when hidden content is legitimately needed.
 - Tool-use failures need phase labels, not only final accuracy.
 - Tool outputs should carry trust classes so agent data injection cannot masquerade as trusted evidence.
 - Personal-agent sovereignty needs tests for consent drift, platform mediation, user burden, and manipulative incentives.
 - Skill-use evaluation needs process rubrics for selection, following, composition, and reflection, not only final verifier wins.
 - Multi-turn coding agents need regression gates that replay prior commitments before accepting later edits.
-- Coding-agent oversight should move into constrained substrates: file scope, network policy, typed checks, architecture rules, and local docs surfaces.
 - Execution control needs principals, grants, targets, scopes, side-effect oracles, and durable audit trails.
 
 ## Browse by category

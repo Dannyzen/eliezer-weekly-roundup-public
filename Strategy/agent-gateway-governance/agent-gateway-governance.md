@@ -1,6 +1,6 @@
 # Agent Gateway Governance
 
-Last updated: 2026-07-08
+Last updated: 2026-07-09
 
 Agent gateway governance is the control-plane discipline for exposing enterprise tools, data, and workflows to autonomous agents.
 
@@ -22,6 +22,7 @@ Core sources:
 - Jarvis Registry: https://github.com/ascending-llc/jarvis-registry
 - Agentic Resource Discovery: https://commandline.microsoft.com/agentic-resource-discovery-specification-ard/
 - ToolPrivBench: https://arxiv.org/abs/2606.20023v1
+- Agentic Botnets and HalluSquatting: https://arxiv.org/abs/2607.07433v1
 
 ## Core thesis
 
@@ -837,3 +838,17 @@ Practical lesson:
 
 Source:
 - [Unicode TAG-Block Concealment of Tool-Metadata Payloads in MCP](https://arxiv.org/abs/2607.05744v1)
+
+## July 9 update: model-guessed resource identifiers are gateway inputs
+
+Agentic Botnets and HalluSquatting make resource discovery a gateway security problem. An agent does not need to receive a malicious instruction directly if it hallucinates a repository, skill, package, or MCP server name and then fetches an attacker-squatted artifact. The dangerous moment is not only execution. It is the lookup path where a model-generated identifier becomes a canonical URL.
+
+Practical lesson:
+- deny clone, install, skill-load, package-add, and MCP-server admission from model-guessed names unless a trusted source supplied the exact artifact identity;
+- require exact owner, repository, registry, publisher, package name, default branch, and canonical URL verification before fetch;
+- bind requested identifier, resolved artifact, source policy, manifest hash, and approval state into gateway traces;
+- treat typo correction, fuzzy search, and model-completed resource names as untrusted discovery paths;
+- pair strict-known marketplace policy with runtime no-execute defaults for newly discovered artifacts.
+
+Source:
+- [Agentic Botnets and HalluSquatting](https://arxiv.org/abs/2607.07433v1)

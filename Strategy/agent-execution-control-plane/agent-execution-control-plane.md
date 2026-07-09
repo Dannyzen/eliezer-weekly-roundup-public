@@ -1,8 +1,10 @@
 # Agent Execution Control Plane
 
-Last updated: 2026-07-08
+Last updated: 2026-07-09
 
 Core finding: MCP-style connection is not execution control. A serious agent runtime needs a separate layer that binds principal, grant, resource, capability, handle, data flow, policy decision, and audit evidence before tools create side effects.
+
+Focused 2026-07-08 deep dive: [Context-to-Execution Integrity](../context-to-execution-integrity/context-to-execution-integrity.md)
 
 Core sources:
 - From Tool Connection to Execution Control: Benchmarking Security Invariants in MCP-Style Agent Runtimes: https://arxiv.org/abs/2606.29073v1
@@ -10,6 +12,9 @@ Core sources:
 - HCP security invariants: https://github.com/SymbolicLight-AGI/handle-capability-protocol/blob/main/docs/security-invariants.md
 - HCP threat model: https://github.com/SymbolicLight-AGI/handle-capability-protocol/blob/main/docs/threat-model.md
 - SessionBound: https://arxiv.org/abs/2607.00751v1
+- Context-to-Execution Integrity for LLM Agents: https://arxiv.org/abs/2607.06000v1
+- CXI artifact: https://anonymous.4open.science/r/cxi
+- Reason Less, Verify More: https://arxiv.org/abs/2607.07405v1
 
 ## Overview
 
@@ -150,6 +155,20 @@ Practical lesson:
 
 Source:
 - [Context-to-Execution Integrity for LLM Agents](https://arxiv.org/abs/2607.06000v1)
+
+## July 9 update: state-changing tools need deterministic pre-write gates
+
+Reason Less, Verify More adds the smallest useful execution-control loop: inspect proposed writes against current state before the tool executes. The paper's key failure mode is a silent wrong state, where a policy-permissive tool accepts a well-formed call even though the state transition violates domain policy. The model may report success and the tool may return no error, but the system has still done the wrong thing.
+
+Practical lesson:
+- put read-only validators in front of every state-changing tool;
+- check principal, task, current state, requested transition, approval artifact, and policy version before execution;
+- deny writes that are valid by schema but invalid by domain policy;
+- log gate ID, inspected fields, state snapshot reference, allow or deny verdict, and reason code;
+- test negative controls where providers already self-enforce so the gate's value is measured rather than assumed.
+
+Source:
+- [Reason Less, Verify More](https://arxiv.org/abs/2607.07405v1)
 
 ## What remains conceptual or unproven
 

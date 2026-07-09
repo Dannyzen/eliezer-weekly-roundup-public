@@ -2,40 +2,38 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: Daily scan, 2026-07-08
+## Most Recent Structured Update: Daily scan, 2026-07-09
 
-### MCP approval dialogs need byte-level fidelity checks
+### Deterministic pre-execution gates expose silent policy violations
 
-Summary: Unicode TAG-block concealment exposes a gateway failure where the approval view and model-visible tool metadata can diverge. Approval only means something if the user approves the same canonical bytes the model later receives.
+Summary: Reason Less, Verify More shows that tool-using agents can leave silent wrong states when policy-permissive tools execute valid-looking but forbidden writes. Read-only pre-execution gates check proposed writes against current state before execution, raising tau-squared-bench airline success from 29.6% to 42.0% on gpt-4o-mini in the reported setup.
 
-Analysis: [daily sovereignty analysis](2026-07-08/sovereignty.md#mcp-approval-dialogs-need-byte-level-fidelity-checks)
-Durable topics: [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md), [Untrusted Data Boundaries](untrusted-data-boundaries/untrusted-data-boundaries.md), [Runtime Governance](runtime-governance/runtime-governance.md)
-Core source: [Unicode TAG-Block Concealment of Tool-Metadata Payloads in MCP](https://arxiv.org/abs/2607.05744v1)
+Analysis: [daily sovereignty analysis](2026-07-09/sovereignty.md#deterministic-pre-execution-gates-expose-silent-policy-violations)
+Durable topics: [Agent Execution Control Plane](agent-execution-control-plane/agent-execution-control-plane.md), [Runtime Governance](runtime-governance/runtime-governance.md), [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md)
+Core source: [Reason Less, Verify More](https://arxiv.org/abs/2607.07405v1)
 Implementable now:
-- scan MCP tool metadata for invisible Unicode, TAG-block payloads, bidi controls, zero-width characters, and control bytes
-- compare raw bytes, canonical text, rendered approval text, and model-context text
-- hash approved metadata and require re-approval on drift
-- treat tool descriptions as untrusted evidence, not authority
+- put read-only policy gates before state-changing tools
+- inspect current state, requested transition, principal, task, and approval artifact before writes
+- emit allow and deny traces with gate ID, inspected fields, reason code, and state snapshot reference
 Tools, repos, and methodologies worth exploring:
-- Unicode category scanners, MCP admission fixtures, metadata hashing, approval-view diffing, tool-description taint labels
+- deterministic state-transition validators, OPA or Cedar policy checks, pre-write gate fixtures, tau-squared-bench-style policy-permissive domains, allow and deny trace schemas
 Implementability score: 0.86
 
-### Context-to-Execution Integrity turns writable context into typed releases
+### HalluSquatting turns resource identifiers into a supply-chain boundary
 
-Summary: CXI separates writable context from protected execution sinks. Context can provide evidence, but protected tool fields need typed releases, opaque data slots, destination binding, and deterministic admission gates before side effects happen.
+Summary: Agentic Botnets shows that model-hallucinated repositories, skills, or resources can be squatted by attackers and later fetched by agents. The defense is catalog and source control, not prompt steering: exact owner and artifact verification before clone, install, skill load, or MCP-server admission.
 
-Analysis: [daily sovereignty analysis](2026-07-08/sovereignty.md#context-to-execution-integrity-turns-writable-context-into-typed-releases)
-Durable topics: [Agent Execution Control Plane](agent-execution-control-plane/agent-execution-control-plane.md), [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md), [Evidence Provenance Control Plane](evidence-provenance-control-plane/evidence-provenance-control-plane.md)
-Core source: [Context-to-Execution Integrity for LLM Agents](https://arxiv.org/abs/2607.06000v1)
+Analysis: [daily sovereignty analysis](2026-07-09/sovereignty.md#hallusquatting-turns-resource-identifiers-into-a-supply-chain-boundary)
+Durable topics: [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md), [Untrusted Data Boundaries](untrusted-data-boundaries/untrusted-data-boundaries.md), [Agent Execution Control Plane](agent-execution-control-plane/agent-execution-control-plane.md)
+Core source: [Agentic Botnets and HalluSquatting](https://arxiv.org/abs/2607.07433v1)
 Implementable now:
-- mark protected sink fields on privileged tools
-- keep untrusted values in opaque slots until validators release them
-- bind releases to destination, principal, task, and expiry
-- emit allow and deny traces for release decisions
+- deny clone, install, or skill-load actions from model-guessed names unless a trusted source supplied the exact URL
+- verify owner, repository, registry, publisher, and canonical URL before artifact fetch
+- maintain allowed-source lists for skills, MCP servers, packages, plugins, and GitHub repositories
 Tools, repos, and methodologies worth exploring:
-- protected-field schemas, typed release validators, OPA or Cedar policy, evidence-object IDs, release-gate regression fixtures
-Implementability score: 0.68
+- strict-known marketplace policies, signed manifests, GitHub owner and default-branch verification, package registry metadata checks, artifact checksums, catalog admission logs
+Implementability score: 0.82
 
 ## Supporting recent Strategy context
 
-The 2026-07-01 Deep Dive established that connection is not authority. The 2026-07-07 scan showed observation is not authority. The 2026-07-08 scan adds representation fidelity: approval views and writable context must not silently become execution authority.
+The 2026-07-08 Deep Dive said writable context is not execution authority until it passes a typed release gate. The 2026-07-09 scan makes the same point operational: state-changing tools need pre-write gates, and resource acquisition needs exact identity checks before a model-generated name can become a real artifact fetch.

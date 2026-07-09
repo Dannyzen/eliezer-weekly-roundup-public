@@ -636,10 +636,6 @@ Sources:
 - [Foreverskyou/ToolBench-X](https://github.com/Foreverskyou/ToolBench-X)
 - [Constraint Tax](https://arxiv.org/abs/2606.25605v1)
 
-## Working conclusion
-
-Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, fingerprinted, and scored across safety, robustness, parameter correctness, environment fidelity, runtime-specific harm dimensions, staged semantic/audit/sandbox harm, agent-effort telemetry, real-user collaboration traces, realistic workspace state, live workflow demand, cost, adversarial task quality, long-range state propagation, abstention, protocol conformance, tool-shortlist quality, environment-factory coverage, quantitative goal persistence, procedural behavior, partial-progress preference, oracle strength, deterministic evidence paths, and coding-process discipline, improvement efforts will stay shallow and trust claims will stay unearned.
-
 ## June 26 update: RAG red-teaming needs novelty and cross-surface traces
 
 MIRROR adds a useful evaluation correction for agentic RAG. A red-team run should not only report attack success. It should report whether attacks are novel, whether they duplicate known prompts, which surface failed, and how much query budget was spent. The relevant surfaces now include text poisoning, image injection, direct-query attacks, and orchestrator-level tool manipulation.
@@ -652,3 +648,24 @@ Practical lesson:
 Sources:
 - [MIRROR](https://arxiv.org/abs/2606.26793v1)
 - [FujitsuResearch/mirror](https://github.com/FujitsuResearch/mirror)
+
+## July 9 update: severity scoring and causal slices make traces operational
+
+Action-graded severity and STRACE add two complementary upgrades to trajectory-aware evaluation. Action-graded severity says tool-agent red-team results should be scored by the actual effect: reversibility, scope crossing, and privilege expansion. STRACE says long traces should be compressed by failure pattern and causal dependency before reflection, fine-tuning, or policy repair.
+
+Practical lesson:
+- score risky tool-call trajectories by effect severity, not only binary attack success;
+- preserve action target, scope, reversibility, privilege level, and final effect as trace fields;
+- cluster repeated failures before spending model budget on reflection;
+- build dependency graphs over plan steps, tool calls, observations, verifier results, and policy decisions;
+- send causal slices, not full noisy transcripts, into agent-optimization loops.
+
+Sources:
+- [Action-graded severity](https://arxiv.org/abs/2607.07474v1)
+- [Harry-Ashley/action-graded-severity](https://github.com/Harry-Ashley/action-graded-severity)
+- [STRACE](https://arxiv.org/abs/2607.07702v1)
+- [moomight/STRACE](https://github.com/moomight/STRACE)
+
+## Working conclusion
+
+Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, fingerprinted, severity-scored, causally sliced, and scored across safety, robustness, parameter correctness, environment fidelity, runtime-specific harm dimensions, staged semantic/audit/sandbox harm, agent-effort telemetry, real-user collaboration traces, realistic workspace state, live workflow demand, cost, adversarial task quality, long-range state propagation, abstention, protocol conformance, tool-shortlist quality, environment-factory coverage, quantitative goal persistence, procedural behavior, partial-progress preference, oracle strength, deterministic evidence paths, and coding-process discipline, improvement efforts will stay shallow and trust claims will stay unearned.

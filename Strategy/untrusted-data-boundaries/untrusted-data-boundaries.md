@@ -1,6 +1,6 @@
 # Untrusted Data Boundaries
 
-Last updated: 2026-07-07
+Last updated: 2026-07-09
 
 Primary layer: Strategy / runtime governance / agent gateway governance
 
@@ -12,6 +12,7 @@ Core sources:
 - Agent Data Injection Attacks are Realistic Threats to AI Agents: https://arxiv.org/abs/2607.05120v1
 - Your Agent's Memories Are Not Its Own: Forged Reasoning Attacks on LLM Agent Memory and Defenses: https://arxiv.org/abs/2607.05029v1
 - SovereignPA-Bench: https://arxiv.org/abs/2607.05363v1
+- Agentic Botnets and HalluSquatting: https://arxiv.org/abs/2607.07433v1
 
 ## Overview
 
@@ -148,6 +149,20 @@ The daily scan's top security findings should be treated as one design primitive
 
 The product implication is clear: agent runtimes need an evidence boundary plane. It should sit below prompts and above effects, mediate browser, tool, and memory observations, and preserve enough lineage for action-time authorization.
 
+## July 9 update: hallucinated identifiers are untrusted evidence until resolved
+
+HalluSquatting adds a resource-identity version of the untrusted-data problem. A model-generated repository, skill, package, or MCP server name is not a trusted artifact reference. It is an untrusted evidence string that must be resolved through a trusted catalog before it can influence clone, install, load, or execution.
+
+Practical lesson:
+- label model-suggested artifact names as `untrusted_identifier`;
+- require exact source evidence for artifact identity before fetch;
+- preserve the trusted source that supplied the URL, owner, publisher, version, and checksum;
+- reject fuzzy or hallucinated identifiers for side-effecting acquisition paths;
+- keep resource resolution and artifact admission in the trace.
+
+Source:
+- [Agentic Botnets and HalluSquatting](https://arxiv.org/abs/2607.07433v1)
+
 ## Implementation checklist
 
 - [ ] Define observation trust classes.
@@ -169,3 +184,4 @@ Primary sources:
 - Agent Data Injection: https://arxiv.org/abs/2607.05120v1
 - FARMA forged reasoning memory attack: https://arxiv.org/abs/2607.05029v1
 - SovereignPA-Bench: https://arxiv.org/abs/2607.05363v1
+- Agentic Botnets and HalluSquatting: https://arxiv.org/abs/2607.07433v1

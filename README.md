@@ -5,16 +5,17 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Daily scan, 2026-07-08: [roundup](roundups/2026-07-08.md)
-- AgenticAI daily analysis: [2026-07-08](AgenticAI/2026-07-08/reasoning.md)
-- Strategy daily sovereignty: [2026-07-08](Strategy/2026-07-08/sovereignty.md)
+- Daily scan, 2026-07-09: [roundup](roundups/2026-07-09.md)
+- AgenticAI daily analysis: [2026-07-09](AgenticAI/2026-07-09/reasoning.md)
+- Strategy daily sovereignty: [2026-07-09](Strategy/2026-07-09/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
-- Updated durable AgenticAI topics: [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Memory Systems](AgenticAI/memory-systems/memory-systems.md)
-- Updated durable Strategy topics: [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md), [Agent Execution Control Plane](Strategy/agent-execution-control-plane/agent-execution-control-plane.md)
-- Prior daily scan, 2026-07-07: [roundup](roundups/2026-07-07.md)
+- Updated durable AgenticAI topics: [Trajectory-Aware Evaluation](AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md)
+- Updated durable Strategy topics: [Agent Execution Control Plane](Strategy/agent-execution-control-plane/agent-execution-control-plane.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md), [Untrusted Data Boundaries](Strategy/untrusted-data-boundaries/untrusted-data-boundaries.md)
+- Deep Dive Wednesday, 2026-07-08: [Context-to-Execution Integrity](Strategy/context-to-execution-integrity/context-to-execution-integrity.md)
+- Prior daily scan, 2026-07-08: [roundup](roundups/2026-07-08.md)
 - Friday synthesis, week ending 2026-07-03: [roundup](roundups/2026-07-03.md)
-- Deep Dive Wednesday, 2026-07-01: [Agent Execution Control Plane](Strategy/agent-execution-control-plane/agent-execution-control-plane.md)
+- Prior Deep Dive Wednesday, 2026-07-01: [Agent Execution Control Plane](Strategy/agent-execution-control-plane/agent-execution-control-plane.md)
 - Prior Deep Dive Wednesday, 2026-06-24: [Memory Authority Control Plane](Strategy/memory-authority-control-plane/memory-authority-control-plane.md)
 - Prior Deep Dive Wednesday, 2026-06-17: [Evidence Provenance Control Plane](Strategy/evidence-provenance-control-plane/evidence-provenance-control-plane.md)
 
@@ -22,18 +23,19 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 The agent stack is moving from prompt-managed behavior to explicit control surfaces that can be versioned, compiled, tested, scoped, revoked, enforced, and measured outside the model's private reasoning loop.
 
-The 2026-07-03 Friday synthesis updated that thesis: autonomy becomes governable only where runtime state is explicit. The 2026-07-08 daily scan tightens the representation layer: evaluation packs, shared memory, approval views, and execution arguments all need canonical artifacts that can be replayed, compared, and gated.
+The 2026-07-03 Friday synthesis updated that thesis: autonomy becomes governable only where runtime state is explicit. The 2026-07-08 Deep Dive tightened the transition from evidence to authority: writable context can inform reasoning, but protected execution requires typed releases, exact-effect commitments, and invocation authority bound to one action manifest. The 2026-07-09 daily scan adds the action-boundary version: state-changing tools need deterministic pre-write gates, red-team traces need action severity scores, long traces need causal slices, and resource acquisition needs exact identity before a model-generated name can fetch anything.
 
 The latest implementation and governance surfaces are:
 
+- Deterministic pre-execution gates catch silent policy-violating writes before policy-permissive tools mutate state.
+- Action-graded severity scores actual tool effects by reversibility, scope crossing, and privilege expansion.
+- STRACE turns long noisy trajectories into representative failure patterns and causal root-cause slices.
+- HalluSquatting makes hallucinated repository, skill, and resource names a supply-chain boundary.
 - Kotlin SWE-bench makes language-specific coding-agent evaluation executable with public task packs, containerized validators, and leaderboard metadata.
 - MCP approval dialogs need byte-level fidelity checks so hidden Unicode or metadata drift cannot make the model see something the user did not approve.
 - Multi-agent memory should preserve conflicts, corrections, evidence, and deterministic projections instead of collapsing disagreement into last-write-wins state.
-- Context-to-Execution Integrity separates writable context from protected tool sinks with typed releases and deterministic gates.
+- Context-to-Execution Integrity separates writable context from protected tool sinks with typed releases, exact-effect commitments, invocation leases, and deterministic gates.
 - Untrusted web content should be masked before the planner sees it, with typed quarantine reads when hidden content is legitimately needed.
-- Tool-use failures need phase labels, not only final accuracy.
-- Tool outputs should carry trust classes so agent data injection cannot masquerade as trusted evidence.
-- Personal-agent sovereignty needs tests for consent drift, platform mediation, user burden, and manipulative incentives.
 - Skill-use evaluation needs process rubrics for selection, following, composition, and reflection, not only final verifier wins.
 - Multi-turn coding agents need regression gates that replay prior commitments before accepting later edits.
 - Execution control needs principals, grants, targets, scopes, side-effect oracles, and durable audit trails.
@@ -68,6 +70,7 @@ The latest implementation and governance surfaces are:
 
 ### Strategy
 
+- [Context-to-Execution Integrity](Strategy/context-to-execution-integrity/context-to-execution-integrity.md)
 - [Untrusted Data Boundaries](Strategy/untrusted-data-boundaries/untrusted-data-boundaries.md)
 - [Persistent-State Agent Control](Strategy/persistent-state-agent-control/persistent-state-agent-control.md)
 - [Agent Execution Control Plane](Strategy/agent-execution-control-plane/agent-execution-control-plane.md)

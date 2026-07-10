@@ -2,38 +2,54 @@
 
 This index tracks the most recent structured update. Each finding includes a short human-readable summary, a link into the detailed analysis, core sources, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: Daily scan, 2026-07-09
+## Most Recent Structured Update: Daily scan, 2026-07-10
 
-### Action-graded severity makes tool-agent red-team results operational
+### Executable harness contracts move guarantees out of prompts
 
-Summary: Binary attack-success rate hides the difference between a harmless bad action and an externally visible, cross-scope, privilege-expanding one. Action-graded severity scores the actual tool-call trajectory on an L0 to L6 ordinal scale, with a public artifact for code, prompts, configs, figures, and per-episode results.
+Summary: From Prompts to Contracts moves source scope, entity routing, trace hygiene, output shape, and recommendation rules into code-owned manifests and validators around a replaceable model boundary. The paper reports that its contract checks held across 270 runs and three hosted models. Prompt-only enforcement leaked violations, while the integrated harness preserved 120/120 utility.
 
-Analysis: [daily reasoning analysis](2026-07-09/reasoning.md#action-graded-severity-makes-tool-agent-red-team-results-operational)
-Durable topics: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
-Core sources: [Action-graded severity paper](https://arxiv.org/abs/2607.07474v1), [action-graded-severity repo](https://github.com/Harry-Ashley/action-graded-severity)
+Analysis: [daily reasoning analysis](2026-07-10/reasoning.md#executable-harness-contracts-move-guarantees-out-of-prompts)
+Durable topic: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
+Core sources: [From Prompts to Contracts](https://arxiv.org/abs/2607.08028v1), [enterprise-llm-agent-harness](https://github.com/hammerbaki/enterprise-llm-agent-harness)
 Implementable now:
-- score internal red-team traces by reversibility, scope crossing, and privilege expansion
-- keep per-episode logs that record action target, scope, privilege level, and final effect
-- report severity distribution next to attack-success rate and task utility
+- put load-bearing runtime behavior in schemas and validators outside the model
+- add deliberate contract violations as fault-injection fixtures
+- rerun a fixed contract pack across model, prompt, retrieval, and scaffold changes
 Tools, repos, and methodologies worth exploring:
-- `Harry-Ashley/action-graded-severity`, AgentDojo-style traces, deterministic severity oracles, LLM judge agreement checks, escalation-chain labels
-Implementability score: 0.88
+- `hammerbaki/enterprise-llm-agent-harness`, JSON Schema or Pydantic, deterministic fallbacks, OpenTelemetry-style run manifests
+Implementability score: 0.90
 
-### STRACE makes trajectory optimization root-cause aware
+### UniClawBench makes framework choice measurable
 
-Summary: STRACE turns noisy long-horizon traces into high-signal optimization inputs. It filters redundant failure traces at batch level, then builds textual dependency graphs inside selected traces to remove non-causal steps and identify the root-cause module.
+Summary: UniClawBench packages 400 bilingual tasks in live containers around skill use, exploration, long-context reasoning, multimodal understanding, and cross-platform coordination. Hidden supervisors, user simulation, checkpoint grading, and cross-framework comparisons make the deployed agent system, not only the base model, the evaluation unit.
 
-Analysis: [daily reasoning analysis](2026-07-09/reasoning.md#strace-makes-trajectory-optimization-root-cause-aware)
-Durable topics: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Sessionful Agent Loops](sessionful-agent-loops/sessionful-agent-loops.md)
-Core sources: [STRACE paper](https://arxiv.org/abs/2607.07702v1), [STRACE repo](https://github.com/moomight/STRACE)
+Analysis: [daily reasoning analysis](2026-07-10/reasoning.md#uniclawbench-makes-the-framework-part-of-the-eval-unit)
+Durable topic: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
+Core sources: [UniClawBench paper](https://arxiv.org/abs/2607.08768v1), [UniClawBench repository](https://github.com/HKU-MMLab/UniClawBench)
 Implementable now:
-- cluster failure traces before asking a model to propose repairs
-- represent plan steps, tool calls, observations, verifier results, and policy decisions as dependency graphs
-- send only the causal failure slice into reflection, fine-tuning, or remediation workflows
+- build a small internal capability pack with live task worlds and hidden checkpoints
+- hold the model fixed while comparing two harnesses
+- score first-pass completion, recovery, final artifact state, cost, and wall time separately
 Tools, repos, and methodologies worth exploring:
-- `moomight/STRACE`, textual dependency graphs, causal slice extraction, failure-pattern mining, module-level remediation labels
-Implementability score: 0.68
+- `HKU-MMLab/UniClawBench`, Docker or VM snapshots, hidden verifier services, cross-framework A/B runs
+Implementability score: 0.85
+
+### Selective memory intervention beats continuous injection
+
+Summary: Remember When It Matters runs a sidecar memory agent that decides whether grounded execution state should enter the next action context or whether it should remain silent. The paper reports gains on Terminal-Bench 2.0 and tau2-Bench, with selective intervention outperforming passive and always-on variants.
+
+Analysis: [daily reasoning analysis](2026-07-10/reasoning.md#proactive-memory-turns-recall-into-a-selective-intervention-policy)
+Durable topic: [Memory Systems](memory-systems/memory-systems.md)
+Core sources: [Remember When It Matters](https://arxiv.org/abs/2607.08716v1), [advertised proactive-memory-agent repository](https://github.com/yifannnwu/proactive-memory-agent)
+Implementable now:
+- maintain typed records for requirements, failed attempts, diagnoses, and open subgoals
+- add explicit `inject` and `remain_silent` decisions before action-agent calls
+- compare no-memory, passive, always-on, and selective variants on identical trajectories
+Tools, repos, and methodologies worth exploring:
+- typed memory packets, intervention-effect logs, Terminal-Bench-style fixtures, small classifier or rules-based memory gates
+Artifact caveat: the advertised repository had no populated default branch during this scan.
+Implementability score: 0.65
 
 ## Supporting recent AgenticAI context
 
-The 2026-07-08 scan showed that replayable benchmark packs and conflict-preserving memory are becoming concrete implementation artifacts. The 2026-07-09 scan adds the next layer: tool trajectories should be severity-scored and causally sliced before they drive optimization.
+The 2026-07-09 scan made trajectory severity and causal slicing operational. The 2026-07-10 scan adds the control surfaces that should consume that evidence: executable contracts, framework-aware benchmark packs, and abstaining memory intervention.

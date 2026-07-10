@@ -5,15 +5,15 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Daily scan, 2026-07-09: [roundup](roundups/2026-07-09.md)
-- AgenticAI daily analysis: [2026-07-09](AgenticAI/2026-07-09/reasoning.md)
-- Strategy daily sovereignty: [2026-07-09](Strategy/2026-07-09/sovereignty.md)
+- Daily scan, 2026-07-10: [roundup](roundups/2026-07-10.md)
+- AgenticAI daily analysis: [2026-07-10](AgenticAI/2026-07-10/reasoning.md)
+- Strategy daily sovereignty: [2026-07-10](Strategy/2026-07-10/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
-- Updated durable AgenticAI topics: [Trajectory-Aware Evaluation](AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md)
-- Updated durable Strategy topics: [Agent Execution Control Plane](Strategy/agent-execution-control-plane/agent-execution-control-plane.md), [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md), [Untrusted Data Boundaries](Strategy/untrusted-data-boundaries/untrusted-data-boundaries.md)
+- Updated durable AgenticAI topics: [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md), [Trajectory-Aware Evaluation](AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Memory Systems](AgenticAI/memory-systems/memory-systems.md)
+- Updated durable Strategy topic: [Untrusted Data Boundaries](Strategy/untrusted-data-boundaries/untrusted-data-boundaries.md)
 - Deep Dive Wednesday, 2026-07-08: [Context-to-Execution Integrity](Strategy/context-to-execution-integrity/context-to-execution-integrity.md)
-- Prior daily scan, 2026-07-08: [roundup](roundups/2026-07-08.md)
+- Prior daily scan, 2026-07-09: [roundup](roundups/2026-07-09.md)
 - Friday synthesis, week ending 2026-07-03: [roundup](roundups/2026-07-03.md)
 - Prior Deep Dive Wednesday, 2026-07-01: [Agent Execution Control Plane](Strategy/agent-execution-control-plane/agent-execution-control-plane.md)
 - Prior Deep Dive Wednesday, 2026-06-24: [Memory Authority Control Plane](Strategy/memory-authority-control-plane/memory-authority-control-plane.md)
@@ -23,10 +23,14 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 The agent stack is moving from prompt-managed behavior to explicit control surfaces that can be versioned, compiled, tested, scoped, revoked, enforced, and measured outside the model's private reasoning loop.
 
-The 2026-07-03 Friday synthesis updated that thesis: autonomy becomes governable only where runtime state is explicit. The 2026-07-08 Deep Dive tightened the transition from evidence to authority: writable context can inform reasoning, but protected execution requires typed releases, exact-effect commitments, and invocation authority bound to one action manifest. The 2026-07-09 daily scan adds the action-boundary version: state-changing tools need deterministic pre-write gates, red-team traces need action severity scores, long traces need causal slices, and resource acquisition needs exact identity before a model-generated name can fetch anything.
+The 2026-07-03 Friday synthesis updated that thesis: autonomy becomes governable only where runtime state is explicit. The 2026-07-08 Deep Dive tightened the transition from evidence to authority: writable context can inform reasoning, but protected execution requires typed releases, exact-effect commitments, and invocation authority bound to one action manifest. The 2026-07-09 scan added pre-write gates, action severity, causal trace slices, and exact resource identity. The 2026-07-10 scan adds executable contracts around model composition, framework-aware live evaluation, selective memory intervention, and contextual least privilege across browser observation and action.
 
 The latest implementation and governance surfaces are:
 
+- Executable harness contracts move source scope, routing, output rules, and trace hygiene out of prompt prose and into testable runtime code.
+- UniClawBench makes model, framework, task world, supervisor loop, and recovery behavior separate benchmark variables.
+- Proactive memory should decide when grounded state belongs in the action loop and retain an explicit remain-silent path.
+- Prismata applies task-scoped least privilege to both browser observations and the capabilities those observations can influence.
 - Deterministic pre-execution gates catch silent policy-violating writes before policy-permissive tools mutate state.
 - Action-graded severity scores actual tool effects by reversibility, scope crossing, and privilege expansion.
 - STRACE turns long noisy trajectories into representative failure patterns and causal root-cause slices.

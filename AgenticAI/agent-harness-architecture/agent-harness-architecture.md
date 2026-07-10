@@ -1,6 +1,6 @@
 # Agent Harness Architecture
 
-Last updated: 2026-07-08
+Last updated: 2026-07-10
 
 Agent harness architecture is becoming the part of the agent stack that teams can actually standardize.
 
@@ -914,3 +914,18 @@ Sources:
 - [JetBrains Kotlin Benchmark release](https://blog.jetbrains.com/kotlin/2026/07/introducing-the-kotlin-benchmark-evaluate-ai-coding-agents-on-real-world-kotlin-tasks/)
 - [Kotlin SWE-bench](https://github.com/Kotlin/kotlin-swe-bench)
 - [Kotlin Benchmark leaderboard](https://kotlinlang.org/benchmark/)
+
+## July 10 update: runtime guarantees should be executable contracts
+
+From Prompts to Contracts makes the harness boundary concrete. Source scope, entity routing, trace hygiene, output shape, and recommendation rules should live in manifests, schemas, validators, and deterministic fallbacks around the model, not only in prompt prose. The paper reports that its code-owned checks held across all 270 model-substitution runs. Its ablation is the useful engineering result: prompt-only enforcement leaked violations, while a bolt-on guardrail over-refused and reduced utility. The integrated harness preserved both contract enforcement and 120/120 utility.
+
+Practical lesson:
+- define a typed run manifest for sources, model, prompt version, entity scope, and validators;
+- keep deterministic validators outside the model for every load-bearing behavior;
+- add deliberate contract violations as fault-injection fixtures;
+- preserve failed model output, validator verdicts, and fallback output in the trace;
+- rerun a fixed contract suite whenever the model, prompt, retrieval layer, or scaffold changes.
+
+Sources:
+- [From Prompts to Contracts](https://arxiv.org/abs/2607.08028v1)
+- [hammerbaki/enterprise-llm-agent-harness](https://github.com/hammerbaki/enterprise-llm-agent-harness)

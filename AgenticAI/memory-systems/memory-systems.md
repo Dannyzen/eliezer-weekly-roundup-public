@@ -1,6 +1,6 @@
 # Memory Systems
 
-Last updated: 2026-07-08
+Last updated: 2026-07-10
 
 Memory is becoming the real architecture question for long-lived agents.
 
@@ -774,3 +774,20 @@ Practical lesson:
 Sources:
 - [StateFuse paper](https://arxiv.org/abs/2607.05844v1)
 - [nZiben/statefuse](https://github.com/nZiben/statefuse)
+
+## July 10 update: memory should decide when to intervene
+
+Remember When It Matters turns memory influence into an explicit policy. A sidecar memory agent maintains structured execution state and chooses whether a grounded reminder should enter the next action context or whether it should remain silent. That is more precise than passive retrieval or always-on injection because it makes memory influence observable, abstainable, and independently testable.
+
+Practical lesson:
+- maintain typed records for requirements, environment facts, failed attempts, diagnoses, and open subgoals;
+- add explicit `inject` and `remain_silent` decisions before action-agent calls;
+- log selected memory IDs, evidence, intervention reason, token cost, and downstream outcome;
+- compare no-memory, passive, always-on, and selective variants on identical trajectories;
+- keep proactive reminders grounded in stored evidence rather than turning the memory layer into a general advisor.
+
+Artifact caveat: the advertised repository had no populated default branch during the 2026-07-10 scan, so this is an implementable architecture pattern but not yet a ready-to-run public package.
+
+Sources:
+- [Remember When It Matters](https://arxiv.org/abs/2607.08716v1)
+- [Advertised proactive-memory-agent repository](https://github.com/yifannnwu/proactive-memory-agent)

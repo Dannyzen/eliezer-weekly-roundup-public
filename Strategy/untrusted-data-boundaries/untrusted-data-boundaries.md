@@ -1,6 +1,6 @@
 # Untrusted Data Boundaries
 
-Last updated: 2026-07-09
+Last updated: 2026-07-10
 
 Primary layer: Strategy / runtime governance / agent gateway governance
 
@@ -13,6 +13,7 @@ Core sources:
 - Your Agent's Memories Are Not Its Own: Forged Reasoning Attacks on LLM Agent Memory and Defenses: https://arxiv.org/abs/2607.05029v1
 - SovereignPA-Bench: https://arxiv.org/abs/2607.05363v1
 - Agentic Botnets and HalluSquatting: https://arxiv.org/abs/2607.07433v1
+- Prismata: https://arxiv.org/abs/2607.08147v1
 
 ## Overview
 
@@ -185,3 +186,19 @@ Primary sources:
 - FARMA forged reasoning memory attack: https://arxiv.org/abs/2607.05029v1
 - SovereignPA-Bench: https://arxiv.org/abs/2607.05363v1
 - Agentic Botnets and HalluSquatting: https://arxiv.org/abs/2607.07433v1
+
+## July 10 update: contextual least privilege must constrain observation and action together
+
+Prismata adds the missing task-policy layer to untrusted-data boundaries. It derives privilege labels from page structure, limits which untrusted content reaches the planner, and restricts the actions available from that content. The structural rule is important: uncertain labeling should reduce privilege rather than silently widen it.
+
+Practical lesson:
+- label DOM regions by origin and trust class before planner exposure;
+- derive a task-scoped action allowlist before the agent acts;
+- redact unneeded untrusted content or expose it through a typed quarantine read;
+- bind effectful actions to the content label, task scope, and policy verdict that authorized them;
+- add adaptive attack fixtures and fail closed when labeling uncertainty could expand capability.
+
+No public implementation repository was identified during this scan, so Prismata is currently a design reference rather than try-now software.
+
+Source:
+- [Prismata](https://arxiv.org/abs/2607.08147v1)

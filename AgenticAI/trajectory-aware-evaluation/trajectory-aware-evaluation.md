@@ -669,3 +669,18 @@ Sources:
 ## Working conclusion
 
 Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, fingerprinted, severity-scored, causally sliced, and scored across safety, robustness, parameter correctness, environment fidelity, runtime-specific harm dimensions, staged semantic/audit/sandbox harm, agent-effort telemetry, real-user collaboration traces, realistic workspace state, live workflow demand, cost, adversarial task quality, long-range state propagation, abstention, protocol conformance, tool-shortlist quality, environment-factory coverage, quantitative goal persistence, procedural behavior, partial-progress preference, oracle strength, deterministic evidence paths, and coding-process discipline, improvement efforts will stay shallow and trust claims will stay unearned.
+
+## July 10 update: framework choice belongs in the benchmark matrix
+
+UniClawBench makes model and framework attribution separable. Its 400 bilingual tasks are organized by five capabilities and run in live containers with checkpoint grading. An executor, hidden supervisor, and user simulator support multi-turn recovery while keeping the evaluator's rubric and hidden resources outside the acting agent's workspace.
+
+Practical lesson:
+- benchmark model, framework, task world, and budget as separate variables;
+- keep the model fixed when comparing harnesses;
+- keep supervisor rubrics and hidden resources outside the executor workspace;
+- score first-pass completion, recovery, final artifact state, cost, and wall time separately;
+- retain traces, screenshots, checkpoint verdicts, and environment state as replay artifacts.
+
+Sources:
+- [UniClawBench](https://arxiv.org/abs/2607.08768v1)
+- [HKU-MMLab/UniClawBench](https://github.com/HKU-MMLab/UniClawBench)

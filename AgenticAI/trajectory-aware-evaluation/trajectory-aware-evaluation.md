@@ -684,3 +684,18 @@ Practical lesson:
 Sources:
 - [UniClawBench](https://arxiv.org/abs/2607.08768v1)
 - [HKU-MMLab/UniClawBench](https://github.com/HKU-MMLab/UniClawBench)
+
+## July 11 update: causal data-science agents need abstention-aware ground truth
+
+CausalDS adds a useful eval shape for data-science agents: generated hidden-SCM scenes, graph-faithful stories, tabular observations, private ground truth, deterministic grading, and scored abstention when a causal target is not identifiable.
+
+Practical lesson:
+- include hidden ground truth for analytics-agent benchmarks;
+- score identifiability and abstention separately from numeric correctness;
+- preserve claimed estimand, data columns used, identification method, uncertainty, and abstention reason in traces;
+- build fixtures where the right behavior is refusing to estimate an unwarranted causal effect;
+- use generated exams for regression, but keep manually reviewed examples for trust decisions.
+
+Sources:
+- [CausalDS](https://arxiv.org/abs/2607.08093v1)
+- [andleb/causalds](https://github.com/andleb/causalds)

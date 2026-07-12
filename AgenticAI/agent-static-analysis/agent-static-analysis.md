@@ -1,6 +1,6 @@
 # Agent Static Analysis
 
-Last updated: 2026-07-04
+Last updated: 2026-07-12
 
 Agent static analysis is the preflight layer for source-code agent programs. It recovers the agent graph before execution so the runtime can see which prompts, models, tools, memories, policies, handoffs, and loops actually exist.
 
@@ -105,6 +105,23 @@ A useful internal version is implementable now. The first extractor only needs t
 - AgentFlow: Building Agent Dependency Graphs for Static Analysis of Agent Programs: https://arxiv.org/abs/2607.01640v1
 - When Agents Do Not Stop: Uncovering Infinite Agentic Loops in LLM Agents: https://arxiv.org/abs/2607.01641v1
 
+## July 12 update: system prompts are now a static taint sink
+
+CodeQL 2.26.0 turns one part of the agent graph into a shipping control. The new `js/system-prompt-injection` query follows untrusted JavaScript or TypeScript values into system-prompt sinks. Its public provider models and tests cover OpenAI, Anthropic, Google GenAI, LangChain, OpenRouter, and agent APIs.
+
+Practical lesson:
+
+- run the query in CI for JavaScript and TypeScript agent services;
+- extend CodeQL models for internal prompt wrappers and agent builders;
+- keep positive and negative source-to-sink fixtures beside agent code;
+- block merges when user-controlled data reaches system policy on high-authority services;
+- keep runtime checks for retrieval, tool output, memory, and generated action arguments, which static system-prompt analysis does not cover.
+
+Sources:
+
+- [GitHub CodeQL 2.26.0 changelog](https://github.blog/changelog/2026-07-10-codeql-2-26-0-adds-kotlin-2-4-0-support-and-ai-prompt-injection-detection)
+- [CodeQL system-prompt-injection query](https://github.com/github/codeql/blob/main/javascript/ql/src/Security/CWE-1427/SystemPromptInjection.ql)
+
 ## Working conclusion
 
-Agent static analysis should become the agent equivalent of dependency scanning plus control-flow review. Before an agent runs, the platform should know what it can call, what can influence those calls, what can loop, and which policy objects actually cover the dangerous paths.
+Agent static analysis should become the agent equivalent of dependency scanning plus control-flow review. Before an agent runs, the platform should know what can influence its system policy, what it can call, what can loop, and which policy objects actually cover the dangerous paths.

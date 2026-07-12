@@ -1,6 +1,6 @@
 # Agent Gateway Governance
 
-Last updated: 2026-07-09
+Last updated: 2026-07-12
 
 Agent gateway governance is the control-plane discipline for exposing enterprise tools, data, and workflows to autonomous agents.
 
@@ -852,3 +852,36 @@ Practical lesson:
 
 Source:
 - [Agentic Botnets and HalluSquatting](https://arxiv.org/abs/2607.07433v1)
+
+## July 11 update: managed remote MCP needs run contracts
+
+Google's Managed Agents update makes the gateway thesis concrete at product scale. Background execution, remote MCP servers, custom function handoffs, credential refresh, and persistent sandbox state turn an agent call into a long-lived workflow with internal network reach. That is useful, but it means gateway evidence has to outlive the HTTP request.
+
+Practical lesson:
+- bind remote MCP servers to exact identity, auth mode, allowed resources, network path, tool manifest hash, and trace sink;
+- represent background work with task ID, principal, grant, environment ID, sandbox profile, cancellation path, and receipt sink;
+- log credential refresh and network-rule changes as gateway events;
+- require expiry and cleanup policy for persistent filesystem state, installed packages, cloned repositories, and credentials;
+- keep local business logic behind explicit handoff boundaries instead of letting hosted sandboxes exercise ambient authority.
+
+Source:
+- [Expanding Managed Agents in Gemini API](https://blog.google/innovation-and-ai/technology/developers-tools/expanding-managed-agents-gemini-api/)
+
+## July 12 update: delegated MCP identity belongs in the gateway lifecycle
+
+LiteLLM v1.92.0 promotes MCP OAuth On-Behalf-Of exchange onto its v2 resolver. The release adds RFC 9728 to RFC 8414 endpoint discovery, persisted Dynamic Client Registration, per-server outbound concurrency limits, authorized tool search for large catalogs, credential encryption, secret redaction, and a Google Distributed Cloud Gemini route.
+
+Practical lesson:
+
+- bind user, client, MCP server, token audience, resource scope, allowed tools, concurrency budget, policy version, and trace sink before calls leave the gateway;
+- verify discovery, Dynamic Client Registration persistence, refresh, revocation, and denial paths with one remote MCP server before broad rollout;
+- filter `mcp_tool_search` results by authorization before model exposure;
+- test that credentials stay encrypted at rest and redacted from startup, audit, and router errors;
+- apply the same identity and policy contract to hosted and sovereign provider routes.
+
+Sources:
+
+- [LiteLLM v1.92.0 release notes](https://docs.litellm.ai/release_notes/v1.92.0/v1-92-0)
+- [LiteLLM v1.92.0 GitHub release](https://github.com/BerriAI/litellm/releases/tag/v1.92.0)
+
+Caveat: delegated OAuth is operationally heavy. A production gateway still needs tenant-isolated registration, token lifecycle tests, upstream compatibility checks, revocation procedures, and operator receipts.

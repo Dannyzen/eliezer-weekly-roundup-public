@@ -345,6 +345,22 @@ Sources:
 - [google-labs-code/design.md](https://github.com/google-labs-code/design.md)
 - [@google/design.md npm metadata](https://registry.npmjs.org/%40google%2Fdesign.md)
 
+## July 11 update: long-context model fixes do not remove context accounting
+
+Jet-Long and Sparse Delta Memory update this topic from the model layer. Jet-Long targets zero-shot context extension for repository-level coding and agentic workflows whose reasoning and tool traces outgrow the pretraining window. Sparse Delta Memory expands recurrent memory state with sparse addressing. Both are useful, but neither decides what belongs in active context or what must remain outside for audit and policy.
+
+Practical lesson:
+- test long-context methods against the same agent tasks as retrieval, summary, and last-N retention policies;
+- log token count, latency, cache pressure, answer quality, and failure mode by retention policy;
+- keep source IDs and raw trace records outside the prompt even when the model can fit the summary;
+- treat model-layer memory as performance infrastructure, not as an authority-bearing agent memory store.
+
+Sources:
+- [Jet-Long](https://arxiv.org/abs/2607.07740v1)
+- [jet-ai-projects/Jet-Long](https://github.com/jet-ai-projects/Jet-Long)
+- [Sparse Delta Memory](https://arxiv.org/abs/2607.07386v1)
+- [facebookresearch/sparse-delta-memory](https://github.com/facebookresearch/sparse-delta-memory)
+
 ## Working conclusion
 
 The future agent stack is not context maximalism. It is context accounting. Systems that know what to admit, retrieve, compress, cache, update incrementally, preserve prefix continuity, and audit will beat systems that merely buy larger windows and hope the model sorts it out.

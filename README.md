@@ -6,11 +6,13 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Friday synthesis, week ending 2026-07-10: [roundup](roundups/2026-07-10.md)
-- AgenticAI weekly analysis: [2026-07-10](AgenticAI/2026-07-10/reasoning.md)
-- Strategy weekly sovereignty: [2026-07-10](Strategy/2026-07-10/sovereignty.md)
+- Daily scan, 2026-07-12: [roundup](roundups/2026-07-12.md)
+- AgenticAI daily analysis: [2026-07-12](AgenticAI/2026-07-12/reasoning.md)
+- Strategy daily sovereignty: [2026-07-12](Strategy/2026-07-12/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
+- Prior daily scan, 2026-07-11: [roundup](roundups/2026-07-11.md)
+- Friday synthesis, week ending 2026-07-10: [roundup](roundups/2026-07-10.md)
 - Deep Dive Wednesday, 2026-07-08: [Context-to-Execution Integrity](Strategy/context-to-execution-integrity/context-to-execution-integrity.md)
 - Prior Friday synthesis, week ending 2026-07-03: [roundup](roundups/2026-07-03.md)
 - Prior Deep Dive Wednesday, 2026-07-01: [Agent Execution Control Plane](Strategy/agent-execution-control-plane/agent-execution-control-plane.md)
@@ -21,19 +23,28 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 The agent stack is moving from prompt-managed behavior to explicit control surfaces that can be versioned, compiled, tested, scoped, revoked, enforced, and measured outside the model's private reasoning loop.
 
-The 2026-07-10 Friday synthesis updates that thesis: evidence is not authority. An agent can read messy context, tool output, memory, logs, and web pages, but protected side effects should require typed releases, scoped grants, exact resource identity, deterministic gates, and receipts.
+The 2026-07-10 Friday synthesis made the operating rule explicit: evidence is not authority. Agents can read messy context, but protected side effects need typed releases, scoped grants, exact identities, deterministic gates, and receipts.
+
+The 2026-07-11 daily scan adds the asynchronous corollary: work that continues after the user disconnects, the rollout engine lags, or the context window stretches needs stronger run evidence, not weaker oversight.
+
+The 2026-07-12 daily scan adds the delivery corollary: agent policy should fail in ordinary engineering systems. Static taint checks, delegated gateway identity, compiled sandbox fields, and terminal run evidence are more durable than prompt-only rules.
 
 The latest implementation and governance surfaces are:
 
+- System-prompt injection can now be checked as JavaScript and TypeScript source-to-sink data flow before merge.
+- Delegated MCP identity needs gateway-owned discovery, registration, refresh, concurrency, catalog filtering, and audit.
+- Sandbox runtime, mounts, imports, token outcomes, and safe outputs are becoming compiled workflow fields.
+- Causal data-science agents need hidden-ground-truth evals, deterministic grading, and scored abstention.
+- Agentic RL needs action-to-observation trace boundaries before expensive asynchronous training can be trusted.
+- Long-context model methods can lower trace pressure, but context selection, compression, retrieval, and audit remain runtime policy.
+- Managed agent platforms are becoming background execution substrates with remote MCP, persistent sandboxes, credential refresh, and client reconnect.
 - Preflight agent graphs expose models, tools, memory, policies, handoffs, effects, and loop-bound risks before execution.
 - Executable harness contracts move source scope, routing, output rules, trace hygiene, and recommendation language out of prompt prose and into testable runtime code.
 - Framework-aware eval packs make model, scaffold, task world, supervisor loop, recovery behavior, and wall-clock cost separate benchmark variables.
 - Tool-use traces need phase labels, action severity, and causal root-cause slices, not only final task accuracy.
 - Memory systems need scoped state roles, conflict preservation, provenance, and an explicit remain-silent path before influencing action.
-- Coding agents need regression gates, test co-evolution checks, reasoning-budget routing, and constrained substrates.
 - Skills, tool servers, package names, and repository identifiers are supply-chain authority and need exact provenance before load or install.
 - Browser and tool observations need untrusted-data boundaries, quarantine reads, byte-faithful approvals, and contextual least privilege.
-- Personal-agent sovereignty remains low-readiness, but consent, revocation, platform mediation, and user burden must become measurable fields.
 
 ## Browse by category
 

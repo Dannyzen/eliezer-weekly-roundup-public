@@ -1,6 +1,6 @@
 # Agent Sandboxing
 
-Last updated: 2026-06-18
+Last updated: 2026-07-12
 
 Agent sandboxing is becoming a durable part of the agentic stack because coding agents are now powerful enough to make ordinary developer environments unsafe by default.
 
@@ -164,6 +164,24 @@ Practical lesson:
 Source:
 - [AI Sandboxes](https://arxiv.org/abs/2606.18532v1)
 
+## July 12 update: sandbox policy is becoming a compiled workflow field
+
+GitHub Agentic Workflows v0.82.8 makes gVisor runtime selection and reusable mount configuration part of the workflow source. It also resolves transitive imports, protects lock state, propagates token failures, adds an AI-authorship safe-output type, and terminates idle harness processes after terminal output.
+
+Practical lesson:
+
+- declare sandbox backend and mounts in reviewed workflow configuration;
+- package approved read-only and writable mount patterns as shared partials;
+- preserve imported dependencies and compiled lock files as execution evidence;
+- surface token, firewall, safe-output, and idle-termination outcomes in the conclusion job;
+- verify effective containment on the actual self-hosted runner instead of treating a declared runtime as proof.
+
+Source:
+
+- [GitHub Agentic Workflows v0.82.8](https://github.com/github/gh-aw/releases/tag/v0.82.8)
+
+Caveat: v0.82.8 is a prerelease. gVisor support is implementable, but runner topology, Docker-in-Docker choices, socket exposure, mount policy, and local validation still determine the real isolation boundary.
+
 ## Current read
 
-Agent sandboxing is not a niche hardening detail. It is becoming part of the default operating model for serious coding-agent use. The winning pattern is not "trust the model less" in the abstract. It is "give the model a smaller, killable, inspectable world to work inside."
+Agent sandboxing is not a niche hardening detail. It is becoming part of the default operating model for serious coding-agent use. The winning pattern is not "trust the model less" in the abstract. It is "give the model a smaller, declared, killable, inspectable world and preserve proof that the declared controls were active."

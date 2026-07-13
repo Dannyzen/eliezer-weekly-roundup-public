@@ -6,11 +6,12 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Daily scan, 2026-07-12: [roundup](roundups/2026-07-12.md)
-- AgenticAI daily analysis: [2026-07-12](AgenticAI/2026-07-12/reasoning.md)
-- Strategy daily sovereignty: [2026-07-12](Strategy/2026-07-12/sovereignty.md)
+- Daily scan, 2026-07-13: [roundup](roundups/2026-07-13.md)
+- AgenticAI daily analysis: [2026-07-13](AgenticAI/2026-07-13/reasoning.md)
+- Strategy daily sovereignty: [2026-07-13](Strategy/2026-07-13/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
+- Prior daily scan, 2026-07-12: [roundup](roundups/2026-07-12.md)
 - Prior daily scan, 2026-07-11: [roundup](roundups/2026-07-11.md)
 - Friday synthesis, week ending 2026-07-10: [roundup](roundups/2026-07-10.md)
 - Deep Dive Wednesday, 2026-07-08: [Context-to-Execution Integrity](Strategy/context-to-execution-integrity/context-to-execution-integrity.md)
@@ -29,8 +30,14 @@ The 2026-07-11 daily scan adds the asynchronous corollary: work that continues a
 
 The 2026-07-12 daily scan adds the delivery corollary: agent policy should fail in ordinary engineering systems. Static taint checks, delegated gateway identity, compiled sandbox fields, and terminal run evidence are more durable than prompt-only rules.
 
+The 2026-07-13 daily scan adds the intermediate-artifact corollary: failure stages, promoted memory, proof/test intent, and instruction updates must become explicit objects before they can be tested or trusted.
+
 The latest implementation and governance surfaces are:
 
+- CLI coding-agent failures need separate timestamps for decisive error, empirical lock-in, and first observable symptom.
+- Durable memory should promote specifications, schemas, tool configurations, and output constraints while keeping old reasoning traces out of active context.
+- High-value AI-generated validators should bind formal proof and runtime property tests to one typed intent artifact.
+- Persistent instruction evolution needs typed units, local graph validation, consolidation, deterministic reconstruction, replay, and rollback.
 - System-prompt injection can now be checked as JavaScript and TypeScript source-to-sink data flow before merge.
 - Delegated MCP identity needs gateway-owned discovery, registration, refresh, concurrency, catalog filtering, and audit.
 - Sandbox runtime, mounts, imports, token outcomes, and safe outputs are becoming compiled workflow fields.

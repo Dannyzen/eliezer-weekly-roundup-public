@@ -1,6 +1,6 @@
 # Persistent-State Agent Control
 
-Last updated: 2026-07-03
+Last updated: 2026-07-13
 
 Primary layer: Strategy / runtime governance
 
@@ -74,6 +74,24 @@ The first version should be conservative:
 - Attackers can adapt to the monitor's visible state unless the review process preserves some private detection logic.
 - Cross-PR suspicion can become noisy in normal large refactors.
 - Product UX for explaining cumulative suspicion is still underdeveloped.
+
+## July 13 update: persistent instructions need graph-validated promotion
+
+GRACE extends persistent-state control from workspace mutations to the instruction substrate itself. It stores atomic guidance as typed graph nodes, represents support, conflict, and dependency relationships as edges, validates proposed updates around the changed neighborhood, consolidates overlapping guidance, and reconstructs the accepted graph as the next deployed text checkpoint.
+
+The strategic correction is direct: operational experience may propose a new rule, but experience is evidence, not authority. The rule should influence future action only after a typed promotion gate accepts its scope, relationships, provenance, and replay result.
+
+Practical lesson:
+- assign stable IDs, types, provenance, scope, status, and version to persistent instruction units;
+- preserve explicit conflict, supersession, dependency, and applicability edges;
+- validate local neighborhoods plus global invariants for duplicate authority, cycles, unresolved conflict, and scope expansion;
+- reconstruct deployment text deterministically and retain graph and text diffs together;
+- replay old and shifted task distributions before promotion, with rollback to the prior checkpoint.
+
+Weakest point: the evidence is limited to one telecom domain and a fixed model/harness. The paper's advertised `RedMind-Research/GRACE` repository returned 404 during the July 13 scan, so this is currently a methodology pattern rather than a verified reusable package.
+
+Source:
+- [Scoped Verification for Reliable Long-Horizon Agentic Context Evolution under Distribution Shift](https://arxiv.org/abs/2607.09175v1)
 
 ## Working conclusion
 

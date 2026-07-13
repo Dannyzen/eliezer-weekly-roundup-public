@@ -1,6 +1,6 @@
 # Agent Harness Architecture
 
-Last updated: 2026-07-10
+Last updated: 2026-07-13
 
 Agent harness architecture is becoming the part of the agent stack that teams can actually standardize.
 
@@ -929,3 +929,22 @@ Practical lesson:
 Sources:
 - [From Prompts to Contracts](https://arxiv.org/abs/2607.08028v1)
 - [hammerbaki/enterprise-llm-agent-harness](https://github.com/hammerbaki/enterprise-llm-agent-harness)
+
+## July 13 update: proof and property tests should share one intent contract
+
+Agentic Proof and Property-Based Testing makes validation architecture explicit. A typed property template exposes only the holes specific to one invariant and generates two evidence tracks: a Lean 4 proof over the formal model and a property-based test over the real implementation.
+
+This is a harness pattern, not only a formal-methods result. The model should not freely author the requirement, proof architecture, generators, and test oracle at once. The harness owns the template and the agent fills bounded, typed slots. Agreement is strong evidence. Disagreement is a first-class model-to-runtime defect.
+
+Practical lesson:
+- identify one recurring invariant family and write its typed property template;
+- generate proof and runtime test artifacts from the same claim;
+- preserve model assumptions, proof result, executable test, counterexamples, and disagreement status together;
+- review compiling but vacuous proofs as an explicit hallucination class;
+- promote validated templates into reusable harness contracts rather than regenerating them per task.
+
+Artifact caveat: the browsable package is substantial, but the evaluation is limited to Apache Spark and four property families. Generalization requires domain-specific formal models, generators, and invariant libraries.
+
+Sources:
+- [Agentic Proof and Property-Based Testing via Property-Templates](https://arxiv.org/abs/2607.09072v1)
+- [browsable artifact](https://anonymous.4open.science/r/AgentLeanDiscprop-1597/)

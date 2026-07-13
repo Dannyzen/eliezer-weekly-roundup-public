@@ -699,3 +699,22 @@ Practical lesson:
 Sources:
 - [CausalDS](https://arxiv.org/abs/2607.08093v1)
 - [andleb/causalds](https://github.com/andleb/causalds)
+
+## July 13 update: coding-agent failure needs onset, lock-in, and observability
+
+Failure as a Process adds the temporal decomposition this topic needed. A failed coding-agent run should not have one error timestamp. It should preserve the decisive error (`t_err`), the point after which no recovery is observed (`t_lock`), and the first externally visible symptom (`t_obs`).
+
+The study's medians are step 7, step 12, and step 16, and 28% of failures never surface externally. That makes final-outcome grading structurally late. The actionable window sits between the first decisive error and empirical lock-in.
+
+Practical lesson:
+- add `t_err`, `t_lock`, and `t_obs` to failed-run review schemas;
+- preserve the task specification beside the trace so requirement-relative failures are detectable;
+- run prefix checks after task interpretation, environment discovery, first edit, first test, and before commit;
+- treat lock-in predictions as intervention signals, not proof that recovery is impossible;
+- convert repeated early error patterns into deterministic fixtures and routing rules.
+
+Artifact caveat: the public package includes 1,794 annotations, codebooks, precomputed outputs, and analysis scripts, but omits raw trajectories and currently declares no repository license.
+
+Sources:
+- [Failure as a Process](https://arxiv.org/abs/2607.09510v1)
+- [xz-Sean/cli_trajectory_analysis](https://github.com/xz-Sean/cli_trajectory_analysis)

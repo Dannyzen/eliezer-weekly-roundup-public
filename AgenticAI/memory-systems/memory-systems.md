@@ -1,6 +1,6 @@
 # Memory Systems
 
-Last updated: 2026-07-10
+Last updated: 2026-07-13
 
 Memory is becoming the real architecture question for long-lived agents.
 
@@ -791,3 +791,21 @@ Artifact caveat: the advertised repository had no populated default branch durin
 Sources:
 - [Remember When It Matters](https://arxiv.org/abs/2607.08716v1)
 - [Advertised proactive-memory-agent repository](https://github.com/yifannnwu/proactive-memory-agent)
+
+## July 13 update: durable memory should preserve configuration, not replay traces
+
+Shared Selective Persistent Memory adds a concrete promotion boundary. The reusable cross-session objects are task specifications, data schemas, tool configurations, and output constraints. Old reasoning traces, tool logs, intermediate states, and recovery paths remain episodic evidence and stay out of the next active context.
+
+The architecture also connects memory to artifact operations: Git-versioned generated programs, draft isolation, role-based workspace sharing, and fresh runtime data binding without model reinvocation. The reported completion comparison, 96% selective memory versus 79% no memory and 71% full history, supports the direction but comes from a closed enterprise implementation.
+
+Practical lesson:
+- define explicit promotable memory types rather than summarizing whole sessions;
+- keep raw episodes available for audit and close-match replay;
+- version promoted memory with the generated artifact it governs;
+- bind fresh data at runtime so repeated updates do not require another model call;
+- test no-memory, full-history, summary, and selective-memory conditions on identical tasks.
+
+Artifact caveat: no public implementation or dataset link is exposed. The four memory categories are implementable, but the reported end-to-end result is not independently reproducible from the paper alone.
+
+Source:
+- [Shared Selective Persistent Memory for Agentic LLM Systems](https://arxiv.org/abs/2607.09493v1)

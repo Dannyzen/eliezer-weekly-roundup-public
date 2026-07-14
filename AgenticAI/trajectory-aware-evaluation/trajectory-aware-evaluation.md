@@ -718,3 +718,20 @@ Artifact caveat: the public package includes 1,794 annotations, codebooks, preco
 Sources:
 - [Failure as a Process](https://arxiv.org/abs/2607.09510v1)
 - [xz-Sean/cli_trajectory_analysis](https://github.com/xz-Sean/cli_trajectory_analysis)
+
+## July 14 update: MCP fault injection needs a reproduce-intervene-confirm loop
+
+AgentCheck converts runtime tool failures into controlled regression fixtures. It records a clean MCP run, replays matching tool responses while injecting one fault, returns to live tools after trajectory divergence, and reruns the identical fault after a mitigation. This is stronger than postmortem tracing because the changed variable is explicit.
+
+Practical lesson:
+- version clean, faulted, and mitigated runs under one scenario identity;
+- make timeout, stale data, schema drift, permission denial, poisoned descriptions, and semantic corruption standard release fixtures;
+- keep deterministic fault-handling checks load-bearing and LLM labels diagnostic;
+- preserve the clean cache, injected mutation, divergence point, mitigation version, and final verdict;
+- promote successful mitigations into the permanent MCP regression pack.
+
+Artifact caveat: the MIT-licensed repository is populated and includes 120 scenarios, a web workbench, deterministic scoring, experiment runners, and results. Live evaluation still requires provider credentials and faithful local scenario specifications.
+
+Sources:
+- [AgentCheck](https://arxiv.org/abs/2607.11098v1)
+- [aritra741/AgentCheck](https://github.com/aritra741/AgentCheck)

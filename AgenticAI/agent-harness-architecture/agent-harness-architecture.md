@@ -1,6 +1,6 @@
 # Agent Harness Architecture
 
-Last updated: 2026-07-13
+Last updated: 2026-07-14
 
 Agent harness architecture is becoming the part of the agent stack that teams can actually standardize.
 
@@ -948,3 +948,21 @@ Artifact caveat: the browsable package is substantial, but the evaluation is lim
 Sources:
 - [Agentic Proof and Property-Based Testing via Property-Templates](https://arxiv.org/abs/2607.09072v1)
 - [browsable artifact](https://anonymous.4open.science/r/AgentLeanDiscprop-1597/)
+
+## July 14 update: compile procedures before paging them
+
+Compile, Then Page separates a safe representation change from a model-dependent runtime optimization. A deterministic compiler turns machine-readable SOP constraints into process functions, verifier subroutines, branches, and evidence-bearing returns. A symbolic stack machine then owns the cursor, variables, recovery, and audit transitions while the model handles semantic execution.
+
+The useful deployment rule is asymmetric. Compiled text never significantly hurts in the reported study, but active-frame paging helps strong models and harms weaker ones. Paging is therefore a capability-gated harness feature, not a generic context optimization.
+
+Practical lesson:
+- compile one runbook into typed states, verifier recipes, branch logic, and refusal exits;
+- preserve source rule IDs and evidence in every runtime transition;
+- compare prose, compiled full text, and compiled plus paging on the same tasks;
+- measure state discipline, refusal correctness, and recovery before enabling paging for a model;
+- keep permissions and commit checks outside the paged prompt because the paper's runtime enforcement is intentionally soft.
+
+Artifact caveat: no public implementation repository was found during the July 14 scan. The compiler pattern is concrete, but the reported model gate and SOPBench results still need independent reproduction.
+
+Source:
+- [Compile, Then Page](https://arxiv.org/abs/2607.11346v1)

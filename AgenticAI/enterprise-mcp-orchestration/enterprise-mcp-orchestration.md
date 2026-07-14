@@ -1,6 +1,6 @@
 # Enterprise MCP Orchestration
 
-Last updated: 2026-06-30
+Last updated: 2026-07-14
 
 Core sources:
 - Queen-Bee Agents: A BeeSpec-Centered Architecture for Governed Enterprise MCP Orchestration: https://arxiv.org/abs/2606.06545v1
@@ -189,6 +189,23 @@ Practical lesson:
 Sources:
 - [MCP Server Architecture Patterns](https://arxiv.org/abs/2606.30317v1)
 - [rodriguescarson/mcp-patterns-icsme2026](https://github.com/rodriguescarson/mcp-patterns-icsme2026)
+
+## July 14 update: verified tool memory belongs with the provider
+
+ToolAtlas extends the compiled-run-contract thesis upstream. A capability registry should not contain only static names and descriptions. The provider can maintain execution-verified traces, affordances, failure boundaries, uncovered regions, and cross-tool compositions as a versioned graph that every authorized caller can reuse.
+
+Practical lesson:
+- make provider memory agent-neutral and bind every record to tool version, environment version, verifier, and evidence time;
+- discover boundaries through sandboxed offline probing, not unrestricted production exploration;
+- preserve failed probes as evidence and require deterministic verification before promotion;
+- filter provider memory by principal, tenant, policy, and allowed tool surface at the gateway;
+- compare provider-side memory, agent-side memory, static descriptions, and no memory on one fixed task pack.
+
+Artifact caveat: the MIT-licensed public repository exposes the graph-memory pipeline and a filesystem demonstration, but not the full eight-service experimental surface described in the paper.
+
+Sources:
+- [ToolAtlas](https://arxiv.org/abs/2607.11126v1)
+- [PuppyKnightUniversity/ToolAtlas](https://github.com/PuppyKnightUniversity/ToolAtlas)
 
 ## Working conclusion
 

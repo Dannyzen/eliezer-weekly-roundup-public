@@ -145,3 +145,22 @@ Practical lesson:
 Sources:
 - [A Process Harness for Uplifting Legacy Workflows to Agentic BPM](https://arxiv.org/abs/2606.27188v1)
 - [cuga-project/cuga-agent](https://github.com/cuga-project/cuga-agent)
+
+## July 14 update: durable execution needs in-path authorization
+
+The OpenBox and Temporal integration is a concrete product signal for governed workflow substrates. Its public Python SDK inserts workflow and activity interceptors, hook-level policy checks, five verdict classes, human approvals, request signing, and OpenTelemetry evidence into Temporal workers.
+
+The important architecture is not the vendor claim that every action becomes provable. It is the placement of policy and evidence inside the durable execution path, where waits, retries, restarts, and approvals already live.
+
+Practical lesson:
+- put policy checks before workflow activities and effectful hooks, not in a post-run monitor;
+- keep credentials out of workflow history and bind approvals to the durable run state;
+- preserve verdict, policy version, trace context, human decision, and final effect across retries;
+- test allow, constrain, require-approval, block, halt, timeout, and policy-service failure behavior;
+- treat the SDK as a candidate implementation surface, not proof of complete mediation.
+
+Artifact caveat: the MIT-licensed repository is populated with 66 tree entries and tests, but the cron run did not install or execute it. The SDK also depends on an OpenBox Core service, so a separate approved sandbox spike is required before adoption.
+
+Sources:
+- [OpenBox and Temporal runtime-governance announcement](https://www.prnewswire.com/news-releases/as-enterprises-move-ai-agents-into-production-openbox-ai-and-temporal-introduce-runtime-governance-for-long-running-agents-302820622.html)
+- [OpenBox-AI/openbox-temporal-sdk-python](https://github.com/OpenBox-AI/openbox-temporal-sdk-python)

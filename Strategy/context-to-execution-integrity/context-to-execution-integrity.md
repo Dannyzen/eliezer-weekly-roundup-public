@@ -1,6 +1,6 @@
 # Context-to-Execution Integrity
 
-Last updated: 2026-07-08
+Last updated: 2026-07-14
 
 Core finding: writable context is not execution authority. An agent may read an issue, README, CI log, email, tool result, memory, or retrieved page, but protected sink fields need a typed release, exact-effect authorization, and invocation capability before the host lets a side effect happen.
 
@@ -199,3 +199,19 @@ If that works, extend to shell commands and browser actions. Do not start with e
 - SessionBound repository: https://github.com/SessionBound/sessionbound
 - HCP execution-control paper: https://arxiv.org/abs/2606.29073v1
 - HCP reference repository: https://github.com/SymbolicLight-AGI/handle-capability-protocol
+
+## July 14 update: typed releases need commit-time freshness
+
+Temporary Authority, Permanent Effects adds a time dimension to CXI. A typed release can be valid when planning begins and stale when the effect becomes durable. The runtime must therefore carry the authorizing witness through derived state and recheck freshness, causal priority, effect binding, and eligibility at the commit boundary.
+
+Practical lesson:
+- add witness ID, source version, policy epoch, principal, target, effect digest, branch ID, expiry, and eligibility to high-risk action manifests;
+- recheck those fields inside the final commit activity after every wait, retry, callback, approval, or delegated result;
+- distinguish visible completion from authorized completion in evaluation and production telemetry;
+- fail closed when the dependency path is incomplete, even if the final payload still looks correct;
+- build invalidation fixtures for expired approvals, changed targets, cancelled branches, superseded memory, and ineligible worker output.
+
+Evidence caveat: the controlled suite demonstrates the mechanism, not deployment prevalence, and no public CommitGuard implementation repository was found during the July 14 scan.
+
+Source:
+- [Temporary Authority, Permanent Effects](https://arxiv.org/abs/2607.10487v1)

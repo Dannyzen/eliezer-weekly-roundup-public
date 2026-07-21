@@ -703,3 +703,33 @@ Practical lesson:
 
 Source:
 - [SkillCoach](https://arxiv.org/abs/2607.01874v1)
+
+## July 15 update: recommendation cannot substitute for artifact identity
+
+Skills That Don't Exist shows that skill discovery is an admission-control problem. Every tested model or agent configuration invented skill names, and repeated inventions create stable targets that an attacker can register. Model self-checks and retrieval reduce some errors but do not make a recommendation an identity proof.
+
+Practical lesson:
+- refuse installation when a skill name came only from model output;
+- resolve exact registry, publisher, canonical URL, version, license, manifest hash, dependencies, and requested authority;
+- separate `not found`, `found but untrusted`, `trusted but changed`, and `approved` states;
+- reserve or monitor repeatedly hallucinated names in managed registries;
+- record the recommendation source, resolver evidence, artifact identity, review, and admission verdict.
+
+Source:
+- [Skills That Don't Exist](https://arxiv.org/abs/2607.12340v1)
+
+## July 19 update: hindsight skills can be training signals instead of runtime context
+
+SEED adds a useful lifecycle distinction to skills-as-control. Completed trajectories are analyzed into reusable workflows, decisive observations, and failure-avoidance rules, but those skills are used as privileged training supervision. The deployed policy does not need the skill prompt, retrieval bank, or analyzer.
+
+Practical lesson:
+- preserve source trajectory ID, analyzer version, skill text, validation result, sampled actions, and token-level probability shift;
+- compare outcome-only RL, skill-prompt RL, static distillation, and trajectory-synchronized distillation on held-out tasks;
+- keep generated skills out of the runtime catalog unless they separately pass admission and replay gates;
+- audit actor-analyzer co-evolution for self-confirming supervision;
+- expire or revalidate annotations when policy, environment, reward, or tool surfaces change.
+
+Sources:
+- [SEED](https://arxiv.org/abs/2607.14777v1)
+- [jinyangwu/SEED](https://github.com/jinyangwu/SEED)
+- [Seed-AlfWorld-3B](https://huggingface.co/Jinyang23/Seed-AlfWorld-3B)

@@ -189,6 +189,21 @@ Sources:
 - [Decoupled Search Grounding](https://arxiv.org/abs/2606.18947v1)
 - [HANSEL](https://arxiv.org/abs/2606.18671v1)
 
+## July 17 update: shared evidence state beats chat-history coordination
+
+SearchOS adds the orchestration substrate this topic needed. Frontier Task, Evidence Graph, Coverage Map, and Failure Memory turn a research run into explicit shared state. Role-scoped tools and continuous worker refill then operate over that state, while middleware binds browser observations to evidence and coverage changes.
+
+Practical lesson:
+- represent search work as unresolved coverage cells and evidence-bearing tasks;
+- let only the orchestrator mutate schema, task, and coverage state;
+- attach every populated value to a source evidence node;
+- schedule from remaining coverage rather than free-form agent conversation;
+- keep failure records operational and replayable instead of promoting them directly into factual memory.
+
+Sources:
+- [SearchOS](https://arxiv.org/abs/2607.15257v1)
+- [antins-labs/SearchOS](https://github.com/antins-labs/SearchOS)
+
 ## Related durable topics
 
 - [Agent Harness Architecture](../agent-harness-architecture/agent-harness-architecture.md)

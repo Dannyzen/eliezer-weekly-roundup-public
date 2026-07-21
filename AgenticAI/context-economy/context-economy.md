@@ -361,6 +361,39 @@ Sources:
 - [Sparse Delta Memory](https://arxiv.org/abs/2607.07386v1)
 - [facebookresearch/sparse-delta-memory](https://github.com/facebookresearch/sparse-delta-memory)
 
+## July 15 update: minimum-sufficient execution beats maximum-context default
+
+E3 turns context restraint into a harness policy. Estimate the smallest plausible execution scope, run it, verify the result, and expand only when evidence shows the first scope was insufficient. The important mechanism is reversible under-reading, not a perfect classifier.
+
+Practical lesson:
+- attach an estimated scope, confidence, and minimum viable path to the run manifest;
+- expand by one evidence-backed level rather than reopening the entire repository;
+- measure inspected files, tool calls, tokens, latency, retries, and cost per accepted outcome;
+- test maximum-context, fixed-scope, retrieval, and estimate-execute-expand policies on identical tasks;
+- keep the verification gate load-bearing so a wrong estimate causes bounded expansion rather than silent failure.
+
+Artifact caveat: the public repository is populated with MSE-Bench, policies, results, and tests, but no license was detected and the code was not executed during this read-only scan.
+
+Sources:
+- [Do AI Agents Know When a Task Is Simple?](https://arxiv.org/abs/2607.13034v1)
+- [E3 and MSE-Bench](https://github.com/eejyin/Do-AI-Agents-Know-When-a-Task-Is-Simple-Toward-Complexity-Aware-Reasoning-and-Execution)
+
+
+## July 19 update: context capacity is a state-lifetime contract
+
+LongStraw shows that long-context training capacity depends on which state remains live, who physically owns it, and when it is invalidated. Capturing a shared prompt once and serializing response replay can move group size from a memory axis toward a scheduling axis. It does not make the prompt free, and it does not preserve gradients through detached prompt state.
+
+Practical lesson:
+- inventory every long-lived context object by owner, device, lifetime, mutability, and invalidation event;
+- distinguish stored prompt state from the autograd graph and from audit records outside active context;
+- measure memory, replay time, communication, and gradient obligations separately;
+- recapture state after parameter updates unless the objective explicitly freezes prompt-position deltas;
+- refuse to call a larger execution envelope a better agent without task-level learning evidence.
+
+Sources:
+- [LongStraw](https://arxiv.org/abs/2607.14952v1)
+- [MindLab-Research/longstraw](https://github.com/MindLab-Research/longstraw)
+
 ## Working conclusion
 
 The future agent stack is not context maximalism. It is context accounting. Systems that know what to admit, retrieve, compress, cache, update incrementally, preserve prefix continuity, and audit will beat systems that merely buy larger windows and hope the model sorts it out.

@@ -170,6 +170,41 @@ Practical implication:
 Source:
 - [Security, Privacy, and Ethical Risks in OpenClaw](https://arxiv.org/abs/2605.23330)
 
+## July 15 update: mobile agents need native capability boundaries
+
+PalmClaw makes the local-first pattern concrete on Android. Sessions, memory, skills, tools, and the agent loop stay on the phone, while device capabilities are exposed as typed tools with explicit arguments and structured results. That is a better sovereign boundary than replaying every task through long GUI action sequences.
+
+Practical lesson:
+- expose files, maps, camera, microphone, contacts, and settings as separate capability adapters;
+- bind each device call to a session, principal, platform permission, and evidence record;
+- preserve local state ownership even when inference selectively escalates to a hosted provider;
+- compare local-only, remote-model, and selective-escalation modes on the same tasks;
+- treat Android sandboxing as one layer, not proof of tool or supply-chain safety.
+
+Artifact caveat: PalmClaw has a populated repository and signed release history under AGPLv3 plus a commercial-license option, but it was not built or executed during this read-only scan. Google's Tensor SDK signal applies only to supported Pixel hardware and is separate from the PalmClaw evaluation.
+
+Sources:
+- [PalmClaw paper](https://arxiv.org/abs/2607.13027v1)
+- [ModalityDance/PalmClaw](https://github.com/ModalityDance/PalmClaw)
+- [Google on-device AI with Tensor and Pixel](https://developers.googleblog.com/unlocking-the-next-era-of-on-device-ai-with-google-tensor-and-pixel/)
+
+## July 17 update: private MCP connectivity can stay outbound-only
+
+Anthropic MCP Tunnels add a practical hybrid-sovereignty pattern. Private MCP servers remain inside the operator network while hosted Claude reaches them through an outbound-only connector and proxy path. Inner TLS protects payloads from the transport provider, but the operator still owns upstream OAuth, route scope, certificates, tokens, logs, and network policy.
+
+Practical lesson:
+- expose one read-only MCP server before privileged tools;
+- prefer workload identity federation and short-lived setup credentials;
+- restrict upstream CIDRs and require OAuth per server;
+- pin proxy and connector images by digest;
+- rotate tunnel tokens and certificates, and rehearse archive and teardown;
+- treat Cloudflare metadata exposure and preview continuity as explicit sovereignty costs.
+
+Sources:
+- [Anthropic Python SDK 0.117.0](https://github.com/anthropics/anthropic-sdk-python/releases/tag/v0.117.0)
+- [MCP Tunnels overview](https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/overview)
+- [MCP Tunnels security](https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/security)
+
 ## Current read
 
 The important shift is not just that local models beat every hosted model. They do not. The shift is that local-first is now viable enough to become the default for a meaningful slice of agent workloads, especially when paired with explicit escalation rules, local privacy filters, narrow multimodal action surfaces, and trace governance for privileged local tools. That forces better architecture decisions: explicit routing, explicit scopes, explicit reasons for what leaves the device, explicit evidence for what the agent did locally, and operator surfaces that preserve human supervision.

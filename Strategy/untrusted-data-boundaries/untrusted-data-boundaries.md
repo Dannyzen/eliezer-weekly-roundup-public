@@ -202,3 +202,18 @@ No public implementation repository was identified during this scan, so Prismata
 
 Source:
 - [Prismata](https://arxiv.org/abs/2607.08147v1)
+
+## July 18 update: head-branch agent instructions are untrusted control data
+
+GitHub Copilot code review now reads multiple instruction and skill files from the pull request head branch. That improves testability, but it also means the proposed change can alter the reviewer's context. The new default firewall on GitHub-hosted review runners is valuable containment, yet it does not turn mutable branch content into trusted policy.
+
+Practical lesson:
+- classify base-branch policy and head-branch instructions separately;
+- show instruction and skill diffs as first-class review evidence;
+- require approval when a change widens setup, skills, runner type, or network access;
+- keep self-hosted runners outside the GitHub-hosted firewall claim;
+- treat repository-level usage metrics as activity evidence and join them to defects, reverts, rework, and lead time.
+
+Sources:
+- [Copilot code review customization and configurability](https://github.blog/changelog/2026-07-17-copilot-code-review-customization-and-configurability-improvements)
+- [Repository-level Copilot usage metrics](https://github.blog/changelog/2026-07-17-repository-level-github-copilot-usage-metrics-generally-available)

@@ -809,3 +809,37 @@ Artifact caveat: no public implementation or dataset link is exposed. The four m
 
 Source:
 - [Shared Selective Persistent Memory for Agentic LLM Systems](https://arxiv.org/abs/2607.09493v1)
+
+## July 15 update: memory quality is an operation trace, not a final answer
+
+MemOps gives memory systems a lifecycle-level test contract. Remembering, forgetting, updating, reflecting, and composed operations should each carry a trigger, target, scope, before state, after state, and supporting evidence. Final-answer accuracy is downstream evidence, not proof that the memory state is correct.
+
+Practical lesson:
+- store typed memory operations in a canonical event log;
+- grade introduction capture, target binding, state transition, ordered trajectory, evidence use, and final answer separately;
+- preserve explicit supersession and forgetting rather than relying on retrieval rank to hide stale values;
+- compare turn-level retrieval, session-level retrieval, full context, and managed memory on identical lifecycle traces;
+- test abstention when the ordered state trajectory cannot be reconstructed.
+
+Artifact caveat: the public repository is MIT-licensed and populated, but the full pipeline needs external model APIs, an OpenAI-compatible gateway, UltraChat, and LLM judging.
+
+Sources:
+- [MemOps](https://arxiv.org/abs/2607.12893v1)
+- [MemTensor/MemOps](https://github.com/MemTensor/MemOps)
+
+## July 16 update: memory access is a control policy
+
+MemCon makes retrieval, plan injection, re-retrieval, consolidation, forgetting, and silence explicit policy actions. That is the right boundary even if the first implementation uses rules rather than a learned bandit.
+
+Practical lesson:
+- expose memory actions behind one typed controller interface;
+- log controller state, action, selected records, token cost, outcome, and policy update;
+- include no-op and forget as normal actions, not error paths;
+- keep evidence truth, provenance, retention authority, and destructive deletion outside the learned controller;
+- evaluate static retrieval, always-on retrieval, selective intervention, and learned control on identical streams.
+
+Artifact caveat: the repository is populated and its README declares MIT, but no license file or release was detected. Its large tree vendors multiple frameworks. Treat it as an architecture and experiment reference before attempting full reproduction.
+
+Sources:
+- [Memory as a Controlled Process](https://arxiv.org/abs/2607.13591v1)
+- [ericjiang18/MemCon](https://github.com/ericjiang18/MemCon)

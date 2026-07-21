@@ -64,6 +64,22 @@ The basic telemetry and canary discipline are implementable now. Full exploratio
 - [Agent Network Containment](../agent-network-containment/agent-network-containment.md): network containment prevents propagation at runtime; training governance asks whether elicitation workflows can reveal hidden network-capable behavior.
 - [Model Router Governance](../model-router-governance/model-router-governance.md): routing policy should include confidence in each model’s training/eval evidence, not only benchmark scores and price.
 
+
+## July 19 update: execution receipts must not be promoted into learning claims
+
+LongStraw publishes a useful evidence ladder for agentic RL infrastructure. A run can complete prompt capture, scoring, response backward, and terminal optimizer calls while still failing global forward composition, distributed gradient consistency, optimizer-delta parity, or useful task learning.
+
+Practical lesson:
+- label receipts as execution, forward parity, gradient parity, optimizer parity, or learned-behavior evidence;
+- compare gradients per parameter family instead of relying on one global norm;
+- bind every receipt to source manifest, model revision, objective, device topology, runtime lock, and input fixture;
+- keep failed thresholds and missing reductions in the public status surface;
+- block promotion when the artifact says review-only, correctness pending, or no current-tree evidence.
+
+Sources:
+- [LongStraw](https://arxiv.org/abs/2607.14952v1)
+- [LongStraw validation status](https://github.com/MindLab-Research/longstraw/blob/main/STATUS.md)
+
 ## Working conclusion
 
 As models become more agentic, post-training becomes part of the governance surface. Training runs, red-team environments, and RL trajectories need provenance, canaries, diversity checks, and audit trails. Otherwise teams will confuse weak elicitation evidence for genuine absence of capability.

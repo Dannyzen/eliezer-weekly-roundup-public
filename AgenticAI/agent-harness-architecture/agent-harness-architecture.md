@@ -966,3 +966,53 @@ Artifact caveat: no public implementation repository was found during the July 1
 
 Source:
 - [Compile, Then Page](https://arxiv.org/abs/2607.11346v1)
+
+## July 16 update: evaluation needs explicit component boundaries
+
+AgentCompass and Harness Handbook strengthen different sides of harness architecture. AgentCompass separates benchmark, harness, and environment so model, scaffold, and runtime effects can be compared. Harness Handbook maps behavior requests back to scattered implementation sites before changes are planned.
+
+Practical lesson:
+- version benchmark, harness, environment, model, budget, and protocol independently;
+- store retry, progress, task, and trajectory evidence under one run identity;
+- compare harnesses while holding model, tasks, budget, and environment fixed;
+- generate behavior maps from static program facts and verify every behavior claim against current source;
+- use the behavior map for localization, but re-run structural callers, tests, and policy checks before editing.
+
+Sources:
+- [AgentCompass](https://arxiv.org/abs/2607.13705v1)
+- [open-compass/AgentCompass](https://github.com/open-compass/AgentCompass)
+- [Harness Handbook](https://arxiv.org/abs/2607.13285v1)
+- [project page](https://ruhan-wang.github.io/Harness-Handbook/)
+
+## July 18 update: score real writes in isolated application state
+
+Copy-on-Write Scoring makes application-specific evaluation a data-plane control. Instead of grading only the agent's answer or maintaining a drifting replica, isolate each session's PostgreSQL writes behind base tables, changes tables, and views. Compare the resulting state to a human ground-truth session, then score extra, missing, and malformed writes at session and operation level.
+
+Practical lesson:
+- start with a disposable mirror or staging database because table-to-view conversion is invasive;
+- record one high-value workflow as a human ground-truth session;
+- bind every write to session and operation IDs;
+- compare final state and operation utility before selective commit or discard;
+- preserve tool-surface changes and score deltas as regression evidence.
+
+Artifact caveat: the MIT repository is populated and tagged through `v0.1.7`, but the paper studies one PostgreSQL application and 20 workflows. It is a credible pilot substrate, not a universal benchmark.
+
+Sources:
+- [Copy-on-Write Scoring](https://arxiv.org/abs/2607.14336v1)
+- [trail-ml/agent-cow-python](https://github.com/trail-ml/agent-cow-python)
+
+## July 20 update: silent errors need trace-backed oracles
+
+The agent-reactive bug study makes the model-harness boundary measurable. Of 255 manually confirmed bugs across Codex, Gemini CLI, LangChain, and CrewAI, 108 were silent errors. The model's narration looked valid while the tool trace, context state, workspace, or workflow progress showed that the claimed work had not occurred.
+
+Practical lesson:
+- store raw model output, parsed action, validator decision, tool receipt, state delta, and final narration under one run identity;
+- make impossible claimed actions and missing required tool arguments deterministic failures;
+- replay the same trigger across model, prompt, harness, and environment versions;
+- classify fixes by model, harness, environment, or oracle layer instead of calling every defect a model failure;
+- treat retry loops, context compaction regressions, and silent premature completion as harness test classes.
+
+Evidence caveat: the corpus comes from four projects and public issue reports. It measures reported, manually classified failures rather than deployment prevalence.
+
+Source:
+- [Understanding Agent-Reactive Bugs at the Model-Harness Boundary](https://arxiv.org/abs/2607.15684v1)

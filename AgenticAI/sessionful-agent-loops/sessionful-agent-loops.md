@@ -107,6 +107,23 @@ Practical lesson:
 Source:
 - [When Agents Do Not Stop](https://arxiv.org/abs/2607.01641v1)
 
+## July 21 update: verify-repair loops need calibrated stop and guarded fallback
+
+VRR-Stop extends semantic stop policies from surface similarity into correctness dynamics. It separates verifier false acceptance and false rejection from repair benefit and repair damage, then stops when another repair has negative expected gain.
+
+Practical lesson:
+- replay full trajectories before changing the live loop;
+- measure repair success and damage separately;
+- track verifier discrimination and decision margin, not acceptance alone;
+- calibrate on held-out transitions and do not transfer parameters across model, verifier, task, or prompt changes;
+- retain the incumbent when calibration is weak, shifted, or sign-indeterminate.
+
+Evidence caveat: the headline stress setting deliberately corrupts the repairer's task copy, each round uses eight verifier calls, the state is binary, and a low-discrimination Llama verifier makes calibrated stopping collapse. The public artifact supports zero-GPU replay from frozen traces but was not executed in this scan.
+
+Sources:
+- [Verify, Repair, Repeat, or Stop?](https://arxiv.org/abs/2607.17641v1)
+- [VRR-Stop artifact](https://anonymous.4open.science/r/vrr-artifact-2583)
+
 ## Working conclusion
 
 The agent loop is becoming a sessionful service. Teams that keep thinking in one-turn prompts will keep paying reconstruction costs, losing state, and bolting governance on after the fact. Teams that design for long-lived runs, explicit workspaces, compaction, approvals, replay, semantic stop policies, and static loop-bound coverage will have a much more stable foundation for everything else in the agent stack.

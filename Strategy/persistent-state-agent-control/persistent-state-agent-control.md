@@ -93,6 +93,24 @@ Weakest point: the evidence is limited to one telecom domain and a fixed model/h
 Source:
 - [Scoped Verification for Reliable Long-Horizon Agentic Context Evolution under Distribution Shift](https://arxiv.org/abs/2607.09175v1)
 
+## July 21 update: writable self-state needs layered OS controls and semantic recovery
+
+Self-State Attacks moves persistent-state control from cross-PR accumulation into the agent's own local files. A compromised agent can modify memory, identity, instructions, or configuration through legitimate writes that the OS cannot classify by intent.
+
+Practical lesson:
+- inventory every file the agent reads back into future decisions;
+- separate static instructions, identity, configuration, credentials, and mutable memory by policy and principal;
+- keep monitors, journals, and backups outside the agent's write authority;
+- tune detection per workload and file class;
+- preserve semantic lineage so recovery can distinguish poisoned state from valid adaptation;
+- treat in-distribution authorized writes as a residual risk above the OS layer.
+
+Evidence caveat: the 23-cell, 43-operation study uses one lightweight OpenClaw-style harness and one trace-generation model. The recommended permission level reduces operations-profile workload success to 11%, detector false positives reach 0.36 in a sparse profile, and four memory-write cells remain indistinguishable.
+
+Sources:
+- [Self-State Attacks on Self-Hosted AI Agents](https://arxiv.org/abs/2607.17986v1)
+- [reproduction artifact](https://anonymous.4open.science/r/self-state-attacks-os-C901)
+
 ## Working conclusion
 
 Persistent state is where agent usefulness and agent risk meet. If an agent works over a durable codebase or memory store, the control plane has to review sequences, not isolated actions. The stateful monitor is now part of the agent runtime, not an optional reviewer convenience.

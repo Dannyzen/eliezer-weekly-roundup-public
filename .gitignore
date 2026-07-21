@@ -15,6 +15,7 @@ render_executive_dashboard.py
 
 # Local NotebookLM sync state
 .notebooklm-sync.json
+
 # Local Hermes runtime / generated
 .hermes/
 Strategy/site/

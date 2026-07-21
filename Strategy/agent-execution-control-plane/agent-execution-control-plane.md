@@ -200,3 +200,36 @@ Source:
 - HCP threat model: https://github.com/SymbolicLight-AGI/handle-capability-protocol/blob/main/docs/threat-model.md
 - CubeSandbox, complementary sandbox substrate: https://github.com/TencentCloud/CubeSandbox
 - Governance Gaps in Agent Interoperability Protocols, complementary layer-above-protocol argument: https://arxiv.org/abs/2606.31498v1
+
+## July 16 update: canonical actions bind approval to execution
+
+CAVA supplies the stable object this control plane needs. Connection-level grants and provider handles are not enough if the same effect can be represented differently by a browser wrapper, SDK, gateway, workflow engine, or local hook. The broker should normalize the proposed effect, fingerprint its semantics, bind the approval, and emit a reproducible receipt.
+
+Practical lesson:
+- put canonical action construction before policy and approval;
+- compare semantic identity rather than raw tool syntax;
+- bind approval, policy version, principal, target, and expiry to the fingerprint;
+- downgrade claims when the runtime is observe-only;
+- include provider status and final-effect evidence in the receipt.
+
+Sources:
+- [CAVA](https://arxiv.org/abs/2607.13716v1)
+- [How Agents Ask for Permission](https://arxiv.org/abs/2607.13718v1)
+
+## July 17 update: pause, cancel, timeout, and replay need one effect gate
+
+Stop Means Stop demonstrates that framework-level control primitives can expose honest status while effects escape through sibling branches, replays, cancellation orphans, or timeout zombies. The execution-control plane therefore needs an environment-external admission boundary with one durable effect identity.
+
+Practical lesson:
+- bind approval to a canonical effect fingerprint;
+- hold every matching effect until the decision is final;
+- use durable idempotency for replay and fencing for cancel or timeout;
+- deny unwrapped egress structurally rather than trusting wrappers alone;
+- test sibling leaks, replay duplication, cancel orphans, timeout zombies, and mediation bypass;
+- publish enforcement coverage per effect class.
+
+Artifact caveat: the paper's repository URL did not resolve. PyPI metadata exposes `soundgate` 0.1.3, but the package was not downloaded or executed.
+
+Sources:
+- [Stop Means Stop](https://arxiv.org/abs/2607.14166v1)
+- [soundgate package metadata](https://pypi.org/project/soundgate/)

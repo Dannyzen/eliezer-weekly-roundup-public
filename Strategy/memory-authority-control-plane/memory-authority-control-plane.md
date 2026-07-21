@@ -186,3 +186,21 @@ Supporting sources:
 - Lingering Authority: https://arxiv.org/abs/2606.22504v1
 - From Untrusted Input to Trusted Memory: https://arxiv.org/abs/2606.04329v1
 - Poison Once, Exploit Forever: https://arxiv.org/abs/2604.02623v2
+
+## July 18 update: memory admission must run again at use time
+
+Bad Memory and MemPoison show why write-time trust is incomplete. A payload already present in a persistent workspace can affect future sessions, while individually plausible records can become harmful only when retrieved together or activated by a later trigger.
+
+Practical lesson:
+- preserve origin, injection channel, scope, derivation, and write-time verdict on every record;
+- evaluate the retrieved set as one influence object;
+- add multi-record and trigger-conditioned poisoning fixtures;
+- block memory-only authorization for external writes, sends, installs, payments, and deployments;
+- trace memory write, retrieved set, use-time policy, downstream action, and final receipt together.
+
+Evidence caveat: Bad Memory uses a synthetic workspace and assumes the payload is already present. MemPoison evaluates 1,227 hand-validated cases across ten model families, but its claimed structured dataset had no resolvable public artifact URL in this scan.
+
+Sources:
+- [Bad Memory](https://arxiv.org/abs/2607.14611v1)
+- [Bad Memory anonymized artifact](https://anonymous.4open.science/r/self-modifying-agent-security-3248/README.md)
+- [MemPoison](https://arxiv.org/abs/2607.14651v1)

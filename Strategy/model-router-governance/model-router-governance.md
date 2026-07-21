@@ -162,6 +162,23 @@ Sources:
 - [Reasoning effort, not tool access](https://arxiv.org/abs/2607.02436v1)
 - [Zenodo evaluation artifacts](https://doi.org/10.5281/zenodo.21134406)
 
+## July 20 update: failover needs a state migration contract
+
+ContinuityBench adds a missing router SLO: successful provider failover is not successful service if the fallback loses conversation or workflow state. CPR and CLO are useful starting metrics, but production routing also needs tool state, approvals, budgets, idempotency, and effect receipts in the migration contract.
+
+Practical lesson:
+- version one canonical state envelope outside provider-local chat storage;
+- log source provider, fallback provider, state hash, failover reason, retry count, and continuity verdict;
+- distinguish transport retry, provider refusal, model failure, and state-transfer failure;
+- add rolling failover, streaming interruption, retry-storm, and duplicate-side-effect fixtures;
+- keep privacy, residency, tool authorization, and budget policy invariant across the fallback path.
+
+Artifact caveat: the MIT repository is populated and includes raw results, but the reported 99.20% CPR uses synthetic conversations, one provider pair, one final-turn failure, and LLM judging. Its threaded Python proxy is not production infrastructure.
+
+Sources:
+- [ContinuityBench](https://arxiv.org/abs/2607.15899v1)
+- [Vishal-sys-code/continuity-bench](https://github.com/Vishal-sys-code/continuity-bench)
+
 ## Minimum governance checklist
 
 ### 1. Artifact trust

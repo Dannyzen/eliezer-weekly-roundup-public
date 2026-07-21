@@ -885,3 +885,36 @@ Sources:
 - [LiteLLM v1.92.0 GitHub release](https://github.com/BerriAI/litellm/releases/tag/v1.92.0)
 
 Caveat: delegated OAuth is operationally heavy. A production gateway still needs tenant-isolated registration, token lifecycle tests, upstream compatibility checks, revocation procedures, and operator receipts.
+
+## July 15 update: artifact identity and drift belong at the gateway
+
+Skills That Don't Exist strengthens the HalluSquatting warning with a large-scale measurement: model-generated skill names frequently do not exist, and repeated hallucinations give attackers predictable names to register. GitHub's Visual Studio MCP trust check supplies a product-side control for the next lifecycle stage by comparing server configuration and asset fingerprints with a trusted baseline before startup.
+
+Practical lesson:
+- never turn a model-generated name directly into an install, clone, skill-load, or MCP-start action;
+- resolve exact publisher, registry, canonical URL, version, license, manifest hash, and executable identity;
+- fingerprint MCP configuration, assets, tool metadata, and executable identity at admission and startup;
+- require explicit review when any fingerprint changes;
+- log requested name, resolution evidence, selected artifact, fingerprint, approval, and denial reason.
+
+Evidence caveat: the paper measures a compromise precondition rather than production exploit success. GitHub's feature covers changed MCP servers in Visual Studio, not malicious first installs across skill registries.
+
+Sources:
+- [Skills That Don't Exist](https://arxiv.org/abs/2607.12340v1)
+- [GitHub Copilot in Visual Studio June update](https://github.blog/changelog/2026-07-14-github-copilot-in-visual-studio-june-update)
+
+## July 20 update: tool retrieval and session routing are one policy plane
+
+The cloud-scale MCP gateway paper shows why catalog scale and authority scale are the same problem. The gateway adapts legacy APIs, normalizes protocol variants, filters tools, enforces access control, and routes stateful sessions across replicas. Tool recommendation without authorization can expose the wrong capability. Authorization without session ownership can route the right call through the wrong state.
+
+Practical lesson:
+- apply principal, tenant, workflow, policy, and server filters before Top-K retrieval reaches the model;
+- bind retrieved tool identity to invocation identity and reject manifest drift;
+- carry session owner, shared-state location, response path, and trace sink as gateway state;
+- test stale catalogs, cross-instance misses, lost Pub/Sub messages, revoked tools, and partial session recovery;
+- budget prompt tokens and retrieval latency without weakening the authorized surface.
+
+Evidence caveat: the production architecture and metrics are reported by the system's authors. The evaluated implementation is not public.
+
+Source:
+- [Scalable LLM Agent Tool Access in the Cloud](https://arxiv.org/abs/2607.15593v1)

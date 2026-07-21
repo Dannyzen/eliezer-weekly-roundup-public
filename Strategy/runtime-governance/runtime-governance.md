@@ -784,3 +784,33 @@ Sources:
 - [Regression Accumulation in Multi-Turn LLM Programming Conversations](https://arxiv.org/abs/2607.01855v1)
 - [Steerability via constraints](https://arxiv.org/abs/2607.02389v1)
 - [SessionBound](https://arxiv.org/abs/2607.00751v1)
+
+## July 16 update: permission needs canonical action identity
+
+CAVA and the user-permissions survey connect the interface and runtime halves of governance. A user preference has to become a machine policy, and the resulting approval has to bind to one semantic action rather than one wrapper-shaped prompt or dialog.
+
+Practical lesson:
+- canonicalize principal, task, operation, target, arguments, data class, effect class, policy version, and expiry;
+- hash semantic action identity and invalidate approval when semantics drift;
+- expose enforcement depth as block, intercept, observe, or unknown;
+- preserve interface request, derived policy, action fingerprint, verdict, execution status, and final effect receipt;
+- test equivalent wrappers, wrapper bypass, semantic separation, stale approval, and tampered receipts.
+
+Sources:
+- [CAVA](https://arxiv.org/abs/2607.13716v1)
+- [How Agents Ask for Permission](https://arxiv.org/abs/2607.13718v1)
+
+## July 19 update: memory scope and retry termination belong in runtime
+
+jcode `v0.52.0` turns two common prompt-level expectations into runtime behavior. Memory tool results are scoped to the session working directory, and automatic retries stop after consecutive provider guardrail refusals.
+
+Practical lesson:
+- bind memory queries to canonical workspace and session identity;
+- require an explicit release for cross-project recall;
+- separate provider refusals from transient transport failures;
+- cap consecutive refusals and emit a terminal or escalation event;
+- test symlink, shared-mount, multi-repo, and copied-artifact boundary cases.
+
+Sources:
+- [jcode v0.52.0](https://github.com/1jehuang/jcode/releases/tag/v0.52.0)
+- [1jehuang/jcode](https://github.com/1jehuang/jcode)

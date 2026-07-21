@@ -735,3 +735,19 @@ Artifact caveat: the MIT-licensed repository is populated and includes 120 scena
 Sources:
 - [AgentCheck](https://arxiv.org/abs/2607.11098v1)
 - [aritra741/AgentCheck](https://github.com/aritra741/AgentCheck)
+
+## July 16 update: self-improvement needs phased trajectory evidence
+
+Self-improving harnesses need more than before-and-after pass rates. The trace must prove the source failure exists, show the candidate's effect on legal no-change controls, preserve old-task regression results, measure unseen-task transfer, and record what happens under a second optimization phase.
+
+Practical lesson:
+- bind every candidate to one reproducible failure trace and oracle;
+- add negative controls where no edit is correct;
+- preserve phase 0, phase 1, transfer, phase 2, and lifelong-average results;
+- reject candidates that fix a refuted failure or transfer below the unoptimized baseline;
+- record promotion, canary, rollback, and authority delta beside trajectory scores.
+
+Sources:
+- [Do Agent Optimizers Compound?](https://arxiv.org/abs/2607.14004v1)
+- [experiment artifacts](https://github.com/relai-ai/Continual-Learning-Terminal-Bench)
+- [Phantom Guardrails](https://arxiv.org/abs/2607.13083v1)

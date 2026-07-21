@@ -195,3 +195,20 @@ Sources:
 - X-PLUG/OSWorld-MCP repository: https://github.com/X-PLUG/OSWorld-MCP
 - ComplexMCP paper: https://arxiv.org/abs/2605.10787v1
 - trycua/cua repository: https://github.com/trycua/cua
+
+## July 18 update: semantic targets should own the GUI action path
+
+Tactile strengthens the mixed GUI-tool thesis by inserting an action-grounded interface layer between observation and motor execution. Accessibility semantics, OCR-backed text, and visual fallback become source-labeled target candidates with roles, state, geometry, executable affordances, and verification cues.
+
+Practical lesson:
+- prefer native semantic actions before raw coordinate clicks;
+- keep OCR-backed targets distinct from accessibility objects;
+- record why the runtime downgraded to visual fallback;
+- re-observe after every state-changing action and require explicit outcome evidence;
+- preserve the full observation, chosen target, action primitive, and verification result for replay.
+
+Artifact caveat: the public repository is populated but has no tag or release, is strongest on macOS, and uses PolyForm Noncommercial 1.0.0. Evaluate the method, not an automatic commercial dependency.
+
+Sources:
+- [Tactile](https://arxiv.org/abs/2607.14443v1)
+- [yliust/Tactile](https://github.com/yliust/Tactile)

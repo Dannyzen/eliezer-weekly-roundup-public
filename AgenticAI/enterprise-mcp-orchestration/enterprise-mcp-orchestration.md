@@ -207,6 +207,22 @@ Sources:
 - [ToolAtlas](https://arxiv.org/abs/2607.11126v1)
 - [PuppyKnightUniversity/ToolAtlas](https://github.com/PuppyKnightUniversity/ToolAtlas)
 
+## July 20 update: large tool catalogs need retrieval and session planes
+
+Scalable LLM Agent Tool Access in the Cloud turns the capability registry into a production data plane. Protocol adaptation, authorized retrieval, access control, session ownership, and response routing have to meet at the gateway. Returning a semantically relevant Top-K list without principal and session policy is not governed orchestration.
+
+Practical lesson:
+- filter tool discovery and invocation through the same identity, tenant, workflow, and policy contract;
+- return stable server and tool identities with manifest versions, not descriptions alone;
+- bind session owner, return path, shared-state locator, and trace sink before the first tool call;
+- measure retrieval recall, selection accuracy, prompt tokens, latency, and authorization errors together;
+- load-test cross-instance misses and Pub/Sub response routing, not only stateless request throughput.
+
+Evidence caveat: the paper reports an Alibaba Cloud production system and public ToolBench comparisons, but does not release the evaluated gateway implementation.
+
+Source:
+- [Scalable LLM Agent Tool Access in the Cloud](https://arxiv.org/abs/2607.15593v1)
+
 ## Working conclusion
 
 The architectural lesson is simple: do not hand a capable model a broad tool catalog and call it an agent platform. Compile the run first.

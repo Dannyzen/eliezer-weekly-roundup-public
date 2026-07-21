@@ -114,3 +114,37 @@ Practical lesson:
 Sources:
 - [Regression Accumulation in Multi-Turn LLM Programming Conversations](https://arxiv.org/abs/2607.01855v1)
 - [Steerability via constraints](https://arxiv.org/abs/2607.02389v1)
+
+## July 17 update: package installation needs exact artifact admission
+
+Setup Complete, Now You Are Compromised extends the coding-agent control plane below rules files and commands. Documentation can propose dependencies, but the runtime should resolve exact package identity, registry origin, version policy, lockfile state, and known risk before any installer runs.
+
+Practical lesson:
+- intercept `pip`, `uv`, `npm`, `cargo`, and system-package commands before execution;
+- resolve namespace, publisher, registry, version, lockfile, and vulnerability policy;
+- reject alternate sources unless a reviewed policy allows them;
+- treat install-then-flag as a compromise, not a detection;
+- store instruction source, resolved artifact, policy verdict, command, and effect evidence under one install ID.
+
+Artifact caveat: the repository URL printed in the paper did not resolve during the scan, so the deterministic gate is an implementation pattern rather than a reproduced package.
+
+Source:
+- [Setup Complete, Now You Are Compromised](https://arxiv.org/abs/2607.15143v1)
+
+## July 21 update: passing tests do not prove an agent tested its diff
+
+Test Coverage Analysis of Agentic Pull Requests adds a release gate below test success. The control plane should prove that the agent's changed executable lines were exercised and identify whether that evidence came from existing tests or tests the agent added.
+
+Practical lesson:
+- compute base-to-head executable-line changes;
+- map normal coverage output back to the diff;
+- require stronger review for uncovered error handling, auth, persistence, and side-effect paths;
+- record coverage provenance and uncovered syntax classes under the agent run and pull request;
+- follow line coverage with branch, assertion-quality, or mutation evidence where risk justifies it.
+
+Evidence caveat: the coverage subset is limited to merged repositories that built and instrumented successfully, the Java subset skews smaller than the source population, and line coverage is not behavioral correctness. The replication repository is populated and tagged, but GitHub exposes no license metadata.
+
+Sources:
+- [Test Coverage Analysis of Agentic Pull Requests](https://arxiv.org/abs/2607.18057v1)
+- [SageSELab replication repository](https://github.com/SageSELab/Agentic-Pull-Request-Test-Coverage)
+- [Zenodo 1.0.0](https://doi.org/10.5281/zenodo.21419686)

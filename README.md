@@ -1,69 +1,36 @@
 # Eliezer Weekly Roundup
 
-A living, category-first research system for the agentic stack: agents, tools, memory, orchestration, evaluation, local-first infrastructure, and strategy.
+A category-first research system for the agentic stack: evaluation, tools, memory, orchestration, execution control, gateways, and sovereign infrastructure.
 
-The primary lens is the agentic stack itself, not generic AI news. The repo tracks research and releases that change how a builder should design autonomous systems: orchestration, prompting, tool use, memory, deterministic testing, observability, multi-agent systems, model routing, and sovereign or self-hosted infrastructure.
+The repo separates patterns that can be tried now from ideas that still need research, replication, or operational maturity.
 
 ## Latest update
 
-- Daily scan, 2026-07-14: [roundup](roundups/2026-07-14.md)
-- AgenticAI daily analysis: [2026-07-14](AgenticAI/2026-07-14/reasoning.md)
-- Strategy daily sovereignty: [2026-07-14](Strategy/2026-07-14/sovereignty.md)
-- Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
-- Fresh Strategy index: [Strategy README](Strategy/README.md)
-- Prior daily scan, 2026-07-13: [roundup](roundups/2026-07-13.md)
-- Prior daily scan, 2026-07-12: [roundup](roundups/2026-07-12.md)
-- Prior daily scan, 2026-07-11: [roundup](roundups/2026-07-11.md)
-- Friday synthesis, week ending 2026-07-10: [roundup](roundups/2026-07-10.md)
+- Daily roundup, 2026-07-21: [evidence-bearing exit and commit boundaries](roundups/2026-07-21.md)
+- AgenticAI daily analysis: [2026-07-21](AgenticAI/2026-07-21/reasoning.md)
+- Strategy daily sovereignty: [2026-07-21](Strategy/2026-07-21/sovereignty.md)
+- Latest implementation index: [AgenticAI](AgenticAI/README.md)
+- Latest governance index: [Strategy](Strategy/README.md)
+- Friday synthesis, week ending 2026-07-17: [weekly roundup](roundups/2026-07-17.md)
 - Deep Dive Wednesday, 2026-07-08: [Context-to-Execution Integrity](Strategy/context-to-execution-integrity/context-to-execution-integrity.md)
-- Prior Friday synthesis, week ending 2026-07-03: [roundup](roundups/2026-07-03.md)
-- Prior Deep Dive Wednesday, 2026-07-01: [Agent Execution Control Plane](Strategy/agent-execution-control-plane/agent-execution-control-plane.md)
-- Prior Deep Dive Wednesday, 2026-06-24: [Memory Authority Control Plane](Strategy/memory-authority-control-plane/memory-authority-control-plane.md)
-- Prior Deep Dive Wednesday, 2026-06-17: [Evidence Provenance Control Plane](Strategy/evidence-provenance-control-plane/evidence-provenance-control-plane.md)
 
 ## Current thesis
 
-The agent stack is moving from prompt-managed behavior to explicit control surfaces that can be versioned, compiled, tested, scoped, revoked, enforced, and measured outside the model's private reasoning loop.
+Reliable agents need evidence-bearing boundaries for exit, state mutation, and effect commit.
 
-The 2026-07-10 Friday synthesis made the operating rule explicit: evidence is not authority. Agents can read messy context, but protected side effects need typed releases, scoped grants, exact identities, deterministic gates, and receipts.
+This update sharpens the stack into four practical rules:
 
-The 2026-07-11 daily scan adds the asynchronous corollary: work that continues after the user disconnects, the rollout engine lags, or the context window stretches needs stronger run evidence, not weaker oversight.
+- require coverage over changed executable lines before accepting coding-agent work;
+- stop verify-repair loops on expected marginal gain and retain the incumbent when calibration fails;
+- protect instructions, identity, configuration, credentials, memory, monitors, and backups as distinct self-state layers;
+- keep requested, approved, denied, handled, committed, and observed effects as distinct runtime events.
 
-The 2026-07-12 daily scan adds the delivery corollary: agent policy should fail in ordinary engineering systems. Static taint checks, delegated gateway identity, compiled sandbox fields, and terminal run evidence are more durable than prompt-only rules.
-
-The 2026-07-13 daily scan adds the intermediate-artifact corollary: failure stages, promoted memory, proof/test intent, and instruction updates must become explicit objects before they can be tested or trusted.
-
-The 2026-07-14 daily scan adds the runtime-boundary corollary: tool faults should be replayable, verified tool knowledge should live with the provider, procedures should compile before execution, and temporary authority should be rechecked when an effect becomes durable.
-
-The latest implementation and governance surfaces are:
-
-- MCP reliability needs cached clean runs, single-fault intervention, deterministic scoring, and mitigation replay.
-- Tool capabilities, failure boundaries, verified traces, and compositions can become provider-owned memory filtered by the gateway.
-- Machine-readable SOPs can compile into verifier-bearing programs, but active-frame paging needs a model-specific discipline gate.
-- Durable effects need fresh, causally prior, effect-bound, eligible authority inside the final commit activity.
-- CLI coding-agent failures need separate timestamps for decisive error, empirical lock-in, and first observable symptom.
-- Durable memory should promote specifications, schemas, tool configurations, and output constraints while keeping old reasoning traces out of active context.
-- High-value AI-generated validators should bind formal proof and runtime property tests to one typed intent artifact.
-- Persistent instruction evolution needs typed units, local graph validation, consolidation, deterministic reconstruction, replay, and rollback.
-- System-prompt injection can now be checked as JavaScript and TypeScript source-to-sink data flow before merge.
-- Delegated MCP identity needs gateway-owned discovery, registration, refresh, concurrency, catalog filtering, and audit.
-- Sandbox runtime, mounts, imports, token outcomes, and safe outputs are becoming compiled workflow fields.
-- Causal data-science agents need hidden-ground-truth evals, deterministic grading, and scored abstention.
-- Agentic RL needs action-to-observation trace boundaries before expensive asynchronous training can be trusted.
-- Long-context model methods can lower trace pressure, but context selection, compression, retrieval, and audit remain runtime policy.
-- Managed agent platforms are becoming background execution substrates with remote MCP, persistent sandboxes, credential refresh, and client reconnect.
-- Preflight agent graphs expose models, tools, memory, policies, handoffs, effects, and loop-bound risks before execution.
-- Executable harness contracts move source scope, routing, output rules, trace hygiene, and recommendation language out of prompt prose and into testable runtime code.
-- Framework-aware eval packs make model, scaffold, task world, supervisor loop, recovery behavior, and wall-clock cost separate benchmark variables.
-- Tool-use traces need phase labels, action severity, and causal root-cause slices, not only final task accuracy.
-- Memory systems need scoped state roles, conflict preservation, provenance, and an explicit remain-silent path before influencing action.
-- Skills, tool servers, package names, and repository identifiers are supply-chain authority and need exact provenance before load or install.
-- Browser and tool observations need untrusted-data boundaries, quarantine reads, byte-faithful approvals, and contextual least privilege.
+A green test suite, a rising verifier score, a sandbox boundary, or a typed tool name is not enough. The runtime must prove why work may stop and why one exact state transition may commit.
 
 ## Browse by category
 
-- [AgenticAI](AgenticAI/README.md): implementation-focused analysis on runtimes, evals, memory, tooling, orchestration, and environment design.
-- [Strategy](Strategy/README.md): strategic analysis on sovereignty, governance, containment, infrastructure, operating models, and enterprise adoption.
+- [AgenticAI](AgenticAI/README.md): implementation analysis on evaluation, memory, context policy, search, tools, and orchestration.
+- [Strategy](Strategy/README.md): governance analysis on identity, authority, execution control, gateways, containment, and sovereignty.
 
 ## Durable topics
 
@@ -90,6 +57,7 @@ The latest implementation and governance surfaces are:
 
 ### Strategy
 
+- [Agent Self-Improvement Governance](Strategy/agent-self-improvement-governance/agent-self-improvement-governance.md)
 - [Context-to-Execution Integrity](Strategy/context-to-execution-integrity/context-to-execution-integrity.md)
 - [Untrusted Data Boundaries](Strategy/untrusted-data-boundaries/untrusted-data-boundaries.md)
 - [Persistent-State Agent Control](Strategy/persistent-state-agent-control/persistent-state-agent-control.md)
@@ -109,30 +77,15 @@ The latest implementation and governance surfaces are:
 - [Governed Workflow Substrates](Strategy/governed-workflow-substrates/governed-workflow-substrates.md)
 - [Shared-State Agents](Strategy/shared-state-agents/shared-state-agents.md)
 
-## How the repo is organized
+## Repository shape
 
-- `AgenticAI/YYYY-MM-DD/reasoning.md`: category analysis for the week or day, with source links and implementation guidance.
-- `Strategy/YYYY-MM-DD/sovereignty.md`: strategy analysis for the week or day, with source links and implementation guidance.
-- `AgenticAI/<topic>/<topic>.md` and `Strategy/<topic>/<topic>.md`: durable deep dives when a pattern deserves to persist beyond one cycle.
-- `roundups/YYYY-MM-DD.md`: cross-category synthesis tying implementable patterns to strategic implications.
-
-## What gets selected
-
-Selected items usually have at least one of these properties:
-
-- they change agent orchestration, tool use, memory, or evaluation practice;
-- they expose a repeatable implementation pattern that can be tried now;
-- they show where local-first or self-hosted infrastructure is becoming practical;
-- they reveal a governance, containment, or observability requirement that serious agent builders should design around;
-- they clarify model-routing and reasoning tradeoffs rather than merely announcing a bigger model;
-- they provide primary-source evidence: paper, repo, release note, official documentation, or vendor post.
+- `AgenticAI/YYYY-MM-DD/reasoning.md`: dated implementation analysis.
+- `Strategy/YYYY-MM-DD/sovereignty.md`: dated strategy analysis.
+- `roundups/YYYY-MM-DD.md`: cross-category synthesis.
+- `AgenticAI/<topic>/` and `Strategy/<topic>/`: durable deep dives.
 
 ## Implementability scores
 
-- `1.0`: straightforward to implement now with standard tools and normal engineering effort.
-- `0.5`: implementable, but it needs meaningful architecture or operational sophistication.
-- `0.0`: mostly conceptual, speculative, or blocked on missing research or infrastructure.
-
-## Subscribe
-
-Use GitHub's Watch feature if you want repo updates as the research system evolves. The category READMEs are the intended entry points; the roundup is the synthesis layer.
+- `1.0`: straightforward now with existing tools and normal engineering effort.
+- `0.5`: implementable, but architecture or operations are material.
+- `0.0`: conceptual, speculative, or blocked on missing infrastructure.

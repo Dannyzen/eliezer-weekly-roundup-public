@@ -215,3 +215,51 @@ Evidence caveat: the controlled suite demonstrates the mechanism, not deployment
 
 Source:
 - [Temporary Authority, Permanent Effects](https://arxiv.org/abs/2607.10487v1)
+
+## July 19 update: imagined future is evidence, not an action receipt
+
+BadWAM adds a model-output consistency failure to the context-to-execution boundary. A world-action model can keep its predicted future comparatively close to the clean future while the emitted action shifts enough to fail the task. The preview and command are coupled representations, not one proof object.
+
+Practical lesson:
+- canonicalize the exact action payload and predicted effect;
+- bind preview, action, principal, target, policy version, and expiry in one manifest;
+- validate the payload again at the executor boundary;
+- observe post-action state through an independent channel;
+- test preview-action divergence, late action substitution, and plausible-preview attacks as runtime fixtures.
+
+Sources:
+- [BadWAM](https://arxiv.org/abs/2607.15207v1)
+- [LiQiiiii/BadWAM](https://github.com/LiQiiiii/BadWAM)
+- [BadWAM models](https://huggingface.co/collections/LIQIIIII/badwam)
+
+## July 20 update: authorized identity is not authorized dispatch
+
+Neural Cryptographic Services sharpens the CXI release object. A valid principal and allowed tool do not authorize arbitrary step order or arguments. The planner should hold no execution authority. A deterministic controller should verify the signed instruction stream, release one step at a time, and bind the proposed dispatch to the exact authorized payload.
+
+Practical lesson:
+- canonicalize operation, target, arguments, principal, policy epoch, expiry, and prior-step hash;
+- sign the approved sequence outside the model;
+- release one instruction at a time and reject reordered or mismatched calls before execution;
+- preserve proposal, release, denial, execution result, and post-state in one receipt chain;
+- measure both attack success and benign utility because strict gates can suppress legitimate work.
+
+Evidence caveat: NCS reports strong AgentDojo and 85-case argument-hijack results, but GPT-4o-mini loses utility under the full defense, the custom benchmark is author-built, and no public implementation is linked.
+
+Source:
+- [From Neural Intent to Cryptographic Authorization](https://arxiv.org/abs/2607.15596v1)
+
+## July 21 update: effect types make requested actions visible before commit
+
+ETAS strengthens CXI by making effects, trace obligations, prompt trust, approvals, and commit events part of the program rather than middleware convention. Static checks can discharge known obligations, while residual monitors guard dynamic targets and resources at runtime.
+
+Practical lesson:
+- assign every tool a typed effect and protected resource set;
+- compile workflow policy into preflight monitors and residual runtime checks;
+- keep request, approval, handling, denial, commit, and post-state as distinct events;
+- reject undeclared effects and replay of irreversible commits;
+- use effect manifests inside existing runtimes before considering a new language.
+
+Evidence caveat: the paper claims a Rust prototype and formal safety properties, but links no public implementation and presents an evaluation plan rather than measured production comparison. Treat ETAS as a design reference.
+
+Source:
+- [ETAS: An Effect-Typed Language for Agent Systems](https://arxiv.org/abs/2607.17780v1)

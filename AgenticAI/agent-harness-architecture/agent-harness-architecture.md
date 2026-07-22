@@ -1016,3 +1016,23 @@ Evidence caveat: the corpus comes from four projects and public issue reports. I
 
 Source:
 - [Understanding Agent-Reactive Bugs at the Model-Harness Boundary](https://arxiv.org/abs/2607.15684v1)
+## July 22 update: stable harnesses make the default runtime a versioned product surface
+
+Microsoft Agent Framework's stable harness release turns a common architecture checklist into a concrete open-source composition. Tool loops, per-service-call history persistence, compaction, todos and modes, file memory, skills, approvals, provider web search, and OpenTelemetry now share one versioned surface in Python and .NET.
+
+The release boundary is the useful control. File access is opt-in, and background agents, looping, and shell tooling are not all stable core features. A production harness should graduate high-risk capabilities separately rather than inherit them from a batteries-included label.
+
+Practical lesson:
+- pin the harness, model, provider, tool schemas, compaction policy, and persistence schema together;
+- emit tool, approval, todo, compaction, history, and resume events under one run identity;
+- keep file, shell, loop, and background authority out of the default profile;
+- run crash, resume, compaction, approval replay, tool-name collision, and trace-propagation fixtures;
+- compare harnesses while holding tasks, models, tools, budgets, and environments fixed.
+
+Artifact caveat: the MIT monorepo is mature and the core API is stable, but the production-ready claim is vendor-authored and the release does not include an independent cross-framework benchmark.
+
+Sources:
+- [Microsoft Agent Framework Harness announcement](https://devblogs.microsoft.com/agent-framework/the-microsoft-agent-framework-harness-is-now-released/)
+- [Python 1.12.0](https://github.com/microsoft/agent-framework/releases/tag/python-1.12.0)
+- [.NET 1.14.0](https://github.com/microsoft/agent-framework/releases/tag/dotnet-1.14.0)
+- [microsoft/agent-framework](https://github.com/microsoft/agent-framework)

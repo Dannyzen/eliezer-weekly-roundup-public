@@ -179,6 +179,25 @@ Sources:
 - [ContinuityBench](https://arxiv.org/abs/2607.15899v1)
 - [Vishal-sys-code/continuity-bench](https://github.com/Vishal-sys-code/continuity-bench)
 
+## July 22 update: recovery routing needs a budgeted action frontier
+
+CodeRescue extends router governance from initial model selection to post-failure action selection. A failed cheap coding attempt can be reflected on, replanned, or escalated. Execution feedback changes the value of those choices, so blanket escalation wastes both money and recoverable cheap-model capability.
+
+On a 360-failure GPT-5.4-nano holdout, the reported fine-tuned router reaches a 0.817 solve rate at 5.51 millidollars, versus 0.686 at 7.22 millidollars for always escalating. Its conformal layer can adjust the expected-cost frontier without retraining, but the guarantee covers cost under exchangeability, not solve rate.
+
+Practical lesson:
+- replay matched failures across reflect, replan, and escalate actions before changing online policy;
+- log failure class, execution verdict, stderr signature, selected action, solve result, latency, and cost;
+- start with auditable routing rules, then calibrate a learned frontier on held-out traces;
+- shadow the policy and alert on provider-price, model-version, and failure-mix drift;
+- require a license and local reproduction before adopting the research code.
+
+Artifact caveat: the public repository is populated but has no release, repository license metadata, or license file. The study covers one recovery decision, and the formal guarantee does not cover solve rate.
+
+Sources:
+- [CodeRescue](https://arxiv.org/abs/2607.19338v1)
+- [Qijia-He/agent-budget-control](https://github.com/Qijia-He/agent-budget-control)
+
 ## Minimum governance checklist
 
 ### 1. Artifact trust

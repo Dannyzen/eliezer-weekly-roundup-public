@@ -751,3 +751,22 @@ Sources:
 - [Do Agent Optimizers Compound?](https://arxiv.org/abs/2607.14004v1)
 - [experiment artifacts](https://github.com/relai-ai/Continual-Learning-Terminal-Bench)
 - [Phantom Guardrails](https://arxiv.org/abs/2607.13083v1)
+## July 22 update: debugging needs exact attribution and rerun closure
+
+AgentDebugX adds the missing closure test for trajectory debugging. A diagnosis is useful only when it names the responsible agent and exact step, produces a bounded recovery, and improves the state on rerun.
+
+Its strict result is deliberately humbling: exact agent-and-step attribution reaches 28.8% versus 21.7% for the strongest single-pass baseline. On GAIA, one rerun repairs 13 of 73 failures and raises overall accuracy from 55.8% to 63.6%. The gain is real, but the absolute attribution rate is not strong enough for unattended corrective authority.
+
+Practical lesson:
+- label symptom step, causal step, responsible agent, repair point, and resulting state separately;
+- compare multi-turn root-cause analysis against single-pass summaries;
+- make rerun success, new regressions, cost, and wall time part of the diagnosis score;
+- preserve failed and repaired traces under one incident identity;
+- keep incident sharing opt-in and scrub prompts, tool outputs, paths, credentials, and user data locally.
+
+Artifact caveat: the public MIT toolkit is packaged and broad, but the evaluation covers one rerun and does not measure developer debugging time or console usability.
+
+Sources:
+- [AgentDebugX](https://arxiv.org/abs/2607.18754v1)
+- [AgentDebugX/AgentDebugX](https://github.com/AgentDebugX/AgentDebugX)
+- [AgentDebugX project site](https://www.agentdebugx.com/)

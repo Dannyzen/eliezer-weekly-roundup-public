@@ -2,40 +2,56 @@
 
 This index tracks the most recent structured update. Each finding includes a summary, a link into the detailed analysis, core sources, practical implementation paths, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: Tuesday, 2026-07-21
+## Most Recent Structured Update: Wednesday, 2026-07-22
 
-### Agentic pull requests need diff-coverage gates
+### Stable harnesses make the default runtime a product surface
 
-Summary: passing tests do not prove that an agent tested its own change. In the analyzed coverage subset, existing tests exercised only 27.0% of changed Python lines, and 64.8% of Python pull requests had no changed line executed.
+Summary: Microsoft Agent Framework graduated its harness to stable in Python and .NET. Planning state, per-service-call persistence, compaction, file memory, skills, approvals, web search, and OpenTelemetry now have one versioned open-source composition.
 
-Analysis: [daily reasoning analysis](2026-07-21/reasoning.md#agentic-pull-requests-need-diff-coverage-gates)
-Durable topic: [Coding Agent Control Plane](coding-agent-control-plane/coding-agent-control-plane.md#july-21-update-passing-tests-do-not-prove-an-agent-tested-its-diff)
-Core sources: [paper](https://arxiv.org/abs/2607.18057v1), [replication repository](https://github.com/SageSELab/Agentic-Pull-Request-Test-Coverage), [Zenodo 1.0.0](https://doi.org/10.5281/zenodo.21419686)
+Analysis: [daily reasoning analysis](2026-07-22/reasoning.md#stable-harnesses-make-the-default-runtime-a-product-surface)
+Durable topic: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md#july-22-update-stable-harnesses-make-the-default-runtime-a-versioned-product-surface)
+Core sources: [announcement](https://devblogs.microsoft.com/agent-framework/the-microsoft-agent-framework-harness-is-now-released/), [Python 1.12.0](https://github.com/microsoft/agent-framework/releases/tag/python-1.12.0), [.NET 1.14.0](https://github.com/microsoft/agent-framework/releases/tag/dotnet-1.14.0)
 Implementable now:
-- map coverage to changed executable lines, not only project totals;
-- distinguish coverage from existing tests and agent-written tests;
-- gate uncovered error-handling, auth, persistence, and side-effect code;
-- add mutation or assertion-quality checks after the first diff-coverage gate.
+- build one reference agent on the stable core;
+- export tool, compaction, approval, todo, and history events through OpenTelemetry;
+- keep file, shell, loop, and background authority outside the default profile;
+- run crash, resume, compaction, approval-replay, and tool-collision fixtures.
 Tools, repositories, and methodologies:
-- `pytest-cov`, coverage.py, JaCoCo, diff-cover, tree-sitter, srcML, the SageSELab replication package
-Implementability score: 0.91
+- `microsoft/agent-framework`, Python 1.12.0, .NET 1.14.0, OpenTelemetry, differential harness evaluation
+Implementability score: 0.90
 
-### Verify-repair loops need calibrated stopping and a guarded fallback
+### Debugging needs exact attribution and rerun closure
 
-Summary: verifier acceptance can rise while true validity falls. Stop on estimated marginal gain, and retain the incumbent when verifier discrimination or calibration collapses.
+Summary: AgentDebugX improves strict agent-and-step attribution from 21.7% to 28.8% and repairs 13 of 73 GAIA failures in one rerun. The absolute attribution rate shows the hard part: plausible diagnosis is not reliable causal localization.
 
-Analysis: [daily reasoning analysis](2026-07-21/reasoning.md#verify-repair-loops-need-calibrated-stopping-and-a-guarded-fallback)
-Durable topic: [Sessionful Agent Loops](sessionful-agent-loops/sessionful-agent-loops.md#july-21-update-verify-repair-loops-need-calibrated-stop-and-guarded-fallback)
-Core sources: [paper](https://arxiv.org/abs/2607.17641v1), [VRR-Stop artifact](https://anonymous.4open.science/r/vrr-artifact-2583)
+Analysis: [daily reasoning analysis](2026-07-22/reasoning.md#debugging-needs-exact-attribution-and-rerun-closure)
+Durable topic: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md#july-22-update-debugging-needs-exact-attribution-and-rerun-closure)
+Core sources: [paper](https://arxiv.org/abs/2607.18754v1), [repository](https://github.com/AgentDebugX/AgentDebugX), [project site](https://www.agentdebugx.com/)
 Implementable now:
-- replay full repair trajectories before changing production policy;
-- estimate repair benefit and repair damage separately;
-- track verifier discrimination and decision margin;
-- switch to incumbent retention under calibration failure or distribution shift.
+- normalize one framework trace into a portable event schema;
+- label symptom, causal step, responsible agent, and repair point;
+- rerun from a checkpoint and score the resulting state;
+- keep incident sharing opt-in and scrubbed.
 Tools, repositories, and methodologies:
-- VRR-Stop artifact, cross-fitting, frozen-trajectory replay, bootstrap intervals, calibration-health alerts
-Implementability score: 0.67
+- AgentDebugX 0.3.1, OpenTelemetry, causal trace slices, checkpointed reruns, local incident bundles
+Implementability score: 0.82
+
+### Failed coding attempts need budget-calibrated recovery routing
+
+Summary: a failed cheap-model attempt should not always escalate. CodeRescue routes among reflection, replanning, and escalation, then calibrates the expected-cost frontier without retraining.
+
+Analysis: [daily reasoning analysis](2026-07-22/reasoning.md#failed-coding-attempts-need-budget-calibrated-recovery-routing)
+Durable topic: [Model Router Governance](../Strategy/model-router-governance/model-router-governance.md#july-22-update-recovery-routing-needs-a-budgeted-action-frontier)
+Core sources: [paper](https://arxiv.org/abs/2607.19338v1), [repository](https://github.com/Qijia-He/agent-budget-control)
+Implementable now:
+- replay failures against reflect, replan, and escalate actions;
+- log failure class, action, solve result, latency, and cost;
+- start with auditable rules, then calibrate and shadow a learned policy;
+- treat the repository as methodology-only until it has explicit reuse terms.
+Tools, repositories, and methodologies:
+- conformal risk control, offline trajectory replay, cost frontiers, shadow routing
+Implementability score: 0.64
 
 ## Current implication
 
-An agent loop needs evidence that its work changed the right state and evidence that another iteration is still beneficial. Coverage gates control coding exits. Calibrated stop policies control iterative exits.
+The harness, debugger, and router should share one run identity. Preserve state and approvals, localize the causal failure, choose a bounded recovery action, rerun, and attach the result to the original trace.

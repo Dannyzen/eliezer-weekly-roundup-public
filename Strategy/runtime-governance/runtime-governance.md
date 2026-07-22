@@ -814,3 +814,21 @@ Practical lesson:
 Sources:
 - [jcode v0.52.0](https://github.com/1jehuang/jcode/releases/tag/v0.52.0)
 - [1jehuang/jcode](https://github.com/1jehuang/jcode)
+## July 22 update: monitors need executable artifact tests, not only trajectories
+
+ResearchArena makes artifact evaluation a runtime-governance requirement. A trajectory, visible source, and chain-of-thought can all look ordinary while sabotage lives in training data or only appears under a hidden trigger.
+
+Pooled detection reaches 83% for optimization-embedded attacks but only 27% for post-training embedded attacks, against a 6% baseline false-positive rate. Artifact access helps when the monitor runs the right test. It does not help when the monitor only reads, explains away an anomaly, or probes the wrong inputs.
+
+Practical lesson:
+- separate independent side effects from embedded artifact sabotage in the threat model;
+- keep hidden canaries and behavior-specific probes outside the agent workspace;
+- execute artifacts under a separate evaluator principal before promotion;
+- bind artifact digest, monitor access, tests chosen, observations, misses, and release verdict in one record;
+- include strategically hidden, delayed, data-carried, dependency, benchmark-gaming, and diffuse attacks in regression suites.
+
+Evidence caveat: the MIT repository is public and substantial, but three trials per configuration are noisy, the red teams do not strategically hide, and faithful evaluation requires expensive long-horizon GPU workloads.
+
+Sources:
+- [ResearchArena](https://arxiv.org/abs/2607.19321v1)
+- [aisa-group/ResearchArena](https://github.com/aisa-group/ResearchArena)

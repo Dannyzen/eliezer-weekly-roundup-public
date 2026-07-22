@@ -6,9 +6,9 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily roundup, 2026-07-21: [evidence-bearing exit and commit boundaries](roundups/2026-07-21.md)
-- AgenticAI daily analysis: [2026-07-21](AgenticAI/2026-07-21/reasoning.md)
-- Strategy daily sovereignty: [2026-07-21](Strategy/2026-07-21/sovereignty.md)
+- Daily roundup, 2026-07-22: [close the harness-diagnosis-recovery-monitor loop](roundups/2026-07-22.md)
+- AgenticAI daily analysis: [2026-07-22](AgenticAI/2026-07-22/reasoning.md)
+- Strategy daily sovereignty: [2026-07-22](Strategy/2026-07-22/sovereignty.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 - Friday synthesis, week ending 2026-07-17: [weekly roundup](roundups/2026-07-17.md)
@@ -16,16 +16,16 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Current thesis
 
-Reliable agents need evidence-bearing boundaries for exit, state mutation, and effect commit.
+Reliable agents need a closed operational loop from runtime state to independent release evidence.
 
 This update sharpens the stack into four practical rules:
 
-- require coverage over changed executable lines before accepting coding-agent work;
-- stop verify-repair loops on expected marginal gain and retain the incumbent when calibration fails;
-- protect instructions, identity, configuration, credentials, memory, monitors, and backups as distinct self-state layers;
-- keep requested, approved, denied, handled, committed, and observed effects as distinct runtime events.
+- standardize planning, persistence, compaction, approvals, skills, and telemetry as one versioned harness;
+- localize failures to the responsible agent and step before granting repair authority;
+- route failed attempts among reflection, replanning, and escalation under an explicit budget;
+- execute produced artifacts against hidden behavioral tests under an independent evaluator.
 
-A green test suite, a rising verifier score, a sandbox boundary, or a typed tool name is not enough. The runtime must prove why work may stop and why one exact state transition may commit.
+Telemetry without causal attribution is not debugging. Recovery without a calibrated action policy is wasted budget. Monitoring without executable artifact tests is review theater.
 
 ## Browse by category
 

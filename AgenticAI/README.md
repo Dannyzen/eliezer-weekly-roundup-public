@@ -2,56 +2,40 @@
 
 This index tracks the most recent structured update. Each finding includes a summary, a link into the detailed analysis, core sources, practical implementation paths, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: Wednesday, 2026-07-22
+## Most Recent Structured Update: Thursday, 2026-07-23
 
-### Stable harnesses make the default runtime a product surface
+### Skill safety needs end-to-end admission tests
 
-Summary: Microsoft Agent Framework graduated its harness to stable in Python and .NET. Planning state, per-service-call persistence, compaction, file memory, skills, approvals, web search, and OpenTelemetry now have one versioned open-source composition.
+Summary: OpenSkillRisk packages 263 real marketplace risky skills into controlled sandboxes. Even the safest tested configurations execute unsafe actions in about 17 percent of cases, and awareness often fails to become timely intervention.
 
-Analysis: [daily reasoning analysis](2026-07-22/reasoning.md#stable-harnesses-make-the-default-runtime-a-product-surface)
-Durable topic: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md#july-22-update-stable-harnesses-make-the-default-runtime-a-versioned-product-surface)
-Core sources: [announcement](https://devblogs.microsoft.com/agent-framework/the-microsoft-agent-framework-harness-is-now-released/), [Python 1.12.0](https://github.com/microsoft/agent-framework/releases/tag/python-1.12.0), [.NET 1.14.0](https://github.com/microsoft/agent-framework/releases/tag/dotnet-1.14.0)
+Analysis: [daily reasoning analysis](2026-07-23/reasoning.md#skill-safety-needs-end-to-end-admission-tests)
+Durable topic: [Skills as Control](skills-as-control/skills-as-control.md#july-23-update-skill-admission-needs-end-to-end-effect-tests)
+Core sources: [paper](https://arxiv.org/abs/2607.20121v1), [repository](https://github.com/Miaow-Lab/OpenSkillRisk), [dataset](https://huggingface.co/datasets/Miaow-Lab/OpenSkillRisk)
 Implementable now:
-- build one reference agent on the stable core;
-- export tool, compaction, approval, todo, and history events through OpenTelemetry;
-- keep file, shell, loop, and background authority outside the default profile;
-- run crash, resume, compaction, approval-replay, and tool-collision fixtures.
+- import the seven-class taxonomy into the skill registry;
+- detonate untrusted skills with fake secrets, marker files, and network traps;
+- score the first unsafe attempted effect, intervention timing, completion, and over-defense;
+- enforce side-effect policy below the skill prompt.
 Tools, repositories, and methodologies:
-- `microsoft/agent-framework`, Python 1.12.0, .NET 1.14.0, OpenTelemetry, differential harness evaluation
-Implementability score: 0.90
-
-### Debugging needs exact attribution and rerun closure
-
-Summary: AgentDebugX improves strict agent-and-step attribution from 21.7% to 28.8% and repairs 13 of 73 GAIA failures in one rerun. The absolute attribution rate shows the hard part: plausible diagnosis is not reliable causal localization.
-
-Analysis: [daily reasoning analysis](2026-07-22/reasoning.md#debugging-needs-exact-attribution-and-rerun-closure)
-Durable topic: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md#july-22-update-debugging-needs-exact-attribution-and-rerun-closure)
-Core sources: [paper](https://arxiv.org/abs/2607.18754v1), [repository](https://github.com/AgentDebugX/AgentDebugX), [project site](https://www.agentdebugx.com/)
-Implementable now:
-- normalize one framework trace into a portable event schema;
-- label symptom, causal step, responsible agent, and repair point;
-- rerun from a checkpoint and score the resulting state;
-- keep incident sharing opt-in and scrubbed.
-Tools, repositories, and methodologies:
-- AgentDebugX 0.3.1, OpenTelemetry, causal trace slices, checkpointed reruns, local incident bundles
+- OpenSkillRisk, SkillSpector, sandbox detonation, canary resources, policy-as-code, approval replay
 Implementability score: 0.82
 
-### Failed coding attempts need budget-calibrated recovery routing
+### Document agents need deterministic artifact verification
 
-Summary: a failed cheap-model attempt should not always escalate. CodeRescue routes among reflection, replanning, and escalation, then calibrates the expected-cost frontier without retraining.
+Summary: DocOps ships 210 Word, Excel, PowerPoint, and PDF tasks with deterministic native-state verifiers. The best reported configuration passes 0.671 overall, while complex long-range workflows approach zero and often damage structural metadata.
 
-Analysis: [daily reasoning analysis](2026-07-22/reasoning.md#failed-coding-attempts-need-budget-calibrated-recovery-routing)
-Durable topic: [Model Router Governance](../Strategy/model-router-governance/model-router-governance.md#july-22-update-recovery-routing-needs-a-budgeted-action-frontier)
-Core sources: [paper](https://arxiv.org/abs/2607.19338v1), [repository](https://github.com/Qijia-He/agent-budget-control)
+Analysis: [daily reasoning analysis](2026-07-23/reasoning.md#document-agents-need-deterministic-artifact-verification)
+Durable topic: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md#july-23-update-document-work-needs-native-artifact-verifiers)
+Core sources: [paper](https://arxiv.org/abs/2607.19865v1), [repository](https://github.com/icip-cas/DocOps), [project page](https://docopsbench.github.io)
 Implementable now:
-- replay failures against reflect, replan, and escalate actions;
-- log failure class, action, solve result, latency, and cost;
-- start with auditable rules, then calibrate and shadow a learned policy;
-- treat the repository as methodology-only until it has explicit reuse terms.
+- select ten representative tasks and run fixed model-and-harness comparisons;
+- verify formulas, styles, bookmarks, metadata, and untouched object trees;
+- bind output digests and verifier versions to traces;
+- promote passing tasks into the release suite.
 Tools, repositories, and methodologies:
-- conformal risk control, offline trajectory replay, cost frontiers, shadow routing
-Implementability score: 0.64
+- DocOps, Harbor, native-format parsers, structural diffs, deterministic tests, artifact receipts
+Implementability score: 0.88
 
 ## Current implication
 
-The harness, debugger, and router should share one run identity. Preserve state and approvals, localize the causal failure, choose a bounded recovery action, rerun, and attach the result to the original trace.
+Agent packages and agent outputs need symmetric evidence gates. Detonate capabilities before admission, then deterministically verify the native artifact before release.

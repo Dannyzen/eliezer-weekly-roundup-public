@@ -918,3 +918,19 @@ Evidence caveat: the production architecture and metrics are reported by the sys
 
 Source:
 - [Scalable LLM Agent Tool Access in the Cloud](https://arxiv.org/abs/2607.15593v1)
+
+## July 23 update: inter-agent channels need attribution
+
+ChannelGuard exposes a provider-dependence blind spot. An outcome can look safe because a cloud filter, model alignment, verifier, application gate, or hard-coded refusal stopped the trace. Without layer attribution, a provider or model change can silently remove the real control.
+
+Practical lesson:
+- instrument user input, tool output, memory read, worker handoff, verifier output, and synthesis as separate policy boundaries;
+- attach every pass, compression, block, provider refusal, and downstream safe handling event to the same run identity;
+- replay identical attacks across providers and model versions;
+- measure benign preservation and adaptive paraphrase, not only attack success;
+- keep exact-effect authorization below semantic text filters.
+
+Artifact caveat: the paper points to an unresolved `channelguard-XXXX` placeholder. Its embedding gates also fail under white-box adaptive paraphrase, so use the attribution pattern rather than treating the defense as production-ready.
+
+Source:
+- [ChannelGuard](https://arxiv.org/abs/2607.19430v1)

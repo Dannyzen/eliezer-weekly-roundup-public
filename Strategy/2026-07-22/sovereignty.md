@@ -1,6 +1,34 @@
-# Strategy Daily Sovereignty - 2026-07-22
+# Strategy Deep Dive Wednesday - 2026-07-22
 
-## Verdict
+Today's strategic signal is that workflow state can preserve the wrong target as faithfully as the right one. The strongest finding is Binding Drift because it adds a missing commit-time rule to Context-to-Execution Integrity: re-derive the exact target before every material effect, then block or escalate disagreement.
+
+## Deep Dive Wednesday: Target binding must be re-derived before effects
+
+Deep dive: [Context-to-Execution Integrity](../context-to-execution-integrity/context-to-execution-integrity.md#july-22-deep-dive-target-bindings-need-re-derivation-before-effects)
+
+[Binding Drift](https://arxiv.org/abs/2607.18316v1) separates silent target drift from propagation of an initially wrong target. In a synthetic stress benchmark with 200 workflow templates, 580 binding-scored steps, four enterprise domains, and eight model backends accessed through Amazon Bedrock, author-reported drift appeared in 18 percent of eligible workflows, those correctly bound at the first scored action. This is not a deployment-prevalence estimate. Under controlled injection, 1,280 eligible workflow runs per configuration were evaluated. An entity lock increased pooled wrong-action counts from 907 to 2,746, while a Nova Micro cross-verifier reduced them to 189. The paper's approximate oracle comparator recorded 180; the close aggregate counts do not establish statistical equivalence.
+
+Why it won the week: Microsoft shipped the highest-leverage harness release, ResearchArena exposed a serious artifact-monitoring gap, and Stop Means Stop remains the strongest external effect-gate evidence. Binding Drift adds the concept the repo was missing. Exact-effect authorization is incomplete unless the runtime can prove that the target inside the manifest still matches the original authorized intent.
+
+The core innovation is not another model call. It is a provenance-bearing target-binding object plus commit-time re-derivation. Preserve the original referent, current candidate snapshot, resolver evidence, canonical ID, policy scope, state version, and binding digest. My production inference, not a policy tested by the paper, is to compare an independent resolution with the carried binding before execution and deny or escalate unresolved disagreement rather than silently rewriting the target.
+
+Implementable now:
+
+1. Add typed target-binding records to one high-risk tool family.
+2. Preserve the original user referent outside compacted summaries.
+3. Re-resolve against current registry state before each write or send.
+4. Bind the checked target digest into the exact-effect commitment and receipt.
+5. Add wrong-binding injection fixtures and score wrong effects, clarifications, completion, latency, and cost separately.
+
+Implementability score: **0.82**
+
+The public [binding-drift repository](https://github.com/shashank-indukuri/binding-drift) is populated with workflows, saved results, aggregation code, and offline tests. The main caveat is that the benchmark is synthetic and the cross-verifier converts many wrong actions into actions labeled "over-clarifications" by the paper rather than improving strict workflow completion. Production use needs a trusted resolver or human escalation path. This is arXiv v1; the paper and repository were inspected read-only, but the artifact was not executed and the results were not independently reproduced.
+
+Core sources:
+- Binding Drift paper: https://arxiv.org/abs/2607.18316v1
+- Binding Drift code and data: https://github.com/shashank-indukuri/binding-drift
+
+## Supporting daily analysis: artifact monitoring
 
 A monitor that only reads an agent trajectory is not an artifact verifier. For long-horizon AI work, the control plane must execute the produced artifact against hidden, targeted tests and treat training data as part of the attack surface.
 
@@ -8,9 +36,10 @@ ResearchArena shows why: localized code sabotage is comparatively visible, while
 
 ## Scan boundary
 
+- Binding Drift was submitted on 2026-07-17 and first listed on 2026-07-22.
 - ResearchArena was submitted on 2026-07-21 and first listed on 2026-07-22.
-- The primary PDF was downloaded as a document on Bigs and checked with `pdftotext -layout`.
-- Its public repository, README, recursive tree, and MIT license were inspected read-only.
+- The primary PDFs were downloaded as documents on Bigs and checked with `pdftotext -layout`.
+- Public repositories, READMEs, recursive trees, and license files were inspected read-only.
 - No external source repository was cloned, installed, built, imported, or executed.
 
 ## Monitors need executable artifact tests, not only trajectories

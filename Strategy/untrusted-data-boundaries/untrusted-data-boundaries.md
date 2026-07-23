@@ -217,3 +217,19 @@ Practical lesson:
 Sources:
 - [Copilot code review customization and configurability](https://github.blog/changelog/2026-07-17-copilot-code-review-customization-and-configurability-improvements)
 - [Repository-level Copilot usage metrics](https://github.blog/changelog/2026-07-17-repository-level-github-copilot-usage-metrics-generally-available)
+
+## July 23 update: privileged agents need bounded residual input
+
+Twin Agent turns privilege separation into a measurable context boundary. An Explore Agent sees untrusted content without privileged tools. A Safe Agent acts without raw untrusted context and receives only a compact, state-conditioned hint.
+
+Practical lesson:
+- isolate untrusted observation from privileged execution with separate principals;
+- use typed hints and explicit size budgets rather than free-form summaries;
+- bind every privileged action to user intent, target, policy, and hint provenance;
+- sweep hint budgets and adaptive attacks in regression tests;
+- treat compact text as untrusted evidence, never as authority.
+
+Artifact caveat: the primary pages say code is available but expose no exact public repository URL that resolved during this scan. The paper is currently a design reference.
+
+Source:
+- [Twin Agent](https://arxiv.org/abs/2607.19595v1)

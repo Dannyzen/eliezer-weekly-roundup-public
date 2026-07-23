@@ -733,3 +733,19 @@ Sources:
 - [SEED](https://arxiv.org/abs/2607.14777v1)
 - [jinyangwu/SEED](https://github.com/jinyangwu/SEED)
 - [Seed-AlfWorld-3B](https://huggingface.co/Jinyang23/Seed-AlfWorld-3B)
+
+## July 23 update: skill admission needs end-to-end effect tests
+
+OpenSkillRisk turns skill supply-chain risk into a harness-level benchmark. Its 263 real marketplace skills cover control-plane hijacking, authority expansion, data harvesting, execution bootstrapping, persistence, exfiltration, and external state manipulation. Even the safest tested configurations still execute unsafe actions in about 17 percent of cases.
+
+Practical lesson:
+- preserve exact skill identity, marketplace source, version, hash, dependencies, and requested authority;
+- combine static review with sandbox detonation and runtime effect policy;
+- grade recognition, intervention timing, first unsafe effect, completion, and over-defense separately;
+- test active guard loading, but do not treat another prose skill as the enforcement boundary;
+- keep real credentials, user data, production services, and unrestricted egress outside benchmark sandboxes.
+
+Sources:
+- [OpenSkillRisk](https://arxiv.org/abs/2607.20121v1)
+- [Miaow-Lab/OpenSkillRisk](https://github.com/Miaow-Lab/OpenSkillRisk)
+- [OpenSkillRisk dataset](https://huggingface.co/datasets/Miaow-Lab/OpenSkillRisk)

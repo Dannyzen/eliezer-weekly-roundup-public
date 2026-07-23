@@ -6,26 +6,27 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily roundup, 2026-07-22: [close the harness-diagnosis-recovery-monitor loop](roundups/2026-07-22.md)
-- AgenticAI daily analysis: [2026-07-22](AgenticAI/2026-07-22/reasoning.md)
-- Strategy daily sovereignty: [2026-07-22](Strategy/2026-07-22/sovereignty.md)
+- Daily roundup, 2026-07-23: [verify capabilities before admission and artifacts before release](roundups/2026-07-23.md)
+- AgenticAI daily analysis: [2026-07-23](AgenticAI/2026-07-23/reasoning.md)
+- Strategy daily sovereignty: [2026-07-23](Strategy/2026-07-23/sovereignty.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 - Friday synthesis, week ending 2026-07-17: [weekly roundup](roundups/2026-07-17.md)
-- Deep Dive Wednesday, 2026-07-08: [Context-to-Execution Integrity](Strategy/context-to-execution-integrity/context-to-execution-integrity.md)
+- Deep Dive Wednesday, 2026-07-22: [Target bindings need re-derivation before effects](Strategy/context-to-execution-integrity/context-to-execution-integrity.md#july-22-deep-dive-target-bindings-need-re-derivation-before-effects)
 
 ## Current thesis
 
-Reliable agents need a closed operational loop from runtime state to independent release evidence.
+Reliable agents need evidence gates around the whole operational loop: capability admission, context crossing, exact effects, and artifact release.
 
-This update sharpens the stack into four practical rules:
+This update sharpens the stack into five practical rules:
 
-- standardize planning, persistence, compaction, approvals, skills, and telemetry as one versioned harness;
-- localize failures to the responsible agent and step before granting repair authority;
-- route failed attempts among reflection, replanning, and escalation under an explicit budget;
-- execute produced artifacts against hidden behavioral tests under an independent evaluator.
+- detonate untrusted skills and grade their attempted effects before admission;
+- verify native artifact state instead of trusting visible output or model judgment;
+- separate untrusted exploration from privileged execution;
+- minimize and type the information crossing into privileged context;
+- attribute every safety stop to the application, provider, verifier, model, or policy layer that produced it.
 
-Telemetry without causal attribution is not debugging. Recovery without a calibrated action policy is wasted budget. Monitoring without executable artifact tests is review theater.
+A skill description is not an admission proof. A polished document is not an artifact proof. A safe outcome is not a durable control unless the runtime can identify and replay the layer that enforced it.
 
 ## Browse by category
 

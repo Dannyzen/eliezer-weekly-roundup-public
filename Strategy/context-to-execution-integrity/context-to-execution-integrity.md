@@ -1,6 +1,6 @@
 # Context-to-Execution Integrity
 
-Last updated: 2026-07-14
+Last updated: 2026-07-22
 
 Core finding: writable context is not execution authority. An agent may read an issue, README, CI log, email, tool result, memory, or retrieved page, but protected sink fields need a typed release, exact-effect authorization, and invocation capability before the host lets a side effect happen.
 
@@ -16,6 +16,8 @@ Core sources:
 - SessionBound repository: https://github.com/SessionBound/sessionbound
 - HCP execution-control paper: https://arxiv.org/abs/2606.29073v1
 - HCP reference repository: https://github.com/SymbolicLight-AGI/handle-capability-protocol
+- Binding Drift paper: https://arxiv.org/abs/2607.18316v1
+- Binding Drift code and data: https://github.com/shashank-indukuri/binding-drift
 
 ## Overview
 
@@ -263,3 +265,120 @@ Evidence caveat: the paper claims a Rust prototype and formal safety properties,
 
 Source:
 - [ETAS: An Effect-Typed Language for Agent Systems](https://arxiv.org/abs/2607.17780v1)
+
+## July 22 deep dive: target bindings need re-derivation before effects
+
+### Overview
+
+For this week's architecture review, Binding Drift is the strongest finding because it identifies a missing execution-control object: the target binding. An agent may resolve the correct target and drift later, or preserve the same target ID while acting on the wrong entity when the initial binding was wrong. The paper does not test ID reuse, concurrent registry mutation, or a correct stable ID becoming stale.
+
+The durable rule is simple: persistence transports a binding, but only re-derivation checks it. Before a material effect, the runtime should independently resolve the target from the original authorized request and current candidate state, compare that result with the carried binding, and block or escalate disagreement.
+
+This beats the week's alternatives as a deep-dive topic. Microsoft shipped the most immediately usable harness, but a harness release does not define a target-integrity contract. ResearchArena shows that generated artifacts need hidden behavioral tests, but it is expensive and already captured in Runtime Governance. Stop Means Stop remains the strongest effect-gate evidence, but it was central to the July 17 synthesis. Preemptive DLP hardening is broader security work, but it exposes no public implementation artifact. Binding Drift adds a new, reproducible primitive to the existing Context-to-Execution Integrity model.
+
+### Core innovation
+
+The paper separates two failure modes that ordinary workflow state collapses:
+
+- Binding drift: the agent resolves the correct entity first, then silently switches later.
+- Error propagation: the agent starts with the wrong entity and faithfully carries that mistake through later actions.
+
+An entity lock eliminates the first failure while amplifying the second. The right object is therefore not a bare ID. It is a target-binding record with at least:
+
+- canonical entity type and ID;
+- source mention from the original authorized instruction;
+- candidate-set or registry snapshot identifier;
+- resolver identity and method;
+- evidence and confidence or ambiguity state;
+- task, principal, policy epoch, expiry, and state version;
+- binding digest attached to the action manifest.
+
+The paper's tested cross-verifier overwrites a disagreeing binding. This deep dive makes a separate production inference: at every material effect, independently re-derive the target from the original request and trusted current entity state. Agreement can renew the binding. Disagreement or ambiguity should block the effect and route to clarification, a trusted deterministic resolver, or human review. A second model can supply evidence, but it does not become execution authority by itself. This deny-or-escalate pattern still needs direct validation.
+
+### Evidence
+
+The v1 paper uses 200 synthetic workflow templates with 890 total steps, 580 entity-binding-scored steps, four enterprise domains, five drift patterns, and eight model backends accessed through Amazon Bedrock. In the natural condition, author-reported drift appeared in 18 percent of eligible workflows, those correctly bound at the first scored action, when results were pooled across models. This is a benchmark result, not an estimate of deployment prevalence. On the fixed cohort with at least three action steps, wrong-target rate rose from 3 percent at steps one and two to 28 percent at step three.
+
+Under controlled injection, 1,280 eligible workflow runs were evaluated per defense configuration, eight models times 160 non-ambiguity workflows. Locking the seeded wrong entity increased pooled downstream wrong actions from 907 to 2,746, a 3.0x amplification with a bootstrap 95 percent confidence interval of 2.8x to 3.3x. A cross-verifier using Nova Micro reduced pooled wrong actions to 189, or 0.21x baseline with a 95 percent confidence interval of 0.18x to 0.25x, compared with 180, or 0.20x, for the paper's approximate oracle comparator. These close aggregate values do not establish statistical equivalence, and the oracle is not strict because it handles derived slots imperfectly.
+
+The public repository was inspected read-only. It has a populated 30-entry tree with the 200-workflow dataset, saved natural and injection results, aggregation code, an offline 25-assertion test, and an MIT license for code. Its README declares CC BY 4.0 for data and results. The latest commit records the full eight-model sweep.
+
+### Why it matters
+
+I interpret Binding Drift as an extension of Context-to-Execution Integrity. Typed releases, exact-effect commitments, and invocation capabilities are incomplete if the target named in a valid release was wrong initially or silently changed inside workflow state. The paper directly studies initial error propagation and later drift; stale registries and concurrent mutation remain production hypotheses to test.
+
+This matters most for irreversible or externally visible effects:
+
+- sending email or money;
+- mutating CRM, ticketing, identity, or billing records;
+- deploying to an environment or cluster;
+- modifying a repository, branch, package, or release;
+- reading or writing persistent memory;
+- delegating authority to another agent.
+
+A stable but wrong target is more dangerous than an obvious tool error because the action can be syntactically valid, policy-permitted, and consistently logged.
+
+### Fit into the agentic stack
+
+Primary layer: Strategy, context-to-execution integrity and execution control.
+
+Supporting layers:
+
+- Agent gateway: canonical entity registry, candidate retrieval, and target-binding schema.
+- Harness: immutable original instruction, current workflow state, and explicit ambiguity path.
+- Execution broker: commit-time re-derivation, binding comparison, deny or escalate decision, and manifest-bound lease.
+- Evidence plane: target provenance, resolver output, candidate snapshot, mismatch, clarification, and final-effect receipt.
+- Evaluation harness: controlled wrong-binding injection, natural drift measurement, long-horizon target switches, stale registry state, and concurrent updates.
+
+### Practical tools, repositories, and methodologies worth trying now
+
+1. Start with one high-risk tool family such as CRM updates, repository writes, or outbound messages.
+2. Replace raw target IDs in workflow state with typed binding records.
+3. Preserve the original user referent separately from summaries and compaction output.
+4. Re-resolve the target before each write or send using current registry data and an independent context.
+5. Require exact agreement on canonical ID, entity type, and policy scope before automatic execution.
+6. Block and clarify on ambiguity. Do not silently let the verifier overwrite a target and continue.
+7. Inject known-wrong early bindings in tests, then measure drift, propagation, wrong effects, clarifications, task completion, latency, and cost separately.
+8. Bind the final target digest into the exact-effect commitment and receipt.
+
+Useful starting points:
+
+- Binding Drift code, workflows, saved results, and offline checks: https://github.com/shashank-indukuri/binding-drift
+- CXI action-manifest and release model: https://anonymous.4open.science/r/cxi
+- HCP execution-control objects: https://github.com/SymbolicLight-AGI/handle-capability-protocol
+- OPA or Cedar for deterministic target, principal, and effect policy checks.
+- OpenTelemetry or JSONL for binding provenance and mismatch events.
+
+### Implementation complexity
+
+Implementability score: 0.82
+
+Under this repository's rubric, the score is high because a prototype needs only preserved original intent, typed binding state, an independent resolution step, and a fail-closed gate. It remains below 0.9 because real identity registries, complete mediation, concurrency, derived targets, and operator escalation are material engineering work. The paper reports roughly 0.3 seconds of added latency per action for its small cross-verifier.
+
+Production work is materially harder. Real systems have aliases, merges, stale caches, concurrent changes, derived targets such as an account owner, multiple registries, and legitimate target changes. Complete mediation is also required: every side-effecting path must consume the checked binding, not a nearby unverified ID.
+
+### Weakest point and what remains unproven
+
+The benchmark uses synthetic entity stores and workflows of three to eight steps. All live models ran through one provider, Amazon Bedrock. The reported 18 percent natural drift rate is a controlled-benchmark result, not measured enterprise prevalence.
+
+The cross-verifier also trades action risk for friction. In the injected experiment it produced 2,056 actions labeled "over-clarifications" by the paper, versus 743 at baseline, while strict workflow success was 25.2 percent versus 29.2 percent. The paper cautions that clarification under an injected state conflict may be rational. Its strict workflow-success metric also treats clarification, wrong-tool selection, malformed output, and API errors as failures. The verifier sharply reduced wrong actions, but it did not create a free reliability gain. A production gate needs a deterministic resolver or human escalation path for disputed bindings.
+
+Evidence status: this is a first-version arXiv preprint using synthetic three-to-eight-step workflows and one serving provider. The paper and public repository were inspected read-only, but the artifact was not executed and the numerical results were not independently reproduced.
+
+The repository README contains one stale summary sentence with earlier 2.6x and 5.4x figures, while the paper, saved-result headline, and latest commit report 3.0x aggregate and 8.5x maximum amplification. Use the paper and released result files as the quantitative source of record.
+
+### Strategic implications for Danny's worldview and product thinking
+
+The strategic lesson is that durable state is not trustworthy state. Event logs, checkpoints, memory, and workflow engines preserve what happened, including wrong resolutions. Sovereignty requires the runtime to own not only state persistence but also target truth at the moment of effect.
+
+For Hermes and FriendVM, this suggests a concrete product invariant: every privileged tool call should carry a target-binding receipt, and a material effect should fail closed when the target cannot be independently reconstructed from authorized intent and current state.
+
+That moves agent safety from generic confirmation toward a specific operator question: "Which exact entity will this action affect, how was that identity derived, and was it rechecked after the last wait, compaction, retry, or delegation?"
+
+### Core source links
+
+- Binding Drift in Multi-Step Tool-Augmented Agents: https://arxiv.org/abs/2607.18316v1
+- Binding Drift immutable PDF: https://arxiv.org/pdf/2607.18316v1
+- Binding Drift code and data: https://github.com/shashank-indukuri/binding-drift
+- Context-to-Execution Integrity for LLM Agents: https://arxiv.org/abs/2607.06000v1
+- CXI artifact: https://anonymous.4open.science/r/cxi

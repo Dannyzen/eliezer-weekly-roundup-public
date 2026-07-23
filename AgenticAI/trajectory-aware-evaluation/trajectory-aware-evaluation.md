@@ -770,3 +770,19 @@ Sources:
 - [AgentDebugX](https://arxiv.org/abs/2607.18754v1)
 - [AgentDebugX/AgentDebugX](https://github.com/AgentDebugX/AgentDebugX)
 - [AgentDebugX project site](https://www.agentdebugx.com/)
+
+## July 23 update: document work needs native artifact verifiers
+
+DocOps makes document state a deterministic evaluation target. Its 210 Word, Excel, PowerPoint, and PDF tasks test atomic edits, compositions, single-document workflows, and cross-document workflows while checking formulas, styles, bookmarks, metadata, structure, and untouched state.
+
+Practical lesson:
+- bind source and output document digests to one run identity;
+- keep native-format assertions load-bearing and model judgments diagnostic;
+- score structural preservation, requested change, unrelated-state damage, completion, cost, and wall time separately;
+- compare model, harness, and skill configuration as independent benchmark axes;
+- promote representative tasks into release regression suites.
+
+Sources:
+- [DocOps](https://arxiv.org/abs/2607.19865v1)
+- [icip-cas/DocOps](https://github.com/icip-cas/DocOps)
+- [DocOps project page](https://docopsbench.github.io)

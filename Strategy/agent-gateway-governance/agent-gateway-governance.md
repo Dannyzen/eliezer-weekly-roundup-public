@@ -934,3 +934,21 @@ Artifact caveat: the paper points to an unresolved `channelguard-XXXX` placehold
 
 Source:
 - [ChannelGuard](https://arxiv.org/abs/2607.19430v1)
+
+## July 24 update: stateless MCP moves state governance into explicit handles
+
+The MCP 2026-07-28 release candidate removes protocol sessions and initialization. Requests become self-contained, operation headers become routable policy inputs, and application state moves into explicit handles passed through normal tool arguments.
+
+Practical lesson:
+- inventory every dependency on initialization, session headers, sticky routing, and shared session stores;
+- bind application handles to tenant, principal, resource, scope, expiry, revocation, and trace identity;
+- reject disagreements between `Mcp-Method` or `Mcp-Name` headers and the request body;
+- apply cache scope and TTL without leaking catalogs across principals;
+- require draft conformance scenarios before staging and final-spec verification before broad migration.
+
+Release caveat: this is a breaking release candidate scheduled to finalize on July 28. Official conformance tests and SDK support exist, but compatibility and application-state migration still need staging proof.
+
+Sources:
+- [MCP 2026-07-28 release candidate](https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/)
+- [MCP conformance suite](https://github.com/modelcontextprotocol/conformance)
+- [GitHub MCP Server implementation note](https://github.blog/changelog/2026-07-23-github-mcp-server-supports-the-next-mcp-specification)

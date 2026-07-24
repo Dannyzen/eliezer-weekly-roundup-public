@@ -2,40 +2,40 @@
 
 This index tracks the most recent structured update. Each finding includes a summary, a link into the detailed analysis, core sources, practical implementation paths, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: Thursday, 2026-07-23
+## Most Recent Structured Update: Friday, 2026-07-24
 
-### Privilege separation needs a bounded residual channel
+### Stateless MCP makes application state explicit and conformance testable
 
-Summary: Twin Agent separates untrusted exploration from privileged execution and passes only compact, state-conditioned hints. Reported utility stays high while attack success falls sharply, but compact text remains an attack channel and no public artifact URL resolved.
+Summary: The MCP 2026-07-28 release candidate removes protocol sessions and initialization, adds routable operation headers, cache scope, fixed trace propagation, formal extensions, and full JSON Schema 2020-12. State moves into explicit application handles, where scope and revocation become application responsibilities.
 
-Analysis: [daily sovereignty analysis](2026-07-23/sovereignty.md#privilege-separation-needs-a-bounded-residual-channel)
-Durable topic: [Untrusted Data Boundaries](untrusted-data-boundaries/untrusted-data-boundaries.md#july-23-update-privileged-agents-need-bounded-residual-input)
-Core source: [paper](https://arxiv.org/abs/2607.19595v1)
+Analysis: [daily sovereignty analysis](2026-07-24/sovereignty.md#stateless-mcp-makes-application-state-explicit-and-conformance-testable)
+Durable topic: [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md#july-24-update-stateless-mcp-moves-state-governance-into-explicit-handles)
+Core sources: [release candidate](https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/), [draft specification](https://modelcontextprotocol.io/specification/draft), [conformance suite](https://github.com/modelcontextprotocol/conformance)
 Implementable now:
-- split one workflow into untrusted explore and privileged execute principals;
-- use a typed hint schema and strict size budget;
-- bind privileged calls to goal, target, policy, and hint provenance;
-- test adaptive attacks and deny raw-context requests.
+- run the official draft conformance suite in staging;
+- inventory session and sticky-routing dependencies;
+- bind explicit handles to tenant, resource, scope, expiry, and revocation;
+- validate operation headers against request bodies.
 Tools, repositories, and methodologies:
-- dual-agent privilege separation, typed hint schemas, AgentDojo, SWE-bench injection, OPA or Cedar
-Implementability score: 0.66
+- MCP conformance suite, official SDKs, GitHub MCP Server, JSON Schema 2020-12, W3C Trace Context, contract tests
+Implementability score: 0.90
 
-### Inter-agent channels need application-owned gates and attribution
+### Per-agent telemetry should share one access and encryption boundary
 
-Summary: ChannelGuard shows that safe outcomes can be borrowed from provider filters. Every planner, tool, memory, verifier, and synthesis handoff needs application-owned telemetry and replay, but the proposed embedding defense fails under adaptive paraphrase.
+Summary: AgentCore now sends traces, prompts, structured logs, and stdout to one per-agent CloudWatch log group. Correlation and policy become simpler, but concentrated run data requires tighter IAM, encryption, retention, redaction, and export controls.
 
-Analysis: [daily sovereignty analysis](2026-07-23/sovereignty.md#inter-agent-channels-need-application-owned-gates-and-attribution)
-Durable topic: [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md#july-23-update-inter-agent-channels-need-attribution)
-Core source: [paper](https://arxiv.org/abs/2607.19430v1)
+Analysis: [daily sovereignty analysis](2026-07-24/sovereignty.md#per-agent-telemetry-should-share-one-access-and-encryption-boundary)
+Durable topic: [Runtime Governance](runtime-governance/runtime-governance.md#july-24-update-telemetry-needs-a-per-agent-policy-boundary)
+Core sources: [AWS launch](https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-bedrock-agentcore-unified-observability-single-log-group/), [developer guide](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/observability-configure.html)
 Implementable now:
-- add boundary spans for user, tool, memory, worker, verifier, and synthesis channels;
-- attribute every safe stop to the exact layer and policy version;
-- replay identical attacks across providers;
-- retain exact-effect authorization below text filters.
+- define IAM, CMK, retention, redaction, and export policy;
+- upgrade ADOT and migrate one staging runtime;
+- correlate prompt, tool, memory, identity, and stdout events;
+- prove cross-agent log isolation.
 Tools, repositories, and methodologies:
-- OpenTelemetry, provider counterfactual replay, semantic gates, perturbation tests, policy receipts
-Implementability score: 0.58
+- CloudWatch, ADOT 0.17.1+, W3C Trace Context, IAM Access Analyzer, CMK policy tests, OpenTelemetry export
+Implementability score: 0.92
 
 ## Current implication
 
-Treat every context crossing as a policy event. Minimize what crosses into privileged state, record which layer stopped unsafe behavior, and keep exact-effect enforcement below all text defenses.
+Protocol state and telemetry should be explicit policy objects. Bind state handles, request operations, conformance results, and run evidence to one agent identity rather than relying on hidden sessions or shared log stores.

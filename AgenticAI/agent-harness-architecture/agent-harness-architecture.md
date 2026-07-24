@@ -1036,3 +1036,19 @@ Sources:
 - [Python 1.12.0](https://github.com/microsoft/agent-framework/releases/tag/python-1.12.0)
 - [.NET 1.14.0](https://github.com/microsoft/agent-framework/releases/tag/dotnet-1.14.0)
 - [microsoft/agent-framework](https://github.com/microsoft/agent-framework)
+
+## July 24 update: real harness rollouts need an explicit training adapter
+
+OpenForgeRL makes harness behavior a training surface. A model-serving proxy records calls from production-style coding and GUI harnesses, while remote containers isolate environment execution and a standard trainer consumes the resulting trajectories.
+
+Practical lesson:
+- bind model requests, responses, tool events, subagents, compaction, state deltas, rewards, and environment digests to one rollout ID;
+- keep the deployed harness outside the trainer process and connect it through a typed adapter;
+- compare harnesses while holding model, task, budget, reward, and environment fixed;
+- isolate each rollout and preserve crash, retry, timeout, and cleanup receipts;
+- score error recovery explicitly because broad RL gains did not eliminate that weakness.
+
+Artifact caveat: the paper claims open-source code, data, and models, but its primary pages expose no exact OpenForge project artifact. The architecture is concrete; full reproduction still needs distributed rollout infrastructure.
+
+Source:
+- [OpenForgeRL](https://arxiv.org/abs/2607.21557v1)

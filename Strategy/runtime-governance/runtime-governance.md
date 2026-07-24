@@ -832,3 +832,20 @@ Evidence caveat: the MIT repository is public and substantial, but three trials 
 Sources:
 - [ResearchArena](https://arxiv.org/abs/2607.19321v1)
 - [aisa-group/ResearchArena](https://github.com/aisa-group/ResearchArena)
+
+## July 24 update: telemetry needs a per-agent policy boundary
+
+AgentCore's unified observability destination puts traces, prompts, structured logs, and stdout into one per-agent CloudWatch log group. That aligns debugging identity with IAM, encryption, retention, and export identity, but also concentrates sensitive run data.
+
+Practical lesson:
+- define IAM, CMK, retention, redaction, and export policy before changing destinations;
+- preserve one trace identity across prompt, model, tool, memory, gateway, identity, and stdout events;
+- test that each agent's operators and exporters cannot read another agent's log group;
+- record migration flag, ADOT version, sampling policy, and destination as runtime configuration;
+- support external OpenTelemetry sinks without weakening per-agent access controls.
+
+Provider caveat: the feature is specific to AgentCore and CloudWatch. The reusable pattern is the per-agent evidence boundary, not the AWS storage choice.
+
+Sources:
+- [AgentCore unified observability launch](https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-bedrock-agentcore-unified-observability-single-log-group/)
+- [AgentCore observability guide](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/observability-configure.html)

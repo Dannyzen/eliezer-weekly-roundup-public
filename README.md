@@ -6,9 +6,9 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily roundup, 2026-07-23: [verify capabilities before admission and artifacts before release](roundups/2026-07-23.md)
-- AgenticAI daily analysis: [2026-07-23](AgenticAI/2026-07-23/reasoning.md)
-- Strategy daily sovereignty: [2026-07-23](Strategy/2026-07-23/sovereignty.md)
+- Daily roundup, 2026-07-24: [make runtime state explicit and testable](roundups/2026-07-24.md)
+- AgenticAI daily analysis: [2026-07-24](AgenticAI/2026-07-24/reasoning.md)
+- Strategy daily sovereignty: [2026-07-24](Strategy/2026-07-24/sovereignty.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 - Friday synthesis, week ending 2026-07-17: [weekly roundup](roundups/2026-07-17.md)
@@ -16,17 +16,17 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Current thesis
 
-Reliable agents need evidence gates around the whole operational loop: capability admission, context crossing, exact effects, and artifact release.
+Reliable agents need explicit runtime objects wherever hidden state can change behavior: complete rollout records for training, deterministic cues for memory delivery, scoped handles for application state, and per-agent telemetry boundaries for governance.
 
 This update sharpens the stack into five practical rules:
 
-- detonate untrusted skills and grade their attempted effects before admission;
-- verify native artifact state instead of trusting visible output or model judgment;
-- separate untrusted exploration from privileged execution;
-- minimize and type the information crossing into privileged context;
-- attribute every safety stop to the application, provider, verifier, model, or policy layer that produced it.
+- train and evaluate through the real deployed harness rather than a simplified tool loop;
+- capture model calls, tool receipts, state deltas, rewards, and environment identity under one rollout ID;
+- trigger memory from typed runtime events and test false delivery separately from missed delivery;
+- replace hidden protocol sessions with scoped, revocable application handles;
+- bind traces, prompts, logs, encryption, retention, and export to one agent identity.
 
-A skill description is not an admission proof. A polished document is not an artifact proof. A safe outcome is not a durable control unless the runtime can identify and replay the layer that enforced it.
+A durable store is not useful memory if the model never retrieves it. A stateless protocol is not stateless governance if application handles carry ambient authority. Unified telemetry is not isolation unless access and retention are narrower than the data it concentrates.
 
 ## Browse by category
 

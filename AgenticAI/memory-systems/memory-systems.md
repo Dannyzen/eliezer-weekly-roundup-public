@@ -843,3 +843,19 @@ Artifact caveat: the repository is populated and its README declares MIT, but no
 Sources:
 - [Memory as a Controlled Process](https://arxiv.org/abs/2607.13591v1)
 - [ericjiang18/MemCon](https://github.com/ericjiang18/MemCon)
+
+## July 24 update: working memory delivery should be a harness policy
+
+Delivery, Not Storage shows that durable storage and reliable delivery are different systems. The model can ignore a pre-seeded store for 114 turns, while a harness can evaluate path, symbol, semantic, event, and temporal cues and inject a scoped fact at the relevant moment.
+
+Practical lesson:
+- keep memory evidence separate from trigger and delivery policy;
+- evaluate cues on file, symbol, failure, phase, temporal, and compact-resume events;
+- log candidates, injections, rejections, token cost, downstream use, and false deliveries;
+- compare voluntary retrieval, always-on injection, and cue-triggered injection on identical tasks;
+- preserve provenance and scope checks before injection reaches active context.
+
+Evidence caveat: the reported probe covers one controlled coding task and no public implementation artifact. Treat the numbers as a motivating failure case, then measure false delivery and transfer locally.
+
+Source:
+- [Delivery, Not Storage](https://arxiv.org/abs/2607.20972v1)

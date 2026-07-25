@@ -1,106 +1,103 @@
-# AgenticAI Daily Analysis - 2026-07-24
+# AgenticAI Weekly Analysis - 2026-07-24
 
-## Verdict
+## Weekly thesis
 
-The strongest implementation signal is that the harness should own both the training boundary and the memory delivery boundary. If either depends on the agent voluntarily exposing its state, the system cannot reliably train or remind it.
+The unit of trustworthy autonomy is not the model turn. It is an evidence-bearing boundary object that connects a claim to observable state. This week's strongest work converges on that pattern from three directions: trajectory-backed test oracles, deterministic verification of native artifacts, and harness-owned state adapters.
 
-OpenForgeRL makes real harness rollouts visible to standard RL infrastructure. Delivery, Not Storage shows why memory retrieval should be triggered by runtime state rather than model discretion.
+An agent can sound finished while the harness is stuck, pass a test suite that never exercises its changed lines, or produce a plausible document whose formulas and metadata are wrong. The repair is not another general-purpose judge. Preserve the exact run, identify the changed surface, and verify the resulting state with domain-native checks.
 
-## Scan boundary
+## The test oracle must include the trajectory and changed surface
 
-- arXiv exposed a real Friday, 2026-07-24 listing section across AI, language, machine learning, software engineering, security, and multi-agent systems.
-- OpenForgeRL and Delivery, Not Storage were both submitted on 2026-07-23 and first listed on 2026-07-24.
-- Their primary PDFs were downloaded as documents on Bigs and checked with `pdftotext -layout`.
-- Hugging Face, GitHub, official release feeds, and GitHub metadata were checked. `blogwatcher-cli` was unavailable, so official feeds were read directly.
-- Public repositories were inspected through metadata and documentation only. No external repository was cloned, installed, built, imported, or executed.
+[Understanding Agent-Reactive Bugs at the Model-Harness Boundary](https://arxiv.org/abs/2607.15684v1) manually studies 255 issue reports from Codex, Gemini CLI, LangChain, and CrewAI. It finds that model output and harness behavior jointly create failures that neither layer explains alone. The daily analysis identified 108 silent errors: the final answer can be fluent while tool logs, workspace state, or workflow progress show that the claimed work did not happen.
 
-## Harness-native training needs an explicit rollout adapter
+[Test Coverage Analysis of Agentic Pull Requests](https://arxiv.org/abs/2607.18057v1) gives the same problem a concrete software release surface. Across 4,882 agent-generated pull requests, only 49.6 percent of code-changing pull requests include test changes. Existing tests execute 61.5 percent of changed Java lines and 27.0 percent of changed Python lines. In 64.8 percent of Python pull requests, no changed line is executed by the existing suite. Error-handling miss rates reach 86.0 percent in Java and 81.0 percent in Python.
 
-Core source: [OpenForgeRL](https://arxiv.org/abs/2607.21557v1)
+Why it matters: a passing final answer and a passing repository test suite are both weak receipts unless they cover the trajectory and the changed behavior. The oracle needs model output, harness reactions, tool receipts, state deltas, changed-line coverage, and post-state under one run identity.
 
-Submission: 2026-07-23 17:38:30 UTC. First listed: 2026-07-24.
+Stack fit:
+- harness layer owns run identity and captures every model and tool transition;
+- evaluation layer compares narration with tool receipts and final state;
+- CI layer gates changed lines, with stricter thresholds for error handling and privileged paths;
+- observability layer makes silent model-harness divergence queryable.
 
-### What it found
+Implementable now:
+1. Attach one run ID to prompts, model responses, tool calls, retries, state deltas, and final narration.
+2. Add diff coverage to coding-agent pull requests and reject uncovered high-risk branches.
+3. Create fixtures where the model claims success but the tool or workspace receipt shows failure.
+4. Preserve failed stochastic responses so harness bugs can be replayed rather than paraphrased.
 
-OpenForgeRL separates real agent execution from the RL trainer. A lightweight proxy serves model calls from Claude Code, Codex, OpenClaw-style, and GUI harnesses while recording training trajectories. A Kubernetes orchestrator gives each rollout its own remote container. The resulting records feed a standard trainer such as veRL without forcing the production harness into the trainer process.
+Tools, repositories, and methodologies:
+- coverage.py, JaCoCo, diff-cover, OpenTelemetry, structured tool receipts, workspace snapshots
+- [SageSELab/Agentic-Pull-Request-Test-Coverage](https://github.com/SageSELab/Agentic-Pull-Request-Test-Coverage), inspected read-only; populated analysis code and data, but no repository license was exposed
 
-The paper trains two model families with hundreds to a few thousand tasks. OpenForgeClaw reports 31.7 pass^3 and 55.9 pass@3 on ClawEval plus 33.7 on QwenClawBench. OpenForgeGUI reports 37.7 on OSWorld-Verified, 63.0 on Online-Mind2Web, and 72.3 on WebVoyager. The behavioral analysis says RL improves self-verification, tool coverage, and multi-step completion, while error recovery remains weak.
+Implementability score: **0.89**
 
-The architecture is the important part: model calls, harness events, environment identity, rewards, and resulting state become one rollout object. The primary pages claim open-source code, data, and models, but expose no exact OpenForge repository or model URL. The paper links public benchmark and baseline artifacts, not a verified project artifact for this framework.
+## Native artifacts need deterministic state verification
 
-### Why it matters
+[DocOps](https://arxiv.org/abs/2607.19865v1) treats Word, Excel, PowerPoint, and PDF outputs as structured native state rather than screenshots or prose. Its public benchmark packages 210 executable tasks with checks for formulas, styles, metadata, bookmarks, and document structure. The best reported configuration reaches 0.671 overall, while long-range workflows expose state-tracking collapse, shallow verification, and destructive metadata edits.
 
-Training on simplified tool loops can optimize behavior that disappears inside the actual production harness. A rollout adapter makes the deployed harness the evaluation and training surface while keeping trainer integration standard.
+[Copy-on-Write Scoring](https://arxiv.org/abs/2607.14336v1) applies the same idea to application data. It places each agent session on an isolated PostgreSQL changes layer, compares agent and human reference sessions, and scores structural and content differences without committing agent writes to the base state.
 
-### Fit in the stack
+Why it matters: artifact quality is not a visual impression. A document, database mutation, or generated work product must be bound to an exact digest or isolated state branch, then tested through the semantics of that artifact.
 
-- **Harness architecture:** capture model calls, tool events, subagents, compaction, and environment state under one rollout identity.
-- **RL training:** decouple distributed harness execution from policy optimization.
-- **Sandboxing:** isolate each trajectory in a disposable environment.
-- **Evaluation:** compare harnesses while holding model, task, budget, and reward fixed.
+Stack fit:
+- sandbox layer creates a reversible work surface;
+- artifact layer preserves native structure and exact digests;
+- verifier layer applies deterministic, domain-specific assertions;
+- release layer commits only a verified artifact or state delta.
 
-### Implementable now
+Implementable now:
+1. Select ten representative DocOps tasks for document-agent regression testing.
+2. Bind every verifier report to the SHA-256 digest of the artifact it examined.
+3. Put one PostgreSQL-backed workflow behind disposable copy-on-write state.
+4. Compare final state, extra writes, missing writes, and operation order before promotion.
 
+Tools, repositories, and methodologies:
+- [icip-cas/DocOps](https://github.com/icip-cas/DocOps), Apache-2.0, populated tasks, harnesses, Docker support, and package verifier
+- [trail-ml/agent-cow-python](https://github.com/trail-ml/agent-cow-python)
+- LibreOffice headless checks, OOXML inspection, PDF metadata tests, PostgreSQL views and row-level scoring
+
+Implementability score: **0.85**
+
+## Harness state should be owned by runtime adapters
+
+Three findings move hidden agent behavior into runtime-owned objects. Microsoft's [stable Agent Framework harness](https://devblogs.microsoft.com/agent-framework/the-microsoft-agent-framework-harness-is-now-released/) packages per-service-call history, compaction, todo and plan state, file memory, approvals, and OpenTelemetry behind one harness surface. [OpenForgeRL](https://arxiv.org/abs/2607.21557v1) records production-style harness model calls through a proxy and isolates rollouts in remote containers so standard RL infrastructure can train on the deployed loop. [Delivery, Not Storage](https://arxiv.org/abs/2607.20972v1) makes memory delivery a deterministic harness event rather than a voluntary model action.
+
+The memory evidence is intentionally narrow but sharp: zero voluntary memory operations over 114 turns; conversation-only facts disappear at the first summary and remain absent in 106 of 108 compactions; harness-owned injection delivers seeded facts through all 138 compact-resumes. OpenForgeRL reports strong claw and GUI results, but no exact public implementation artifact resolved from the primary pages and error recovery remains weak.
+
+Why it matters: training, compaction, memory, and replay cannot depend on model cooperation. The harness must own the state transition and expose it as a testable adapter.
+
+Stack fit:
+- model proxy records calls without changing the harness contract;
+- rollout adapter binds environment identity, tool receipts, rewards, and state deltas;
+- memory policy evaluates typed path, symbol, semantic, event, and temporal cues;
+- replay layer reproduces compaction, resume, and error-recovery paths.
+
+Implementable now:
 1. Wrap one coding harness model endpoint with a recording proxy.
-2. Emit request, response, tool receipt, state delta, reward, and environment digest under one rollout ID.
-3. Run a small task set in disposable containers before attempting distributed training.
-4. Replay the same policy through two harnesses to measure harness-induced behavior.
-5. Add explicit error-recovery rewards instead of assuming broad RL gains cover recovery.
+2. Store model calls, environment digest, tool receipts, rewards, and state deltas under one rollout ID.
+3. Add deterministic memory triggers and log candidate, injected, rejected, and consumed memory IDs.
+4. Test crash, resume, compaction, approval replay, and false memory injection on a stable reference harness.
 
-Tools and methodologies worth exploring:
+Tools, repositories, and methodologies:
+- [microsoft/agent-framework](https://github.com/microsoft/agent-framework), veRL, Kubernetes jobs, container-per-rollout isolation, OpenTelemetry
+- event hooks, compaction callbacks, deterministic cue fixtures, harness ablations
 
-- OpenForgeRL architecture, veRL, Kubernetes jobs, container-per-rollout isolation, OpenTelemetry, immutable trajectory stores, harness ablations
+Implementability score: **0.70**
 
-Implementability score: **0.63**
+## Implementation order
 
-The adapter pattern is concrete, but full reproduction needs distributed infrastructure and a public project artifact was not resolved from the primary source.
+1. Instrument one real workflow with a complete run identity.
+2. Add changed-surface and native-artifact assertions.
+3. Move memory and compaction events into deterministic harness policy.
+4. Only then use captured rollouts for routing, fine-tuning, or RL.
 
-## Working memory should be delivered by cues, not requested by the agent
+This order is deliberate. Better training on an unverified harness scales the wrong behavior faster.
 
-Core source: [Delivery, Not Storage](https://arxiv.org/abs/2607.20972v1)
+## Evidence and caveats
 
-Submission: 2026-07-23 06:50:04 UTC. First listed: 2026-07-24.
-
-### What it found
-
-The paper separates deliberate document memory from incidental working memory. Its proposed runtime gives each memory explicit trigger conditions over path, symbol, semantic, event, and temporal cues. The harness evaluates those conditions and injects matching facts without waiting for the agent to search or call a memory tool.
-
-In one controlled coding task, a pre-seeded store receives zero memory operations across 114 turns. Deterministic injection fires in every seeded run with zero reported false alarms. Thirty-nine percent of intra-session re-reads recover content already consumed before compaction. In the repeated-compaction probe, ten conversation-only facts disappear at the first summary and remain absent from 106 of 108 compactions, while harness-injected facts survive all 138 compact-resumes.
-
-The result isolates a real failure mode, but the evidence is narrow: one author, one controlled coding task, no public implementation artifact, and no broad false-positive evaluation over diverse repositories.
-
-### Why it matters
-
-A memory store can be perfectly durable and still fail if the model never asks for the right fact. Retrieval policy belongs in the harness, where runtime events can be matched deterministically and measured independently from model behavior.
-
-### Fit in the stack
-
-- **Memory systems:** separate durable evidence from trigger and delivery policy.
-- **Context economy:** inject only facts bound to the current path, symbol, event, or phase.
-- **Compaction:** re-evaluate cues after every resume instead of trusting summaries.
-- **Evaluation:** measure missed delivery, false delivery, re-read cost, and downstream behavior.
-
-### Implementable now
-
-1. Add typed triggers to a small set of repository-specific memory records.
-2. Evaluate triggers on file open, symbol lookup, command failure, phase change, and compact-resume.
-3. Log candidate matches, injected IDs, rejected IDs, token cost, and downstream use.
-4. Compare voluntary retrieval, always-on injection, and cue-triggered injection on the same tasks.
-5. Require evidence provenance and scope checks before any injected memory reaches the active context.
-
-Tools and methodologies worth exploring:
-
-- event hooks, path and symbol matchers, compaction-resume callbacks, deterministic trigger tests, memory provenance, false-injection fixtures
-
-Implementability score: **0.61**
-
-A rule-based pilot is straightforward, but the published evidence is too narrow to justify broad automatic injection without local false-positive testing.
-
-## Watchlist not promoted
-
-- [DynamicMCPBench](https://arxiv.org/abs/2607.20531v1) provides effect-scored evaluation across 24 models, 121 live MCP servers, and 750 tasks. It was submitted on 2026-07-10, and no public implementation repository resolved from the primary paper, so it is useful prior art rather than a top fresh finding.
-- [Tencent WorkBuddy Bench](https://arxiv.org/abs/2607.20911v1) adds contamination-resistant coding-agent evaluation, but today’s harness and memory findings expose more reusable control boundaries.
-
-## Working conclusion
-
-The harness should capture what the agent does without requiring cooperation, and deliver what the agent needs without relying on voluntary recall. Make both boundaries explicit, typed, and replayable before adding more model autonomy.
+- The papers above were checked at immutable arXiv v1 URLs. OpenSkillRisk had advanced to v2, but it is analyzed in Strategy and the cited v1 claims remain version-bound.
+- GitHub artifacts were inspected through metadata, root trees, README content, and licenses only. No external source was cloned, installed, imported, built, or executed.
+- The agentic pull-request artifact is populated but lacks a visible repository license, so treat it as study material rather than reusable code.
+- OpenForgeRL calls itself open source in the abstract, but no exact public project URL resolved from the primary pages during this run.
+- NotebookLM remained disabled. No podcast command, audio artifact, or manifest edit was made.

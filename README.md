@@ -6,27 +6,23 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily roundup, 2026-07-24: [make runtime state explicit and testable](roundups/2026-07-24.md)
-- AgenticAI daily analysis: [2026-07-24](AgenticAI/2026-07-24/reasoning.md)
-- Strategy daily sovereignty: [2026-07-24](Strategy/2026-07-24/sovereignty.md)
+- Saturday daily scan, 2026-07-25: [independent runtime proof](roundups/2026-07-25.md)
+- AgenticAI daily analysis: [2026-07-25](AgenticAI/2026-07-25/reasoning.md)
+- Strategy daily sovereignty: [2026-07-25](Strategy/2026-07-25/sovereignty.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
-- Friday synthesis, week ending 2026-07-17: [weekly roundup](roundups/2026-07-17.md)
-- Deep Dive Wednesday, 2026-07-22: [Target bindings need re-derivation before effects](Strategy/context-to-execution-integrity/context-to-execution-integrity.md#july-22-deep-dive-target-bindings-need-re-derivation-before-effects)
+- Friday synthesis, week ending 2026-07-24: [evidence-bearing boundaries](roundups/2026-07-24.md)
 
 ## Current thesis
 
-Reliable agents need explicit runtime objects wherever hidden state can change behavior: complete rollout records for training, deterministic cues for memory delivery, scoped handles for application state, and per-agent telemetry boundaries for governance.
+Runtime claims need independent proof at four boundaries:
 
-This update sharpens the stack into five practical rules:
+- inspect proposed tools, arguments, and effects before execution;
+- verify exact work products after local agent execution;
+- audit the model actually served behind a gateway;
+- declare one lifecycle owner before restart, recovery, restore, or uninstall.
 
-- train and evaluate through the real deployed harness rather than a simplified tool loop;
-- capture model calls, tool receipts, state deltas, rewards, and environment identity under one rollout ID;
-- trigger memory from typed runtime events and test false delivery separately from missed delivery;
-- replace hidden protocol sessions with scoped, revocable application handles;
-- bind traces, prompts, logs, encryption, retention, and export to one agent identity.
-
-A durable store is not useful memory if the model never retrieves it. A stateless protocol is not stateless governance if application handles carry ambient authority. Unified telemetry is not isolation unless access and retention are narrower than the data it concentrates.
+The shared rule is simple: self-reported state is not control evidence. Bind each claim to an external check, exact artifact, calibrated audit, or ownership contract.
 
 ## Browse by category
 

@@ -786,3 +786,19 @@ Sources:
 - [DocOps](https://arxiv.org/abs/2607.19865v1)
 - [icip-cas/DocOps](https://github.com/icip-cas/DocOps)
 - [DocOps project page](https://docopsbench.github.io)
+
+## July 25 update: structural guardrails need effect-level scores
+
+GuardianAgentBench shows why system-prompt safety is an incomplete evaluation target. Across 580 scenarios, structural LlamaIndex guards recover 19.9 percent of failures at a reported 0.5 percent false-positive rate, while stronger models tend to omit required tools and weaker models mis-select or over-call them.
+
+Practical lesson:
+- score missing, extra, wrong, and unsafe calls separately;
+- hold model, task, and tool catalog constant when comparing harness guards;
+- inspect tool identity, arguments, and effect class before execution;
+- report recovery, false positives, cost, latency, and long-chain degradation;
+- preserve attack mode, framework, guard version, and first blocked effect.
+
+Artifact caveat: no paper-owned benchmark repository resolved from the primary pages, so the structural pattern is implementable but the reported benchmark was not reproduced.
+
+Source:
+- [GuardianAgentBench](https://arxiv.org/abs/2607.20982v1)

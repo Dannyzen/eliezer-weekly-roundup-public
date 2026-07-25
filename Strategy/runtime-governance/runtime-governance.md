@@ -849,3 +849,21 @@ Provider caveat: the feature is specific to AgentCore and CloudWatch. The reusab
 Sources:
 - [AgentCore unified observability launch](https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-bedrock-agentcore-unified-observability-single-log-group/)
 - [AgentCore observability guide](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/observability-configure.html)
+
+## July 25 update: one runtime needs one lifecycle owner
+
+NemoClaw v0.0.95 makes lifecycle authority explicit for OpenShell gateways. The runtime validates whether NemoClaw or an external systemd service owns the listener and prevents recovery, stop, or uninstall from mutating an externally supervised gateway.
+
+Practical lesson:
+- store one canonical lifecycle owner per gateway and runtime;
+- verify owner and listener state before mutation;
+- make restore a staged, verified, atomic replacement;
+- accept only immutable remote digests or images pinned during the current operation;
+- reject skipped release gates as passing evidence and separate runner wait from execution time.
+
+Artifact caveat: the active Apache-2.0 repository supports Hermes, but GitHub exposes no tagged v0.0.95 release. NVIDIA's dated release notes are the authoritative delta.
+
+Sources:
+- [NemoClaw v0.0.95](https://docs.nvidia.com/nemoclaw/user-guide/openclaw/release-notes/2026/7/24)
+- [NVIDIA/NemoClaw](https://github.com/NVIDIA/NemoClaw)
+- [Gateway lifecycle authority](https://docs.nvidia.com/nemoclaw/user-guide/openclaw/deployment/gateway-lifecycle-authority)

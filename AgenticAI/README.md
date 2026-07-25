@@ -1,41 +1,37 @@
 # AgenticAI
 
-This index tracks the most recent structured update. Each finding includes a summary, a link into the detailed analysis, core sources, practical implementation paths, and an implementability score from 0 to 1.
+This index tracks the most recent structured research. Each finding includes a summary, a link into the detailed analysis, primary sources, practical implementation paths, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: Friday, 2026-07-24
+## Latest Structured Update: Saturday, 2026-07-25
 
-### Harness-native training needs an explicit rollout adapter
+### Guardrails need execution-time structural intervention
 
-Summary: OpenForgeRL records model calls and environment interactions from production-style harnesses, then feeds them into standard RL infrastructure while isolating rollouts in remote containers. The pattern makes the deployed harness trainable, but full reproduction is infrastructure-heavy and no exact public OpenForge artifact resolved.
+Summary: GuardianAgentBench evaluates 580 scenarios across six models and three production frameworks. Structural LlamaIndex guards recover 19.9 percent of failures at a reported 0.5 percent false-positive rate and outperform the tested system-prompt baseline across all six models.
 
-Analysis: [daily reasoning analysis](2026-07-24/reasoning.md#harness-native-training-needs-an-explicit-rollout-adapter)
-Durable topic: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md#july-24-update-real-harness-rollouts-need-an-explicit-training-adapter)
-Core source: [paper](https://arxiv.org/abs/2607.21557v1)
+Analysis: [daily reasoning analysis](2026-07-25/reasoning.md#guardrails-need-execution-time-structural-intervention)
+Core source: [GuardianAgentBench](https://arxiv.org/abs/2607.20982v1)
 Implementable now:
-- wrap one harness model endpoint with a recording proxy;
-- bind model calls, tool receipts, state deltas, rewards, and environment digests to one rollout ID;
-- replay the same policy across two harnesses;
-- add explicit error-recovery rewards and tests.
+- build a 30-scenario omission, mis-selection, over-call, unsafe-argument, and long-chain suite;
+- inspect tool identity, arguments, and effect class before execution;
+- score task success, unsafe effect, recovery, false positive, cost, and latency separately.
 Tools, repositories, and methodologies:
-- OpenForgeRL architecture, veRL, Kubernetes jobs, container-per-rollout isolation, OpenTelemetry, harness ablations
-Implementability score: 0.63
+- LangChain, LlamaIndex, Vectara, policy-as-code, exact-effect checks, OpenTelemetry
+Implementability score: 0.72
 
-### Working memory should be delivered by cues, not requested by the agent
+### Local coding agents need governed-data benchmarks
 
-Summary: A controlled coding task records zero voluntary memory operations over 114 turns. Deterministic cue injection survives all 138 compact-resumes in the reported probe, showing that retrieval policy belongs in runtime events rather than model discretion.
+Summary: RRBench evaluates 20 longitudinal data-preparation tasks that create 102 variables. Open-weight 31B to 35B models reach up to 87.9 percent average task completion, while deterministic artifact grading exposes incomplete and incorrect outputs.
 
-Analysis: [daily reasoning analysis](2026-07-24/reasoning.md#working-memory-should-be-delivered-by-cues-not-requested-by-the-agent)
-Durable topic: [Memory Systems](memory-systems/memory-systems.md#july-24-update-working-memory-delivery-should-be-a-harness-policy)
-Core source: [paper](https://arxiv.org/abs/2607.20972v1)
+Analysis: [daily reasoning analysis](2026-07-25/reasoning.md#local-coding-agents-need-governed-data-benchmarks)
+Core sources: [paper](https://arxiv.org/abs/2607.21482v1), [UCL-ARC/RRBench](https://github.com/UCL-ARC/RRBench)
 Implementable now:
-- add typed path, symbol, semantic, event, and temporal triggers;
-- re-evaluate cues after compaction and resume;
-- log candidate, injected, rejected, and consumed memory IDs;
-- compare voluntary, always-on, and cue-triggered retrieval.
+- create approved synthetic or de-identified task fixtures;
+- compare local models at fixed hardware, prompt, budget, and agent configuration;
+- grade exact variables plus downstream analysis effects.
 Tools, repositories, and methodologies:
-- event hooks, path and symbol matchers, compaction callbacks, deterministic trigger tests, false-injection fixtures
-Implementability score: 0.61
+- RRBench, Ollama, R, uv, tabular ground truth, deterministic column matching
+Implementability score: 0.84
 
 ## Current implication
 
-The harness should observe and deliver state without depending on model cooperation. Capture real rollouts for training, and inject scoped memory from deterministic runtime cues, with both boundaries replayable and independently testable.
+Agent evaluation should end at an observed effect or exact artifact. Put structural guards before side effects and deterministic local verification after them.

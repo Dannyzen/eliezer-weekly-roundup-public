@@ -1,41 +1,38 @@
 # Strategy
 
-This index tracks the most recent structured update. Each finding includes a summary, a link into the detailed analysis, core sources, practical implementation paths, and an implementability score from 0 to 1.
+This index tracks the most recent structured research. Each finding includes a summary, a link into the detailed analysis, primary sources, practical implementation paths, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: Friday, 2026-07-24
+## Latest Structured Update: Saturday, 2026-07-25
 
-### Stateless MCP makes application state explicit and conformance testable
+### Gateways need independent model-identity audits
 
-Summary: The MCP 2026-07-28 release candidate removes protocol sessions and initialization, adds routable operation headers, cache scope, fixed trace propagation, formal extensions, and full JSON Schema 2020-12. State moves into explicit application handles, where scope and revocation become application responsibilities.
+Summary: IRIS uses text-only random-generation probes to audit whole-stream substitution, backend attribution, routing dilution, and routing fraction. It reports 0.99 AUROC on a Qwen3 ladder and 0.85 mean power for 30 percent dilution on qualified OpenRouter pairs.
 
-Analysis: [daily sovereignty analysis](2026-07-24/sovereignty.md#stateless-mcp-makes-application-state-explicit-and-conformance-testable)
-Durable topic: [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md#july-24-update-stateless-mcp-moves-state-governance-into-explicit-handles)
-Core sources: [release candidate](https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/), [draft specification](https://modelcontextprotocol.io/specification/draft), [conformance suite](https://github.com/modelcontextprotocol/conformance)
+Analysis: [daily sovereignty analysis](2026-07-25/sovereignty.md#gateways-need-independent-model-identity-audits)
+Core sources: [IRIS paper](https://arxiv.org/abs/2607.20860v1), [Photen/IRIS-audit](https://github.com/Photen/IRIS-audit)
 Implementable now:
-- run the official draft conformance suite in staging;
-- inventory session and sticky-routing dependencies;
-- bind explicit handles to tenant, resource, scope, expiry, and revocation;
-- validate operation headers against request bodies.
+- enroll approved endpoints and freeze the audit budget before suspect queries;
+- bind model, provider, quantization, probe set, and response digests;
+- treat flags as private investigation triggers, not public proof.
 Tools, repositories, and methodologies:
-- MCP conformance suite, official SDKs, GitHub MCP Server, JSON Schema 2020-12, W3C Trace Context, contract tests
+- IRIS-audit, gateway shadow traffic, model catalogs, provider attestations, calibrated sequential testing
+Implementability score: 0.78
+
+### Runtime lifecycle ownership must be explicit
+
+Summary: NemoClaw v0.0.95 declares whether NemoClaw or an external systemd service owns the OpenShell gateway. Recovery and uninstall respect that owner. The same release adds atomic SQLite restore, immutable image checks, exact download verification, and executed-run E2E evidence.
+
+Analysis: [daily sovereignty analysis](2026-07-25/sovereignty.md#runtime-lifecycle-ownership-must-be-explicit)
+Core sources: [release notes](https://docs.nvidia.com/nemoclaw/user-guide/openclaw/release-notes/2026/7/24), [NVIDIA/NemoClaw](https://github.com/NVIDIA/NemoClaw)
+Implementable now:
+- declare one lifecycle owner per gateway;
+- validate ownership and listeners before restart, recovery, or uninstall;
+- stage and verify state restore before atomic replacement;
+- reject skipped release gates as passing evidence.
+Tools, repositories, and methodologies:
+- NemoClaw, OpenShell, systemd, immutable digests, SQLite atomic replacement, E2E evidence ledgers
 Implementability score: 0.90
-
-### Per-agent telemetry should share one access and encryption boundary
-
-Summary: AgentCore now sends traces, prompts, structured logs, and stdout to one per-agent CloudWatch log group. Correlation and policy become simpler, but concentrated run data requires tighter IAM, encryption, retention, redaction, and export controls.
-
-Analysis: [daily sovereignty analysis](2026-07-24/sovereignty.md#per-agent-telemetry-should-share-one-access-and-encryption-boundary)
-Durable topic: [Runtime Governance](runtime-governance/runtime-governance.md#july-24-update-telemetry-needs-a-per-agent-policy-boundary)
-Core sources: [AWS launch](https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-bedrock-agentcore-unified-observability-single-log-group/), [developer guide](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/observability-configure.html)
-Implementable now:
-- define IAM, CMK, retention, redaction, and export policy;
-- upgrade ADOT and migrate one staging runtime;
-- correlate prompt, tool, memory, identity, and stdout events;
-- prove cross-agent log isolation.
-Tools, repositories, and methodologies:
-- CloudWatch, ADOT 0.17.1+, W3C Trace Context, IAM Access Analyzer, CMK policy tests, OpenTelemetry export
-Implementability score: 0.92
 
 ## Current implication
 
-Protocol state and telemetry should be explicit policy objects. Bind state handles, request operations, conformance results, and run evidence to one agent identity rather than relying on hidden sessions or shared log stores.
+Sovereignty requires independent identity and singular ownership. Verify what served the request, and let only the declared supervisor mutate the runtime.

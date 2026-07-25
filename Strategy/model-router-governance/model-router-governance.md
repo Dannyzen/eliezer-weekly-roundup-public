@@ -252,3 +252,20 @@ Sources:
 0.83
 
 Most of this is implementable with existing router features, CI tests, cosign, Redis, allowlists, and logging. The harder work is standardizing reasoning-control semantics and keeping routing policy current as providers and model profiles change quickly.
+
+## July 25 update: router telemetry needs independent backend audits
+
+IRIS adds an external verification layer to model routing. Returned random strings carry enough stable bias to detect whole-stream substitution, attribute an enrolled backend, estimate routing dilution, and size the query budget before suspect traffic runs.
+
+Practical lesson:
+- distinguish configured model identity from independently observed identity;
+- enroll provider, model, quantization, and sampling settings under controlled conditions;
+- freeze audit budget and thresholds before live verification;
+- bind probes, response digests, feature version, thresholds, and verdict;
+- treat a flag as a private investigation trigger because honest quantization or kernel differences can also produce drift.
+
+Artifact caveat: the repository is substantial and includes raw responses, analyses, manifests, and anonymity checks, but code and data are noncommercially licensed.
+
+Sources:
+- [IRIS](https://arxiv.org/abs/2607.20860v1)
+- [Photen/IRIS-audit](https://github.com/Photen/IRIS-audit)

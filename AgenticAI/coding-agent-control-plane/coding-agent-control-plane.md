@@ -148,3 +148,20 @@ Sources:
 - [Test Coverage Analysis of Agentic Pull Requests](https://arxiv.org/abs/2607.18057v1)
 - [SageSELab replication repository](https://github.com/SageSELab/Agentic-Pull-Request-Test-Coverage)
 - [Zenodo 1.0.0](https://doi.org/10.5281/zenodo.21419686)
+
+## July 25 update: local coding needs exact governed-data artifacts
+
+RRBench moves local-first coding from a privacy claim to a measurable release contract. Its 20 tasks create 102 variables from longitudinal cohort data, and deterministic table comparison exposes incomplete or wrong transformations even when generated code looks plausible.
+
+Practical lesson:
+- keep source data, model traffic, generated code, output tables, and verifier evidence inside the governed boundary;
+- bind task definition, source digest, model, agent config, code digest, output digest, and score;
+- compare local models on fixed hardware, prompts, budgets, and agent settings;
+- grade exact variables and representative downstream analyses;
+- promote task-model pairs, not blanket model reputations.
+
+Artifact caveat: the MIT repository is populated and testable, but faithful use requires Ubuntu, R, Python dependencies, and authorized access to the protected source data. It was inspected read-only.
+
+Sources:
+- [Agentic coding without the cloud](https://arxiv.org/abs/2607.21482v1)
+- [UCL-ARC/RRBench](https://github.com/UCL-ARC/RRBench)

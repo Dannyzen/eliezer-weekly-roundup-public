@@ -6,23 +6,23 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Saturday daily scan, 2026-07-25: [independent runtime proof](roundups/2026-07-25.md)
-- AgenticAI daily analysis: [2026-07-25](AgenticAI/2026-07-25/reasoning.md)
-- Strategy daily sovereignty: [2026-07-25](Strategy/2026-07-25/sovereignty.md)
+- Sunday daily scan, 2026-07-26: [issue evidence versus execution authority](roundups/2026-07-26.md)
+- AgenticAI daily analysis: [2026-07-26](AgenticAI/2026-07-26/reasoning.md)
+- Strategy daily sovereignty: [2026-07-26](Strategy/2026-07-26/sovereignty.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 - Friday synthesis, week ending 2026-07-24: [evidence-bearing boundaries](roundups/2026-07-24.md)
 
 ## Current thesis
 
-Runtime claims need independent proof at four boundaries:
+Issue systems sit on both sides of the agent boundary:
 
-- inspect proposed tools, arguments, and effects before execution;
-- verify exact work products after local agent execution;
-- audit the model actually served behind a gateway;
-- declare one lifecycle owner before restart, recovery, restore, or uninstall.
+- realistic issue-shaped requests improve evaluation fidelity;
+- issue bodies, comments, PDFs, websites, and source comments remain untrusted evidence;
+- model confidence and rationale improve review routing but do not grant authority;
+- side effects require scoped capabilities, deterministic policy, and exact receipts.
 
-The shared rule is simple: self-reported state is not control evidence. Bind each claim to an external check, exact artifact, calibrated audit, or ownership contract.
+The shared rule is narrow: use realistic content to define work, but never let that content or an agent's self-assessment authorize execution.
 
 ## Browse by category
 

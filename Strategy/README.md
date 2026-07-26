@@ -1,38 +1,37 @@
 # Strategy
 
-This index tracks the most recent structured research. Each finding includes a summary, a link into the detailed analysis, primary sources, practical implementation paths, and an implementability score from 0 to 1.
+This index tracks the most recent structured research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: Saturday, 2026-07-25
+## Latest Structured Update: Sunday, 2026-07-26
 
-### Gateways need independent model-identity audits
+### Coding agents need malicious-issue regression gates
 
-Summary: IRIS uses text-only random-generation probes to audit whole-stream substitution, backend attribution, routing dilution, and routing fraction. It reports 0.99 AUROC on a Qwen3 ladder and 0.85 mean power for 30 percent dilution on qualified OpenRouter pairs.
+Summary: IssueTrojanBench produced 4,176 experiments across six agent-model configurations. It reports 66.5 percent exploit execution, 72.2 percent success for ordinary text channels, and little protection from prompt boundary markers.
 
-Analysis: [daily sovereignty analysis](2026-07-25/sovereignty.md#gateways-need-independent-model-identity-audits)
-Core sources: [IRIS paper](https://arxiv.org/abs/2607.20860v1), [Photen/IRIS-audit](https://github.com/Photen/IRIS-audit)
+Analysis: [daily sovereignty analysis](2026-07-26/sovereignty.md#coding-agents-need-malicious-issue-regression-gates)
+Core sources: [paper](https://arxiv.org/abs/2607.20759v1), [artifact](https://doi.org/10.5281/zenodo.19245678), [repository](https://github.com/software-artifacts/IssueTrojanBench)
 Implementable now:
-- enroll approved endpoints and freeze the audit budget before suspect queries;
-- bind model, provider, quantization, probe set, and response digests;
-- treat flags as private investigation triggers, not public proof.
+- add malicious issue, PDF, website, source-comment, and issue-comment fixtures;
+- deny package, network, secret, hook, and persistence effects unless granted;
+- check target and effect after generation and before execution.
 Tools, repositories, and methodologies:
-- IRIS-audit, gateway shadow traffic, model catalogs, provider attestations, calibrated sequential testing
-Implementability score: 0.78
+- IssueTrojanBench, capability brokers, Cedar or OPA, sandboxes, egress controls
+Implementability score: 0.82
 
-### Runtime lifecycle ownership must be explicit
+### GitHub issue approvals are useful UX, not a security boundary
 
-Summary: NemoClaw v0.0.95 declares whether NemoClaw or an external systemd service owns the OpenShell gateway. Recovery and uninstall respect that owner. The same release adds atomic SQLite restore, immutable image checks, exact download verification, and executed-run E2E evidence.
+Summary: GitHub Issues can attach confidence and rationale to automation actions and hold suggestions for review. GitHub explicitly says approvals are not a server-side security control.
 
-Analysis: [daily sovereignty analysis](2026-07-25/sovereignty.md#runtime-lifecycle-ownership-must-be-explicit)
-Core sources: [release notes](https://docs.nvidia.com/nemoclaw/user-guide/openclaw/release-notes/2026/7/24), [NVIDIA/NemoClaw](https://github.com/NVIDIA/NemoClaw)
+Analysis: [daily sovereignty analysis](2026-07-26/sovereignty.md#github-issue-approvals-are-useful-ux-not-a-security-boundary)
+Core sources: [changelog](https://github.blog/changelog/2026-07-23-agent-automation-controls-in-github-issues-in-public-preview/), [security model](https://docs.github.com/copilot/concepts/agents/cloud-agent/about-automations)
 Implementable now:
-- declare one lifecycle owner per gateway;
-- validate ownership and listeners before restart, recovery, or uninstall;
-- stage and verify state restore before atomic replacement;
-- reject skipped release gates as passing evidence.
+- enable rationale and suggestions for low-risk metadata automation;
+- hold uncertain or high-impact actions for review;
+- keep tools least-privilege and preserve mutation receipts.
 Tools, repositories, and methodologies:
-- NemoClaw, OpenShell, systemd, immutable digests, SQLite atomic replacement, E2E evidence ledgers
-Implementability score: 0.90
+- GitHub Agentic Workflows, Copilot automations, issue intents, `has:suggestions`, workflow approval
+Implementability score: 0.86
 
 ## Current implication
 
-Sovereignty requires independent identity and singular ownership. Verify what served the request, and let only the declared supervisor mutate the runtime.
+Issues are evidence-bearing work objects, not authority tokens. Review signals help people; scoped capabilities and deterministic policy control effects.

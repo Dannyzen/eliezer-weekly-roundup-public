@@ -233,3 +233,20 @@ Artifact caveat: the primary pages say code is available but expose no exact pub
 
 Source:
 - [Twin Agent](https://arxiv.org/abs/2607.19595v1)
+
+## July 26 update: issue content is evidence, not execution authority
+
+IssueTrojanBench measures the failure directly. Across 4,176 runs, normal text channels reached 72.2 percent exploit success, while low-authority image alt text reached 16.7 percent. Prompt boundary markers did not stop malicious actions. GitHub's confidence, rationale, and optional approvals improve review flow, but GitHub explicitly says approvals are not a server-side security boundary.
+
+Practical lesson:
+- classify issue bodies, comments, PDFs, websites, and source comments as restricted evidence;
+- use confidence and rationale to route review, never to widen capabilities;
+- keep tokens, tools, repository scope, network, dependencies, and persistence least-privilege;
+- require deterministic checks over user intent, evidence class, target, arguments, and effect;
+- store proposal, reviewer decision, policy verdict, and server-side mutation receipt.
+
+Sources:
+- [IssueTrojanBench](https://arxiv.org/abs/2607.20759v1)
+- [IssueTrojanBench artifact](https://doi.org/10.5281/zenodo.19245678)
+- [GitHub issue automation controls](https://github.blog/changelog/2026-07-23-agent-automation-controls-in-github-issues-in-public-preview/)
+- [Copilot automation security model](https://docs.github.com/copilot/concepts/agents/cloud-agent/about-automations)

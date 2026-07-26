@@ -165,3 +165,22 @@ Artifact caveat: the MIT repository is populated and testable, but faithful use 
 Sources:
 - [Agentic coding without the cloud](https://arxiv.org/abs/2607.21482v1)
 - [UCL-ARC/RRBench](https://github.com/UCL-ARC/RRBench)
+
+## July 26 update: real-work fixtures need isolated grader authority
+
+WorkBuddy Bench and IssueTrojanBench expose opposite sides of issue-shaped work. Realistic requests improve evaluation, but issue text, comments, PDFs, websites, and source comments cannot inherit execution authority from the task channel.
+
+Practical lesson:
+- package realistic tasks with isolated workspaces and post-episode graders;
+- apply baseline and oracle admission checks before fixtures enter the suite;
+- classify every issue-derived field by source and allowed use;
+- deny package, network, secret, hook, and persistence effects unless a task manifest grants them;
+- bind task, evidence class, action, policy verdict, effect, and grader result in one trajectory.
+
+Artifact caveats: WorkBuddy Bench uses a custom Tencent license with an EU-use limitation. IssueTrojanBench contains adversarial payloads and should only be evaluated in isolated infrastructure.
+
+Sources:
+- [Tencent WorkBuddy Bench](https://arxiv.org/abs/2607.20911v1)
+- [WorkBuddy Bench repository](https://github.com/Tencent/workbuddy-bench)
+- [IssueTrojanBench](https://arxiv.org/abs/2607.20759v1)
+- [IssueTrojanBench artifact](https://doi.org/10.5281/zenodo.19245678)

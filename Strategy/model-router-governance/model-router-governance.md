@@ -1,6 +1,6 @@
 # Model Router Governance
 
-Last updated: 2026-07-05
+Last updated: 2026-07-27
 
 Core sources:
 - LiteLLM v1.83.13-nightly: https://github.com/BerriAI/litellm/releases/tag/v1.83.13-nightly
@@ -269,3 +269,19 @@ Artifact caveat: the repository is substantial and includes raw responses, analy
 Sources:
 - [IRIS](https://arxiv.org/abs/2607.20860v1)
 - [Photen/IRIS-audit](https://github.com/Photen/IRIS-audit)
+
+## July 27 update: the routing unit should match the reward unit
+
+TRACE-ROUTER assigns one backend at task admission, pins the task to that model, and updates a contextual bandit from terminal accuracy-latency reward. This is a cleaner learning contract than per-call routing when success arrives only after a long trajectory.
+
+Practical lesson:
+- emit one task-level receipt with task features, policy version, selected backend, latency, cost, outcome, and update;
+- shadow task pinning against static heuristics, per-call routing, cascades, and stage-aware escalation;
+- define explicit escape hatches for low-confidence admission, provider failure, and mid-trajectory evidence;
+- keep privacy, residency, budget, and tool authority invariant across routing choices;
+- refuse online learning when terminal rewards are sparse, gameable, or untrustworthy.
+
+Evidence caveat: the paper reports strong deltas on three benchmarks, but we found no paper-owned public implementation artifact as of 2026-07-27. Task pinning can preserve a bad initial decision and does not by itself solve failover or sparse rewards.
+
+Source:
+- [TRACE-ROUTER](https://arxiv.org/abs/2607.22465v1)

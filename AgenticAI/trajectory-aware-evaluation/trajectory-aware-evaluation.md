@@ -802,3 +802,19 @@ Artifact caveat: no paper-owned benchmark repository resolved from the primary p
 
 Source:
 - [GuardianAgentBench](https://arxiv.org/abs/2607.20982v1)
+
+## July 27 update: a benchmark score needs a protocol-validity proof
+
+HackDetect separates three questions: what exposure existed, how the agent used it, and whether that path inflated the score. Its audit of 2,385 traces across 15 benchmarks shows that realistic environments add invalid success paths unless artifacts, state, feedback, and graders are treated as part of the benchmark contract.
+
+Practical lesson:
+- state which capability must remain necessary for success;
+- inventory public solutions, hidden artifacts, mutable state, judge channels, generator structure, and repeated feedback;
+- preserve evidence that links exposure to agent behavior and score impact;
+- calculate intended and exploit scores separately;
+- reject contaminated or invalid runs before aggregating leaderboard results.
+
+Evidence caveat: the 67.0 percent and 66.7 percent findings apply to Frontier Science and AutoLab subsets, not to all agent benchmarks. No public HackDetect implementation artifact was verified.
+
+Source:
+- [Do Agent Benchmarks Measure Capability?](https://arxiv.org/abs/2607.22368v1)

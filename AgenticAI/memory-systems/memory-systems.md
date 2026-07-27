@@ -1,6 +1,6 @@
 # Memory Systems
 
-Last updated: 2026-07-13
+Last updated: 2026-07-27
 
 Memory is becoming the real architecture question for long-lived agents.
 
@@ -859,3 +859,21 @@ Evidence caveat: the reported probe covers one controlled coding task and no pub
 
 Source:
 - [Delivery, Not Storage](https://arxiv.org/abs/2607.20972v1)
+
+## July 27 update: memory benchmarks need tenure checkpoints
+
+Ground Truth First makes time a first-class memory evaluation variable. Facts are generated with validity intervals and source channels before conversations exist, then questions are created from that truth model. This avoids extracting an answer key from already-rendered dialogue.
+
+Practical lesson:
+- generate canonical facts before rendered conversations;
+- test short, medium, and long tenure with identical answerer and judge versions;
+- include as-of-date questions, supersession, staleness traps, source trust, and injection probes;
+- report write quality, recall, read cost, and provenance failures separately;
+- do not promote a short-horizon memory winner without a long-horizon checkpoint.
+
+Artifact caveat: Veracium is a populated MIT-licensed repository and PyPI package, but this scan inspected it read-only. The nine-week ranking inversion covers six users and 108 long-horizon questions in a synthetic corpus.
+
+Sources:
+- [Ground Truth First](https://arxiv.org/abs/2607.21962v1)
+- [Veracium](https://github.com/veracium-ai/Veracium)
+- [Veracium on PyPI](https://pypi.org/project/veracium/)

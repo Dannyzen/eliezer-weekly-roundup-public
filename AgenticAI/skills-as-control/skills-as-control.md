@@ -1,6 +1,6 @@
 # Skills as Control
 
-Last updated: 2026-07-06
+Last updated: 2026-07-27
 
 Core sources:
 - From Research Question to Scientific Workflow: Leveraging Agentic AI for Science Automation: https://arxiv.org/abs/2604.21910v1
@@ -749,3 +749,19 @@ Sources:
 - [OpenSkillRisk](https://arxiv.org/abs/2607.20121v1)
 - [Miaow-Lab/OpenSkillRisk](https://github.com/Miaow-Lab/OpenSkillRisk)
 - [OpenSkillRisk dataset](https://huggingface.co/datasets/Miaow-Lab/OpenSkillRisk)
+
+## July 27 update: skill releases need negative-delta gates
+
+The Regression Tax shows why average improvement is an incomplete skill metric. A skill can add successful tasks while breaking tasks the same agent solved without it. The release record therefore needs gains, regressions, residual failures, and net effect.
+
+Practical lesson:
+- pair skill-enabled and no-skill trials on identical tasks;
+- add a description-present but non-invokable condition to detect context-only influence;
+- grade grounding and verification obligations separately from procedure following;
+- preserve skill identity, text hash, invocation, trace, and outcome under one run identity;
+- set a regression budget that can block release even when average pass rate rises.
+
+Evidence caveat: the study covers nearly 6,000 condition runs but only two office-automation benchmarks, and no paper-owned implementation artifact was released. Treat description osmosis, grounding displacement, and verification displacement as observed mechanisms to test, not universal causes.
+
+Source:
+- [The Regression Tax](https://arxiv.org/abs/2607.22520v1)

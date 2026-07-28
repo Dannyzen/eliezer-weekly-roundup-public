@@ -250,3 +250,21 @@ Sources:
 - [IssueTrojanBench artifact](https://doi.org/10.5281/zenodo.19245678)
 - [GitHub issue automation controls](https://github.blog/changelog/2026-07-23-agent-automation-controls-in-github-issues-in-public-preview/)
 - [Copilot automation security model](https://docs.github.com/copilot/concepts/agents/cloud-agent/about-automations)
+
+## July 28 update: confine taint in engine-owned child trajectories
+
+APPA offers a middle path between permanent whole-context taint and unsafe declassification. The runtime checks acquisition prospectively, isolates restricted reads in a child trajectory, and admits only checked derivatives or atomic one-call rulings back to the unchanged parent.
+
+Practical lesson:
+- label sources and sinks before observation;
+- let child reads narrow only child authority;
+- return typed, bounded, provenance-bearing derivatives;
+- bind exceptional authority to one rendered call;
+- preserve parent, child, labels, sanitizer, ruling, merge, and effect in one event log;
+- evaluate authorized utility beside attack success.
+
+Evidence caveat: APPA is an Archestra AI-authored preprint with an author-built benchmark and no public implementation artifact on the primary pages. Treat it as an architecture pattern pending independent replication.
+
+Sources:
+- [Agentic Permissions Policy Algebra](https://arxiv.org/abs/2607.24625v1)
+- [ContainmentBench](https://arxiv.org/abs/2607.23999v1)

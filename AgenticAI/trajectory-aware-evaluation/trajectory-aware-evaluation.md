@@ -818,3 +818,19 @@ Evidence caveat: the 67.0 percent and 66.7 percent findings apply to Frontier Sc
 
 Source:
 - [Do Agent Benchmarks Measure Capability?](https://arxiv.org/abs/2607.22368v1)
+
+## July 28 update: containment is a trace property
+
+ContainmentBench shows that terminal attack success is not a sufficient statistic. Policies with the same zero committed-harm result can differ sharply in propagation, recovery evidence, and authorized utility.
+
+Practical lesson:
+- trace untrusted observation, proposal, memory, delegation, authorization, and commit;
+- separate endpoint compliance, logged propagation, recovery, clean utility, and authorized tainted utility;
+- include no-defense positive controls and matched policy comparisons;
+- preserve denominator and evidence-stage composition;
+- do not promote a recovery claim without the controls that make it identifiable.
+
+Evidence caveat: the 17,640-rollout study is synthetic and single-model, and the intent-aware case assumes a correct structured ledger. The primary pages expose no exact public repository URL.
+
+Source:
+- [ContainmentBench](https://arxiv.org/abs/2607.23999v1)

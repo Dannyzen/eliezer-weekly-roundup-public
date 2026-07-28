@@ -6,23 +6,23 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Monday daily scan, 2026-07-27: [matched counterfactuals for memory, benchmarks, skills, and routing](roundups/2026-07-27.md)
-- AgenticAI daily analysis: [2026-07-27](AgenticAI/2026-07-27/reasoning.md)
-- Strategy daily sovereignty: [2026-07-27](Strategy/2026-07-27/sovereignty.md)
+- Tuesday daily scan, 2026-07-28: [state-bound evidence for memory, containment, code repair, and taint confinement](roundups/2026-07-28.md)
+- AgenticAI daily analysis: [2026-07-28](AgenticAI/2026-07-28/reasoning.md)
+- Strategy daily sovereignty: [2026-07-28](Strategy/2026-07-28/sovereignty.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 - Friday synthesis, week ending 2026-07-24: [evidence-bearing boundaries](roundups/2026-07-24.md)
 
 ## Current thesis
 
-Our practical synthesis is to use matched baselines:
+Our practical synthesis is to bind evidence to the state and authority it can justify:
 
-- memory systems should be tested across tenure, not only short histories;
-- benchmark scores need proof that the intended capability remained necessary;
-- skills need paired gain-and-regression accounting;
-- routing policy should be evaluated at the same task boundary as its reward.
+- memory evaluation must prove that a stored fact reached the decision where it mattered;
+- containment evaluation must preserve endpoint, propagation, recovery, and authorized utility separately;
+- coding-agent tests must name the exact code, fixture, verifier, and environment they certify;
+- untrusted inspection should narrow a child trajectory, not permanently taint or silently empower the parent.
 
-The shared rule is narrow: hold tasks, users, time windows, models, and harnesses fixed where possible; preserve what changed and which alternate success paths were available. Without that evidence, an improved score is weaker than it looks.
+The shared rule is narrow: no free-floating evidence. Every memory, test result, authorization, and sanitized derivative needs a state identity, provenance, validity scope, and effect receipt.
 
 ## Browse by category
 

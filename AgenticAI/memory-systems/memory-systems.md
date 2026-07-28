@@ -877,3 +877,21 @@ Sources:
 - [Ground Truth First](https://arxiv.org/abs/2607.21962v1)
 - [Veracium](https://github.com/veracium-ai/Veracium)
 - [Veracium on PyPI](https://pypi.org/project/veracium/)
+
+## July 28 update: decision-time relevance can require world knowledge
+
+Keep It InMind separates direct recall from indirect application. Query-conditioned retrieval can store a fact correctly and recall it on demand, yet fail to surface it when relevance depends on world knowledge not present in either text.
+
+Practical lesson:
+- pair direct recall with indirect application queries;
+- instrument storage, target recall, bridge competence, and final application separately;
+- keep high-impact stable constraints in typed visible state when feasible;
+- compare query retrieval, proactive routing, and always-in-state profiles on identical tasks;
+- treat memory routing as a policy problem, not only an embedding problem.
+
+Artifact caveat: the public repository contains the 125-task dataset, schema, checksum, and documentation, but no release or GitHub license metadata. It was inspected read-only.
+
+Sources:
+- [Keep It InMind](https://arxiv.org/abs/2607.24368v1)
+- [InMind repository](https://github.com/imlrz/InMind)
+- [InMind project site](https://keep-it-inmind.github.io/)

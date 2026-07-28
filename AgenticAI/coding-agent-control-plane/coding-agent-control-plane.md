@@ -184,3 +184,19 @@ Sources:
 - [WorkBuddy Bench repository](https://github.com/Tencent/workbuddy-bench)
 - [IssueTrojanBench](https://arxiv.org/abs/2607.20759v1)
 - [IssueTrojanBench artifact](https://doi.org/10.5281/zenodo.19245678)
+
+## July 28 update: verifier evidence must name the code state
+
+Looping Is Not Reliability makes revision evidence stateful. A test result certifies one candidate under one fixture, verifier, and environment. Any revision invalidates that evidence until fresh verification runs.
+
+Practical lesson:
+- hash candidates before verification;
+- bind diagnostics and tests to code, fixtures, verifier, and environment identity;
+- preserve the last verified checkpoint before further revision;
+- require fresh completion certification after state changes;
+- report discovery, preservation, certification, competence, and liveness separately.
+
+Evidence caveat: the controlled function-level results are strong, but the 24-bug repository experiments show floor effects and no Holm-significant component effects. No exact public reference-implementation URL was exposed on the primary pages.
+
+Source:
+- [Looping Is Not Reliability](https://arxiv.org/abs/2607.24604v1)

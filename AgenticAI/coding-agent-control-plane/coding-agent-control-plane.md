@@ -200,3 +200,18 @@ Evidence caveat: the controlled function-level results are strong, but the 24-bu
 
 Source:
 - [Looping Is Not Reliability](https://arxiv.org/abs/2607.24604v1)
+
+## July 29 update: formal specifications need implementation-grounded admission
+
+Specula extends coding-agent control from tests and diffs into formal models. The agent may generate TLA+ models and invariants, but the control plane admits findings only after model checking, trace validation against the implementation, and code-level replay.
+
+Practical lesson:
+- bind source revision, model, harness, specification, invariant, trace, counterexample, and reproduction;
+- reject formal models that fail code-trace validation;
+- require counterexamples to reproduce against an isolated target copy;
+- preserve the reported, confirmed, and fixed subsets instead of collapsing every discovered bug into one number;
+- keep generated target changes separate from the original checkout.
+
+Sources:
+- [Specula](https://arxiv.org/abs/2607.25333v1)
+- [specula-org/Specula](https://github.com/specula-org/Specula)

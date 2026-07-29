@@ -1052,3 +1052,22 @@ Artifact caveat: the paper claims open-source code, data, and models, but its pr
 
 Source:
 - [OpenForgeRL](https://arxiv.org/abs/2607.21557v1)
+
+## July 29 update: optimize explicit artifacts, not unconstrained adaptation
+
+Specula and the frozen-harness study define two complementary harness rules. Agent-authored formal specifications need deterministic trace and replay checks. Adaptive harness policies need to beat an optimized static configuration before they receive online authority.
+
+Practical lesson:
+- make specifications, prompts, tool policies, memory policies, planning depth, verification, and budgets versioned artifacts;
+- require model checking, trace validation, and code-level replay for agent-authored formal models;
+- begin harness optimization from a small reviewed action space and a strong static baseline;
+- isolate malformed episodes and preserve reward, cost, latency, compliance, and cache-accounting evidence;
+- enable online adaptation only when held-out gains justify its sample and governance cost.
+
+Artifact caveats: Specula is Apache-2.0 and populated. The context-optimization repository is populated but has no declared license, and its online controllers did not beat the static baseline in the reported budget.
+
+Sources:
+- [Specula](https://arxiv.org/abs/2607.25333v1)
+- [specula-org/Specula](https://github.com/specula-org/Specula)
+- [Frozen harness control study](https://arxiv.org/abs/2607.25415v1)
+- [context-optimization-rl](https://github.com/dpaul0501/context-optimization-rl)

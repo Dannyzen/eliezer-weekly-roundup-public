@@ -6,23 +6,23 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Tuesday daily scan, 2026-07-28: [state-bound evidence for memory, containment, code repair, and taint confinement](roundups/2026-07-28.md)
-- AgenticAI daily analysis: [2026-07-28](AgenticAI/2026-07-28/reasoning.md)
-- Strategy daily sovereignty: [2026-07-28](Strategy/2026-07-28/sovereignty.md)
+- Wednesday daily scan, 2026-07-29: [artifact-checked agents and explicit protocol state](roundups/2026-07-29.md)
+- AgenticAI daily analysis: [2026-07-29](AgenticAI/2026-07-29/reasoning.md)
+- Strategy daily sovereignty: [2026-07-29](Strategy/2026-07-29/sovereignty.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 - Friday synthesis, week ending 2026-07-24: [evidence-bearing boundaries](roundups/2026-07-24.md)
 
 ## Current thesis
 
-Our practical synthesis is to bind evidence to the state and authority it can justify:
+The practical synthesis is to turn model output and hidden runtime state into explicit artifacts that independent machinery can verify:
 
-- memory evaluation must prove that a stored fact reached the decision where it mattered;
-- containment evaluation must preserve endpoint, propagation, recovery, and authorized utility separately;
-- coding-agent tests must name the exact code, fixture, verifier, and environment they certify;
-- untrusted inspection should narrow a child trajectory, not permanently taint or silently empower the parent.
+- agent-authored specifications need trace validation, model checking, and code-level replay;
+- harness adaptation needs deterministic rewards and a static optimized baseline before online learning;
+- stateless protocols need typed application handles with principal, tenant, scope, expiry, revocation, and trace identity;
+- evidence must stay bound to the exact source, runtime, artifact, and effect it certifies.
 
-The shared rule is narrow: no free-floating evidence. Every memory, test result, authorization, and sanitized derivative needs a state identity, provenance, validity scope, and effect receipt.
+The shared rule is narrow: the model may propose, but deterministic systems must validate the artifact, own state transitions, and preserve receipts.
 
 ## Browse by category
 

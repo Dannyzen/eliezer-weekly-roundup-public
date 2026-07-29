@@ -952,3 +952,22 @@ Sources:
 - [MCP 2026-07-28 release candidate](https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/)
 - [MCP conformance suite](https://github.com/modelcontextprotocol/conformance)
 - [GitHub MCP Server implementation note](https://github.blog/changelog/2026-07-23-github-mcp-server-supports-the-next-mcp-specification)
+
+## July 29 update: stable stateless MCP makes handles the governance boundary
+
+MCP 2026-07-28 is now stable. The release removes protocol sessions and initialization, requires self-contained request metadata and `server/discover`, and moves cross-call state into explicit server-minted handles. It also adds operation headers, cache scope and TTL, trace-context conventions, multi-round-trip input, and an official Tasks extension.
+
+Practical lesson:
+- migrate application state into typed handles bound to tenant, principal, resource, scope, expiry, revocation, and trace identity;
+- reject routing-header and body mismatches before tool dispatch;
+- prevent private catalog caches from crossing principal or tenant boundaries;
+- pin protocol versions and run official conformance plus mixed-version fixtures;
+- retire sticky-session and shared-session-store assumptions only after staged compatibility proof.
+
+Migration caveat: the specification is stable, but SDK and server adoption remains asynchronous. Mixed-version operation is a first-class migration requirement.
+
+Sources:
+- [MCP 2026-07-28 specification](https://modelcontextprotocol.io/specification/2026-07-28)
+- [MCP 2026-07-28 changelog](https://modelcontextprotocol.io/specification/2026-07-28/changelog)
+- [MCP stable release](https://github.com/modelcontextprotocol/modelcontextprotocol/releases/tag/2026-07-28)
+- [MCP conformance suite](https://github.com/modelcontextprotocol/conformance)

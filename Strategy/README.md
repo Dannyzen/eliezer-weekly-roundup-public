@@ -2,37 +2,22 @@
 
 This index tracks the most recent structured research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: Tuesday, 2026-07-28
+## Latest Structured Update: Wednesday, 2026-07-29
 
-### Taint confinement needs engine-owned child trajectories
+### Stateless MCP moves state governance into explicit handles
 
-Summary: APPA proposes keeping untrusted or sensitive reads inside restricted child trajectories and admitting only checked returns or atomic one-call rulings. It reports attack success falling from 31 to 50 percent to 0 to 7 percent across four models.
+Summary: Stable MCP 2026-07-28 removes protocol sessions and initialization. Application state now travels through explicit handles, while routing headers, scoped caching, trace context, authorization changes, and conformance tests become production control surfaces.
 
-Analysis: [daily sovereignty analysis](2026-07-28/sovereignty.md#taint-confinement-needs-engine-owned-branches-and-checked-return)
-Core source: [paper](https://arxiv.org/abs/2607.24625v1)
+Analysis: [daily sovereignty analysis](2026-07-29/sovereignty.md#mcp-2026-07-28-makes-application-state-explicit)
+Core sources: [stable specification](https://modelcontextprotocol.io/specification/2026-07-28), [changelog](https://modelcontextprotocol.io/specification/2026-07-28/changelog), [stable release](https://github.com/modelcontextprotocol/modelcontextprotocol/releases/tag/2026-07-28)
 Implementable now:
-- label sources and sinks before observation;
-- isolate restricted reads in child trajectories;
-- merge only typed, size-bounded, provenance-bearing derivatives;
-- bind exceptional authority to one rendered action.
+- inventory session and initialization dependencies;
+- bind typed handles to principal, tenant, scope, expiry, revocation, and trace identity;
+- run conformance and mixed-version staging before migration.
 Tools, repositories, and methodologies:
-- information-flow labels, child run identities, trusted sanitizers, atomic policy rulings, append-only event logs
-Implementability score: 0.52
-
-### Containment governance needs a security-utility frontier
-
-Summary: ContainmentBench demonstrates that zero committed harm is not enough. Runtime policies must also preserve authorized work and expose propagation and recovery across the trace.
-
-Analysis: [daily sovereignty analysis](2026-07-28/sovereignty.md#containment-metrics-should-preserve-the-security-utility-frontier)
-Core source: [paper](https://arxiv.org/abs/2607.23999v1)
-Implementable now:
-- keep endpoint compliance, propagation, recovery, and utility separate;
-- compare conservative taint, intent-aware authorization, and tool-boundary controls on matched scenarios;
-- require explicit authorization ledgers for intent-aware exceptions.
-Tools, repositories, and methodologies:
-- structured authorization ledgers, stage-stratified traces, matched controls, positive-control attacks
-Implementability score: 0.68
+- MCP 2026-07-28, official SDKs, conformance suite, OpenTelemetry, typed handle registries
+Implementability score: 0.90
 
 ## Current implication
 
-Do not ask the model to reason itself clean after reading untrusted data. Branch below the model, merge through checked runtime policy, and measure both containment and authorized utility.
+Stateless transport simplifies infrastructure only if application state becomes more explicit. Treat every cross-call handle as an authority-bearing object with identity, scope, lifetime, and receipts.

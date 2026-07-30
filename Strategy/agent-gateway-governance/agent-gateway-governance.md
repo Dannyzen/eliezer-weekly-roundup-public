@@ -971,3 +971,19 @@ Sources:
 - [MCP 2026-07-28 changelog](https://modelcontextprotocol.io/specification/2026-07-28/changelog)
 - [MCP stable release](https://github.com/modelcontextprotocol/modelcontextprotocol/releases/tag/2026-07-28)
 - [MCP conformance suite](https://github.com/modelcontextprotocol/conformance)
+
+## July 30 update: tool ranking needs an exposure policy
+
+CAM-DF separates relevance order from authority depth. A gateway can rank ten tools correctly and still expose more cost, context, privacy, and error surface than the task needs. The missing decision is where to stop before execution.
+
+Practical lesson:
+- record ranked candidates, relevance scores, tool costs, selected prefix, actual calls, task outcome, and policy version;
+- define tool cost across money, latency, context, privacy class, approval burden, and consequence severity;
+- compare full access, fixed-k, score-per-cost, and learned stopping on identical tasks;
+- shadow policy decisions before reducing live access;
+- keep emergency escalation and denied-capability receipts explicit.
+
+Evidence caveat: no public implementation artifact was found. The live check covers one scorer and cost setting over 67 tasks, and measures pre-execution exposure rather than a 37 percent reduction in actual tool calls.
+
+Source:
+- [Scores Are Not Decisions](https://arxiv.org/abs/2607.27083v1)

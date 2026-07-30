@@ -755,6 +755,23 @@ Sources:
 - [XMUDeepLIT/MemSyco-Bench](https://github.com/XMUDeepLIT/MemSyco-Bench)
 - [A-TMA](https://arxiv.org/abs/2607.01935v1)
 
+
+## July 30 update: memory security is a lifecycle test
+
+MemSecBench turns memory poisoning into a linked Write-Execute-Forget protocol. The benchmark checks persistence, recall, adoption, external effect, targeted repair, and preservation of benign memory across seven checkpoints and 24 exact agent configurations.
+
+Practical lesson:
+- preserve one verified post-write snapshot and branch execute and repair tests from it;
+- verify external effects programmatically rather than grading only model text;
+- score malicious persistence, end-to-end attack success, selective repair, and benign preservation separately;
+- bind harness, memory backend, model backend, prompts, snapshots, judges, and evidence packs to every case;
+- treat missing evidence channels as evaluation errors, not as attack failures.
+
+Artifact caveat: no paper-owned public implementation repository was found during the 2026-07-30 scan.
+
+Source:
+- [MemSecBench](https://arxiv.org/abs/2607.27080v1)
+
 ## Working conclusion
 
 The next generation of agents will be differentiated less by how eloquently they speak and more by how faithfully and safely they remember. The winning systems will preserve evidence, route memory writes explicitly, retrieve context adaptively, abstain when memory is unsafe, validate high-value writes, make retention and pruning decisions replayable, query local graphs when code structure matters, promote only the right lessons into durable guidance, attach enough context for updates and temporal reasoning, choose abstraction levels that transfer across tasks, keep the most sensitive memory close to the user and under policy control, run durable memory through a governed database-backed state core, separate evaluation memory from user-facing memory, measure whether memories remain usable under scale, budgets, and writeback review, expose operation-level provenance, make reasoning history diffable, test belief-state stay/update/isolate decisions, gate retrieval by policy, resolve contradictions with bitemporal evidence, evaluate memory against heterogeneous evolving source streams, and defend memory write/read paths against poisoning so failures can be traced instead of guessed.

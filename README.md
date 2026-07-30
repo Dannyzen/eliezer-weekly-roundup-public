@@ -6,23 +6,25 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Wednesday daily scan, 2026-07-29: [artifact-checked agents and explicit protocol state](roundups/2026-07-29.md)
-- AgenticAI daily analysis: [2026-07-29](AgenticAI/2026-07-29/reasoning.md)
-- Strategy daily sovereignty: [2026-07-29](Strategy/2026-07-29/sovereignty.md)
+- Daily scan, 2026-07-30: [explicit supervision, evidence, memory, and tool-exposure controls](roundups/2026-07-30.md)
+- AgenticAI daily analysis: [2026-07-30](AgenticAI/2026-07-30/reasoning.md)
+- Strategy daily sovereignty: [2026-07-30](Strategy/2026-07-30/sovereignty.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
+- Deep Dive Wednesday, 2026-07-29: [evaluation containment as a production control plane](roundups/2026-07-29.md)
 - Friday synthesis, week ending 2026-07-24: [evidence-bearing boundaries](roundups/2026-07-24.md)
 
 ## Current thesis
 
-The practical synthesis is to turn model output and hidden runtime state into explicit artifacts that independent machinery can verify:
+The practical synthesis is to keep authority outside the model and turn every consequential state transition into a verifiable artifact:
 
-- agent-authored specifications need trace validation, model checking, and code-level replay;
-- harness adaptation needs deterministic rewards and a static optimized baseline before online learning;
-- stateless protocols need typed application handles with principal, tenant, scope, expiry, revocation, and trace identity;
-- evidence must stay bound to the exact source, runtime, artifact, and effect it certifies.
+- long-running agents need live state, explicit intervention, and operator receipts;
+- evidence needs freshness, version, lineage, and completeness checks before side effects;
+- persistent memory needs linked write, consequence, repair, and benign-preservation tests;
+- tool rankings need a separate policy for how much authority surface the task receives;
+- evaluation environments still need independent network, credential, monitoring, intervention, and release authority.
 
-The shared rule is narrow: the model may propose, but deterministic systems must validate the artifact, own state transitions, and preserve receipts.
+The shared rule is narrow: the model may propose and act, but external control planes must decide what evidence, memory, tools, and execution authority are admitted, then preserve receipts.
 
 ## Browse by category
 
@@ -54,6 +56,7 @@ The shared rule is narrow: the model may propose, but deterministic systems must
 
 ### Strategy
 
+- [Evaluation Containment Control Plane](Strategy/evaluation-containment-control-plane/evaluation-containment-control-plane.md)
 - [Agent Self-Improvement Governance](Strategy/agent-self-improvement-governance/agent-self-improvement-governance.md)
 - [Context-to-Execution Integrity](Strategy/context-to-execution-integrity/context-to-execution-integrity.md)
 - [Untrusted Data Boundaries](Strategy/untrusted-data-boundaries/untrusted-data-boundaries.md)

@@ -2,36 +2,50 @@
 
 This index tracks the most recent structured research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: Wednesday, 2026-07-29
+## Latest Structured Update: Thursday, 2026-07-30
 
-### Formal specifications need trace validation and code replay
+### AgentGUI makes long-running agent supervision operable
 
-Summary: Specula turns agent-authored TLA+ models into candidate artifacts checked by model checking, trace validation, and code-level reproduction. The authors report 249 bugs across 48 systems, with 89 reported, 68 confirmed, and 24 fixed.
+Summary: AgentGUI provides a local Hermes-oriented interface for concurrent sessions, live traces, file and terminal inspection, steering, model reassignment, and automated manager audits. A controlled study found 38 percent faster trace comprehension, while one manager audit improved completion across a 0.8B to 9B model ladder.
 
-Analysis: [daily reasoning analysis](2026-07-29/reasoning.md#specula-makes-formal-specifications-executable-bug-finding-artifacts)
-Core sources: [paper](https://arxiv.org/abs/2607.25333v1), [Apache-2.0 repository](https://github.com/specula-org/Specula)
+Analysis: [daily reasoning analysis](2026-07-30/reasoning.md#agentgui-turns-long-running-agent-supervision-into-an-operational-surface)
+Core sources: [paper](https://arxiv.org/abs/2607.26300v1), [MIT repository](https://github.com/eth-medical-ai-lab/agent-gui), [project](https://agent-gui-project.github.io/)
 Implementable now:
-- pilot one narrow invariant class against an immutable target revision;
-- require trace validation and code-level replay;
-- bind the specification and reproduction evidence to one run identity.
+- normalize agent events into one live supervision stream;
+- keep redirect, pause, terminate, and model-switch controls outside worker authority;
+- log intervention receipts and measure recovery.
 Tools, repositories, and methodologies:
-- Specula, TLA+, TLC, trace validation, isolated target copies, code-level replay
-Implementability score: 0.78
+- AgentGUI, Hermes Agent, FastAPI, React, WebSockets, trajectory summaries, manager audits
+Implementability score: 0.86
 
-### Optimize a static harness before learning online
+### MemSecBench traces poisoning through consequence and repair
 
-Summary: In a released 729-configuration study, a DSPy-optimized static baseline matched or beat online bandit and REINFORCE controllers across the reported domains and models, usually with fewer tokens.
+Summary: The benchmark follows 310 cases across 24 agent configurations and seven checkpoints. It reports 84.2 percent malicious-memory persistence, 50.3 percent full Write-Execute success, and 56.1 percent selective repair among successfully poisoned cases.
 
-Analysis: [daily reasoning analysis](2026-07-29/reasoning.md#static-harness-optimization-beats-cold-start-online-adaptation)
-Core sources: [paper](https://arxiv.org/abs/2607.25415v1), [research repository](https://github.com/dpaul0501/context-optimization-rl)
+Analysis: [daily reasoning analysis](2026-07-30/reasoning.md#memsecbench-tests-the-entire-memory-attack-lifecycle)
+Core source: [paper](https://arxiv.org/abs/2607.27080v1)
 Implementable now:
-- define deterministic verifiers and a small reviewed action space;
-- establish a static optimized baseline;
-- promote online adaptation only after held-out success and total-cost gains.
+- link write, execute, and forget tasks under one case identity;
+- verify external effects and benign-memory preservation separately;
+- branch execution and repair from one verified post-write snapshot.
 Tools, repositories, and methodologies:
-- DSPy BootstrapFewShot, contextual bandits, REINFORCE, reward decomposition, trajectory replay
-Implementability score: 0.65
+- isolated runtimes, memory diffs, checkpoint judges, programmatic effect gates, paired backend comparisons
+Implementability score: 0.68
+
+### Cost-aware stopping controls how much tool surface an agent sees
+
+Summary: CAM-DF converts an existing tool ranking into a cost-aware acquisition depth. Across 1,343 tasks, it performs best under heterogeneous costs and high cost pressure. A 67-task live check reduced pre-execution exposure from seven tools to 4.4 while maintaining comparable observed success.
+
+Analysis: [daily reasoning analysis](2026-07-30/reasoning.md#cost-aware-tool-stopping-limits-exposure-before-execution)
+Core source: [paper](https://arxiv.org/abs/2607.27083v1)
+Implementable now:
+- log ranked candidates, costs, selected prefixes, calls, and outcomes;
+- start with fixed-k and score-per-cost baselines;
+- shadow learned stopping before reducing production access.
+Tools, repositories, and methodologies:
+- tool retrievers, score-per-cost thresholds, decision-focused learning, paired bootstrap evaluation, shadow routing
+Implementability score: 0.62
 
 ## Current implication
 
-Agent reliability improves when model output becomes a candidate artifact rather than accepted truth. Validate specifications against code behavior, and validate adaptive harnesses against a cheaper static baseline.
+Reliable agent operations need explicit control surfaces around the model: live supervision for long runs, lifecycle evidence for memory, and cost-aware admission for tools.

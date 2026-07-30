@@ -63,6 +63,25 @@ Source:
 
 A small offline simulator over existing traces is feasible now. Production-grade scheduling is harder because it needs calibrated latency models, cache policy, privacy boundaries, and enough real traffic to avoid optimizing for fake traces.
 
+
+## July 30 update: supervision is a runtime surface
+
+AgentGUI makes the operator loop concrete for Hermes-class agents. Long-running work needs normalized live events, compact trajectory views, visible artifacts, and explicit intervention controls. The important primitive is not the pixel-art interface. It is the mapping from a run event to an operator decision and then to a measured recovery.
+
+Practical lesson:
+- normalize model turns, tool calls, file changes, waits, verifier results, and interventions;
+- keep pause, redirect, model switch, terminate, and artifact release outside worker authority;
+- preserve pre-intervention state, operator action, post-intervention state, and outcome under one run ID;
+- measure time-to-diagnosis, false alarms, recovery rate, and operator workload;
+- treat automated manager audits as a second policy layer, not as independent proof.
+
+Artifact caveat: the repository is populated and MIT-licensed, but the user study is small and the automated audit test covers one quantitative completion task.
+
+Sources:
+- [AgentGUI](https://arxiv.org/abs/2607.26300v1)
+- [eth-medical-ai-lab/agent-gui](https://github.com/eth-medical-ai-lab/agent-gui)
+- [AgentGUI project](https://agent-gui-project.github.io/)
+
 ## Working conclusion
 
 The agent-serving runtime should become an evidence layer between traces and routers. First trace the program, then simulate routing and cache policies, then deploy only the policies whose predicted gains survive real telemetry.

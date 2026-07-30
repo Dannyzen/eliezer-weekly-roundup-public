@@ -203,6 +203,25 @@ Sources:
 - [PromptOwl/ContextNest](https://github.com/PromptOwl/ContextNest)
 - [PromptOwl/context-nest-spec](https://github.com/PromptOwl/context-nest-spec)
 
+
+## July 30 update: evidence quality needs a pre-action gate
+
+SARC-DQ demonstrates the placement rule for provenance controls. Payload-only agents cannot detect stale, superseded, or lineage-defective evidence when the discriminating metadata never enters context. A metadata-aware gate immediately before action can block or substitute covered defects without granting the agent write authority over the source system.
+
+Practical lesson:
+- carry freshness, source, version, lineage, schema, and completeness metadata to the action boundary;
+- evaluate deterministic predicates before side effects;
+- perform downstream-only repair in a governed buffer;
+- log admitted evidence IDs, predicate versions, substitutions, uncovered classes, action intent, and final effect;
+- pair corrupted and clean runs to price the action delta;
+- publish predicate coverage and declared gaps as part of the control contract.
+
+Evidence caveat: the populated MIT repository is an alpha research artifact. The paper is single-author and the measured environment is one priced replenishment task.
+
+Sources:
+- [SARC-DQ](https://arxiv.org/abs/2607.26313v1)
+- [besanson/dqSarc](https://github.com/besanson/dqSarc)
+
 ## Working conclusion
 
 The architectural lesson is simple: do not confuse artifacts with proof.

@@ -867,3 +867,20 @@ Sources:
 - [NemoClaw v0.0.95](https://docs.nvidia.com/nemoclaw/user-guide/openclaw/release-notes/2026/7/24)
 - [NVIDIA/NemoClaw](https://github.com/NVIDIA/NemoClaw)
 - [Gateway lifecycle authority](https://docs.nvidia.com/nemoclaw/user-guide/openclaw/deployment/gateway-lifecycle-authority)
+## July 31 update: system prompts need assurance and provenance
+
+AISPA treats the system prompt as a policy-bearing artifact and audits exact spans across eight user-protection dimensions. The paper finds broad but incomplete protection and pervasive problematic instructions across 88 commercial products.
+
+Practical lesson:
+- version prompt source, product, model, date, digest, and approval identity;
+- preserve exact spans, dimensions, reviewer class, confidence, and methodology version;
+- connect protective claims to behavioral regression tests;
+- block or document problematic instructions before release;
+- invalidate approval when prompt semantics change.
+
+Artifact caveat: the public System Prompt Index is populated but lacks a declared license, mixes prompt sources whose authenticity and freshness are not guaranteed, and removes fields that distinguish automated from human-reviewed findings.
+
+Sources:
+- [AISPA](https://arxiv.org/abs/2607.28617v1)
+- [System Prompt Index](https://systempromptindex.com/)
+- [XiangningLin/SystemPromptIndex](https://github.com/XiangningLin/SystemPromptIndex)

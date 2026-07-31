@@ -163,3 +163,19 @@ The first version is implementable with ordinary engineering: independent first 
 - Evolve as a Team: Collaborative Self-Evolution for LLM-based Multi-Agent Systems: https://arxiv.org/abs/2605.29790
 - SPOQ: Specialist Orchestrated Queuing for Multi-Agent Software Engineering: https://arxiv.org/abs/2606.03115v1
 - Do More Agents Help? Controlled and Protocol-Aligned Evaluation of LLM Agent Workflows: https://arxiv.org/abs/2606.05670v1
+## July 31 update: passive awareness enables mid-run correction
+
+AgentRadio adds one missing concurrency primitive: a background mention channel that surfaces teammate discoveries between foreground tool steps. On 124 SWE-Atlas QnA tasks, the full four-agent protocol reached 62.1 percent with Opus 4.6, while one agent reached 32.3 percent and compute-matched best-of-six reached 37.9 percent.
+
+Practical lesson:
+- give each worker a scoped append-only inbox instead of broadcast chat;
+- drain messages only at safe step boundaries;
+- bind messages to thread, sender, recipient, task revision, and evidence;
+- measure correction latency, stale-message harm, contradiction handling, and coordination cost;
+- ablate isolated parallel work, blocking negotiation, passive awareness, and matched sampling.
+
+Artifact caveat: the Apache-2.0 repository is populated and reproducibility-oriented, but the evidence covers one benchmark, two model families, and one four-agent topology.
+
+Sources:
+- [AgentRadio](https://arxiv.org/abs/2607.28430v1)
+- [Coral-Protocol/AgentRadio](https://github.com/Coral-Protocol/AgentRadio)

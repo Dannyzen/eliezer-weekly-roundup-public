@@ -834,3 +834,19 @@ Evidence caveat: the 17,640-rollout study is synthetic and single-model, and the
 
 Source:
 - [ContainmentBench](https://arxiv.org/abs/2607.23999v1)
+## July 31 update: audit the trajectory judge before using its reward
+
+OSReward shows that model-based CUA judges share a leniency bias. On 1,019 human-gold trajectories, the best judges fell below 70 percent on the hard subset and the mean reached 52 percent. Failed runs presented as successes dominate the error profile.
+
+Practical lesson:
+- create a human-gold set with split-label meta-review;
+- report true-failure recall separately from aggregate accuracy;
+- ablate screen state, action text, reasoning text, and final claims;
+- prefer deterministic environment checks where possible;
+- require paired or ensemble review before a model verdict promotes a high-impact artifact.
+
+Artifact caveat: the project page says artifacts are on their way. The linked GitHub repo is missing, three Hugging Face repositories are empty placeholders, and the 35B endpoint did not resolve publicly at scan time.
+
+Sources:
+- [OSReward](https://arxiv.org/abs/2607.28609v1)
+- [project page](https://os-copilot.github.io/OSReward-Home/)

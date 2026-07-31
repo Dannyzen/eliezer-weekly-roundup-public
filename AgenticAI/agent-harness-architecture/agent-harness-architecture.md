@@ -1071,3 +1071,18 @@ Sources:
 - [specula-org/Specula](https://github.com/specula-org/Specula)
 - [Frozen harness control study](https://arxiv.org/abs/2607.25415v1)
 - [context-optimization-rl](https://github.com/dpaul0501/context-optimization-rl)
+## July 31 update: benchmark tasks need executable reconstruction lifecycles
+
+Change2Task turns repository history into a reusable task-construction surface. A task is accepted only when a frozen modern base, task patch, restoration patch, target checks, protected regressions, edit scope, and provenance survive a healthy, task, and restored lifecycle.
+
+Practical lesson:
+- begin with deterministic patch reversal and escalate only when repository evolution requires mapping or reconstruction;
+- freeze source PR, modern base, task and restoration patches, checks, adapter, and environment identity;
+- require pass-fail-pass target behavior and green regressions across all states;
+- compare historical and reconstructed variants under the same agent and verifier;
+- treat artifact absence as a reproduction gap even when the paper method is detailed.
+
+Artifact caveat: no paper-owned public implementation repository resolved from primary pages or exact-title GitHub search.
+
+Source:
+- [Change2Task](https://arxiv.org/abs/2607.28591v1)

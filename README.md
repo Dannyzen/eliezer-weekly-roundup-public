@@ -6,9 +6,9 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-07-30: [explicit supervision, evidence, memory, and tool-exposure controls](roundups/2026-07-30.md)
-- AgenticAI daily analysis: [2026-07-30](AgenticAI/2026-07-30/reasoning.md)
-- Strategy daily sovereignty: [2026-07-30](Strategy/2026-07-30/sovereignty.md)
+- Daily scan, 2026-07-31: [evidence-bearing coordination, task, judge, and prompt controls](roundups/2026-07-31.md)
+- AgenticAI daily analysis: [2026-07-31](AgenticAI/2026-07-31/reasoning.md)
+- Strategy daily sovereignty: [2026-07-31](Strategy/2026-07-31/sovereignty.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 - Deep Dive Wednesday, 2026-07-29: [evaluation containment as a production control plane](roundups/2026-07-29.md)
@@ -16,15 +16,15 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Current thesis
 
-The practical synthesis is to keep authority outside the model and turn every consequential state transition into a verifiable artifact:
+The practical synthesis is to make every influential agent artifact inspectable before it receives authority:
 
-- long-running agents need live state, explicit intervention, and operator receipts;
-- evidence needs freshness, version, lineage, and completeness checks before side effects;
-- persistent memory needs linked write, consequence, repair, and benign-preservation tests;
-- tool rankings need a separate policy for how much authority surface the task receives;
-- evaluation environments still need independent network, credential, monitoring, intervention, and release authority.
+- concurrent workers need scoped message channels and correction receipts, not unrestricted group chat;
+- coding-agent tasks need source provenance, frozen modern state, executable checks, and restoration evidence;
+- trajectory judges need human-gold audits and true-failure recall before their verdict becomes reward;
+- system prompts need versioning, assurance dimensions, behavioral tests, and reviewer provenance;
+- long-running agents still need live supervision and operator-owned intervention controls.
 
-The shared rule is narrow: the model may propose and act, but external control planes must decide what evidence, memory, tools, and execution authority are admitted, then preserve receipts.
+The shared rule is narrow: prompts, messages, tasks, and verdicts may guide the runtime, but only external evidence and gates can authorize consequential effects.
 
 ## Browse by category
 

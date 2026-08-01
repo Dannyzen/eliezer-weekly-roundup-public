@@ -987,3 +987,20 @@ Evidence caveat: no public implementation artifact was found. The live check cov
 
 Source:
 - [Scores Are Not Decisions](https://arxiv.org/abs/2607.27083v1)
+
+## August 1 update: routing evidence and spend enforcement belong together
+
+Vercel AI Gateway now exposes request-level logs with cost, token breakdown, latency, serving provider, region, retention controls, and every fallback attempt. Team, project, and API-key budgets can independently reject requests when a scope is exhausted.
+
+Practical lesson:
+- bind each request to team, project, key, run, policy, and fallback budget;
+- verify region and Zero Data Retention per provider attempt;
+- export critical receipts outside the gateway vendor;
+- test retry, cache, fallback, and nested-budget bypasses;
+- reconcile BYOK provider billing because it is excluded by default.
+
+Product caveat: gateway-native evidence is vendor-owned, and the built-in budget is not a complete ceiling when BYOK spend is excluded.
+
+Sources:
+- [AI Gateway Logs](https://vercel.com/changelog/ai-gateway-logs)
+- [AI Gateway Budgets](https://vercel.com/changelog/ai-gateway-spend-budgets-and-alerts)

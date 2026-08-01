@@ -285,3 +285,19 @@ Evidence caveat: the paper reports strong deltas on three benchmarks, but we fou
 
 Source:
 - [TRACE-ROUTER](https://arxiv.org/abs/2607.22465v1)
+
+## August 1 update: model access policy needs effective-user audits
+
+GitHub's Enterprise Teams model-policy preview moves model enablement from organization resources toward user and role scope. Enterprises can mark models Enabled, Disabled, or Optional and assign Optional models through teams.
+
+Practical lesson:
+- keep the enterprise baseline small and grant experimental models through explicit teams;
+- attach each grant to data class, tool authority, budget, training, expiry, and review identity;
+- compute effective model access per user before and after migration;
+- preserve the old organization policy as a rollback snapshot;
+- audit access inherited through multiple teams or enterprises.
+
+Preview caveat: access uses least-restrictive union semantics, so one permissive team can widen access everywhere under that enterprise license. The feature begins broad rollout on August 3.
+
+Source:
+- [Enterprise teams model policy targeting](https://github.blog/changelog/2026-07-31-enterprise-teams-model-policy-targeting-in-public-preview)

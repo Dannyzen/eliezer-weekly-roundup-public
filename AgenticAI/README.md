@@ -2,50 +2,37 @@
 
 This index tracks the most recent structured research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: Friday, 2026-07-31
+## Latest Structured Update: 2026-08-01
 
-### AgentRadio gives concurrent workers passive awareness
+### Replayable runtime state is now a released harness contract
 
-Summary: AgentRadio adds a background mention channel to coding-agent harnesses. On 124 SWE-Atlas QnA tasks, four agents reached 62.1 percent versus 32.3 percent for one agent and 37.9 percent for compute-matched best-of-six sampling.
+Summary: Microsoft Agent Framework Python 1.13.0 combines reusable session stores, complete Responses-session persistence, replayable checkpoints, approval continuity, bounded MCP skill discovery, and token observability. The useful unit is no longer a chat transcript. It is a replayable run state with approvals and tool evidence attached.
 
-Analysis: [daily reasoning analysis](2026-07-31/reasoning.md#agentradio-adds-passive-awareness-to-concurrent-agent-work)
-Core sources: [paper](https://arxiv.org/abs/2607.28430v1), [Apache-2.0 repository](https://github.com/Coral-Protocol/AgentRadio)
+Analysis: [daily analysis](2026-08-01/reasoning.md#microsoft-agent-framework-makes-replayable-state-a-released-runtime-contract)
+Core sources: [Python 1.13.0 release](https://github.com/microsoft/agent-framework/releases/tag/python-1.13.0), [repository](https://github.com/microsoft/agent-framework)
 Implementable now:
-- drain scoped worker inboxes between tool steps;
-- bind messages to thread, sender, recipient, task revision, and evidence;
-- compare passive awareness with blocking negotiation and matched sampling.
+- pin the harness and provider adapters as one profile;
+- persist input, human responses, approvals, tools, and checkpoints together;
+- run crash, resume, compaction, approval replay, and migration fixtures.
 Tools, repositories, and methodologies:
-- AgentRadio, append-only inboxes, typed thread IDs, background watchers, SWE-Atlas QnA, topology ablations
-Implementability score: 0.84
+- Microsoft Agent Framework, OpenTelemetry, replayable checkpoint tests, bounded MCP archives
+Implementability score: 0.90
 
-### Change2Task turns repository history into modern executable tasks
+### Offline tests and production traces need one metric registry
 
-Summary: Change2Task reconstructs merged changes on healthy descendant revisions and validates healthy, task, and restored states. It finalized 900 paired tasks from 1,130 eligible changes and beat a pull-request mirror baseline by 29.2 percent on matched candidates.
+Summary: Google Agent Platform evaluations are generally available with more than 20 metrics, versioned custom metrics, adaptive rubrics, local and server-side experiments, production monitors, drift alerts, user simulation, and environment fault simulation.
 
-Analysis: [daily reasoning analysis](2026-07-31/reasoning.md#change2task-reconstructs-executable-tasks-on-healthy-modern-code)
-Core source: [paper](https://arxiv.org/abs/2607.28591v1)
+Analysis: [daily analysis](2026-08-01/reasoning.md#google-unifies-pre-release-and-production-evaluation-on-one-metric-registry)
+Core sources: [GA announcement](https://developers.googleblog.com/agent-and-model-evaluations-in-gemini-enterprise-agent-platform-are-now-ga/), [agents-cli](https://github.com/google/agents-cli)
 Implementable now:
-- pilot patch reversal before model-assisted reconstruction;
-- freeze source PR, modern base, patches, checks, and adapter versions;
-- require pass-fail-pass targets and green protected regressions.
+- keep deterministic checks load-bearing;
+- version metrics, datasets, simulators, models, and trace schemas;
+- run the same metric offline and on sampled production traces;
+- turn failure clusters into regression cases.
 Tools, repositories, and methodologies:
-- Git history, pull-request metadata, patch reversal, code mapping, containerized tests, lifecycle verification
-Implementability score: 0.68
-
-### OSReward tests whether trajectory judges deserve trust
-
-Summary: OSReward evaluates 27 VLM judges on 1,019 human-gold cross-platform trajectories. The hard-set mean fell to 52 percent and false success dominated errors. The methodology is actionable, but the advertised artifacts were missing or empty at scan time.
-
-Analysis: [daily reasoning analysis](2026-07-31/reasoning.md#osreward-audits-the-judge-before-trusting-trajectory-reward)
-Core sources: [paper](https://arxiv.org/abs/2607.28609v1), [project page](https://os-copilot.github.io/OSReward-Home/)
-Implementable now:
-- build a small human-gold trajectory set;
-- report recall on true failures separately;
-- ablate screenshots, actions, reasoning, and final claims.
-Tools, repositories, and methodologies:
-- human-gold trajectories, hard-case subsets, false-success recall, input ablations, deterministic state verifiers
-Implementability score: 0.60
+- Gemini Enterprise Agent Platform, ADK eval, agents-cli, Cloud Trace, environment simulation
+Implementability score: 0.82
 
 ## Current implication
 
-Agent scale needs evidence-bearing harness surfaces. Coordination, task construction, and trajectory reward should each have explicit identities, controls, and ablations before they influence production behavior.
+Treat session state and evaluation policy as versioned runtime artifacts. A checkpoint must replay the exact approval and tool history, and a production score must name the same metric definition used before release.

@@ -6,25 +6,27 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-07-31: [evidence-bearing coordination, task, judge, and prompt controls](roundups/2026-07-31.md)
-- AgenticAI daily analysis: [2026-07-31](AgenticAI/2026-07-31/reasoning.md)
-- Strategy daily sovereignty: [2026-07-31](Strategy/2026-07-31/sovereignty.md)
+- Daily research, 2026-08-01: [runtime state, unified evaluation, routing receipts, and budget authority](roundups/2026-08-01.md)
+- AgenticAI daily analysis: [2026-08-01](AgenticAI/2026-08-01/reasoning.md)
+- Strategy daily sovereignty: [2026-08-01](Strategy/2026-08-01/sovereignty.md)
+- Friday synthesis, week ending 2026-07-31: [exact-state evidence and separately owned authority](roundups/2026-07-31.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 - Deep Dive Wednesday, 2026-07-29: [evaluation containment as a production control plane](roundups/2026-07-29.md)
-- Friday synthesis, week ending 2026-07-24: [evidence-bearing boundaries](roundups/2026-07-24.md)
 
 ## Current thesis
 
-The practical synthesis is to make every influential agent artifact inspectable before it receives authority:
+The practical rule is exact-state binding plus separately owned authority:
 
-- concurrent workers need scoped message channels and correction receipts, not unrestricted group chat;
-- coding-agent tasks need source provenance, frozen modern state, executable checks, and restoration evidence;
-- trajectory judges need human-gold audits and true-failure recall before their verdict becomes reward;
-- system prompts need versioning, assurance dimensions, behavioral tests, and reviewer provenance;
-- long-running agents still need live supervision and operator-owned intervention controls.
+- evidence is valid only for the artifact, environment, verifier, and identity it names;
+- evaluators, guests, and models cannot own their own network boundary, credentials, monitor, kill path, or release authority;
+- memory must be tested where it changes decisions and across write, execute, and repair stages;
+- coordination needs scoped messages, delivery receipts, and operator-owned supervision;
+- prompts, issues, skills, and retrieved data are policy-bearing inputs, not trusted prose;
+- adaptive loops, skills, and routers must beat matched baselines without hiding regressions.
+- routing policy needs request receipts, nested spend limits, and identity-scoped model access.
 
-The shared rule is narrow: prompts, messages, tasks, and verdicts may guide the runtime, but only external evidence and gates can authorize consequential effects.
+The model may propose. A separately controlled boundary grants permission or certifies success.
 
 ## Browse by category
 

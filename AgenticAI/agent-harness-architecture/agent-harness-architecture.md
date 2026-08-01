@@ -1086,3 +1086,20 @@ Artifact caveat: no paper-owned public implementation repository resolved from p
 
 Source:
 - [Change2Task](https://arxiv.org/abs/2607.28591v1)
+
+## August 1 update: replayable session state is a released harness contract
+
+Microsoft Agent Framework Python 1.13.0 combines reusable session stores, complete Responses-session persistence, replayable checkpoints from initial input and human responses, approval continuity fixes, bounded archive-backed MCP skill discovery, and cache-write token observability.
+
+Practical lesson:
+- version session schema, checkpoint schema, provider adapters, approvals, and compaction policy together;
+- preserve initial input, human responses, tool calls, results, and approval decisions under one run identity;
+- run crash, resume, compaction, duplicate-call, and checkpoint migration fixtures;
+- bound archive skill sources by identity, size, authorization, and retention;
+- review process-wide telemetry before production adoption.
+
+Release caveat: replay behavior is breaking, archive-backed skills widen the executable context surface, and first-party feature telemetry needs explicit review.
+
+Sources:
+- [Microsoft Agent Framework Python 1.13.0](https://github.com/microsoft/agent-framework/releases/tag/python-1.13.0)
+- [microsoft/agent-framework](https://github.com/microsoft/agent-framework)

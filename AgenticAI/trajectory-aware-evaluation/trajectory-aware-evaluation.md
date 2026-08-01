@@ -850,3 +850,20 @@ Artifact caveat: the project page says artifacts are on their way. The linked Gi
 Sources:
 - [OSReward](https://arxiv.org/abs/2607.28609v1)
 - [project page](https://os-copilot.github.io/OSReward-Home/)
+
+## August 1 update: use one metric registry before and after release
+
+Gemini Enterprise Agent Platform evaluations are generally available with versioned custom metrics, more than 20 built-in metrics, local and server-side experiments, production trace monitors, drift alerts, user simulation, environment fault simulation, and failure clustering.
+
+Practical lesson:
+- keep deterministic code and environment checks load-bearing;
+- version metrics, rubrics, datasets, simulators, judge models, and trace schemas;
+- run the same metric definitions in CI and on sampled production traffic;
+- inject slow, failed, malformed, and partial tool responses before release;
+- convert reviewed production failure clusters into regression cases.
+
+Product caveat: adaptive rubrics remain model judgments, and server-side storage plus judge calls create platform, cost, and data-retention dependencies. Preserve human-gold audits and independent outcome checks.
+
+Sources:
+- [Agent and Model Evaluations GA](https://developers.googleblog.com/agent-and-model-evaluations-in-gemini-enterprise-agent-platform-are-now-ga/)
+- [google/agents-cli](https://github.com/google/agents-cli)

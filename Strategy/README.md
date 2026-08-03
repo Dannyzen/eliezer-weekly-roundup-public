@@ -2,38 +2,23 @@
 
 This index tracks the most recent structured research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: 2026-08-01
+## Latest Structured Update: 2026-08-02
 
-### A governed router needs both receipts and a hard budget boundary
+### Ambient audio cannot carry execution authority by itself
 
-Summary: Vercel AI Gateway now exposes request-level routing logs and enforceable budgets at team, project, and API-key scopes. The logs show every provider attempt, cost, token breakdown, latency, region, and retention controls. The budgets can stop requests when any applicable scope is exhausted.
+Summary: AudioAgentSecurity reports high concurrent audio-injection success across eleven multimodal agents and shows that acoustic source separation plus cross-modal verification can materially reduce the attack. The governance lesson is broader than one defense: perceived speech is evidence, not authenticated intent.
 
-Analysis: [daily sovereignty](2026-08-01/sovereignty.md#vercel-turns-model-routing-into-a-budgeted-inspectable-gateway)
-Core sources: [AI Gateway Logs](https://vercel.com/changelog/ai-gateway-logs), [AI Gateway Budgets](https://vercel.com/changelog/ai-gateway-spend-budgets-and-alerts)
+Analysis: [daily sovereignty](2026-08-02/sovereignty.md#audio-is-untrusted-content-not-user-authority)
+Core sources: [paper](https://arxiv.org/abs/2607.28165v1), [public repository](https://github.com/Limax666/AudioAgentSecurity), [gated dataset](https://huggingface.co/datasets/Limax11/AudioAgentSecurity)
 Implementable now:
-- bind requests to team, project, key, run, policy, and fallback budget;
-- export receipts for independent retention;
-- test retry, cache, fallback, and BYOK accounting;
-- verify region and retention policy per provider attempt.
+- label audio source, timing, overlap, and confidence;
+- quarantine source-inconsistent instructions;
+- require trusted-channel confirmation for high-impact tools;
+- bind accepted intent to exact effects and expiry.
 Tools, repositories, and methodologies:
-- Vercel AI Gateway, budgets CLI, OpenTelemetry, budget-bypass fixtures
-Implementability score: 0.92
-
-### Model access policy is moving toward user and role scope
-
-Summary: GitHub's Enterprise Teams preview allows an enterprise baseline plus team grants for Optional models. This is a meaningful move from organization-level settings toward identity-aware model governance, but its least-restrictive union semantics can still overgrant access.
-
-Analysis: [daily sovereignty](2026-08-01/sovereignty.md#github-moves-model-access-from-organization-settings-to-team-policy)
-Core source: [GitHub changelog](https://github.blog/changelog/2026-07-31-enterprise-teams-model-policy-targeting-in-public-preview)
-Implementable now:
-- grant experimental models through explicit teams;
-- attach data class, budget, training, expiry, and review;
-- diff effective user permissions before migration;
-- preserve a rollback snapshot.
-Tools, repositories, and methodologies:
-- GitHub Enterprise Teams, model-access manifests, permission diffing, expiry reviews
-Implementability score: 0.68
+- AudioAgentSecurity, source separation, speaker attribution, cross-modal consistency, action manifests
+Implementability score: 0.64
 
 ## Current implication
 
-Put routing evidence, spend enforcement, and model access at operator-owned boundaries. A model selector is not governance unless effective access and every fallback attempt are inspectable and budgeted.
+Multimodal perception must remain below the authority boundary. An agent may hear an instruction, but a separately authenticated channel must grant permission for consequential effects.

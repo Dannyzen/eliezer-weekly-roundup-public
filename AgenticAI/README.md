@@ -2,37 +2,36 @@
 
 This index tracks the most recent structured research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: 2026-08-01
+## Latest Structured Update: 2026-08-02
 
-### Replayable runtime state is now a released harness contract
+### Benchmark tasks need issue-to-oracle alignment proof
 
-Summary: Microsoft Agent Framework Python 1.13.0 combines reusable session stores, complete Responses-session persistence, replayable checkpoints, approval continuity, bounded MCP skill discovery, and token observability. The useful unit is no longer a chat transcript. It is a replayable run state with approvals and tool evidence attached.
+Summary: PAIChecker finds that 13.6 percent of SWE-bench Verified instances contain PR-issue misalignment. Its pattern analysis, cross-agent synthesis, and code validation make benchmark admission a checked process rather than a link heuristic.
 
-Analysis: [daily analysis](2026-08-01/reasoning.md#microsoft-agent-framework-makes-replayable-state-a-released-runtime-contract)
-Core sources: [Python 1.13.0 release](https://github.com/microsoft/agent-framework/releases/tag/python-1.13.0), [repository](https://github.com/microsoft/agent-framework)
+Analysis: [daily analysis](2026-08-02/reasoning.md#benchmark-construction-needs-an-oracle-alignment-gate)
+Core sources: [PAIChecker paper](https://arxiv.org/abs/2607.28587v1), [MIT repository](https://github.com/manyifire/PAIChecker)
 Implementable now:
-- pin the harness and provider adapters as one profile;
-- persist input, human responses, approvals, tools, and checkpoints together;
-- run crash, resume, compaction, approval replay, and migration fixtures.
+- validate issue, PR, base revision, patch, tests, and discussion as one task manifest;
+- reject or adjudicate bundled, follow-up, unrelated, or under-specified pairs;
+- keep code validation and maintainer response beside model labels.
 Tools, repositories, and methodologies:
-- Microsoft Agent Framework, OpenTelemetry, replayable checkpoint tests, bounded MCP archives
-Implementability score: 0.90
+- PAIChecker, SWE-bench manifests, code-level validation, maintainer adjudication
+Implementability score: 0.84
 
-### Offline tests and production traces need one metric registry
+### Local computer-use agents need selective compute
 
-Summary: Google Agent Platform evaluations are generally available with more than 20 metrics, versioned custom metrics, adaptive rubrics, local and server-side experiments, production monitors, drift alerts, user simulation, and environment fault simulation.
+Summary: one to four recent screenshots stabilize local CUAs, but longer histories, more steps, planner-grounder decomposition, and parallel plans quickly hit diminishing returns or change stalls into false success.
 
-Analysis: [daily analysis](2026-08-01/reasoning.md#google-unifies-pre-release-and-production-evaluation-on-one-metric-registry)
-Core sources: [GA announcement](https://developers.googleblog.com/agent-and-model-evaluations-in-gemini-enterprise-agent-platform-are-now-ga/), [agents-cli](https://github.com/google/agents-cli)
+Analysis: [daily analysis](2026-08-02/reasoning.md#local-computer-use-agents-need-selective-compute-not-longer-loops)
+Core source: [local CUA scaling study](https://arxiv.org/abs/2607.28573v1)
 Implementable now:
-- keep deterministic checks load-bearing;
-- version metrics, datasets, simulators, models, and trace schemas;
-- run the same metric offline and on sampled production traces;
-- turn failure clusters into regression cases.
+- keep compact recent state with source-labeled screenshots;
+- detect loops, no progress, format failure, and false completion separately;
+- gate success on environment state and escalate only after measured plateau.
 Tools, repositories, and methodologies:
-- Gemini Enterprise Agent Platform, ADK eval, agents-cli, Cloud Trace, environment simulation
-Implementability score: 0.82
+- OSWorld-style sandboxes, state hashes, progress monitors, deterministic completion checks, vLLM accounting
+Implementability score: 0.76
 
 ## Current implication
 
-Treat session state and evaluation policy as versioned runtime artifacts. A checkpoint must replay the exact approval and tool history, and a production score must name the same metric definition used before release.
+Agent evaluation needs two preconditions before scores matter: the task must match its oracle, and compute must be allocated against observed failure modes rather than added blindly.

@@ -6,9 +6,9 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily research, 2026-08-01: [runtime state, unified evaluation, routing receipts, and budget authority](roundups/2026-08-01.md)
-- AgenticAI daily analysis: [2026-08-01](AgenticAI/2026-08-01/reasoning.md)
-- Strategy daily sovereignty: [2026-08-01](Strategy/2026-08-01/sovereignty.md)
+- Daily research, 2026-08-02: [oracle alignment, selective local compute, and authenticated audio intent](roundups/2026-08-02.md)
+- AgenticAI daily analysis: [2026-08-02](AgenticAI/2026-08-02/reasoning.md)
+- Strategy daily sovereignty: [2026-08-02](Strategy/2026-08-02/sovereignty.md)
 - Friday synthesis, week ending 2026-07-31: [exact-state evidence and separately owned authority](roundups/2026-07-31.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
@@ -25,6 +25,7 @@ The practical rule is exact-state binding plus separately owned authority:
 - prompts, issues, skills, and retrieved data are policy-bearing inputs, not trusted prose;
 - adaptive loops, skills, and routers must beat matched baselines without hiding regressions.
 - routing policy needs request receipts, nested spend limits, and identity-scoped model access.
+- multimodal perception is evidence; consequential intent needs a separately authenticated channel.
 
 The model may propose. A separately controlled boundary grants permission or certifies success.
 

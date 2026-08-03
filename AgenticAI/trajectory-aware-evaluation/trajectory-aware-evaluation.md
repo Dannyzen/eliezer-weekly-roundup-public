@@ -867,3 +867,20 @@ Product caveat: adaptive rubrics remain model judgments, and server-side storage
 Sources:
 - [Agent and Model Evaluations GA](https://developers.googleblog.com/agent-and-model-evaluations-in-gemini-enterprise-agent-platform-are-now-ga/)
 - [google/agents-cli](https://github.com/google/agents-cli)
+
+## August 2 update: benchmark tasks need issue-to-oracle alignment
+
+PAIChecker shows that linked issues and pull requests are not automatically valid evaluation pairs. Its audit finds 13.6 percent misalignment in SWE-bench Verified, and its staged checker combines pattern-specific analysis, cross-agent label synthesis, and code-level validation.
+
+Practical lesson:
+- treat benchmark admission as a versioned validation run;
+- preserve issue, PR, base revision, patch, tests, discussions, labels, disagreements, and adjudication;
+- detect bundled fixes, follow-up fixes, unrelated changes, introduced defects, and discussion-only requirements separately;
+- require executable code validation after model-based labeling;
+- reject ambiguous tasks rather than laundering them into a clean score.
+
+Artifact caveat: the MIT-licensed repository is populated, but the method consumes about 42K to 59K tokens per instance and only 17 of 78 live flags had maintainer responses at writing time. This cron inspected the artifact read-only and did not execute it.
+
+Sources:
+- [PAIChecker](https://arxiv.org/abs/2607.28587v1)
+- [manyifire/PAIChecker](https://github.com/manyifire/PAIChecker)

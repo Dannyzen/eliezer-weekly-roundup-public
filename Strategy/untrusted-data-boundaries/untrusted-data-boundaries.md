@@ -268,3 +268,22 @@ Evidence caveat: APPA is an Archestra AI-authored preprint with an author-built 
 Sources:
 - [Agentic Permissions Policy Algebra](https://arxiv.org/abs/2607.24625v1)
 - [ContainmentBench](https://arxiv.org/abs/2607.23999v1)
+
+## August 2 update: audio perception is an authority boundary
+
+AudioAgentSecurity extends the untrusted-data problem into continuous multimodal perception. Nearby speech, playback, concealed signals, and user speech share one microphone stream, so perceived instructions cannot authenticate their own source or authority.
+
+Practical lesson:
+- attach source, channel, time, overlap, and confidence metadata to audio spans;
+- separate transcription from instruction admission;
+- quarantine overlapping or source-inconsistent commands;
+- require trusted-channel confirmation before high-impact effects;
+- bind accepted intent to exact tool, target, arguments, and expiry;
+- test clean utility, attack success, instruction correctness, false positives, distance, angle, replay, and mixed-speaker conditions.
+
+Artifact caveat: the public repository is populated and the dataset resolves, but the dataset is auto-gated and neither artifact declares a license. The reported defense remains author-controlled evidence pending independent replication.
+
+Sources:
+- [Piggybacking on Perception](https://arxiv.org/abs/2607.28165v1)
+- [Limax666/AudioAgentSecurity](https://github.com/Limax666/AudioAgentSecurity)
+- [AudioAgentSecurity dataset](https://huggingface.co/datasets/Limax11/AudioAgentSecurity)

@@ -212,3 +212,19 @@ Artifact caveat: the public repository is populated but has no tag or release, i
 Sources:
 - [Tactile](https://arxiv.org/abs/2607.14443v1)
 - [yliust/Tactile](https://github.com/yliust/Tactile)
+
+## August 2 update: scale context selectively before steps or planners
+
+The local-CUA scaling study shows that compute dimensions fail differently. One recent screenshot stabilizes trajectories, history length four reaches the best reported tradeoff, longer histories saturate, extra steps turn stalls into premature false success, and planner-grounder decomposition plus parallel plans cost more than the single-agent baseline.
+
+Practical lesson:
+- keep a compact, source-labeled recent state rather than an unbounded visual transcript;
+- detect repeated states, no progress, parser failure, and false completion separately;
+- verify success from environment state before accepting termination;
+- stop or escalate when more steps no longer change state;
+- compare single-pass, decomposed, and parallel variants under matched token, step, wall-time, and failure-mode accounting.
+
+Evidence caveat: the preprint evaluates four local models on OSWorld using an A100-80GB and exposes no dedicated implementation artifact on the primary pages. Use the ablation method now, but do not assume its thresholds transfer unchanged.
+
+Source:
+- [Rethinking Inference-Time Scaling in Local Computer-Use Agents](https://arxiv.org/abs/2607.28573v1)

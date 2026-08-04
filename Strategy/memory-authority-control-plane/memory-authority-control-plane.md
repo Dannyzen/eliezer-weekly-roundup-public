@@ -1,6 +1,6 @@
 # Memory Authority Control Plane
 
-Last updated: 2026-07-05
+Last updated: 2026-08-03
 
 Primary layer: Strategy / runtime governance
 
@@ -204,3 +204,19 @@ Sources:
 - [Bad Memory](https://arxiv.org/abs/2607.14611v1)
 - [Bad Memory anonymized artifact](https://anonymous.4open.science/r/self-modifying-agent-security-3248/README.md)
 - [MemPoison](https://arxiv.org/abs/2607.14651v1)
+
+## August 3 update: consolidation must preserve non-amplifying authority
+
+Memory Provenance Laundering isolates the failure that occurs when summarization preserves an action trigger but erases the low-trust source. PPMF makes platform-owned provenance and risk labels a precondition for exact tool effects rather than readable hints inside memory prose.
+
+Practical lesson:
+- keep provenance metadata outside model-authored summaries;
+- propagate trust, derivation, confirmation, scope, risk, and expiry through every memory transformation;
+- bind action-relevant memories to exact tool arguments;
+- deny high-risk effects when the supporting authority is insufficient;
+- require fresh trusted confirmation rather than allowing consolidation to manufacture it.
+
+Artifact caveat: the paper reports sanitized scenarios and scripts as planned release material, but no public implementation URL was exposed on the primary pages. Its guarantee assumes the platform-maintained confirmation and risk labels remain intact.
+
+Source:
+- [Memory Provenance Laundering](https://arxiv.org/abs/2607.29167v1)

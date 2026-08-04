@@ -884,3 +884,20 @@ Artifact caveat: the MIT-licensed repository is populated, but the method consum
 Sources:
 - [PAIChecker](https://arxiv.org/abs/2607.28587v1)
 - [manyifire/PAIChecker](https://github.com/manyifire/PAIChecker)
+
+## August 3 update: a green check needs an evidence role
+
+BSG-VA shows that positive validation is not automatically evidence about the assigned bug. Replaying each check on buggy, candidate, and gold states distinguishes bug-discriminating proof from regression-only, candidate-specific, misleading, unstable, or unevaluable evidence.
+
+Practical lesson:
+- bind every validation command to its exact worktree state;
+- isolate test-only changes from production edits;
+- replay against buggy, candidate, and gold states;
+- classify evidence roles before accepting closure;
+- preserve task, code-state, command, replay outcomes, and release decision together.
+
+Evidence caveat: 46.0 percent of 2,548 positive comparable events lacked bug-discriminating value, but the feedback intervention's improvement remained below the authors' prespecified 10-point practical threshold and did not reproduce consistently across exploratory variants.
+
+Sources:
+- [Validation Evidence in LLM Repair Agents](https://arxiv.org/abs/2607.28871v1)
+- [Open Zenodo dataset](https://doi.org/10.5281/zenodo.21642576)

@@ -2,36 +2,50 @@
 
 This index tracks the most recent structured research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: 2026-08-02
+## Latest Structured Update: 2026-08-04
 
-### Benchmark tasks need issue-to-oracle alignment proof
+### Shared-workspace mutation must invalidate stale agent state
 
-Summary: PAIChecker finds that 13.6 percent of SWE-bench Verified instances contain PR-issue misalignment. Its pattern analysis, cross-agent synthesis, and code validation make benchmark admission a checked process rather than a link heuristic.
+Summary: SWE-Touch finds user-attributed repository changes in 59.0 percent of analyzed SWE-chat sessions. Validated Counter-Edits lower average resolve rate by 7.7 percentage points across nine models, and 63.3 percent of failed runs retain the conflicting code.
 
-Analysis: [daily analysis](2026-08-02/reasoning.md#benchmark-construction-needs-an-oracle-alignment-gate)
-Core sources: [PAIChecker paper](https://arxiv.org/abs/2607.28587v1), [MIT repository](https://github.com/manyifire/PAIChecker)
+Analysis: [daily analysis](2026-08-04/reasoning.md#swe-touch-makes-shared-workspace-mutation-a-benchmarked-event)
+Core sources: [paper](https://arxiv.org/abs/2608.02499v1), [repository](https://github.com/Trae1ounG/SWE-Touch), [dataset](https://huggingface.co/datasets/Trae1ounG/SWE-Touch)
 Implementable now:
-- validate issue, PR, base revision, patch, tests, and discussion as one task manifest;
-- reject or adjudicate bundled, follow-up, unrelated, or under-specified pairs;
-- keep code validation and maintainer response beside model labels.
+- add revision-aware reads and writes;
+- emit external-mutation events;
+- require conflict reconciliation and targeted revalidation.
 Tools, repositories, and methodologies:
-- PAIChecker, SWE-bench manifests, code-level validation, maintainer adjudication
-Implementability score: 0.84
+- SWE-Touch, Harbor, Mini-SWE-Agent, LiteLLM, filesystem event journals
+Implementability score: 0.82
 
-### Local computer-use agents need selective compute
+### Telemetry monitors are escalation signals, not correctness proof
 
-Summary: one to four recent screenshots stabilize local CUAs, but longer histories, more steps, planner-grounder decomposition, and parallel plans quickly hit diminishing returns or change stalls into false success.
+Summary: A 2,823-episode study shows that one-class telemetry monitors can detect some trajectory drift cheaply, but organic fabrication transfer is weak and deployment shift can cause high false alarms.
 
-Analysis: [daily analysis](2026-08-02/reasoning.md#local-computer-use-agents-need-selective-compute-not-longer-loops)
-Core source: [local CUA scaling study](https://arxiv.org/abs/2607.28573v1)
+Analysis: [daily analysis](2026-08-04/reasoning.md#telemetry-monitors-can-be-cheap-but-only-after-local-calibration)
+Core sources: [paper](https://arxiv.org/abs/2608.02464v1), [traces and results](https://github.com/sunnydubey1111/agent-trajectory-sentinel)
 Implementable now:
-- keep compact recent state with source-labeled screenshots;
-- detect loops, no progress, format failure, and false completion separately;
-- gate success on environment state and escalate only after measured plateau.
+- emit typed step telemetry;
+- calibrate healthy baselines per deployment;
+- keep completion and source-grounding checks deterministic.
 Tools, repositories, and methodologies:
-- OSWorld-style sandboxes, state hashes, progress monitors, deterministic completion checks, vLLM accounting
+- OpenTelemetry, OpenInference, CUSUM, Mahalanobis baselines, deterministic verifiers
+Implementability score: 0.64
+
+### Capability routing should choose the smallest sufficient runtime
+
+Summary: Cloudflare Computer presents one SQLite-backed workspace across isolate and Linux-container backends, with common file and execution tools plus gated, audited operations.
+
+Analysis: [daily analysis](2026-08-04/reasoning.md#cloudflare-computer-routes-capability-to-the-smallest-sufficient-runtime)
+Core sources: [official changelog](https://developers.cloudflare.com/changelog/post/2026-08-03-cloudflare-computer/), [repository](https://github.com/cloudflare/computer)
+Implementable now:
+- classify actions by runtime capability;
+- default narrow work to isolates;
+- require a receipt for container escalation.
+Tools, repositories, and methodologies:
+- `@cloudflare/computer`, Durable Objects, DOFS, FUSE, capability manifests
 Implementability score: 0.76
 
 ## Current implication
 
-Agent evaluation needs two preconditions before scores matter: the task must match its oracle, and compute must be allocated against observed failure modes rather than added blindly.
+One event contract should bind workspace revisions, monitor alarms, backend escalation, and validation to the same trajectory identity. Without that binding, each feature can observe or change a different world.

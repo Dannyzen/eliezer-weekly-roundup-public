@@ -1,6 +1,6 @@
 # Coding Agent Control Plane
 
-Last updated: 2026-07-06
+Last updated: 2026-08-03
 
 Coding-agent control planes are the missing governance layer between repo-local agent instructions and real file or shell authority.
 
@@ -215,3 +215,30 @@ Practical lesson:
 Sources:
 - [Specula](https://arxiv.org/abs/2607.25333v1)
 - [specula-org/Specula](https://github.com/specula-org/Specula)
+
+## August 3 update: evidence should gate mutation and bound repair
+
+ECLoop and AuditCoder add two concrete execution surfaces to the coding-agent control plane. ECLoop compiles repository evidence requirements and postpones unsupported edits. AuditCoder gives commitments, owned code, checks, and repair history stable responsibility IDs, then freezes unaffected regions during repair.
+
+Practical lesson:
+- compile issue-specific evidence conditions before writes;
+- route observations into typed trajectory events;
+- require action-specific evidence before mutation or submission;
+- bind task nodes to code ownership, dependencies, checks, and provenance;
+- permit repair only for a supported node or branch;
+- abstain when evidence cannot justify a boundary.
+
+Artifact caveat: ECLoop exposes no dedicated public implementation on its primary pages. AuditCoder's MIT repository is populated and documents a hardened container boundary, but it was inspected read-only and not executed.
+
+Sources:
+- [ECLoop](https://arxiv.org/abs/2607.28815v1)
+- [AuditCoder](https://arxiv.org/abs/2607.29529v1)
+- [puppet0x3f/AuditCoder](https://github.com/puppet0x3f/AuditCoder)
+
+## August 4 update: shared workspaces need mutation events
+
+SWE-Touch shows why a coding-agent control plane cannot treat the checkout as private agent state. User-attributed repository changes appear in 59.0 percent of analyzed SWE-chat sessions, while controlled Counter-Edits reduce average resolution by 7.7 percentage points and remain in 63.3 percent of failed runs.
+
+The control-plane primitive is an external-mutation event bound to revision, actor, touched region, and affected validations. A stale plan must lose write authority until the agent re-reads, reconciles the conflict, and reruns targeted checks.
+
+Source: https://arxiv.org/abs/2608.02499v1

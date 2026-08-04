@@ -6,9 +6,9 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily research, 2026-08-02: [oracle alignment, selective local compute, and authenticated audio intent](roundups/2026-08-02.md)
-- AgenticAI daily analysis: [2026-08-02](AgenticAI/2026-08-02/reasoning.md)
-- Strategy daily sovereignty: [2026-08-02](Strategy/2026-08-02/sovereignty.md)
+- Daily research, 2026-08-04: [event-aware workspaces, cheap runtime monitors, capability routing, and policy composition](roundups/2026-08-04.md)
+- AgenticAI daily analysis: [2026-08-04](AgenticAI/2026-08-04/reasoning.md)
+- Strategy daily sovereignty: [2026-08-04](Strategy/2026-08-04/sovereignty.md)
 - Friday synthesis, week ending 2026-07-31: [exact-state evidence and separately owned authority](roundups/2026-07-31.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
@@ -18,14 +18,15 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 The practical rule is exact-state binding plus separately owned authority:
 
+- shared workspaces need revision identity and mutation-origin events;
+- runtime monitors may trigger escalation, but deterministic checks certify narrow facts;
+- execution should use the smallest runtime that satisfies an explicit capability manifest;
+- inherited policy must compile into one visible effective-policy receipt;
 - evidence is valid only for the artifact, environment, verifier, and identity it names;
 - evaluators, guests, and models cannot own their own network boundary, credentials, monitor, kill path, or release authority;
 - memory must be tested where it changes decisions and across write, execute, and repair stages;
-- coordination needs scoped messages, delivery receipts, and operator-owned supervision;
 - prompts, issues, skills, and retrieved data are policy-bearing inputs, not trusted prose;
 - adaptive loops, skills, and routers must beat matched baselines without hiding regressions.
-- routing policy needs request receipts, nested spend limits, and identity-scoped model access.
-- multimodal perception is evidence; consequential intent needs a separately authenticated channel.
 
 The model may propose. A separately controlled boundary grants permission or certifies success.
 

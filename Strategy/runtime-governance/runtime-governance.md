@@ -884,3 +884,15 @@ Sources:
 - [AISPA](https://arxiv.org/abs/2607.28617v1)
 - [System Prompt Index](https://systempromptindex.com/)
 - [XiangningLin/SystemPromptIndex](https://github.com/XiangningLin/SystemPromptIndex)
+
+## August 4 update: runtime controls need one event and policy identity
+
+Four fresh findings converge on the same boundary. Shared-workspace changes need revision events, anomaly monitors need deployment-specific calibration, execution backends need capability-based routing, and team policy inheritance needs immutable ceilings. Each control is useful alone, but they become governance only when their decisions name the same trajectory, actor, revision, capability grant, and effective policy.
+
+Build one runtime receipt that records mutation origin, monitor alarms, backend escalation, validation evidence, and inherited policy. This keeps observability from drifting away from authority.
+
+Sources:
+- https://arxiv.org/abs/2608.02499v1
+- https://arxiv.org/abs/2608.02464v1
+- https://developers.cloudflare.com/changelog/post/2026-08-03-cloudflare-computer/
+- https://github.blog/changelog/2026-08-03-enterprise-team-specialization-for-managed-settings

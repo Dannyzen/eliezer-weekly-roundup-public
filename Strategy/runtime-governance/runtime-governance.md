@@ -896,3 +896,19 @@ Sources:
 - https://arxiv.org/abs/2608.02464v1
 - https://developers.cloudflare.com/changelog/post/2026-08-03-cloudflare-computer/
 - https://github.blog/changelog/2026-08-03-enterprise-team-specialization-for-managed-settings
+
+## August 5 update: policy authority belongs at commit time
+
+Stateful Governance shows why request-time authorization is insufficient for concurrent agents. A decision can be valid when requested and invalid when the effect commits because budgets, inventory, approvals, or risk state changed in between.
+
+Practical lesson:
+- declare the policy-state scopes consumed by each effect;
+- coordinate policy state and effect execution in one transaction;
+- reserve state across delayed approvals and revalidate before commit;
+- test full-conflict and disjoint-scope workloads separately;
+- attach policy version, principal, effect ID, state snapshot, and commit outcome to one receipt.
+
+Evidence caveat: the PostgreSQL prototype reports zero stale allows where request-local baselines violate a shared budget, but no public implementation repository was verified.
+
+Source:
+- [Stateful Governance for Concurrent Agentic Systems](https://arxiv.org/abs/2608.02764v1)

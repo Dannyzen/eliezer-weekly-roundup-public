@@ -205,6 +205,24 @@ Sources:
 - [MCP Tunnels overview](https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/overview)
 - [MCP Tunnels security](https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/security)
 
+
+## August 5 update: local models should enter through measured routing
+
+LFM2.5-2.6B is an artifact-ready signal that small local models can serve as narrow agent workers. Its public weights, OpenAI-compatible serving paths, native tool formatting, and training inside Hermes Agent and OpenClaw make local evaluation cheap enough to stop arguing from generic benchmarks.
+
+Practical lesson:
+- benchmark the model inside the real Hermes prompt and tool surface;
+- route narrow, high-volume, privacy-sensitive tasks locally first;
+- keep a hosted fallback for coding-heavy or low-confidence cases;
+- log local outcome quality, latency, energy, and escalation reason;
+- review the LFM Open License before commercial use, especially the USD 10 million revenue threshold.
+
+Evidence caveat: performance and speed claims are vendor-reported. Public ungated weights make local reproduction possible, but this scan did not download or execute them.
+
+Sources:
+- [LFM2.5-2.6B release](https://www.liquid.ai/blog/lfm2-5-2-6b)
+- [LFM2.5-2.6B model](https://huggingface.co/LiquidAI/LFM2.5-2.6B)
+- [LFM Open License](https://www.liquid.ai/lfm-license)
 ## Current read
 
 The important shift is not just that local models beat every hosted model. They do not. The shift is that local-first is now viable enough to become the default for a meaningful slice of agent workloads, especially when paired with explicit escalation rules, local privacy filters, narrow multimodal action surfaces, and trace governance for privileged local tools. That forces better architecture decisions: explicit routing, explicit scopes, explicit reasons for what leaves the device, explicit evidence for what the agent did locally, and operator surfaces that preserve human supervision.

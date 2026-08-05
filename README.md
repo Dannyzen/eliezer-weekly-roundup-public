@@ -6,9 +6,9 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily research, 2026-08-04: [event-aware workspaces, cheap runtime monitors, capability routing, and policy composition](roundups/2026-08-04.md)
-- AgenticAI daily analysis: [2026-08-04](AgenticAI/2026-08-04/reasoning.md)
-- Strategy daily sovereignty: [2026-08-04](Strategy/2026-08-04/sovereignty.md)
+- Daily research, 2026-08-05: [resumability contracts, transaction-aware memory, commit-time governance, and local Hermes workers](roundups/2026-08-05.md)
+- AgenticAI daily analysis: [2026-08-05](AgenticAI/2026-08-05/reasoning.md)
+- Strategy daily sovereignty: [2026-08-05](Strategy/2026-08-05/sovereignty.md)
 - Friday synthesis, week ending 2026-07-31: [exact-state evidence and separately owned authority](roundups/2026-07-31.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
@@ -19,6 +19,7 @@ The repo separates patterns that can be tried now from ideas that still need res
 The practical rule is exact-state binding plus separately owned authority:
 
 - shared workspaces need revision identity and mutation-origin events;
+- resume, memory revision, and policy authorization need explicit state-transition contracts;
 - runtime monitors may trigger escalation, but deterministic checks certify narrow facts;
 - execution should use the smallest runtime that satisfies an explicit capability manifest;
 - inherited policy must compile into one visible effective-policy receipt;

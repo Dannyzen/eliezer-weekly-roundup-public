@@ -912,3 +912,19 @@ Sources:
 - [Keep It InMind](https://arxiv.org/abs/2607.24368v1)
 - [InMind repository](https://github.com/imlrz/InMind)
 - [InMind project site](https://keep-it-inmind.github.io/)
+
+## August 5 update: memory changes need transaction semantics
+
+TARL strengthens the memory-control thesis by separating append, revise, reject, defer, and ignore. The important unit is not a retrieved paragraph or a Write/Hold label. It is a typed operation with a before state, after state, source, temporal scope, and execution result.
+
+Practical lesson:
+- retain accepted, pending, rejected, and superseded ledgers;
+- keep the proposed operation separate from the deterministic executor;
+- test next-state accuracy, pollution, conflict preservation, and calibration;
+- preserve source-family holdouts and temporal shifts in regression suites;
+- require explicit provenance for revisions and rejections.
+
+Artifact caveat: the paper reports five-run cross-source results, but its code, TARL-Mem dataset, and reproduction materials are deferred until final publication.
+
+Source:
+- [TARL](https://arxiv.org/abs/2608.03699v1)

@@ -143,3 +143,19 @@ Practical lesson:
 
 Source:
 - [ESAA-Conversational](https://arxiv.org/abs/2606.23752)
+
+## August 5 update: resume is an event-sourced conformance boundary
+
+Resume Means Resume turns durable execution into six testable properties: prefix continuation, effect exactly-once, fork determinism, checkpoint validity, consume-once, and recovery determinism. The event log is useful only if replay and resume preserve those properties across crashes and framework upgrades.
+
+Practical lesson:
+- assign stable IDs to runs, checkpoints, interrupts, forks, and effects;
+- persist intent and outcome around every non-idempotent effect;
+- inject faults before dispatch, after dispatch, after commit, and before observation;
+- test fork and consume-once semantics separately from ordinary replay;
+- bind conformance results to exact runtime versions.
+
+Artifact caveat: the paper reports five pinned frameworks, 7.4 million checked TLA+ states, and a 39-cell fault matrix, but its probes and Remit implementation remain private pending publication.
+
+Source:
+- [Resume Means Resume](https://arxiv.org/abs/2608.03836v1)

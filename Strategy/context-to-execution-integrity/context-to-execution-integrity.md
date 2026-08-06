@@ -382,3 +382,18 @@ That moves agent safety from generic confirmation toward a specific operator que
 - Binding Drift code and data: https://github.com/shashank-indukuri/binding-drift
 - Context-to-Execution Integrity for LLM Agents: https://arxiv.org/abs/2607.06000v1
 - CXI artifact: https://anonymous.4open.science/r/cxi
+
+
+## August 6 update: unresolved worlds cannot release side effects
+
+SafeCommit strengthens context-to-execution integrity by refusing to convert memory-grounded context into external action until every retained world certifies the effect. The release gate is not a better summary. It is a certificate, a probe, or a fallback.
+
+Practical lesson:
+- treat memory, tool output, and provenance as world-set inputs;
+- bind side-effect release to certificates over retained worlds;
+- keep probe selection inside the control plane;
+- preserve commit and fallback receipts with the supporting world set.
+
+Sources:
+- [SafeCommit](https://arxiv.org/abs/2608.04289v1)
+- [akewarmayur/SafeCommit](https://github.com/akewarmayur/SafeCommit)

@@ -2,50 +2,50 @@
 
 This index tracks the most recent structured research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: 2026-08-05
+## Latest Structured Update: 2026-08-06
 
-### Resume behavior needs a conformance contract
+### Skill use needs progressive disclosure scores
 
-Summary: Resume Means Resume defines six persistence properties, checks a TLA+ reference model across 7.4 million states, and applies a 39-cell fault matrix to five workflow frameworks.
+Summary: Skill-Use grades trigger, compliance, and boundary separately when an agent sees only a skill name and short description before retrieving the full procedure. It covers 79 real skills and 177 sandbox tasks.
 
-Analysis: [daily analysis](2026-08-05/reasoning.md#resume-means-resume-turns-persistence-semantics-into-a-conformance-suite)
-Core source: [paper](https://arxiv.org/abs/2608.03836v1)
+Analysis: [daily analysis](2026-08-06/reasoning.md#skill-use-separates-trigger-compliance-and-boundary-under-progressive-disclosure)
+Core sources: [paper](https://arxiv.org/abs/2608.04828v1), [repo](https://github.com/JinyiHan99/Skill-Use-Bench)
 Implementable now:
-- declare checkpoint and resume semantics;
-- persist effect IDs and receipts;
-- inject faults around dispatch, commit, and recovery.
-Tools and methodologies:
-- TLA+, TLC, deterministic fault injection, effect ledgers, replay fixtures
-Implementability score: 0.64
-
-### Memory updates need executable transaction types
-
-Summary: TARL replaces binary Write/Hold with five actions and evaluates the resulting memory state. Cross-source five-action F1 reaches 0.6036 on HaluMem-hard and 0.4050 on LoCoMo-derived examples.
-
-Analysis: [daily analysis](2026-08-05/reasoning.md#tarl-makes-memory-revision-an-executable-transaction)
-Core source: [paper](https://arxiv.org/abs/2608.03699v1)
-Implementable now:
-- separate append, revise, reject, defer, and ignore;
-- retain before state, after state, source, and temporal scope;
-- grade next-state correctness and memory pollution separately.
-Tools and methodologies:
-- append-only ledgers, typed action schemas, temporal validity, transition fixtures
-Implementability score: 0.58
-
-### Small local models can become measured agent workers
-
-Summary: LFM2.5-2.6B provides public ungated weights, 128K context, native tool-call formatting, and agentic RL run inside Hermes Agent, OpenClaw, and other harnesses.
-
-Analysis: [daily analysis](2026-08-05/reasoning.md#lfm25-26b-makes-local-agent-routing-practical-at-the-small-model-tier)
-Core sources: [Liquid AI release](https://www.liquid.ai/blog/lfm2-5-2-6b), [model](https://huggingface.co/LiquidAI/LFM2.5-2.6B), [license](https://www.liquid.ai/lfm-license)
-Implementable now:
-- serve an OpenAI-compatible local endpoint;
-- run Hermes-specific tool fixtures;
-- route narrow work locally and log escalation reasons.
+- score skill runs on trigger, compliance, and boundary;
+- require explicit skill retrieval before full procedure injection;
+- keep trajectory rubrics with skill identity and hash.
 Tools and repositories:
-- LFM2.5-2.6B, llama.cpp, MLX, vLLM, SGLang, Hermes Agent
-Implementability score: 0.86
+- Skill-Use-Bench, Docker sandbox fixtures, progressive disclosure loaders, Hermes skill catalogs
+Implementability score: 0.76
+
+### Canary tools diagnose tool-selection failure modes
+
+Summary: Canary Tools plants six trap types into MCP-style catalogs and turns wrong-tool outcomes into susceptibility profiles across 8,640 runs.
+
+Analysis: [daily analysis](2026-08-06/reasoning.md#canary-tools-turn-wrong-tool-outcomes-into-a-failure-taxonomy)
+Core source: [paper](https://arxiv.org/abs/2608.04719v1)
+Implementable now:
+- generate schema-derived canaries beside real tools;
+- log canary type with selected tool and task success;
+- block catalog promotion when susceptibility exceeds budget.
+Tools and methodologies:
+- MCP registries, decoy generators, gateway allowlists, trajectory labels
+Implementability score: 0.60
+
+### SuperScout routes after scout verification
+
+Summary: SuperScout scouts a repository with a 7B searcher, strips failed reproduction claims, then routes among frontier fixers. On SWE-bench Pro Python-266 it matches the best solo solve rate at about one fifth the matched cost per solve.
+
+Analysis: [daily analysis](2026-08-06/reasoning.md#superscout-routes-coding-agents-only-after-scouting-and-stripping-false-claims)
+Core sources: [paper](https://arxiv.org/abs/2608.04804v1), [repo](https://github.com/TransformerOptimus/superscout), [model](https://huggingface.co/SuperAGI/SuperScout-7B)
+Implementable now:
+- scout before model selection;
+- sandbox-verify handoff claims;
+- keep paired solo and routed cost or solve receipts.
+Tools and repositories:
+- SuperScout, verify-then-strip gates, frozen routers, SWE-bench receipts
+Implementability score: 0.80
 
 ## Current implication
 
-Persistence and routing should expose typed decisions. The runtime must show which state transition happened, which model tier performed it, and which evidence makes the result safe to continue from.
+Names are leads, not authority. Skill catalogs, tool descriptions, and issue text should unlock work only after retrieval, traps, or verified local scout evidence make the next action defensible.

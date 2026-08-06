@@ -301,3 +301,19 @@ Preview caveat: access uses least-restrictive union semantics, so one permissive
 
 Source:
 - [Enterprise teams model policy targeting](https://github.blog/changelog/2026-07-31-enterprise-teams-model-policy-targeting-in-public-preview)
+
+
+## August 6 update: routing evidence should include verified local scout state
+
+SuperScout is a router-governance pattern as much as a coding benchmark result. Issue text alone is too weak to unlock frontier spend. The router consumes scout hidden state plus task text only after a verify-then-strip gate cleans the handoff. That makes routing a governed spend decision with recomputable receipts.
+
+Practical lesson:
+- separate scout authority from fixer authority;
+- bind route choice to verified local evidence, not only prompt features;
+- preserve cost, solve, backend, and handoff receipts per task;
+- deny escalation when verified claim coverage is below threshold;
+- treat backend admission as configuration with invariant budget and policy checks.
+
+Sources:
+- [Scrouting / SuperScout](https://arxiv.org/abs/2608.04804v1)
+- [TransformerOptimus/superscout](https://github.com/TransformerOptimus/superscout)

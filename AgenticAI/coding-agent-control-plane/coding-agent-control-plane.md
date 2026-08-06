@@ -242,3 +242,20 @@ SWE-Touch shows why a coding-agent control plane cannot treat the checkout as pr
 The control-plane primitive is an external-mutation event bound to revision, actor, touched region, and affected validations. A stale plan must lose write authority until the agent re-reads, reconciles the conflict, and reruns targeted checks.
 
 Source: https://arxiv.org/abs/2608.02499v1
+
+
+## August 6 update: scout, verify, then route the fixer
+
+SuperScout changes coding-agent control from issue-text model choice to scout-conditioned spend. A 7B searcher explores the repository, emits a structured handoff, sandbox-verifies reproduction claims, strips false claims, and only then routes among frontier fixers. On SWE-bench Pro Python-266 it matches the best solo solve rate at about one fifth matched cost per solve. The public artifact set includes the gate, frozen router, receipts, and contamination blocklist.
+
+Practical lesson:
+- scout before fixer selection;
+- require verified reproduction claims in the handoff;
+- strip failed claims before the fixer context is built;
+- keep paired solo and routed receipts for cost and solve rate;
+- admit new fixers as backends without retraining the router.
+
+Sources:
+- [Scrouting / SuperScout](https://arxiv.org/abs/2608.04804v1)
+- [TransformerOptimus/superscout](https://github.com/TransformerOptimus/superscout)
+- [SuperScout-7B](https://huggingface.co/SuperAGI/SuperScout-7B)

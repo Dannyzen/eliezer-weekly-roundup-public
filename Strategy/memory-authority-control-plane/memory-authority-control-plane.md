@@ -220,3 +220,21 @@ Artifact caveat: the paper reports sanitized scenarios and scripts as planned re
 
 Source:
 - [Memory Provenance Laundering](https://arxiv.org/abs/2607.29167v1)
+
+
+## August 6 update: commitment needs certificates over retained worlds
+
+SafeCommit formalizes premature commitment under memory uncertainty. Before a side effect, the controller retains a calibrated set of plausible worlds from memory, observations, tool outputs, provenance, and policy. The action commits only when a conformal certificate says it is safe in every retained world; otherwise the system probes or falls back. In the authors' synthetic study, unsafe commitment falls from about 41.2 percent single-world action to about 2.6 percent with certification plus targeted probes.
+
+Practical lesson:
+- do not treat one retrieved memory context as the world;
+- retain conflicting candidate worlds until probes resolve them;
+- require action certificates before external side effects;
+- prefer targeted low-side-effect probes over generic confirmation prompts;
+- record retained worlds, probe results, and commit or fallback receipts.
+
+Artifact caveat: the public repository is explicit that the included benchmark is a controlled synthetic mechanism study, not deployed LLM-agent performance.
+
+Sources:
+- [SafeCommit](https://arxiv.org/abs/2608.04289v1)
+- [akewarmayur/SafeCommit](https://github.com/akewarmayur/SafeCommit)

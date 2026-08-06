@@ -6,13 +6,14 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily research, 2026-08-05: [resumability contracts, transaction-aware memory, commit-time governance, and local Hermes workers](roundups/2026-08-05.md)
-- AgenticAI daily analysis: [2026-08-05](AgenticAI/2026-08-05/reasoning.md)
-- Strategy daily sovereignty: [2026-08-05](Strategy/2026-08-05/sovereignty.md)
+- Daily research, 2026-08-06: [names are not authority: skill facets, canary tools, SafeCommit, and scout-then-route](roundups/2026-08-06.md)
+- AgenticAI daily analysis: [2026-08-06](AgenticAI/2026-08-06/reasoning.md)
+- Strategy daily sovereignty: [2026-08-06](Strategy/2026-08-06/sovereignty.md)
+- Previous daily, 2026-08-05: [resumability contracts, transaction-aware memory, commit-time governance, and local Hermes workers](roundups/2026-08-05.md)
 - Friday synthesis, week ending 2026-07-31: [exact-state evidence and separately owned authority](roundups/2026-07-31.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
-- Deep Dive Wednesday, 2026-07-29: [evaluation containment as a production control plane](roundups/2026-07-29.md)
+- Deep Dive Wednesday, 2026-08-05: [stateful effect governance at the commit boundary](Strategy/stateful-effect-governance/stateful-effect-governance.md)
 
 ## Current thesis
 
@@ -27,6 +28,10 @@ The practical rule is exact-state binding plus separately owned authority:
 - evaluators, guests, and models cannot own their own network boundary, credentials, monitor, kill path, or release authority;
 - memory must be tested where it changes decisions and across write, execute, and repair stages;
 - prompts, issues, skills, and retrieved data are policy-bearing inputs, not trusted prose;
+- skill catalogs need trigger, compliance, and boundary scores under progressive disclosure;
+- tool descriptions need canary audits before they can mint selection authority;
+- side effects under memory uncertainty need certificates over retained worlds, not one retrieved context;
+- expensive coding backends should wait for verified local scout evidence;
 - adaptive loops, skills, and routers must beat matched baselines without hiding regressions.
 
 The model may propose. A separately controlled boundary grants permission or certifies success.
@@ -62,6 +67,7 @@ The model may propose. A separately controlled boundary grants permission or cer
 ### Strategy
 
 - [Evaluation Containment Control Plane](Strategy/evaluation-containment-control-plane/evaluation-containment-control-plane.md)
+- [Stateful Effect Governance](Strategy/stateful-effect-governance/stateful-effect-governance.md)
 - [Agent Self-Improvement Governance](Strategy/agent-self-improvement-governance/agent-self-improvement-governance.md)
 - [Context-to-Execution Integrity](Strategy/context-to-execution-integrity/context-to-execution-integrity.md)
 - [Untrusted Data Boundaries](Strategy/untrusted-data-boundaries/untrusted-data-boundaries.md)

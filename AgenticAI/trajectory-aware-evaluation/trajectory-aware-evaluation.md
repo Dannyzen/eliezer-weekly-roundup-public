@@ -901,3 +901,19 @@ Evidence caveat: 46.0 percent of 2,548 positive comparable events lacked bug-dis
 Sources:
 - [Validation Evidence in LLM Repair Agents](https://arxiv.org/abs/2607.28871v1)
 - [Open Zenodo dataset](https://doi.org/10.5281/zenodo.21642576)
+
+
+## August 6 update: canary tools make wrong-tool trajectories diagnosable
+
+Canary Tools plants six trap types into MCP-style catalogs: semantic decoys, parameter traps, capability mirages, prerequisite blindness, temporal decoys, and granularity traps. Across 8,640 runs, canary susceptibility spans roughly 0.010 to 0.378 across model tiers. The useful eval object is no longer only selected tool and task success. It is the susceptibility profile of the whole tool-choice trajectory.
+
+Practical lesson:
+- inject schema-derived canaries at controlled density;
+- label selected tool, rejected alternatives, canary type, and outcome together;
+- keep capability-mirage and prerequisite traps even for strong models;
+- set catalog promotion budgets on susceptibility, not only on success rate.
+
+Evidence caveat: the taxonomy and run design are clear in the paper, but no paper-owned public generator repository was verified in this scan.
+
+Source:
+- [Diagnosing Tool-Selection Reasoning in LLM Agents with Canary Tools](https://arxiv.org/abs/2608.04719v1)

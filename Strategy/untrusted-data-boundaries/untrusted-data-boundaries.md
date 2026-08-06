@@ -287,3 +287,18 @@ Sources:
 - [Piggybacking on Perception](https://arxiv.org/abs/2607.28165v1)
 - [Limax666/AudioAgentSecurity](https://github.com/Limax666/AudioAgentSecurity)
 - [AudioAgentSecurity dataset](https://huggingface.co/datasets/Limax11/AudioAgentSecurity)
+
+
+## August 6 update: tool descriptions and issue text are untrusted leads
+
+Two August 6 findings tighten the untrusted-data boundary. Canary Tools shows that model-visible tool descriptions can attract unsafe selection. SuperScout shows that issue text is too weak to authorize frontier coding spend until a local scout verifies claims. Both treat prose as a lead that must earn execution rights.
+
+Practical lesson:
+- never let description text alone mint privileged tool selection;
+- never let issue text alone mint expensive fixer dispatch;
+- require retrieval, traps, or verified local evidence before side effects;
+- strip failed claims before they enter privileged contexts.
+
+Sources:
+- [Canary Tools](https://arxiv.org/abs/2608.04719v1)
+- [SuperScout](https://arxiv.org/abs/2608.04804v1)

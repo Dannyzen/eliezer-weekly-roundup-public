@@ -765,3 +765,19 @@ Evidence caveat: the study covers nearly 6,000 condition runs but only two offic
 
 Source:
 - [The Regression Tax](https://arxiv.org/abs/2607.22520v1)
+
+
+## August 6 update: progressive disclosure needs three skill scores
+
+Skill-Use shows that skill quality and final-task success hide the operational failure modes that matter in real catalogs. Under progressive disclosure, the agent sees only a name and short description, must retrieve the full procedure, and is graded on trigger, compliance, and boundary separately. The public benchmark pairs 79 real skills with 177 sandbox tasks and trajectory rubrics.
+
+Practical lesson:
+- expose skills as name plus short description first;
+- require explicit retrieval before full procedure injection;
+- score recognition, procedure following, and forbidden-operation restraint separately;
+- refuse compliance credit when the agent never triggered the skill;
+- keep skill identity, hash, rubric, sandbox fixture, and trajectory under one run receipt.
+
+Sources:
+- [Skill-Use](https://arxiv.org/abs/2608.04828v1)
+- [JinyiHan99/Skill-Use-Bench](https://github.com/JinyiHan99/Skill-Use-Bench)

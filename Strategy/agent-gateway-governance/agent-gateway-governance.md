@@ -1004,3 +1004,20 @@ Product caveat: gateway-native evidence is vendor-owned, and the built-in budget
 Sources:
 - [AI Gateway Logs](https://vercel.com/changelog/ai-gateway-logs)
 - [AI Gateway Budgets](https://vercel.com/changelog/ai-gateway-spend-budgets-and-alerts)
+
+
+## August 6 update: canary tools audit description-minted capability
+
+Canary Tools is a gateway-governance audit. Planting semantic decoys, capability mirages, prerequisite-blind tools, and related traps tests whether model-visible descriptions can mint selection authority the operator never intended. Strong models still fall for capability mirages, so description linting and prerequisite checks belong outside the model-facing prose.
+
+Practical lesson:
+- keep shadow canaries beside high-risk MCP or gateway tools;
+- score selection susceptibility separately from task success;
+- reject descriptions that win by implied power rather than exact effect;
+- enforce auth and prerequisite checks outside the tool description;
+- promote catalogs only under a susceptibility budget.
+
+Evidence caveat: implement from the taxonomy first; no public generator repository was verified in this scan.
+
+Source:
+- [Canary Tools](https://arxiv.org/abs/2608.04719v1)

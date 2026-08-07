@@ -85,3 +85,16 @@ The first governance loop is buildable with current version control, eval harnes
 - Experiment artifacts: https://github.com/relai-ai/Continual-Learning-Terminal-Bench
 - Phantom Guardrails: https://arxiv.org/abs/2607.13083v1
 - GPT-Red: https://openai.com/index/unlocking-self-improvement-gpt-red/
+
+
+## August 7 update: skill self-evolution needs admission control
+
+When Self-Evolution Backfires is a direct self-improvement governance finding. Agents that distill skills from their own trajectories can pass a capability-contamination threshold where new skills hurt. Because rollback after admission recovers little, verification must happen before the skill becomes executable memory.
+
+Practical lesson:
+- treat skill writeback as a privileged self-modification;
+- require pre-commit replay or held-out gates;
+- measure improvement against matched baselines after each admission batch.
+
+Source:
+- [When Self-Evolution Backfires](https://arxiv.org/abs/2608.05810v1)

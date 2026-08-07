@@ -781,3 +781,19 @@ Practical lesson:
 Sources:
 - [Skill-Use](https://arxiv.org/abs/2608.04828v1)
 - [JinyiHan99/Skill-Use-Bench](https://github.com/JinyiHan99/Skill-Use-Bench)
+
+
+## August 7 update: pre-commit gates against skill contamination
+
+When Self-Evolution Backfires shows that self-distilled skill pools are not monotonically helpful. Past a critical size, newly admitted skills degrade performance, and post-hoc rollback recovers little. Verifier-as-Gatekeeper moves verification before commit so candidate skills are intercepted before they enter executable runtime context.
+
+Practical lesson:
+- split draft, admitted, and revoked skill states;
+- require behavioral replay or held-out checks before load;
+- block progressive disclosure of rejected skills;
+- track pool growth against task regression, not skill count alone.
+
+Evidence caveat: no public implementation repository was verified in this scan. Use the pre-commit framing and irreversibility warning, not unvalidated critical-size constants.
+
+Source:
+- [When Self-Evolution Backfires](https://arxiv.org/abs/2608.05810v1)

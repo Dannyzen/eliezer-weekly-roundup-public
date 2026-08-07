@@ -928,3 +928,17 @@ Artifact caveat: the paper reports five-run cross-source results, but its code, 
 
 Source:
 - [TARL](https://arxiv.org/abs/2608.03699v1)
+
+
+## August 7 update: skill writeback and session traces are memory authority problems
+
+Two August 7 findings tighten memory governance. Self-evolving skill pools can contaminate capability once bad skills are admitted, so writeback needs a pre-commit gate. Multi-turn tool history can remain plausible after it stops being authoritative, so session memory needs authority labels before reuse. Memory is not only retrieval quality. It is what the runtime is later allowed to trust.
+
+Practical lesson:
+- treat skill admission as a memory write with verification;
+- label tool-trace authority before it re-enters context;
+- keep rejected skills and untrusted traces out of progressive loaders.
+
+Sources:
+- [When Self-Evolution Backfires](https://arxiv.org/abs/2608.05810v1)
+- [When History Lies](https://arxiv.org/abs/2608.06057v1)

@@ -2,7 +2,53 @@
 
 This index tracks the most recent structured strategy research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: 2026-08-06
+## Latest Structured Update: 2026-08-07
+
+### Temporal policy and rate limits belong at the gateway
+
+Summary: Amazon Bedrock AgentCore posts from 2026-08-06 make stateful temporal authorization and per-user or per-tool rate limits concrete gateway controls, and package Automated Reasoning policy work as Agent Skills. The portable pattern is stateful policy plus metered mediation with enforcement receipts outside the prompt.
+
+Analysis: [daily analysis](2026-08-07/sovereignty.md#agentcore-makes-temporal-policy-and-rate-limits-first-class-gateway-controls)
+Core sources: [temporal policies](https://aws.amazon.com/blogs/machine-learning/securing-ai-agents-with-temporal-policies-in-amazon-bedrock-agentcore/), [rate limits](https://aws.amazon.com/blogs/machine-learning/configure-rate-limits-for-ai-traffic-on-agentcore-gateway/), [behavior and cost controls](https://aws.amazon.com/blogs/machine-learning/control-agent-behaviors-and-cost-beyond-a-single-action-new-capabilities-in-amazon-bedrock-agentcore/), [policy skills](https://aws.amazon.com/blogs/machine-learning/agent-skills-for-automated-reasoning-policies-in-amazon-bedrock/)
+Implementable now:
+- encode stateful allow or deny rules over recent tool and principal history;
+- rate-limit by user, tool, target, and model dimensions;
+- separate policy authoring from enforcement receipts;
+- deny by default when temporal context is missing for high-risk tools.
+Tools and methodologies:
+- AgentCore Gateway, temporal policy docs, gateway rate-limit configs, OAuth or IAM principal binding, OpenTelemetry spans
+Implementability score: 0.84
+
+### Skill writeback is an authority transition
+
+Summary: When Self-Evolution Backfires shows self-distilled skills can contaminate capability past a critical pool size, and post-hoc rollback recovers little. Verifier-as-Gatekeeper admits skills only before they become executable runtime memory.
+
+Analysis: [daily analysis](2026-08-07/sovereignty.md#skill-writeback-is-an-authority-transition-and-needs-a-pre-commit-gate)
+Core source: [paper](https://arxiv.org/abs/2608.05810v1)
+Implementable now:
+- split draft, admitted, and revoked skill states;
+- require replay or held-out verification before admission;
+- block progressive disclosure of rejected skills;
+- measure pool growth against task regression.
+Tools and methodologies:
+- skill registries, replay harnesses, held-out suites, progressive disclosure loaders
+Implementability score: 0.69
+
+### Multi-turn tool history is an untrusted authority surface
+
+Summary: When History Lies shows structurally valid tool history can flip actions a model already knows under oracle state. On Qwen3-1.7B, polluted history flips about 32.1 percent of otherwise correct decisions.
+
+Analysis: [daily analysis](2026-08-07/sovereignty.md#multi-turn-tool-history-is-an-untrusted-authority-surface)
+Core source: [paper](https://arxiv.org/abs/2608.06057v1)
+Implementable now:
+- label tool-trace authority before reuse;
+- evaluate polluted-history and oracle-state fixtures;
+- require fresh state validation before high-impact calls that depend on history.
+Tools and methodologies:
+- session state ledgers, tool-trace authority labels, multi-turn fixtures
+Implementability score: 0.64
+
+## Previous Structured Update: 2026-08-06
 
 ### Side effects need certificates over retained memory worlds
 
@@ -10,12 +56,6 @@ Summary: SafeCommit permits external actions only when a conformal certificate s
 
 Analysis: [daily analysis](2026-08-06/sovereignty.md#safecommit-certifies-side-effects-against-memory-uncertainty)
 Core sources: [paper](https://arxiv.org/abs/2608.04289v1), [repo](https://github.com/akewarmayur/SafeCommit)
-Implementable now:
-- build candidate-world sets before high-impact actions;
-- require certificates over retained worlds;
-- prefer targeted probes over generic confirmation prompts.
-Tools and methodologies:
-- conformal risk control, probe planners, commit or fallback controllers, provenance ledgers
 Implementability score: 0.71
 
 ### Frontier spend should wait for verified scout evidence
@@ -24,12 +64,6 @@ Summary: SuperScout refuses to route coding work from issue text alone. A smalle
 
 Analysis: [daily analysis](2026-08-06/sovereignty.md#superscout-makes-routing-a-governed-spend-decision-after-local-verification)
 Core sources: [paper](https://arxiv.org/abs/2608.04804v1), [repo](https://github.com/TransformerOptimus/superscout)
-Implementable now:
-- separate scout authority from fixer authority;
-- strip failed reproduction claims before dispatch;
-- deny spend below verified-claim thresholds.
-Tools and methodologies:
-- scout or fix lanes, verify-then-strip gates, frozen routers, budget-tier policies
 Implementability score: 0.80
 
 ### Tool catalogs need canary audits before trust
@@ -38,12 +72,6 @@ Summary: Canary tool families test whether description text can mint unintended 
 
 Analysis: [daily analysis](2026-08-06/sovereignty.md#canary-tool-catalogs-are-an-authority-plane-audit-not-just-an-eval-trick)
 Core source: [paper](https://arxiv.org/abs/2608.04719v1)
-Implementable now:
-- keep shadow canaries beside high-risk tools;
-- score selection susceptibility separately from task success;
-- move prerequisite checks outside model-visible prose.
-Tools and methodologies:
-- MCP or gateway catalog audits, schema-derived decoys, description linting
 Implementability score: 0.60
 
 ## Previous deep dive: 2026-08-05
@@ -59,4 +87,4 @@ Implementability score: 0.67
 
 ## Current implication
 
-Authority should narrow while uncertainty remains. Unresolved memory worlds block commitment. Tool descriptions cannot invent prerequisites. Expensive backends should wait for verified local evidence. Commit-time policy still owns concurrent shared state.
+Authority should be earned at write time and re-checked at use time. Skills need admission before they load. Gateway traffic needs temporal and rate policy. Session history needs authority labels before it can decide the next effect.

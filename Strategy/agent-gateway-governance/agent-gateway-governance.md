@@ -1021,3 +1021,22 @@ Evidence caveat: implement from the taxonomy first; no public generator reposito
 
 Source:
 - [Canary Tools](https://arxiv.org/abs/2608.04719v1)
+
+
+## August 7 update: temporal policy and rate limits at the gateway
+
+Amazon Bedrock AgentCore posts from 2026-08-06 make stateful temporal authorization and per-user or per-tool rate limits concrete gateway controls. Temporal policies evaluate allow or deny from agent history, not only the current call. Rate limits group traffic by target, tool, model, JWT claim, and IAM principal. Automated Reasoning policy work is also packaged as Agent Skills, but enforcement still belongs at the gateway.
+
+Practical lesson:
+- encode stateful rules over recent tool and principal history;
+- meter requests, concurrency, and tokens by principal and tool dimensions;
+- separate policy authoring skills from enforcement receipts;
+- deny by default when temporal context is missing for high-risk tools.
+
+Evidence caveat: feature syntax is AWS-specific. The portable pattern is stateful policy plus metered mediation.
+
+Sources:
+- [Temporal policies in AgentCore](https://aws.amazon.com/blogs/machine-learning/securing-ai-agents-with-temporal-policies-in-amazon-bedrock-agentcore/)
+- [Rate limits on AgentCore gateway](https://aws.amazon.com/blogs/machine-learning/configure-rate-limits-for-ai-traffic-on-agentcore-gateway/)
+- [Behavior and cost controls](https://aws.amazon.com/blogs/machine-learning/control-agent-behaviors-and-cost-beyond-a-single-action-new-capabilities-in-amazon-bedrock-agentcore/)
+- [Agent Skills for Automated Reasoning policies](https://aws.amazon.com/blogs/machine-learning/agent-skills-for-automated-reasoning-policies-in-amazon-bedrock/)

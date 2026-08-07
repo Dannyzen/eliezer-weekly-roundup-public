@@ -912,3 +912,17 @@ Evidence caveat: the PostgreSQL prototype reports zero stale allows where reques
 
 Source:
 - [Stateful Governance for Concurrent Agentic Systems](https://arxiv.org/abs/2608.02764v1)
+
+
+## August 7 update: stateful gateway policy and metered agent traffic
+
+AgentCore's temporal policies and gateway rate limits push runtime governance below the prompt. Authorization can depend on what the agent already did. Spend and burstiness can be capped per principal, tool, target, and model. That is the same sovereignty move as commit-time checks and scout-before-spend: the boundary, not the model, owns the grant.
+
+Practical lesson:
+- keep stateful policy evaluation next to tool mediation;
+- attach remaining budget and matched rule to every gateway decision;
+- do not treat policy-authoring skills as a substitute for enforcement.
+
+Sources:
+- [Temporal policies in AgentCore](https://aws.amazon.com/blogs/machine-learning/securing-ai-agents-with-temporal-policies-in-amazon-bedrock-agentcore/)
+- [Rate limits on AgentCore gateway](https://aws.amazon.com/blogs/machine-learning/configure-rate-limits-for-ai-traffic-on-agentcore-gateway/)

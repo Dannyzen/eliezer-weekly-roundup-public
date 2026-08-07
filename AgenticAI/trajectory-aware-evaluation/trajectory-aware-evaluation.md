@@ -917,3 +917,20 @@ Evidence caveat: the taxonomy and run design are clear in the paper, but no pape
 
 Source:
 - [Diagnosing Tool-Selection Reasoning in LLM Agents with Canary Tools](https://arxiv.org/abs/2608.04719v1)
+
+
+## August 7 update: critical-error lifecycle tracing
+
+TRAJDEBUG turns failed long-horizon runs into an auditable critical-error problem. Multi-granularity trajectory views feed trigger detection, error-state classification, and critical attribution. On 486 annotated failed trajectories from τ²-Bench and SWE-Bench Pro, diagnosis-guided re-execution improves success by about 10.80 percent on average, and transferred failure memory improves held-out tasks by about 5.70 percent. The public repo ships detector, adapters, eval tools, and a viewer.
+
+Practical lesson:
+- evaluate earliest decisive error, not only terminal failure;
+- require evidence links for critical attribution;
+- convert diagnoses into re-execution guidance before another full attempt;
+- promote repeated critical patterns into failure memory with held-out checks.
+
+Evidence caveat: headline averages are paper-reported on the authors' annotated set. Reproduce on local failed coding and tool-use traces before trusting the lift.
+
+Sources:
+- [TRAJDEBUG](https://arxiv.org/abs/2608.06346v1)
+- [THU-KEG/TrajDebug](https://github.com/THU-KEG/TrajDebug)

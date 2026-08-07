@@ -302,3 +302,17 @@ Practical lesson:
 Sources:
 - [Canary Tools](https://arxiv.org/abs/2608.04719v1)
 - [SuperScout](https://arxiv.org/abs/2608.04804v1)
+
+
+## August 7 update: multi-turn history and self-written skills as untrusted inputs
+
+When History Lies shows that retained tool traces can flip known-good decisions after they stop being authoritative. When Self-Evolution Backfires shows that self-distilled skills can contaminate the runtime once admitted. Both treat retained agent-generated text as a boundary object that must earn trust before it can mint the next effect.
+
+Practical lesson:
+- label tool-trace authority before reuse;
+- require pre-commit verification before skill admission;
+- keep untrusted history and rejected skills out of privileged prompts.
+
+Sources:
+- [When History Lies](https://arxiv.org/abs/2608.06057v1)
+- [When Self-Evolution Backfires](https://arxiv.org/abs/2608.05810v1)

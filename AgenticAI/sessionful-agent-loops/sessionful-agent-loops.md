@@ -127,3 +127,19 @@ Sources:
 ## Working conclusion
 
 The agent loop is becoming a sessionful service. Teams that keep thinking in one-turn prompts will keep paying reconstruction costs, losing state, and bolting governance on after the fact. Teams that design for long-lived runs, explicit workspaces, compaction, approvals, replay, semantic stop policies, and static loop-bound coverage will have a much more stable foundation for everything else in the agent stack.
+
+
+## August 7 update: history authority in multi-turn tool use
+
+When History Lies shows that structurally valid multi-turn tool history can hijack a policy the model already possesses under clean state. Comparing polluted trajectories with an Oracle State view, polluted history flips about 32.1 percent of Qwen3-1.7B decisions that are otherwise correct. Session loops need authority labels on retained tool traces, not only longer context windows.
+
+Practical lesson:
+- separate latest request plus verified current state from raw history;
+- mark traces as verified, superseded, failed-no-effect, or untrusted;
+- evaluate polluted-history and oracle-state fixtures;
+- revalidate state when historical identifiers would change the next high-impact call.
+
+Evidence caveat: no paper-owned public implementation repository resolved in this scan. Implement the authority split from the method.
+
+Source:
+- [When History Lies](https://arxiv.org/abs/2608.06057v1)

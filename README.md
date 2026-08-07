@@ -6,10 +6,10 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily research, 2026-08-06: [names are not authority: skill facets, canary tools, SafeCommit, and scout-then-route](roundups/2026-08-06.md)
-- AgenticAI daily analysis: [2026-08-06](AgenticAI/2026-08-06/reasoning.md)
-- Strategy daily sovereignty: [2026-08-06](Strategy/2026-08-06/sovereignty.md)
-- Previous daily, 2026-08-05: [resumability contracts, transaction-aware memory, commit-time governance, and local Hermes workers](roundups/2026-08-05.md)
+- Daily research, 2026-08-07: [retained state is not authority: critical-error traces, history labels, skill gates, and gateway policy](roundups/2026-08-07.md)
+- AgenticAI daily analysis: [2026-08-07](AgenticAI/2026-08-07/reasoning.md)
+- Strategy daily sovereignty: [2026-08-07](Strategy/2026-08-07/sovereignty.md)
+- Previous daily, 2026-08-06: [names are not authority: skill facets, canary tools, SafeCommit, and scout-then-route](roundups/2026-08-06.md)
 - Friday synthesis, week ending 2026-07-31: [exact-state evidence and separately owned authority](roundups/2026-07-31.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
@@ -29,9 +29,13 @@ The practical rule is exact-state binding plus separately owned authority:
 - memory must be tested where it changes decisions and across write, execute, and repair stages;
 - prompts, issues, skills, and retrieved data are policy-bearing inputs, not trusted prose;
 - skill catalogs need trigger, compliance, and boundary scores under progressive disclosure;
+- self-written skills need pre-commit admission before they become executable memory;
 - tool descriptions need canary audits before they can mint selection authority;
+- multi-turn tool history needs authority labels before it can flip the next call;
+- failed trajectories need earliest decisive-error attribution with linked evidence;
 - side effects under memory uncertainty need certificates over retained worlds, not one retrieved context;
 - expensive coding backends should wait for verified local scout evidence;
+- gateways need temporal policy and rate budgets, not only request-time allowlists;
 - adaptive loops, skills, and routers must beat matched baselines without hiding regressions.
 
 The model may propose. A separately controlled boundary grants permission or certifies success.

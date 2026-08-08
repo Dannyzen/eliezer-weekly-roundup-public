@@ -1,110 +1,133 @@
-# AgenticAI Daily Analysis - 2026-08-07
+# AgenticAI Weekly Analysis - Week Ending 2026-08-07
 
 ## Verdict
 
-Today's implementation signal is authority over retained state. Failed trajectories need earliest decisive-error attribution, tool policies need protection from misleading history, and skill libraries need admission before writeback. The useful units are lifecycle-traced critical errors, oracle-state tool decisions, and pre-commit skill gates.
+This week the implementable stack tightened around three objects: released runtime state, evidence-bound coding and trajectory evaluation, and skill or tool catalogs that must earn admission before they become executable memory.
 
-## TRAJDEBUG turns failed trajectories into auditable critical-error evidence
+## Budgeted gateways and replayable run state became product defaults
 
-TRAJDEBUG attacks cascading failure in long-horizon agents by locating the earliest decisive error, not merely the first local mistake or the step nearest the terminal crash. The framework builds multi-granularity trajectory views, then runs three auditable stages:
+Microsoft Agent Framework Python 1.13.0 treats checkpointing, resume, and workflow state as a shipped contract rather than an application afterthought. Vercel AI Gateway paired routing logs with spend budgets and alerts, turning model choice into an inspectable, metered decision. Cloudflare Computer split isolate work from container work so capability can map to the smallest sufficient runtime. Google's Gemini Enterprise agent and model evaluations GA put development and production metrics on one registry.
 
-- error trigger detection
-- error state classification
-- critical attribution
-
-The paper evaluates on a benchmark of 486 manually annotated failed trajectories from τ²-Bench and SWE-Bench Pro. Diagnoses converted into targeted guidance before re-execution improve success by about 10.80 percent on average. Aggregating a small set of historical failure diagnoses into reusable failure memory and transferring them to held-out tasks yields about 5.70 percent average improvement.
-
-The public repository `THU-KEG/TrajDebug` is non-empty, updated 2026-08-06, and ships detector code, unified data adapters, evaluation tools, a local viewer, and dataset layout folders. This scan inspected the paper PDF, abstract page, repository metadata, tree, and README read-only and did not execute the detector.
-
-Why it matters: most trajectory logs are too coarse for repair. Teams either blame the final tool call or retrain from full failed rollouts. TRAJDEBUG makes criticality an evidence-verification problem. That is the right object for coding-agent and multi-tool harnesses that need to convert failures into patches, guards, or failure memory instead of vibes.
+Why it matters: agent reliability work fails when state lives in chat dumps, cost lives in monthly invoices, and eval lives in a separate spreadsheet. Product surfaces that expose receipts make the rest of the stack auditable.
 
 Implementable now:
 
-- store multi-granularity trajectory views, not only final transcripts;
-- label candidate error triggers separately from terminal failure;
-- require evidence links when attributing a critical step;
-- convert critical-error diagnoses into re-execution guidance before another full attempt;
-- promote repeated critical patterns into failure memory with held-out transfer checks;
-- keep trajectory, diagnosis, guidance, and outcome under one run receipt.
+- checkpoint and resume workflows with explicit state schemas;
+- attach routing receipts and spend budgets before model expansion;
+- route computer-use work to the smallest sufficient isolate or container;
+- keep pre-release and production evaluation on one metric registry.
 
-Tools and repositories worth exploring:
+Tools and repositories:
 
-- THU-KEG/TrajDebug, SWE-Bench Pro failed-trace corpora, τ²-Bench tool-use traces, trajectory viewers, failure-memory stores, Hermes coding-lane receipts
+- microsoft/agent-framework, Vercel AI Gateway, cloudflare/computer, google/agents-cli, Gemini Enterprise agent platform evals
 
-Evidence and caveat: headline gains are paper-reported averages on the authors' annotated set and transfer setup. Reproduce on your own failed coding and tool-use traces before treating 10.80 percent or 5.70 percent as portable lift.
-
-Implementability score: 0.78
+Implementability score: **0.92** for budgeted gateway logs; **0.90** for released checkpoint contracts; **0.82** for unified eval registries; **0.76** for capability-tiered computer runtimes.
 
 Core sources:
 
+- https://github.com/microsoft/agent-framework/releases/tag/python-1.13.0
+- https://vercel.com/changelog/ai-gateway-logs
+- https://vercel.com/changelog/ai-gateway-spend-budgets-and-alerts
+- https://developers.cloudflare.com/changelog/post/2026-08-03-cloudflare-computer/
+- https://github.com/cloudflare/computer
+- https://developers.googleblog.com/agent-and-model-evaluations-in-gemini-enterprise-agent-platform-are-now-ga/
+- https://github.com/google/agents-cli
+
+## Coding and trajectory eval must prove the oracle, the workspace, and the failure cut
+
+PAIChecker makes PR-issue misalignment a benchmark admission gate. BSG-VA asks whether passing tests discriminate the intended bug. SWE-Touch benchmarks coding agents when users mutate the shared workspace. ECLoop gates edits on observed repository evidence. AuditCoder makes repair responsibility-bounded through auditable construction traces. TRAJDEBUG attributes the earliest decisive error across 486 annotated failed trajectories and turns diagnoses into re-execution guidance. SuperScout scouts with a 7B searcher, strips failed reproduction claims, then routes among frontier fixers. Cheap trajectory monitors remain useful only as escalation signals after local calibration.
+
+Why it matters: coding-agent scores collapse when the task text, oracle, workspace identity, and failure attribution disagree. The week converges on exact local evidence before mutation or expensive spend.
+
+Implementable now:
+
+- admit benchmarks only after natural-language task and executable oracle agree;
+- bind evidence to workspace revision identity and mutation origin;
+- require local scout evidence and failed-claim stripping before frontier fixer spend;
+- store multi-granularity trajectory views and critical-error attributions with linked evidence;
+- use monitors to pause or escalate, never to certify success alone.
+
+Tools and repositories:
+
+- manyiResearch/PAIChecker (published under the manyifire paper link), Trae1ounG/SWE-Touch, THU-KEG/TrajDebug, TransformerOptimus/superscout, SuperAGI/SuperScout-7B, puppet0x3f/AuditCoder, sunnydubey1111/agent-trajectory-sentinel, BSG-VA Zenodo package
+
+Implementability score: **0.86** for bug-discriminating tests; **0.84** for oracle alignment; **0.82** for shared-workspace mutation benchmarks; **0.80** for scout-then-route; **0.78** for critical-error attribution and evidence-conditioned edits; **0.72** for responsibility-bounded repair; **0.64** for monitor-as-escalation.
+
+Core sources:
+
+- https://arxiv.org/abs/2607.28587v1
+- https://github.com/manyifire/PAIChecker
+- https://arxiv.org/abs/2607.28871v1
+- https://doi.org/10.5281/zenodo.21642576
+- https://arxiv.org/abs/2608.02499v1
+- https://github.com/Trae1ounG/SWE-Touch
+- https://huggingface.co/datasets/Trae1ounG/SWE-Touch
+- https://arxiv.org/abs/2607.28815v1
+- https://arxiv.org/abs/2607.29529v1
+- https://github.com/puppet0x3f/AuditCoder
 - https://arxiv.org/abs/2608.06346v1
 - https://github.com/THU-KEG/TrajDebug
+- https://arxiv.org/abs/2608.04804v1
+- https://github.com/TransformerOptimus/superscout
+- https://huggingface.co/SuperAGI/SuperScout-7B
+- https://arxiv.org/abs/2608.02464v1
+- https://github.com/sunnydubey1111/agent-trajectory-sentinel
 
-## Misleading multi-turn history can flip tool decisions the model already knows
+## Skills and tool catalogs need progressive scores and pre-commit gates
 
-When History Lies shows a distinct tool-use failure mode. Tool-calling agents infer task state from accumulated dialogue and tool traces. In persistent sessions, historical traces can remain syntactically valid and semantically plausible after they stop being authoritative for the current request. That stale history can hijack a policy the model already possesses under clean state.
+Skill-Use grades trigger, compliance, and boundary separately under name-first progressive disclosure across 79 real skills and 177 sandbox tasks. Canary Tools plants six trap families into MCP-style catalogs and turns wrong-tool outcomes into susceptibility profiles. When Self-Evolution Backfires shows skill pools are not monotonically helpful; past a critical size, new skills contaminate performance and post-hoc rollback recovers little. Verifier-as-Gatekeeper admits skills only before they enter runtime context. LFM2.5-2.6B keeps a practical local model tier for scout and route decisions without granting the small model final authority.
 
-The paper compares a polluted trajectory containing an inserted misleading trace against an Oracle State view that keeps only reliable task state. On Qwen3-1.7B, pollution flips about 32.1 percent of decisions the model can otherwise execute correctly under reliable context. The durable eval object is therefore not only next-tool accuracy. It is whether the same model, with the same tools and latest request, changes its action when untrusted history remains in context.
-
-Why it matters: sessionful agents and MCP-backed assistants keep identifiers, failed calls, and prior arguments around because they look useful. That memory is also an attack and error surface. If history is treated as trusted state, the harness launders stale tool traces into live authority.
-
-Implementable now:
-
-- separate latest request plus verified current state from raw multi-turn history;
-- mark tool traces with authority status: verified, superseded, failed-no-effect, or untrusted;
-- evaluate tool policies under polluted-history and oracle-state views;
-- strip or quarantine misleading traces before high-impact tool calls;
-- require state revalidation when a historical identifier or prior argument would change the next action;
-- log whether the selected tool depended on history that failed authority checks.
-
-Tools and methodologies worth exploring:
-
-- session state ledgers, tool-trace authority labels, oracle-state fixtures, multi-turn tool-use eval harnesses, MCP conversation stores, Hermes session memory boundaries
-
-Evidence and caveat: this scan verified the arXiv abstract and PDF text. No paper-owned public implementation repository resolved from the primary pages, so treat the polluted-versus-oracle split as the method to implement, not a ready benchmark package.
-
-Implementability score: 0.64
-
-Core source: https://arxiv.org/abs/2608.06057v1
-
-## Self-evolving skill pools need pre-commit gates, not post-hoc cleanup
-
-When Self-Evolution Backfires formalizes skill contamination in agents that distill reusable skills from their own trajectories. Capability growth is not monotonic. Past a critical pool size, newly admitted skills degrade performance instead of improving it. The authors taxonomize contamination at individual, combinatorial, and system levels, and they argue that ad hoc rollback recovers only a small fraction of lost performance once a bad skill has entered runtime context.
-
-The proposed control is Verifier-as-Gatekeeper (VaG): a pre-commit admission gate applied before a candidate skill enters the agent's runtime skill set. Verification timing moves from deferred post-evaluation to a gate that can reject the write. Behavioral replay is treated as a load-bearing check, not an optional offline audit.
-
-Why it matters: Hermes-style and coding-agent skill catalogs are becoming writable control planes. If every successful trajectory can mint a skill, the library becomes a contamination accumulator. The durable rule is simple. A skill becomes executable only after admission evidence beats a held-out or replay gate.
+Why it matters: Hermes-style skill catalogs and MCP tool descriptions are becoming writable control planes. Name presence is not competence, and self-distilled procedures are not free reliability.
 
 Implementable now:
 
-- treat skill writeback as a privileged state transition;
-- require pre-commit verification before a new or edited skill is loadable;
-- include behavioral replay, not only static lint or self-score;
-- track pool size and performance against a contamination threshold;
-- keep rejected candidates out of progressive-disclosure catalogs;
-- prefer append-plus-gate over blind overwrite of skill files.
+- score skills on trigger, compliance, and boundary before trusting progressive disclosure;
+- split draft, admitted, and revoked skill states;
+- require behavioral replay or held-out checks before skill load;
+- run canary catalogs before tool descriptions mint selection authority;
+- use small local models for scout and route tiers, not as final grantors.
 
-Tools and methodologies worth exploring:
+Tools and repositories:
 
-- skill registries with draft versus admitted states, replay harnesses, held-out task suites, Skill-Use-style facet scoring, progressive disclosure loaders, Hermes skill catalogs
+- JinyiHan99/Skill-Use-Bench, LiquidAI/LFM2.5-2.6B, Hermes skill catalogs, MCP tool registries, replay harnesses
 
-Evidence and caveat: the paper is clear on irreversibility and the pre-commit framing, but no public implementation repository was verified in this scan. Implement the gate architecture from the method; do not assume portable critical-size constants.
+Implementability score: **0.86** for small local routing models; **0.76** for progressive skill scoring; **0.69** for pre-commit skill admission; **0.60** for canary tool audits.
 
-Implementability score: 0.69
+Core sources:
 
-Core source: https://arxiv.org/abs/2608.05810v1
+- https://arxiv.org/abs/2608.04828v1
+- https://github.com/JinyiHan99/Skill-Use-Bench
+- https://arxiv.org/abs/2608.04719v1
+- https://arxiv.org/abs/2608.05810v1
+- https://www.liquid.ai/blog/lfm2-5-2-6b
+- https://huggingface.co/LiquidAI/LFM2.5-2.6B
+- https://www.liquid.ai/lfm-license
 
-## Watchlist: HarnessOpt-Bench and Activity Frames
+## Session history and memory revision are implementation surfaces, not just storage
 
-HarnessOpt-Bench (Scale AI) measures whether an LLM can improve the harness around a fixed model: prompts, tools, control flow, memory, and orchestration code under expensive stochastic evaluation. It is the right eval object for harness engineering, but this scan found no verified public benchmark package, so keep it as a design reference rather than a top implementable finding.
+When History Lies shows that structurally valid multi-turn tool history can flip about 32.1 percent of Qwen3-1.7B decisions the model already knows under an Oracle State view. Resume Means Resume turns persistence semantics into a conformance suite. TARL makes memory revision an executable transaction. These are implementation findings because session stores, MCP conversation histories, and checkpoint loaders already exist; the missing piece is authority labeling and typed writeback.
 
-Activity Frames compile passive screen activity into deterministic, zero-model episodic memory for computer-use agents. The paper reports fast full-day compilation and byte-identical reproducibility. That is promising for routine replay, but no public artifact resolved here.
+Why it matters: retained text is a lead, not a grant. If history is dumped wholesale into the next tool call, the harness launders stale identifiers and failed attempts into live policy.
 
-Watchlist sources:
+Implementable now:
 
-- https://arxiv.org/abs/2608.06301v1
-- https://arxiv.org/abs/2608.05784v1
+- separate verified current state from raw multi-turn history;
+- label tool traces as verified, superseded, failed-no-effect, or untrusted;
+- evaluate polluted-history and oracle-state fixtures;
+- make resume and memory revision typed transitions with receipts.
+
+Tools and methodologies:
+
+- session state ledgers, tool-trace authority labels, multi-turn fixtures, checkpoint conformance suites, memory-transaction schemas
+
+Implementability score: **0.64** for history authority labels and resume conformance; **0.58** for full typed memory-transaction systems.
+
+Core sources:
+
+- https://arxiv.org/abs/2608.06057v1
+- https://arxiv.org/abs/2608.03836v1
+- https://arxiv.org/abs/2608.03699v1
 
 ## Current implication
 
-Do not let retained text decide the next privileged action. Failed trajectories need critical-error evidence. Session history needs authority labels. Skills need admission before they can load. The harness should own those gates.
+Ship receipts first. Then force coding agents to earn mutations with local evidence. Then treat skills, tool catalogs, and session history as admitted control surfaces. Retained state remains useful only after a boundary decides it is still authoritative.

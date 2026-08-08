@@ -797,3 +797,9 @@ Evidence caveat: no public implementation repository was verified in this scan. 
 
 Source:
 - [When Self-Evolution Backfires](https://arxiv.org/abs/2608.05810v1)
+
+## August 8 update: skill banks need relation-aware admission
+
+GSE models dependency, co-usage, and conflict between skills, clusters local proposals into reusable abstractions, and replays historical cases before promotion. The practical gate is global impact plus held-out replay, not one-trace success.
+
+Source: https://arxiv.org/abs/2608.06153v1

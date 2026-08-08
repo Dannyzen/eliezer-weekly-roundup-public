@@ -98,3 +98,9 @@ Practical lesson:
 
 Source:
 - [When Self-Evolution Backfires](https://arxiv.org/abs/2608.05810v1)
+
+## August 8 update: untrusted experience must not become trusted instruction automatically
+
+PoisonedEvolution shows that a small set of attacker-controlled records can be promoted into durable skill behavior without direct skill-bank access. Promotion needs origin labels, source diversity, clean replay, adversarial canaries, and separately owned release authority.
+
+Source: https://arxiv.org/abs/2608.05563v1

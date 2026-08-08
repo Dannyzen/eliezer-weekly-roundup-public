@@ -233,3 +233,11 @@ Artifact caveat: the paper's repository URL did not resolve. PyPI metadata expos
 Sources:
 - [Stop Means Stop](https://arxiv.org/abs/2607.14166v1)
 - [soundgate package metadata](https://pypi.org/project/soundgate/)
+
+## August 8 update: signing authority binds identity, payload, policy, and hardware
+
+Hardware-confined keys prevent extraction, but a narrow broker must also release only the committed payload under an external policy decision. The verified read-only artifact includes source, tests, and benchmark material, but was not executed here.
+
+Sources:
+- https://arxiv.org/abs/2608.06130v1
+- https://anonymous.4open.science/r/Hardware-Keystores-for-AI-Agent-Signing-Workflows-Artifact-357C

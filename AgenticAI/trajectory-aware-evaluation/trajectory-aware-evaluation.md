@@ -934,3 +934,11 @@ Evidence caveat: headline averages are paper-reported on the authors' annotated 
 Sources:
 - [TRAJDEBUG](https://arxiv.org/abs/2608.06346v1)
 - [THU-KEG/TrajDebug](https://github.com/THU-KEG/TrajDebug)
+
+## August 8 update: diagnose the earliest decisive error
+
+TRAJDEBUG separates trigger detection, resolution state, and terminal attribution across 486 manually annotated failed trajectories. The public repository is only a preview because code and data remain pending internal approval.
+
+Sources:
+- https://arxiv.org/abs/2608.06346v1
+- https://github.com/THU-KEG/TrajDebug

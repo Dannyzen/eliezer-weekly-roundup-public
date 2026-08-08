@@ -1103,3 +1103,9 @@ Release caveat: replay behavior is breaking, archive-backed skills widen the exe
 Sources:
 - [Microsoft Agent Framework Python 1.13.0](https://github.com/microsoft/agent-framework/releases/tag/python-1.13.0)
 - [microsoft/agent-framework](https://github.com/microsoft/agent-framework)
+
+## August 8 update: harness optimization needs a trusted held-out boundary
+
+HarnessOpt-Bench makes harness self-improvement measurable across five optimizer models, four tasks, and 111 scored runs. The reusable control pattern is an immutable candidate, an inaccessible test partition, isolated evaluation, fixed budgets, and complete receipts.
+
+Source: https://arxiv.org/abs/2608.06301v1

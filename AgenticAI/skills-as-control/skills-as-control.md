@@ -803,3 +803,21 @@ Source:
 GSE models dependency, co-usage, and conflict between skills, clusters local proposals into reusable abstractions, and replays historical cases before promotion. The practical gate is global impact plus held-out replay, not one-trace success.
 
 Source: https://arxiv.org/abs/2608.06153v1
+
+## August 9 update: skill files need supply-chain admission before load
+
+A 2,826-skill benchmark produced 5,629 auto-approved coding-agent runs. Gemini CLI attempted attacker-directed behavior in 95.5 to 96.1 percent of runs and Qwen Code in 71.6 to 74.0 percent, while explicit threat recognition appeared in only 1.99 percent.
+
+Practical lesson:
+- resolve publisher, repository, revision, version, hash, license, and dependencies;
+- extract shell, network, credential, persistence, and destructive-operation requests before load;
+- require a capability manifest independent of skill prose;
+- combine static review with disposable sandbox detonation;
+- deny auto-approval to untrusted or changed skills;
+- bind skill identity, policy verdict, approval, tool calls, and effects in one receipt.
+
+Evidence caveat: the study uses two agents, one benign task, auto-approved execution, and declared intent as its primary measure. The public repository is populated but has no declared license.
+
+Sources:
+- [Malicious Skill Files](https://arxiv.org/abs/2608.05223v1)
+- [AgentJailbreak](https://github.com/awsm-research/AgentJailbreak)

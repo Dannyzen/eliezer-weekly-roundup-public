@@ -259,3 +259,21 @@ Sources:
 - [Scrouting / SuperScout](https://arxiv.org/abs/2608.04804v1)
 - [TransformerOptimus/superscout](https://github.com/TransformerOptimus/superscout)
 - [SuperScout-7B](https://huggingface.co/SuperAGI/SuperScout-7B)
+
+## August 9 update: planning portability must be tested across scaffolds
+
+DCAS separates planner, executor, and CLI scaffold through a backend-substitution layer. Four fine-tuned models each degraded on at least one non-training scaffold. Planning-aware fine-tuning on 576 retained trajectories then improved unseen-scaffold SWE-bench performance by 3.4 points on OpenCode and 7.0 points on mini-swe-agent.
+
+Practical lesson:
+- bind every score to model, planner, scaffold, version, protocol, tool schema, and turn budget;
+- test at least one non-training scaffold before calling a capability portable;
+- preserve explicit plans as first-class artifacts;
+- test planner-executor calibration instead of routing only by model rank;
+- treat protocol incompatibility and harness deadlocks as evaluation failures, not missing scores.
+
+Artifacts: the Zenodo replication package and Hugging Face trajectory dataset resolved read-only. They were not downloaded or executed.
+
+Sources:
+- [DCAS](https://arxiv.org/abs/2608.06113v1)
+- [DCAS replication package](https://zenodo.org/records/19930073)
+- [DCAS trajectory dataset](https://huggingface.co/datasets/kishanthan/dcas_glm4.7_distill)

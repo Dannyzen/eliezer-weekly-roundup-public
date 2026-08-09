@@ -2,26 +2,26 @@
 
 This index tracks the most recent structured research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: 2026-08-08
+## Latest Structured Update: 2026-08-09
 
-### Harness evolution needs held-out tests and causal debugging
+### Deterministic document operations before dense retrieval
 
-Summary: HarnessOpt-Bench evaluates five optimizer models on four tasks over 111 runs, while TRAJDEBUG adds 486 manually annotated failed trajectories for earliest decisive-error localization.
+Summary: READ exposes normalized search, structural navigation, and bounded line reads over MCP. On 51 verified questions it reached 58.8 percent accuracy versus 35.3 percent for tuned dense retrieval, while remaining statistically indistinguishable from BM25.
 
-Analysis: [daily analysis](2026-08-08/reasoning.md#harness-evolution-needs-held-out-evaluation-and-causal-failure-localization)
-Core sources: [HarnessOpt-Bench](https://arxiv.org/abs/2608.06301v1), [TRAJDEBUG](https://arxiv.org/abs/2608.06346v1)
-Tools and methodologies worth exploring now: immutable candidate commits, hidden tests, isolated sandboxes, token budgets, causal failure labels, replay fixtures
-Implementability score: 0.62
+Analysis: [daily analysis](2026-08-09/reasoning.md#structured-document-retrieval-should-expose-deterministic-operations-before-embeddings)
+Core source: [Beyond Top-K](https://arxiv.org/abs/2608.06305v1)
+Tools and methodologies worth exploring now: root-jailed read-only MCP tools, exact search, BM25, line citations, paired retrieval tests, explicit power analysis
+Implementability score: 0.88
 
-### Reusable skills need relation-aware replay gates
+### Coding-agent planning must transfer across scaffolds
 
-Summary: GSE models dependency, co-usage, and conflict across a skill bank, consolidates related updates, and replays historical cases before promotion. Evaluation covers 108 real bugs and 500 industrial reports.
+Summary: DCAS routes one backend model through multiple CLI scaffolds. Planning-aware fine-tuning on 576 retained trajectories improved unseen-scaffold SWE-bench performance by 3.4 points on OpenCode and 7.0 points on mini-swe-agent.
 
-Analysis: [daily analysis](2026-08-08/reasoning.md#global-skill-evolution-needs-relation-graphs-and-replay-gates)
-Core source: [paper](https://arxiv.org/abs/2608.06153v1)
-Tools and methodologies worth exploring now: skill relation graphs, typed change proposals, project-held-out evaluation, historical replay, provenance-preserving patches
-Implementability score: 0.64
+Analysis: [daily analysis](2026-08-09/reasoning.md#cross-scaffold-coding-evaluation-should-separate-planner-executor-and-scaffold)
+Core sources: [paper](https://arxiv.org/abs/2608.06113v1), [replication package](https://zenodo.org/records/19930073), [trajectory dataset](https://huggingface.co/datasets/kishanthan/dcas_glm4.7_distill)
+Tools and methodologies worth exploring now: backend-substitution proxies, planner-executor calibration, cross-scaffold evaluation matrices, protocol compatibility tests, planning-aware trajectory collection
+Implementability score: 0.72
 
 ## Current implication
 
-Ship receipts first. Force coding agents to earn mutations with local evidence. Treat skills, tool catalogs, and session history as admitted control surfaces. Retained state is useful only after a boundary decides it is still authoritative.
+Prefer interfaces that expose what the agent actually read and which harness conventions produced the result. Deterministic retrieval beats opaque evidence paths, and cross-scaffold evaluation prevents harness-specific behavior from masquerading as model capability.

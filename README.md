@@ -6,9 +6,9 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily research, 2026-08-08: [evidence-gated harness, skill, and signing evolution](roundups/2026-08-08.md)
-- AgenticAI daily analysis: [2026-08-08](AgenticAI/2026-08-08/reasoning.md)
-- Strategy daily sovereignty: [2026-08-08](Strategy/2026-08-08/sovereignty.md)
+- Daily research, 2026-08-09: [explicit interfaces for retrieval, scaffolds, skills, and trajectory risk](roundups/2026-08-09.md)
+- AgenticAI daily analysis: [2026-08-09](AgenticAI/2026-08-09/reasoning.md)
+- Strategy daily sovereignty: [2026-08-09](Strategy/2026-08-09/sovereignty.md)
 - Friday synthesis, week ending 2026-08-07: [retained state is authority](roundups/2026-08-07.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
@@ -18,6 +18,10 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 The practical rule is retained state is not authority:
 
+- structured documents need deterministic search, navigation, and bounded reads before dense retrieval;
+- coding-agent scores need planner, executor, scaffold, protocol, and version identity;
+- skill files need software supply-chain admission before they load;
+- trajectory risk needs bounded pre-action state outside the acting model;
 - gateways need routing receipts, spend budgets, temporal policy, and rate limits;
 - coding agents need oracle alignment, workspace revision identity, and local scout evidence before expensive mutation;
 - failed trajectories need earliest decisive-error attribution with linked evidence;

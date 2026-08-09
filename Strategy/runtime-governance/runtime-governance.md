@@ -926,3 +926,20 @@ Practical lesson:
 Sources:
 - [Temporal policies in AgentCore](https://aws.amazon.com/blogs/machine-learning/securing-ai-agents-with-temporal-policies-in-amazon-bedrock-agentcore/)
 - [Rate limits on AgentCore gateway](https://aws.amazon.com/blogs/machine-learning/configure-rate-limits-for-ai-traffic-on-agentcore-gateway/)
+
+## August 9 update: trajectory risk belongs in pre-action runtime state
+
+DreamGuard replaces repeated LLM review of growing histories with a compact recurrent risk state. It combines immediate-hazard and prefix-risk signals before each action, reports 25-millisecond average calls, and intervenes before the first hazardous step in 96.3 percent of unsafe long-horizon trajectories.
+
+Practical lesson:
+- normalize actions into a versioned event schema;
+- keep bounded risk state outside the acting model;
+- separate immediate hazard from accumulated prefix risk;
+- expose pass, hold, and block before execution;
+- bind calibration version, thresholds, state digest, action manifest, verdict, and effect receipt;
+- retain deterministic policy and commit-time checks as final authority.
+
+Artifact caveat: no exact public DreamGuard implementation repository was verified. The method uses a frozen Qwen3-4B encoder and H100 training, so faithful reproduction is architecture-heavy.
+
+Source:
+- [DreamGuard](https://arxiv.org/abs/2608.05695v1)

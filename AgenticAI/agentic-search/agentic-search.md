@@ -216,3 +216,19 @@ Sources:
 Implementability score: 0.88
 
 This is one of the most straightforward build moves in the stack. It can be started with standard search tools, trace logging, and a small eval harness. The hard part is not implementation; it is resisting the impulse to add vector infrastructure before measuring the simple baseline.
+
+## August 9 update: deterministic operations beat opaque top-k on structured documents
+
+Beyond Top-K shows that long numeric documents should be searched through deterministic lexical, structural, and bounded-read operations before they are partitioned into embedding chunks. READ reached 58.8 percent on 51 verified questions versus 35.3 percent for tuned dense retrieval, while BM25 remained statistically indistinguishable at 51.0 percent.
+
+Practical lesson:
+- preserve the source document's structure and original line numbers;
+- expose root-jailed search, list, outline, and bounded-read tools;
+- compare BM25 before adding vector infrastructure;
+- score retrieval interfaces with paired questions, exact evidence spans, and explicit power analysis;
+- keep the null result visible: this paper does not prove an agent loop beats lexical search.
+
+Artifact caveat: the paper says READ is released as an MCP server, but no exact public artifact URL was verified from the primary pages.
+
+Source:
+- [Beyond Top-K](https://arxiv.org/abs/2608.06305v1)

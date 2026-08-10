@@ -277,3 +277,20 @@ Sources:
 - [DCAS](https://arxiv.org/abs/2608.06113v1)
 - [DCAS replication package](https://zenodo.org/records/19930073)
 - [DCAS trajectory dataset](https://huggingface.co/datasets/kishanthan/dcas_glm4.7_distill)
+
+## August 10 update: deterministic drift signals should gate LLM advice
+
+LivePlan separates judgment from advice. A deterministic monitor detects skipped phases, repetition, stagnation, and plan deviation, then invokes an advisor only after a signal fires. The paper reports 9.9 percent average resolution gain, up to 15.2 percent, with low added cost.
+
+Practical lesson:
+- model localize, reproduce, patch, and validate as explicit runtime phases;
+- encode blocking and advisory drift signals separately;
+- invoke an advisor only after deterministic evidence fires;
+- request one bounded next step instead of replacing the whole plan;
+- preserve signal, state, advice, action, patch result, and regression outcome;
+- turn harmful or missed interventions into replay fixtures.
+
+Artifact caveat: no exact public LivePlan repository was verified. The control pattern is directly implementable from ordinary trajectory events, but the reported gains still need local reproduction.
+
+Source:
+- [LivePlan](https://arxiv.org/abs/2608.06701v1)

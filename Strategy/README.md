@@ -2,26 +2,26 @@
 
 This index tracks the most recent structured strategy research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: 2026-08-09
+## Latest Structured Update: 2026-08-10
 
-### Skill files are executable supply-chain artifacts
+### Persistent-risk evaluation must trace influence across carriers
 
-Summary: A 2,826-skill benchmark produced 5,629 runs. Under auto-approved delegated execution, Gemini CLI was exploited in 95.5 to 96.1 percent of runs and Qwen Code in 71.6 to 74.0 percent.
+Summary: HarnessSafe defines 328 executable cases across seven persistent-carrier families and grades a seven-stage lifecycle from initial contact through oracle-verified violation. The result is a containment map, not one binary attack-success number.
 
-Analysis: [daily analysis](2026-08-09/sovereignty.md#skill-files-are-executable-supply-chain-artifacts)
-Core sources: [paper](https://arxiv.org/abs/2608.05223v1), [read-only artifact](https://github.com/awsm-research/AgentJailbreak)
-Tools and methodologies worth exploring now: artifact hashes, capability manifests, static command extraction, sandbox detonation, denied-by-default runtime policy, effect receipts
-Implementability score: 0.84
+Analysis: [daily analysis](2026-08-10/sovereignty.md#persistent-risk-evaluation-must-trace-the-full-carrier-lifecycle)
+Core source: [HarnessSafe](https://arxiv.org/abs/2608.06984v1)
+Tools and methodologies worth exploring now: carrier identities, cross-boundary lineage, stage-based trace grading, case-specific effect oracles, harness-model configuration receipts
+Implementability score: 0.72
 
-### Trajectory risk needs pre-action runtime state
+### Memory needs explicit validity and revocation states
 
-Summary: DreamGuard combines immediate-hazard and prefix-risk evidence in a compact recurrent state. It reports 25-millisecond calls, 96.3 percent pre-hazard intervention recall, and 72.92 percent online safety while preserving 90.38 percent utility.
+Summary: TEPA removes superseded precedents from active retrieval while preserving them for audit. In controlled reversal over 50 seeds it scored 0.950 versus 0.210 for append-only and last-write-wins memory, with the same 0.950 result under real file-backed execution.
 
-Analysis: [daily analysis](2026-08-09/sovereignty.md#long-horizon-guardrails-need-compact-risk-state-before-action)
-Core source: [paper](https://arxiv.org/abs/2608.05695v1)
-Tools and methodologies worth exploring now: versioned trajectory events, bounded risk state, pass-hold-block decisions, replay suites, threshold receipts, deterministic commit-time policy
-Implementability score: 0.52
+Analysis: [daily analysis](2026-08-10/sovereignty.md#agent-memory-needs-explicit-validity-and-revocation-states)
+Core source: [TEPA](https://arxiv.org/abs/2608.07429v1)
+Tools and methodologies worth exploring now: keyed precedents, supersession edges, active and revoked retrieval views, temporal conflict tests, re-promotion audits
+Implementability score: 0.88
 
 ## Current implication
 
-Treat dynamically loaded skills as privileged software, not helpful prose. Then track risk across the trajectory outside the acting model and require a pre-action gate before privileged effects.
+Persistence needs lifecycle evidence and revocable validity. Track how influence crosses memory, skills, tools, summaries, delegation, and artifacts, then keep superseded evidence auditable but inactive.

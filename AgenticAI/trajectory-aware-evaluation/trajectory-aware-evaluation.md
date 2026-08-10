@@ -942,3 +942,21 @@ TRAJDEBUG separates trigger detection, resolution state, and terminal attributio
 Sources:
 - https://arxiv.org/abs/2608.06346v1
 - https://github.com/THU-KEG/TrajDebug
+
+## August 10 update: evaluate fault and persistence progression, not only terminal success
+
+AgentChaos and HarnessSafe strengthen two missing trajectory-evaluation layers. AgentChaos injects verified LLM-response faults at the shared HTTP boundary. HarnessSafe traces attacker influence across seven persistent-carrier families and grades the furthest lifecycle stage supported by observable evidence.
+
+Practical lesson:
+- verify that a configured fault or poisoned carrier was actually reached before scoring it;
+- preserve ingestion, persistence, trigger, proposed action, policy decision, and effect evidence;
+- distinguish recovery, containment stage, silent corruption, duplicate effect, and terminal failure;
+- bind every result to exact harness, model, parser, tool schema, retry policy, and environment identity;
+- promote observed fault and persistence chains into regression fixtures.
+
+Artifact caveat: AgentChaos has a populated public GitHub and Zenodo artifact. HarnessSafe documents a partial supplementary artifact scope, but no exact external artifact URL was verified from the primary page.
+
+Sources:
+- [AgentChaos](https://arxiv.org/abs/2608.06790v1)
+- [AgentChaos artifact](https://github.com/IntelligentDDS/AgentChaos)
+- [HarnessSafe](https://arxiv.org/abs/2608.06984v1)

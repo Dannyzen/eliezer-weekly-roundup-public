@@ -6,9 +6,9 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily research, 2026-08-09: [explicit interfaces for retrieval, scaffolds, skills, and trajectory risk](roundups/2026-08-09.md)
-- AgenticAI daily analysis: [2026-08-09](AgenticAI/2026-08-09/reasoning.md)
-- Strategy daily sovereignty: [2026-08-09](Strategy/2026-08-09/sovereignty.md)
+- Daily research, 2026-08-10: [lifecycle controls for faults, drift, persistent carriers, and memory](roundups/2026-08-10.md)
+- AgenticAI daily analysis: [2026-08-10](AgenticAI/2026-08-10/reasoning.md)
+- Strategy daily sovereignty: [2026-08-10](Strategy/2026-08-10/sovereignty.md)
 - Friday synthesis, week ending 2026-08-07: [retained state is authority](roundups/2026-08-07.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
@@ -18,6 +18,10 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 The practical rule is retained state is not authority:
 
+- agent harnesses need controlled fault injection at shared API boundaries before release;
+- coding-agent advisors need deterministic drift triggers before they may intervene;
+- persistent-risk claims need carrier-lineage traces through trigger and effect;
+- memory needs explicit active, superseded, revoked, quarantined, and re-promoted states;
 - structured documents need deterministic search, navigation, and bounded reads before dense retrieval;
 - coding-agent scores need planner, executor, scaffold, protocol, and version identity;
 - skill files need software supply-chain admission before they load;

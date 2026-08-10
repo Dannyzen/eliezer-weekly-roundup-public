@@ -2,26 +2,26 @@
 
 This index tracks the most recent structured research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: 2026-08-09
+## Latest Structured Update: 2026-08-10
 
-### Deterministic document operations before dense retrieval
+### Fault injection should test agent recovery at the LLM API boundary
 
-Summary: READ exposes normalized search, structural navigation, and bounded line reads over MCP. On 51 verified questions it reached 58.8 percent accuracy versus 35.3 percent for tuned dense retrieval, while remaining statistically indistinguishable from BM25.
+Summary: AgentChaos injects crash, omission, and value faults into content and tool-call fields at runtime. Across 65 fault configurations, pass@1 fell by up to 50 percentage points, while existing diagnosis stayed below 53 percent accuracy for fault type and below 56 percent for fault step.
 
-Analysis: [daily analysis](2026-08-09/reasoning.md#structured-document-retrieval-should-expose-deterministic-operations-before-embeddings)
-Core source: [Beyond Top-K](https://arxiv.org/abs/2608.06305v1)
-Tools and methodologies worth exploring now: root-jailed read-only MCP tools, exact search, BM25, line citations, paired retrieval tests, explicit power analysis
-Implementability score: 0.88
+Analysis: [daily analysis](2026-08-10/reasoning.md#agent-reliability-needs-runtime-fault-injection-at-the-shared-api-boundary)
+Core sources: [paper](https://arxiv.org/abs/2608.06790v1), [GitHub artifact](https://github.com/IntelligentDDS/AgentChaos), [Zenodo artifact](https://zenodo.org/records/21823973)
+Tools and methodologies worth exploring now: HTTP-boundary fault injection, trigger verification, malformed tool-call tests, retry and propagation traces, duplicate-effect oracles
+Implementability score: 0.90
 
-### Coding-agent planning must transfer across scaffolds
+### Deterministic monitors should decide when coding agents need LLM advice
 
-Summary: DCAS routes one backend model through multiple CLI scaffolds. Planning-aware fine-tuning on 576 retained trajectories improved unseen-scaffold SWE-bench performance by 3.4 points on OpenCode and 7.0 points on mini-swe-agent.
+Summary: LivePlan separates judgment from advice. Deterministic trajectory rules trigger a bounded advisor only after drift is detected, improving issue resolution by 9.9 percent on average and up to 15.2 percent with low added cost.
 
-Analysis: [daily analysis](2026-08-09/reasoning.md#cross-scaffold-coding-evaluation-should-separate-planner-executor-and-scaffold)
-Core sources: [paper](https://arxiv.org/abs/2608.06113v1), [replication package](https://zenodo.org/records/19930073), [trajectory dataset](https://huggingface.co/datasets/kishanthan/dcas_glm4.7_distill)
-Tools and methodologies worth exploring now: backend-substitution proxies, planner-executor calibration, cross-scaffold evaluation matrices, protocol compatibility tests, planning-aware trajectory collection
-Implementability score: 0.72
+Analysis: [daily analysis](2026-08-10/reasoning.md#coding-agent-steering-should-separate-deterministic-judgment-from-llm-advice)
+Core source: [LivePlan paper](https://arxiv.org/abs/2608.06701v1)
+Tools and methodologies worth exploring now: explicit plan phases, stagnation detectors, skipped-validation blocks, selective advisor escalation, intervention replay suites
+Implementability score: 0.83
 
 ## Current implication
 
-Prefer interfaces that expose what the agent actually read and which harness conventions produced the result. Deterministic retrieval beats opaque evidence paths, and cross-scaffold evaluation prevents harness-specific behavior from masquerading as model capability.
+Exercise failure recovery at the shared transport boundary, then keep intervention authority outside the advisor model. Deterministic runtime signals should decide when an LLM is allowed to steer the trajectory.

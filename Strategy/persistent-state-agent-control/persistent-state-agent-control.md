@@ -111,6 +111,24 @@ Sources:
 - [Self-State Attacks on Self-Hosted AI Agents](https://arxiv.org/abs/2607.17986v1)
 - [reproduction artifact](https://anonymous.4open.science/r/self-state-attacks-os-C901)
 
+## August 10 update: persistent carriers need lineage, and stale memory needs revocation
+
+HarnessSafe traces delayed influence across memory, skills, tools, summaries, delegation, and shared artifacts. TEPA complements that lifecycle view with an explicit validity state for memory: conflicting current evidence revokes a prior precedent from active retrieval without deleting its audit history.
+
+Practical lesson:
+- assign stable identity and trust class to every persistent carrier;
+- preserve transformations and boundary crossings as lineage edges;
+- grade the furthest lifecycle stage supported by effect evidence;
+- separate active, superseded, revoked, quarantined, and re-promoted memory states;
+- keep revoked evidence auditable but excluded from normal retrieval;
+- test reversal, delayed trigger, cross-session reuse, and re-promotion before release.
+
+Evidence caveat: HarnessSafe's complete native execution evidence covers only part of its configuration matrix. TEPA's strongest result is single-key stale-conflict consolidation and does not solve multi-hop retrieval or long-context selection.
+
+Sources:
+- [HarnessSafe](https://arxiv.org/abs/2608.06984v1)
+- [TEPA](https://arxiv.org/abs/2608.07429v1)
+
 ## Working conclusion
 
-Persistent state is where agent usefulness and agent risk meet. If an agent works over a durable codebase or memory store, the control plane has to review sequences, not isolated actions. The stateful monitor is now part of the agent runtime, not an optional reviewer convenience.
+Persistent state is where agent usefulness and agent risk meet. Every retained object needs lineage showing how influence reached it and a validity state deciding whether it may still shape action. Sequence review, lifecycle traces, and revocation are runtime controls, not optional reviewer conveniences.

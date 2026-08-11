@@ -294,3 +294,15 @@ Artifact caveat: no exact public LivePlan repository was verified. The control p
 
 Source:
 - [LivePlan](https://arxiv.org/abs/2608.06701v1)
+
+## August 11 update: deterministic review stages bound agent freedom
+
+OpenCodeReview combines deterministic dispatch, bounded investigation, and independent falsification. The paper reports higher SEM-F1 with 5 to 15 times fewer tokens.
+
+Practical lesson:
+- make file coverage and rule selection deterministic;
+- isolate review bundles;
+- keep the reflector independent;
+- release on precision, recall, position, cost, and latency.
+
+Sources: [paper](https://arxiv.org/abs/2608.09290v1), [repository](https://github.com/alibaba/open-code-review)

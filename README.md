@@ -6,18 +6,22 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily research, 2026-08-10: [lifecycle controls for faults, drift, persistent carriers, and memory](roundups/2026-08-10.md)
-- AgenticAI daily analysis: [2026-08-10](AgenticAI/2026-08-10/reasoning.md)
-- Strategy daily sovereignty: [2026-08-10](Strategy/2026-08-10/sovereignty.md)
+- Daily research, 2026-08-11: [deterministic invariants for contracts, context, review, and authority](roundups/2026-08-11.md)
+- AgenticAI daily analysis: [2026-08-11](AgenticAI/2026-08-11/reasoning.md)
+- Strategy daily sovereignty: [2026-08-11](Strategy/2026-08-11/sovereignty.md)
 - Friday synthesis, week ending 2026-08-07: [retained state is authority](roundups/2026-08-07.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
-- Deep Dive Wednesday, 2026-08-05: [stateful effect governance at the commit boundary](Strategy/stateful-effect-governance/stateful-effect-governance.md)
+- Deep Dive Wednesday, 2026-08-05: [stateful effect governance](Strategy/stateful-effect-governance/stateful-effect-governance.md)
 
 ## Current thesis
 
 The practical rule is retained state is not authority:
 
+- contract-equivalent histories should produce contract-equivalent code;
+- context repair should follow source-level attribution;
+- deterministic stages should own code-review coverage and admission;
+- multi-agent guards should bind to immutable provenance and allow safe recovery;
 - agent harnesses need controlled fault injection at shared API boundaries before release;
 - coding-agent advisors need deterministic drift triggers before they may intervene;
 - persistent-risk claims need carrier-lineage traces through trigger and effect;

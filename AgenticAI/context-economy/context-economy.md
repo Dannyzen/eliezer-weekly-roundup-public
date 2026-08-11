@@ -394,6 +394,18 @@ Sources:
 - [LongStraw](https://arxiv.org/abs/2607.14952v1)
 - [MindLab-Research/longstraw](https://github.com/MindLab-Research/longstraw)
 
+## August 11 update: context repair needs source-level trajectory attribution
+
+TRACE reports 72.7 percent attribution, 82 percent fix effectiveness, and 96 percent CREATE-versus-UPDATE accuracy on 60 dissatisfaction traces.
+
+Practical lesson:
+- retain source identities;
+- inspect before mutation;
+- patch one source with rollback;
+- replay the failure and a held-out trace.
+
+Source: [TRACE](https://arxiv.org/abs/2608.09153v1)
+
 ## Working conclusion
 
 The future agent stack is not context maximalism. It is context accounting. Systems that know what to admit, retrieve, compress, cache, update incrementally, preserve prefix continuity, and audit will beat systems that merely buy larger windows and hope the model sorts it out.

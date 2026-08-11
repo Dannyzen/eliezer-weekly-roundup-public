@@ -666,6 +666,18 @@ Sources:
 - [STRACE](https://arxiv.org/abs/2607.07702v1)
 - [moomight/STRACE](https://github.com/moomight/STRACE)
 
+## August 11 update: active-contract evaluation must vary the specification path
+
+SpecPath found 35 of 100 blocks passing a direct specification failed under at least one contract-equivalent history.
+
+Practical lesson:
+- freeze repository, final contract, verifier, configuration, and budget;
+- vary only requirement history;
+- compare executable paired outcomes;
+- minimize failures to locate stale influence.
+
+Source: [SpecPath](https://arxiv.org/abs/2608.09799v1)
+
 ## Working conclusion
 
 Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, fingerprinted, severity-scored, causally sliced, and scored across safety, robustness, parameter correctness, environment fidelity, runtime-specific harm dimensions, staged semantic/audit/sandbox harm, agent-effort telemetry, real-user collaboration traces, realistic workspace state, live workflow demand, cost, adversarial task quality, long-range state propagation, abstention, protocol conformance, tool-shortlist quality, environment-factory coverage, quantitative goal persistence, procedural behavior, partial-progress preference, oracle strength, deterministic evidence paths, and coding-process discipline, improvement efforts will stay shallow and trust claims will stay unearned.

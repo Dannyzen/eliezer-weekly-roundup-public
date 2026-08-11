@@ -119,3 +119,15 @@ Practical lesson:
 
 Source:
 - [Securing LLM-Agent Long-Term Memory Against Poisoning](https://arxiv.org/abs/2606.24322)
+
+## August 11 update: provenance guards need recoverable denial paths
+
+POLIS found local-state enforcement admitted 22 of 96 laundering violations while immutable-provenance enforcement admitted 0. Of 51 blocked attempts, 44 later completed safely.
+
+Practical lesson:
+- bind actions to immutable authority roots;
+- separate attempts from realized effects;
+- return bounded safe continuations after denial;
+- score completion and utility beside violations.
+
+Sources: [paper](https://arxiv.org/abs/2608.09828v1), [repository](https://github.com/abdullah-x-bd/polis)

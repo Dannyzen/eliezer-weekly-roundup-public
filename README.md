@@ -6,9 +6,9 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily research, 2026-08-11: [deterministic invariants for contracts, context, review, and authority](roundups/2026-08-11.md)
-- AgenticAI daily analysis: [2026-08-11](AgenticAI/2026-08-11/reasoning.md)
-- Strategy daily sovereignty: [2026-08-11](Strategy/2026-08-11/sovereignty.md)
+- Daily research, 2026-08-12: [typed boundaries for evolution, safety, detectors, and memory](roundups/2026-08-12.md)
+- AgenticAI daily analysis: [2026-08-12](AgenticAI/2026-08-12/reasoning.md)
+- Strategy daily sovereignty: [2026-08-12](Strategy/2026-08-12/sovereignty.md)
 - Friday synthesis, week ending 2026-08-07: [retained state is authority](roundups/2026-08-07.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
@@ -18,6 +18,10 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 The practical rule is retained state is not authority:
 
+- self-evolving harness edits need typed failures, falsifiable contracts, and transfer gates;
+- agent safety scores need realized-state receipts and disclosed evidence views;
+- prompt-injection detectors need attack-family coverage at fixed false-positive budgets;
+- shared memory needs inherited admissibility before relevance ranking and action;
 - contract-equivalent histories should produce contract-equivalent code;
 - context repair should follow source-level attribution;
 - deterministic stages should own code-review coverage and admission;

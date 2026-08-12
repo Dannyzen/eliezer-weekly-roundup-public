@@ -238,3 +238,17 @@ Artifact caveat: the public repository is explicit that the included benchmark i
 Sources:
 - [SafeCommit](https://arxiv.org/abs/2608.04289v1)
 - [akewarmayur/SafeCommit](https://github.com/akewarmayur/SafeCommit)
+
+
+## August 12 update: memory admissibility must precede semantic ranking
+
+MAP-Graph represents principals, sources, memories, claims, and actions in one typed provenance graph. It applies inherited permission filtering before relevance ranking, propagates revocation through descendants, and uses a separate action-risk decision after retrieval.
+
+Practical lesson:
+- make principal and source identity explicit on every memory write;
+- inherit restrictions through summaries and derived claims;
+- remove ineligible records before semantic ranking;
+- keep action authorization separate from memory trust.
+
+Source:
+- [MAP-Graph](https://arxiv.org/abs/2608.10509v1)

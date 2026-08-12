@@ -1109,3 +1109,17 @@ Sources:
 HarnessOpt-Bench makes harness self-improvement measurable across five optimizer models, four tasks, and 111 scored runs. The reusable control pattern is an immutable candidate, an inaccessible test partition, isolated evaluation, fixed budgets, and complete receipts.
 
 Source: https://arxiv.org/abs/2608.06301v1
+
+
+## August 12 update: self-evolution is a typed compensation layer, not a universal recipe
+
+One Recipe, Many Harnesses holds a self-evolution recipe fixed across eight languages and three models. Typed failure signals and falsifiable edit contracts made the resulting changes inspectable. Most cells improved, but Python and GPT-5-mini were null regions, and 20 to 40 percent of each harness remained ecosystem-specific.
+
+Practical lesson:
+- evolve against measured execution defects;
+- keep null results as evidence against unnecessary edits;
+- distill only the transfer-tested common core;
+- retain ecosystem-specific adapters and held-out gates.
+
+Source:
+- [One Recipe, Many Harnesses](https://arxiv.org/abs/2608.10178v1)

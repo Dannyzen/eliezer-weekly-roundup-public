@@ -972,3 +972,18 @@ Sources:
 - [AgentChaos](https://arxiv.org/abs/2608.06790v1)
 - [AgentChaos artifact](https://github.com/IntelligentDDS/AgentChaos)
 - [HarnessSafe](https://arxiv.org/abs/2608.06984v1)
+
+
+## August 12 update: safety evaluation needs state receipts and attack-family coverage
+
+REDAgentBench separates exposure, execution, observation, and adjudication, then verifies violations through service receipts and final-state changes. Quadrat-IPI fixes false-positive operating points and exposes detector recall across 92 attack cells instead of collapsing performance into one headline number.
+
+Practical lesson:
+- disclose harness and evidence view with every safety score;
+- grade realized effects, not safe-sounding agent text;
+- compare detectors at matched false-positive budgets;
+- require coverage across the attack families and carriers the deployment will encounter.
+
+Sources:
+- [REDAgentBench](https://arxiv.org/abs/2608.10669v1)
+- [Quadrat-IPI](https://huggingface.co/blog/mihailgribov/compare-prompt-injection-detectors)

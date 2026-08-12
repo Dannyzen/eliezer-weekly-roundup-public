@@ -2,35 +2,35 @@
 
 This index tracks the most recent structured research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: 2026-08-11
+## Latest Structured Update: 2026-08-12
 
-### Contract-equivalent histories should produce contract-equivalent code
+### Self-evolving harnesses need typed edits and transfer gates
 
-Summary: SpecPath holds the repository, final contract, verifier, agent configuration, and budget fixed while varying only requirement history. Thirty-five of 100 complete passing blocks failed on at least one equivalent history.
+Summary: A fixed evolution recipe across eight languages and three models improved most cells, but Python and GPT-5-mini were null regions. Twenty to 40 percent of each evolved harness remained ecosystem-specific.
 
-Analysis: [daily analysis](2026-08-11/reasoning.md#contract-equivalent-specification-histories-expose-path-dependence-in-coding-agents)
-Core source: [SpecPath](https://arxiv.org/abs/2608.09799v1)
-Tools and methodologies worth exploring now: paired specification histories, executable outcome pairs, failing-history minimization, specification-path release gates
-Implementability score: 0.91
+Analysis: [daily analysis](2026-08-12/reasoning.md#self-evolving-harnesses-should-produce-typed-transferable-contracts)
+Core source: [One Recipe, Many Harnesses](https://arxiv.org/abs/2608.10178v1)
+Tools and methodologies worth exploring now: typed failure signals, falsifiable edit contracts, held-out gates, transfer tests, native ecosystem adapters
+Implementability score: 0.78
 
-### Context repair should start with source-level trajectory attribution
+### Agent safety scores need realized-state evidence
 
-Summary: TRACE attributes dissatisfaction traces to prompts, knowledge, tools, or skills before choosing CREATE versus UPDATE. On 60 traces it reports 72.7 percent root-cause attribution, 82 percent fix effectiveness, and 96 percent operation accuracy.
+Summary: REDAgentBench separates exposure, execution, observation, and adjudication across 1,661 executable cases. Almost one in five state-confirmed violations in a diagnostic cohort followed explicit risk recognition by the agent.
 
-Analysis: [daily analysis](2026-08-11/reasoning.md#context-maintenance-should-attribute-failures-before-rewriting-context)
-Core source: [TRACE](https://arxiv.org/abs/2608.09153v1)
-Tools and methodologies worth exploring now: source-identified traces, read-only source inspection, bounded patches, replay, rollback receipts
-Implementability score: 0.74
+Analysis: [daily analysis](2026-08-12/reasoning.md#agent-red-teaming-should-separate-exposure-execution-observation-and-adjudication)
+Core source: [REDAgentBench](https://arxiv.org/abs/2608.10669v1)
+Tools and methodologies worth exploring now: isolated service doubles, constraint-derived attacks, final-state diffs, evidence-view receipts, action-boundary reminders
+Implementability score: 0.72
 
-### Deterministic stages should own code-review coverage and admission
+### Prompt-injection detectors need attack-family coverage maps
 
-Summary: OpenCodeReview uses deterministic dispatch, a curated tool loop, and independent falsification. On 200 pull requests and 1,505 expert-verified comments, it reports up to 2.17 times higher SEM-F1 with 5 to 15 times fewer tokens.
+Summary: Quadrat-IPI measures nine detectors across 92 attack cells, 16,800 injections, and 63,000 clean documents at fixed false-positive budgets. One recall number hides 4 to 76 point spreads between a detector's weakest and strongest cells.
 
-Analysis: [daily analysis](2026-08-11/reasoning.md#deterministic-code-review-stages-beat-general-agent-freedom-on-precision-and-cost)
-Core sources: [paper](https://arxiv.org/abs/2608.09290v1), [GitHub repository](https://github.com/alibaba/open-code-review)
-Tools and repositories worth exploring now: `alibaba/open-code-review`, deterministic file and rule dispatch, isolated review bundles, asymmetric reflection
-Implementability score: 0.96
+Analysis: [daily analysis](2026-08-12/reasoning.md#prompt-injection-detectors-need-attack-family-maps-at-fixed-false-positive-budgets)
+Core sources: [article](https://huggingface.co/blog/mihailgribov/compare-prompt-injection-detectors), [dataset](https://huggingface.co/datasets/mihailgribov/quadrat-ipi), [evaluation harness](https://github.com/mihail-gribov/quadrat-ipi-eval)
+Tools and repositories worth exploring now: Quadrat-IPI 1.0.1, `quadrat-ipi-eval`, per-carrier false-positive budgets, attack-cell coverage thresholds
+Implementability score: 0.95
 
 ## Current implication
 
-Equivalent contracts should yield equivalent code, context edits should follow attribution, and deterministic stages should own review coverage and comment admission.
+Use typed transfer gates for harness evolution, state receipts for safety evaluation, and attack-family coverage at fixed false-positive budgets for detector admission.

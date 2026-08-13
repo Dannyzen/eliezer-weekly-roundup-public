@@ -6,49 +6,24 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily research, 2026-08-12: [typed boundaries for evolution, safety, detectors, and memory](roundups/2026-08-12.md)
-- AgenticAI daily analysis: [2026-08-12](AgenticAI/2026-08-12/reasoning.md)
-- Strategy daily sovereignty: [2026-08-12](Strategy/2026-08-12/sovereignty.md)
+- Daily roundup, 2026-08-13: [capability packaging is getting easier, so evaluation must move below the package boundary](roundups/2026-08-13.md)
+- AgenticAI daily analysis: [2026-08-13](AgenticAI/2026-08-13/reasoning.md)
+- Strategy daily analysis: [2026-08-13](Strategy/2026-08-13/sovereignty.md)
 - Friday synthesis, week ending 2026-08-07: [retained state is authority](roundups/2026-08-07.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
-- Deep Dive Wednesday, 2026-08-05: [stateful effect governance](Strategy/stateful-effect-governance/stateful-effect-governance.md)
 
 ## Current thesis
 
-The practical rule is retained state is not authority:
+Capability packaging is becoming portable. Trust is not. The package, interface, memory pipeline, and environment each need their own evidence:
 
+- portable plugins need package identity, component inventory, per-client admission, and cross-client revocation;
+- tool interfaces need versioned repeated-run evaluation even when capability stays constant;
+- memory systems need per-stage cost ledgers and break-even curves tied to matched accuracy;
+- adversarial evaluation needs executable stateful worlds and deterministic final-state receipts;
 - self-evolving harness edits need typed failures, falsifiable contracts, and transfer gates;
-- agent safety scores need realized-state receipts and disclosed evidence views;
-- prompt-injection detectors need attack-family coverage at fixed false-positive budgets;
 - shared memory needs inherited admissibility before relevance ranking and action;
-- contract-equivalent histories should produce contract-equivalent code;
-- context repair should follow source-level attribution;
-- deterministic stages should own code-review coverage and admission;
-- multi-agent guards should bind to immutable provenance and allow safe recovery;
-- agent harnesses need controlled fault injection at shared API boundaries before release;
-- coding-agent advisors need deterministic drift triggers before they may intervene;
-- persistent-risk claims need carrier-lineage traces through trigger and effect;
-- memory needs explicit active, superseded, revoked, quarantined, and re-promoted states;
-- structured documents need deterministic search, navigation, and bounded reads before dense retrieval;
-- coding-agent scores need planner, executor, scaffold, protocol, and version identity;
-- skill files need software supply-chain admission before they load;
-- trajectory risk needs bounded pre-action state outside the acting model;
-- gateways need routing receipts, spend budgets, temporal policy, and rate limits;
-- coding agents need oracle alignment, workspace revision identity, and local scout evidence before expensive mutation;
-- failed trajectories need earliest decisive-error attribution with linked evidence;
-- monitors may escalate, but deterministic checks and oracles certify narrow facts;
-- execution should use the smallest runtime that satisfies an explicit capability need;
-- inherited policy must compile into one visible effective-policy receipt;
-- side effects under memory uncertainty need certificates over retained worlds, not one retrieved context;
-- resume, memory revision, and policy authorization need explicit state-transition contracts;
-- skill catalogs need trigger, compliance, and boundary scores under progressive disclosure;
-- self-written skills need pre-commit admission before they become executable memory;
-- tool descriptions need canary audits before they can mint selection authority;
-- multi-turn tool history needs authority labels before it can flip the next call;
-- audio, summaries, and consolidated memory remain below the privilege of current verified state.
-
-The model may propose. A separately controlled boundary grants permission or certifies success.
+- retained context, summaries, and skills may propose, but a separately controlled boundary grants permission or certifies success.
 
 ## Browse by category
 

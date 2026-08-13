@@ -772,6 +772,14 @@ Artifact caveat: no paper-owned public implementation repository was found durin
 Source:
 - [MemSecBench](https://arxiv.org/abs/2607.27080v1)
 
+## August 13 update: memory needs a cost break-even gate
+
+Total Recall at What Cost? shows that memory economics are driven by internal extraction, reflection, retrieval, and reasoning calls, not conversation length alone. Across three systems and two backbones, a simple cost model missed by 18 to 69 percent, and some configurations never beat full-transcript resubmission within 400 turns.
+
+Memory admission should require a per-stage cost ledger, matched accuracy, and break-even by expected session horizon. Token reduction without full pipeline accounting is not a deployment case.
+
+Source: https://arxiv.org/abs/2608.11879v1
+
 ## Working conclusion
 
 The next generation of agents will be differentiated less by how eloquently they speak and more by how faithfully and safely they remember. The winning systems will preserve evidence, route memory writes explicitly, retrieve context adaptively, abstain when memory is unsafe, validate high-value writes, make retention and pruning decisions replayable, query local graphs when code structure matters, promote only the right lessons into durable guidance, attach enough context for updates and temporal reasoning, choose abstraction levels that transfer across tasks, keep the most sensitive memory close to the user and under policy control, run durable memory through a governed database-backed state core, separate evaluation memory from user-facing memory, measure whether memories remain usable under scale, budgets, and writeback review, expose operation-level provenance, make reasoning history diffable, test belief-state stay/update/isolate decisions, gate retrieval by policy, resolve contradictions with bitemporal evidence, evaluate memory against heterogeneous evolving source streams, and defend memory write/read paths against poisoning so failures can be traced instead of guessed.

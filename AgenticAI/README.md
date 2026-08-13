@@ -2,35 +2,44 @@
 
 This index tracks the most recent structured research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: 2026-08-12
+## Latest Structured Update: 2026-08-13
 
-### Self-evolving harnesses need typed edits and transfer gates
+### Tool architecture is part of the agent policy surface
 
-Summary: A fixed evolution recipe across eight languages and three models improved most cells, but Python and GPT-5-mini were null regions. Twenty to 40 percent of each evolved harness remained ecosystem-specific.
+Summary: Six equivalent-capability tool architectures, three actors, and 11,700 coding trajectories changed repeat-run consistency, repository exploration, steps, and tokens. CodeAct-style interfaces reached similar performance with 41.6 percent fewer steps and 56.3 percent fewer tokens.
 
-Analysis: [daily analysis](2026-08-12/reasoning.md#self-evolving-harnesses-should-produce-typed-transferable-contracts)
-Core source: [One Recipe, Many Harnesses](https://arxiv.org/abs/2608.10178v1)
-Tools and methodologies worth exploring now: typed failure signals, falsifiable edit contracts, held-out gates, transfer tests, native ecosystem adapters
-Implementability score: 0.78
-
-### Agent safety scores need realized-state evidence
-
-Summary: REDAgentBench separates exposure, execution, observation, and adjudication across 1,661 executable cases. Almost one in five state-confirmed violations in a diagnostic cohort followed explicit risk recognition by the agent.
-
-Analysis: [daily analysis](2026-08-12/reasoning.md#agent-red-teaming-should-separate-exposure-execution-observation-and-adjudication)
-Core source: [REDAgentBench](https://arxiv.org/abs/2608.10669v1)
-Tools and methodologies worth exploring now: isolated service doubles, constraint-derived attacks, final-state diffs, evidence-view receipts, action-boundary reminders
+Analysis: [daily analysis](2026-08-13/reasoning.md#tool-architecture-is-part-of-the-agent-policy-surface)
+Core source: [The Devil Is in the Interface](https://arxiv.org/abs/2608.11386v1)
+Tools and methodologies worth exploring now: interface schema identity, equivalent-capability A/B tests, repeated-run variance, relevant-file coverage, step and token ledgers
 Implementability score: 0.72
 
-### Prompt-injection detectors need attack-family coverage maps
+### Memory systems need a serving-cost break-even test
 
-Summary: Quadrat-IPI measures nine detectors across 92 attack cells, 16,800 injections, and 63,000 clean documents at fixed false-positive budgets. One recall number hides 4 to 76 point spreads between a detector's weakest and strongest cells.
+Summary: Three memory systems, two baselines, two backbones, conversations up to 400 turns, and 665 LoCoMo questions show that internal memory pipelines make simple cost estimates miss by 18 to 69 percent. Some systems never beat full-transcript cost within 400 turns.
 
-Analysis: [daily analysis](2026-08-12/reasoning.md#prompt-injection-detectors-need-attack-family-maps-at-fixed-false-positive-budgets)
-Core sources: [article](https://huggingface.co/blog/mihailgribov/compare-prompt-injection-detectors), [dataset](https://huggingface.co/datasets/mihailgribov/quadrat-ipi), [evaluation harness](https://github.com/mihail-gribov/quadrat-ipi-eval)
-Tools and repositories worth exploring now: Quadrat-IPI 1.0.1, `quadrat-ipi-eval`, per-carrier false-positive budgets, attack-cell coverage thresholds
-Implementability score: 0.95
+Analysis: [daily analysis](2026-08-13/reasoning.md#memory-systems-need-a-serving-cost-break-even-test)
+Core source: [Total Recall at What Cost?](https://arxiv.org/abs/2608.11879v1)
+Tools and methodologies worth exploring now: per-stage model-call ledgers, matched cost-accuracy curves, rolling-window baseline, full-transcript baseline, break-even by session depth
+Implementability score: 0.82
+
+### Adversarial tool environments should be executable and stateful
+
+Summary: ToolHazard generates stateful environments, attack points, payloads, and long-horizon tasks with deterministic checks. Its benchmark spans 28 domains and exposes richer task and tool graphs than fixed prompt-injection suites.
+
+Analysis: [daily analysis](2026-08-13/reasoning.md#adversarial-tool-environments-should-be-executable-and-stateful)
+Core sources: [paper](https://arxiv.org/abs/2608.11878v1), [public MIT repository](https://github.com/MurrayTom/ToolHazard)
+Tools and repositories worth exploring now: ToolHazard environment/task schemas, isolated service doubles, final-state diffs, attack-placement coverage, trajectory receipts
+Implementability score: 0.78
+
+### Agent Plugins 1.0 is ready for a bounded portability pilot
+
+Summary: GitHub now supports one package containing portable skills and MCP configuration across VS Code, Copilot CLI, the Copilot SDK, and the Copilot app, while client-specific features remain namespaced.
+
+Analysis: [daily analysis](2026-08-13/reasoning.md#portable-agent-plugins-make-packaging-easy-enough-to-standardize-now)
+Core sources: [GitHub release](https://github.blog/changelog/2026-08-12-agent-plugins-1-0-in-vs-code-copilot-cli-and-the-copilot-app/), [1.0.0 specification](https://github.com/agentplugins/agent-plugins-spec/blob/main/spec/1.0.0.md)
+Tools and repositories worth exploring now: `agent-plugins-spec`, manifest JSON schema, MCP component schema, CI linting, one read-only cross-client pilot
+Implementability score: 0.96
 
 ## Current implication
 
-Use typed transfer gates for harness evolution, state receipts for safety evaluation, and attack-family coverage at fixed false-positive budgets for detector admission.
+Package capabilities once, but evaluate each interface, memory pipeline, environment, and client admission separately.

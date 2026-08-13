@@ -793,6 +793,14 @@ Sources:
 - [RigorBench](https://arxiv.org/abs/2606.22678v1)
 - [GroundEval](https://arxiv.org/abs/2606.22737v1)
 
+## August 13 update: tool architecture needs equivalent-capability experiments
+
+The Devil Is in the Interface isolates how capability exposure changes coding-agent behavior. Across six architectures, three actors, and 11,700 trajectories, interface shape changed consistency, exploration, steps, and tokens even when underlying access stayed similar.
+
+The harness contract should therefore bind every run to a tool-interface schema version and compare equivalent-capability variants on repeated trajectories. Outcome, variance, relevant-file coverage, steps, tokens, and side effects belong in the same release record.
+
+Source: https://arxiv.org/abs/2608.11386v1
+
 ## Working conclusion
 
 Agent harness architecture is becoming one of the clearest ways to tell whether a team is building a toy, a developer tool, or a real operating substrate. The winning systems will make context explicit, tool boundaries governable, restore paths safe, typed component interfaces inspectable, orchestration empirically justified and quality-gated, skill routing compositional, test-oracle strength machine-checkable, evidence easy to inspect, environment-specific falsification surfaces routine, real-session misalignment labels routine, proposal-soundness gates explicit, failed trajectories layer-attributed, process discipline measurable, and production failures routinely promoted into versioned regression fixtures with trajectory and outcome graders.

@@ -821,3 +821,13 @@ Evidence caveat: the study uses two agents, one benign task, auto-approved execu
 Sources:
 - [Malicious Skill Files](https://arxiv.org/abs/2608.05223v1)
 - [AgentJailbreak](https://github.com/awsm-research/AgentJailbreak)
+
+## August 13 update: portable plugin packaging needs admission metadata
+
+Agent Plugins 1.0 makes skills and MCP configuration portable across compatible clients. That reduces packaging duplication but increases the value of a single manifest that binds package digest, component inventory, schemas, diagnostics, and client-specific extensions.
+
+The practical pilot is one low-risk skill plus one read-only MCP server, linted in CI and admitted independently per client. Portability should not inherit trust automatically.
+
+Sources:
+- https://github.blog/changelog/2026-08-12-agent-plugins-1-0-in-vs-code-copilot-cli-and-the-copilot-app/
+- https://github.com/agentplugins/agent-plugins-spec/blob/main/spec/1.0.0.md

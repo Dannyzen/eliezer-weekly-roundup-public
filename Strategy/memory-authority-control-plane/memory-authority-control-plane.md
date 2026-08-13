@@ -1,10 +1,10 @@
 # Memory Authority Control Plane
 
-Last updated: 2026-08-03
+Last updated: 2026-08-12
 
 Primary layer: Strategy / runtime governance
 
-Implementability score: 0.66
+Implementability score: 0.74
 
 Core sources:
 - Securing LLM-Agent Long-Term Memory Against Poisoning: Non-Malleable, Origin-Bound Authority with Machine-Checked Guarantees: https://arxiv.org/abs/2606.24322v1
@@ -13,6 +13,7 @@ Core sources:
 - Governed Shared Memory for Multi-Agent LLM Systems: https://arxiv.org/abs/2606.24535v1
 - AgentRiskBOM: A Risk-Scoping Security Bill of Materials for Agentic AI Systems: https://arxiv.org/abs/2606.21877v1
 - Lingering Authority: Revocable Resource-and-Effect Capabilities for Coding Agents: https://arxiv.org/abs/2606.22504v1
+- MAP-Graph: Provenance-Aware Shared Memory for Multi-Agent Workflows: https://arxiv.org/abs/2608.10509v1
 
 ## Overview
 
@@ -240,15 +241,73 @@ Sources:
 - [akewarmayur/SafeCommit](https://github.com/akewarmayur/SafeCommit)
 
 
-## August 12 update: memory admissibility must precede semantic ranking
+## August 12 deep dive: memory needs two gates, not one smarter retriever
 
-MAP-Graph represents principals, sources, memories, claims, and actions in one typed provenance graph. It applies inherited permission filtering before relevance ranking, propagates revocation through descendants, and uses a separate action-risk decision after retrieval.
+MAP-Graph is the strongest finding of the 2026-08-06 through 2026-08-12 window because it turns provenance from audit metadata into an online control signal. The system models principals, sources, memories, claims, and actions in one typed execution graph, then runs a sequence that ordinary vector memory omits:
 
-Practical lesson:
-- make principal and source identity explicit on every memory write;
-- inherit restrictions through summaries and derived claims;
-- remove ineligible records before semantic ranking;
-- keep action authorization separate from memory trust.
+1. Trace the ancestry of each candidate memory.
+2. Exclude records whose inherited permission scope does not admit the requesting principal.
+3. Rerank only eligible records using semantic similarity and multiplicative path trust.
+4. Re-evaluate the selected evidence against the proposed action's risk.
+5. Preserve affected descendants and the final decision as an audit receipt.
 
-Source:
-- [MAP-Graph](https://arxiv.org/abs/2608.10509v1)
+The key architecture is not the graph by itself. It is the separation of two policy questions:
+
+- Retrieval gate: may this principal read or use this memory?
+- Action gate: is this evidence sufficient to authorize this exact effect?
+
+On 2,700 synthetic tasks per method across three domains, MAP-Graph reports 94.96 percent task success, 72.70 percent exact decision accuracy, and 90.22 percent clean-setting success. It rejected every observed unauthorized read and blocked all 450 revoked cases. The full study records 21,600 main-experiment decisions, 18,900 ablation decisions, and a three-backbone transfer subset.
+
+The ablations are the important proof. Removing the permission filter increased task success from 94.96 to 96.00 percent and exact accuracy from 72.70 to 78.63 percent, but unauthorized access rose from zero to every observed attempt. Better aggregate utility hid a destroyed security boundary. Provenance therefore has to constrain the candidate set before ranking, not merely add another score after retrieval.
+
+### Why this won the week
+
+One Recipe, Many Harnesses gives self-evolving coding agents a strong transfer methodology. REDAgentBench improves realized-state safety measurement. Quadrat-IPI provides a ready-to-run detector evaluation map. All three are useful, but they optimize or evaluate one subsystem.
+
+MAP-Graph defines the policy seam that every persistent multi-agent product eventually needs: one agent's retained state can become another agent's evidence, and evidence can become action. If that seam is wrong, better memory increases the reach of stale, private, poisoned, or revoked authority.
+
+### Practical implementation now
+
+Start with a thin control plane, not a full graph database migration:
+
+- add stable identifiers for principal, source event, memory record, derived claim, proposed action, and policy decision;
+- store `owner`, `visibility`, `permission_scope`, `derived_from`, `trust_label`, `revoked_at`, `valid_until`, and `allowed_effects` outside model-authored prose;
+- propagate the most restrictive inherited scope through summaries and derived claims;
+- filter ineligible memories before vector or lexical ranking;
+- make `Allow`, `Block`, `Redact`, `Reverify`, and `AskUser` typed action-gate outcomes;
+- retain receipts for candidate IDs, filtered IDs, selected evidence, proposed effect, effective policy, and final decision;
+- test private ancestry, revoked ancestry, poisoned ancestry, stale evidence, clean allow, and high-risk action cases separately.
+
+A relational prototype is enough. Use immutable IDs plus parent tables or recursive common-table expressions first. Add a specialized graph store only if measured lineage-query cost justifies it.
+
+### Implementation complexity
+
+The thin version is moderate: schema changes, one retrieval gateway, one policy evaluator, recursive ancestry resolution, and deterministic fixtures. The hard part is complete mediation. Direct reads, exports, summaries, embeddings, handoffs, background jobs, and admin tools all need to preserve and enforce the same authority fields.
+
+Implementability score: 0.74. The architecture can be prototyped now, but the paper exposes no exact public implementation repository, and production correctness depends on closing every bypass path.
+
+### What remains conceptual or unproven
+
+- The benchmark is synthetic and templated; actions are simulated.
+- Most reported cells are one run, not deployment-scale reliability evidence.
+- The model still made 41 impermissible Allow decisions in the 450 high-risk action cases.
+- Trust labels, permissions, and action-risk fields are supplied by the benchmark. Real systems still need an authority for issuing and revising those labels.
+- No exact public implementation artifact was resolved from the immutable v1 paper.
+
+These are not reasons to dismiss the design. They identify the guardrail: provenance eligibility is deterministic policy, while high-risk action authorization needs its own stricter engine and cannot be delegated to retrieval confidence.
+
+### Strategic implication for Danny's product thinking
+
+The product promise should not be “shared memory that remembers more.” It should be “shared state whose authority can be explained, revoked, and bounded before it changes the world.”
+
+For FriendVM-style personal agents, a memory written by one node should not silently become another node's capability. For client workflows, a summary should not shed the permissions or expiry of its sources. For human approval, the useful screen is not a paragraph of recalled context; it is the receipt showing which principal, source lineage, policy, and effect are being joined.
+
+The durable worldview update is: persistent context may propose evidence, but only a separate policy boundary can admit that evidence and authorize the effect.
+
+### Core and supporting sources
+
+- [MAP-Graph abstract, immutable v1](https://arxiv.org/abs/2608.10509v1)
+- [MAP-Graph full paper, immutable v1](https://arxiv.org/pdf/2608.10509v1)
+- [Governed Shared Memory for Multi-Agent LLM Systems](https://arxiv.org/abs/2606.24535v1)
+- [Memory Provenance Laundering](https://arxiv.org/abs/2607.29167v1)
+- [SafeCommit](https://arxiv.org/abs/2608.04289v1)

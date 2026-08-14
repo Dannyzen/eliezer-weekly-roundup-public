@@ -987,3 +987,21 @@ Practical lesson:
 Sources:
 - [REDAgentBench](https://arxiv.org/abs/2608.10669v1)
 - [Quadrat-IPI](https://huggingface.co/blog/mihailgribov/compare-prompt-injection-detectors)
+
+## August 14 update: final scores need path and process decomposition
+
+QuoteBench, Beyond Final Scores, and the IaC regression study expose three different terminal-score blind spots. QuoteBench holds the generated reply fixed and measures transport damage. Beyond Final Scores decomposes long-horizon work into framing, execution, feedback control, experience transfer, and harness stability. The IaC study reconstructs previously passing properties across repair iterations instead of reporting only cumulative best.
+
+Practical lesson:
+- bind every score to exact model, contract, tool schema, transport path, executor, and validator identity;
+- report avg@N and best@N separately;
+- trace progress retention, recovery, regression, and best-state protection;
+- preserve per-property state across iterations;
+- use fixed-reply replay to distinguish generation failure from post-generation damage.
+
+Evidence caveat: QuoteBench is a narrow one-shot Bash diagnostic; the R&D study uses 36 tasks and about $100,000 of inference; the IaC study is AWS/Terraform-specific and uses single runs per configuration.
+
+Sources:
+- [QuoteBench](https://arxiv.org/abs/2608.13547v1)
+- [Beyond Final Scores](https://arxiv.org/abs/2608.13417v1)
+- [Does Fixing Break Security?](https://arxiv.org/abs/2608.13404v1)

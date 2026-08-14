@@ -6,24 +6,23 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily roundup, 2026-08-13: [capability packaging is getting easier, so evaluation must move below the package boundary](roundups/2026-08-13.md)
-- AgenticAI daily analysis: [2026-08-13](AgenticAI/2026-08-13/reasoning.md)
-- Strategy daily analysis: [2026-08-13](Strategy/2026-08-13/sovereignty.md)
+- Daily roundup, 2026-08-14: [final success is not enough evidence](roundups/2026-08-14.md)
+- AgenticAI daily analysis: [2026-08-14](AgenticAI/2026-08-14/reasoning.md)
+- Strategy daily analysis: [2026-08-14](Strategy/2026-08-14/sovereignty.md)
 - Friday synthesis, week ending 2026-08-07: [retained state is authority](roundups/2026-08-07.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 
 ## Current thesis
 
-Capability packaging is becoming portable. Trust is not. The package, interface, memory pipeline, and environment each need their own evidence:
+A green result is one predicate, not complete evidence. Reliable agent systems need separate proof that:
 
-- portable plugins need package identity, component inventory, per-client admission, and cross-client revocation;
-- tool interfaces need versioned repeated-run evaluation even when capability stays constant;
-- memory systems need per-stage cost ledgers and break-even curves tied to matched accuracy;
-- adversarial evaluation needs executable stateful worlds and deterministic final-state receipts;
-- self-evolving harness edits need typed failures, falsifiable contracts, and transfer gates;
-- shared memory needs inherited admissibility before relevance ranking and action;
-- retained context, summaries, and skills may propose, but a separately controlled boundary grants permission or certifies success.
+- the command path preserved the generated intent;
+- the trajectory used a stable and diagnosable process;
+- later repair did not regress properties that already passed;
+- the exact change stayed inside the principal’s authorization;
+- portable packages, interfaces, memory, and environments remain independently identifiable and testable;
+- retained context, summaries, and skills may propose, but a separately controlled boundary grants permission and certifies success.
 
 ## Browse by category
 

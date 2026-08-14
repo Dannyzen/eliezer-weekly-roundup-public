@@ -397,3 +397,26 @@ Practical lesson:
 Sources:
 - [SafeCommit](https://arxiv.org/abs/2608.04289v1)
 - [akewarmayur/SafeCommit](https://github.com/akewarmayur/SafeCommit)
+
+## August 14 update: acceptance is a conjunction, not a green result
+
+QuoteBench and CAPRI strengthen the same release primitive from opposite sides. QuoteBench shows that the execution path can change the effect after generation. CAPRI shows that a candidate can satisfy the normal validator while changing protected state outside the authorized repair region.
+
+The reusable rule is:
+
+`Accept = OutcomeValid AND ChangeAuthorized AND PathFaithful AND PreservedProperties`
+
+Practical lesson:
+- make edit and effect boundaries machine-readable;
+- keep the outcome validator independent from the authority checker;
+- bind approval to the decoded action and every downstream transform;
+- replay fixed actions through production wrappers;
+- convert previously passing properties into preservation obligations;
+- retain original state, candidate state, contract, path identity, verdicts, hashes, and final-state receipt.
+
+Evidence caveat: CAPRI uses 12 author-maintained Isabelle tasks and an unverified contract checker. QuoteBench isolates one-shot Bash parsing. The general release rule is a system-design inference that still needs validation across business APIs, databases, messaging, and deployment tools.
+
+Sources:
+- [CAPRI](https://arxiv.org/abs/2608.13459v1)
+- [QuoteBench](https://arxiv.org/abs/2608.13547v1)
+- [QuoteBench artifact](https://github.com/LeonardNJU/quoteBench)

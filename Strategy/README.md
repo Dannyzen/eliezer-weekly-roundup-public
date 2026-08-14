@@ -2,26 +2,35 @@
 
 This index tracks the most recent structured strategy research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: 2026-08-13
+## Latest Structured Update: 2026-08-14
 
-### A portable plugin is a cross-client authority object
+### Acceptance must combine correctness with change authorization
 
-Summary: Agent Plugins 1.0 reduces packaging duplication across GitHub agent clients, but the package may combine behavioral skills, MCP effects, hooks, commands, and client extensions. Portability increases the need for package identity, per-component grants, and cross-client revocation.
+Summary: CAPRI evaluates 180 proof-repair runs. Six of 144 Isabelle-accepted candidates modified protected text. A separate machine-readable edit contract detects these false successes, while a proof-body-only interface removes observed violations at a small repair cost.
 
-Analysis: [daily strategy](2026-08-13/sovereignty.md#a-portable-plugin-is-a-cross-client-authority-object)
-Core sources: [GitHub release](https://github.blog/changelog/2026-08-12-agent-plugins-1-0-in-vs-code-copilot-cli-and-the-copilot-app/), [1.0.0 specification](https://github.com/agentplugins/agent-plugins-spec/blob/main/spec/1.0.0.md)
-Tools and methodologies worth exploring now: package digests, component inventories, least-privilege grants, client-specific admission, startup diagnostics, central revocation
-Implementability score: 0.90
+Analysis: [daily strategy](2026-08-14/sovereignty.md#capri-acceptance-must-combine-correctness-with-change-authorization)
+Core source: [CAPRI](https://arxiv.org/abs/2608.13459v1)
+Tools and methodologies worth exploring now: editable-region contracts, independent conformance checkers, forbidden-effect lists, proof-body or patch-only interfaces, original and candidate hashes, dual verdict receipts
+Implementability score: 0.84
 
-### Security evaluation needs executable hostile worlds
+### The execution path belongs inside the authority boundary
 
-Summary: ToolHazard turns indirect prompt injection into stateful environment tests with attack placement, long-horizon tasks, and deterministic effect checks. These environment objects can become release gates for plugins, gateways, and tool interfaces.
+Summary: QuoteBench shows that downstream parsers can damage a generated action even when the model reply is fixed. Approving only the model-visible command does not approve the actual executed effect.
 
-Analysis: [daily strategy](2026-08-13/sovereignty.md#security-evaluation-needs-executable-hostile-worlds)
-Core sources: [paper](https://arxiv.org/abs/2608.11878v1), [public MIT repository](https://github.com/MurrayTom/ToolHazard)
-Tools and methodologies worth exploring now: isolated service doubles, environment manifests, final-state adjudication, unauthorized-effect budgets, incident-to-fixture promotion
-Implementability score: 0.78
+Analysis: [daily strategy](2026-08-14/sovereignty.md#quotebench-the-execution-path-belongs-inside-the-authority-boundary)
+Core sources: [paper](https://arxiv.org/abs/2608.13547v1), [public artifact](https://github.com/LeonardNJU/quoteBench)
+Tools and methodologies worth exploring now: exact action manifests, transform logs, production-wrapper replay, parser-boundary removal, final-state receipts
+Implementability score: 0.92
+
+### Previously passing properties need monotonic authority
+
+Summary: Cumulative-best IaC security metrics improve while raw trajectories regress. Once a property passes, a later repair should need explicit authority to invalidate it.
+
+Analysis: [daily strategy](2026-08-14/sovereignty.md#iterative-repair-needs-monotonic-property-authority)
+Core source: [Does Fixing Break Security?](https://arxiv.org/abs/2608.13404v1)
+Tools and methodologies worth exploring now: preservation obligations, best-candidate versus release-candidate separation, explicit waivers, per-iteration property vectors, diff-bound policy receipts
+Implementability score: 0.88
 
 ## Current implication
 
-Portable packaging should accelerate distribution, not trust. Admit the exact package, grant each component separately, and test it inside executable hostile worlds before it can mint effects.
+Use conjunctive release gates. Outcome validity, authority conformance, path fidelity, and property preservation are separate predicates.

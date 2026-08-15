@@ -2,35 +2,44 @@
 
 This index tracks the most recent structured research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: 2026-08-14
+## Latest Structured Update: 2026-08-15
 
-### Command-path evaluation must separate generation from transport
+### Action gates need bidirectional calibration
 
-Summary: QuoteBench’s 56 exact-state Bash tasks show that one added parser can damage the same replies by 55.4 to 73.2 percentage points. Contract-conditioned generation can compensate enough to make a matched score hide the defect.
+Summary: SteerBench-Work shows that safety gates can fail by blocking authorized work. Across 30 model conditions, wrong holds reached 28.1% while wrong acts reached 1.0%.
 
-Analysis: [daily analysis](2026-08-14/reasoning.md#quotebench-command-path-evaluation-must-separate-generation-from-transport)
-Core sources: [paper](https://arxiv.org/abs/2608.13547v1), [public artifact](https://github.com/LeonardNJU/quoteBench)
-Tools and methodologies worth exploring now: fixed-reply replay, exact final-state validators, transport identity, argv or typed operations, ShellCheck, network-disabled execution fixtures
-Implementability score: 0.92
+Analysis: [daily analysis](2026-08-15/reasoning.md#action-gates-need-bidirectional-calibration)
+Core sources: [SteerBench-Work](https://arxiv.org/abs/2608.12654v1), [artifact](https://github.com/AgentDock/steerbench-work)
+Tools and methodologies worth exploring now: mirrored proceed-or-hold fixtures, separate false-allow and false-hold budgets, typed action manifests, denial-recovery receipts
+Implementability score: 0.90
 
-### Long-horizon R&D needs deterministic process metrics
+### Reliability certificates must model shared failure
 
-Summary: Seven frontier models, 36 tasks, and 756 rollouts show that reliability separates systems more than peak performance. Experience can improve or degrade later decisions, and harnesses mainly affect stability.
+Summary: Two same-model agents co-failed on 90.0% of missions where either failed in a preregistered 18,000-mission handoff. Multi-agent redundancy cannot be certified from marginal pass rates.
 
-Analysis: [daily analysis](2026-08-14/reasoning.md#beyond-final-scores-evaluate-the-research-loop-as-a-process)
-Core source: [Beyond Final Scores](https://arxiv.org/abs/2608.13417v1)
-Tools and methodologies worth exploring now: framing-execution-feedback decomposition, avg@N versus best@N, progress-retention metrics, positive and negative experience-transfer tests, harness stability comparisons
-Implementability score: 0.70
+Analysis: [daily analysis](2026-08-15/reasoning.md#reliability-certificates-must-model-shared-failure)
+Core sources: [Agent Behavioral Contracts II](https://arxiv.org/abs/2608.12895v1), [agentassert-abc](https://github.com/qualixar/agentassert-abc)
+Tools and methodologies worth exploring now: matched joint-failure traces, same-model versus cross-model contrasts, finite-sample lower bounds, independence-assumption rejection gates
+Implementability score: 0.78
 
-### Iterative repair needs property-preservation gates
+### Self-improvement needs write and reuse gates
 
-Summary: Across 5,968 IaC repair timelines, the conservative strict security-regression rate is 3.3 percent of scenarios. Regressing transitions carry 2.6 times more code churn and 4.9 times more strict-mode check volatility.
+Summary: All 21 evolved configurations in SkillMisevo authored unsafe artifacts, while 15 produced fresh-session harm. Persistent risk exists before it appears in terminal behavior.
 
-Analysis: [daily analysis](2026-08-14/reasoning.md#iterative-repair-needs-property-preservation-gates)
-Core source: [Does Fixing Break Security?](https://arxiv.org/abs/2608.13404v1)
-Tools and methodologies worth exploring now: per-check state ledgers, Checkov, Terraform validation, best-state checkpoints, structural-change gates, policy-as-code preservation tests
-Implementability score: 0.88
+Analysis: [daily analysis](2026-08-15/reasoning.md#self-improvement-needs-write-and-reuse-gates)
+Core sources: [Practice Makes Unsafe](https://arxiv.org/abs/2608.12851v1), [MisEvolve artifact](https://github.com/henrymao2004/misevolve)
+Tools and methodologies worth exploring now: draft-admitted-revoked skill states, trajectory inspection, held-out behavioral replay, retrieval gating, immutable retirement
+Implementability score: 0.72
+
+### Tool responses need semantic authority contracts
+
+Summary: PIPES screens response units against source provenance and semantic priors. Its main evaluation reduced attack success from 84.7% to 2.3% without lowering benign utility.
+
+Analysis: [daily analysis](2026-08-15/reasoning.md#tool-responses-need-semantic-authority-contracts)
+Core source: [PIPES](https://arxiv.org/abs/2608.12789v1)
+Tools and methodologies worth exploring now: field-level claim contracts, provenance-bearing response units, pre-context screening, raw-to-admitted-state traces, adaptive attack replay
+Implementability score: 0.64
 
 ## Current implication
 
-Instrument the path, the process, and the properties that must remain true. Terminal success alone cannot attribute capability or authorize release.
+Screen observations, admit persistent procedures, certify composed routes, and gate exact effects. Keep all four release decisions outside the proposing model.

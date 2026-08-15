@@ -1,123 +1,206 @@
-# AgenticAI Daily Analysis, 2026-08-14
+# AgenticAI Weekly Analysis, 2026-08-14
 
 ## Thesis
 
-A final score is not enough evidence for an agent system. Today’s strongest work shows three different ways a green result can lie: the command can be damaged after generation, the trajectory can reach the score through the wrong process, and a later repair can regress a property that had already passed.
+Evidence is not authority. This week’s strongest research converges on a split control plane: models may propose actions, repairs, memories, skills, and plans, while deterministic runtime components verify the path, authorize the change, preserve valid state, govern promotion, and record the outcome.
 
-## QuoteBench: command-path evaluation must separate generation from transport
+## Conjunctive acceptance replaces terminal success
 
 ### Finding
 
-QuoteBench evaluates 56 one-shot Bash tasks across 14 incident-derived families using exact final-state validators. Its crossed design varies the generation contract separately from the execution transport, then replays the same generated reply with and without one added parser. Across eight same-window configurations, the added parser lowers success by 55.4 to 73.2 percentage points. Disclosing the boundary before generation recovers 30.4 to 60.7 points for six configurations.
+Three studies expose different false-green paths.
 
-The clearest example is GPT-5.6-sol: a matched-path difference of only -3.6 points hides -64.3 points of transport damage and +60.7 points of model compensation. A matched score can therefore look stable while two large opposing effects cancel.
+QuoteBench crosses generation contracts with execution transports on 56 exact-state Bash tasks. Replaying the same reply through one additional parser reduces success by 55.4 to 73.2 percentage points. For GPT-5.6-sol, a matched-path difference of only -3.6 points hides -64.3 points of transport damage plus +60.7 points of model compensation.
+
+CAPRI evaluates 180 Isabelle proof-repair runs. Isabelle accepts 144 terminal candidates, but six modified protected text. A proof-body-only interface removes the observed authority violations while giving up two valid repairs out of 36 compared with the full-theory workflow.
+
+The IaC repair study reconstructs 5,968 timelines. Its conservative strict security-regression rate is 3.3 percent of scenarios. Regressing transitions have 2.6 times more churn and 4.9 times more strict-mode check volatility. Cumulative-best reporting hides those raw trajectory regressions.
 
 ### Why it matters
 
-Agent evaluations often bind model, prompt, tool schema, serializer, shell wrapper, remote hop, and validator into one opaque score. QuoteBench shows that the execution path is part of the evaluated system. Model rankings can change when that path changes, even when the underlying task and generated reply stay fixed.
+Outcome validity, transport fidelity, change authorization, and property preservation are independent predicates. A system that collapses them into one final score cannot attribute failure or justify release.
 
 ### Fit into the stack
 
-Primary layer: trajectory-aware evaluation and tool-interface testing.
+Primary layers: trajectory-aware evaluation, coding-agent control, execution adapters, and release gating.
 
-The trace needs explicit identities for the generation contract, decoded tool argument, transport wrappers, executor input, operating system, shell, and final-state validator. Without that path identity, a benchmark cannot attribute failure or compare deployments honestly.
+### Practical tools and methods
 
-### Practical tools, repositories, and methodologies worth exploring
+- Replay fixed generated actions through shell, SSH, container, CI, and remote-execution wrappers.
+- Validate exact final state separately from generated text.
+- Express editable files, regions, resources, and effect classes as machine-readable contracts.
+- Retain per-property pass, fail, ambiguous, restored, and waived states across iterations.
+- Bind original state, diff, contract, path transforms, validator results, policy verdict, and final state into one receipt.
+- Use QuoteBench as a read-only design reference for task schemas, validators, offline scoring, and transport comparisons.
 
-- Add fixed-reply replay tests around every shell, SSH, container, CI, and remote-execution wrapper.
-- Validate exact final state rather than command-string similarity.
-- Record both transport damage and contract-conditioned compensation.
-- Prefer argv or typed operations where possible, but test their representation errors separately.
-- Use the public QuoteBench tasks and validators as a design reference. The artifact was inspected read-only and was not executed.
+Implementability score: 0.88
 
-Implementability score: 0.92
-
-Artifact status: contents inspected read-only. The public Apache-2.0 repository contains the 56 tasks, validators, offline scoring code, Docker executor, rollout schema, and reproduction documentation.
-
-Scope caveat: QuoteBench isolates one-shot POSIX/Bash quoting and interpolation hazards. It does not estimate deployment prevalence or cover PowerShell, Windows CMD, authentication, network failures, interactive state, or multi-turn recovery.
-
-Submission: 2026-08-13 17:57:20 UTC. First listed: 2026-08-14.
+Artifact status: QuoteBench is a populated Apache-2.0 repository inspected read-only. CAPRI’s claimed artifact was not resolved. The IaC study has no verified paper-owned implementation.
 
 Core sources:
 - https://arxiv.org/abs/2608.13547v1
 - https://github.com/LeonardNJU/quoteBench
-- https://quotebench.lsamc.website/
+- https://arxiv.org/abs/2608.13459v1
+- https://arxiv.org/abs/2608.13404v1
 
-## Beyond Final Scores: evaluate the research loop as a process
+## Memory and skills need governed promotion
 
 ### Finding
 
-Beyond Final Scores evaluates seven frontier models on 36 long-horizon AI R&D tasks with three rollouts per model-task pair, for 756 rollouts. It decomposes each run into Solution Framing, Execution, and Feedback Control using deterministic signals from verifiers and recorded trajectories. It then measures experience reuse within and across tasks.
+Retained state becomes a control surface when it can alter later behavior.
 
-The study finds a 0.237 gap between the strongest and weakest models on avg@3 but only 0.122 on best@3, so reliability separates systems more than peak performance. Only three of 252 best-seed solutions qualify as novel approaches under the paper’s review protocol. Transferred experience raises DeepSeek-V4-Pro avg@3 by 0.093 but lowers Gemini-3.1-Pro by 0.017. Native harnesses mainly improve run-to-run stability, not best-observed performance.
+Trajectory-poisoning experiments place three poisoned records in a 30-record promotion batch. The attacker behavior survives into 546 of 600 SkillClaw trials and 369 of 600 Trace2Skill trials. Malicious skill-file experiments under auto-approved delegated execution report exploitation in 95.5 to 96.1 percent of Gemini CLI runs and 71.6 to 74.0 percent of Qwen Code runs in the tested setup.
+
+TEPA’s temporal entailment and provenance model scores 0.950 under reversal, compared with 0.210 for append-only and last-write-wins memory. MAP-Graph shows the other half of the problem: permission filtering can prevent unauthorized retrieval, but retrieved evidence still needs an independent gate before it can authorize a high-risk action.
 
 ### Why it matters
 
-Long-horizon agents are dynamic systems. Final score hides where progress was gained, whether failures were recovered, whether experience helped or anchored the agent to a local optimum, and whether the harness stabilized the run. The useful evaluation object is the process plus its retained experience, not the terminal artifact alone.
+Memory, summaries, shared artifacts, and skills are not passive context. Promotion can convert evidence into durable instruction. Retrieval can convert stored state into immediate influence. Those transitions need explicit authority.
 
 ### Fit into the stack
 
-Primary layer: trajectory-aware evaluation and agent-harness architecture.
+Primary layers: memory systems, skills-as-control, shared-state orchestration, and agent self-improvement governance.
 
-The method suggests deterministic process metrics tied to verifier events, explicit best-state protection, positive and negative experience-transfer tests, and separate reporting for average reliability and peak capability.
+### Practical tools and methods
 
-### Practical tools, repositories, and methodologies worth exploring
+- Give evidence, memories, summaries, and skills stable identities and ancestry.
+- Use active, superseded, revoked, quarantined, and re-promoted states.
+- Apply permission filtering before relevance ranking.
+- Preserve inherited restrictions through summaries and handoffs.
+- Separate proposer, evaluator, and promoter roles.
+- Replay historical and adversarial cases before promotion.
+- Require a second effect gate after retrieval.
 
-- Divide long runs into framing, execution, and feedback-control phases.
+Implementability score: 0.72
+
+Weakest point: TEPA and MAP-Graph did not expose verified exact public implementations in this scan. AgentJailbreak is populated but lacks a declared license, and its rates come from two agents, one benign task, auto-approval, and a short execution window.
+
+Core sources:
+- https://arxiv.org/abs/2608.05563v1
+- https://arxiv.org/abs/2608.05223v1
+- https://arxiv.org/abs/2608.07429v1
+- https://arxiv.org/abs/2608.10509v1
+
+## Evaluation must vary hidden conditions and inspect the process
+
+### Finding
+
+The week’s evaluation work repeatedly finds confounding behind aggregate scores.
+
+AgentChaos injects 65 runtime fault configurations at the shared API boundary. Pass@1 falls by up to 50 points, while fault-type and fault-step diagnosis remain below 53 and 56 percent. SpecPath finds that 35 of 100 blocks passing a consolidated specification fail under at least one contract-equivalent history. HarnessSafe tracks 328 cases across memory, skills, MCP/tools, summaries, delegation, and shared artifacts instead of collapsing persistent risk into attack-success rate.
+
+Beyond Final Scores evaluates seven models, 36 long-horizon R&D tasks, and 756 rollouts. The avg@3 gap between strongest and weakest systems is 0.237, compared with 0.122 for best@3. Transferred experience improves one model by 0.093 and harms another by 0.017.
+
+### Why it matters
+
+The object under evaluation is not only the model. It is the model plus harness, history, transport, tools, faults, retained experience, and recovery behavior. Hidden variation in any one of those can reverse a conclusion.
+
+### Fit into the stack
+
+Primary layers: agent harness architecture, trajectory-aware evaluation, observability, and containment testing.
+
+### Practical tools and methods
+
+- Inject test-only crash, omission, delay, and value faults at the LLM HTTP boundary.
+- Pair consolidated prompts with contract-equivalent histories.
+- Record the earliest consequential error and the recovery path.
+- Report avg@N beside best@N.
 - Compute progress retention, regression, recovery, and checkpoint quality from deterministic events.
-- Compare avg@N with best@N rather than reporting only the best run.
-- Test memory on paired positive-transfer and negative-transfer cases.
-- Compare harnesses on stability separately from the performance ceiling.
+- Trace persistent carriers through their full lifecycle.
 
-Implementability score: 0.70
+Implementability score: 0.82
 
-Artifact status: claimed only. The paper names an AutoResearchEval project page, but this scan did not resolve an exact public artifact URL from the primary arXiv page.
+Artifact status: AgentChaos has a populated repository and Zenodo artifact. TrajDebug is a preview. SpecPath and AutoResearchEval lacked resolved exact artifacts.
 
-Scope caveat: the evaluation uses 36 expert-curated AutoLab tasks and about $100,000 of model inference. Novelty review is partly judgment-based, and the task set is not a general estimate of autonomous scientific capability.
-
-Submission: 2026-08-13 16:11:22 UTC. First listed: 2026-08-14.
-
-Core source:
+Core sources:
+- https://arxiv.org/abs/2608.06790v1
+- https://github.com/IntelligentDDS/AgentChaos
+- https://arxiv.org/abs/2608.09799v1
+- https://arxiv.org/abs/2608.06984v1
 - https://arxiv.org/abs/2608.13417v1
 
-## Iterative repair needs property-preservation gates
+## Deterministic interfaces should bound adaptive reasoning
 
 ### Finding
 
-Does Fixing Break Security? reconstructs 5,968 IaC repair timelines across 15 configurations and up to five iterations. It tracks 30 CIS check IDs over 4,440 transitions. Standard detection reports regression in 13.8 percent of scenarios, but strict detection reduces the defensible rate to 3.3 percent because many apparent failures come from multi-resource measurement ambiguity.
+The strongest operational pattern is not removing models. It is narrowing where model judgment is allowed to operate.
 
-The remaining signal is still operationally important. Regression transitions have 2.6 times more code churn and 4.9 times higher strict-mode check volatility. Resource restructuring accounts for 79.0 percent of standard-mode root causes. The cumulative-best pass rate rises from 73 percent to 83 percent while the raw trajectory dips at iteration five, which demonstrates how best-so-far reporting erases regressions.
+READ exposes deterministic `search`, `list`, `outline`, and bounded `read` operations over structured documents. LivePlan triggers advice only after deterministic drift signals. OpenCodeReview uses deterministic dispatch, bounded investigation, and independent falsification, reporting up to 2.17 times higher SEM-F1 with 5 to 15 times fewer tokens. POLIS’s immutable-provenance guard admits 0 of 96 laundering violations, compared with 22 of 96 for a local-state guard, while 44 of 51 blocked episodes later complete safely.
 
 ### Why it matters
 
-Repair loops usually feed only current failures back to the model. They do not tell the model what must remain true. A validator can therefore guide local repair while permitting collateral regression. Every iteration needs both a fix predicate and a preservation predicate over previously passing properties.
+Models are useful for synthesis and judgment, but weak as the sole owner of lifecycle transitions, evidence access, admission, or release. Deterministic interfaces make the adaptive part observable and bounded.
 
 ### Fit into the stack
 
-Primary layer: coding-agent control plane and trajectory-aware evaluation.
+Primary layers: retrieval, coding-agent control, multi-agent orchestration, and recovery.
 
-The key object is a per-property state ledger across iterations: passed, failed, ambiguous, restored, and newly introduced. Promotion should require target improvement without unauthorized regression.
+### Practical tools and methods
 
-### Practical tools, repositories, and methodologies worth exploring
+- Expose deterministic evidence operations with line-level references.
+- Define lifecycle phases and drift triggers before asking for model advice.
+- Dispatch files and rules deterministically.
+- Give a separate stage authority to falsify the proposed finding.
+- Model denied actions as typed states with bounded safe alternatives.
+- Record attempted action separately from realized effect.
 
-- Persist the full validator vector, not only aggregate pass rate.
-- Diff previously passing checks after every proposed repair.
-- Separate exclusive failure from multi-resource measurement ambiguity.
-- Gate high-churn structural rewrites more strictly than local edits.
-- Stop on a validated best state rather than the last iteration.
-- Use Checkov, Terraform validation, and policy-as-code tests as independent gates.
+Implementability score: 0.86
 
-Implementability score: 0.88
+Artifact status: OpenCodeReview is public, populated, and Apache-2.0. READ and LivePlan lacked verified exact repositories. POLIS is inspectable but single-author, unreplicated, and non-standardly licensed.
 
-Artifact status: no new paper-owned public repository was verified. The analysis uses IaC-Eval v1.0 data and Checkov-derived histories.
+Core sources:
+- https://arxiv.org/abs/2608.06305v1
+- https://arxiv.org/abs/2608.06701v1
+- https://arxiv.org/abs/2608.09290v1
+- https://github.com/alibaba/open-code-review
+- https://arxiv.org/abs/2608.09828v1
 
-Scope caveat: results are specific to AWS Terraform and Checkov, use single runs per configuration, lack model identity for non-RAG runs, and may vary by 2 to 5 percentage points. Root-cause classification was automated and not manually validated.
+## Portable capability packages need hostile-world admission tests
 
-Submission: 2026-08-13 16:01:32 UTC. First listed: 2026-08-14.
+### Finding
 
-Core source:
-- https://arxiv.org/abs/2608.13404v1
+GitHub Agent Plugins 1.0 packages skills and MCP configuration across VS Code, Copilot CLI, SDK, and the Copilot app while preserving client namespaces. ToolHazard supplies stateful adversarial environments across 28 domains, with tasks averaging 15.56 steps and 18.75 candidate tools. Quadrat-IPI publishes 16,800 injections and 63,000 clean documents, with detector recall varying by 4 to 76 points across attack cells.
+
+### Why it matters
+
+Packaging lowers distribution cost. It does not lower authority. A portable bundle can enlarge the blast radius of a weak manifest, hidden tool grant, malicious skill, or detector blind spot.
+
+### Fit into the stack
+
+Primary layers: capability discovery, skills-as-control, agent gateways, and executable security evaluation.
+
+### Practical tools and methods
+
+- Validate manifests, digests, namespaces, and component identities.
+- Grant each skill, tool, and server separately for each client and policy profile.
+- Bind traces and approvals to interface-schema versions.
+- Convert incidents into isolated state machines with deterministic final-state fixtures.
+- Evaluate detectors by attack family at fixed false-positive budgets.
+- Pilot one low-risk skill and one read-only MCP server before broader admission.
+
+Implementability score: 0.90
+
+Artifact status: Agent Plugins has a public 1.0 specification and GA GitHub implementations. ToolHazard is populated and MIT-licensed. Quadrat publishes a dataset and Apache-2.0 harness; its corpus is new and needs independent replication and source-license review.
+
+Core sources:
+- https://github.blog/changelog/2026-08-12-agent-plugins-1-0-in-vs-code-copilot-cli-and-the-copilot-app/
+- https://github.com/agentplugins/agent-plugins-spec/blob/main/spec/1.0.0.md
+- https://arxiv.org/abs/2608.11878v1
+- https://github.com/MurrayTom/ToolHazard
+- https://huggingface.co/blog/mihailgribov/compare-prompt-injection-detectors
+
+## Implementation bridge from stable releases
+
+The control-plane pattern is moving into mainstream SDKs. OpenAI Agents Python 0.20.0 adds durable staged input, MCP v1/v2 support, and explicit sandbox credential-exposure acknowledgement. Agno 2.9.0 closes an MCP approval bypass and persists paused human-in-the-loop runs. PydanticAI 2.30.0 binds deferred-tool callability to provider-visible evidence. Microsoft Agent Framework Python 1.14.0 adds enforcement middleware, durable approval stores, checkpoints, and recovery fixes.
+
+These releases do not prove the research claims. They show that the required primitives are implementable now.
+
+Sources:
+- https://github.com/openai/openai-agents-python/releases/tag/v0.20.0
+- https://github.com/agno-agi/agno/releases/tag/v2.9.0
+- https://github.com/pydantic/pydantic-ai/releases/tag/v2.30.0
+- https://github.com/microsoft/agent-framework/releases/tag/python-1.14.0
 
 ## Current implication
 
-Instrument the path, the process, and the properties that must remain true. A system that reports only terminal success cannot distinguish capability from compensation, optimization from reliable research, or repair from collateral damage.
+Treat the model as proposer and reasoner. Keep admission, authority, transport, preservation, and release verification in separately testable runtime components.

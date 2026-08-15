@@ -316,3 +316,19 @@ Practical lesson:
 Sources:
 - [When History Lies](https://arxiv.org/abs/2608.06057v1)
 - [When Self-Evolution Backfires](https://arxiv.org/abs/2608.05810v1)
+
+## August 15 update: provenance must bound what a tool response can claim
+
+PIPES moves the untrusted-data boundary before planning. It assigns semantic priors and source provenance to response units, then screens claims that exceed the informational authority of their field or producer. On its main Gemma 4 evaluation, attack success fell from 84.7% to 2.3% without reducing benign utility.
+
+Practical lesson:
+- separate raw response, extracted claim, provenance, admitted state, and action intent;
+- define field-level claim contracts for stable schemas;
+- require trusted provenance metadata for open-ended response units;
+- keep screening independent from the planner and the final action gate;
+- replay adaptive attacks and clean utility after schema, prior, or screening-model changes.
+
+Evidence caveat: no public implementation artifact was verified. PIPES cannot establish factual truth, assumes trustworthy provenance anchors, and was tested on two benchmarks, two target models, single-surface attacks, and atomic removal.
+
+Source:
+- [PIPES](https://arxiv.org/abs/2608.12789v1)

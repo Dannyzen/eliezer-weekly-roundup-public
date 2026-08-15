@@ -1,97 +1,178 @@
-# Strategy Daily Sovereignty Analysis, 2026-08-14
+# Strategy Weekly Sovereignty Analysis, 2026-08-14
 
 ## Thesis
 
-A green result is not authority. Side effects and automated repairs need conjunctive acceptance: the requested outcome must hold, the exact change must stay inside its grant, the execution path must preserve intent, and previously valid properties must remain valid.
+Evidence is not authority. The strategic stack should let models propose and reason while runtime-owned mechanisms control promotion, admission, execution, recovery, and release. If the same adaptive component owns both the action and the proof that clears it, the control plane is theater.
 
-## CAPRI: acceptance must combine correctness with change authorization
+## Proposal, authority, and verification must have separate owners
 
 ### Finding
 
-CAPRI treats an LLM proof repair as an untrusted patch. Isabelle checks whether the theory builds, while an independent checker enforces a machine-readable edit contract over protected text, the permitted proof region, forbidden commands, and build configuration. A repair is accepted only when both predicates hold.
+QuoteBench shows that a downstream parser can damage a fixed model reply by 55.4 to 73.2 percentage points. CAPRI shows that a candidate can pass Isabelle while changing protected text. The IaC regression study shows that cumulative-best security can improve while the current repair regresses properties that already passed.
 
-Across 180 runs on 12 failed proofs, 144 terminal candidates were accepted by Isabelle. Six of those had modified protected text. A proof-body-only interface produced 29 of 36 valid repairs with no contract violations, compared with 31 of 36 for the corresponding full-theory workflow. The narrow interface gives up two repairs while removing observed authority violations.
+These are one governance problem at different layers. The generated intent, decoded action, executed effect, final outcome, edit grant, and preservation obligations are distinct objects.
 
 ### Why it matters
 
-This is the exact shape of a safe agent release gate. A successful build, API response, or validator result proves one predicate. It does not prove that the agent changed only what the principal authorized. The effect boundary needs an independent frame condition.
+A green build or business result proves one predicate. It does not prove that the exact effect was authorized, that transport preserved intent, or that prior guarantees survived. The release boundary needs independent ownership.
 
 ### Fit into the strategy stack
 
-Primary layer: context-to-execution integrity and execution control.
+Primary layers: context-to-execution integrity, execution control, runtime governance, and evidence provenance.
 
-The reusable pattern is:
+### Practical tools and methods
 
-`Accept = OutcomeValid AND ChangeAuthorized AND ForbiddenEffectsAbsent`
+- Represent the requested effect as a typed action manifest.
+- Bind approval to the decoded action and exact target identity.
+- Run outcome validators separately from authority and preservation checkers.
+- Convert previously passing properties into preservation obligations.
+- Require explicit waivers for intentional regression.
+- Retain original state, candidate state, diff, contract, transforms, verdicts, and final-state receipt.
 
-The contract, original state, candidate state, verifier output, policy verdict, and hashes should be retained together. The agent may propose a patch, but it must not define its own authority boundary.
-
-### Practical tools, repositories, and methodologies worth exploring
-
-- Express editable files, byte ranges, declarations, resources, fields, and effect classes as a machine-readable contract.
-- Run the normal build or business validator independently from the contract checker.
-- Reject candidates that pass the outcome check but cross the edit boundary.
-- Prefer narrow proof-body, patch, field, or typed-operation interfaces over whole-artifact rewrites.
-- Preserve original and candidate hashes, diff, contract, verdicts, and execution receipts.
-- Treat the contract checker as part of the trusted computing base and test it separately.
-
-Implementability score: 0.84
-
-Artifact status: the arXiv listing says a reproducibility artifact is available on Zenodo, but this scan did not resolve an exact artifact URL. The paper and PDF were inspected; no artifact was executed.
-
-Weakest point: the benchmark has 12 tasks from four developments maintained by the authors, three replicates per condition, and one hosted model configuration. The checker is conservative, does not judge proof quality inside the authorized region, and is not formally verified.
-
-Submission: 2026-08-13 16:43:44 UTC. First listed: 2026-08-14.
-
-Core source:
-- https://arxiv.org/abs/2608.13459v1
-
-## QuoteBench: the execution path belongs inside the authority boundary
-
-### Finding
-
-QuoteBench shows that a downstream parser can damage the same generated command by 55.4 to 73.2 percentage points. Contract disclosure can then make the model compensate, causing matched-path scores to hide the transport defect.
-
-### Why it matters
-
-A model’s generated intent is not the executed effect. Serializers, wrappers, SSH hops, container shells, CI steps, and operating-system parsing all transform the action. Governance that approves only the model-visible command misses the actual path to effect.
-
-### Practical tools, repositories, and methodologies worth exploring
-
-- Bind approval to the exact decoded command or typed action manifest.
-- Record every transport transform and the executor input.
-- Replay fixed actions through production wrappers before release.
-- Remove extra parser boundaries where possible.
-- Require final-state receipts after execution.
-
-Implementability score: 0.92
+Implementability score: 0.86
 
 Core sources:
 - https://arxiv.org/abs/2608.13547v1
-- https://github.com/LeonardNJU/quoteBench
+- https://arxiv.org/abs/2608.13459v1
+- https://arxiv.org/abs/2608.13404v1
 
-## Iterative repair needs monotonic property authority
+## Retained state needs an authority lifecycle
 
 ### Finding
 
-The IaC regression study shows that cumulative-best security metrics can improve while raw per-iteration security regresses. The defensible strict regression rate is 3.3 percent of scenarios, with higher churn and volatility around regressing transitions.
+Trajectory poisoning, temporal memory, provenance-aware shared memory, and malicious skill files all show that retained state can change later policy. The important transition is not write versus read. It is evidence versus instruction.
+
+Three poisoned records in a 30-record promotion batch embed attacker behavior in hundreds of later trials. TEPA’s explicit temporal and provenance model handles reversal far better than append-only baselines. MAP-Graph prevents unauthorized retrieval with permission filtering, yet still demonstrates that relevance and action authorization must remain separate.
 
 ### Why it matters
 
-The runtime must remember not only what still fails, but what has already earned protection. Once a property passes, a later repair should need explicit authority to invalidate it. Best-so-far dashboards are not sufficient because they hide the state being proposed for release.
+A summary can inherit a source’s restrictions. A memory can become stale or revoked. A skill can package executable authority. A derived claim can hide the origin that should limit its use. Treating these as plain text loses the policy state.
 
-### Practical tools, repositories, and methodologies worth exploring
+### Fit into the strategy stack
 
-- Convert passing checks into preservation obligations for the next iteration.
-- Distinguish the best observed candidate from the candidate currently proposed for release.
-- Require explicit waivers for intentional property removal.
-- Preserve per-iteration property vectors, diffs, and policy receipts.
+Primary layers: memory authority, agent self-improvement governance, shared state, and untrusted-data boundaries.
 
-Implementability score: 0.88
+### Practical tools and methods
 
-Core source:
-- https://arxiv.org/abs/2608.13404v1
+- Assign stable IDs and ancestry to evidence, memories, summaries, and skills.
+- Store active, superseded, revoked, quarantined, and re-promoted states.
+- Propagate restrictions through summaries, transfers, and derived artifacts.
+- Filter by principal permission before relevance ranking.
+- Require source diversity and adversarial replay before promotion.
+- Keep promotion authority separate from the agent that generated the candidate.
+
+Implementability score: 0.68
+
+Weakest point: several strong designs remain paper-only, synthetic, or unreplicated. This is implementable as policy and data modeling, but the operational burden is real.
+
+Core sources:
+- https://arxiv.org/abs/2608.05563v1
+- https://arxiv.org/abs/2608.07429v1
+- https://arxiv.org/abs/2608.10509v1
+- https://arxiv.org/abs/2608.05223v1
+
+## The evaluation substrate is a governance plane
+
+### Finding
+
+AgentChaos, SpecPath, HarnessSafe, and Beyond Final Scores all vary a condition that normal leaderboards hold implicit: runtime faults, specification history, persistent carrier stage, or process stability. Their shared lesson is that endpoint scoring cannot reveal how authority and evidence moved through the run.
+
+### Why it matters
+
+An organization cannot govern what it cannot attribute. If the harness does not retain candidate identity, history variant, fault location, carrier lineage, recovery decision, and final state, later audit reduces to a score and a story.
+
+### Fit into the strategy stack
+
+Primary layers: evaluation containment, evidence provenance, runtime observability, and release governance.
+
+### Practical tools and methods
+
+- Freeze candidate identity and budgets before evaluation.
+- Keep hidden tests and alternate histories outside the optimizer’s control.
+- Inject faults only through test-owned adapters.
+- Trace carriers across memory, skills, tools, summaries, delegation, and shared artifacts.
+- Record attempted action, realized effect, earliest consequential error, and recovery.
+- Report reliability and peak capability separately.
+
+Implementability score: 0.78
+
+Core sources:
+- https://arxiv.org/abs/2608.06790v1
+- https://arxiv.org/abs/2608.09799v1
+- https://arxiv.org/abs/2608.06984v1
+- https://arxiv.org/abs/2608.13417v1
+
+## Denial and recovery belong inside the authority model
+
+### Finding
+
+POLIS’s immutable-provenance guard admits 0 of 96 laundering violations, compared with 22 of 96 for a local-state guard. More importantly, 44 of 51 blocked episodes later complete safely. Denial can be both strict and recoverable when the reason and safe next action are explicit.
+
+This week’s stable SDK releases move the same idea into implementation. OpenAI Agents Python 0.20.0 adds durable staged input and explicit sandbox credential-exposure acknowledgement. Agno 2.9.0 persists paused human-in-the-loop runs and closes an MCP approval bypass. Microsoft Agent Framework Python 1.14.0 adds durable approval stores, checkpoints, enforcement middleware, and approval recovery fixes.
+
+### Why it matters
+
+A block with no recovery path encourages bypasses, retries, and shadow state. A permissive fallback silently widens authority. Typed denial plus bounded recovery preserves both safety and progress.
+
+### Fit into the strategy stack
+
+Primary layers: execution control, multi-agent governance, approval state, and event-sourced recovery.
+
+### Practical tools and methods
+
+- Model denial as a typed state with reason, scope, and permitted alternatives.
+- Bind approvals to exact invocation identity and tool signature.
+- Persist pending input, approval state, and checkpoint identity across restart.
+- Fail loudly when recovery state is stale or cannot be rehydrated.
+- Record whether a denied attempt later completed through an authorized path.
+
+Implementability score: 0.80
+
+Core sources:
+- https://arxiv.org/abs/2608.09828v1
+- https://github.com/openai/openai-agents-python/releases/tag/v0.20.0
+- https://github.com/agno-agi/agno/releases/tag/v2.9.0
+- https://github.com/microsoft/agent-framework/releases/tag/python-1.14.0
+
+## Portable packages increase the need for client-specific admission
+
+### Finding
+
+Agent Plugins 1.0 standardizes capability packages across several GitHub clients. That is useful infrastructure, but it also lowers the cost of distributing skills and MCP configuration. The malicious-skill and ToolHazard results show why package identity cannot equal trust.
+
+Tool architecture itself changes behavior. Interface design changes repeat-run consistency and token cost, while stateful hostile environments reveal failures that static manifest inspection cannot. Admission therefore needs both static package evidence and executable behavior evidence.
+
+### Why it matters
+
+A package approved in one client, tenant, or policy profile may be unsafe in another. Authority belongs to the deployment context, not to the package author or marketplace listing.
+
+### Fit into the strategy stack
+
+Primary layers: agent gateway governance, community governance, skills-as-control, and sandboxing.
+
+### Practical tools and methods
+
+- Verify package identity, manifest, digest, namespace, license, and component tree.
+- Grant skills, tools, and MCP servers separately for each client.
+- Bind approval receipts to package and interface-schema versions.
+- Exercise packages in stateful hostile-world fixtures before promotion.
+- Keep read-only pilots separate from write-capable admission.
+- Revoke by component and version, not only by package name.
+
+Implementability score: 0.84
+
+Core sources:
+- https://github.blog/changelog/2026-08-12-agent-plugins-1-0-in-vs-code-copilot-cli-and-the-copilot-app/
+- https://github.com/agentplugins/agent-plugins-spec/blob/main/spec/1.0.0.md
+- https://arxiv.org/abs/2608.05223v1
+- https://arxiv.org/abs/2608.11878v1
+
+## The weakest point
+
+This architecture adds objects, state machines, and trusted validators. That cost is real. It is survivable because the full machinery is not needed everywhere at once.
+
+Start at irreversible boundaries: external writes, permission changes, memory promotion, package admission, and release. Use deterministic checks there first. Expand only when traces show repeated ambiguity or failure upstream.
 
 ## Current implication
 
-Use conjunctive release gates. Outcome validity, authority conformance, path fidelity, and property preservation are separate predicates. No single green check can stand in for all four.
+The durable strategic asset is not a smarter planner. It is a runtime that makes evidence, authority, execution, recovery, and receipts independently inspectable.

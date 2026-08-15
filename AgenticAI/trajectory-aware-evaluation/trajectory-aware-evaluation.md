@@ -1005,3 +1005,22 @@ Sources:
 - [QuoteBench](https://arxiv.org/abs/2608.13547v1)
 - [Beyond Final Scores](https://arxiv.org/abs/2608.13417v1)
 - [Does Fixing Break Security?](https://arxiv.org/abs/2608.13404v1)
+
+## August 15 update: evaluate both action-gate direction and shared failure
+
+SteerBench-Work and Agent Behavioral Contracts II expose two ways aggregate reliability misleads. A commit gate can look safe while blocking authorized work, and a multi-agent route can look redundant while its components fail together.
+
+Practical lesson:
+- report false allow and false hold separately at the action boundary;
+- use evidence-reversed mirrors to test whether the gate reads current proof or recognizes a famous incident;
+- measure component and joint failures on matched missions;
+- reject independence-based composition unless the assumption is tested;
+- bind route, gate, evidence, and realized effect under one evaluation identity.
+
+Artifact caveat: SteerBench is a tagged constructed-scenario benchmark rather than a live tool harness. Agent Behavioral Contracts II provides a populated AGPL artifact and deterministic scoring, but its headline evidence is one controlled two-agent motif.
+
+Sources:
+- [SteerBench-Work](https://arxiv.org/abs/2608.12654v1)
+- [SteerBench artifact](https://github.com/AgentDock/steerbench-work)
+- [Agent Behavioral Contracts II](https://arxiv.org/abs/2608.12895v1)
+- [agentassert-abc](https://github.com/qualixar/agentassert-abc)

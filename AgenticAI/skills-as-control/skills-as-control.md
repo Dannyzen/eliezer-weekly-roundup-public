@@ -831,3 +831,20 @@ The practical pilot is one low-risk skill plus one read-only MCP server, linted 
 Sources:
 - https://github.blog/changelog/2026-08-12-agent-plugins-1-0-in-vs-code-copilot-cli-and-the-copilot-app/
 - https://github.com/agentplugins/agent-plugins-spec/blob/main/spec/1.0.0.md
+
+## August 15 update: successful experience needs a skill-release gate
+
+Practice Makes Unsafe follows compromised experience through authoring, retrieval, and fresh-session execution. All 21 evolved configurations authored unsafe artifacts, while only 15 produced later harm. Terminal behavior therefore understates latent persistent risk.
+
+Practical lesson:
+- keep draft, admitted, revoked, and retired skill states separate;
+- inspect the originating trajectory and candidate artifact before promotion;
+- require held-out replay before a self-authored skill becomes retrievable;
+- gate later retrieval independently of initial admission;
+- preserve immutable skill identity and every downstream use so retirement is targeted.
+
+Artifact caveat: MisEvolve exposes a multi-runtime benchmark harness, but the repository has one initial commit, no release, and no detected license file. Treat it as a research artifact pending licensing and independent reproduction.
+
+Sources:
+- [Practice Makes Unsafe](https://arxiv.org/abs/2608.12851v1)
+- [MisEvolve](https://github.com/henrymao2004/misevolve)

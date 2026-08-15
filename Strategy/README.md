@@ -2,35 +2,44 @@
 
 This index tracks the most recent structured strategy research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: 2026-08-14
+## Latest Structured Update: 2026-08-15
 
-### Acceptance must combine correctness with change authorization
+### The action boundary is the unit of governance
 
-Summary: CAPRI evaluates 180 proof-repair runs. Six of 144 Isabelle-accepted candidates modified protected text. A separate machine-readable edit contract detects these false successes, while a proof-body-only interface removes observed violations at a small repair cost.
+Summary: SteerBench-Work shows that a conservative gate can still be operationally wrong. False allows and false holds need separate budgets at the exact point where a proposed tool call becomes an effect.
 
-Analysis: [daily strategy](2026-08-14/sovereignty.md#capri-acceptance-must-combine-correctness-with-change-authorization)
-Core source: [CAPRI](https://arxiv.org/abs/2608.13459v1)
-Tools and methodologies worth exploring now: editable-region contracts, independent conformance checkers, forbidden-effect lists, proof-body or patch-only interfaces, original and candidate hashes, dual verdict receipts
-Implementability score: 0.84
+Analysis: [daily strategy](2026-08-15/sovereignty.md#the-action-boundary-is-the-unit-of-governance)
+Core sources: [SteerBench-Work](https://arxiv.org/abs/2608.12654v1), [artifact](https://github.com/AgentDock/steerbench-work)
+Tools and methodologies worth exploring now: typed action manifests, mirrored evidence cases, independent proceed-or-hold gates, denial and recovery receipts
+Implementability score: 0.90
 
-### The execution path belongs inside the authority boundary
+### Redundancy without dependence evidence is false assurance
 
-Summary: QuoteBench shows that downstream parsers can damage a generated action even when the model reply is fixed. Approving only the model-visible command does not approve the actual executed effect.
+Summary: Same-model agents failed together strongly enough to invalidate the usual independence product. Agent count is not a resilience metric without joint-failure evidence.
 
-Analysis: [daily strategy](2026-08-14/sovereignty.md#quotebench-the-execution-path-belongs-inside-the-authority-boundary)
-Core sources: [paper](https://arxiv.org/abs/2608.13547v1), [public artifact](https://github.com/LeonardNJU/quoteBench)
-Tools and methodologies worth exploring now: exact action manifests, transform logs, production-wrapper replay, parser-boundary removal, final-state receipts
-Implementability score: 0.92
+Analysis: [daily strategy](2026-08-15/sovereignty.md#redundancy-without-dependence-evidence-is-false-assurance)
+Core sources: [Agent Behavioral Contracts II](https://arxiv.org/abs/2608.12895v1), [agentassert-abc](https://github.com/qualixar/agentassert-abc)
+Tools and methodologies worth exploring now: joint-mission traces, route-level contracts, cross-model contrasts, assumption-free reliability bounds
+Implementability score: 0.78
 
-### Previously passing properties need monotonic authority
+### Persistent adaptation is a release process
 
-Summary: Cumulative-best IaC security metrics improve while raw trajectories regress. Once a property passes, a later repair should need explicit authority to invalidate it.
+Summary: Unsafe artifacts can exist before retrieval or later harm. Skill authoring, admission, retrieval, execution, and retirement require distinct authority states.
 
-Analysis: [daily strategy](2026-08-14/sovereignty.md#iterative-repair-needs-monotonic-property-authority)
-Core source: [Does Fixing Break Security?](https://arxiv.org/abs/2608.13404v1)
-Tools and methodologies worth exploring now: preservation obligations, best-candidate versus release-candidate separation, explicit waivers, per-iteration property vectors, diff-bound policy receipts
-Implementability score: 0.88
+Analysis: [daily strategy](2026-08-15/sovereignty.md#persistent-adaptation-is-a-release-process)
+Core sources: [Practice Makes Unsafe](https://arxiv.org/abs/2608.12851v1), [MisEvolve artifact](https://github.com/henrymao2004/misevolve)
+Tools and methodologies worth exploring now: immutable skill identity, separate write and reuse gates, held-out replay, downstream-use receipts, targeted revocation
+Implementability score: 0.72
+
+### Perception needs source-scoped authority
+
+Summary: PIPES shows that provenance and semantic priors can stop response components from making claims beyond their informational authority before those claims corrupt planning state.
+
+Analysis: [daily strategy](2026-08-15/sovereignty.md#perception-needs-source-scoped-authority)
+Core source: [PIPES](https://arxiv.org/abs/2608.12789v1)
+Tools and methodologies worth exploring now: source-scoped claim contracts, provenance hierarchies, pre-context screening, trusted raw-state separation, observation-boundary receipts
+Implementability score: 0.64
 
 ## Current implication
 
-Use conjunctive release gates. Outcome validity, authority conformance, path fidelity, and property preservation are separate predicates.
+Ask what object is crossing into authority, which independent contract admits it, and what receipt proves the resulting effect.

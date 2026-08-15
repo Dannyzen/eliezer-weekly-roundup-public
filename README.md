@@ -6,23 +6,24 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily roundup, 2026-08-14: [final success is not enough evidence](roundups/2026-08-14.md)
-- AgenticAI daily analysis: [2026-08-14](AgenticAI/2026-08-14/reasoning.md)
-- Strategy daily analysis: [2026-08-14](Strategy/2026-08-14/sovereignty.md)
-- Friday synthesis, week ending 2026-08-07: [retained state is authority](roundups/2026-08-07.md)
+- Daily scan, 2026-08-15: [action boundaries convert evidence into authority](roundups/2026-08-15.md)
+- AgenticAI daily analysis: [2026-08-15](AgenticAI/2026-08-15/reasoning.md)
+- Strategy daily analysis: [2026-08-15](Strategy/2026-08-15/sovereignty.md)
+- Prior Friday synthesis: [evidence is not authority](roundups/2026-08-14.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 
 ## Current thesis
 
-A green result is one predicate, not complete evidence. Reliable agent systems need separate proof that:
+Action boundaries are where evidence becomes authority. Models may propose observations, retained procedures, multi-agent routes, and effects. Runtime-owned mechanisms must still:
 
-- the command path preserved the generated intent;
-- the trajectory used a stable and diagnosable process;
-- later repair did not regress properties that already passed;
-- the exact change stayed inside the principal’s authorization;
-- portable packages, interfaces, memory, and environments remain independently identifiable and testable;
-- retained context, summaries, and skills may propose, but a separately controlled boundary grants permission and certifies success.
+- screen external claims before they shape model-visible state;
+- govern skill and memory write admission separately from later reuse;
+- certify multi-agent routes from measured joint behavior, not agent count;
+- price false allows and false holds at the exact action boundary;
+- bind every release decision to immutable identity, policy, evidence, and effect receipts.
+
+Confidence, redundancy, successful experience, and plausible tool output are evidence. None is authority by itself.
 
 ## Browse by category
 

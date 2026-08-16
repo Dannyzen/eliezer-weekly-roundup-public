@@ -222,6 +222,21 @@ Sources:
 - [SARC-DQ](https://arxiv.org/abs/2607.26313v1)
 - [besanson/dqSarc](https://github.com/besanson/dqSarc)
 
+## August 16 update: graders and benchmarks also need provenance authority
+
+Labels Are Not Endpoints and Vero extend evidence provenance into evaluation governance. A stored label is not behavioral proof when treatment identity enters the endpoint. A failed proof attempt is not agent failure when the specification or reference is defective.
+
+Practical lesson:
+- bind labels to exact request and execution evidence;
+- run treatment-invariance tests before publishing security results;
+- preserve endpoint code, evidence hashes, denominators, and authorization state;
+- accept machine-checkable benchmark-defect evidence;
+- version corrected benchmarks without rewriting historical attempts.
+
+Sources:
+- [Labels Are Not Endpoints](https://arxiv.org/abs/2608.12880v1)
+- [Vero](https://arxiv.org/abs/2608.13522v1)
+
 ## Working conclusion
 
 The architectural lesson is simple: do not confuse artifacts with proof.

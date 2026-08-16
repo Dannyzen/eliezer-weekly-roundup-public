@@ -678,6 +678,24 @@ Practical lesson:
 
 Source: [SpecPath](https://arxiv.org/abs/2608.09799v1)
 
+## August 16 update: the evidence path is the evaluation unit
+
+Three Friday papers expose different endpoint failures. Labels Are Not Endpoints shows treatment metadata leaking into a security class. Vero separates agent failure from machine-checkable benchmark defects. ATOBench aligns native and transformed runs at the first corrupted observation, then follows recovery evidence into the final report.
+
+Practical lesson:
+- require label invariance when irrelevant treatment metadata changes;
+- preserve request, behavior, authorization, parser, dispatcher, and grader identity;
+- allow machine-checked defect appeals against specifications and references;
+- align paired trajectories at the first intervention boundary;
+- measure evidence recovery and report support separately from action count.
+
+Artifact caveat: the Labels and Vero repositories are populated and Apache-2.0 licensed. The linked ATOBench repository currently contains only a README and has no license or release.
+
+Sources:
+- [Labels Are Not Endpoints](https://arxiv.org/abs/2608.12880v1)
+- [Vero](https://arxiv.org/abs/2608.13522v1)
+- [ATOBench](https://arxiv.org/abs/2608.12996v1)
+
 ## Working conclusion
 
 Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, fingerprinted, severity-scored, causally sliced, and scored across safety, robustness, parameter correctness, environment fidelity, runtime-specific harm dimensions, staged semantic/audit/sandbox harm, agent-effort telemetry, real-user collaboration traces, realistic workspace state, live workflow demand, cost, adversarial task quality, long-range state propagation, abstention, protocol conformance, tool-shortlist quality, environment-factory coverage, quantitative goal persistence, procedural behavior, partial-progress preference, oracle strength, deterministic evidence paths, and coding-process discipline, improvement efforts will stay shallow and trust claims will stay unearned.

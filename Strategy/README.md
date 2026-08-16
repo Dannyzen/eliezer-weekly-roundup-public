@@ -2,44 +2,44 @@
 
 This index tracks the most recent structured strategy research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: 2026-08-15
+## Latest Structured Update: 2026-08-16
 
-### The action boundary is the unit of governance
+### A control plane needs provider-independent fixtures
 
-Summary: SteerBench-Work shows that a conservative gate can still be operationally wrong. False allows and false holds need separate budgets at the exact point where a proposed tool call becomes an effect.
+Summary: OpenAI Agents SDK v0.21.0 makes interruptions, approvals, MCP lifecycle, sandbox policy, and cleanup testable without live provider requests.
 
-Analysis: [daily strategy](2026-08-15/sovereignty.md#the-action-boundary-is-the-unit-of-governance)
-Core sources: [SteerBench-Work](https://arxiv.org/abs/2608.12654v1), [artifact](https://github.com/AgentDock/steerbench-work)
-Tools and methodologies worth exploring now: typed action manifests, mirrored evidence cases, independent proceed-or-hold gates, denial and recovery receipts
-Implementability score: 0.90
+Analysis: [daily strategy](2026-08-16/sovereignty.md#a-control-plane-needs-provider-independent-fixtures)
+Core source: [OpenAI Agents SDK v0.21.0](https://github.com/openai/openai-agents-python/releases/tag/v0.21.0)
+Tools and methodologies worth exploring now: scripted control-contract fixtures, recursive approval replay, MCP lifecycle isolation, per-operation sandbox policy snapshots
+Implementability score: 1.00
 
-### Redundancy without dependence evidence is false assurance
+### Security labels need source-owned behavioral evidence
 
-Summary: Same-model agents failed together strongly enough to invalidate the usual independence product. Agent count is not a resilience metric without joint-failure evidence.
+Summary: Labels Are Not Endpoints shows that a deterministic grader can still leak treatment identity. Behavioral conclusions need request identity, authorization state, raw execution evidence, and treatment-invariant endpoints.
 
-Analysis: [daily strategy](2026-08-15/sovereignty.md#redundancy-without-dependence-evidence-is-false-assurance)
-Core sources: [Agent Behavioral Contracts II](https://arxiv.org/abs/2608.12895v1), [agentassert-abc](https://github.com/qualixar/agentassert-abc)
-Tools and methodologies worth exploring now: joint-mission traces, route-level contracts, cross-model contrasts, assumption-free reliability bounds
-Implementability score: 0.78
+Analysis: [daily strategy](2026-08-16/sovereignty.md#security-labels-need-source-owned-behavioral-evidence)
+Core sources: [Labels Are Not Endpoints](https://arxiv.org/abs/2608.12880v1), [evidence repository](https://github.com/rana-m-ahmed/ResearchWork-on-Mcp-Privilege-Aggregation)
+Tools and methodologies worth exploring now: treatment-invariance release gates, evidence hashes, explicit denominators, separate attempt and realized-effect classes
+Implementability score: 0.92
 
-### Persistent adaptation is a release process
+### Proof systems need benchmark-defect authority
 
-Summary: Unsafe artifacts can exist before retrieval or later harm. Skill authoring, admission, retrieval, execution, and retirement require distinct authority states.
+Summary: Vero gives agents a machine-checked appeal path when specifications are unsatisfiable or reference code is wrong. The benchmark is not allowed to define truth without challenge.
 
-Analysis: [daily strategy](2026-08-15/sovereignty.md#persistent-adaptation-is-a-release-process)
-Core sources: [Practice Makes Unsafe](https://arxiv.org/abs/2608.12851v1), [MisEvolve artifact](https://github.com/henrymao2004/misevolve)
-Tools and methodologies worth exploring now: immutable skill identity, separate write and reuse gates, held-out replay, downstream-use receipts, targeted revocation
-Implementability score: 0.72
+Analysis: [daily strategy](2026-08-16/sovereignty.md#proof-systems-need-benchmark-defect-authority)
+Core sources: [Vero paper](https://arxiv.org/abs/2608.13522v1), [Vero repository](https://github.com/sunblaze-ucb/vero)
+Tools and methodologies worth exploring now: clean-state proof checking, immutable spec boundaries, formal defect appeals, versioned benchmark corrections
+Implementability score: 0.88
 
-### Perception needs source-scoped authority
+### Untrusted observations must stay evidence until verified
 
-Summary: PIPES shows that provenance and semantic priors can stop response components from making claims beyond their informational authority before those claims corrupt planning state.
+Summary: ATOBench shows that deceptive target responses can break verification even while agents take more actions. Observations need provenance and corroboration before they authorize a claim.
 
-Analysis: [daily strategy](2026-08-15/sovereignty.md#perception-needs-source-scoped-authority)
-Core source: [PIPES](https://arxiv.org/abs/2608.12789v1)
-Tools and methodologies worth exploring now: source-scoped claim contracts, provenance hierarchies, pre-context screening, trusted raw-state separation, observation-boundary receipts
-Implementability score: 0.64
+Analysis: [daily strategy](2026-08-16/sovereignty.md#untrusted-observations-must-stay-evidence-until-verified)
+Core sources: [ATOBench paper](https://arxiv.org/abs/2608.12996v1), [artifact lead](https://github.com/daxtar2/ATOBench)
+Tools and methodologies worth exploring now: observation provenance, safe matched perturbations, first-contact trajectory alignment, evidence-to-report support checks
+Implementability score: 0.62
 
 ## Current implication
 
-Ask what object is crossing into authority, which independent contract admits it, and what receipt proves the resulting effect.
+Evaluation becomes governance only when a separately owned evidence chain supports the label, proof, report, or release decision.

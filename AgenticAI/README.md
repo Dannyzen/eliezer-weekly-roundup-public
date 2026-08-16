@@ -2,44 +2,44 @@
 
 This index tracks the most recent structured research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: 2026-08-15
+## Latest Structured Update: 2026-08-16
 
-### Action gates need bidirectional calibration
+### Provider-neutral test doubles make runtime state testable
 
-Summary: SteerBench-Work shows that safety gates can fail by blocking authorized work. Across 30 model conditions, wrong holds reached 28.1% while wrong acts reached 1.0%.
+Summary: OpenAI Agents SDK v0.21.0 adds deterministic Agent, Sandbox, Realtime, and Voice tests without provider requests, plus hardened interruption, approval, MCP, and sandbox state isolation.
 
-Analysis: [daily analysis](2026-08-15/reasoning.md#action-gates-need-bidirectional-calibration)
-Core sources: [SteerBench-Work](https://arxiv.org/abs/2608.12654v1), [artifact](https://github.com/AgentDock/steerbench-work)
-Tools and methodologies worth exploring now: mirrored proceed-or-hold fixtures, separate false-allow and false-hold budgets, typed action manifests, denial-recovery receipts
-Implementability score: 0.90
+Analysis: [daily analysis](2026-08-16/reasoning.md#provider-neutral-test-doubles-make-runtime-state-testable)
+Core source: [OpenAI Agents SDK v0.21.0](https://github.com/openai/openai-agents-python/releases/tag/v0.21.0)
+Tools and methodologies worth exploring now: scripted model fixtures, interruption and resume replay, recursive approval tests, MCP lifecycle snapshots, sandbox audit-policy tests
+Implementability score: 1.00
 
-### Reliability certificates must model shared failure
+### Endpoint labels need treatment-invariance tests
 
-Summary: Two same-model agents co-failed on 90.0% of missions where either failed in a preregistered 18,000-mission handoff. Multi-agent redundancy cannot be certified from marginal pass rates.
+Summary: A preserved MCP campaign exposed treatment leakage in its grader. Reconstructing 10,200 rows into 180 requests corrected 58 historical positive labels while preserving verified harmful behavior.
 
-Analysis: [daily analysis](2026-08-15/reasoning.md#reliability-certificates-must-model-shared-failure)
-Core sources: [Agent Behavioral Contracts II](https://arxiv.org/abs/2608.12895v1), [agentassert-abc](https://github.com/qualixar/agentassert-abc)
-Tools and methodologies worth exploring now: matched joint-failure traces, same-model versus cross-model contrasts, finite-sample lower bounds, independence-assumption rejection gates
-Implementability score: 0.78
+Analysis: [daily analysis](2026-08-16/reasoning.md#endpoint-labels-need-treatment-invariance-tests)
+Core sources: [Labels Are Not Endpoints](https://arxiv.org/abs/2608.12880v1), [evidence repository](https://github.com/rana-m-ahmed/ResearchWork-on-Mcp-Privilege-Aggregation)
+Tools and methodologies worth exploring now: treatment-invariance tests, request-unit reconstruction, treatment-blind grading, hash-linked execution evidence, endpoint-integrity linting
+Implementability score: 0.92
 
-### Self-improvement needs write and reuse gates
+### Formal proof needs repository-scale evaluation
 
-Summary: All 21 evolved configurations in SkillMisevo authored unsafe artifacts, while 15 produced fresh-session harm. Persistent risk exists before it appears in terminal behavior.
+Summary: Vero evaluates code and machine-checked proofs across 43 multi-module repositories. The strongest agent solved 27 instances, and formal defect appeals keep benchmark errors from becoming agent failures.
 
-Analysis: [daily analysis](2026-08-15/reasoning.md#self-improvement-needs-write-and-reuse-gates)
-Core sources: [Practice Makes Unsafe](https://arxiv.org/abs/2608.12851v1), [MisEvolve artifact](https://github.com/henrymao2004/misevolve)
-Tools and methodologies worth exploring now: draft-admitted-revoked skill states, trajectory inspection, held-out behavioral replay, retrieval gating, immutable retirement
-Implementability score: 0.72
+Analysis: [daily analysis](2026-08-16/reasoning.md#formal-proof-needs-repository-scale-evaluation)
+Core sources: [Vero paper](https://arxiv.org/abs/2608.13522v1), [Vero repository](https://github.com/sunblaze-ucb/vero)
+Tools and methodologies worth exploring now: Lean 4 repository fixtures, code-plus-proof evaluation, independent graders, axiom allowlists, machine-checked benchmark-defect appeals
+Implementability score: 0.88
 
-### Tool responses need semantic authority contracts
+### Untrusted observations need aligned trajectory reconstruction
 
-Summary: PIPES screens response units against source provenance and semantic priors. Its main evaluation reduced attack success from 84.7% to 2.3% without lowering benign utility.
+Summary: ATOBench aligns 225 native and transformed run pairs at the first changed response, then traces evidence recovery, stopping, and report support. Extra activity did not imply restored verification.
 
-Analysis: [daily analysis](2026-08-15/reasoning.md#tool-responses-need-semantic-authority-contracts)
-Core source: [PIPES](https://arxiv.org/abs/2608.12789v1)
-Tools and methodologies worth exploring now: field-level claim contracts, provenance-bearing response units, pre-context screening, raw-to-admitted-state traces, adaptive attack replay
-Implementability score: 0.64
+Analysis: [daily analysis](2026-08-16/reasoning.md#untrusted-observations-need-aligned-trajectory-reconstruction)
+Core sources: [ATOBench paper](https://arxiv.org/abs/2608.12996v1), [artifact lead](https://github.com/daxtar2/ATOBench)
+Tools and methodologies worth exploring now: matched observation perturbations, first-contact alignment, evidence-recovery labels, report-support checks, safe mock targets
+Implementability score: 0.62
 
 ## Current implication
 
-Screen observations, admit persistent procedures, certify composed routes, and gate exact effects. Keep all four release decisions outside the proposing model.
+Make the evidence path the test object. Final labels are trustworthy only when exact inputs, runtime state, interventions, behavior, and verifier decisions remain linked.

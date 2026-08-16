@@ -332,3 +332,19 @@ Evidence caveat: no public implementation artifact was verified. PIPES cannot es
 
 Source:
 - [PIPES](https://arxiv.org/abs/2608.12789v1)
+
+## August 16 update: align verification at the first deceptive observation
+
+ATOBench treats target responses as untrusted evidence and pairs native and transformed runs at the first affected response. Across 225 matched pairs, more probing could coexist with a broken verification chain. Report support depended on recovering usable evidence and carrying it through the final claim.
+
+Practical lesson:
+- give every external observation stable source and transformation identity;
+- align paired traces at first contact with changed evidence;
+- separate activity, recovery, stopping, and report support;
+- require corroboration before an observation authorizes a claim;
+- use safe mock targets for perturbation tests.
+
+Artifact caveat: the paper links a public repository, but it currently contains only a README and is not reusable.
+
+Source:
+- [ATOBench](https://arxiv.org/abs/2608.12996v1)

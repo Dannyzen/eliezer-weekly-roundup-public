@@ -6,24 +6,25 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-08-15: [action boundaries convert evidence into authority](roundups/2026-08-15.md)
-- AgenticAI daily analysis: [2026-08-15](AgenticAI/2026-08-15/reasoning.md)
-- Strategy daily analysis: [2026-08-15](Strategy/2026-08-15/sovereignty.md)
-- Prior Friday synthesis: [evidence is not authority](roundups/2026-08-14.md)
+- Daily scan, 2026-08-16: [tests must own the evidence path](roundups/2026-08-16.md)
+- AgenticAI daily analysis: [2026-08-16](AgenticAI/2026-08-16/reasoning.md)
+- Strategy daily analysis: [2026-08-16](Strategy/2026-08-16/sovereignty.md)
+- Prior daily scan: [action boundaries convert evidence into authority](roundups/2026-08-15.md)
+- Latest Friday synthesis: [evidence is not authority](roundups/2026-08-14.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 
 ## Current thesis
 
-Action boundaries are where evidence becomes authority. Models may propose observations, retained procedures, multi-agent routes, and effects. Runtime-owned mechanisms must still:
+Tests must own the evidence path, not only the endpoint. Runtime-owned evaluation should:
 
-- screen external claims before they shape model-visible state;
-- govern skill and memory write admission separately from later reuse;
-- certify multi-agent routes from measured joint behavior, not agent count;
-- price false allows and false holds at the exact action boundary;
-- bind every release decision to immutable identity, policy, evidence, and effect receipts.
+- use provider-independent fixtures for interruption, approval, MCP, sandbox, and cleanup state;
+- bind labels to exact requests, behavior, authorization, and grader evidence;
+- distinguish agent failure from benchmark or specification defects;
+- align transformed and native trajectories at the first changed observation;
+- preserve evidence identity through the final claim, proof, report, or effect.
 
-Confidence, redundancy, successful experience, and plausible tool output are evidence. None is authority by itself.
+A deterministic label, a green proof check, or extra agent activity is not enough when the supporting evidence chain is missing or contaminated.
 
 ## Browse by category
 

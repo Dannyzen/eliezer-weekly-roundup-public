@@ -801,6 +801,19 @@ The harness contract should therefore bind every run to a tool-interface schema 
 
 Source: https://arxiv.org/abs/2608.11386v1
 
+## August 16 update: provider-neutral tests make control state executable
+
+OpenAI Agents SDK v0.21.0 adds public scripted testing utilities for Agent, Sandbox, Realtime, and Voice workflows without provider requests. The release also isolates interruption snapshots, recursive approvals, MCP lifecycle state, and per-operation sandbox policy.
+
+Practical lesson:
+- test interruption, resume, recursive approval, terminal failure, and cleanup with fixed scripted models;
+- snapshot state objects rather than sharing mutable results across attempts;
+- separate deterministic control-contract tests from smaller live-provider integration tests;
+- preserve MCP and sandbox lifecycle identity in every fixture.
+
+Source:
+- [OpenAI Agents SDK v0.21.0](https://github.com/openai/openai-agents-python/releases/tag/v0.21.0)
+
 ## Working conclusion
 
 Agent harness architecture is becoming one of the clearest ways to tell whether a team is building a toy, a developer tool, or a real operating substrate. The winning systems will make context explicit, tool boundaries governable, restore paths safe, typed component interfaces inspectable, orchestration empirically justified and quality-gated, skill routing compositional, test-oracle strength machine-checkable, evidence easy to inspect, environment-specific falsification surfaces routine, real-session misalignment labels routine, proposal-soundness gates explicit, failed trajectories layer-attributed, process discipline measurable, and production failures routinely promoted into versioned regression fixtures with trajectory and outcome graders.

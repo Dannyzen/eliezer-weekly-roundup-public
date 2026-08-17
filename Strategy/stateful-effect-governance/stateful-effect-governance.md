@@ -198,3 +198,21 @@ This also suggests a practical wedge for Hermes and FriendVM systems: a small st
 - [Open Policy Agent](https://www.openpolicyagent.org/)
 - [PostgreSQL explicit locking](https://www.postgresql.org/docs/current/explicit-locking.html)
 - [Resume Means Resume, adjacent persistence-contract research](https://arxiv.org/abs/2608.03836v1)
+
+## August 17 update: rollback and atomicity are one effect contract
+
+AgentRewind and LegacyWorld connect two halves of stateful effect governance. Recovery needs an aligned context-environment checkpoint, while acceptance needs a four-way distinction between useful completion, safe failure, and persistent damage.
+
+Practical lesson:
+- bind checkpoint identity to the state basis used by the agent decision;
+- declare every effect reversible, compensatable, or irreversible;
+- protect validated prefix work during recovery;
+- require independent post-run state validators;
+- release only when both valid-success and atomicity thresholds pass;
+- reconcile remote effects that cannot be restored locally.
+
+Evidence caveat: AgentRewind controls managed state, while LegacyWorld observes declared state in isolated VMs. Neither removes the need for provider idempotency and reconciliation around external effects.
+
+Sources:
+- [AgentRewind](https://arxiv.org/abs/2608.14380v1)
+- [LegacyWorld](https://arxiv.org/abs/2608.14131v1)

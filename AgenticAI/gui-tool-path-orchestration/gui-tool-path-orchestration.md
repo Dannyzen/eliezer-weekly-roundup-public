@@ -228,3 +228,20 @@ Evidence caveat: the preprint evaluates four local models on OSWorld using an A1
 
 Source:
 - [Rethinking Inference-Time Scaling in Local Computer-Use Agents](https://arxiv.org/abs/2607.28573v1)
+
+## August 17 update: computer-use acceptance must grade atomic failure
+
+LegacyWorld adds post-run state validity to GUI-agent evaluation. Its four outcomes separate valid success, invalid success, valid failure, and invalid failure across 28 Windows workflows and six hosted agents.
+
+Practical lesson:
+- start each run from a fresh environment snapshot;
+- declare allowed and forbidden state deltas per workflow;
+- validate files, database rows, identifiers, and application state independently of agent reports;
+- report valid success and atomicity together;
+- treat safe failure as a distinct operational result.
+
+Evidence caveat: each model-task-prompt cell contributes one trajectory, and atomicity covers monitored observables only. The populated Apache-2.0 harness supports replication, not deployment certification.
+
+Sources:
+- [LegacyWorld](https://arxiv.org/abs/2608.14131v1)
+- [benchmark repository](https://github.com/ThiloReintjes/LegacyWorld)

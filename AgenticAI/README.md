@@ -2,44 +2,44 @@
 
 This index tracks the most recent structured research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: 2026-08-16
+## Latest Structured Update: 2026-08-17
 
-### Provider-neutral test doubles make runtime state testable
+### Skills work mainly as procedural anchors
 
-Summary: OpenAI Agents SDK v0.21.0 adds deterministic Agent, Sandbox, Realtime, and Voice tests without provider requests, plus hardened interruption, approval, MCP, and sandbox state isolation.
+Summary: Across 8,135 normalized trials, skills beat matched workflow memory by 6.06 points. Procedural anchoring dominated coded cases, while actual-use precision collapsed as candidate pools grew.
 
-Analysis: [daily analysis](2026-08-16/reasoning.md#provider-neutral-test-doubles-make-runtime-state-testable)
-Core source: [OpenAI Agents SDK v0.21.0](https://github.com/openai/openai-agents-python/releases/tag/v0.21.0)
-Tools and methodologies worth exploring now: scripted model fixtures, interruption and resume replay, recursive approval tests, MCP lifecycle snapshots, sandbox audit-policy tests
-Implementability score: 1.00
+Analysis: [daily analysis](2026-08-17/reasoning.md#skills-work-mainly-as-procedural-anchors)
+Core source: [Demystifying Agent Skills](https://arxiv.org/abs/2608.14036v1)
+Tools and methodologies worth exploring now: matched trace-memory-skill arms, procedural compatibility labels, actual-use parsing, held-out promotion tests, cross-harness verification
+Implementability score: 0.90
 
-### Endpoint labels need treatment-invariance tests
+### Recovery needs aligned context and environment checkpoints
 
-Summary: A preserved MCP campaign exposed treatment leakage in its grader. Reconstructing 10,200 rows into 180 requests corrected 58 historical positive labels while preserving verified harmful behavior.
+Summary: AgentRewind restores both model context and controlled environment state. It improved success across three harnesses and recovered 30.0% of paired failed endpoints versus 8.0% for continued repair.
 
-Analysis: [daily analysis](2026-08-16/reasoning.md#endpoint-labels-need-treatment-invariance-tests)
-Core sources: [Labels Are Not Endpoints](https://arxiv.org/abs/2608.12880v1), [evidence repository](https://github.com/rana-m-ahmed/ResearchWork-on-Mcp-Privilege-Aggregation)
-Tools and methodologies worth exploring now: treatment-invariance tests, request-unit reconstruction, treatment-blind grading, hash-linked execution evidence, endpoint-integrity linting
-Implementability score: 0.92
+Analysis: [daily analysis](2026-08-17/reasoning.md#recovery-needs-aligned-context-and-environment-checkpoints)
+Core sources: [AgentRewind](https://arxiv.org/abs/2608.14380v1), [runtime repository](https://github.com/Futuresis/replay-agent-recorder), [MettleBench](https://github.com/Kelvin-Coffee/MettleBench)
+Tools and methodologies worth exploring now: aligned checkpoint IDs, controlled environment snapshots, rewind memory, restore-point validators, Continue-versus-restart-versus-rewind tests
+Implementability score: 0.84
 
-### Formal proof needs repository-scale evaluation
+### Computer-use acceptance must grade atomic failure
 
-Summary: Vero evaluates code and machine-checked proofs across 43 multi-module repositories. The strongest agent solved 27 instances, and formal defect appeals keep benchmark errors from becoming agent failures.
+Summary: LegacyWorld separates useful completion, safe failure, and persistent damage across 28 Windows workflows and six computer-use agents. Task success and state safety produced materially different rankings.
 
-Analysis: [daily analysis](2026-08-16/reasoning.md#formal-proof-needs-repository-scale-evaluation)
-Core sources: [Vero paper](https://arxiv.org/abs/2608.13522v1), [Vero repository](https://github.com/sunblaze-ucb/vero)
-Tools and methodologies worth exploring now: Lean 4 repository fixtures, code-plus-proof evaluation, independent graders, axiom allowlists, machine-checked benchmark-defect appeals
+Analysis: [daily analysis](2026-08-17/reasoning.md#computer-use-acceptance-must-grade-atomic-failure)
+Core sources: [LegacyWorld paper](https://arxiv.org/abs/2608.14131v1), [LegacyWorld repository](https://github.com/ThiloReintjes/LegacyWorld)
+Tools and methodologies worth exploring now: fresh VM runs, allowed and forbidden state deltas, post-run validators, four-way outcome labels, atomicity-aware acceptance tests
 Implementability score: 0.88
 
-### Untrusted observations need aligned trajectory reconstruction
+### Message correctness does not determine trajectory value
 
-Summary: ATOBench aligns 225 native and transformed run pairs at the first changed response, then traces evidence recovery, stopping, and report support. Extra activity did not imply restored verification.
+Summary: Fixed-pool leave-one-out replay found wrong-helpful messages in every tested benchmark-model combination. Correctness and downstream contribution are separate properties.
 
-Analysis: [daily analysis](2026-08-16/reasoning.md#untrusted-observations-need-aligned-trajectory-reconstruction)
-Core sources: [ATOBench paper](https://arxiv.org/abs/2608.12996v1), [artifact lead](https://github.com/daxtar2/ATOBench)
-Tools and methodologies worth exploring now: matched observation perturbations, first-contact alignment, evidence-recovery labels, report-support checks, safe mock targets
-Implementability score: 0.62
+Analysis: [daily analysis](2026-08-17/reasoning.md#message-correctness-does-not-determine-trajectory-value)
+Core sources: [Wrong but Useful](https://arxiv.org/abs/2608.14375v1), [reproducibility artifact](https://arxiv.org/src/2608.14375v1/anc/anonymous_reproducibility/README.md)
+Tools and methodologies worth exploring now: immutable message pools, leave-one-out replay, repeated effect labels, context-bound contribution data, conservative keep-or-remove policies
+Implementability score: 0.78
 
 ## Current implication
 
-Make the evidence path the test object. Final labels are trustworthy only when exact inputs, runtime state, interventions, behavior, and verifier decisions remain linked.
+Treat procedures, checkpoints, persistent state, and peer messages as testable runtime objects. Reliability appears when the harness can inspect, restore, validate, and replay them.

@@ -954,3 +954,20 @@ Artifact caveat: no exact public DreamGuard implementation repository was verifi
 
 Source:
 - [DreamGuard](https://arxiv.org/abs/2608.05695v1)
+
+## August 17 update: reliability needs recovery and safe-failure semantics
+
+The current runtime pattern is no longer only allow or deny. AgentRewind adds restore and resume. LegacyWorld adds valid success, invalid success, valid failure, and invalid failure. Together they define a more honest operational state machine for long-horizon agents.
+
+Practical lesson:
+- expose proposed, running, validated, failed-safe, failed-damaging, rewinding, reconciled, and complete states;
+- make checkpoint capture and restore auditable runtime events;
+- attach validators to state transitions rather than final prose;
+- block automatic resume when effects are irreversible or state identity is incomplete;
+- keep useful completion and state safety as separate release gates.
+
+Evidence caveat: recovery and atomicity guarantees are only as broad as the state the runtime controls or observes.
+
+Sources:
+- [AgentRewind](https://arxiv.org/abs/2608.14380v1)
+- [LegacyWorld](https://arxiv.org/abs/2608.14131v1)

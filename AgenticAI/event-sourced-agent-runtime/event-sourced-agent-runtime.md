@@ -159,3 +159,21 @@ Artifact caveat: the paper reports five pinned frameworks, 7.4 million checked T
 
 Source:
 - [Resume Means Resume](https://arxiv.org/abs/2608.03836v1)
+
+## August 17 update: recovery needs aligned context and environment checkpoints
+
+AgentRewind turns rollback into an agent-facing runtime primitive. A recoverable checkpoint binds model context and controlled environment state, then rewind memory carries the failed suffix forward without preserving its side effects.
+
+Practical lesson:
+- assign one checkpoint ID to context, filesystem, processes, validation state, and effect-ledger position;
+- preserve validated prefix work while discarding the failed suffix;
+- require external validators before selecting a restore point;
+- record the failed choice and its evidence as bounded rewind memory;
+- distinguish reversible local state from remote effects that require reconciliation or compensation.
+
+Evidence caveat: the paper demonstrates controlled-state restore and external stall validation. It does not establish rollback across arbitrary remote services.
+
+Sources:
+- [AgentRewind](https://arxiv.org/abs/2608.14380v1)
+- [runtime repository](https://github.com/Futuresis/replay-agent-recorder)
+- [MettleBench](https://github.com/Kelvin-Coffee/MettleBench)

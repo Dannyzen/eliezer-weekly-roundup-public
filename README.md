@@ -6,25 +6,25 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-08-16: [tests must own the evidence path](roundups/2026-08-16.md)
-- AgenticAI daily analysis: [2026-08-16](AgenticAI/2026-08-16/reasoning.md)
-- Strategy daily analysis: [2026-08-16](Strategy/2026-08-16/sovereignty.md)
-- Prior daily scan: [action boundaries convert evidence into authority](roundups/2026-08-15.md)
+- Daily scan, 2026-08-17: [agent reliability needs explicit failure semantics](roundups/2026-08-17.md)
+- AgenticAI daily analysis: [2026-08-17](AgenticAI/2026-08-17/reasoning.md)
+- Strategy daily analysis: [2026-08-17](Strategy/2026-08-17/sovereignty.md)
+- Prior daily scan: [tests must own the evidence path](roundups/2026-08-16.md)
 - Latest Friday synthesis: [evidence is not authority](roundups/2026-08-14.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 
 ## Current thesis
 
-Tests must own the evidence path, not only the endpoint. Runtime-owned evaluation should:
+Agent reliability needs explicit failure semantics. Runtime-owned execution should:
 
-- use provider-independent fixtures for interruption, approval, MCP, sandbox, and cleanup state;
-- bind labels to exact requests, behavior, authorization, and grader evidence;
-- distinguish agent failure from benchmark or specification defects;
-- align transformed and native trajectories at the first changed observation;
-- preserve evidence identity through the final claim, proof, report, or effect.
+- distill procedures into compatible, verifiable skills instead of replaying noisy histories;
+- bind model context and controlled environment state under one recovery checkpoint;
+- separate useful completion, safe failure, and persistent damage;
+- measure peer-message contribution through context-bound replay rather than correctness alone;
+- keep remote irreversible effects outside local rollback claims unless they are reconciled or compensated.
 
-A deterministic label, a green proof check, or extra agent activity is not enough when the supporting evidence chain is missing or contaminated.
+A better first attempt is useful. A system that can recover, fail safely, and explain which evidence helped is governable.
 
 ## Browse by category
 

@@ -848,3 +848,19 @@ Artifact caveat: MisEvolve exposes a multi-runtime benchmark harness, but the re
 Sources:
 - [Practice Makes Unsafe](https://arxiv.org/abs/2608.12851v1)
 - [MisEvolve](https://github.com/henrymao2004/misevolve)
+
+## August 17 update: skills are procedural anchors, not fact packets
+
+Demystifying Agent Skills shows that SKILL.md-style artifacts help mainly by stabilizing setup, action order, tool use, and verification. Skills improved over matched workflow memory by 6.06 points, while only 4.5% of coded cases were explicit knowledge injection.
+
+Practical lesson:
+- distill verified procedures, not raw successful transcripts;
+- label environment and harness compatibility explicitly;
+- measure actual skill use after verified execution;
+- treat retrieval rank and downstream utility as separate variables;
+- test held-out tasks and cross-harness transfer before admission.
+
+Evidence caveat: actual-use precision fell from 29.6% to 3.3% as pools grew from 5 to 100. The study covers limited terminal and tool-use settings and exposes no verified reusable implementation repository.
+
+Source:
+- [Demystifying Agent Skills](https://arxiv.org/abs/2608.14036v1)

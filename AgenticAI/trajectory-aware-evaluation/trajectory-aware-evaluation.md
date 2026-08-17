@@ -1042,3 +1042,20 @@ Sources:
 - [SteerBench artifact](https://github.com/AgentDock/steerbench-work)
 - [Agent Behavioral Contracts II](https://arxiv.org/abs/2608.12895v1)
 - [agentassert-abc](https://github.com/qualixar/agentassert-abc)
+
+## August 17 update: correctness does not equal trajectory value
+
+Wrong but Useful measures one message by replaying the same integrator with that message available or hidden. Wrong-helpful messages appeared in every tested benchmark-model combination, and more than four in ten effectful wrong messages helped downstream correctness.
+
+Practical lesson:
+- freeze the original message pool before filtering;
+- separate proposal correctness from helpful, neutral, and harmful replay effects;
+- repeat effectful pairs before using labels as policy evidence;
+- bind every label to pool, integrator, evaluator, prompt, and model identity;
+- train message-selection policies from context-bound contribution, not confidence alone.
+
+Artifact caveat: the MIT ancillary artifact reproduces named analyses from sanitized records and smoke-tests the protocol, but not every paper table. Stochastic model outputs are not byte-identical.
+
+Sources:
+- [Wrong but Useful](https://arxiv.org/abs/2608.14375v1)
+- [reproducibility artifact](https://arxiv.org/src/2608.14375v1/anc/anonymous_reproducibility/README.md)

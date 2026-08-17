@@ -2,44 +2,44 @@
 
 This index tracks the most recent structured strategy research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: 2026-08-16
+## Latest Structured Update: 2026-08-17
 
-### A control plane needs provider-independent fixtures
+### Skill catalogs need procedural compatibility, not only retrieval rank
 
-Summary: OpenAI Agents SDK v0.21.0 makes interruptions, approvals, MCP lifecycle, sandbox policy, and cleanup testable without live provider requests.
+Summary: Skills primarily stabilize execution rather than inject facts. Retrieval rank alone does not establish that a skill fits the current environment, harness, or verification contract.
 
-Analysis: [daily strategy](2026-08-16/sovereignty.md#a-control-plane-needs-provider-independent-fixtures)
-Core source: [OpenAI Agents SDK v0.21.0](https://github.com/openai/openai-agents-python/releases/tag/v0.21.0)
-Tools and methodologies worth exploring now: scripted control-contract fixtures, recursive approval replay, MCP lifecycle isolation, per-operation sandbox policy snapshots
-Implementability score: 1.00
+Analysis: [daily strategy](2026-08-17/sovereignty.md#skill-catalogs-need-procedural-compatibility-not-only-retrieval-rank)
+Core source: [Demystifying Agent Skills](https://arxiv.org/abs/2608.14036v1)
+Tools and methodologies worth exploring now: structured procedure fields, compatibility gates, verified-use labels, lifecycle states, held-out promotion tests
+Implementability score: 0.90
 
-### Security labels need source-owned behavioral evidence
+### Rollback authority must bind context and environment
 
-Summary: Labels Are Not Endpoints shows that a deterministic grader can still leak treatment identity. Behavioral conclusions need request identity, authorization state, raw execution evidence, and treatment-invariant endpoints.
+Summary: AgentRewind shows that useful recovery restores context and environment under one checkpoint identity while preserving evidence from the failed branch.
 
-Analysis: [daily strategy](2026-08-16/sovereignty.md#security-labels-need-source-owned-behavioral-evidence)
-Core sources: [Labels Are Not Endpoints](https://arxiv.org/abs/2608.12880v1), [evidence repository](https://github.com/rana-m-ahmed/ResearchWork-on-Mcp-Privilege-Aggregation)
-Tools and methodologies worth exploring now: treatment-invariance release gates, evidence hashes, explicit denominators, separate attempt and realized-effect classes
-Implementability score: 0.92
+Analysis: [daily strategy](2026-08-17/sovereignty.md#rollback-authority-must-bind-context-and-environment)
+Core sources: [AgentRewind](https://arxiv.org/abs/2608.14380v1), [runtime repository](https://github.com/Futuresis/replay-agent-recorder), [MettleBench](https://github.com/Kelvin-Coffee/MettleBench)
+Tools and methodologies worth exploring now: aligned checkpoint identity, restore eligibility, reversible-effect classes, rewind memory, recovery fault tests
+Implementability score: 0.84
 
-### Proof systems need benchmark-defect authority
+### Atomicity is a release property, not a success metric
 
-Summary: Vero gives agents a machine-checked appeal path when specifications are unsatisfiable or reference code is wrong. The benchmark is not allowed to define truth without challenge.
+Summary: LegacyWorld proves that high safe-failure rates can coexist with low useful completion, and useful completion can coexist with persistent damage. Both gates belong in release decisions.
 
-Analysis: [daily strategy](2026-08-16/sovereignty.md#proof-systems-need-benchmark-defect-authority)
-Core sources: [Vero paper](https://arxiv.org/abs/2608.13522v1), [Vero repository](https://github.com/sunblaze-ucb/vero)
-Tools and methodologies worth exploring now: clean-state proof checking, immutable spec boundaries, formal defect appeals, versioned benchmark corrections
+Analysis: [daily strategy](2026-08-17/sovereignty.md#atomicity-is-a-release-property-not-a-success-metric)
+Core sources: [LegacyWorld paper](https://arxiv.org/abs/2608.14131v1), [LegacyWorld repository](https://github.com/ThiloReintjes/LegacyWorld)
+Tools and methodologies worth exploring now: explicit effect contracts, independent state validators, valid-success thresholds, atomicity thresholds, repair plans
 Implementability score: 0.88
 
-### Untrusted observations must stay evidence until verified
+### Multi-agent evidence needs contribution replay
 
-Summary: ATOBench shows that deceptive target responses can break verification even while agents take more actions. Observations need provenance and corroboration before they authorize a claim.
+Summary: Wrong but Useful separates proposal correctness from downstream contribution. Influence should come from context-bound replay evidence, not confidence or agreement alone.
 
-Analysis: [daily strategy](2026-08-16/sovereignty.md#untrusted-observations-must-stay-evidence-until-verified)
-Core sources: [ATOBench paper](https://arxiv.org/abs/2608.12996v1), [artifact lead](https://github.com/daxtar2/ATOBench)
-Tools and methodologies worth exploring now: observation provenance, safe matched perturbations, first-contact trajectory alignment, evidence-to-report support checks
-Implementability score: 0.62
+Analysis: [daily strategy](2026-08-17/sovereignty.md#multi-agent-evidence-needs-contribution-replay)
+Core sources: [Wrong but Useful](https://arxiv.org/abs/2608.14375v1), [reproducibility artifact](https://arxiv.org/src/2608.14375v1/anc/anonymous_reproducibility/README.md)
+Tools and methodologies worth exploring now: fixed message pools, leave-one-out replay, repeated effects, context-bound labels, offline selection calibration
+Implementability score: 0.78
 
 ## Current implication
 
-Evaluation becomes governance only when a separately owned evidence chain supports the label, proof, report, or release decision.
+Failure semantics belong in the control plane. Recovery, safe failure, and message influence must be explicit, separately measured, and bound to exact runtime state.

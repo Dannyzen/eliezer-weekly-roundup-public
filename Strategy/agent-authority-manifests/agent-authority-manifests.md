@@ -131,3 +131,20 @@ Practical lesson:
 - score completion and utility beside violations.
 
 Sources: [paper](https://arxiv.org/abs/2608.09828v1), [repository](https://github.com/abdullah-x-bd/polis)
+
+## August 18 update: delegation must attenuate authority and close over history
+
+Bounded Agents adds a delegation-chain requirement to authority manifests. Each hop narrows scope and budget, while composition closure checks a proposed action against prior admitted actions. The decision remains outside the model.
+
+Practical lesson:
+- issue signed session authorization envelopes;
+- require monotonic resource, action, data, budget, and time narrowing;
+- evaluate prohibited action compositions before admission;
+- bind approvals to exact action hashes and single-use nonces;
+- fail closed when policy or evidence state is unavailable;
+- measure utility loss beside blocked attacks.
+
+Artifact caveat: the paper reports a public reference implementation and evaluation material, but the exact artifact URL was not resolved from the primary arXiv page during this scan.
+
+Source:
+- [Bounded Agents](https://arxiv.org/abs/2608.15888v1)

@@ -141,6 +141,22 @@ Sources:
 - [CubeSandbox v0.4.0 changelog](https://github.com/TencentCloud/CubeSandbox/blob/master/docs/changelog/v0.4.0.md)
 - [CubeSandbox security proxy guide](https://github.com/TencentCloud/CubeSandbox/blob/master/docs/guide/security-proxy.md)
 
+## August 18 update: run boundaries are becoming first-class SDK controls
+
+OpenAI Agents SDK v0.21.1 adds model-call timeouts, run-scoped sandbox working directories, optional Docker network disablement, and Modal resource controls. It also fixes exact approval-decision handling and provider cleanup after failures.
+
+Practical lesson:
+- set model-call deadlines explicitly;
+- allocate one work directory per run;
+- disable sandbox networking by default;
+- bind approval regression tests to exact decisions;
+- verify cleanup after provider and session failures before promotion.
+
+Caveat: the SDK is pre-1.0, so pin and test the exact release before broad adoption.
+
+Source:
+- [OpenAI Agents SDK v0.21.1](https://github.com/openai/openai-agents-python/releases/tag/v0.21.1)
+
 ## Working conclusion
 
 The new default primitive is not an agent with one more tool. It is a resumable worker with a bounded computer.

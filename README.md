@@ -6,25 +6,26 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-08-17: [agent reliability needs explicit failure semantics](roundups/2026-08-17.md)
-- AgenticAI daily analysis: [2026-08-17](AgenticAI/2026-08-17/reasoning.md)
-- Strategy daily analysis: [2026-08-17](Strategy/2026-08-17/sovereignty.md)
-- Prior daily scan: [tests must own the evidence path](roundups/2026-08-16.md)
+- Daily scan, 2026-08-18: [runtime state must be explicit](roundups/2026-08-18.md)
+- AgenticAI daily analysis: [2026-08-18](AgenticAI/2026-08-18/reasoning.md)
+- Strategy daily analysis: [2026-08-18](Strategy/2026-08-18/sovereignty.md)
+- Prior daily scan: [agent reliability needs explicit failure semantics](roundups/2026-08-17.md)
 - Latest Friday synthesis: [evidence is not authority](roundups/2026-08-14.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 
 ## Current thesis
 
-Agent reliability needs explicit failure semantics. Runtime-owned execution should:
+Reliable agents need explicit runtime state for facts, coordination, authority, and execution boundaries. A governable runtime should:
 
-- distill procedures into compatible, verifiable skills instead of replaying noisy histories;
-- bind model context and controlled environment state under one recovery checkpoint;
-- separate useful completion, safe failure, and persistent damage;
-- measure peer-message contribution through context-bound replay rather than correctness alone;
-- keep remote irreversible effects outside local rollback claims unless they are reconciled or compensated.
+- know which versioned facts support each proposed edit;
+- record multi-agent messages, reads, and writes as a temporal coordination graph;
+- attenuate resources, actions, data classes, and budgets at every delegation hop;
+- bind approvals to one exact action instance;
+- isolate each run with deadlines, scoped workspaces, and default-deny networking;
+- measure utility loss beside security and containment gains.
 
-A better first attempt is useful. A system that can recover, fail safely, and explain which evidence helped is governable.
+A final answer is not enough evidence. The runtime must show what supported the action, who coordinated it, which authority admitted it, and which resources were exposed.
 
 ## Browse by category
 

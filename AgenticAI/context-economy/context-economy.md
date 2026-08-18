@@ -406,6 +406,22 @@ Practical lesson:
 
 Source: [TRACE](https://arxiv.org/abs/2608.09153v1)
 
+## August 18 update: edit-time fact coverage matters more than read volume
+
+The Working Set of a Coding Agent turns context policy into an edit-time coverage problem. Across controlled migrations, model knowledge and recent context substitute for one another, while stale or contradictory facts can be worse than absence.
+
+Practical lesson:
+- represent tests, imports, schemas, configuration, and migration rules as versioned coupled facts;
+- attach required facts to edit-intent events;
+- widen retrieval or block mutation when the current edit lacks coverage;
+- test renamed APIs and contradictory standards to expose parametric shortcuts;
+- score consistency against produced changes, not file-read volume.
+
+Artifact caveat: the paper describes released trial records, but no exact public artifact URL was resolved from the primary page during this scan.
+
+Source:
+- [The Working Set of a Coding Agent](https://arxiv.org/abs/2608.16630v1)
+
 ## Working conclusion
 
 The future agent stack is not context maximalism. It is context accounting. Systems that know what to admit, retrieve, compress, cache, update incrementally, preserve prefix continuity, and audit will beat systems that merely buy larger windows and hope the model sorts it out.

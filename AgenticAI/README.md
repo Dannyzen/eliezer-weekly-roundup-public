@@ -2,44 +2,35 @@
 
 This index tracks the most recent structured research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: 2026-08-17
+## Latest Structured Update: 2026-08-18
 
-### Skills work mainly as procedural anchors
+### Edit-time fact coverage is the real coding context budget
 
-Summary: Across 8,135 normalized trials, skills beat matched workflow memory by 6.06 points. Procedural anchoring dominated coded cases, while actual-use precision collapsed as candidate pools grew.
+Summary: Controlled migrations show that coding success depends on whether required versioned facts are available when an edit is proposed. Read volume alone cannot distinguish parametric recall, eviction, staleness, or contradiction.
 
-Analysis: [daily analysis](2026-08-17/reasoning.md#skills-work-mainly-as-procedural-anchors)
-Core source: [Demystifying Agent Skills](https://arxiv.org/abs/2608.14036v1)
-Tools and methodologies worth exploring now: matched trace-memory-skill arms, procedural compatibility labels, actual-use parsing, held-out promotion tests, cross-harness verification
+Analysis: [daily analysis](2026-08-18/reasoning.md#edit-time-fact-coverage-is-the-real-coding-context-budget)
+Core source: [The Working Set of a Coding Agent](https://arxiv.org/abs/2608.16630v1)
+Tools and methodologies worth exploring now: coupled-fact graphs, edit-intent events, versioned fact ledgers, renamed-API tests, contradictory-source tests
 Implementability score: 0.90
 
-### Recovery needs aligned context and environment checkpoints
+### Coordination should be measured as a temporal network
 
-Summary: AgentRewind restores both model context and controlled environment state. It improved success across three harnesses and recovered 30.0% of paired failed endpoints versus 8.0% for continued repair.
+Summary: A 1,902-run study models agents and files as nodes and messages, reads, and writes as cost-bearing edges. The instrument exposes topology and channel substitution that task success and aggregate tokens miss.
 
-Analysis: [daily analysis](2026-08-17/reasoning.md#recovery-needs-aligned-context-and-environment-checkpoints)
-Core sources: [AgentRewind](https://arxiv.org/abs/2608.14380v1), [runtime repository](https://github.com/Futuresis/replay-agent-recorder), [MettleBench](https://github.com/Kelvin-Coffee/MettleBench)
-Tools and methodologies worth exploring now: aligned checkpoint IDs, controlled environment snapshots, rewind memory, restore-point validators, Continue-versus-restart-versus-rewind tests
-Implementability score: 0.84
-
-### Computer-use acceptance must grade atomic failure
-
-Summary: LegacyWorld separates useful completion, safe failure, and persistent damage across 28 Windows workflows and six computer-use agents. Task success and state safety produced materially different rankings.
-
-Analysis: [daily analysis](2026-08-17/reasoning.md#computer-use-acceptance-must-grade-atomic-failure)
-Core sources: [LegacyWorld paper](https://arxiv.org/abs/2608.14131v1), [LegacyWorld repository](https://github.com/ThiloReintjes/LegacyWorld)
-Tools and methodologies worth exploring now: fresh VM runs, allowed and forbidden state deltas, post-run validators, four-way outcome labels, atomicity-aware acceptance tests
+Analysis: [daily analysis](2026-08-18/reasoning.md#coordination-should-be-measured-as-a-temporal-network)
+Core sources: [When Agents Coordinate](https://arxiv.org/abs/2608.16801v1), [replication repository](https://github.com/giuseppedestefanis/when-agents-coordinate)
+Tools and methodologies worth exploring now: temporal run graphs, repeated configuration cells, file-versus-message ablations, containment checks, coordination-cost metrics
 Implementability score: 0.88
 
-### Message correctness does not determine trajectory value
+### OpenAI Agents SDK ships stronger run boundaries
 
-Summary: Fixed-pool leave-one-out replay found wrong-helpful messages in every tested benchmark-model combination. Correctness and downstream contribution are separate properties.
+Summary: v0.21.1 adds model-call timeouts, per-run sandbox directories, optional network-off Docker sandboxes, resource controls, and fixes for exact approvals and failure cleanup.
 
-Analysis: [daily analysis](2026-08-17/reasoning.md#message-correctness-does-not-determine-trajectory-value)
-Core sources: [Wrong but Useful](https://arxiv.org/abs/2608.14375v1), [reproducibility artifact](https://arxiv.org/src/2608.14375v1/anc/anonymous_reproducibility/README.md)
-Tools and methodologies worth exploring now: immutable message pools, leave-one-out replay, repeated effect labels, context-bound contribution data, conservative keep-or-remove policies
-Implementability score: 0.78
+Analysis: [daily analysis](2026-08-18/reasoning.md#openai-agents-sdk-ships-stronger-run-boundaries)
+Core source: [OpenAI Agents SDK v0.21.1](https://github.com/openai/openai-agents-python/releases/tag/v0.21.1)
+Tools and methodologies worth exploring now: pinned SDK branch, model-call deadlines, run-scoped workdirs, default-deny sandbox networking, approval and cleanup regression tests
+Implementability score: 0.95
 
 ## Current implication
 
-Treat procedures, checkpoints, persistent state, and peer messages as testable runtime objects. Reliability appears when the harness can inspect, restore, validate, and replay them.
+Treat facts, coordination, and run resources as first-class runtime state. Explicit representations make coding agents and agent teams measurable, testable, and containable.

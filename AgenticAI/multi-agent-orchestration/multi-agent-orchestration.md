@@ -179,3 +179,20 @@ Artifact caveat: the Apache-2.0 repository is populated and reproducibility-orie
 Sources:
 - [AgentRadio](https://arxiv.org/abs/2607.28430v1)
 - [Coral-Protocol/AgentRadio](https://github.com/Coral-Protocol/AgentRadio)
+
+## August 18 update: coordination is a temporal network, not a team-size counter
+
+When Agents Coordinate instruments agents and files as nodes and messages, reads, and writes as timestamped edges. Across 1,902 graded runs plus 244 sealed replication runs, the resulting graphs exposed file-channel substitution, message-growth curves, and the failure of a coordinator label to create an actual hub.
+
+Practical lesson:
+- emit coordination events with agent, task, file version, timestamp, and cost;
+- compare topology with success, latency, and token spend;
+- ablate message, file, broadcast, and labelled-coordinator channels;
+- repeat configuration cells because one run is one sample;
+- treat hidden-test and reference-solution access as containment failures.
+
+Artifact caveat: the CC BY 4.0 replication package is public and populated; it was inspected read-only only.
+
+Sources:
+- [When Agents Coordinate](https://arxiv.org/abs/2608.16801v1)
+- [replication repository](https://github.com/giuseppedestefanis/when-agents-coordinate)

@@ -2,35 +2,26 @@
 
 This index tracks the most recent structured research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: 2026-08-18
+## Latest Structured Update: 2026-08-19
 
-### Edit-time fact coverage is the real coding context budget
+### Harness safety is a lifecycle, not a model score
 
-Summary: Controlled migrations show that coding success depends on whether required versioned facts are available when an edit is proposed. Read volume alone cannot distinguish parametric recall, eviction, staleness, or contradiction.
+Summary: A 128-case sandbox study of OpenClaw, Hermes, and Nanobot shows high task utility can coexist with 12.6% to 80.9% attack success. Configuration is the weakest phase, and detecting risk does not stop the action.
 
-Analysis: [daily analysis](2026-08-18/reasoning.md#edit-time-fact-coverage-is-the-real-coding-context-budget)
-Core source: [The Working Set of a Coding Agent](https://arxiv.org/abs/2608.16630v1)
-Tools and methodologies worth exploring now: coupled-fact graphs, edit-intent events, versioned fact ledgers, renamed-API tests, contradictory-source tests
-Implementability score: 0.90
+Analysis: [daily analysis](2026-08-19/reasoning.md#harness-safety-is-a-lifecycle-not-a-model-score)
+Core sources: [HarnessRisk](https://arxiv.org/abs/2608.17597v1), [project page](https://baiyajing.github.io/harness-risk/), [implementation repository](https://github.com/Baiyajing/HarnessRisk)
+Tools and methodologies worth exploring now: phase-scored harness fixtures, config-mutation cases, persistence and detection metrics, same-model cross-harness comparison
+Implementability score: 0.86
 
-### Coordination should be measured as a temporal network
+### Skill code needs checked lowering before dispatch
 
-Summary: A 1,902-run study models agents and files as nodes and messages, reads, and writes as cost-bearing edges. The instrument exposes topology and channel substitution that task success and aggregate tokens miss.
+Summary: Models turn skills into programs that request eager full-input access. SkillEffect rebuilds a bounded lowering from the program and immutable input before granting execution.
 
-Analysis: [daily analysis](2026-08-18/reasoning.md#coordination-should-be-measured-as-a-temporal-network)
-Core sources: [When Agents Coordinate](https://arxiv.org/abs/2608.16801v1), [replication repository](https://github.com/giuseppedestefanis/when-agents-coordinate)
-Tools and methodologies worth exploring now: temporal run graphs, repeated configuration cells, file-versus-message ablations, containment checks, coordination-cost metrics
-Implementability score: 0.88
-
-### OpenAI Agents SDK ships stronger run boundaries
-
-Summary: v0.21.1 adds model-call timeouts, per-run sandbox directories, optional network-off Docker sandboxes, resource controls, and fixes for exact approvals and failure cleanup.
-
-Analysis: [daily analysis](2026-08-18/reasoning.md#openai-agents-sdk-ships-stronger-run-boundaries)
-Core source: [OpenAI Agents SDK v0.21.1](https://github.com/openai/openai-agents-python/releases/tag/v0.21.1)
-Tools and methodologies worth exploring now: pinned SDK branch, model-call deadlines, run-scoped workdirs, default-deny sandbox networking, approval and cleanup regression tests
-Implementability score: 0.95
+Analysis: [daily analysis](2026-08-19/reasoning.md#skill-code-needs-checked-lowering-before-dispatch)
+Core source: [SkillEffect](https://arxiv.org/abs/2608.17007v1)
+Tools and methodologies worth exploring now: source recognizers, bounded tool implementations, independent lowering checkers, fresh-cgroup replay, result-schema isolation
+Implementability score: 0.62
 
 ## Current implication
 
-Treat facts, coordination, and run resources as first-class runtime state. Explicit representations make coding agents and agent teams measurable, testable, and containable.
+Treat harnesses and generated skill programs as execution substrates. Score them by phase and physical resource shape, not by whether the task finished.

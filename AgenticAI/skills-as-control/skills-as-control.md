@@ -1,6 +1,6 @@
 # Skills as Control
 
-Last updated: 2026-07-27
+Last updated: 2026-08-19
 
 Core sources:
 - From Research Question to Scientific Workflow: Leveraging Agentic AI for Science Automation: https://arxiv.org/abs/2604.21910v1
@@ -864,3 +864,18 @@ Evidence caveat: actual-use precision fell from 29.6% to 3.3% as pools grew from
 
 Source:
 - [Demystifying Agent Skills](https://arxiv.org/abs/2608.14036v1)
+
+## August 19 update: skill programs need checked lowering
+
+SkillEffect treats generated skill code as a proposal, not an execution plan. An independent checker rebuilds a bounded lowering from the program and immutable input before dispatch. In the smolagents path, all 16 otherwise valid calls requested eager access; the registry lowered all of them, and all 48 capped repeats verified.
+
+Practical lesson:
+- register eager and bounded implementations for large-input tools;
+- rebuild proposed lowerings before granting execution authority;
+- keep the tool result schema separate from the model's final answer;
+- treat sandbox OOM as an admission failure, not a retry hint.
+
+Artifact caveat: no public implementation repository was resolved from the primary paper pages.
+
+Source:
+- [SkillEffect](https://arxiv.org/abs/2608.17007v1)

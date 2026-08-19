@@ -104,3 +104,18 @@ Source:
 PoisonedEvolution shows that a small set of attacker-controlled records can be promoted into durable skill behavior without direct skill-bank access. Promotion needs origin labels, source diversity, clean replay, adversarial canaries, and separately owned release authority.
 
 Source: https://arxiv.org/abs/2608.05563v1
+
+## August 19 update: self-improvement needs order and variance controls
+
+On the Fragility of Self-Improving Agents re-evaluates Agent Workflow Memory and ReasoningBank with repeated runs and shuffled task order. Self-improving methods increased variance in 71% of cases. The default easy-to-hard order produced a 1.5% gain; shuffled orders produced a 4.5% loss. Extra specification closed only 31% of that gap.
+
+Practical lesson:
+- require multiple identical runs before promoting a memory or workflow update;
+- shuffle task order instead of using the benchmark curriculum;
+- inject environment constraints into memory construction;
+- inspect written memories for inapplicable advice before writeback.
+
+Sources:
+- [On the Fragility of Self-Improving Agents](https://arxiv.org/abs/2608.18066v1)
+- [SalesforceAIResearch/self-improve-fragility](https://github.com/SalesforceAIResearch/self-improve-fragility)
+- [Salesforce/self-improve-fragility](https://huggingface.co/datasets/Salesforce/self-improve-fragility)

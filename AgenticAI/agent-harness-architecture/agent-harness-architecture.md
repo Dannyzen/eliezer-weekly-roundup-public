@@ -1,6 +1,6 @@
 # Agent Harness Architecture
 
-Last updated: 2026-07-14
+Last updated: 2026-08-19
 
 Agent harness architecture is becoming the part of the agent stack that teams can actually standardize.
 
@@ -1144,3 +1144,19 @@ Practical lesson:
 
 Source:
 - [One Recipe, Many Harnesses](https://arxiv.org/abs/2608.10178v1)
+
+## August 19 update: harness safety is a lifecycle score
+
+HarnessRisk evaluates OpenClaw, Hermes, and Nanobot across six operational phases. High utility (75.0% to 97.6%) coexisted with attack success from 12.6% to 80.9%. Configuration was the weakest phase, and detection above 90% still left substantial attack success.
+
+Practical lesson:
+- score utility, attack success, persistence, and detection separately;
+- add fixtures for config mutation, capability install, memory writeback, action admission, and recovery;
+- compare the same model across more than one harness;
+- treat owner-authorized workflows as an attack surface.
+
+Sources:
+- [HarnessRisk](https://arxiv.org/abs/2608.17597v1)
+- [project page](https://baiyajing.github.io/harness-risk/)
+- [Baiyajing/HarnessRisk](https://github.com/Baiyajing/HarnessRisk)
+- [YajingB/HarnessRisk](https://huggingface.co/datasets/YajingB/HarnessRisk)

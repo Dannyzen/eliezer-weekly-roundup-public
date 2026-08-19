@@ -6,26 +6,25 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-08-18: [runtime state must be explicit](roundups/2026-08-18.md)
-- AgenticAI daily analysis: [2026-08-18](AgenticAI/2026-08-18/reasoning.md)
-- Strategy daily analysis: [2026-08-18](Strategy/2026-08-18/sovereignty.md)
-- Prior daily scan: [agent reliability needs explicit failure semantics](roundups/2026-08-17.md)
+- Daily scan, 2026-08-19: [gates belong at state transitions](roundups/2026-08-19.md)
+- AgenticAI daily analysis: [2026-08-19](AgenticAI/2026-08-19/reasoning.md)
+- Strategy daily analysis: [2026-08-19](Strategy/2026-08-19/sovereignty.md)
+- Prior daily scan: [runtime state must be explicit](roundups/2026-08-18.md)
 - Latest Friday synthesis: [evidence is not authority](roundups/2026-08-14.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 
 ## Current thesis
 
-Reliable agents need explicit runtime state for facts, coordination, authority, and execution boundaries. A governable runtime should:
+Reliable agents need explicit gates at state transitions. A governable runtime should:
 
-- know which versioned facts support each proposed edit;
-- record multi-agent messages, reads, and writes as a temporal coordination graph;
-- attenuate resources, actions, data classes, and budgets at every delegation hop;
-- bind approvals to one exact action instance;
-- isolate each run with deadlines, scoped workspaces, and default-deny networking;
-- measure utility loss beside security and containment gains.
+- score harness configuration, extension, persistence, action, and recovery separately from task utility;
+- admit memory into context only for the audience that produced it;
+- lower generated skill programs onto bounded implementations before dispatch;
+- promote self-written memories only after multi-run and shuffled-order evidence;
+- keep receipts for what was configured, recalled, lowered, or learned.
 
-A final answer is not enough evidence. The runtime must show what supported the action, who coordinated it, which authority admitted it, and which resources were exposed.
+A finished task is not safety evidence. Detection is not containment. Relevance is not permission.
 
 ## Browse by category
 

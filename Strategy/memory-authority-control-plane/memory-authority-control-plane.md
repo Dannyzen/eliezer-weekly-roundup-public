@@ -1,6 +1,6 @@
 # Memory Authority Control Plane
 
-Last updated: 2026-08-12
+Last updated: 2026-08-19
 
 Primary layer: Strategy / runtime governance
 
@@ -311,3 +311,18 @@ The durable worldview update is: persistent context may propose evidence, but on
 - [Governed Shared Memory for Multi-Agent LLM Systems](https://arxiv.org/abs/2606.24535v1)
 - [Memory Provenance Laundering](https://arxiv.org/abs/2607.29167v1)
 - [SafeCommit](https://arxiv.org/abs/2608.04289v1)
+
+## August 19 update: authorize memory before context assembly
+
+Authorization Before Context isolates the memory-to-context transition. Each item carries the audience present at recording. The current viewer set comes from channel metadata and falls back to public when ambiguous. Admission requires every current viewer to already belong to that audience.
+
+The paper proves one-way confidentiality and per-participant recall from that single anti-monotone rule. In the evaluated configuration, no known forbidden fact entered unauthorized context, and audited read paths failed closed. Action safety and audience widening remain out of scope.
+
+Practical lesson:
+- stamp recorded audience at write time;
+- resolve viewers from channel metadata, not from the query;
+- exclude unauthorized items before prompt assembly;
+- keep an exact-context receipt of admitted and excluded IDs.
+
+Source:
+- [Authorization Before Context](https://arxiv.org/abs/2608.17148v1)

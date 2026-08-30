@@ -2,26 +2,26 @@
 
 This index tracks the most recent structured strategy research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: 2026-08-19
+## Latest Structured Update: 2026-08-30
 
-### Authorize memory before it enters context
+### Separate persona drift from audited execution
 
-Summary: Relevance is not permission. A single anti-monotone audience-membership rule at the memory-to-context boundary keeps facts inside the audience that produced them and fails closed on ambiguous channels.
+Summary: Persona-Execution Separation puts mutable tone, instructions, and self-presentation in a permissive domain while execution identity, credentials, state, and audit remain stable. A typed contract bridge returns status summaries and gates data-body egress.
 
-Analysis: [daily strategy](2026-08-19/sovereignty.md#authorize-memory-before-it-enters-context)
-Core source: [Authorization Before Context](https://arxiv.org/abs/2608.17148v1)
-Tools and methodologies worth exploring now: recorded-audience stamps, channel-metadata viewer sets, public fail-closed fallback, exact-context admission receipts
-Implementability score: 0.78
+Analysis: [daily strategy](2026-08-30/sovereignty.md#separate-persona-drift-from-audited-execution)
+Core source: [paper](https://arxiv.org/abs/2608.27427v1)
+Tools and methodologies worth exploring now: separate persona and execution configuration, stable service identity, typed bridge requests, summary-versus-body egress classes, DLP gates, persona-versioned execution receipts
+Implementability score: 0.61
 
-### Self-improvement needs order and variance controls
+### Secure persistent state with plan-first information-flow control
 
-Summary: Memory-based self-improving agents increased run-to-run variance in 71% of cases. The default easy-to-hard order produced a 1.5% gain; shuffled orders produced a 4.5% loss.
+Summary: SPA commits to a declarative plan before reading untrusted outputs, carries confidentiality and integrity labels through execution and storage, and exposes semantic metadata instead of raw payloads to later planners. It reports 0 percent and 0.2 percent attack success on single- and multi-query benchmarks.
 
-Analysis: [daily strategy](2026-08-19/sovereignty.md#self-improvement-needs-order-and-variance-controls)
-Core sources: [On the Fragility of Self-Improving Agents](https://arxiv.org/abs/2608.18066v1), [replication repository](https://github.com/SalesforceAIResearch/self-improve-fragility)
-Tools and methodologies worth exploring now: multi-run promotion gates, shuffled-order eval, environment-aware memory construction, human correction of wrong lessons
-Implementability score: 0.84
+Analysis: [daily strategy](2026-08-30/sovereignty.md#secure-persistent-state-with-plan-first-information-flow-control)
+Core source: [paper](https://arxiv.org/abs/2608.27234v1)
+Tools and methodologies worth exploring now: plan-first DSLs, dual-lattice IFC, label-preserving artifacts, metadata/value separation, delayed-attack fixtures, security-versus-reuse measurement
+Implementability score: 0.68
 
 ## Current implication
 
-Context assembly and self-improvement are authority operations. Admit memory by audience, not relevance. Promote learned artifacts only after multi-run and shuffled-order evidence.
+Sovereign agents need separate trust domains for mutable presentation and audited work, then label-preserving state between queries. Context may describe a task or artifact, but it does not acquire authority to alter execution identity, reveal data bodies, or drive higher-integrity effects.

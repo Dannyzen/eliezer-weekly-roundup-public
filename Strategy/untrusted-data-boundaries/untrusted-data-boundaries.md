@@ -348,3 +348,34 @@ Artifact caveat: the paper links a public repository, but it currently contains 
 
 Source:
 - [ATOBench](https://arxiv.org/abs/2608.12996v1)
+
+## August 23 update: adaptive defenses need retained attacks and deterministic boundaries
+
+COPA adapts a lightweight LoRA defense adapter across a sequential prompt-injection curriculum using GRPO and margin-weighted replay. The reported attack-success reduction shows that retained adversarial evidence can improve adaptation, but the learned policy remains probabilistic and artifact support is absent.
+
+Practical lesson:
+- version attack corpora and hold out attack families;
+- preserve earlier attacks as regression fixtures;
+- shadow-train defense adapters before promotion;
+- gate on backward transfer, general utility, and rollback proof;
+- keep untrusted content, tool authority, approvals, and side effects separated by deterministic controls.
+
+Artifact caveat: no public COPA code, model, dataset, or exact repository was exposed in the primary paper.
+
+Source:
+- [COPA](https://arxiv.org/abs/2608.19982v1)
+
+## August 29 update: constrain destinations and capabilities before interpreting content
+
+The Framing Gap showed that trusted-looking reframing can turn a refused exfiltration into successful leakage. In the reported synthetic setup, a closed destination allowlist and a capability-isolating planner/reader split each reduced attack success to 0 percent, while recognition-oriented defenses remained brittle.
+
+Practical lesson:
+- do not give the untrusted-content reader an outbound capability;
+- pass source-labeled observations to a typed effect executor;
+- enforce destination and data-class rules outside the model;
+- test framing templates, paraphrases, and held-out encodings;
+- keep content classification as defense in depth, not authorization.
+
+Implementability score: 0.91
+
+Source: [The Framing Gap](https://arxiv.org/abs/2608.27092v1)

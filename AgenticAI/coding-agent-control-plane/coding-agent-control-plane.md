@@ -306,3 +306,38 @@ Practical lesson:
 - release on precision, recall, position, cost, and latency.
 
 Sources: [paper](https://arxiv.org/abs/2608.09290v1), [repository](https://github.com/alibaba/open-code-review)
+
+
+## August 22 update: agent-facing documentation is executable context
+
+A behavior-grounded study of 557 coding-agent sessions and 33,097 agentic pull requests found that agent instructions and working notes accounted for 60.5 percent of documentation interactions. Classical technical documentation accounted for 10.6 percent and API references 1.3 percent. The coding-agent control plane should therefore govern the files agents actually consult, not only human-facing docs.
+
+Practical lesson:
+- inventory `AGENTS.md`, scoped instructions, plans, notes, and verification logs as separate runtime artifact classes;
+- bind each artifact to owner, path scope, precedence, revision, and freshness;
+- preserve documentation reads and writes in task trajectories;
+- test contradictory, stale, and missing instruction cases;
+- score documentation changes by terminal task outcome rather than retrieval frequency alone.
+
+Evidence caveat: the paper reports a released extraction pipeline, but no exact paper-owned repository was resolved in this read-only scan.
+
+Source:
+- [Agent-Friendly Documentation](https://arxiv.org/abs/2608.20195v1)
+
+## August 23 update: dependency updates need executable client evidence
+
+BreakGuard extracts real client call sites, generates tests for those interactions, and runs the tests against old and proposed dependency versions. It detected 27 of 89 real Java breaking changes, with stronger coverage for crash-type failures than behavioral changes.
+
+Practical lesson:
+- require agent-assisted upgrades to inventory client call sites;
+- generate and retain differential compatibility tests;
+- run old and new versions in isolated, source-bound environments;
+- combine LLM-generated tests with static API checks and behavioral fixtures;
+- block release when evidence is missing, not only when a generated test fails.
+
+Artifact status: the Zenodo record and public prototype were inspected read-only. The 4.9 GB replication package was not downloaded.
+
+Sources:
+- [BreakGuard](https://arxiv.org/abs/2608.20167v1)
+- [BreakGuard Zenodo record](https://zenodo.org/records/22016493)
+- [BreakGuard prototype](https://github.com/CuriousBeing1508/LLMBreakGuard)

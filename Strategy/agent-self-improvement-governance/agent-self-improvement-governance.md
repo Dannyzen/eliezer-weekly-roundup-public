@@ -119,3 +119,12 @@ Sources:
 - [On the Fragility of Self-Improving Agents](https://arxiv.org/abs/2608.18066v1)
 - [SalesforceAIResearch/self-improve-fragility](https://github.com/SalesforceAIResearch/self-improve-fragility)
 - [Salesforce/self-improve-fragility](https://huggingface.co/datasets/Salesforce/self-improve-fragility)
+
+## August 19 deep dive: self-authored skills need the same admission loop
+
+Variance and order controls are necessary after a memory or workflow is written. TRUSS adds the earlier gate: a generated skill package should not become executable memory until a digest, static property check, and shadow execution produce a residual record. Self-authored skills are the highest-risk generator because they look like learning.
+
+Durable analysis: [Skill Admission Control](../skill-admission-control/skill-admission-control.md)
+
+Source:
+- [TRUSS](https://arxiv.org/abs/2608.17588v1)

@@ -971,3 +971,82 @@ Evidence caveat: recovery and atomicity guarantees are only as broad as the stat
 Sources:
 - [AgentRewind](https://arxiv.org/abs/2608.14380v1)
 - [LegacyWorld](https://arxiv.org/abs/2608.14131v1)
+
+## August 19 deep dive: skill loading is a runtime state transition
+
+TRUSS makes skill installation an explicit runtime event. The candidate digest, applicable properties, brokered shadow actions, empty-skill comparison, and residual obligations belong in the same governance record as allow, deny, rewind, and fail-safe. A useful skill is not yet an admitted skill.
+
+Durable analysis: [Skill Admission Control](../skill-admission-control/skill-admission-control.md)
+
+Source:
+- [TRUSS](https://arxiv.org/abs/2608.17588v1)
+
+## August 20 update: remediation requires dependency-aware re-gating
+
+One Gate Is Not Enough shows that individually correct authority, resource, and evidence gates can compose unsafely. When one gate substitutes evidence or downroutes an action, any earlier verdict that depended on the changed fields is stale. The remediation operators also do not commute, so their order is a versioned policy decision.
+
+Task-Conditioned Least-Privilege Learning adds a useful but subordinate layer. A trained 4B policy sharply reduced excess-authority completion, but a nonzero residual remains. Learned authority selection should propose a profile. It should never expand the deterministic grant ceiling.
+
+Practical lesson:
+- make gates declare read scopes, write scopes, and state dependencies;
+- invalidate and recompute dependent verdicts after every remediation;
+- detect remediation cycles and keep a fixed, versioned operator order;
+- intersect model-proposed privilege with user grant, task contract, target identity, policy state, and budget;
+- revalidate the final action at commit time and bind every transformation to the effect receipt.
+
+Evidence caveat: the gate-composition paper is a single-author mechanism demonstration over synthetic workflows with no exact public repository resolved. The least-privilege paper reports a strong constructed-curriculum result but no exact public tuned checkpoint or evaluation artifact.
+
+Sources:
+- [One Gate Is Not Enough](https://arxiv.org/abs/2608.18360v1)
+- [Task-Conditioned Least-Privilege Learning](https://arxiv.org/abs/2608.18351v1)
+
+
+## August 22 update: runtime invariants belong in conformance tests
+
+Microsoft Agent Framework Python 1.15.0 persists approval state, distinguishes absent from falsey approval data, preserves fan-in trace contexts, restricts workflow-type deserialization, blocks remote MCP tool-name shadowing, deduplicates messages and streamed tool calls, and adds steering, retry, and recovery support for hosted workflows.
+
+Practical lesson:
+- maintain approval, trace, tool identity, resume, and recovery conformance fixtures;
+- bind upgrades to exact tag, source SHA, configuration, migration, and rollback proof;
+- test remote MCP collisions and duplicate tool calls before deployment;
+- verify telemetry reaches every provider adapter;
+- treat framework release notes as changes to the runtime authority contract.
+
+Artifact status: the official release and public repository were inspected read-only. No package was installed.
+
+Sources:
+- [Microsoft Agent Framework Python 1.15.0](https://github.com/microsoft/agent-framework/releases/tag/python-1.15.0)
+- [Microsoft Agent Framework](https://github.com/microsoft/agent-framework)
+
+## August 25 update: restore paths need exact policy checks
+
+A local checkpoint is not an external-effect boundary. Runtime recovery should bind snapshots to the exact event log, policy version, authorization lineage, in-flight calls, and required results. The execution-edit checker provides a formal pattern for returning every safe continuation or a checkable proof that none exists.
+
+Implementability score: 0.58
+
+Core sources: [paper](https://arxiv.org/abs/2608.22928v1), [repository](https://github.com/eunomia-bpf/agent-check-restore-safety)
+
+## August 26 update: downstream verification can contain weakened artifacts
+
+Constraint-preservation tests show that semantic retention does not prove operational retention. More importantly, a downstream verifier eliminated forbidden action even while artifact deactivation remained 95.3 percent.
+
+The runtime therefore needs two gates: preserve binding fields during transformation, then re-check the original prerequisite and authority at the action boundary. The second gate contains bad summaries without pretending they are harmless.
+
+Source: [When Must Becomes Maybe](https://arxiv.org/abs/2608.24569v1)
+
+Implementability score: 0.86
+
+## August 30 update: bind permission checks to resource identity and configuration authority
+
+Claude Code v2.1.251 fixes a family of check-and-use failures across symlinked paths, plugin commands, workflow scripts, search paths, sandbox output files, browser actions, and security-sensitive settings. It also adds model-switch hooks and prompt-cache telemetry.
+
+Practical lesson:
+- canonicalize and bind resources at approval time, then verify identity again at use time;
+- reject path, destination, model, route, and configuration substitution;
+- treat tenant headers, TLS termination, credential injection, and sandbox weakening as approval events;
+- keep browser effects on the same permission plane as terminal and file effects;
+- record pre-switch, requested, and post-switch model identities.
+
+Implementability score: 0.97
+
+Source: [Claude Code v2.1.251](https://github.com/anthropics/claude-code/releases/tag/v2.1.251)

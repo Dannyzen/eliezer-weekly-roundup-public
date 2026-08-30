@@ -420,3 +420,30 @@ Sources:
 - [CAPRI](https://arxiv.org/abs/2608.13459v1)
 - [QuoteBench](https://arxiv.org/abs/2608.13547v1)
 - [QuoteBench artifact](https://github.com/LeonardNJU/quoteBench)
+
+## August 26 update: handoffs must preserve the force of constraints
+
+A controlled study of 1,296 episodes found that ordinary handoff compression could retain the topic of a blocker while weakening it into non-binding context. Compression produced 100.0 percent blocker deactivation and 54.2 percent forbidden action. Preserving prerequisite, authority, fallback, and execution consequence restored 100.0 percent preservation and zero forbidden action.
+
+This is a context-to-execution release problem. Summaries, tickets, plans, memories, and handoff notes should carry typed action-binding fields, and downstream execution should verify them again before effects.
+
+Source: [When Must Becomes Maybe](https://arxiv.org/abs/2608.24569v1)
+
+Implementability score: 0.86
+
+Durable analysis: [Operational State Preservation](../operational-state-preservation/operational-state-preservation.md)
+
+## August 30 update: separate the mutable persona from audited execution
+
+Persona-Execution Separation places tone, instructions, and self-presentation in a permissive domain while execution identity, credentials, state, and audit remain stable. A typed bridge accepts work requests, returns status summaries, and gates data-body egress.
+
+Practical lesson:
+- treat persona configuration as mutable context, not authority;
+- keep execution under one stable service identity;
+- require typed bridge objects for cross-domain work and egress;
+- distinguish summary-return from data-body export;
+- bind persona version, bridge decision, execution identity, and receipt in one trace.
+
+Implementability score: 0.61
+
+Source: [Persona-Execution Separation](https://arxiv.org/abs/2608.27427v1)

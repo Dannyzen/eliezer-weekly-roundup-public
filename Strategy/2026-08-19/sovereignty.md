@@ -1,10 +1,48 @@
-# Strategy Daily Sovereignty Analysis - 2026-08-19
+# Strategy Deep Dive, 2026-08-19
 
-## Scope
+## Winner: skill packages need an admission loop
 
-The strategy findings come from immutable arXiv v1 submissions inside the 2026-08-17 12:00 UTC to 2026-08-19 12:00 UTC window and first listed on 2026-08-19. Abstracts and PDFs were inspected as primary sources. Implementation artifacts were checked read-only only. No external repository was cloned or executed.
+TRUSS is this week's strongest finding because it isolates the pre-mount decision that every other control plane inherits. A skill package can expand the action surface before memory, lowering, or harness scoring ever run. Installing it because the later task succeeded is not certification.
 
-## Authorize memory before it enters context
+[Read the durable deep dive](../skill-admission-control/skill-admission-control.md#august-19-deep-dive-why-truss-is-the-weeks-control-primitive)
+
+Core source: [TRUSS](https://arxiv.org/abs/2608.17588v1)
+
+Implementability score: 0.72
+
+## Why it won the week
+
+The other finalists improve important adjacent gates:
+
+- HarnessRisk scores configuration, extension, persistence, action, and recovery after a capability is already mounted.
+- Authorization Before Context keeps recalled facts inside the audience that produced them.
+- SkillEffect lowers generated tool programs onto bounded implementations.
+- Self-improvement fragility shows that writeback needs multi-run and shuffled-order evidence.
+- DeepSeek Harness makes skills and sandboxes into plugins, which increases the cost of an uncertified mount.
+
+TRUSS sits below those findings. It asks whether the package may become part of the runtime at all.
+
+## Evidence that changes the design
+
+On 84 matched SkillInject pairs, a direct LLM checker reached 19.05% recall and 44.64% precision. Static inspection rose to 94.05% recall and 81.55% precision. Runtime evidence closed the rest and reached 100.00% precision, recall, and F1.
+
+Repair on 155 SkillSafetyBench cases cut attack success from 38.71% to 19.35% with GPT-5.5 and from 46.45% to 29.68% with GPT-5.4, with zero attack regression. Generation on 187 SkillGenBench tasks raised effectiveness from 17.11% with no skills to 52.94%, and raised the benchmark Security rate from 50.80% to 100.00%. An intermediate LLM generator captured only part of that gain and left 46 unsafe outcomes.
+
+The architecture is a Generator, Checker, and Refiner sharing one Function and Safety Record. The candidate is a complete package with a frozen digest. The Controllable Execution Environment mounts that digest read-only, brokers every action, and keeps blocked requests as evidence.
+
+## What to implement now
+
+1. Freeze every candidate skill as a content digest. Revisions get a new digest.
+2. Inspect the complete package, including scripts and assets, not only SKILL.md.
+3. Keep a fixed property catalog and convert residual criteria into runtime obligations.
+4. Run a shadow agent through brokered tools in a disposable workspace.
+5. Pair every candidate against an empty-skill control before claiming functional gain.
+6. Release only on safe task completion: attack suppressed and authorized task completed.
+7. Emit an uncertified residual record when the revision budget is exhausted.
+
+## Adjacent strategy findings from today
+
+### Authorize memory before it enters context
 
 Authorization Before Context isolates the memory-to-context transition as its own authority boundary. A personal agent can learn a fact in one audience and later retrieve it for another. Relevance is not permission.
 
@@ -28,7 +66,7 @@ Implementability score: 0.78
 Core source:
 - https://arxiv.org/abs/2608.17148v1
 
-## Self-improvement needs order and variance controls
+### Self-improvement needs order and variance controls
 
 On the Fragility of Self-Improving Agents re-evaluates Agent Workflow Memory and ReasoningBank on WebArena, VisualWebArena, and SCUBA. The authors upgraded the model and harness, then added the two controls most papers skip: repeated runs and shuffled task order.
 
@@ -54,6 +92,22 @@ Core sources:
 - https://github.com/SalesforceAIResearch/self-improve-fragility
 - https://huggingface.co/datasets/Salesforce/self-improve-fragility
 
+## Evidence boundary
+
+TRUSS is a 14-page preprint with no resolved public implementation repository. The 100.00% detection result is on matched SkillInject pairs. Residual attack success after repair remains material. Treat the architecture as a strong admission pattern, not a drop-in product.
+
 ## Working conclusion
 
-Context assembly and self-improvement are authority operations. Admit memory by audience, not relevance. Promote learned artifacts only after multi-run and shuffled-order evidence.
+Context assembly and self-improvement remain authority operations. The deeper Wednesday claim is that skill loading is also an authority operation. Admit memory by audience. Promote learned artifacts after multi-run evidence. Certify skill packages before they expand the runtime.
+
+## Sources
+
+- [TRUSS abstract, immutable v1](https://arxiv.org/abs/2608.17588v1)
+- [TRUSS PDF, immutable v1](https://arxiv.org/pdf/2608.17588v1)
+- [Skill-Inject](https://arxiv.org/abs/2602.20156v1)
+- [SkillSafetyBench](https://arxiv.org/abs/2605.12015v1)
+- [SkillGenBench](https://arxiv.org/abs/2605.18693v1)
+- [Authorization Before Context](https://arxiv.org/abs/2608.17148v1)
+- [On the Fragility of Self-Improving Agents](https://arxiv.org/abs/2608.18066v1)
+- [HarnessRisk](https://arxiv.org/abs/2608.17597v1)
+- [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)

@@ -317,3 +317,21 @@ Practical lesson:
 Sources:
 - [Scrouting / SuperScout](https://arxiv.org/abs/2608.04804v1)
 - [TransformerOptimus/superscout](https://github.com/TransformerOptimus/superscout)
+
+
+## August 22 update: route only after pricing better evidence
+
+Pandora's Router treats value estimation as a metered action. A cheap estimate may be enough. Retrieval, partial reasoning, tool calls, or a scoring model should be purchased only when their expected information value exceeds their cost.
+
+Practical lesson:
+- calibrate cheap and expensive estimators separately;
+- record inspection cost, expected value of information, route, and realized reward;
+- treat retrieval, reasoning, and tests as budgeted router actions;
+- start with deterministic thresholds and shadow mode;
+- distrust self-bidding specialists when their competing estimates are noisy;
+- preserve privacy, residency, tool authority, and budget across route choices.
+
+Artifact caveat: no public implementation repository was exposed in the primary paper. The formal pattern needs local calibration before production use.
+
+Source:
+- [Pandora's AI Model Routing Box](https://arxiv.org/abs/2608.20316v1)

@@ -132,3 +132,18 @@ Sources:
 ## Working conclusion
 
 Persistent state is where agent usefulness and agent risk meet. Every retained object needs lineage showing how influence reached it and a validity state deciding whether it may still shape action. Sequence review, lifecycle traces, and revocation are runtime controls, not optional reviewer conveniences.
+
+## August 30 update: plan once and preserve labels across persistent reuse
+
+SPA compiles the trusted request into a declarative plan before untrusted outputs enter the loop, then carries confidentiality and integrity labels through execution and storage. Future planners see semantic metadata; concrete values return only during constrained execution with their original labels.
+
+Practical lesson:
+- keep provenance and integrity labels beside every stored artifact;
+- split semantic metadata from concrete values in the memory API;
+- preserve control dependencies across queries;
+- reject low-integrity data driving higher-integrity effects;
+- measure delayed-attack success beside legitimate reuse.
+
+Implementability score: 0.68
+
+Source: [SPA](https://arxiv.org/abs/2608.27234v1)

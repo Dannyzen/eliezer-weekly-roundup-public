@@ -241,3 +241,11 @@ Hardware-confined keys prevent extraction, but a narrow broker must also release
 Sources:
 - https://arxiv.org/abs/2608.06130v1
 - https://anonymous.4open.science/r/Hardware-Keystores-for-AI-Agent-Signing-Workflows-Artifact-357C
+
+## August 25 update: execution edits must preserve outstanding obligations
+
+Checkpoint, fork, restore, and merge change what an agent will do next without undoing earlier authorizations or external calls. Before accepting an edit, derive which in-flight requests, required results, effect identities, and policy-compliant completion paths must survive. Fail closed when no safe continuation can be proven.
+
+Implementability score: 0.58
+
+Core sources: [paper](https://arxiv.org/abs/2608.22928v1), [repository](https://github.com/eunomia-bpf/agent-check-restore-safety)

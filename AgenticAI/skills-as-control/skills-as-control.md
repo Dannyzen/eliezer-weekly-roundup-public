@@ -879,3 +879,60 @@ Artifact caveat: no public implementation repository was resolved from the prima
 
 Source:
 - [SkillEffect](https://arxiv.org/abs/2608.17007v1)
+
+## August 19 deep dive: certify the package before lowering it
+
+TRUSS is the missing pre-mount loop. SkillEffect decides the physical shape of a generated tool program after a skill is trusted enough to run. TRUSS decides whether the complete package may be trusted at all. A frozen digest, static property gate, and brokered shadow run expose behaviors that SKILL.md inspection misses.
+
+Practical lesson:
+- treat the complete package as the candidate, not the instruction file alone;
+- keep blocked shadow actions in the admission record;
+- pair every candidate against an empty-skill control before claiming functional gain;
+- do not install a generated skill because a later task succeeded.
+
+Durable analysis: [Skill Admission Control](../../Strategy/skill-admission-control/skill-admission-control.md)
+
+Source:
+- [TRUSS](https://arxiv.org/abs/2608.17588v1)
+
+## August 23 update: induce and admit skills at the subtask boundary
+
+Break It Down, Pass It On found that whole-task skills generally harmed agents relative to a no-memory baseline, while subtask-level text skills helped on average across three long-horizon benchmarks and 11 models. Its offline utility score combines specificity with abstractness and can be calculated before executing a new task.
+
+Practical lesson:
+- induce one text procedure per stable, reusable subtask;
+- retain source, scope, assumptions, evidence, and failure cases;
+- compare skill-assisted performance against a no-memory baseline;
+- admit skills only after measured transfer utility;
+- quarantine skills that reduce performance or depend on stale context.
+
+Artifact caveat: the claimed public repository resolves, but its inspected tree contained only three entries and no released code or data beyond a minimal README.
+
+Sources:
+- [Cross-Task Skill Transfer](https://arxiv.org/abs/2608.20274v1)
+- [Claimed artifact repository](https://github.com/Zesearch/skill-transfer-llm-agents)
+
+## August 24 update: admit skills on paired runtime lift
+
+ACES makes skill quality a differential runtime property. Hold the task, model, harness, workspace, prerequisites, decoys, and scorer fixed, then compare with-skill and no-skill trajectories. Structural checks and LLM-judge review remain useful, but neither establishes discovery, correct tool use, workflow following, or marginal task value.
+
+Practical lesson:
+- require paired live trials for consequential skill admission;
+- separate outcome, behavior, safety, and efficiency lift;
+- normalize trajectories before cross-harness comparison;
+- keep no-skill controls and evaluation assets versioned with the skill;
+- block promotion when lift is negative or safety regresses.
+
+Artifact status: NVIDIA SkillEvaluator v0.1.0 is a populated public implementation with documentation and CI. It remains experimental and was inspected read-only in this cron.
+
+Sources:
+- [Evaluating Skills, Not Just Agents](https://arxiv.org/abs/2608.20614v1)
+- [NVIDIA SkillEvaluator](https://github.com/NVIDIA/SkillEvaluator)
+
+## August 25 update: retrieved skills need explicit applicability boundaries
+
+Boundary-Aware Skill Memory shows that success-only procedure retrieval can increase confidence in the wrong tool when a similar task requires different action. Store applicability conditions, risk cues, avoidance rules, and recovery notes beside the procedure, then check those fields before consequential tool calls. Relevance should select a candidate skill; boundary evidence should decide whether it applies.
+
+Implementability score: 0.76
+
+Core source: [When Not to Imitate](https://arxiv.org/abs/2608.22339v1)

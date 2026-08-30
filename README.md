@@ -6,25 +6,35 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-08-19: [gates belong at state transitions](roundups/2026-08-19.md)
-- AgenticAI daily analysis: [2026-08-19](AgenticAI/2026-08-19/reasoning.md)
-- Strategy daily analysis: [2026-08-19](Strategy/2026-08-19/sovereignty.md)
-- Prior daily scan: [runtime state must be explicit](roundups/2026-08-18.md)
-- Latest Friday synthesis: [evidence is not authority](roundups/2026-08-14.md)
+- Daily research, 2026-08-30: [bind change, context, and authority to explicit identities](roundups/2026-08-30.md)
+- AgenticAI daily analysis: [2026-08-30](AgenticAI/2026-08-30/reasoning.md)
+- Strategy daily analysis: [2026-08-30](Strategy/2026-08-30/sovereignty.md)
+- Friday synthesis, 2026-08-28: [preserve evidence and authority across transformation](roundups/2026-08-28.md)
+- Deep Dive Wednesday, 2026-08-26: [operational state preservation](Strategy/operational-state-preservation/operational-state-preservation.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 
 ## Current thesis
 
-Reliable agents need explicit gates at state transitions. A governable runtime should:
+Reliable agents bind every change, context object, and effect to an explicit identity, then preserve that identity through planning, execution, storage, and audit. A governable runtime should:
 
-- score harness configuration, extension, persistence, action, and recovery separately from task utility;
-- admit memory into context only for the audience that produced it;
-- lower generated skill programs onto bounded implementations before dispatch;
-- promote self-written memories only after multi-run and shuffled-order evidence;
-- keep receipts for what was configured, recalled, lowered, or learned.
+- verify each harness change on behavior-relevant tasks with paired and attributable evidence;
+- bind permission checks to the exact resource, model, route, and configuration used;
+- separate mutable persona from stable execution identity, credentials, state, and audit;
+- compile trusted requests into plans before untrusted outputs can alter control flow;
+- retain confidentiality, integrity, provenance, and control labels across persistent artifacts;
+- expose semantic metadata to later planning while retrieving concrete values only during constrained execution;
+- compile operational records into deterministic, replayable evaluation episodes before model judging;
+- isolate optimization proposals from integrity review, hidden holdouts, and capability gates;
+- retain origin, privilege, binding force, and transform lineage through context assembly, summaries, memory, and handoffs;
+- separate user preference, standing policy, and exact-effect authorization;
+- remove outbound capabilities from components that read untrusted content;
+- enforce destinations, data classes, and typed effects outside the model;
+- bind approvals to durable effect lineages through provider commit, ambiguity, reconciliation, and terminal closure;
+- compact memory by type, keeping exact constraints separate from lossy episodic history;
+- route, retry, and resume from trace evidence tied to delegation identity.
 
-A finished task is not safety evidence. Detection is not containment. Relevance is not permission.
+The model can propose actions, summaries, skill changes, routes, plans, and experiments. Resource identity, typed bridges, attributable verification, information-flow labels, deterministic policy, and durable authority decide what may change and what may cross a trust boundary.
 
 ## Browse by category
 
@@ -58,7 +68,9 @@ A finished task is not safety evidence. Detection is not containment. Relevance 
 
 - [Evaluation Containment Control Plane](Strategy/evaluation-containment-control-plane/evaluation-containment-control-plane.md)
 - [Stateful Effect Governance](Strategy/stateful-effect-governance/stateful-effect-governance.md)
+- [Skill Admission Control](Strategy/skill-admission-control/skill-admission-control.md)
 - [Agent Self-Improvement Governance](Strategy/agent-self-improvement-governance/agent-self-improvement-governance.md)
+- [Operational State Preservation](Strategy/operational-state-preservation/operational-state-preservation.md)
 - [Context-to-Execution Integrity](Strategy/context-to-execution-integrity/context-to-execution-integrity.md)
 - [Untrusted Data Boundaries](Strategy/untrusted-data-boundaries/untrusted-data-boundaries.md)
 - [Persistent-State Agent Control](Strategy/persistent-state-agent-control/persistent-state-agent-control.md)

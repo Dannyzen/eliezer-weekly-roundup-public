@@ -245,3 +245,13 @@ Evidence caveat: each model-task-prompt cell contributes one trajectory, and ato
 Sources:
 - [LegacyWorld](https://arxiv.org/abs/2608.14131v1)
 - [benchmark repository](https://github.com/ThiloReintjes/LegacyWorld)
+
+## August 26 update: browser data generation needs isolated, verified episodes
+
+BrowserForge generated 203,238 distinct-site trajectories by scheduling parallel browser sandboxes, separating task proposal from solution, and verifying the resulting episodes. Fine-tuning improved live Online-Mind2Web success from 25.66 percent to 33.33 percent.
+
+The reusable pattern is not the paper's scale. It is an episode contract: isolated browser, source provenance, proposed task, action trace, terminal verifier, and admission decision. No paper-specific code or dataset release was linked, so the architecture is more implementable than the exact system.
+
+Source: [BrowserForge](https://arxiv.org/abs/2608.24848v1)
+
+Implementability score: 0.52

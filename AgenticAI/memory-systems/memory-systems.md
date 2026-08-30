@@ -950,3 +950,46 @@ Practical lesson:
 Sources:
 - [When Self-Evolution Backfires](https://arxiv.org/abs/2608.05810v1)
 - [When History Lies](https://arxiv.org/abs/2608.06057v1)
+
+## August 21 update: memory needs a use, ignore, verify, or ask gate
+
+MemTrapBench shows that correct storage and relevant retrieval do not prove that memory should influence the current task. Across 1,050 reasoning-fixation and belief-distortion instances, every evaluated memory strategy underperformed no memory, and even the strongest lost more than 10 points. A prompt-level AdaptiveMem intervention recovered 14.9 points for one reported LightMem and Gemini pairing.
+
+Practical lesson:
+- pair each trap fixture with an identical no-memory run;
+- score the current-task delta caused by memory;
+- make use, ignore, verify, and ask explicit decisions;
+- preserve admitted-memory IDs and the influence decision in the run receipt.
+
+Artifact caveat: the public repository currently contains only a README. Use the paper to design local paired fixtures until the promised benchmark is released.
+
+Sources:
+- [MemTrapBench](https://arxiv.org/abs/2608.20202v1)
+- [zjunlp/MemTrapBench](https://github.com/zjunlp/MemTrapBench)
+
+## August 24 update: memory hygiene needs executable cross-session oracles
+
+DreamBench-SWE turns memory maintenance into a repository-state test. Later tasks require hidden, non-inferable earlier evidence, while stale facts, generated-file boundaries, scoped feedback, and spurious failure lessons become explicit traps.
+
+Practical lesson:
+- preserve raw episodes and derive typed memory without rewriting evidence;
+- score later state changes with hidden executable oracles;
+- compare no-memory, verbatim, typed, and provider-backed conditions;
+- reject provider configurations that fail frozen conformance before scoring;
+- report null and unavailable mechanism comparisons without upgrading them into equivalence.
+
+Artifact caveat: the public v2.1.0 release contains a sanitized evidence artifact and verifier, but this cron inspected it read-only and did not reproduce the benchmark.
+
+Sources:
+- [DreamBench-SWE](https://arxiv.org/abs/2608.20664v1)
+- [DreamBench-SWE v2.1.0](https://github.com/iroiro147/dreambench-swe/releases/tag/v2.1.0)
+
+## August 26 update: working state should route skill memory and emit update evidence
+
+Recuris separates a compact, evidence-grounded Working Memory from reusable Experiential Memory. Skill selection happens from current task state rather than the complete transcript, and failed execution is attributed to a specific memory component before a localized update is proposed.
+
+The durable pattern is a memory control loop: maintain current obligations, retrieve a bounded skill, execute, attribute the failure, patch one memory component, validate, and preserve the update lineage. The paper improved 35 of 37 completed model-benchmark pairs, but its newly released results still need independent replication.
+
+Sources: [paper](https://arxiv.org/abs/2608.24876v1), [repository](https://github.com/Gen-Verse/Recuris)
+
+Implementability score: 0.79

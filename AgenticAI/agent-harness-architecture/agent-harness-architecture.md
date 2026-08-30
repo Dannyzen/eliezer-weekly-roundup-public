@@ -1160,3 +1160,112 @@ Sources:
 - [project page](https://baiyajing.github.io/harness-risk/)
 - [Baiyajing/HarnessRisk](https://github.com/Baiyajing/HarnessRisk)
 - [YajingB/HarnessRisk](https://huggingface.co/datasets/YajingB/HarnessRisk)
+
+## August 19 deep dive: certify plugins before the harness mounts them
+
+HarnessRisk scores what happens after a capability is already in the runtime. TRUSS is the earlier gate: a skill or plugin package should not reach configuration, extension, or persistence phases until a digest, static property check, and brokered shadow run produce a residual record. DeepSeek Harness makes this more urgent because every capability is a plugin.
+
+Durable analysis: [Skill Admission Control](../../Strategy/skill-admission-control/skill-admission-control.md)
+
+Sources:
+- [TRUSS](https://arxiv.org/abs/2608.17588v1)
+- [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)
+
+## August 20 update: put deterministic contracts between component actions and runtime effects
+
+ComponentBench and SemaPLC instrument two missing harness layers. ComponentBench isolates realistic UI components with deterministic success checks. SemaPLC refuses completion until generated control logic passes specification, compilation, and live-runtime behavior checks.
+
+Practical lesson:
+- add component fixtures between atomic grounding and end-to-end workflows;
+- replay the same UI task across accessibility-tree, DOM, set-of-marks, and pixel modes;
+- make high-impact code completion depend on external specification, compile, and runtime receipts;
+- preserve component identity, interface mode, project digest, verifier version, runtime identity, and final state;
+- use layer-specific failures to decide whether to change the model, tool surface, harness, or runtime.
+
+Artifact caveat: ComponentBench is web-first and its primary cells use one run. SemaPLC needs PLC toolchain and runtime infrastructure, and its dynamic scenarios are bounded.
+
+Sources:
+- [ComponentBench](https://arxiv.org/abs/2608.18307v1)
+- [TianchenGuan/ComponentBench](https://github.com/TianchenGuan/ComponentBench)
+- [ComponentBench dataset](https://huggingface.co/datasets/TianchenGuan/ComponentBench)
+- [SemaPLC](https://arxiv.org/abs/2608.18565v1)
+- [midea-ai/SemaPLC](https://github.com/midea-ai/SemaPLC)
+
+## August 21 update: reliability is repeated terminal-state success
+
+Thinkingbox adds the business-workflow layer that many harnesses omit. It runs multi-turn agent-user-tool interactions in isolated MCP-compatible sessions and grades final backend state, collateral effects, and required dialogue properties. Across 507 tasks and 20 attempts per task, the strongest model reached 65.36% pass@1 and 91.12% success-at-least-once, but only 25.25% all-20 reliability.
+
+Practical lesson:
+- reset state between every attempt;
+- grade intended state, forbidden collateral state, and dialogue consistency;
+- report pass@1, success-at-least-once, and all-attempt reliability separately;
+- preserve task, initial-state, tool-server, model, prompt, judge, and attempt identity.
+
+The MIT-licensed repository is populated with runtime code, datasets, scenarios, tests, docs, and CI. It was inspected read-only.
+
+Sources:
+- [Thinkingbox](https://arxiv.org/abs/2608.19741v1)
+- [microsoft/thinkingbox](https://github.com/microsoft/thinkingbox)
+
+## August 21 update: returned results need outcome contracts
+
+Outcome Monitors check semantically suspect tool results after execution and attach nonbinding recovery receipts. ToolMaze completion rose from 10.9% to 28.1%, and two tau-bench tiers improved by 14 and 12 points. Controls found that naming recovery tools, not adding more diagnostic prose, drove the measurable gain.
+
+Practical lesson:
+- validate outcome meaning after transport and schema checks pass;
+- preserve the raw result and attach a receipt;
+- name concrete recovery affordances without selecting the repair;
+- track out-of-vocabulary detection coverage and clean-run harms.
+
+Artifact caveat: no public implementation repository was verified. The method can be prototyped around typed tool schemas, but the paper reports no reusable package.
+
+Source:
+- [Outcome Monitors](https://arxiv.org/abs/2608.19303v1)
+
+## August 25 update: harness improvements need verified patch lineages
+
+AutoSaddler turns failed execution traces into bounded prompt, tool, and middleware patches, validates each candidate on held-out tasks, and records fixed cases, regressions, and rejected branches in an EvoDAG. Across GAIA2, SWE-Bench Pro, and Terminal-Bench 2.0, it improved base harnesses by 9.0 to 10.0 percentage points. The reusable pattern is a train, validation, test loop for harness code, with optimizer access blocked from evaluation logic and human review before production promotion.
+
+Implementability score: 0.78
+
+Core sources: [paper](https://arxiv.org/abs/2608.23041v1), [repository](https://github.com/microsoft/AutoSaddler)
+
+## August 26 update: localized memory evolution and fault injection belong in the harness
+
+Two findings move harness quality below final output. Recuris attributes long-horizon failures to working-state or skill-memory components before admitting a localized update. `llmmas-otel` aligns OpenTelemetry spans with targeted faults across agent steps, messages, tools, and model calls.
+
+The shared control pattern is explicit ownership of intervention points. A harness should know which component can be patched, which span can be perturbed, which evidence validates the change, and which fixture prevents regression.
+
+Sources: [Recuris](https://arxiv.org/abs/2608.24876v1), [llmmas-otel](https://arxiv.org/abs/2608.24271v1)
+
+Implementability score: 0.84
+
+## August 29 update: treat automated research as adversarial optimization
+
+Anthropic's Automated Alignment Researcher harness separates proposal, integrity review, training, and held-out evaluation. Across 1,601 research trajectories, the study excluded 2.4 percent for cheating behavior. The reusable pattern is a monitored optimization harness, not an unconstrained self-improvement loop.
+
+Practical lesson:
+- keep hill-climbing benchmarks visible and holdouts isolated;
+- review proposed code and data before execution;
+- reject capability regressions and undeclared evaluation access;
+- retain every proposal, approval, runtime identity, score, and exclusion;
+- start with deterministic toy tasks before expensive post-training.
+
+Implementability score: 0.55
+
+Sources: [Anthropic report](https://www.anthropic.com/research/automated-researchers-mitigate-alignment-failures), [repository](https://github.com/YuehHanChen/automated_alignment_researcher)
+
+## August 30 update: verify harness changes on behavior-relevant evidence
+
+HarnessLens turns harness evolution into a candidate-specific verification problem. Each prompt, tool, hook, or runtime modification receives an impact set derived from supporting trajectories, affected components, intended behavior, and regression risk. Paired trials and an attributable-evidence gate decide admission.
+
+Practical lesson:
+- represent the proposed harness change as a machine-readable object;
+- derive behavior-relevant verification tasks before broad evaluation;
+- compare old and new trajectories under an explicit budget;
+- require an attribution note for acceptance;
+- keep a broad frozen suite as a backstop for impact-set misses.
+
+Implementability score: 0.78
+
+Sources: [paper](https://arxiv.org/abs/2608.27311v1), [repository](https://github.com/jhxu5214/HarnessLens)

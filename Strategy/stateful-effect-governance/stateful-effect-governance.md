@@ -216,3 +216,19 @@ Evidence caveat: AgentRewind controls managed state, while LegacyWorld observes 
 Sources:
 - [AgentRewind](https://arxiv.org/abs/2608.14380v1)
 - [LegacyWorld](https://arxiv.org/abs/2608.14131v1)
+
+## August 24 update: one approval needs one effect lineage
+
+AID-Guard extends stateful effect governance through ambiguous provider outcomes. Admission is not closure. The exact approved request and current provider state are revalidated at commit, ambiguous delivery retains the reservation, and one successor is allowed only after terminal or certified-no-effect closure plus a delivery fence.
+
+Practical lesson:
+- give every consequential approval a durable reservation lineage;
+- distinguish ambiguous delivery from certified no effect;
+- reconcile and fence the predecessor before replacement;
+- bind acting identity, provider contract, request digest, and final effect;
+- test confirm/cancel races, response loss, delayed predecessors, and crash recovery.
+
+Evidence caveat: all evaluated duplicate-effect schedules closed safely, but the paper's promised artifact is not yet publicly inspectable. The prototype also trusts its authority store and provider adapters, and strict exact manifests reduced benign utility by 35.4 to 43.8 points.
+
+Source:
+- [AID-Guard](https://arxiv.org/abs/2608.21159v1)

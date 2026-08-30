@@ -164,3 +164,19 @@ Artifact caveat: the MIT-licensed repository is populated with 66 tree entries a
 Sources:
 - [OpenBox and Temporal runtime-governance announcement](https://www.prnewswire.com/news-releases/as-enterprises-move-ai-agents-into-production-openbox-ai-and-temporal-introduce-runtime-governance-for-long-running-agents-302820622.html)
 - [OpenBox-AI/openbox-temporal-sdk-python](https://github.com/OpenBox-AI/openbox-temporal-sdk-python)
+
+## August 24 update: workflow prose needs a checked intermediate representation
+
+ARTIC strengthens governed workflow substrates by treating natural-language procedures as source, not executable truth. It lowers each procedure into explicit artifact reads and writes, constraints, and control transfers, then validates local faithfulness obligations with scenario dry runs.
+
+Practical lesson:
+- define a typed intermediate representation for agent workflows;
+- expose data dependencies and branch conditions before execution;
+- reject unresolved source-to-workflow mismatches;
+- keep dry-run fixtures as regression evidence;
+- bind runtime traces to artifact and step identities.
+
+Evidence caveat: ARTIC reports a 28-point task-resolution gain across 488 instances from 11 workflows, but no public implementation artifact was present in the primary paper surfaces.
+
+Source:
+- [Natural-Language Workflows Are Not Software Yet](https://arxiv.org/abs/2608.21341v1)

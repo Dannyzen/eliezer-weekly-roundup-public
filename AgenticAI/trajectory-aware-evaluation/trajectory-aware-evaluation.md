@@ -1059,3 +1059,73 @@ Artifact caveat: the MIT ancillary artifact reproduces named analyses from sanit
 Sources:
 - [Wrong but Useful](https://arxiv.org/abs/2608.14375v1)
 - [reproducibility artifact](https://arxiv.org/src/2608.14375v1/anc/anonymous_reproducibility/README.md)
+
+
+## August 22 update: transition claims need a measured null
+
+Phantom Gains shows that an unchanged model can appear to learn and regress under common transition metrics. A frozen Qwen3-8B control produced 6 apparent learnings and 9 apparent corruptions from single greedy decodes. A one-success expansion rule reported a false rate of 0.280, and its threshold repair still had a measured null of 0.058 across 110 frozen comparisons.
+
+Practical lesson:
+- run frozen controls through the identical pipeline;
+- estimate a null for each transition statistic from independent baseline replicates;
+- serialize a probe subset to expose batch nondeterminism;
+- use per-task exact tests and false-discovery-rate control;
+- bind every transition label to model, checkpoint, batch, seed, evaluator, and noise floor.
+
+Artifact status: the Apache-2.0 repository contains analysis code, cached evaluation records, tests, and reproducibility material. It was inspected read-only and not executed.
+
+Sources:
+- [Phantom Gains](https://arxiv.org/abs/2608.20290v1)
+- [artifact repository](https://github.com/chengxuphd/phantom-gains)
+
+## August 23 update: improvement claims need mechanism labels and hidden terminal evaluation
+
+AI4AI-Bench separates changes to how a model learns from changes to budgets, checkpoints, hyperparameters, capacity, or execution. Across 263 changed submissions, 141 left the learning procedure unchanged. BreakGuard applies the same evidence-first principle to dependency upgrades by requiring tests that pass on the old version and fail on the new one.
+
+Practical lesson:
+- classify every agent change by mechanism before scoring it;
+- rerun candidates from a clean state under an evaluator hidden from the acting agent;
+- bind exploration cost, source, environment, checkpoints, and terminal score;
+- require executable differential evidence for dependency upgrades;
+- report uncovered cases and weak behavioral coverage as residual risk.
+
+Artifact status: the AI4AI result explorer and BreakGuard's Zenodo and GitHub artifacts were inspected read-only. No external source was executed.
+
+Sources:
+- [AI4AI-Bench](https://arxiv.org/abs/2608.20318v1)
+- [AI4AI-Bench result explorer](https://lab.einsia.ai/ai4ai)
+- [BreakGuard](https://arxiv.org/abs/2608.20167v1)
+- [BreakGuard prototype](https://github.com/CuriousBeing1508/LLMBreakGuard)
+
+## August 25 update: the scored unit is the declared model-plus-runtime bundle
+
+ClawProBench versions the model endpoint, wrapper, controller, runtime, tools, schemas, safety filters, execution policy, checker bundle, and scoring code as one evaluation object. Its strict three-trial pass rate was 0.2890 versus 0.6638 for pass-at-k-any, while full-profile and frozen-holdout rankings aligned at Spearman 0.13. Preserve repeated-trial status, expected surfaces, checker hashes, and trace-local safety evidence instead of attaching a final-answer score to a model name.
+
+Implementability score: 0.88
+
+Core sources: [paper](https://arxiv.org/abs/2608.22510v1), [repository](https://github.com/suyoumo/ClawProBench)
+
+## August 26 update: fault injection should align with the trace point it tests
+
+`llmmas-otel` places OpenTelemetry spans and fault operators on the same workflow surfaces: phases, agent steps, inter-agent messages, tool calls, and model invocations. This supports paired baseline and faulty executions with aligned artifacts instead of comparing unrelated logs.
+
+The evaluation contract should name the injected fault, target span, expected propagation, earliest decisive error, terminal effect, and recovery status. Its public Apache-2.0 repository contains targeted injection tests, but the paper's initial validation remains narrow.
+
+Sources: [paper](https://arxiv.org/abs/2608.24271v1), [repository](https://github.com/vagabondboffin/llmmas-otel)
+
+Implementability score: 0.90
+
+## August 29 update: compile benchmark episodes from immutable operational evidence
+
+BTS-AgentBench turns read-only telemetry into a deterministic tool store, typed multi-turn episodes, tool-derived gold answers, evidence IDs, and replay hashes. Two independent builds matched 11 logical exports and reproduced the released 356/87/89 split.
+
+Practical lesson:
+- bind every episode to checksummed raw inputs;
+- keep construction deterministic where fixed code can derive the answer;
+- require expected calls, evidence IDs, and an exclusion controller;
+- compare independent builds before interpreting model scores;
+- preserve row-level lineage and release manifests.
+
+Implementability score: 0.88
+
+Sources: [paper](https://arxiv.org/abs/2608.27334v1), [repository](https://github.com/kjy7567/BTS-AgentBench)

@@ -148,3 +148,18 @@ Artifact caveat: the paper reports a public reference implementation and evaluat
 
 Source:
 - [Bounded Agents](https://arxiv.org/abs/2608.15888v1)
+
+## August 29 update: user preference is not exact-effect authorization
+
+A 113-participant permission study found that user-authored `allow`, `ask`, or `never` rules reduced runtime prompts but blocked less overreach than per-action approval or automated review. Participants selected `ask` for 114 of 140 rules, and most executed overreach in the policy condition still followed human approval.
+
+Practical lesson:
+- keep preference, standing policy, and authorization as separate records;
+- bind `allow` to explicit destination, data, amount, resource, and time limits;
+- require an exact-effect manifest before `ask` can become authority;
+- show how the proposed effect differs from the original request;
+- measure overreach approval beside prompt count and task completion.
+
+Implementability score: 0.84
+
+Source: [permission-policy study](https://arxiv.org/abs/2608.27443v1)

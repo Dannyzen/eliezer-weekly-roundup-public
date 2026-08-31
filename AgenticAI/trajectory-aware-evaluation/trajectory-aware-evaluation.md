@@ -1129,3 +1129,22 @@ Practical lesson:
 Implementability score: 0.88
 
 Sources: [paper](https://arxiv.org/abs/2608.27334v1), [repository](https://github.com/kjy7567/BTS-AgentBench)
+
+
+## August 31 update: grounded partial credit exposes hidden trajectory movement
+
+GCPC combines reusable human rules, LLM-instantiated task checklists, evidence-only judging, abstention, and a deterministic official-verifier step. On 4,455 deduplicated trajectories it improves PASS/FAIL discrimination over holistic judging, and paired skill runs show substantial improvement and regression even when the binary result is unchanged.
+
+Practical lesson:
+- define reusable rules once, then instantiate task-specific items;
+- require cited trajectory evidence for every score;
+- abstain when evidence is absent;
+- keep the official verifier outside the model judge;
+- inspect matched runs for hidden movement below terminal success.
+
+Evidence caveat: the human study covers 96 trajectories and the reported AUC remains moderate. No public implementation artifact resolved in the primary paper surfaces.
+
+Implementability score: 0.79
+
+Source:
+- [Grounded Checklist Partial Credit](https://arxiv.org/abs/2608.27487v1)

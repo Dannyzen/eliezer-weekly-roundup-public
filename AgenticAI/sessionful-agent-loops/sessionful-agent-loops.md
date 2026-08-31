@@ -143,3 +143,23 @@ Evidence caveat: no paper-owned public implementation repository resolved in thi
 
 Source:
 - [When History Lies](https://arxiv.org/abs/2608.06057v1)
+
+
+## August 31 update: evaluate the controller separately from the worker
+
+LoopArena isolates runtime guidance by fixing the coding Worker and evaluating a separate Controller through typed Loop Contracts. Its three-tier design separates cheap contract selection, condensed loop control, and full-task outcomes. Type II preserves Controller ordering at substantially lower estimated cost, but fixed control improves the condensed slice without improving the full-task anchor.
+
+Practical lesson:
+- preserve one Evidence Packet per worker round;
+- constrain the controller to assignment, verification, or stop contracts;
+- keep worker and evaluator identity fixed across controller comparisons;
+- use cheap fixtures for iteration, then anchor claims on full tasks;
+- record infrastructure failure separately from model outcome.
+
+Artifact status: contents inspected read-only. The public Apache-2.0 repository contains benchmark packages, protocol documentation, tests, and canonical result files, but no GitHub Release object. This cron did not execute it.
+
+Implementability score: 0.86
+
+Sources:
+- [LoopArena paper](https://arxiv.org/abs/2608.28281v1)
+- [LoopArena repository](https://github.com/AMAP-ML/LoopArena)

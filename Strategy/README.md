@@ -2,26 +2,26 @@
 
 This index tracks the most recent structured strategy research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: 2026-08-30
+## Latest Structured Update: 2026-08-31
 
-### Separate persona drift from audited execution
+### Put tool authority behind an external reference monitor
 
-Summary: Persona-Execution Separation puts mutable tone, instructions, and self-presentation in a permissive domain while execution identity, credentials, state, and audit remain stable. A typed contract bridge returns status summaries and gates data-body egress.
+Summary: Recognition Without Enforcement shows that models can recognize forged authority yet still emit the conflicting tool call in reproducible configurations. External authenticated routing and capability-gated execution reject all tested forged, tampered, replayed, and unsigned requests.
 
-Analysis: [daily strategy](2026-08-30/sovereignty.md#separate-persona-drift-from-audited-execution)
-Core source: [paper](https://arxiv.org/abs/2608.27427v1)
-Tools and methodologies worth exploring now: separate persona and execution configuration, stable service identity, typed bridge requests, summary-versus-body egress classes, DLP gates, persona-versioned execution receipts
-Implementability score: 0.61
+Analysis: [daily strategy](2026-08-31/sovereignty.md#put-tool-authority-behind-an-external-reference-monitor)
+Core source: [paper](https://arxiv.org/abs/2608.28502v1)
+Tools and methodologies worth exploring now: authenticated source routing, capability-bound requests, exact argument and sequence validation, replay protection, freshness windows, clock-skew fixtures, external reference monitors
+Implementability score: 0.72
 
-### Secure persistent state with plan-first information-flow control
+### Admit self-modification only with a verified recovery witness
 
-Summary: SPA commits to a declarative plan before reading untrusted outputs, carries confidentiality and integrity labels through execution and storage, and exposes semantic metadata instead of raw payloads to later planners. It reports 0 percent and 0.2 percent attack success on single- and multi-query benchmarks.
+Summary: EvoUndo finds 197 capability-improving but unrecoverable mutations among 600 one-shot self-evolution tasks. Exact state addressing and a richer recovery calculus recover most oracle-defined failures, while conventional repair under the original representation recovers none.
 
-Analysis: [daily strategy](2026-08-30/sovereignty.md#secure-persistent-state-with-plan-first-information-flow-control)
-Core source: [paper](https://arxiv.org/abs/2608.27234v1)
-Tools and methodologies worth exploring now: plan-first DSLs, dual-lattice IFC, label-preserving artifacts, metadata/value separation, delayed-attack fixtures, security-versus-reuse measurement
-Implementability score: 0.68
+Analysis: [daily strategy](2026-08-31/sovereignty.md#admit-self-modification-only-with-a-verified-recovery-witness)
+Core source: [paper](https://arxiv.org/abs/2608.28363v1)
+Tools and methodologies worth exploring now: mutation manifests, stable state identities, inverse semantics, counterfactual rollback fixtures, recovery witnesses, independent recovery verification, fail-closed admission
+Implementability score: 0.63
 
 ## Current implication
 
-Sovereign agents need separate trust domains for mutable presentation and audited work, then label-preserving state between queries. Context may describe a task or artifact, but it does not acquire authority to alter execution identity, reveal data bodies, or drive higher-integrity effects.
+Models may propose instructions and self-modifications, but they should not own authority or rollback proof. Tool execution belongs behind an external reference monitor, and every admitted mutation should carry an independently verified recovery witness.

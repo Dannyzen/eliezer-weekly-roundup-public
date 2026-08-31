@@ -1050,3 +1050,22 @@ Practical lesson:
 Implementability score: 0.97
 
 Source: [Claude Code v2.1.251](https://github.com/anthropics/claude-code/releases/tag/v2.1.251)
+
+
+## August 31 update: recognition is not enforcement
+
+Recognition Without Enforcement shows that a model can decode or verbalize forged authority and still emit the conflicting tool call in specific prompt-model configurations. The failure rate is low on average but concentrated, reproducible, and deployment-window dependent. External authenticated routing plus capability-gated execution rejects all tested forged, tampered, replayed, and unsigned requests.
+
+Practical lesson:
+- treat model arbitration as telemetry, not authorization;
+- authenticate authority-bearing requests outside the model;
+- validate exact tool, arguments, sequence, freshness, and replay state;
+- bind monitor decision, effect, and receipt in one trace;
+- red-team the monitor implementation separately from the model.
+
+Evidence caveat: the work is single-author and paper-authored, and no public implementation artifact was exposed. Production use requires cryptographic and key-lifecycle review.
+
+Implementability score: 0.72
+
+Source:
+- [Recognition Without Enforcement](https://arxiv.org/abs/2608.28502v1)

@@ -2,26 +2,26 @@
 
 This index tracks the most recent structured implementation research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: 2026-08-30
+## Latest Structured Update: 2026-08-31
 
-### Verify harness changes on behavior-relevant evidence
+### Evaluate the controller separately from the worker
 
-Summary: HarnessLens derives a candidate-specific verification set from trajectories, affected components, intended behavior, and regression risk. Across three harnesses and four benchmarks, it reports 7.6 to 13.6 percent average held-out improvement with less evaluation budget than fixed-set baselines.
+Summary: LoopArena fixes the coding Worker and evaluates a separate runtime Controller through typed Loop Contracts across 90 contract-selection questions, 27 condensed tasks, and 27 full tasks. The best full-task Strict Success Rate is 24.69 percent.
 
-Analysis: [daily analysis](2026-08-30/reasoning.md#verify-harness-changes-on-behavior-relevant-evidence)
-Core sources: [paper](https://arxiv.org/abs/2608.27311v1), [repository](https://github.com/jhxu5214/HarnessLens)
-Tools and methodologies worth exploring now: machine-readable change manifests, trajectory-derived impact sets, paired verification, attributable-evidence gates, bounded evaluation budgets, regression-risk task selection
-Implementability score: 0.78
+Analysis: [daily analysis](2026-08-31/reasoning.md#evaluate-the-controller-separately-from-the-worker)
+Core sources: [paper](https://arxiv.org/abs/2608.28281v1), [repository](https://github.com/AMAP-ML/LoopArena)
+Tools and methodologies worth exploring now: typed Loop Contracts, fixed-worker controller comparisons, Evidence Packets, paired starting states, cheap contract-selection fixtures, full-task anchors, terminal evaluator receipts
+Implementability score: 0.86
 
-### Treat permission checks as resource-identity checks
+### Score trajectory evidence, not only terminal success
 
-Summary: Claude Code v2.1.251 closes symlink-swap, path-traversal, pre-permission-read, browser-permission, sandbox-output, and security-sensitive configuration gaps. It also adds model-switch hooks and prompt-cache telemetry, making check-and-use identity and runtime changes observable.
+Summary: GCPC instantiates human-governed task checklists, judges only cited execution evidence, abstains when evidence is absent, and applies the official verifier in a separate scripted step. It exposes improvement and regression hidden inside unchanged pass/fail outcomes.
 
-Analysis: [daily analysis](2026-08-30/reasoning.md#treat-permission-checks-as-resource-identity-checks)
-Core source: [Claude Code v2.1.251](https://github.com/anthropics/claude-code/releases/tag/v2.1.251)
-Tools and methodologies worth exploring now: check-and-use identity fixtures, model-switch hooks, managed-setting approval gates, prompt-cache telemetry, symlink and path-traversal regression tests, unified browser and file approval planes
-Implementability score: 0.97
+Analysis: [daily analysis](2026-08-31/reasoning.md#score-trajectory-evidence-not-only-terminal-success)
+Core source: [paper](https://arxiv.org/abs/2608.27487v1)
+Tools and methodologies worth exploring now: reusable human rules, task-specific grounded checklists, evidence-span scoring, abstention, matched with-skill and without-skill trajectories, deterministic verifier overrides
+Implementability score: 0.79
 
 ## Current implication
 
-Harness change is an authority event, not a text edit. The runtime should name the modified component, derive the behaviors it can affect, run paired evidence, and reject unproven changes. Permission decisions must bind to the resource, model, route, and configuration actually used, not merely the name or state observed before execution.
+Long-running agent work needs a separately testable controller and an evidence-bearing progress measure below terminal success. Cheap fixtures can guide controller selection, but full-task outcomes and deterministic evaluator receipts remain the acceptance anchor.

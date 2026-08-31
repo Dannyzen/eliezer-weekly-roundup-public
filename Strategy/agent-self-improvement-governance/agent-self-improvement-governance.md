@@ -128,3 +128,22 @@ Durable analysis: [Skill Admission Control](../skill-admission-control/skill-adm
 
 Source:
 - [TRUSS](https://arxiv.org/abs/2608.17588v1)
+
+
+## August 31 update: require a recovery witness for every admitted mutation
+
+EvoUndo finds that capability improvement and reversibility are separate properties. Among 600 one-shot self-evolution tasks, 197 improving mutations fail recovery verification. Exact state grounding and a richer recovery calculus recover most oracle-defined failures, while conventional repair under the original representation recovers none.
+
+Practical lesson:
+- generate the mutation and its recovery witness together;
+- identify affected state with stable addresses;
+- test inverses after bounded counterfactual state drift;
+- distinguish grounding failure from missing recovery primitives;
+- reject mutations whose recovery cannot be independently verified.
+
+Evidence caveat: no paper-owned EvoUndo implementation repository was exposed. The cited Cordis repository is background calculus, not the evaluated system. The study uses bounded tasks and two model backbones.
+
+Implementability score: 0.63
+
+Source:
+- [EvoUndo](https://arxiv.org/abs/2608.28363v1)

@@ -6,9 +6,9 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily research, 2026-08-30: [bind change, context, and authority to explicit identities](roundups/2026-08-30.md)
-- AgenticAI daily analysis: [2026-08-30](AgenticAI/2026-08-30/reasoning.md)
-- Strategy daily analysis: [2026-08-30](Strategy/2026-08-30/sovereignty.md)
+- Daily research, 2026-08-31: [separate probabilistic guidance from deterministic control](roundups/2026-08-31.md)
+- AgenticAI daily analysis: [2026-08-31](AgenticAI/2026-08-31/reasoning.md)
+- Strategy daily analysis: [2026-08-31](Strategy/2026-08-31/sovereignty.md)
 - Friday synthesis, 2026-08-28: [preserve evidence and authority across transformation](roundups/2026-08-28.md)
 - Deep Dive Wednesday, 2026-08-26: [operational state preservation](Strategy/operational-state-preservation/operational-state-preservation.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
@@ -16,8 +16,12 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Current thesis
 
-Reliable agents bind every change, context object, and effect to an explicit identity, then preserve that identity through planning, execution, storage, and audit. A governable runtime should:
+Reliable agents separate probabilistic guidance from deterministic control. Models may optimize the next step, but evidence, authority, recovery, and acceptance stay bound to explicit runtime objects. A governable runtime should:
 
+- evaluate runtime controllers separately from fixed workers across cheap fixtures and full-task anchors;
+- score evidence-bearing trajectory progress while preserving terminal verifiers as hard gates;
+- put tool authority behind authenticated routing and external capability enforcement;
+- require exact state identities and verified recovery witnesses for self-modification;
 - verify each harness change on behavior-relevant tasks with paired and attributable evidence;
 - bind permission checks to the exact resource, model, route, and configuration used;
 - separate mutable persona from stable execution identity, credentials, state, and audit;

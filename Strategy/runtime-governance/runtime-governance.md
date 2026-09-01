@@ -1069,3 +1069,11 @@ Implementability score: 0.72
 
 Source:
 - [Recognition Without Enforcement](https://arxiv.org/abs/2608.28502v1)
+
+## September 1, 2026 update: continuity is an explicit runtime contract
+
+Hermes Agent v0.21.0 adds cron memory and `continuity=true`, durable notepads, canonical bot handoffs, live subagent control, MCP health visibility, and protected writes to standing instructions. These surfaces make lifecycle state inspectable, but carried state still needs provenance, age, scope, and binding-force labels. Persistence should be opt-in per job contract, not ambient authority.
+
+Implementability score: 0.95
+
+Source: [Hermes Agent v0.21.0](https://github.com/NousResearch/hermes-agent/releases/tag/v2026.8.31)

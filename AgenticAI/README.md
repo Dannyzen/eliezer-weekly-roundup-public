@@ -2,26 +2,35 @@
 
 This index tracks the most recent structured implementation research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: 2026-08-31
+## Latest Structured Update: 2026-09-01
 
-### Evaluate the controller separately from the worker
+### Measure working memory at four distinct layers
 
-Summary: LoopArena fixes the coding Worker and evaluates a separate runtime Controller through typed Loop Contracts across 90 contract-selection questions, 27 condensed tasks, and 27 full tasks. The best full-task Strict Success Rate is 24.69 percent.
+Summary: A 55-trajectory coding-agent study separates stored state, delivered context, management work, and task outcome. It shows that equal token budgets can hide different delivered context, serving limits, and management costs.
 
-Analysis: [daily analysis](2026-08-31/reasoning.md#evaluate-the-controller-separately-from-the-worker)
-Core sources: [paper](https://arxiv.org/abs/2608.28281v1), [repository](https://github.com/AMAP-ML/LoopArena)
-Tools and methodologies worth exploring now: typed Loop Contracts, fixed-worker controller comparisons, Evidence Packets, paired starting states, cheap contract-selection fixtures, full-task anchors, terminal evaluator receipts
-Implementability score: 0.86
+Analysis: [daily analysis](2026-09-01/reasoning.md#measure-working-memory-at-four-distinct-layers)
+Core source: [paper](https://arxiv.org/abs/2608.31057v1)
+Tools and methodologies worth exploring now: typed memory objects, delivery accounting, management-cost accounting, held-out replay, recoverable pointers, task-level outcome gates
+Implementability score: 0.68
 
-### Score trajectory evidence, not only terminal success
+### Make hidden dependency breakage a first-class coding-agent gate
 
-Summary: GCPC instantiates human-governed task checklists, judges only cited execution evidence, abstains when evidence is absent, and applies the official verifier in a separate scripted step. It exposes improvement and regression hidden inside unchanged pass/fail outcomes.
+Summary: DEPBENCH isolates 203 real dependency-upgrade repair tasks with a four-state causal oracle. The best completed agent configuration solved 104 tasks, or 51.2 percent, with incomplete repository-wide migration as the dominant failure.
 
-Analysis: [daily analysis](2026-08-31/reasoning.md#score-trajectory-evidence-not-only-terminal-success)
-Core source: [paper](https://arxiv.org/abs/2608.27487v1)
-Tools and methodologies worth exploring now: reusable human rules, task-specific grounded checklists, evidence-span scoring, abstention, matched with-skill and without-skill trajectories, deterministic verifier overrides
-Implementability score: 0.79
+Analysis: [daily analysis](2026-09-01/reasoning.md#make-hidden-dependency-breakage-a-first-class-coding-agent-gate)
+Core source: [paper](https://arxiv.org/abs/2608.30300v1)
+Tools and methodologies worth exploring now: Dependabot and Renovate task mining, patch decomposition, held-out tests, four-state causal oracles, Harbor, repository-wide migration failure classes
+Implementability score: 0.62
+
+### Ship runtime continuity as explicit, inspectable state
+
+Summary: Hermes Agent v0.21.0 turns cron continuity, durable notepads, live subagent steering, bot handoffs, MCP health, instruction protection, compaction recall, and repository-native verification into explicit runtime surfaces.
+
+Analysis: [daily analysis](2026-09-01/reasoning.md#ship-runtime-continuity-as-explicit-inspectable-state)
+Core source: [release](https://github.com/NousResearch/hermes-agent/releases/tag/v2026.8.31)
+Tools and methodologies worth exploring now: `continuity=true`, monitor-mode suppression, live delegation control, protected instruction writes, compaction recall evaluation, verify-command detection
+Implementability score: 0.95
 
 ## Current implication
 
-Long-running agent work needs a separately testable controller and an evidence-bearing progress measure below terminal success. Cheap fixtures can guide controller selection, but full-task outcomes and deterministic evaluator receipts remain the acceptance anchor.
+Memory, maintenance, and orchestration should be evaluated through typed runtime objects and executable gates. Nominal token budgets, plausible patches, and successful process startup are not durable proof.

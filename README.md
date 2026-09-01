@@ -6,9 +6,9 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily research, 2026-08-31: [separate probabilistic guidance from deterministic control](roundups/2026-08-31.md)
-- AgenticAI daily analysis: [2026-08-31](AgenticAI/2026-08-31/reasoning.md)
-- Strategy daily analysis: [2026-08-31](Strategy/2026-08-31/sovereignty.md)
+- Daily research, 2026-09-01: [make runtime state typed and measurable](roundups/2026-09-01.md)
+- AgenticAI daily analysis: [2026-09-01](AgenticAI/2026-09-01/reasoning.md)
+- Strategy daily analysis: [2026-09-01](Strategy/2026-09-01/sovereignty.md)
 - Friday synthesis, 2026-08-28: [preserve evidence and authority across transformation](roundups/2026-08-28.md)
 - Deep Dive Wednesday, 2026-08-26: [operational state preservation](Strategy/operational-state-preservation/operational-state-preservation.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
@@ -16,8 +16,12 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Current thesis
 
-Reliable agents separate probabilistic guidance from deterministic control. Models may optimize the next step, but evidence, authority, recovery, and acceptance stay bound to explicit runtime objects. A governable runtime should:
+Reliable agents separate probabilistic guidance from deterministic control. Models may optimize the next step, but memory, execution, continuity, evidence, authority, recovery, and acceptance stay bound to explicit runtime objects. A governable runtime should:
 
+- measure memory as stored state, delivered context, management work, and task outcome;
+- evaluate dependency upgrades with causal hidden-breakage oracles and repository-wide checks;
+- treat user invocation as an activation plan over untrusted repository content;
+- carry recurring state only through explicit continuity contracts with provenance and expiry;
 - evaluate runtime controllers separately from fixed workers across cheap fixtures and full-task anchors;
 - score evidence-bearing trajectory progress while preserving terminal verifiers as hard gates;
 - put tool authority behind authenticated routing and external capability enforcement;

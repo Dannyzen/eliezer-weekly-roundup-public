@@ -993,3 +993,11 @@ The durable pattern is a memory control loop: maintain current obligations, retr
 Sources: [paper](https://arxiv.org/abs/2608.24876v1), [repository](https://github.com/Gen-Verse/Recuris)
 
 Implementability score: 0.79
+
+## September 1, 2026 update: measure four layers, not one token budget
+
+"Measure Before You Manage" profiles 55 coding-agent trajectories and separates working-memory evaluation into stored state, delivered context, management work, and task outcome. The durable implementation lesson is to type instructions, artifacts, tool outputs, and generated state, then account for what the model actually receives and what the memory controller spends. Calibration-only gains did not reliably transfer to eight held-out tasks, so memory policies need held-out replay and task-level acceptance.
+
+Implementability score: 0.68
+
+Source: [Measure Before You Manage](https://arxiv.org/abs/2608.31057v1)

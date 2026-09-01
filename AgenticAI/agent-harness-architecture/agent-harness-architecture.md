@@ -1269,3 +1269,11 @@ Practical lesson:
 Implementability score: 0.78
 
 Sources: [paper](https://arxiv.org/abs/2608.27311v1), [repository](https://github.com/jhxu5214/HarnessLens)
+
+## September 1, 2026 update: dependency upgrades need causal repair oracles
+
+DEPBENCH decomposes 203 real dependency-upgrade pull requests into manifest changes, developer repairs, and held-out tests, then uses a four-state oracle to prove upgrade causality and repair necessity. The best completed agent configuration solved 104 tasks, or 51.2 percent. Coding-agent release gates should add dependency-upgrade episodes with hidden repository-wide checks instead of treating a green local patch as sufficient.
+
+Implementability score: 0.62
+
+Source: [Update from Hell](https://arxiv.org/abs/2608.30300v1)

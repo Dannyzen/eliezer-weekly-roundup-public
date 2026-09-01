@@ -2,26 +2,26 @@
 
 This index tracks the most recent structured strategy research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: 2026-08-31
+## Latest Structured Update: 2026-09-01
 
-### Put tool authority behind an external reference monitor
+### Treat the user invocation as part of the repository-poisoning threat model
 
-Summary: Recognition Without Enforcement shows that models can recognize forged authority yet still emit the conflicting tool call in reproducible configurations. External authenticated routing and capability-gated execution reject all tested forged, tampered, replayed, and unsigned requests.
+Summary: CIPR evaluates 1,920 poisoned-repository instances across 20 repositories. Task type creates up to a 4.5-fold attack-success difference, and test execution is a silent high-risk surface because agents treat injected infrastructure as something to run rather than audit.
 
-Analysis: [daily strategy](2026-08-31/sovereignty.md#put-tool-authority-behind-an-external-reference-monitor)
-Core source: [paper](https://arxiv.org/abs/2608.28502v1)
-Tools and methodologies worth exploring now: authenticated source routing, capability-bound requests, exact argument and sequence validation, replay protection, freshness windows, clock-skew fixtures, external reference monitors
-Implementability score: 0.72
+Analysis: [daily strategy](2026-09-01/sovereignty.md#treat-the-user-invocation-as-part-of-the-repository-poisoning-threat-model)
+Core sources: [paper](https://arxiv.org/abs/2608.30686v1), [repository](https://github.com/StarConnor/CIPR)
+Tools and methodologies worth exploring now: task-risk classification, test and build preflight, effect prevention separate from alerting, invocation provenance, repository provenance, skill and permission traces
+Implementability score: 0.84
 
-### Admit self-modification only with a verified recovery witness
+### Make continuity durable without making it ambient authority
 
-Summary: EvoUndo finds 197 capability-improving but unrecoverable mutations among 600 one-shot self-evolution tasks. Exact state addressing and a richer recovery calculus recover most oracle-defined failures, while conventional repair under the original representation recovers none.
+Summary: Hermes Agent v0.21.0 makes recurring memory, notepads, bot handoffs, delegation control, and instruction protection durable. The governance requirement is to label carried state by provenance, age, scope, and binding force before it can affect a later run.
 
-Analysis: [daily strategy](2026-08-31/sovereignty.md#admit-self-modification-only-with-a-verified-recovery-witness)
-Core source: [paper](https://arxiv.org/abs/2608.28363v1)
-Tools and methodologies worth exploring now: mutation manifests, stable state identities, inverse semantics, counterfactual rollback fixtures, recovery witnesses, independent recovery verification, fail-closed admission
-Implementability score: 0.63
+Analysis: [daily strategy](2026-09-01/sovereignty.md#make-continuity-durable-without-making-it-ambient-authority)
+Core source: [release](https://github.com/NousResearch/hermes-agent/releases/tag/v2026.8.31)
+Tools and methodologies worth exploring now: explicit continuity contracts, bounded recurring state, protected instruction writes, state provenance and expiry, inspectable steer and stop events
+Implementability score: 0.95
 
 ## Current implication
 
-Models may propose instructions and self-modifications, but they should not own authority or rollback proof. Tool execution belongs behind an external reference monitor, and every admitted mutation should carry an independently verified recovery witness.
+Continuity and user invocation are authority surfaces. Persistent state and trusted intent may inform an agent, but exact execution rights still belong to external policy, preflight, and effect gates.

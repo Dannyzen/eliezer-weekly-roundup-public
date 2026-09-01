@@ -379,3 +379,13 @@ Practical lesson:
 Implementability score: 0.91
 
 Source: [The Framing Gap](https://arxiv.org/abs/2608.27092v1)
+
+## September 1, 2026 update: invocation selects the attack surface
+
+CIPR shows that repository-poisoning risk changes with task type, prompt expression, and attached skills or rules. Across 1,920 instances, task type creates up to a 4.5-fold attack-success difference, and test execution forms a silent surface with high attack success and low alerting. Treat the user request as an activation plan over untrusted repository objects, then preflight and constrain the exact files and commands before execution.
+
+Implementability score: 0.84
+
+Sources:
+- [Beyond the Payload](https://arxiv.org/abs/2608.30686v1)
+- [CIPR](https://github.com/StarConnor/CIPR)

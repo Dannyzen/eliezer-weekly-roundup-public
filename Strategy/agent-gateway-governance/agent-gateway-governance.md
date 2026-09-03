@@ -1040,3 +1040,21 @@ Sources:
 - [Rate limits on AgentCore gateway](https://aws.amazon.com/blogs/machine-learning/configure-rate-limits-for-ai-traffic-on-agentcore-gateway/)
 - [Behavior and cost controls](https://aws.amazon.com/blogs/machine-learning/control-agent-behaviors-and-cost-beyond-a-single-action-new-capabilities-in-amazon-bedrock-agentcore/)
 - [Agent Skills for Automated Reasoning policies](https://aws.amazon.com/blogs/machine-learning/agent-skills-for-automated-reasoning-policies-in-amazon-bedrock/)
+
+## September 3, 2026 update: OAuth is not execution-time trust
+
+ACLE-MCP names the post-authorization execution trust gap for remote MCP. A short-lived, sender-constrained capability lease binds workload identity, freshness, operation, object bounds, downstream constraints, and receipts. A provider-side Execution Gate consumes the lease immediately before protected tool logic. In the local simulation, OAuth-only and attest-on-connect block none of six execution-misuse families; full ACLE-MCP blocks the evaluated set at +25.7% p95 latency (12.20 ms to 15.34 ms).
+
+Practical lesson:
+
+- split connect-time authorization from invocation-time admission
+- mint a lease per protected call
+- consume it in a non-bypassable gate
+- test substitution, stale appraisal, sender reuse, and undeclared downstream
+- do not claim general agent capability is unaffected; four benign families are too narrow
+
+No public implementation repository resolved.
+
+Implementability score: 0.48
+
+Source: [ACLE-MCP](https://arxiv.org/abs/2609.02690v1)

@@ -2,26 +2,38 @@
 
 This index tracks the most recent structured strategy research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: 2026-09-01
+## Latest Structured Update: 2026-09-03
 
-### Treat the user invocation as part of the repository-poisoning threat model
+### Treat reusable skills as covert policy objects
 
-Summary: CIPR evaluates 1,920 poisoned-repository instances across 20 repositories. Task type creates up to a 4.5-fold attack-success difference, and test execution is a silent high-risk surface because agents treat injected infrastructure as something to run rather than audit.
+Summary: SkillShift preserves declared functionality and valid outputs while steering shopping and dependency choices. PSR rises to 81.33% and 63.33% at 100% valid-output rate. Static scanners that catch direct injection do not distinguish SkillShift Attack skills from paired Clean skills. Audit skills as frozen policies, not only as packages.
 
-Analysis: [daily strategy](2026-09-01/sovereignty.md#treat-the-user-invocation-as-part-of-the-repository-poisoning-threat-model)
-Core sources: [paper](https://arxiv.org/abs/2608.30686v1), [repository](https://github.com/StarConnor/CIPR)
-Tools and methodologies worth exploring now: task-risk classification, test and build preflight, effect prevention separate from alerting, invocation provenance, repository provenance, skill and permission traces
-Implementability score: 0.84
+Analysis: [daily strategy](2026-09-03/sovereignty.md#treat-reusable-skills-as-covert-policy-objects)
+Core source: [paper](https://arxiv.org/abs/2609.02564v1)
+Tools and methodologies worth exploring now: Skill Policy Integrity fixtures, frozen candidate sets, PSR and valid-output metrics, direct-injection positive controls, scanner-plus-behavior release gates
+Implementability score: 0.72
 
-### Make continuity durable without making it ambient authority
+### Bind remote tool calls to a fresh workload lease, not OAuth alone
 
-Summary: Hermes Agent v0.21.0 makes recurring memory, notepads, bot handoffs, delegation control, and instruction protection durable. The governance requirement is to label carried state by provenance, age, scope, and binding force before it can affect a later run.
+Summary: ACLE-MCP names the post-authorization execution trust gap. A short-lived, sender-constrained capability lease is consumed by an Execution Gate before protected tool logic. In the local simulation, OAuth-only and connect-time attestation block none of six misuse families; full ACLE-MCP blocks the evaluated set at +25.7% p95 latency.
 
-Analysis: [daily strategy](2026-09-01/sovereignty.md#make-continuity-durable-without-making-it-ambient-authority)
-Core source: [release](https://github.com/NousResearch/hermes-agent/releases/tag/v2026.8.31)
-Tools and methodologies worth exploring now: explicit continuity contracts, bounded recurring state, protected instruction writes, state provenance and expiry, inspectable steer and stop events
-Implementability score: 0.95
+Analysis: [daily strategy](2026-09-03/sovereignty.md#bind-remote-tool-calls-to-a-fresh-workload-lease-not-oauth-alone)
+Core source: [paper](https://arxiv.org/abs/2609.02690v1)
+Tools and methodologies worth exploring now: invocation-scoped leases, workload-id and freshness binding, non-bypassable execution gates, substitution and stale-appraisal fixtures
+Implementability score: 0.48
 
 ## Current implication
 
-Continuity and user invocation are authority surfaces. Persistent state and trusted intent may inform an agent, but exact execution rights still belong to external policy, preflight, and effect gates.
+Skill admission, skill behavior, and remote execution are three different authority decisions. A package can pass install review and still steer later. A recommendation can stay schema-valid and still be a covert policy. A tool endpoint can stay OAuth-valid and still be the wrong workload.
+
+## Previous structured update: 2026-09-02
+
+### Treat loaded skills as delayed-authority objects
+
+Summary: Defense-as-Skill implements the runtime guard as an installable skill. After a package is already loaded, SkillSonar checks proposed actions against the current user task and returns allow, replan, or confirmation. On Claude Code / GLM-5, N = 10, in-distribution attack success falls from 0.482 to 0.104 and out-of-distribution attack success from 0.606 to 0.115, with more utility than AcceptEdits. The guard is Markdown, so hard brokers still own effects.
+
+Analysis: [daily strategy](2026-09-02/sovereignty.md#treat-loaded-skills-as-delayed-authority-objects)
+Deep dive: [Defense as Skill](defense-as-skill/defense-as-skill.md)
+Core source: [paper](https://arxiv.org/abs/2609.01487v1)
+Tools and methodologies worth exploring now: dedicated guard skill, explicit consult-before-action, task-boundary object, allow/replan/confirm decisions, delayed-harm fixtures, allowlist-regression fixtures, sandbox and permission brokers as last word
+Implementability score: 0.58

@@ -1277,3 +1277,22 @@ DEPBENCH decomposes 203 real dependency-upgrade pull requests into manifest chan
 Implementability score: 0.62
 
 Source: [Update from Hell](https://arxiv.org/abs/2608.30300v1)
+
+## September 3, 2026 update: evolve harness components from trajectories, then teach the policy
+
+SafeEvolve converts on-policy traces into bounded prompt and SkillBank edits, accepts them only after safety and utility gates, then uses harness-use SFT plus GRPO. On Qwen3.5-4B, AgentDojo ASR falls from 2.37% to 0.79% while clean utility rises from 59.79% to 61.86%. Model-only RL can worsen utility under attack. Evolved skills beat evolved prompts for multi-step injection.
+
+Practical lesson:
+
+- store harness components as named, diffable objects
+- accept an edit only after paired safety and utility scores
+- keep evolution logs as JSONL
+- do not unsupervised-evolve from live attacks
+- defer the full RL loop unless policy training is already in scope
+
+Implementability score: 0.50
+
+Sources:
+
+- [SafeEvolve](https://arxiv.org/abs/2609.02786v1)
+- [MaoPopovich/SafeEvolve](https://github.com/MaoPopovich/SafeEvolve)

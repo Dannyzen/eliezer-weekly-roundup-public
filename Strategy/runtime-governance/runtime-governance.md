@@ -1077,3 +1077,16 @@ Hermes Agent v0.21.0 adds cron memory and `continuity=true`, durable notepads, c
 Implementability score: 0.95
 
 Source: [Hermes Agent v0.21.0](https://github.com/NousResearch/hermes-agent/releases/tag/v2026.8.31)
+
+## September 3, 2026 update: scanners are telemetry until outcome fixtures run
+
+SkillShift's frozen Attack skills transfer across backends and keep 100% valid outputs while lifting shopping PSR to 81.33% and dependency PSR to 63.33%. Six evaluated scanners fail the stealth pair and still catch Direct-Skill Injection. Runtime governance cannot treat SkillSpector, Snyk Agent Scan, or similar tools as authorization.
+
+Pair them with selection-lift fixtures. Keep hard brokers for effects. Add invocation-time leases for remote tools (ACLE-MCP) so OAuth is not the last word either.
+
+Implementability scores: 0.72 (skill-policy fixtures), 0.48 (capability leases)
+
+Sources:
+
+- [A Finger on the Scale](https://arxiv.org/abs/2609.02564v1)
+- [ACLE-MCP](https://arxiv.org/abs/2609.02690v1)

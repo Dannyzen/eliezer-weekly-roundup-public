@@ -1,6 +1,6 @@
 # Skill Admission Control
 
-Last updated: 2026-08-19
+Last updated: 2026-09-02
 
 Primary layer: Strategy / runtime governance
 
@@ -167,3 +167,21 @@ Sources:
 - [MaliciousSkillBench](https://arxiv.org/abs/2608.19901v1)
 - [protectskills/MaliciousSkillBench](https://github.com/protectskills/MaliciousSkillBench)
 - [MaliciousSkillBench dataset](https://huggingface.co/datasets/ProtectSkills/MaliciousSkillBench)
+
+## September 2 update: admission is not the last gate
+
+Defense-as-Skill shows that a skill can pass install review and still become an attack after a later user task makes an unsafe action look useful. Pre-install scanners, package digests, and safety paragraphs do not see that moment.
+
+The complementary control is a dedicated runtime guard skill with explicit consult-before-action responsibility. It routes proposed effects to allow, replan, or confirmation against the current user task, then leaves sandboxes and permission brokers as the last word. On Claude Code / GLM-5, N = 10, that pattern cut in-distribution attack success from 0.482 to 0.104 while keeping more utility than AcceptEdits.
+
+Practical lesson:
+- keep TRUSS-style digest, shadow execution, and preservation constraints at install;
+- add a task-conditioned guard after load;
+- do not treat capability-skill discovery as sufficient for safety skills;
+- add delayed-harm and allowlist-regression fixtures.
+
+No public SkillSonar repository resolved. Implement from the paper's control pattern, not from an unverified artifact.
+
+Sources:
+- [Defense-as-Skill](https://arxiv.org/abs/2609.01487v1)
+- [Defense as Skill deep dive](../defense-as-skill/defense-as-skill.md)

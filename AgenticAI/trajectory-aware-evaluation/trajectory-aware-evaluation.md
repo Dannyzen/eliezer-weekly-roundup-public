@@ -1148,3 +1148,23 @@ Implementability score: 0.79
 
 Source:
 - [Grounded Checklist Partial Credit](https://arxiv.org/abs/2608.27487v1)
+
+## September 3, 2026 update: halt eval once the prefix already predicts the outcome
+
+EarlyEval trains separate success and failure predictors over trajectory prefixes and stops a run when either crosses a calibrated threshold. Across SWE-bench Verified, TerminalBench, and Toolathlon it reports 13% to 26% fewer agent steps and up to 44.1% fewer input tokens and 29.4% fewer output tokens at 89% to 97% prediction accuracy, with about 1 to 2 point resolve-rate movement. On SWE-bench Verified at 95% accuracy it can halt roughly 35% of runs.
+
+Practical lesson:
+
+- keep the official verifier as the hard gate
+- treat early stop as an eval-budget overlay, not production task execution
+- use leave-one-agent-out splits
+- report delta Pass@1 and delta rank beside tokens saved
+
+The public repository is code-only and populated. It excludes trained models and trajectory parquet.
+
+Implementability score: 0.70
+
+Sources:
+
+- [EarlyEval](https://arxiv.org/abs/2609.02783v1)
+- [inphotoo/earlyeval](https://github.com/inphotoo/earlyeval)

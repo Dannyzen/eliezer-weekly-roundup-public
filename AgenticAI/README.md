@@ -2,35 +2,48 @@
 
 This index tracks the most recent structured implementation research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: 2026-09-01
+## Latest Structured Update: 2026-09-03
 
-### Measure working memory at four distinct layers
+### Halt evaluation once the trajectory already predicts the outcome
 
-Summary: A 55-trajectory coding-agent study separates stored state, delivered context, management work, and task outcome. It shows that equal token budgets can hide different delivered context, serving limits, and management costs.
+Summary: EarlyEval trains cheap success and failure predictors over trajectory prefixes and stops a run when either crosses a calibrated threshold. Across SWE-bench Verified, TerminalBench, and Toolathlon it reports 13% to 26% fewer steps and up to 44.1% fewer input tokens, with about 1 to 2 point resolve-rate movement.
 
-Analysis: [daily analysis](2026-09-01/reasoning.md#measure-working-memory-at-four-distinct-layers)
-Core source: [paper](https://arxiv.org/abs/2608.31057v1)
-Tools and methodologies worth exploring now: typed memory objects, delivery accounting, management-cost accounting, held-out replay, recoverable pointers, task-level outcome gates
-Implementability score: 0.68
+Analysis: [daily analysis](2026-09-03/reasoning.md#halt-evaluation-once-the-trajectory-already-predicts-the-outcome)
+Core source: [paper](https://arxiv.org/abs/2609.02783v1)
+Tools and methodologies worth exploring now: prefix-feature logs, leave-one-agent-out LightGBM predictors, thresholded early stop for eval only, delta Pass@1 reporting, [inphotoo/earlyeval](https://github.com/inphotoo/earlyeval)
+Implementability score: 0.70
 
-### Make hidden dependency breakage a first-class coding-agent gate
+### Evolve the harness from trajectories, then train the policy to use it
 
-Summary: DEPBENCH isolates 203 real dependency-upgrade repair tasks with a four-state causal oracle. The best completed agent configuration solved 104 tasks, or 51.2 percent, with incomplete repository-wide migration as the dominant failure.
+Summary: SafeEvolve turns on-policy traces into bounded prompt and SkillBank edits, then uses harness-use SFT plus GRPO. On Qwen3.5-4B, AgentDojo ASR falls from 2.37% to 0.79% while clean utility rises from 59.79% to 61.86%. Take the reversible admission loop, not unsupervised live-attack evolution.
 
-Analysis: [daily analysis](2026-09-01/reasoning.md#make-hidden-dependency-breakage-a-first-class-coding-agent-gate)
-Core source: [paper](https://arxiv.org/abs/2608.30300v1)
-Tools and methodologies worth exploring now: Dependabot and Renovate task mining, patch decomposition, held-out tests, four-state causal oracles, Harbor, repository-wide migration failure classes
-Implementability score: 0.62
+Analysis: [daily analysis](2026-09-03/reasoning.md#evolve-the-harness-from-trajectories-then-train-the-policy-to-use-it)
+Core source: [paper](https://arxiv.org/abs/2609.02786v1)
+Tools and methodologies worth exploring now: named harness components, paired safety and utility gates, JSONL evolution logs, [MaoPopovich/SafeEvolve](https://github.com/MaoPopovich/SafeEvolve)
+Implementability score: 0.50
 
-### Ship runtime continuity as explicit, inspectable state
+### Audit skills as frozen behavioral policies, not just packages
 
-Summary: Hermes Agent v0.21.0 turns cron continuity, durable notepads, live subagent steering, bot handoffs, MCP health, instruction protection, compaction recall, and repository-native verification into explicit runtime surfaces.
+Summary: SkillShift keeps the declared task and a valid output interface while steering shopping and dependency choices. PSR rises to 81.33% and 63.33% at 100% valid-output rate. Scanners that catch direct injection miss the stealth pair.
 
-Analysis: [daily analysis](2026-09-01/reasoning.md#ship-runtime-continuity-as-explicit-inspectable-state)
-Core source: [release](https://github.com/NousResearch/hermes-agent/releases/tag/v2026.8.31)
-Tools and methodologies worth exploring now: `continuity=true`, monitor-mode suppression, live delegation control, protected instruction writes, compaction recall evaluation, verify-command detection
-Implementability score: 0.95
+Analysis: [daily analysis](2026-09-03/reasoning.md#audit-skills-as-frozen-behavioral-policies-not-just-packages)
+Strategy analysis: [daily strategy](../Strategy/2026-09-03/sovereignty.md#treat-reusable-skills-as-covert-policy-objects)
+Core source: [paper](https://arxiv.org/abs/2609.02564v1)
+Tools and methodologies worth exploring now: paired clean/attack fixtures, PSR and valid-output metrics, direct-injection positive controls, scanner-plus-behavior release gates
+Implementability score: 0.72
+
+## Previous structured update: 2026-09-02
+
+### Implement the guard as a first-class skill, then keep the broker
+
+Summary: Skill-augmented agents need a dedicated runtime guard skill with an explicit consult-before-action instruction. Flattening the same policy into a system prompt is weaker. The first Hermes slice is a small action schema plus delayed-harm fixtures, not paper-faithful MCTS.
+
+Analysis: [daily analysis](2026-09-02/reasoning.md#implement-the-guard-as-a-first-class-skill-then-keep-the-broker)
+Deep dive: [Defense as Skill](../Strategy/defense-as-skill/defense-as-skill.md)
+Core source: [paper](https://arxiv.org/abs/2609.01487v1)
+Tools and methodologies worth exploring now: dedicated guard skill, consult-before-action instruction, allow/replan/confirm records, delayed-harm fixtures, permission and sandbox brokers
+Implementability score: 0.58
 
 ## Current implication
 
-Memory, maintenance, and orchestration should be evaluated through typed runtime objects and executable gates. Nominal token budgets, plausible patches, and successful process startup are not durable proof.
+A skill is a policy object, a harness is an auditable artifact, and an eval run is a budgeted trajectory. Scanner verdicts, full-task spend, and ungoverned harness rewrites are not proof.

@@ -249,3 +249,18 @@ Checkpoint, fork, restore, and merge change what an agent will do next without u
 Implementability score: 0.58
 
 Core sources: [paper](https://arxiv.org/abs/2608.22928v1), [repository](https://github.com/eunomia-bpf/agent-check-restore-safety)
+
+## September 3, 2026 update: invocation-time leases close the post-authorization gap
+
+ACLE-MCP shows that OAuth and connect-time attestation leave substitution, stale appraisal, sender reuse, and undeclared downstreams open. A short-lived, sender-constrained capability lease is consumed by a non-bypassable Execution Gate immediately before protected tool logic. In the local simulation, full ACLE-MCP blocks the evaluated families at +25.7% p95 latency.
+
+Practical lesson:
+
+- authorize the connection, then admit the call
+- bind workload id, freshness, operation, and object bounds
+- consume the lease before the handler
+- keep the application workload outside the TCB
+
+Implementability score: 0.48
+
+Source: [ACLE-MCP](https://arxiv.org/abs/2609.02690v1)

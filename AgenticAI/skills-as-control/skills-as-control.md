@@ -1,6 +1,6 @@
 # Skills as Control
 
-Last updated: 2026-08-19
+Last updated: 2026-09-02
 
 Core sources:
 - From Research Question to Scientific Workflow: Leveraging Agentic AI for Science Automation: https://arxiv.org/abs/2604.21910v1
@@ -936,3 +936,33 @@ Boundary-Aware Skill Memory shows that success-only procedure retrieval can incr
 Implementability score: 0.76
 
 Core source: [When Not to Imitate](https://arxiv.org/abs/2608.22339v1)
+
+## September 2 update: loaded skills need a consult-before-action guard
+
+Skills as packages still hold. The new failure is delayed authority. A loaded skill can wait until a later user task makes leaking, approval bypass, or data staging look in-scope. Capability-skill discovery does not invoke a safety skill reliably.
+
+Implementable now: a dedicated guard skill, an explicit consult-before-action instruction, allow/replan/confirm records bound to the current user task, and hard brokers that can still deny. Unsupervised guard evolution from attack rollouts is not the first product loop.
+
+Implementability score: 0.58
+
+Core source: [Defense-as-Skill](https://arxiv.org/abs/2609.01487v1)
+
+Deep dive: [Defense as Skill](../../Strategy/defense-as-skill/defense-as-skill.md)
+
+## September 3, 2026 update: a valid skill can still be a covert policy
+
+SkillShift shows a third-party skill can keep the declared task and a valid output interface while changing induced selection. Shopping PSR rises from 37.33% to 81.33% at 100% valid-output rate. Python dependency PSR reaches 63.33% at 100% VR. Frozen skills transfer across backends without retraining. Scanners that catch Direct-Skill Injection do not distinguish SkillShift Attack skills from paired Clean skills.
+
+Practical lesson:
+
+- define Skill Policy Integrity as declared functionality plus user-authorized objective
+- freeze candidate sets and measure selection lift
+- keep a direct-injection positive control
+- fail closed on unexplained PSR lift even when the schema is valid
+- do not treat a green SkillSpector scan as policy integrity
+
+Implementability score: 0.72
+
+No official SkillShift repository resolved.
+
+Source: [A Finger on the Scale](https://arxiv.org/abs/2609.02564v1)

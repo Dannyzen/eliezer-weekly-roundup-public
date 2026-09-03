@@ -6,11 +6,13 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
+- Daily research, 2026-09-03: [declared interfaces are not authority](roundups/2026-09-03.md)
+- Strategy daily analysis: [2026-09-03](Strategy/2026-09-03/sovereignty.md)
+- AgenticAI daily analysis: [2026-09-03](AgenticAI/2026-09-03/reasoning.md)
+- Deep Dive Wednesday, 2026-09-02: [defense as skill](Strategy/defense-as-skill/defense-as-skill.md)
+- Deep dive roundup: [2026-09-02](roundups/2026-09-02.md)
 - Daily research, 2026-09-01: [make runtime state typed and measurable](roundups/2026-09-01.md)
-- AgenticAI daily analysis: [2026-09-01](AgenticAI/2026-09-01/reasoning.md)
-- Strategy daily analysis: [2026-09-01](Strategy/2026-09-01/sovereignty.md)
 - Friday synthesis, 2026-08-28: [preserve evidence and authority across transformation](roundups/2026-08-28.md)
-- Deep Dive Wednesday, 2026-08-26: [operational state preservation](Strategy/operational-state-preservation/operational-state-preservation.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 
@@ -18,6 +20,8 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 Reliable agents separate probabilistic guidance from deterministic control. Models may optimize the next step, but memory, execution, continuity, evidence, authority, recovery, and acceptance stay bound to explicit runtime objects. A governable runtime should:
 
+- treat loaded skills as delayed-authority objects and consult a task-conditioned guard before sensitive effects;
+- treat reusable skills as covert policy objects and audit them with selection-lift fixtures, not scanner verdicts alone;
 - measure memory as stored state, delivered context, management work, and task outcome;
 - evaluate dependency upgrades with causal hidden-breakage oracles and repository-wide checks;
 - treat user invocation as an activation plan over untrusted repository content;
@@ -25,6 +29,7 @@ Reliable agents separate probabilistic guidance from deterministic control. Mode
 - evaluate runtime controllers separately from fixed workers across cheap fixtures and full-task anchors;
 - score evidence-bearing trajectory progress while preserving terminal verifiers as hard gates;
 - put tool authority behind authenticated routing and external capability enforcement;
+- bind remote tool calls to invocation-scoped workload leases instead of connect-time OAuth alone;
 - require exact state identities and verified recovery witnesses for self-modification;
 - verify each harness change on behavior-relevant tasks with paired and attributable evidence;
 - bind permission checks to the exact resource, model, route, and configuration used;
@@ -74,6 +79,7 @@ The model can propose actions, summaries, skill changes, routes, plans, and expe
 
 ### Strategy
 
+- [Defense as Skill](Strategy/defense-as-skill/defense-as-skill.md)
 - [Evaluation Containment Control Plane](Strategy/evaluation-containment-control-plane/evaluation-containment-control-plane.md)
 - [Stateful Effect Governance](Strategy/stateful-effect-governance/stateful-effect-governance.md)
 - [Skill Admission Control](Strategy/skill-admission-control/skill-admission-control.md)

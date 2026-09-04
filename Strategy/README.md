@@ -2,7 +2,27 @@
 
 This index tracks the most recent structured strategy research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: 2026-09-03
+## Latest Structured Update: 2026-09-04
+
+### Treat lifecycle-hook updates as a privileged control plane, not plugin metadata
+
+Summary: HookPry attacks the update path that harnesses trust blindly. Lifecycle hooks run host-privileged commands as configuration, including when the LLM never observes them. Across seven harnesses and 1,000 runs, verified E2E-ASR is 77.9% macro-average. Hermes is 92.5%. Claude Code is 52.5%.
+
+Analysis: [daily strategy](2026-09-04/sovereignty.md#treat-lifecycle-hook-updates-as-a-privileged-control-plane-not-plugin-metadata)
+Core source: [paper](https://arxiv.org/abs/2609.03884v1)
+Tools and methodologies worth exploring now: hook-command hash pins, plugin-update as new admission, hook-event receipts, hook-only mutation fixtures, hard brokers for host effects
+Implementability score: 0.62
+
+### Fresh memory does not authorize a stale plan
+
+Summary: PlanFence distinguishes replica freshness from lineage validity. Plans cite exact parent record IDs. The executor validates only action-relevant parents, then replans or blocks. In 30 live workflows, freshness-only execution issued the obsolete action every time (0/30). PlanFence completed all 30 without an invalid action.
+
+Analysis: [daily strategy](2026-09-04/sovereignty.md#fresh-memory-does-not-authorize-a-stale-plan)
+Core source: [paper](https://arxiv.org/abs/2609.03340v1)
+Tools and methodologies worth exploring now: parent-ID stamps on plans, action-scoped validation, freshness-only negative fixtures
+Implementability score: 0.58
+
+## Previous structured update: 2026-09-03
 
 ### Treat reusable skills as covert policy objects
 
@@ -24,16 +44,4 @@ Implementability score: 0.48
 
 ## Current implication
 
-Skill admission, skill behavior, and remote execution are three different authority decisions. A package can pass install review and still steer later. A recommendation can stay schema-valid and still be a covert policy. A tool endpoint can stay OAuth-valid and still be the wrong workload.
-
-## Previous structured update: 2026-09-02
-
-### Treat loaded skills as delayed-authority objects
-
-Summary: Defense-as-Skill implements the runtime guard as an installable skill. After a package is already loaded, SkillSonar checks proposed actions against the current user task and returns allow, replan, or confirmation. On Claude Code / GLM-5, N = 10, in-distribution attack success falls from 0.482 to 0.104 and out-of-distribution attack success from 0.606 to 0.115, with more utility than AcceptEdits. The guard is Markdown, so hard brokers still own effects.
-
-Analysis: [daily strategy](2026-09-02/sovereignty.md#treat-loaded-skills-as-delayed-authority-objects)
-Deep dive: [Defense as Skill](defense-as-skill/defense-as-skill.md)
-Core source: [paper](https://arxiv.org/abs/2609.01487v1)
-Tools and methodologies worth exploring now: dedicated guard skill, explicit consult-before-action, task-boundary object, allow/replan/confirm decisions, delayed-harm fixtures, allowlist-regression fixtures, sandbox and permission brokers as last word
-Implementability score: 0.58
+A trusted plugin, a current replica, and a valid OAuth token can all be true while the runtime is already wrong. Hook updates need admission. Plans need parent IDs. Remote tools still need invocation-scoped leases.

@@ -1090,3 +1090,17 @@ Sources:
 
 - [A Finger on the Scale](https://arxiv.org/abs/2609.02564v1)
 - [ACLE-MCP](https://arxiv.org/abs/2609.02690v1)
+
+## September 4, 2026 update: scanners miss hooks that never enter the trace
+
+SkillShift showed that a skill can keep the declared task and still steal the decision. HookPry shows that a lifecycle hook can skip the model entirely. Plugin install review, marketplace sync, and hook mutation are three different authority events.
+
+Pair SkillShift fixtures with hook-update admission. Keep hard brokers for host effects. Keep ACLE-MCP leases for remote tools.
+
+Implementability scores: 0.72 (skill-policy fixtures), 0.48 (capability leases), 0.62 (hook-update admission)
+
+Sources:
+
+- [A Finger on the Scale](https://arxiv.org/abs/2609.02564v1)
+- [ACLE-MCP](https://arxiv.org/abs/2609.02690v1)
+- [A Blind Trust, the Bloody Thrust](https://arxiv.org/abs/2609.03884v1)

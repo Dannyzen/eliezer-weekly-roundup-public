@@ -326,3 +326,22 @@ Practical lesson:
 
 Source:
 - [Authorization Before Context](https://arxiv.org/abs/2608.17148v1)
+
+## September 4, 2026 update: plans need parent IDs, not replica freshness
+
+PlanFence names stale-plan execution. An executor can hold r4 and still run a plan derived from r3. In 30 live workflows with a post-plan revision, freshness-only execution issued the obsolete action every time (0/30). PlanFence completed all 30 without an invalid action.
+
+Practical lesson:
+
+- stamp plans with exact parent record IDs
+- validate only action-relevant parents at the effect gate
+- replan once or block; do not splice a new fact into an old plan
+- keep a freshness-only negative fixture
+
+No public PlanFence repository resolved.
+
+Implementability score: 0.58
+
+Source:
+
+- [Fresh Memory, Stale Plans](https://arxiv.org/abs/2609.03340v1)

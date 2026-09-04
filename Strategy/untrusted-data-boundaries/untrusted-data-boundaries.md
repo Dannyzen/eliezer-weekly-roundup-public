@@ -389,3 +389,22 @@ Implementability score: 0.84
 Sources:
 - [Beyond the Payload](https://arxiv.org/abs/2608.30686v1)
 - [CIPR](https://github.com/StarConnor/CIPR)
+
+## September 4, 2026 update: hook updates are privileged admission
+
+HookPry shows that lifecycle hooks run host-privileged commands as configuration, including when the LLM never observes them. Across seven harnesses and 1,000 runs, verified E2E-ASR is 77.9% macro-average. Hermes is 92.5%. Claude Code is 52.5%. Privilege Escalation averages 93.5%.
+
+Practical lesson:
+
+- pin hook command hashes at admission
+- treat plugin update as a new admission, not a metadata refresh
+- emit hook-event receipts even when the model is out of the loop
+- keep hard brokers for host effects; Markdown guards cannot intercept session-start shell
+
+Do not implement the attack. No official HookPry repository resolved.
+
+Implementability score: 0.62
+
+Source:
+
+- [A Blind Trust, the Bloody Thrust](https://arxiv.org/abs/2609.03884v1)

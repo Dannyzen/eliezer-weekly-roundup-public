@@ -82,6 +82,26 @@ Sources:
 - [eth-medical-ai-lab/agent-gui](https://github.com/eth-medical-ai-lab/agent-gui)
 - [AgentGUI project](https://agent-gui-project.github.io/)
 
+## September 4, 2026 update: the serving adapter is part of the measurement
+
+Interface-Induced Trajectory Censoring shows that a tool-call rate read off the serving stack can be zero while the model emits well-formed calls. On BFCL v4, changing only the adapter moves 0.00 to 0.96 / 0.19. Qwen2.5-Coder 32B emits 80/100 well-formed calls while the hermes parser reports 0/100. GRPO can raise pass@1 while multi-turn rescues stay flat.
+
+Practical lesson:
+
+- log raw completion bytes, parser output, and executor admissions as three counters
+- run a template-by-parser 2x2 before publishing a tool-call score
+- fail closed when HTTP 200 returns empty `tool_calls` but the completion contains a call
+- read ERRATA.md before citing the training numbers
+
+The public repository is populated. No clone or execute from this cron.
+
+Implementability score: 0.80
+
+Sources:
+
+- [Interface-Induced Trajectory Censoring](https://arxiv.org/abs/2609.03966v1)
+- [nebula-1999/Interface-Induced-Trajectory-Censoring](https://github.com/nebula-1999/Interface-Induced-Trajectory-Censoring)
+
 ## Working conclusion
 
 The agent-serving runtime should become an evidence layer between traces and routers. First trace the program, then simulate routing and cache policies, then deploy only the policies whose predicted gains survive real telemetry.

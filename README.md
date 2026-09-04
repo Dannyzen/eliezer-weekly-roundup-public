@@ -6,6 +6,9 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
+- Daily research, 2026-09-04: [observed success is not authorization](roundups/2026-09-04.md)
+- Strategy daily analysis: [2026-09-04](Strategy/2026-09-04/sovereignty.md)
+- AgenticAI daily analysis: [2026-09-04](AgenticAI/2026-09-04/reasoning.md)
 - Daily research, 2026-09-03: [declared interfaces are not authority](roundups/2026-09-03.md)
 - Strategy daily analysis: [2026-09-03](Strategy/2026-09-03/sovereignty.md)
 - AgenticAI daily analysis: [2026-09-03](AgenticAI/2026-09-03/reasoning.md)
@@ -21,6 +24,10 @@ The repo separates patterns that can be tried now from ideas that still need res
 Reliable agents separate probabilistic guidance from deterministic control. Models may optimize the next step, but memory, execution, continuity, evidence, authority, recovery, and acceptance stay bound to explicit runtime objects. A governable runtime should:
 
 - treat loaded skills as delayed-authority objects and consult a task-conditioned guard before sensitive effects;
+- treat functional test success as incomplete acceptance until review-constraint oracles also pass;
+- treat lifecycle-hook updates as privileged admission, not plugin metadata refresh;
+- treat replica freshness as insufficient authorization until plans cite and revalidate exact parent record IDs;
+- treat serving adapters as part of the measurement instrument, logging raw completions separately from parsed tool calls;
 - treat reusable skills as covert policy objects and audit them with selection-lift fixtures, not scanner verdicts alone;
 - measure memory as stored state, delivered context, management work, and task outcome;
 - evaluate dependency upgrades with causal hidden-breakage oracles and repository-wide checks;

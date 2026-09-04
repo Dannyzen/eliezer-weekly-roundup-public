@@ -80,6 +80,23 @@ Sources:
 - [LongStraw](https://arxiv.org/abs/2607.14952v1)
 - [LongStraw validation status](https://github.com/MindLab-Research/longstraw/blob/main/STATUS.md)
 
+## September 4, 2026 update: censored trajectories poison the critic
+
+Interface-Induced Trajectory Censoring shows a function-calling GRPO run executing zero tool calls while `critic/rewards/mean` climbed from 0.233 to 0.281. Multi-turn rescues stayed flat at 6 to 9 of 540 while pass@1 rose 2.6 to 2.8 points. The dashboard can look healthy while the branch being trained does not exist.
+
+Practical lesson:
+
+- require raw-completion, parser, and executor counters before promoting an RL run
+- treat empty `tool_calls` plus a well-formed completion as a training-invalid receipt
+- do not read rising critic reward as evidence of multi-turn tool learning
+
+Implementability score: 0.80 for the measurement gate, not for reproducing the training.
+
+Sources:
+
+- [Interface-Induced Trajectory Censoring](https://arxiv.org/abs/2609.03966v1)
+- [nebula-1999/Interface-Induced-Trajectory-Censoring](https://github.com/nebula-1999/Interface-Induced-Trajectory-Censoring)
+
 ## Working conclusion
 
 As models become more agentic, post-training becomes part of the governance surface. Training runs, red-team environments, and RL trajectories need provenance, canaries, diversity checks, and audit trails. Otherwise teams will confuse weak elicitation evidence for genuine absence of capability.

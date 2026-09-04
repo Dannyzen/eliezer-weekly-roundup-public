@@ -1168,3 +1168,20 @@ Sources:
 
 - [EarlyEval](https://arxiv.org/abs/2609.02783v1)
 - [inphotoo/earlyeval](https://github.com/inphotoo/earlyeval)
+
+## September 4, 2026 update: dual oracles, then early stop
+
+SWE-Gate shows that a green functional trajectory can still be a hidden failure. 221 of 644 functionally successful repairs fail review-constraint tests. Pair that with EarlyEval: stop spending the tail only after the acceptance object is the right one.
+
+Practical lesson:
+
+- do not early-stop a dual-oracle task on functional prefix features alone
+- log constraint-test outcomes as first-class trajectory events
+- keep hidden-failure rate beside Pass@1
+
+Implementability score: 0.74
+
+Sources:
+
+- [SWE-Gate](https://arxiv.org/abs/2609.04167v1)
+- [DeepSoftwareAnalytics/SWE-Gate](https://github.com/DeepSoftwareAnalytics/SWE-Gate)

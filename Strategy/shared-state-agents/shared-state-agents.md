@@ -102,6 +102,20 @@ Practical lesson:
 Source:
 - [Governed Shared Memory](https://arxiv.org/abs/2606.24535)
 
+## September 4, 2026 update: shared state can be fresh and still unauthorized
+
+PlanFence is the shared-state complement to freshness checks. Replicas may be current while the plan authorizing an action cites obsolete parents. Action-scoped validation against owner heads is the missing gate.
+
+Practical lesson:
+
+- treat record IDs, not semantic keys, as the authorization object at action time
+- do not confuse owner-head freshness with lineage validity
+- compare stall cost of per-update sync against action-time parent checks as churn grows
+
+Source:
+
+- [Fresh Memory, Stale Plans](https://arxiv.org/abs/2609.03340v1)
+
 ## Working conclusion
 
 Local-first agents become strategically interesting only when the user owns the state layer. Shared-state agents are not mainly a UX idea. They are the architecture that makes personal sovereignty, continuity, and composability possible.

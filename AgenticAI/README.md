@@ -2,7 +2,27 @@
 
 This index tracks the most recent structured implementation research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: 2026-09-03
+## Latest Structured Update: 2026-09-04
+
+### Passing functional tests is not enough for coding-agent acceptance
+
+Summary: SWE-Gate adds an executable review-constraint oracle beside the functional suite. Across 303 instances from 75 Python repositories, 221 of 644 functionally successful repairs fail the constraint tests (34.3% hidden-failure rate). GPT-5.5 reaches 74.9% FSR and 52.8% JSR.
+
+Analysis: [daily analysis](2026-09-04/reasoning.md#passing-functional-tests-is-not-enough-for-coding-agent-acceptance)
+Core source: [paper](https://arxiv.org/abs/2609.04167v1)
+Tools and methodologies worth exploring now: dual F/C oracles, non-compliant reference patches, FSR/CFR/JSR/HFR reporting, [DeepSoftwareAnalytics/SWE-Gate](https://github.com/DeepSoftwareAnalytics/SWE-Gate)
+Implementability score: 0.74
+
+### The serving interface can censor the trajectory before evaluation sees it
+
+Summary: Changing only the serving adapter moves BFCL v4 from 0.00 to 0.96 / 0.19 for the same model. Qwen2.5-Coder 32B emits 80/100 well-formed calls while the server parses 0/100. GRPO can look healthy while multi-turn tool use never happens.
+
+Analysis: [daily analysis](2026-09-04/reasoning.md#the-serving-interface-can-censor-the-trajectory-before-evaluation-sees-it)
+Core source: [paper](https://arxiv.org/abs/2609.03966v1)
+Tools and methodologies worth exploring now: raw-bytes vs parsed-call vs executor counters, template/parser 2x2, fail-closed empty `tool_calls`, [nebula-1999/Interface-Induced-Trajectory-Censoring](https://github.com/nebula-1999/Interface-Induced-Trajectory-Censoring)
+Implementability score: 0.80
+
+## Previous structured update: 2026-09-03
 
 ### Halt evaluation once the trajectory already predicts the outcome
 
@@ -32,18 +52,6 @@ Core source: [paper](https://arxiv.org/abs/2609.02564v1)
 Tools and methodologies worth exploring now: paired clean/attack fixtures, PSR and valid-output metrics, direct-injection positive controls, scanner-plus-behavior release gates
 Implementability score: 0.72
 
-## Previous structured update: 2026-09-02
-
-### Implement the guard as a first-class skill, then keep the broker
-
-Summary: Skill-augmented agents need a dedicated runtime guard skill with an explicit consult-before-action instruction. Flattening the same policy into a system prompt is weaker. The first Hermes slice is a small action schema plus delayed-harm fixtures, not paper-faithful MCTS.
-
-Analysis: [daily analysis](2026-09-02/reasoning.md#implement-the-guard-as-a-first-class-skill-then-keep-the-broker)
-Deep dive: [Defense as Skill](../Strategy/defense-as-skill/defense-as-skill.md)
-Core source: [paper](https://arxiv.org/abs/2609.01487v1)
-Tools and methodologies worth exploring now: dedicated guard skill, consult-before-action instruction, allow/replan/confirm records, delayed-harm fixtures, permission and sandbox brokers
-Implementability score: 0.58
-
 ## Current implication
 
-A skill is a policy object, a harness is an auditable artifact, and an eval run is a budgeted trajectory. Scanner verdicts, full-task spend, and ungoverned harness rewrites are not proof.
+A green functional test and a parsed tool-call rate are both observations. Acceptance needs a second oracle. Measurement needs the raw completion, not only the adapter's empty array.

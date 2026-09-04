@@ -341,3 +341,23 @@ Sources:
 - [BreakGuard](https://arxiv.org/abs/2608.20167v1)
 - [BreakGuard Zenodo record](https://zenodo.org/records/22016493)
 - [BreakGuard prototype](https://github.com/CuriousBeing1508/LLMBreakGuard)
+
+## September 4, 2026 update: functional success is not reviewer acceptance
+
+SWE-Gate adds a second executable oracle derived from real pull-request review comments. Across 303 instances from 75 Python repositories, 221 of 644 functionally successful repairs fail the constraint suite (34.3% hidden-failure rate). GPT-5.5 reaches 74.9% FSR and 52.8% JSR. Providing the constraint text raises joint success and CFR; it does not raise functional success.
+
+Practical lesson:
+
+- keep separate functional and constraint tests, plus a non-compliant reference patch
+- report FSR, CFR, JSR, and hidden-failure rate
+- feed the review constraint as task input while hiding the constraint tests
+- treat dual-oracle acceptance as part of the coding-agent control plane, not a SWE-bench footnote
+
+The public repository is populated (303 instances, Docker contexts, encoded predictions). 48 instances lack optional `validation_matrix.json`. Do not clone or execute it from research crons.
+
+Implementability score: 0.74
+
+Sources:
+
+- [SWE-Gate](https://arxiv.org/abs/2609.04167v1)
+- [DeepSoftwareAnalytics/SWE-Gate](https://github.com/DeepSoftwareAnalytics/SWE-Gate)

@@ -361,3 +361,10 @@ Sources:
 
 - [SWE-Gate](https://arxiv.org/abs/2609.04167v1)
 - [DeepSoftwareAnalytics/SWE-Gate](https://github.com/DeepSoftwareAnalytics/SWE-Gate)
+## September 5, 2026 update: historical-patch similarity is a contamination oracle
+
+PatchBench shows that repository-level agent scaffolds raise memorized-patch rates from 11% in a local-context LLM setting to 25%. 81% of Codex + GPT-5.6 Sol patches still edit the crash stack. Coding-agent security gates need a historical-diff similarity check and a root-cause localization counter, not a single exploit input.
+
+Implementability score: 0.70
+
+Source: [PatchBench](https://arxiv.org/abs/2609.04075v1)

@@ -702,6 +702,17 @@ Sources:
 - https://arxiv.org/abs/2608.11878v1
 - https://github.com/MurrayTom/ToolHazard
 
+## September 5, 2026 update: memory installers extend the trusted computing base
+
+A durable session index is useful only if the write path is admitted. Treat `funes add` as plugin admission, not as a convenience command. Keep Hub memories private by default. Do not let recall output become standing policy without a typed release.
+
+Implementability score: 0.62 for hook admission, 0.88 for local recall
+
+Sources:
+- [huggingface/funes](https://github.com/huggingface/funes)
+- [HookPry](https://arxiv.org/abs/2609.03884v1)
+
+
 ## Working conclusion
 
 Runtime governance is not a niche enterprise concern. It is the natural consequence of giving agents durable memory, tool access, repository permissions, CI/CD authority, local storage, plugins, delegated secrets, shared inference infrastructure, sandboxed execution environments, mutable skills, router paths, workflow definitions that compile into automations, broker-mediated mutation paths, authority manifests, and revocable capability handles. The control plane has to move into runtime: inventory the agents, bind identity and scope, manage execution environments, preserve trace evidence, enforce valid next transitions before privileged tools execute, calibrate trust from outcomes, test trajectory-level guardrails offline, budget the guardrails themselves, record serving conditions for replayability, constrain network and inference routes, keep skills immutable while active, and keep tainted inputs from silently becoming trusted agent instructions or script data.

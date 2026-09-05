@@ -408,3 +408,12 @@ Implementability score: 0.62
 Source:
 
 - [A Blind Trust, the Bloody Thrust](https://arxiv.org/abs/2609.03884v1)
+## September 5, 2026 update: infeasible GUI instructions are unauthorized execution
+
+ConflictGUI splits instruction-internal conflicts from instruction-GUI context conflicts. Vanilla agents over-comply. Add terminate-with-conflict as a first-class action, score False Execution separately, and require confirmation before overriding a detected conflict.
+
+Implementability score: 0.64
+
+Sources:
+- [Do GUI Agents Know When Not to Act?](https://arxiv.org/abs/2609.03438v1)
+- [ConflictGuard](https://github.com/serein356/ConflictGuard)

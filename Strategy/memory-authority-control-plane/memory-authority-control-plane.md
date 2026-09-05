@@ -345,3 +345,13 @@ Implementability score: 0.58
 Source:
 
 - [Fresh Memory, Stale Plans](https://arxiv.org/abs/2609.03340v1)
+## September 5, 2026 update: owned memory is a dataset, the installer hook is admission
+
+funes is the right local-first shape: original-text recall, on-device embedding, private-by-default Hub datasets, redaction plus a push gate. `funes add hermes` still writes a lifecycle hook. Pin the binary checksum and the hook command hash before enabling it. Publication is a separate authorization from local recall.
+
+Implementability scores: 0.88 local recall, 0.62 with the install hook in scope
+
+Sources:
+- [Give Your Coding Agents a Memory You Own](https://huggingface.co/blog/funes)
+- [huggingface/funes](https://github.com/huggingface/funes)
+- [HookPry](https://arxiv.org/abs/2609.03884v1)

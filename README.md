@@ -6,53 +6,38 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily research, 2026-09-04: [observed success is not authorization](roundups/2026-09-04.md)
-- Strategy daily analysis: [2026-09-04](Strategy/2026-09-04/sovereignty.md)
-- AgenticAI daily analysis: [2026-09-04](AgenticAI/2026-09-04/reasoning.md)
-- Daily research, 2026-09-03: [declared interfaces are not authority](roundups/2026-09-03.md)
-- Strategy daily analysis: [2026-09-03](Strategy/2026-09-03/sovereignty.md)
-- AgenticAI daily analysis: [2026-09-03](AgenticAI/2026-09-03/reasoning.md)
+- Daily research, 2026-09-05: [a cheap check is not acceptance](roundups/2026-09-05.md)
+- AgenticAI daily analysis: [2026-09-05](AgenticAI/2026-09-05/reasoning.md)
+- Strategy daily analysis: [2026-09-05](Strategy/2026-09-05/sovereignty.md)
+- Friday synthesis, 2026-09-04: [observed success is not authorization](roundups/2026-09-04.md)
 - Deep Dive Wednesday, 2026-09-02: [defense as skill](Strategy/defense-as-skill/defense-as-skill.md)
-- Deep dive roundup: [2026-09-02](roundups/2026-09-02.md)
-- Daily research, 2026-09-01: [make runtime state typed and measurable](roundups/2026-09-01.md)
-- Friday synthesis, 2026-08-28: [preserve evidence and authority across transformation](roundups/2026-08-28.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 
 ## Current thesis
 
-Reliable agents separate probabilistic guidance from deterministic control. Models may optimize the next step, but memory, execution, continuity, evidence, authority, recovery, and acceptance stay bound to explicit runtime objects. A governable runtime should:
+Observed success is not authorization. A green functional test, a parsed tool-call rate, a current replica, a valid OAuth token, a declared skill interface, and a trusted plugin can all be true while the runtime is already wrong. A governable runtime should:
 
-- treat loaded skills as delayed-authority objects and consult a task-conditioned guard before sensitive effects;
 - treat functional test success as incomplete acceptance until review-constraint oracles also pass;
-- treat lifecycle-hook updates as privileged admission, not plugin metadata refresh;
-- treat replica freshness as insufficient authorization until plans cite and revalidate exact parent record IDs;
+- treat Single-PoC crash suppression as incomplete security acceptance until related-PoC and semantic oracles also pass;
+- treat GUI overcompliance as unauthorized execution and require terminate-with-conflict as a first-class action;
+- index coding-agent traces as owned memory with session/turn provenance rather than pasting transcripts;
+- commit speculative tool macros only from isolated snapshots after an exact first-action match;
 - treat serving adapters as part of the measurement instrument, logging raw completions separately from parsed tool calls;
 - treat reusable skills as covert policy objects and audit them with selection-lift fixtures, not scanner verdicts alone;
-- measure memory as stored state, delivered context, management work, and task outcome;
-- evaluate dependency upgrades with causal hidden-breakage oracles and repository-wide checks;
-- treat user invocation as an activation plan over untrusted repository content;
-- carry recurring state only through explicit continuity contracts with provenance and expiry;
-- evaluate runtime controllers separately from fixed workers across cheap fixtures and full-task anchors;
-- score evidence-bearing trajectory progress while preserving terminal verifiers as hard gates;
-- put tool authority behind authenticated routing and external capability enforcement;
+- treat loaded skills as delayed-authority objects and consult a task-conditioned guard before sensitive effects;
+- treat lifecycle-hook updates as privileged admission, not plugin metadata refresh;
+- treat replica freshness as insufficient authorization until plans cite and revalidate exact parent record IDs;
 - bind remote tool calls to invocation-scoped workload leases instead of connect-time OAuth alone;
-- require exact state identities and verified recovery witnesses for self-modification;
-- verify each harness change on behavior-relevant tasks with paired and attributable evidence;
+- treat the user invocation as an activation plan over untrusted repository content;
 - bind permission checks to the exact resource, model, route, and configuration used;
-- separate mutable persona from stable execution identity, credentials, state, and audit;
-- compile trusted requests into plans before untrusted outputs can alter control flow;
-- retain confidentiality, integrity, provenance, and control labels across persistent artifacts;
-- expose semantic metadata to later planning while retrieving concrete values only during constrained execution;
-- compile operational records into deterministic, replayable evaluation episodes before model judging;
-- isolate optimization proposals from integrity review, hidden holdouts, and capability gates;
-- retain origin, privilege, binding force, and transform lineage through context assembly, summaries, memory, and handoffs;
-- separate user preference, standing policy, and exact-effect authorization;
 - remove outbound capabilities from components that read untrusted content;
-- enforce destinations, data classes, and typed effects outside the model;
-- bind approvals to durable effect lineages through provider commit, ambiguity, reconciliation, and terminal closure;
-- compact memory by type, keeping exact constraints separate from lossy episodic history;
-- route, retry, and resume from trace evidence tied to delegation identity.
+- separate user preference, standing policy, and exact-effect authorization;
+- evaluate runtime controllers separately from fixed workers across cheap fixtures and full-task anchors;
+- halt evaluation once a calibrated prefix already predicts the outcome;
+- compile operational records into deterministic, replayable evaluation episodes before model judging;
+- measure memory as stored state, delivered context, management work, and task outcome;
+- carry recurring state only through explicit continuity contracts with provenance and expiry.
 
 The model can propose actions, summaries, skill changes, routes, plans, and experiments. Resource identity, typed bridges, attributable verification, information-flow labels, deterministic policy, and durable authority decide what may change and what may cross a trust boundary.
 

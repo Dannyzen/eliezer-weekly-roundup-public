@@ -696,6 +696,15 @@ Sources:
 - [Vero](https://arxiv.org/abs/2608.13522v1)
 - [ATOBench](https://arxiv.org/abs/2608.12996v1)
 
+## September 5, 2026 update: crash-pass is not security acceptance
+
+SEC-BENCH top agents clear Single-PoC rates above 97%, then fall to 75-82% with multiple PoCs and to roughly half with semantic validation. 25% of agent patches match historical developer fixes. Dual oracles belong on vulnerability patching, not only on SWE review constraints.
+
+Implementability score: 0.70
+
+Source: [PatchBench](https://arxiv.org/abs/2609.04075v1)
+
+
 ## Working conclusion
 
 Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, fingerprinted, severity-scored, causally sliced, and scored across safety, robustness, parameter correctness, environment fidelity, runtime-specific harm dimensions, staged semantic/audit/sandbox harm, agent-effort telemetry, real-user collaboration traces, realistic workspace state, live workflow demand, cost, adversarial task quality, long-range state propagation, abstention, protocol conformance, tool-shortlist quality, environment-factory coverage, quantitative goal persistence, procedural behavior, partial-progress preference, oracle strength, deterministic evidence paths, and coding-process discipline, improvement efforts will stay shallow and trust claims will stay unearned.

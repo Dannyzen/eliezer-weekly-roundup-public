@@ -102,6 +102,15 @@ Sources:
 - [Interface-Induced Trajectory Censoring](https://arxiv.org/abs/2609.03966v1)
 - [nebula-1999/Interface-Induced-Trajectory-Censoring](https://github.com/nebula-1999/Interface-Induced-Trajectory-Censoring)
 
+## September 5, 2026 update: speculate into a snapshot, commit on first-action match
+
+Speculative Macro Commit drafts multi-step macros with a cheap model on an isolated environment snapshot. The official actor commits the remainder only when its next tool call matches the first drafted action. AppWorld wall time falls 44.9% versus sequential execution, with TGC 70/168 to 68/168. Do not expose mined macros as extra tools and hope the model selects them.
+
+Implementability score: 0.55
+
+Source: [Speculative Macro Commit](https://arxiv.org/abs/2609.03236v1)
+
+
 ## Working conclusion
 
 The agent-serving runtime should become an evidence layer between traces and routers. First trace the program, then simulate routing and cache policies, then deploy only the policies whose predicted gains survive real telemetry.

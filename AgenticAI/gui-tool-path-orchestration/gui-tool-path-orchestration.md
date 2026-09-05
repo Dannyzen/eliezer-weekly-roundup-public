@@ -255,3 +255,12 @@ The reusable pattern is not the paper's scale. It is an episode contract: isolat
 Source: [BrowserForge](https://arxiv.org/abs/2608.24848v1)
 
 Implementability score: 0.52
+## September 5, 2026 update: terminate on conflict, do not over-comply
+
+Vanilla GUI agents stay below 10% conflict success and above 70% False Execution. ConflictGuard adds a feasibility protocol plus conditional steering toward termination while preserving feasible-task performance. "The user asked" is not authorization when the instruction conflicts with itself or with the current screen.
+
+Implementability score: 0.64
+
+Sources:
+- [Do GUI Agents Know When Not to Act?](https://arxiv.org/abs/2609.03438v1)
+- [ConflictGuard](https://github.com/serein356/ConflictGuard)

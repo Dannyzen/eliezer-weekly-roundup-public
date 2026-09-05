@@ -780,6 +780,17 @@ Memory admission should require a per-stage cost ledger, matched accuracy, and b
 
 Source: https://arxiv.org/abs/2608.11879v1
 
+## September 5, 2026 update: traces become memory only after indexed provenance
+
+funes indexes Claude Code, Codex, pi, and Hermes sessions into one local Lance dataset and returns original text with session and turn citations. Embedding stays on-device. A Hugging Face dataset, private by default, is optional publication rather than the source of truth.
+
+Implementability score: 0.88
+
+Sources:
+- [Give Your Coding Agents a Memory You Own](https://huggingface.co/blog/funes)
+- [huggingface/funes](https://github.com/huggingface/funes)
+
+
 ## Working conclusion
 
 The next generation of agents will be differentiated less by how eloquently they speak and more by how faithfully and safely they remember. The winning systems will preserve evidence, route memory writes explicitly, retrieve context adaptively, abstain when memory is unsafe, validate high-value writes, make retention and pruning decisions replayable, query local graphs when code structure matters, promote only the right lessons into durable guidance, attach enough context for updates and temporal reasoning, choose abstraction levels that transfer across tasks, keep the most sensitive memory close to the user and under policy control, run durable memory through a governed database-backed state core, separate evaluation memory from user-facing memory, measure whether memories remain usable under scale, budgets, and writeback review, expose operation-level provenance, make reasoning history diffable, test belief-state stay/update/isolate decisions, gate retrieval by policy, resolve contradictions with bitemporal evidence, evaluate memory against heterogeneous evolving source streams, and defend memory write/read paths against poisoning so failures can be traced instead of guessed.

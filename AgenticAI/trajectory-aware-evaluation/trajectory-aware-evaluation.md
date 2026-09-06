@@ -705,6 +705,29 @@ Implementability score: 0.70
 Source: [PatchBench](https://arxiv.org/abs/2609.04075v1)
 
 
+## September 6, 2026 update: HTTP 200 is not a tool-result, and a shared judge is not an instrument
+
+SilentProbe shows that a parsable HTTP 200 can be an answer to a different question. 15.2% of 721,320 OpenAPI parameters declare any machine-checkable constraint. Prose-only constraints failed silently in 44 of 61 live perturbations. Exemplified vocabularies were missed 88 of 88. Downstream loops repaired 0% of those silent failures.
+
+The unstable-measurement paper is the matching observer finding. Two preregistered campaigns never cleared instrument gates: same-window Spearman 0.400 vs required 0.90, next-day replay 0.78 vs required 0.99. A dual-oracle eval still needs a frozen judge.
+
+Practical lesson:
+
+- put enumerations in the schema, not in `e.g.` prose
+- treat HTTP 200 empty or partial bodies as ambiguous
+- freeze observer gates before task gates
+- log silent-failure and instrument-gate misses beside Pass@1
+
+SilentProbe's repository is populated. The observer paper has no resolved public repo.
+
+Implementability score: 0.82 schema admission, 0.58 observer gates
+
+Sources:
+
+- [SilentProbe](https://arxiv.org/abs/2609.00035v1)
+- [Jasper0122/silentprobe](https://github.com/Jasper0122/silentprobe)
+- [Unstable Measurement](https://arxiv.org/abs/2609.04198v1)
+
 ## Working conclusion
 
 Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, fingerprinted, severity-scored, causally sliced, and scored across safety, robustness, parameter correctness, environment fidelity, runtime-specific harm dimensions, staged semantic/audit/sandbox harm, agent-effort telemetry, real-user collaboration traces, realistic workspace state, live workflow demand, cost, adversarial task quality, long-range state propagation, abstention, protocol conformance, tool-shortlist quality, environment-factory coverage, quantitative goal persistence, procedural behavior, partial-progress preference, oracle strength, deterministic evidence paths, and coding-process discipline, improvement efforts will stay shallow and trust claims will stay unearned.

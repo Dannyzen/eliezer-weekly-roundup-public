@@ -2,26 +2,35 @@
 
 This index tracks the most recent structured strategy research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: 2026-09-05
+## Latest Structured Update: 2026-09-06
 
-### Termination is an authority decision, not a missing action
+### A parsable success is not an honest tool
 
-Summary: Vanilla GUI agents stay below 10% conflict success and above 70% False Execution on infeasible instructions. ConflictGuard adds a feasibility check plus conditional steering toward termination, while preserving feasible-task performance.
+Summary: A 200 JSON body can be an answer to a different question when the schema never named the legal values. SilentProbe's downstream loops then assert false negatives or invent figures. The contract is the authority object.
 
-Analysis: [daily strategy](2026-09-05/sovereignty.md#termination-is-an-authority-decision-not-a-missing-action)
-Core sources: [paper](https://arxiv.org/abs/2609.03438v1), [ConflictGuard](https://github.com/serein356/ConflictGuard)
-Tools and methodologies worth exploring now: terminate-with-conflict actions, False Execution metrics, instruction-internal versus screen-state fixtures, confirmation before overriding a detected conflict
-Implementability score: 0.64
+Analysis: [daily strategy](2026-09-06/sovereignty.md#a-parsable-success-is-not-an-honest-tool)
+Core sources: [paper](https://arxiv.org/abs/2609.00035v1), [silentprobe](https://github.com/Jasper0122/silentprobe)
+Tools and methodologies worth exploring now: schema-validate arguments and results, fail closed on exemplified-only vocabularies, treat silent-failure rate as a gateway SLO
+Implementability score: 0.82
 
-### Owned session memory is a dataset with an admission hook
+### Hosted judges are not a sovereign measurement plane
 
-Summary: funes makes coding-agent memory an owned local dataset that can follow Hermes, Codex, and Claude Code. The sovereignty win is on-device recall and private-by-default Hub datasets. The hazard is the install hook, which is a HookPry-class admission object.
+Summary: A preregistered black-box observer on a shared endpoint failed Spearman 0.90 same-window and 0.99 next-day replay. Switching providers did not restore a frozen instrument. Self-hosting failed again under concurrent load.
 
-Analysis: [daily strategy](2026-09-05/sovereignty.md#owned-session-memory-is-a-dataset-with-an-admission-hook)
-Core sources: [blog](https://huggingface.co/blog/funes), [huggingface/funes](https://github.com/huggingface/funes)
-Tools and methodologies worth exploring now: local-only first, private Hub datasets, binary checksum pins, hook-hash admission, redaction plus push gates
-Implementability score: 0.88 local recall, 0.62 with the install hook in scope
+Analysis: [daily strategy](2026-09-06/sovereignty.md#hosted-judges-are-not-a-sovereign-measurement-plane)
+Core source: [Unstable Measurement](https://arxiv.org/abs/2609.04198v1)
+Tools and methodologies worth exploring now: instrument gates before task gates, local or batch-invariant observers, publish request hashes with eval results
+Implementability score: 0.58
+
+### Replay without tool state is unauthorized reconstruction
+
+Summary: Graph-only reconstruction labelled unobserved tool timeouts as benign. Replay-contract state and verification results are what moved unresolved-divergence recall off zero. Missing evidence is not a safe default.
+
+Analysis: [daily strategy](2026-09-06/sovereignty.md#replay-without-tool-state-is-unauthorized-reconstruction)
+Core source: [DNative-Twin](https://arxiv.org/abs/2609.03787v1)
+Tools and methodologies worth exploring now: refuse reconstructability claims without tool results and verifier verdicts, treat missing tool state as unresolved divergence
+Implementability score: 0.45
 
 ## Current implication
 
-A GUI agent that cannot stop is executing without a gate. A memory installer that writes a hook is extending the trusted computing base. Feasibility is checked before the click. The hook is admitted before the index.
+A 200, a model name, and a decision graph are observations. Honesty needs a schema. Measurement needs an instrument gate. Reconstruction needs tool state. Missing evidence is not a safe default.

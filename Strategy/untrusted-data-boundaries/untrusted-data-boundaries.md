@@ -417,3 +417,21 @@ Implementability score: 0.64
 Sources:
 - [Do GUI Agents Know When Not to Act?](https://arxiv.org/abs/2609.03438v1)
 - [ConflictGuard](https://github.com/serein356/ConflictGuard)
+
+## September 6, 2026 update: a 200 body is untrusted until the schema can reject it
+
+SilentProbe makes tool output an untrusted-data finding. HTTP 200 plus JSON is not proof the server understood the query. Exemplified vocabularies invite invention. Closed lists keep the model inside the documented set. Downstream loops then assert false negatives or invent figures.
+
+Practical lesson:
+
+- schema-validate arguments before dispatch and results before they enter context
+- reject exemplified-only vocabularies at admission
+- treat silent-failure and fabricated-figure rates as gateway SLOs
+- do not write a 200 body into standing memory without an explicit no-match field
+
+Implementability score: 0.82
+
+Sources:
+
+- [SilentProbe](https://arxiv.org/abs/2609.00035v1)
+- [Jasper0122/silentprobe](https://github.com/Jasper0122/silentprobe)

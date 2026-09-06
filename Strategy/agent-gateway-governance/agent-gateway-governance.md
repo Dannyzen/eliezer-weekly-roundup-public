@@ -1058,3 +1058,21 @@ No public implementation repository resolved.
 Implementability score: 0.48
 
 Source: [ACLE-MCP](https://arxiv.org/abs/2609.02690v1)
+
+## September 6, 2026 update: OAuth plus HTTP 200 is still not result honesty
+
+ACLE-MCP binds invocation-time trust. SilentProbe binds result honesty after the call returns. A gateway that only checks connect-time OAuth and HTTP status will launder silent failures into the agent's evidence set.
+
+Practical lesson:
+
+- put enumerations and bounds in the machine-readable schema
+- fail closed on `e.g.`-only vocabularies
+- keep a run identifier on every tool call
+- score silent-failure separately from HTTP success
+
+Implementability score: 0.82
+
+Sources:
+
+- [SilentProbe](https://arxiv.org/abs/2609.00035v1)
+- [Jasper0122/silentprobe](https://github.com/Jasper0122/silentprobe)

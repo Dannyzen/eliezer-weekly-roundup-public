@@ -237,6 +237,24 @@ Sources:
 - [Labels Are Not Endpoints](https://arxiv.org/abs/2608.12880v1)
 - [Vero](https://arxiv.org/abs/2608.13522v1)
 
+## September 6, 2026 update: reconstruction without tool state is not proof
+
+DNative-Twin shows that a typed decision graph can reconstruct what was stored and still miss what an unobserved tool timeout would have done. Replay-contract state and verification results are what moved unresolved-divergence recall off zero. Missing evidence is not a safe default.
+
+Practical lesson:
+
+- refuse reconstructability claims unless tool results and verifier verdicts are in the contract
+- treat missing tool state as unresolved divergence, never as benign
+- keep identity, authorization, and replay as three objects
+
+No public implementation repository resolved.
+
+Implementability score: 0.45
+
+Source:
+
+- [DNative-Twin](https://arxiv.org/abs/2609.03787v1)
+
 ## Working conclusion
 
 The architectural lesson is simple: do not confuse artifacts with proof.

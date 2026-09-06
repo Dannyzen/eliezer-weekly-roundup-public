@@ -2,35 +2,35 @@
 
 This index tracks the most recent structured implementation research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: 2026-09-05
+## Latest Structured Update: 2026-09-06
 
-### A crash-passing patch is not a security acceptance
+### HTTP 200 is not a tool-result
 
-Summary: SEC-BENCH top agents clear Single-PoC rates above 97%, then drop to 75-82% with multiple PoCs and to roughly half with semantic validation. 25% of agent patches match historical developer fixes. 81% of Codex + GPT-5.6 Sol patches edit the crash stack even when the root cause is elsewhere.
+Summary: SilentProbe finds that 15.2% of 721,320 OpenAPI parameters declare any machine-checkable constraint, while 40.1% of documents put a constraint in prose only. Machine-checkable live perturbations were honest in 111/111 cases; prose-only failed silently in 44/61. Exemplified vocabularies were missed 88/88. Downstream loops repair 0% of those silent failures.
 
-Analysis: [daily analysis](2026-09-05/reasoning.md#a-crash-passing-patch-is-not-a-security-acceptance)
-Core source: [PatchBench](https://arxiv.org/abs/2609.04075v1)
-Tools and methodologies worth exploring now: related-PoC security suites, semantic validation on benign inputs and unit tests, diff-aware historical-patch similarity, crash-stack versus root-cause counters
-Implementability score: 0.70
+Analysis: [daily analysis](2026-09-06/reasoning.md#http-200-is-not-a-tool-result)
+Core sources: [SilentProbe](https://arxiv.org/abs/2609.00035v1), [Jasper0122/silentprobe](https://github.com/Jasper0122/silentprobe)
+Tools and methodologies worth exploring now: schema enumerations at tool admission, reject `e.g.`-only vocabs, treat HTTP 200 empty bodies as ambiguous, log silent-failure separately from tool-call success
+Implementability score: 0.82
 
-### Index traces as owned memory, not as a chat archive
+### A shared model name is not a frozen instrument
 
-Summary: funes indexes Claude Code, Codex, pi, and Hermes sessions into one local Lance dataset, returns original text with session and turn provenance, and can publish a private-by-default Hugging Face dataset. Embedding and reranking stay on-device.
+Summary: Two preregistered observer campaigns failed their instrument gates with execution records at ceiling. Same-window Spearman 0.400 vs required 0.90. Next-day replay 0.78 vs required 0.99. Waiting and switching providers did not restore a frozen instrument.
 
-Analysis: [daily analysis](2026-09-05/reasoning.md#index-traces-as-owned-memory-not-as-a-chat-archive)
-Core sources: [blog](https://huggingface.co/blog/funes), [huggingface/funes](https://github.com/huggingface/funes)
-Tools and methodologies worth exploring now: `funes add hermes`, local `recall`/`get`, on-device embedding, private Hub datasets, hook-hash admission
-Implementability score: 0.88
+Analysis: [daily analysis](2026-09-06/reasoning.md#a-shared-model-name-is-not-a-frozen-instrument)
+Core source: [Unstable Measurement](https://arxiv.org/abs/2609.04198v1)
+Tools and methodologies worth exploring now: freeze instrument gates before task gates, log request hashes separately from verdicts, do not treat a shared model ID as a pinned observer
+Implementability score: 0.58
 
-### Speculate into a snapshot, commit only matching macros
+### Graph structure is not a replay contract
 
-Summary: Speculative Macro Commit drafts multi-step action chains on an isolated snapshot and commits them only when the actor's next tool call matches the first drafted action. AppWorld wall time falls 44.9% versus sequential execution, with TGC 70/168 to 68/168.
+Summary: DNative-Twin's typed decision graph cannot determine the consequence of an unobserved tool state. Unresolved-divergence recall rose from 0 to 0.667 with replay-contract state and to 1.0 with verification results on 300 injected instances.
 
-Analysis: [daily analysis](2026-09-05/reasoning.md#speculate-into-a-snapshot-commit-only-matching-macros)
-Core source: [Speculative Macro Commit](https://arxiv.org/abs/2609.03236v1)
-Tools and methodologies worth exploring now: isolated draft snapshots, first-action match before commit, macros as a runtime library rather than extra tools, committed-versus-discarded draft counters
-Implementability score: 0.55
+Analysis: [daily analysis](2026-09-06/reasoning.md#graph-structure-is-not-a-replay-contract)
+Core source: [DNative-Twin](https://arxiv.org/abs/2609.03787v1)
+Tools and methodologies worth exploring now: put timeouts and verifier verdicts in the replay contract, score unresolved divergence, never default missing tool state to benign
+Implementability score: 0.45
 
 ## Current implication
 
-PoC-pass, a sequential tool loop, and a session log are observations. Security acceptance needs a second oracle. Serving needs snapshot isolation before speculative commits. Memory needs indexed provenance, not a transcript paste.
+HTTP 200, a shared model name, and a decision graph are observations. Tool honesty needs a schema. Evaluation needs an instrument gate. Reconstruction needs tool state in the replay contract.

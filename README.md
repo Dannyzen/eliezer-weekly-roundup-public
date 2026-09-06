@@ -6,9 +6,9 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily research, 2026-09-05: [a cheap check is not acceptance](roundups/2026-09-05.md)
-- AgenticAI daily analysis: [2026-09-05](AgenticAI/2026-09-05/reasoning.md)
-- Strategy daily analysis: [2026-09-05](Strategy/2026-09-05/sovereignty.md)
+- Daily research, 2026-09-06: [a parsable success is not an honest result](roundups/2026-09-06.md)
+- AgenticAI daily analysis: [2026-09-06](AgenticAI/2026-09-06/reasoning.md)
+- Strategy daily analysis: [2026-09-06](Strategy/2026-09-06/sovereignty.md)
 - Friday synthesis, 2026-09-04: [observed success is not authorization](roundups/2026-09-04.md)
 - Deep Dive Wednesday, 2026-09-02: [defense as skill](Strategy/defense-as-skill/defense-as-skill.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
@@ -18,6 +18,9 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 Observed success is not authorization. A green functional test, a parsed tool-call rate, a current replica, a valid OAuth token, a declared skill interface, and a trusted plugin can all be true while the runtime is already wrong. A governable runtime should:
 
+- treat HTTP 200 with a parsable body as incomplete tool success until the schema can reject illegal values;
+- treat a shared model name as an unmeasured instrument until same-window and next-day observer gates pass;
+- treat a decision graph as incomplete reconstruction until tool state and verifier verdicts are in the replay contract;
 - treat functional test success as incomplete acceptance until review-constraint oracles also pass;
 - treat Single-PoC crash suppression as incomplete security acceptance until related-PoC and semantic oracles also pass;
 - treat GUI overcompliance as unauthorized execution and require terminate-with-conflict as a first-class action;

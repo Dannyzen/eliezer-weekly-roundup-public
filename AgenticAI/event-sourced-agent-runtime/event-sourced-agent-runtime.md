@@ -177,3 +177,22 @@ Sources:
 - [AgentRewind](https://arxiv.org/abs/2608.14380v1)
 - [runtime repository](https://github.com/Futuresis/replay-agent-recorder)
 - [MettleBench](https://github.com/Kelvin-Coffee/MettleBench)
+
+## September 6, 2026 update: graph structure is not a replay contract
+
+DNative-Twin records committed agentic decisions as typed trajectories, then shows that graph structure cannot determine the consequence of an unobserved tool state. Unresolved-divergence recall moved from 0 to 0.667 with replay-contract state and to 1.0 with verification results on 300 injected instances. All 40 unobserved tool-timeout cases were labelled benign without the contract.
+
+Practical lesson:
+
+- store observed state, chosen path, and authority as separate typed nodes
+- put tool results, timeouts, and verifier verdicts in the replay contract
+- score unresolved-divergence recall
+- never default missing tool state to benign
+
+No public implementation repository resolved.
+
+Implementability score: 0.45
+
+Source:
+
+- [DNative-Twin](https://arxiv.org/abs/2609.03787v1)

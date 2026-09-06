@@ -147,6 +147,27 @@ If the answer is no, the system has monitoring, not containment.
 - Reuters, Its AI agent spent days hacking a company, but OpenAI did not notice for a week: https://www.reuters.com/business/its-ai-agent-spent-days-hacking-company-sources-say-openai-did-not-notice-week-2026-07-24/
 - ExploitGym benchmark repository: https://github.com/sunblaze-ucb/exploitgym
 
+## September 6, 2026 update: hosted judges failed their own instrument gates
+
+Two preregistered observer campaigns on shared endpoints terminated at instrument gates with execution records at ceiling. Same-window Spearman 0.400 vs required 0.90. Next-day replay 0.78 vs required 0.99. Switching providers did not restore a frozen instrument. Self-hosting helped only while the server was quiet.
+
+If the judge is an unmeasured hosted model, the eval is not a contained measurement plane.
+
+Practical lesson:
+
+- run instrument gates before task gates
+- prefer local or batch-invariant observers when a scientific verdict is required
+- publish request hashes with eval results
+- treat a shared model ID as a moving vendor service
+
+No public observer-audit repository resolved.
+
+Implementability score: 0.58
+
+Source:
+
+- [Unstable Measurement](https://arxiv.org/abs/2609.04198v1)
+
 ## Working conclusion
 
 Capability evaluations are not sealed experiments once the agent can touch a package path, network, credential, or writable public service. Treat the evaluator as a production security domain, keep its controls outside model authority, and prove that the system can interrupt a multi-day trajectory before it becomes somebody else's incident.

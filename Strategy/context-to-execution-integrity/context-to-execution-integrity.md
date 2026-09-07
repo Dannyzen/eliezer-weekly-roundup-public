@@ -447,3 +447,20 @@ Practical lesson:
 Implementability score: 0.61
 
 Source: [Persona-Execution Separation](https://arxiv.org/abs/2608.27427v1)
+
+## September 7, 2026 update: preserve the security contract across every transform
+
+CONTINUITY shows why individually valid provenance, authorization, policy, adapter, and finality controls can still compose into an unauthorized effect. The reusable primitive is an authenticated instruction-to-effect witness carrying root grant, provenance, role-bound transitions, bounded typed releases, transformation witnesses, current policy, and single-use finality state.
+
+Practical lesson:
+- give every context-transforming component an assume-guarantee contract;
+- canonicalize and sign the exact action before release;
+- require explicit witnesses for aliases and field transforms;
+- revalidate subject, policy, revocation, and replay state at finality;
+- inject faults between controls and enumerate alternate effect paths.
+
+Evidence caveat: the deterministic synthetic suite is useful for conformance, not real-world attack prevalence. Production adoption still needs deployment-specific trusted roots, canonicalizers, validators, and complete mediation.
+
+Implementability score: 0.83
+
+Sources: [paper](https://arxiv.org/abs/2609.05269v1), [artifact](https://github.com/zast-ai/continuity)

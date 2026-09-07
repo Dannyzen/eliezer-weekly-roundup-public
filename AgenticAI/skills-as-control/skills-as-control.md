@@ -966,3 +966,20 @@ Implementability score: 0.72
 No official SkillShift repository resolved.
 
 Source: [A Finger on the Scale](https://arxiv.org/abs/2609.02564v1)
+
+## September 7, 2026 update: skill evolution needs a frozen snapshot boundary
+
+Skill-Evo4GUI converts GUI traces and evaluator feedback into create, edit, delete, or preserve proposals, but each run stays bound to a frozen library snapshot. Accepted changes become available only in the next iteration. That separation makes procedural memory versionable and reviewable.
+
+Practical lesson:
+- freeze and hash the skill set used by each run;
+- extract structured trace evidence before proposing mutations;
+- bind changes to provenance, scope, and validation evidence;
+- compare evolving, frozen, and empty-library controls;
+- stop revision churn when the originating task does not recover.
+
+Artifact caveat: the populated public repository contains prompts, schemas, and example skills but no GitHub license metadata. Full OSWorld replication requires separate environment and model services.
+
+Implementability score: 0.72
+
+Sources: [paper](https://arxiv.org/abs/2609.04869v1), [repository](https://github.com/LongtaoHu/Skill-Evo4GUI)

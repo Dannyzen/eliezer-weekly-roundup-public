@@ -1012,3 +1012,20 @@ Implementability score: 0.79
 Implementability score: 0.68
 
 Source: [Measure Before You Manage](https://arxiv.org/abs/2608.31057v1)
+
+## September 7, 2026 update: memory upgrades need direction-specific migration tests
+
+Memory Portability shows that preserving rows is not preserving behavior. Across 48 synthetic histories and two sub-10B models, fixed-schema memory transferred almost unchanged, model-compressed notes shifted asymmetrically by +9.91 or -13.28 percentage points, and a 50/50 mixed embedding index captured only 4.96 points of the 11.90-point full re-embedding gain.
+
+Practical lesson:
+- bind memory objects to writer, reader, embedding model, vector size, schema, and raw-source identity;
+- test both migration directions;
+- isolate embedding spaces during migration;
+- retain source histories for repair;
+- treat store-only repair failure as evidence against lossy consolidation.
+
+Evidence caveat: 48 synthetic histories and two small open-weight models do not establish production prevalence. No public implementation artifact resolved from the primary paper surfaces.
+
+Implementability score: 0.77
+
+Source: [Memory Portability](https://arxiv.org/abs/2609.05339v1)

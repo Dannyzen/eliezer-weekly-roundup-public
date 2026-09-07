@@ -1296,3 +1296,20 @@ Sources:
 
 - [SafeEvolve](https://arxiv.org/abs/2609.02786v1)
 - [MaoPopovich/SafeEvolve](https://github.com/MaoPopovich/SafeEvolve)
+
+## September 7, 2026 update: multi-harness training needs a held-out harness
+
+A Qwen3-8B study replayed frozen records from Aider, OpenHands, Qwen Code, and SWE-agent. Across 24,000 sealed evaluations, evaluation-harness choice moved mean solve rate from 2.14% to 9.27%. Cross-harness versus within-harness GRPO grouping produced only +0.25 percentage points on a held-out minimal harness, with a 95% confidence interval from -0.48 to +1.02.
+
+Practical lesson:
+- store harness identity and semantics with every trajectory;
+- evaluate checkpoints across source and unseen harnesses;
+- disclose the reward-group boundary;
+- separate configuration attribution from task capability;
+- repeat runs and cluster inference by task when execution is nondeterministic.
+
+Evidence caveat: the experiment uses one Qwen3-8B warm start and SWE-bench Verified. No study-specific public artifact resolved, and full replication is expensive.
+
+Implementability score: 0.58
+
+Source: [Multi-Harness RL](https://arxiv.org/abs/2609.04518v1)

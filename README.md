@@ -6,9 +6,9 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily research, 2026-09-06: [a parsable success is not an honest result](roundups/2026-09-06.md)
-- AgenticAI daily analysis: [2026-09-06](AgenticAI/2026-09-06/reasoning.md)
-- Strategy daily analysis: [2026-09-06](Strategy/2026-09-06/sovereignty.md)
+- Daily research, 2026-09-07: [portability is a whole execution-contract property](roundups/2026-09-07.md)
+- AgenticAI daily analysis: [2026-09-07](AgenticAI/2026-09-07/reasoning.md)
+- Strategy daily analysis: [2026-09-07](Strategy/2026-09-07/sovereignty.md)
 - Friday synthesis, 2026-09-04: [observed success is not authorization](roundups/2026-09-04.md)
 - Deep Dive Wednesday, 2026-09-02: [defense as skill](Strategy/defense-as-skill/defense-as-skill.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
@@ -18,6 +18,10 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 Observed success is not authorization. A green functional test, a parsed tool-call rate, a current replica, a valid OAuth token, a declared skill interface, and a trusted plugin can all be true while the runtime is already wrong. A governable runtime should:
 
+- carry a typed security-context witness across every transform and bind it to the exact effect at finality;
+- treat model and embedding upgrades as memory migrations with direction-specific compatibility tests;
+- freeze the skill-library snapshot used by a run and expose accepted mutations only in the next version;
+- require held-out harness evaluation before calling multi-harness training portable;
 - treat HTTP 200 with a parsable body as incomplete tool success until the schema can reject illegal values;
 - treat a shared model name as an unmeasured instrument until same-window and next-day observer gates pass;
 - treat a decision graph as incomplete reconstruction until tool state and verifier verdicts are in the replay contract;

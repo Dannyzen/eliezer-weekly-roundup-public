@@ -1313,3 +1313,20 @@ Evidence caveat: the experiment uses one Qwen3-8B warm start and SWE-bench Verif
 Implementability score: 0.58
 
 Source: [Multi-Harness RL](https://arxiv.org/abs/2609.04518v1)
+
+## September 9, 2026 update: separate the test author from the patch author
+
+ExecCritic shows that executable feedback can hurt when the same failure shapes both test and patch. A Test principal should create a behavior contract and repository-native check; a fail-closed harness should qualify and freeze it; a Repair principal should receive feedback but no test-write authority; and an independent verifier should own final acceptance.
+
+Practical lesson:
+- require clean base failure before admitting a generated test;
+- freeze test identity and command across repair revisions;
+- deny the Repair principal access to test files;
+- preserve generated-test and official-verifier results separately;
+- reject a passing self-authored check as insufficient proof.
+
+Implementability score: 0.72
+
+Sources:
+- [ExecCritic](https://arxiv.org/abs/2609.09133v1)
+- [MSR-Orchard/execcritic](https://github.com/MSR-Orchard/execcritic)

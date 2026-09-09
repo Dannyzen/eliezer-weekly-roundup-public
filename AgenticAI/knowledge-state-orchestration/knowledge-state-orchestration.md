@@ -79,3 +79,18 @@ Avoid these traps:
 0.58
 
 The basic pattern is implementable with today’s workflow engines, databases, repo artifacts, and review checklists. The hard part is designing state schemas and evaluator loops that improve truthfulness without adding bureaucracy or false confidence.
+
+## September 9, 2026 update: procedures are versioned graphs with held-out gates
+
+Procedural Graphs extends epistemic state with explicit what-to-do state. Tools, skills, reasoning steps, and lifecycle states become nodes; typed edges carry ordering and verification requirements; local neighborhoods guide the current step; and offline edits are accepted only after held-out validation.
+
+Practical lesson:
+- keep procedural prerequisites explicit instead of burying them in notes;
+- freeze the graph during a run;
+- generate guidance from a bounded neighborhood;
+- validate every mutation on held-out tasks;
+- retain rejected edit fingerprints to prevent repeated failure loops.
+
+Implementability score: 0.61
+
+Source: [Procedural Graphs](https://arxiv.org/abs/2609.09153v1)

@@ -264,3 +264,24 @@ Practical lesson:
 Implementability score: 0.48
 
 Source: [ACLE-MCP](https://arxiv.org/abs/2609.02690v1)
+
+## September 9, 2026 update: scope authority per principal
+
+CapScope closes the gap between task-level authorization and delegated execution. Host code freezes a task-wide ceiling from trusted input before untrusted reads, then narrows typed capabilities for each scout, reader, runner, patcher, or releaser. A tool proposal executes only when the issuing principal holds a covering capability.
+
+Practical lesson:
+- mint authority before repository content enters context;
+- keep capabilities outside the transcript;
+- define each capability as an effect plus argument predicate;
+- make delegated grants subsets of the parent ceiling;
+- parse compound commands before policy evaluation;
+- log denied and admitted effects by principal.
+
+The 300-run study cut injected effects from 33/75 under the strongest global baseline to 3/75, but mean latency rose from 145 to 316 seconds and the corpus contains only five small Python repairs. Reproduce the pattern on local fixtures before production use.
+
+Implementability score: 0.76
+
+Sources:
+- [Authority Is Not a String](https://arxiv.org/abs/2609.08371v1)
+- [CapScope research artifact](https://figshare.com/s/86184ed20f66d1f0cf91)
+- [GitHub enterprise-managed sandbox preview](https://github.blog/changelog/2026-09-08-enterprise-managed-sandbox-in-copilot-for-jetbrains)

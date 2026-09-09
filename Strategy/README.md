@@ -2,17 +2,17 @@
 
 This index tracks the most recent structured strategy research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: 2026-09-07
+## Latest Structured Update: 2026-09-09
 
-### Individually valid controls can compose into the wrong effect
+### Task-level policy is still ambient authority inside a multi-agent task
 
-Summary: CONTINUITY binds principal, task, provenance, delegation, policy, canonical action, and finality into one authenticated witness. Its deterministic suite committed no harmful effect in 2,560 modeled attacks, while the strongest incomplete gateway-plus-finality configuration still failed in 65.6% of attack instances.
+Summary: CapScope derives a task-wide authority ceiling before untrusted reads, stores typed capabilities outside model context, and attenuates them per sub-agent. Injected effects fell from 33/75 under the strongest global baseline to 3/75, while repair completion remained 68/75.
 
-Analysis: [daily strategy](2026-09-07/sovereignty.md#security-controls-need-end-to-end-continuity-contracts)
-Core sources: [paper](https://arxiv.org/abs/2609.05269v1), [continuity](https://github.com/zast-ai/continuity)
-Tools and methodologies worth exploring now: assume-guarantee contracts, typed releases, canonical action digests, transformation witnesses, finality revalidation, alternate-path fault injection
-Implementability score: 0.83
+Analysis: [daily strategy](2026-09-09/sovereignty.md#authority-must-be-scoped-per-principal-not-per-task)
+Core sources: [paper](https://arxiv.org/abs/2609.08371v1), [artifact](https://figshare.com/s/86184ed20f66d1f0cf91), [GitHub managed sandbox signal](https://github.blog/changelog/2026-09-08-enterprise-managed-sandbox-in-copilot-for-jetbrains)
+Tools and methodologies worth exploring now: trusted preflight ceilings, typed capability predicates, per-principal stores, delegation attenuation, dispatch hooks, reason-coded denial logs
+Implementability score: 0.76
 
 ## Current implication
 
-A chain of green controls is not end-to-end authorization. The security context must survive every adapter and remain bound to a current, exact effect at finality.
+A task-level allowlist cannot safely govern delegated agents when different roles need different effects. Mint the maximum authority before untrusted reads, narrow it per principal, and enforce it outside the model.

@@ -1,6 +1,6 @@
 # Agent Serving Runtime
 
-Last updated: 2026-06-30
+Last updated: 2026-09-09
 
 Core sources:
 - AGENTSERVESIM: https://arxiv.org/abs/2606.09613v1
@@ -114,3 +114,18 @@ Source: [Speculative Macro Commit](https://arxiv.org/abs/2609.03236v1)
 ## Working conclusion
 
 The agent-serving runtime should become an evidence layer between traces and routers. First trace the program, then simulate routing and cache policies, then deploy only the policies whose predicted gains survive real telemetry.
+
+## September 9, 2026 update: runtime state, not model prose, owns completion
+
+The Unreliable Progress Bar separates environment-owned lifecycle truth from model status reports and final task success. Stage-dependent gaps, premature completion, post-done false reporting, omission, and tool-use divergence show that a model cannot safely be its own progress bar.
+
+Practical lesson:
+- compute progress from durable state and pending obligations;
+- treat model status as a proposal, not a transition trigger;
+- score emission, value, withholding, and task success separately;
+- freeze the runtime oracle before reading model output;
+- test cancel, timeout, retry, handoff, and post-completion checkpoints.
+
+Implementability score: 0.90
+
+Source: [The Unreliable Progress Bar](https://arxiv.org/abs/2609.08589v1)

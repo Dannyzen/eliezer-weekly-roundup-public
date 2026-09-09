@@ -6,9 +6,9 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily research, 2026-09-07: [portability is a whole execution-contract property](roundups/2026-09-07.md)
-- AgenticAI daily analysis: [2026-09-07](AgenticAI/2026-09-07/reasoning.md)
-- Strategy daily analysis: [2026-09-07](Strategy/2026-09-07/sovereignty.md)
+- Daily research, 2026-09-09: [external truth surfaces for agent loops](roundups/2026-09-09.md)
+- AgenticAI daily analysis: [2026-09-09](AgenticAI/2026-09-09/reasoning.md)
+- Strategy daily analysis: [2026-09-09](Strategy/2026-09-09/sovereignty.md)
 - Friday synthesis, 2026-09-04: [observed success is not authorization](roundups/2026-09-04.md)
 - Deep Dive Wednesday, 2026-09-02: [defense as skill](Strategy/defense-as-skill/defense-as-skill.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
@@ -18,6 +18,10 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 Observed success is not authorization. A green functional test, a parsed tool-call rate, a current replica, a valid OAuth token, a declared skill interface, and a trusted plugin can all be true while the runtime is already wrong. A governable runtime should:
 
+- derive lifecycle truth from runtime state rather than model self-report;
+- freeze independently qualified tests before source repair begins;
+- attenuate task authority per principal and enforce it outside model context;
+- admit procedural-graph mutations only through held-out validation;
 - carry a typed security-context witness across every transform and bind it to the exact effect at finality;
 - treat model and embedding upgrades as memory migrations with direction-specific compatibility tests;
 - freeze the skill-library snapshot used by a run and expose accepted mutations only in the next version;

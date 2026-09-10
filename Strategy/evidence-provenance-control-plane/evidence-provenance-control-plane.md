@@ -255,6 +255,23 @@ Source:
 
 - [DNative-Twin](https://arxiv.org/abs/2609.03787v1)
 
+## September 10, 2026 update: producer identity and local integrity need separate proofs
+
+TrajMark separates a robust owner channel from fragile local commitments over critical trajectory segments. Across three coding-agent frameworks and three models, it recovered the exact owner in all clean evaluated batches, detected 95.5% to 100% of eligible single-site edits, and localized 95.8% of random single-action corruption to an accepted protocol region.
+
+Practical lesson:
+- assign stable producer or deployment IDs;
+- sign append-only trajectory chunks and add local commitments around critical actions;
+- test attribution and tamper localization independently;
+- bind the verified trajectory root to the final patch and acceptance receipt;
+- keep cryptographic logs as the baseline because watermark evidence is not authorization.
+
+Evidence caveat: no paper-owned reusable implementation resolved, the identifier is six bits, and localization reaches a protocol region rather than necessarily the exact action.
+
+Implementability score: 0.46
+
+Source: [TrajMark](https://arxiv.org/abs/2609.10416v1)
+
 ## Working conclusion
 
 The architectural lesson is simple: do not confuse artifacts with proof.

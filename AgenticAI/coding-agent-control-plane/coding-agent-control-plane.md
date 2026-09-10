@@ -368,3 +368,19 @@ PatchBench shows that repository-level agent scaffolds raise memorized-patch rat
 Implementability score: 0.70
 
 Source: [PatchBench](https://arxiv.org/abs/2609.04075v1)
+
+## September 10, 2026 update: remediation agents should land through reviewable branches
+
+GitHub Code Quality can now assign up to 25 findings to Copilot. The agent works on a branch, validates its changes, and opens a pull request. The useful control pattern is owned finding input, isolated mutation, and human-reviewed finality, not bulk autonomous write authority.
+
+Practical lesson:
+- pilot with small, low-risk finding batches;
+- preserve finding IDs, branch identity, validations, review comments, and merge decision;
+- keep repair tests and final acceptance under independent ownership;
+- measure accepted fixes, regressions, latency, and AI-credit cost.
+
+Availability caveat: GitHub Team or Enterprise Cloud with Code Quality enabled is required.
+
+Implementability score: 0.92
+
+Source: [GitHub agentic autofix](https://github.blog/changelog/2026-09-09-remediate-code-quality-findings-with-agentic-autofix/)

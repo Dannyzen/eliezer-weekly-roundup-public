@@ -2,17 +2,17 @@
 
 This index tracks the most recent structured strategy research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: 2026-09-09
+## Latest Structured Update: 2026-09-10
 
-### Task-level policy is still ambient authority inside a multi-agent task
+### Ownership and local integrity need different evidence channels
 
-Summary: CapScope derives a task-wide authority ceiling before untrusted reads, stores typed capabilities outside model context, and attenuates them per sub-agent. Injected effects fell from 33/75 under the strongest global baseline to 3/75, while repair completion remained 68/75.
+Summary: TrajMark uses a robust owner layer and fragile local seals instead of asking one global watermark to prove both producer identity and local integrity. It reports exact owner recovery on all clean evaluated batches, 95.5% to 100% detection under eligible single-site attacks, and 95.8% protocol-region localization under random single-action corruption.
 
-Analysis: [daily strategy](2026-09-09/sovereignty.md#authority-must-be-scoped-per-principal-not-per-task)
-Core sources: [paper](https://arxiv.org/abs/2609.08371v1), [artifact](https://figshare.com/s/86184ed20f66d1f0cf91), [GitHub managed sandbox signal](https://github.blog/changelog/2026-09-08-enterprise-managed-sandbox-in-copilot-for-jetbrains)
-Tools and methodologies worth exploring now: trusted preflight ceilings, typed capability predicates, per-principal stores, delegation attenuation, dispatch hooks, reason-coded denial logs
-Implementability score: 0.76
+Analysis: [daily analysis](2026-09-10/sovereignty.md#ownership-and-local-integrity-need-different-evidence-channels)
+Core source: [TrajMark](https://arxiv.org/abs/2609.10416v1)
+Tools and methodologies worth exploring now: stable producer IDs, signed trajectory chunks, critical-segment commitments, independent attribution and localization gates, final-artifact binding
+Implementability score: 0.46
 
 ## Current implication
 
-A task-level allowlist cannot safely govern delegated agents when different roles need different effects. Mint the maximum authority before untrusted reads, narrow it per principal, and enforce it outside the model.
+Do not ask one provenance signal to prove two different things. Use robust evidence to attribute the producer, fragile local commitments to expose edits, and ordinary cryptographic receipts to bind both to the exact artifact and final effect.

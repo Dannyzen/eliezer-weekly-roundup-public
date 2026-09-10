@@ -2,35 +2,35 @@
 
 This index tracks the most recent structured implementation research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: 2026-09-09
+## Latest Structured Update: 2026-09-10
 
-### Independent tests must be frozen before repair
+### Detect specification gaps before a coding agent invents the method
 
-Summary: ExecCritic separates behavior-test construction from source repair, qualifies each test bundle in a fail-closed harness, and prevents the Repair agent from changing the test. Poor generated tests lowered resolution from 61.2% to 57.3%, while the trained pair reached 72.6% on SWE-bench Verified.
+Summary: IdeaAMBIG's 660 evidence-grounded cases separate readiness assessment, defect localization, and clarification. Across 13 models, the best real-world defect recovery rate was 9.6%, while clarification success reached 80.6% once the defect was identified.
 
-Analysis: [daily analysis](2026-09-09/reasoning.md#independent-tests-must-be-frozen-before-repair)
-Core sources: [paper](https://arxiv.org/abs/2609.09133v1), [MSR-Orchard/execcritic](https://github.com/MSR-Orchard/execcritic)
-Tools and methodologies worth exploring now: independent test and repair principals, behavior contracts, clean-base-failure gates, frozen test bundles, held-out verification
-Implementability score: 0.72
+Analysis: [daily analysis](2026-09-10/reasoning.md#detect-specification-gaps-before-a-coding-agent-invents-the-method)
+Core sources: [paper](https://arxiv.org/abs/2609.10539v1), [Yiling-Ma/IdeaAMBIG](https://github.com/Yiling-Ma/IdeaAMBIG)
+Tools and methodologies worth exploring now: codification-readiness gates, typed blocker taxonomies, evidence-seeking clarification actions, unsupported-assumption rejection, separate localization and clarification metrics
+Implementability score: 0.84
 
-### Runtime state must own progress and completion
+### Preserve memory, but make influence query-conditioned
 
-Summary: The Unreliable Progress Bar finds stage-dependent lifecycle-reporting gaps across deployed model configurations. Six of seven primary deployments had significant nonterminal-to-terminal gaps from 29.4 to 89.3 points, and post-done false reporting reached 90% to 100% for most deployments.
+Summary: RD-Forget keeps a retained source archive while building a query-specific answer view. On fact consolidation, it beat the stronger baseline by 11 to 26 points across four model backbones; removing forgetting or query conditioning caused the largest matched deficits.
 
-Analysis: [daily analysis](2026-09-09/reasoning.md#runtime-state-must-own-progress-and-completion)
-Core source: [The Unreliable Progress Bar](https://arxiv.org/abs/2609.08589v1)
-Tools and methodologies worth exploring now: runtime-owned lifecycle state, pending-obligation checks, separate report and task-success metrics, pre-action and post-completion fixtures
-Implementability score: 0.90
+Analysis: [daily analysis](2026-09-10/reasoning.md#preserve-memory-but-make-influence-query-conditioned)
+Core source: [What Should an Agent Forget?](https://arxiv.org/abs/2609.10263v1)
+Tools and methodologies worth exploring now: immutable source archives, semantic relation slots, supersession links, historical-intent rescue, budgeted answer-time evidence views, selected-memory receipts
+Implementability score: 0.68
 
-### Procedural knowledge should be an editable graph
+### Remediation agents should start from owned findings and land through review
 
-Summary: Procedural Graphs turns tool order, preconditions, and verification steps into a versioned transition graph. It ranked first or tied first in 21 of 24 model-benchmark cells and admits offline edits only after held-out validation.
+Summary: GitHub Code Quality can assign up to 25 findings to Copilot, which repairs them on a branch, validates the changes, and opens a pull request. Existing enterprise Code Quality policy governs access; AI credits and independent acceptance remain real costs.
 
-Analysis: [daily analysis](2026-09-09/reasoning.md#procedural-knowledge-should-be-an-editable-graph-not-a-flat-note)
-Core source: [Procedural Graphs](https://arxiv.org/abs/2609.09153v1)
-Tools and methodologies worth exploring now: typed procedure nodes, precondition edges, bounded neighborhood guidance, frozen run snapshots, rejected-edit memory
-Implementability score: 0.61
+Analysis: [daily analysis](2026-09-10/reasoning.md#remediation-agents-should-start-from-owned-findings-and-land-through-review)
+Core source: [GitHub changelog](https://github.blog/changelog/2026-09-09-remediate-code-quality-findings-with-agentic-autofix/)
+Tools and methodologies worth exploring now: bounded finding batches, branch isolation, independent test ownership, review-constraint gates, acceptance and credit-cost telemetry
+Implementability score: 0.92
 
 ## Current implication
 
-Agent loops need external truth surfaces. Freeze tests before repair, derive progress from durable runtime state, and evolve procedural guidance only through held-out admission.
+The next useful control surface is preflight-to-acceptance continuity. Localize missing decisions before coding, limit memory influence at answer time without destroying history, and let remediation agents land only through isolated branches and independently owned acceptance.

@@ -6,11 +6,11 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily research, 2026-09-09: [external truth surfaces for agent loops](roundups/2026-09-09.md)
-- AgenticAI daily analysis: [2026-09-09](AgenticAI/2026-09-09/reasoning.md)
-- Strategy daily analysis: [2026-09-09](Strategy/2026-09-09/sovereignty.md)
+- Daily research, 2026-09-10: [preflight-to-proof chain](roundups/2026-09-10.md)
+- AgenticAI daily analysis: [2026-09-10](AgenticAI/2026-09-10/reasoning.md)
+- Strategy daily analysis: [2026-09-10](Strategy/2026-09-10/sovereignty.md)
 - Friday synthesis, 2026-09-04: [observed success is not authorization](roundups/2026-09-04.md)
-- Deep Dive Wednesday, 2026-09-02: [defense as skill](Strategy/defense-as-skill/defense-as-skill.md)
+- Deep Dive Wednesday, 2026-09-09: [agent fleet monitoring control plane](Strategy/agent-fleet-monitoring-control-plane/agent-fleet-monitoring-control-plane.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 
@@ -18,9 +18,14 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 Observed success is not authorization. A green functional test, a parsed tool-call rate, a current replica, a valid OAuth token, a declared skill interface, and a trusted plugin can all be true while the runtime is already wrong. A governable runtime should:
 
+- refuse codification when an implementation-critical decision is missing, then ask for the exact evidence needed;
+- retain memory source history while gating which facts may influence each query;
+- separate robust producer attribution from fragile local integrity evidence;
+- isolate automated remediation on branches and keep acceptance under independent review;
 - derive lifecycle truth from runtime state rather than model self-report;
 - freeze independently qualified tests before source repair begins;
 - attenuate task authority per principal and enforce it outside model context;
+- correlate persistent principals across services and days, then rank state-verified risk under the real review budget;
 - admit procedural-graph mutations only through held-out validation;
 - carry a typed security-context witness across every transform and bind it to the exact effect at finality;
 - treat model and embedding upgrades as memory migrations with direction-specific compatibility tests;
@@ -82,6 +87,7 @@ The model can propose actions, summaries, skill changes, routes, plans, and expe
 
 ### Strategy
 
+- [Agent Fleet Monitoring Control Plane](Strategy/agent-fleet-monitoring-control-plane/agent-fleet-monitoring-control-plane.md)
 - [Defense as Skill](Strategy/defense-as-skill/defense-as-skill.md)
 - [Evaluation Containment Control Plane](Strategy/evaluation-containment-control-plane/evaluation-containment-control-plane.md)
 - [Stateful Effect Governance](Strategy/stateful-effect-governance/stateful-effect-governance.md)

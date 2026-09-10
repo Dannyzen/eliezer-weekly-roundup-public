@@ -36,6 +36,24 @@ Core sources:
 - [earendil-works/pi](https://github.com/earendil-works/pi)
 - [GitHub enterprise-managed sandbox preview](https://github.blog/changelog/2026-09-08-enterprise-managed-sandbox-in-copilot-for-jetbrains)
 
+## Deep Dive Wednesday: monitor the fleet, not only the call
+
+[MOLE](https://arxiv.org/abs/2609.06966v1) is the week's strongest architectural finding because it covers the residual risk left after per-call authorization. It evaluates 150 persistent AI-operated accounts across nine stateful services and 30 workdays, labels completed harm from downstream service state, and ranks account-days under a fixed human-review budget.
+
+The result that matters is economic as much as technical. Cheap action-rarity and peer/history-novelty features improved a mid-tier semantic monitor by 49% to 64% across held-out corpora. Selective escalation reached 0.629 budget-AUC at lower modeled cost than uniform use of GPT-5.5, whose budget-AUC was 0.571. Expensive semantic inspection should be routed, not sprayed across every trace.
+
+This extends CapScope rather than replacing it. CapScope attenuates what each principal may do before dispatch. MOLE correlates what persistent principals actually did across services and time, verifies resulting harm in state, and directs scarce review capacity to the riskiest accounts.
+
+The durable control-plane model, implementation boundary, and pilot sequence are in [Agent Fleet Monitoring Control Plane](../agent-fleet-monitoring-control-plane/agent-fleet-monitoring-control-plane.md).
+
+Implementability score: 0.74
+
+Core sources:
+- [MOLE paper](https://arxiv.org/abs/2609.06966v1)
+- [MOLE repository](https://github.com/aashiqmuhamed/mole)
+- [MOLE dataset](https://huggingface.co/datasets/forgelab/mole)
+- [OpenAI research acceleration disclosure](https://openai.com/index/research-acceleration-view-inside-openai/)
+
 ## Working conclusion
 
 A task-level policy is still ambient authority inside a multi-agent task. Mint a trusted ceiling before untrusted reads, attenuate it per principal, and enforce it at the host dispatch boundary.

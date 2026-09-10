@@ -791,6 +791,23 @@ Sources:
 - [huggingface/funes](https://github.com/huggingface/funes)
 
 
+## September 10, 2026 update: archive history, gate influence per query
+
+RD-Forget separates source retention from answer-time use. Same-slot replacement suppresses superseded values for current questions, historical intent can re-admit old evidence, and a bounded selector constructs the model-visible view. Across four models, fact-consolidation gains over the stronger baseline ranged from 11 to 26 points.
+
+Practical lesson:
+- retain raw source observations with temporal and relation scope;
+- mark facts active, superseded, or historically eligible instead of deleting them;
+- build query-conditioned evidence views under a measured budget;
+- test current, historical, evolution, contradiction, and multi-hop intents;
+- preserve selected and excluded memory IDs in the receipt.
+
+No paper-owned public implementation artifact resolved.
+
+Implementability score: 0.68
+
+Source: [What Should an Agent Forget?](https://arxiv.org/abs/2609.10263v1)
+
 ## Working conclusion
 
 The next generation of agents will be differentiated less by how eloquently they speak and more by how faithfully and safely they remember. The winning systems will preserve evidence, route memory writes explicitly, retrieve context adaptively, abstain when memory is unsafe, validate high-value writes, make retention and pruning decisions replayable, query local graphs when code structure matters, promote only the right lessons into durable guidance, attach enough context for updates and temporal reasoning, choose abstraction levels that transfer across tasks, keep the most sensitive memory close to the user and under policy control, run durable memory through a governed database-backed state core, separate evaluation memory from user-facing memory, measure whether memories remain usable under scale, budgets, and writeback review, expose operation-level provenance, make reasoning history diffable, test belief-state stay/update/isolate decisions, gate retrieval by policy, resolve contradictions with bitemporal evidence, evaluate memory against heterogeneous evolving source streams, and defend memory write/read paths against poisoning so failures can be traced instead of guessed.

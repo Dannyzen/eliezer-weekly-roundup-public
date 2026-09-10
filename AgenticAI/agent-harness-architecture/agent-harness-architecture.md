@@ -814,6 +814,25 @@ Practical lesson:
 Source:
 - [OpenAI Agents SDK v0.21.0](https://github.com/openai/openai-agents-python/releases/tag/v0.21.0)
 
+## September 10, 2026 update: ambiguity detection must precede codification
+
+IdeaAMBIG turns implementation readiness into three separately scored stages: readiness assessment, defect localization, and clarification action generation. Across 13 models, the strongest real-world defect recovery rate was 9.6%, while clarification success reached 80.6% once the defect was supplied. A harness should therefore fail closed before planning when a method-defining choice is missing.
+
+Practical lesson:
+- add ready, blocked, and clarification-required states before implementation;
+- require a blocker to name the missing decision and affected code surface;
+- reject unsupported assumptions as preflight failures;
+- score defect localization separately from question fluency;
+- release coding authority only after the supported resolution enters the task contract.
+
+Artifact status: the public repository contains 660 benchmark instances plus construction and evaluation code. It was inspected read-only and not executed.
+
+Implementability score: 0.84
+
+Sources:
+- [IdeaAMBIG](https://arxiv.org/abs/2609.10539v1)
+- [Yiling-Ma/IdeaAMBIG](https://github.com/Yiling-Ma/IdeaAMBIG)
+
 ## Working conclusion
 
 Agent harness architecture is becoming one of the clearest ways to tell whether a team is building a toy, a developer tool, or a real operating substrate. The winning systems will make context explicit, tool boundaries governable, restore paths safe, typed component interfaces inspectable, orchestration empirically justified and quality-gated, skill routing compositional, test-oracle strength machine-checkable, evidence easy to inspect, environment-specific falsification surfaces routine, real-session misalignment labels routine, proposal-soundness gates explicit, failed trajectories layer-attributed, process discipline measurable, and production failures routinely promoted into versioned regression fixtures with trajectory and outcome graders.

@@ -2,35 +2,26 @@
 
 This index tracks the most recent structured implementation research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: 2026-09-10
+## Latest Structured Update: 2026-09-11
 
-### Detect specification gaps before a coding agent invents the method
+### Evolve harnesses from recurring failures, not isolated episodes
 
-Summary: IdeaAMBIG's 660 evidence-grounded cases separate readiness assessment, defect localization, and clarification. Across 13 models, the best real-world defect recovery rate was 9.6%, while clarification success reached 80.6% once the defect was identified.
+Summary: Ecdysis clusters failures across tasks before proposing runtime-harness changes. It reports up to a 1.84x training speedup, 18.56% higher reasoning accuracy, and full-data-comparable performance from one-quarter of the training data.
 
-Analysis: [daily analysis](2026-09-10/reasoning.md#detect-specification-gaps-before-a-coding-agent-invents-the-method)
-Core sources: [paper](https://arxiv.org/abs/2609.10539v1), [Yiling-Ma/IdeaAMBIG](https://github.com/Yiling-Ma/IdeaAMBIG)
-Tools and methodologies worth exploring now: codification-readiness gates, typed blocker taxonomies, evidence-seeking clarification actions, unsupported-assumption rejection, separate localization and clarification metrics
-Implementability score: 0.84
+Analysis: [daily analysis](2026-09-11/reasoning.md#evolve-harnesses-from-recurring-failures-not-isolated-episodes)
+Core sources: [paper](https://arxiv.org/abs/2609.11677v1), [cuiyu-ai/Ecdysis](https://github.com/cuiyu-ai/Ecdysis)
+Tools and methodologies worth exploring now: failure clustering by interaction structure, model-accommodation labels, machine-readable harness changes, held-out task gates, cross-model acceptance, token and regression budgets
+Implementability score: 0.61
 
-### Preserve memory, but make influence query-conditioned
+### Let memory curators ask the environment before they write
 
-Summary: RD-Forget keeps a retained source archive while building a query-specific answer view. On fact consolidation, it beat the stronger baseline by 11 to 26 points across four model backbones; removing forgetting or query conditioning caused the largest matched deficits.
+Summary: A read-only environment-probing curator raised CLBench pass rate from 39% to 73%, reduced queries from 8.8 to 4.7 per question, and cut task-agent cost from $3.38 to $1.68 without retraining the model or changing production write authority.
 
-Analysis: [daily analysis](2026-09-10/reasoning.md#preserve-memory-but-make-influence-query-conditioned)
-Core source: [What Should an Agent Forget?](https://arxiv.org/abs/2609.10263v1)
-Tools and methodologies worth exploring now: immutable source archives, semantic relation slots, supersession links, historical-intent rescue, budgeted answer-time evidence views, selected-memory receipts
-Implementability score: 0.68
-
-### Remediation agents should start from owned findings and land through review
-
-Summary: GitHub Code Quality can assign up to 25 findings to Copilot, which repairs them on a branch, validates the changes, and opens a pull request. Existing enterprise Code Quality policy governs access; AI credits and independent acceptance remain real costs.
-
-Analysis: [daily analysis](2026-09-10/reasoning.md#remediation-agents-should-start-from-owned-findings-and-land-through-review)
-Core source: [GitHub changelog](https://github.blog/changelog/2026-09-09-remediate-code-quality-findings-with-agentic-autofix/)
-Tools and methodologies worth exploring now: bounded finding batches, branch isolation, independent test ownership, review-constraint gates, acceptance and credit-cost telemetry
-Implementability score: 0.92
+Analysis: [daily analysis](2026-09-11/reasoning.md#let-memory-curators-ask-the-environment-before-they-write)
+Core source: [Grounding Agent Memory](https://arxiv.org/abs/2609.11060v1)
+Tools and methodologies worth exploring now: read-only curator principals, MCP probe subsets, typed memory admission states, probe receipts, paired no-memory evaluations, separate production write gates
+Implementability score: 0.78
 
 ## Current implication
 
-The next useful control surface is preflight-to-acceptance continuity. Localize missing decisions before coding, limit memory influence at answer time without destroying history, and let remediation agents land only through isolated branches and independently owned acceptance.
+Do not let a single failed episode rewrite the harness or a completed trajectory become memory truth. Aggregate failures across tasks, probe the current environment, and promote changes only through held-out or downstream admission gates.

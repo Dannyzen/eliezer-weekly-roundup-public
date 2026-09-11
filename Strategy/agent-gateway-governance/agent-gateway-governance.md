@@ -1076,3 +1076,23 @@ Sources:
 
 - [SilentProbe](https://arxiv.org/abs/2609.00035v1)
 - [Jasper0122/silentprobe](https://github.com/Jasper0122/silentprobe)
+
+## September 11, 2026 update: A2A compliance does not preserve delegation authority
+
+A2ABreak derives a finite-state model from the A2A specification and reports 11 vulnerabilities available to a specification-compliant adversary. The gaps include unprotected cross-client context identifiers, identity loss across delegation hops, and unattested capability claims. The framework reached 73.3% precision and 84.6% F1 against expert review; a zero-shot LLM produced no confirmed findings.
+
+Practical lesson:
+- bind context identifiers to tenant and client ownership;
+- preserve end-principal identity and delegation lineage across hops;
+- attest capabilities instead of trusting self-advertised Agent Cards;
+- constrain delegated credentials by audience, scope, and hop count;
+- run formal lifecycle review when the A2A specification changes.
+
+Evidence caveat: the work analyzes normative protocol gaps under a full-compliance adversary, not measured production prevalence. Expert adjudication remains necessary.
+
+Implementability score: 0.73
+
+Sources:
+- [A2ABreak](https://arxiv.org/abs/2609.10871v1)
+- [arlotfi79/A2ABreak](https://github.com/arlotfi79/A2ABreak)
+- [A2A specification](https://a2a-protocol.org/latest/specification/)

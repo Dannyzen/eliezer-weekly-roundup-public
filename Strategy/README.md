@@ -2,17 +2,26 @@
 
 This index tracks the most recent structured strategy research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
 
-## Latest Structured Update: 2026-09-10
+## Latest Structured Update: 2026-09-11
 
-### Ownership and local integrity need different evidence channels
+### Independent evidence beats a second model at commit time
 
-Summary: TrajMark uses a robust owner layer and fragile local seals instead of asking one global watermark to prove both producer identity and local integrity. It reports exact owner recovery on all clean evaluated batches, 95.5% to 100% detection under eligible single-site attacks, and 95.8% protocol-region localization under random single-action corruption.
+Summary: In VP-CONTROL's 2,880 scenarios, cross-model voting over shared evidence approved 62.9% of unsafe proposals, versus 22.9% with an independent source. Evidence-source diversity moved results by 40.9 points, compared with 11.3 points for model diversity.
 
-Analysis: [daily analysis](2026-09-10/sovereignty.md#ownership-and-local-integrity-need-different-evidence-channels)
-Core source: [TrajMark](https://arxiv.org/abs/2609.10416v1)
-Tools and methodologies worth exploring now: stable producer IDs, signed trajectory chunks, critical-segment commitments, independent attribution and localization gates, final-artifact binding
-Implementability score: 0.46
+Analysis: [daily analysis](2026-09-11/sovereignty.md#independent-evidence-beats-a-second-model-at-commit-time)
+Core sources: [paper](https://arxiv.org/abs/2609.10969v1), [MIT artifact](https://doi.org/10.6084/m9.figshare.33511441.v1)
+Tools and methodologies worth exploring now: evidence-lineage IDs, deterministic fault injection, calibrated verification portfolios, transactional preconditions, explicit defer states, offline replay from frozen records
+Implementability score: 0.74
+
+### Protocol compliance is not delegation safety
+
+Summary: A2ABreak reports 11 A2A vulnerabilities exploitable by a specification-compliant adversary, including cross-client context injection, multi-hop identity loss, and unattested capability claims. Its formal framework reached 73.3% precision and 84.6% F1 against expert review.
+
+Analysis: [daily analysis](2026-09-11/sovereignty.md#protocol-compliance-is-not-delegation-safety)
+Core sources: [paper](https://arxiv.org/abs/2609.10871v1), [A2ABreak](https://github.com/arlotfi79/A2ABreak), [A2A specification](https://a2a-protocol.org/latest/specification/)
+Tools and methodologies worth exploring now: tenant-bound context IDs, end-principal identity, delegation-chain receipts, capability attestations, audience-bound credentials, formal lifecycle review
+Implementability score: 0.73
 
 ## Current implication
 
-Do not ask one provenance signal to prove two different things. Use robust evidence to attribute the producer, fragile local commitments to expose edits, and ordinary cryptographic receipts to bind both to the exact artifact and final effect.
+Independent models are not independent verifiers when they share evidence. Preserve independent state lineage at commit time, and carry context ownership, principal identity, and capability authority across every A2A hop.

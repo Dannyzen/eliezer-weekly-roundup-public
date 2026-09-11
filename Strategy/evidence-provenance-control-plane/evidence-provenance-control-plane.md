@@ -272,6 +272,25 @@ Implementability score: 0.46
 
 Source: [TrajMark](https://arxiv.org/abs/2609.10416v1)
 
+## September 11, 2026 update: verifier independence starts with evidence lineage
+
+VP-CONTROL separates model diversity from evidence-source diversity across 2,880 deterministic scenarios. Cross-model voting over shared evidence approved 62.9% of unsafe proposals, versus 22.9% with an independent source. The source effect was 40.9 points, compared with 11.3 points for model diversity.
+
+Practical lesson:
+- assign lineage IDs to actor and verifier evidence;
+- reject independence claims when both reads share a stale or corrupted source;
+- inject common-mode, partial-update, and race faults into commit-gate tests;
+- bind mutable preconditions atomically to the write;
+- calibrate risk, cost, automated coverage, and defer rate together.
+
+Evidence caveat: the benchmark is primarily deterministic and synthetic. Unseen fault families still produced 16% to 26% risk, so the reported locked-test rate is not a production guarantee.
+
+Implementability score: 0.74
+
+Sources:
+- [VP-CONTROL](https://arxiv.org/abs/2609.10969v1)
+- [MIT replay artifact](https://doi.org/10.6084/m9.figshare.33511441.v1)
+
 ## Working conclusion
 
 The architectural lesson is simple: do not confuse artifacts with proof.

@@ -1349,3 +1349,22 @@ Implementability score: 0.72
 Sources:
 - [ExecCritic](https://arxiv.org/abs/2609.09133v1)
 - [MSR-Orchard/execcritic](https://github.com/MSR-Orchard/execcritic)
+
+## September 11, 2026 update: recurrent failures should drive harness evolution
+
+Ecdysis aggregates failures across tasks before deciding whether to accommodate one model or repair the harness. It reports up to a 1.84x training speedup, an 18.56% reasoning-accuracy gain, lower inference token use, and performance comparable to full-data training with one-quarter of the data.
+
+Practical lesson:
+- cluster failures by interaction structure and violated invariant;
+- label model accommodation separately from harness defects;
+- represent every harness mutation as a bounded, diffable object;
+- require held-out tasks and another model family before promotion;
+- record token, latency, quality, and regression deltas per harness version.
+
+Evidence caveat: the results are not independently reproduced here. The populated public repository has no declared license and no tagged release.
+
+Implementability score: 0.61
+
+Sources:
+- [Ecdysis](https://arxiv.org/abs/2609.11677v1)
+- [cuiyu-ai/Ecdysis](https://github.com/cuiyu-ai/Ecdysis)

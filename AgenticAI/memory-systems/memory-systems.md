@@ -1046,3 +1046,20 @@ Evidence caveat: 48 synthetic histories and two small open-weight models do not 
 Implementability score: 0.77
 
 Source: [Memory Portability](https://arxiv.org/abs/2609.05339v1)
+
+## September 11, 2026 update: memory writers need read-only world probes
+
+Grounding Agent Memory gives an asynchronous curator a least-privilege, read-only subset of existing connectors before it commits memory. On 40 CLBench questions, probing raised pass rate from 39% to 73%, cut queries from 8.8 to 4.7 per question, and reduced task-agent cost from $3.38 to $1.68. Across 90 adapted APEX tasks, all 18 memory-versus-baseline mean-reward comparisons were positive.
+
+Practical lesson:
+- separate task execution, memory curation, and write admission principals;
+- attach the probe command, observation, source, and time to each candidate memory;
+- allow the curator to verify, scope, refresh, contradict, or defer;
+- keep production write authority outside the curator model;
+- compare no-memory, trajectory-only, and environment-probed conditions.
+
+Evidence caveat: the authors are from Microsoft, the APEX tasks were adapted, and no study-owned public implementation resolved.
+
+Implementability score: 0.78
+
+Source: [Grounding Agent Memory](https://arxiv.org/abs/2609.11060v1)

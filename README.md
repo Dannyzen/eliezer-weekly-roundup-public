@@ -6,9 +6,9 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily research, 2026-09-10: [preflight-to-proof chain](roundups/2026-09-10.md)
-- AgenticAI daily analysis: [2026-09-10](AgenticAI/2026-09-10/reasoning.md)
-- Strategy daily analysis: [2026-09-10](Strategy/2026-09-10/sovereignty.md)
+- Daily research, 2026-09-11: [independent world evidence](roundups/2026-09-11.md)
+- AgenticAI daily analysis: [2026-09-11](AgenticAI/2026-09-11/reasoning.md)
+- Strategy daily analysis: [2026-09-11](Strategy/2026-09-11/sovereignty.md)
 - Friday synthesis, 2026-09-04: [observed success is not authorization](roundups/2026-09-04.md)
 - Deep Dive Wednesday, 2026-09-09: [agent fleet monitoring control plane](Strategy/agent-fleet-monitoring-control-plane/agent-fleet-monitoring-control-plane.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
@@ -19,6 +19,11 @@ The repo separates patterns that can be tried now from ideas that still need res
 Observed success is not authorization. A green functional test, a parsed tool-call rate, a current replica, a valid OAuth token, a declared skill interface, and a trusted plugin can all be true while the runtime is already wrong. A governable runtime should:
 
 - refuse codification when an implementation-critical decision is missing, then ask for the exact evidence needed;
+- reject verifier independence when actor and verifier evidence share the same lineage;
+- bind mutable preconditions atomically to the write and defer when current evidence cannot be established;
+- let memory curators probe the current environment with read-only tools before write admission;
+- preserve context ownership, end-principal identity, and capability attestations across delegated A2A hops;
+- evolve harnesses from recurring cross-task failures, then require held-out and cross-model acceptance;
 - retain memory source history while gating which facts may influence each query;
 - separate robust producer attribution from fragile local integrity evidence;
 - isolate automated remediation on branches and keep acceptance under independent review;

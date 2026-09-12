@@ -1096,3 +1096,23 @@ Sources:
 - [A2ABreak](https://arxiv.org/abs/2609.10871v1)
 - [arlotfi79/A2ABreak](https://github.com/arlotfi79/A2ABreak)
 - [A2A specification](https://a2a-protocol.org/latest/specification/)
+
+## September 12, 2026 update: registry discovery is not runtime admission
+
+A seeded probability sample from a 24,135-server MCP registry found that only 48.8 percent of 400 sampled npm/stdio servers initialized. Among the 195 survivors, hard schema conformance was strong, but 58.8 percent of tools omitted optional safety annotations. The same study found substantial raw repetition in benchmark corpora that was nearly absent from real MCP tools.
+
+Practical lesson:
+- separate publisher identity, package resolution, process startup, handshake, schema conformance, annotations, and safe round trips;
+- quarantine failed servers instead of repairing them silently during measurement;
+- deduplicate benchmark tools globally;
+- sample against live catalog populations before claiming ecosystem coverage;
+- make admission receipts expire when packages or server metadata change.
+
+Evidence caveat: the study covers a seeded npm/stdio sample and one attempt per server, so 48.8 percent is a conservative inclusion estimate, not a universal MCP availability rate. The public `mcp-probe` artifact and benchmark data are populated but were not executed in this scan.
+
+Implementability score: 0.91
+
+Sources:
+- [MCP registry probability sample](https://arxiv.org/abs/2609.10962v1)
+- [mcp-probe](https://github.com/itguruhaseeb/mcp-probe)
+- [Zenodo archive](https://doi.org/10.5281/zenodo.21347997)

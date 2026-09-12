@@ -1217,3 +1217,24 @@ Sources:
 
 - [SWE-Gate](https://arxiv.org/abs/2609.04167v1)
 - [DeepSoftwareAnalytics/SWE-Gate](https://github.com/DeepSoftwareAnalytics/SWE-Gate)
+
+## September 12, 2026 update: evaluation needs lifecycle truth and clock truth
+
+BenchShield shows that a transcript cannot prove reward integrity because grader source, verifier inputs, task configuration, image builds, artifact provenance, and outcome records also shape the score. ChurnBench shows the parallel failure for retrieval: an answer can be correct when evidence is read and stale when evaluated.
+
+Practical lesson:
+- model setup, execution, submission, verification, and reward publication as explicit phases;
+- inventory reward sources and sinks, then pin infrastructure-side evidence;
+- compute source truth at retrieval and evaluation timestamps;
+- label reward hacking, freshness, retrieval, and reasoning failures separately;
+- return inconclusive when required lifecycle or clock evidence is absent.
+
+Evidence caveat: BenchShield has no paper-specific public release in the inspected surfaces. ChurnBench has a populated public repository with ledger, harness, data, provenance, and result files, but this scan did not execute it.
+
+Implementability scores: 0.72 (reward lifecycle instrumentation), 0.84 (event-time freshness evaluation)
+
+Sources:
+- [BenchShield](https://arxiv.org/abs/2609.11028v1)
+- [BenchFlow](https://github.com/benchflow-ai/benchflow)
+- [ChurnBench](https://arxiv.org/abs/2609.11515v1)
+- [ChurnBench repository](https://github.com/vsingh45/churnbench)

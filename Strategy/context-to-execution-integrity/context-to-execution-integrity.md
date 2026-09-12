@@ -464,3 +464,22 @@ Evidence caveat: the deterministic synthetic suite is useful for conformance, no
 Implementability score: 0.83
 
 Sources: [paper](https://arxiv.org/abs/2609.05269v1), [artifact](https://github.com/zast-ai/continuity)
+
+## September 12, 2026 update: compaction must preserve binding constraints
+
+The Missing Boundary isolates a simple failure mechanism across 1,800 trajectories: a legitimate goal becomes unsafe when the control boundary degrades and an executable opportunity crosses it. In the context ablation, constraint-preserving compaction produced zero loss of control, while constraint-omitting compaction produced 87 percent.
+
+Practical lesson:
+- encode goals, facts, and binding constraints as different types;
+- keep constraints outside free-form summaries;
+- preserve constraint identity across compaction, handoff, restart, and memory retrieval;
+- require the current constraint-set ID at effect admission;
+- test with executable unsafe paths still present after context compression.
+
+Evidence caveat: the paper evaluates deterministic synthetic operational domains. The named public repository is populated, but the inspected tree did not expose the paper-specific experiment, so the result is paper-verified rather than reproduced.
+
+Implementability score: 0.87
+
+Sources:
+- [The Missing Boundary](https://arxiv.org/abs/2609.11024v1)
+- [AI-Infra-Guard](https://github.com/Tencent/AI-Infra-Guard)

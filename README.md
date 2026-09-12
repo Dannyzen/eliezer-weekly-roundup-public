@@ -6,61 +6,29 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily research, 2026-09-11: [independent world evidence](roundups/2026-09-11.md)
-- AgenticAI daily analysis: [2026-09-11](AgenticAI/2026-09-11/reasoning.md)
-- Strategy daily analysis: [2026-09-11](Strategy/2026-09-11/sovereignty.md)
-- Friday synthesis, 2026-09-04: [observed success is not authorization](roundups/2026-09-04.md)
-- Deep Dive Wednesday, 2026-09-09: [agent fleet monitoring control plane](Strategy/agent-fleet-monitoring-control-plane/agent-fleet-monitoring-control-plane.md)
+- Daily scan, 2026-09-12: [admit tools, preserve constraints, instrument evidence](roundups/2026-09-12.md)
+- AgenticAI daily analysis: [reward lifecycle and temporal validity](AgenticAI/2026-09-12/reasoning.md)
+- Strategy daily analysis: [registry admission and constraint preservation](Strategy/2026-09-12/sovereignty.md)
+- Friday synthesis, 2026-09-11: [the runtime needs an evidence constitution](roundups/2026-09-11.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 
 ## Current thesis
 
-Observed success is not authorization. A green functional test, a parsed tool-call rate, a current replica, a valid OAuth token, a declared skill interface, and a trusted plugin can all be true while the runtime is already wrong. A governable runtime should:
+The agent can propose state, but it cannot own the evidence that makes that state authoritative. A governable stack keeps the following objects outside model self-certification:
 
-- refuse codification when an implementation-critical decision is missing, then ask for the exact evidence needed;
-- reject verifier independence when actor and verifier evidence share the same lineage;
-- bind mutable preconditions atomically to the write and defer when current evidence cannot be established;
-- let memory curators probe the current environment with read-only tools before write admission;
-- preserve context ownership, end-principal identity, and capability attestations across delegated A2A hops;
-- evolve harnesses from recurring cross-task failures, then require held-out and cross-model acceptance;
-- retain memory source history while gating which facts may influence each query;
-- separate robust producer attribution from fragile local integrity evidence;
-- isolate automated remediation on branches and keep acceptance under independent review;
-- derive lifecycle truth from runtime state rather than model self-report;
-- freeze independently qualified tests before source repair begins;
-- attenuate task authority per principal and enforce it outside model context;
-- correlate persistent principals across services and days, then rank state-verified risk under the real review budget;
-- admit procedural-graph mutations only through held-out validation;
-- carry a typed security-context witness across every transform and bind it to the exact effect at finality;
-- treat model and embedding upgrades as memory migrations with direction-specific compatibility tests;
-- freeze the skill-library snapshot used by a run and expose accepted mutations only in the next version;
-- require held-out harness evaluation before calling multi-harness training portable;
-- treat HTTP 200 with a parsable body as incomplete tool success until the schema can reject illegal values;
-- treat a shared model name as an unmeasured instrument until same-window and next-day observer gates pass;
-- treat a decision graph as incomplete reconstruction until tool state and verifier verdicts are in the replay contract;
-- treat functional test success as incomplete acceptance until review-constraint oracles also pass;
-- treat Single-PoC crash suppression as incomplete security acceptance until related-PoC and semantic oracles also pass;
-- treat GUI overcompliance as unauthorized execution and require terminate-with-conflict as a first-class action;
-- index coding-agent traces as owned memory with session/turn provenance rather than pasting transcripts;
-- commit speculative tool macros only from isolated snapshots after an exact first-action match;
-- treat serving adapters as part of the measurement instrument, logging raw completions separately from parsed tool calls;
-- treat reusable skills as covert policy objects and audit them with selection-lift fixtures, not scanner verdicts alone;
-- treat loaded skills as delayed-authority objects and consult a task-conditioned guard before sensitive effects;
-- treat lifecycle-hook updates as privileged admission, not plugin metadata refresh;
-- treat replica freshness as insufficient authorization until plans cite and revalidate exact parent record IDs;
-- bind remote tool calls to invocation-scoped workload leases instead of connect-time OAuth alone;
-- treat the user invocation as an activation plan over untrusted repository content;
-- bind permission checks to the exact resource, model, route, and configuration used;
-- remove outbound capabilities from components that read untrusted content;
-- separate user preference, standing policy, and exact-effect authorization;
-- evaluate runtime controllers separately from fixed workers across cheap fixtures and full-task anchors;
-- halt evaluation once a calibrated prefix already predicts the outcome;
-- compile operational records into deterministic, replayable evaluation episodes before model judging;
-- measure memory as stored state, delivered context, management work, and task outcome;
-- carry recurring state only through explicit continuity contracts with provenance and expiry.
+- measured tool admission state, not registry presence;
+- schema-valid tool results and runtime-owned completion state;
+- binding constraints preserved through compaction and handoff;
+- reward lifecycle evidence and temporally valid source truth;
+- qualified tests and evidence lineage;
+- memory provenance, compatibility, and probe receipts;
+- content-addressed skill and harness versions;
+- per-principal capabilities and exact-effect witnesses;
+- end-principal identity and context ownership across delegation;
+- persistent principal history across services and days.
 
-The model can propose actions, summaries, skill changes, routes, plans, and experiments. Resource identity, typed bridges, attributable verification, information-flow labels, deterministic policy, and durable authority decide what may change and what may cross a trust boundary.
+Start with cheap boundaries: startup probes, schema enumerations, protected constraint fields, frozen test hashes, stable principal IDs, and explicit runtime states. Add heavier verification portfolios, migration harnesses, and fleet monitors only when fault fixtures justify their cost.
 
 ## Browse by category
 

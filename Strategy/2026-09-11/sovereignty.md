@@ -1,55 +1,126 @@
-# Strategy Daily Sovereignty - 2026-09-11
+# Strategy Weekly Sovereignty Analysis - 2026-09-11
 
-## Freshness and selection
+## Thesis
 
-The selected papers were first listed by arXiv on Friday, 11 Sep 2026. VP-CONTROL was submitted on 10 Sep and A2ABreak on 9 Sep. Both expose reproducible public artifacts, inspected read-only. No external source code or benchmark was downloaded or executed.
+Sovereignty means the proposer cannot also define the evidence, authority, and final state of its own action. Authority must be attenuated per principal, carried across delegation, checked against independent world evidence, and monitored at the fleet layer.
 
-## Independent evidence beats a second model at commit time
+## Attenuate authority per principal and exact effect
 
-VP-CONTROL isolates a common failure in multi-agent verification: two models can agree because both consume the same stale or corrupted evidence. Its 48 task templates produce 2,880 deterministic scenarios across six fault regimes. In the fixed-call 2x2 comparison, a cross-model vote over shared evidence approved 62.9% of unsafe proposals, versus 22.9% when the second verifier used an independent source. Evidence-source diversity moved the result by 40.9 percentage points, while model diversity moved it by 11.3 points.
+### Finding
 
-A calibrated portfolio on the locked test reached 1.9% unsafe execution with 38.2% automated safe coverage. The weakness is transfer: unseen fault families still produced 16% to 26% risk. The paper therefore supports a control-plane rule, not a universal safety rate. Verification plans should buy independent evidence, require atomic preconditions, and defer when the calibrated risk budget cannot be met.
+CapScope fixes a task-wide authority ceiling from trusted input, then gives each sub-agent only the typed capabilities its role needs. Injected effects fell from 33 of 75 under the strongest global baseline to 3 of 75, while 68 of 75 repairs still completed. CONTINUITY makes each security-relevant transformation carry an authenticated witness to the exact effect. Its deterministic suite covered 128 modeled fault-domain classes and 2,560 attack instances without a harmful effect under the complete construction.
 
-How it fits into strategy: evidence provenance and execution control. The verifier model is not the root of trust. The root is an independently sourced, current, typed observation consumed at the non-bypassable commit boundary.
+### Why it matters
 
-Practical tools and methodologies worth exploring now:
+A task may need broad authority in aggregate without any one planner, reader, runner, or patcher needing all of it. Ambient task authority turns any compromised context into an execution path.
 
-- separate evidence-lineage IDs for actor and verifier reads
-- deterministic fault injection for stale, partial, degraded, and raced state
-- calibrated verification portfolios with explicit cost, risk, and coverage targets
-- atomic compare-and-commit or transactional guards for mutable preconditions
-- defer as a first-class result when independence cannot be established
-- the MIT VP-CONTROL Figshare artifact for offline replay design
+### Strategy fit
 
-Evidence caveat: the main benchmark is deterministic and synthetic, the actors are frozen local-model proposals, and the controlled HTTP/SQLite study is not a distributed production deployment. The public artifact includes frozen records, tests, preregistrations, and transaction-level audit material; replay does not require LLM access.
+This is context-to-execution integrity and the agent execution control plane. The control object is a typed, per-principal capability bound to one effect and one transition.
 
-Implementability score: 0.74
+### Practical path now
 
-Core sources: [paper](https://arxiv.org/abs/2609.10969v1), [VP-CONTROL artifact](https://doi.org/10.6084/m9.figshare.33511441.v1)
+- Derive a task ceiling from trusted input before untrusted context is read.
+- Issue role-specific capabilities for read, execute, patch, publish, and approve.
+- Require an authenticated witness at each security-relevant transform.
+- Bind the final witness to the exact arguments and destination of the effect.
+- Inject missing-context and stale-capability faults between components.
 
-## Protocol compliance is not delegation safety
+Implementability score: 0.79
 
-A2ABreak models the Agent2Agent protocol as a verified finite-state machine, then searches for missing security primitives under a specification-compliant adversary. It reports 11 new vulnerabilities that do not require implementation bugs, including cross-client context injection through unprotected context identifiers, credential harvesting when identity is lost across delegation hops, and data exfiltration through rogue agents with unattested capability claims.
+Core sources:
+- [Authority Is Not a String](https://arxiv.org/abs/2609.08371v1)
+- [CONTINUITY](https://arxiv.org/abs/2609.05269v1)
+- [CONTINUITY repository](https://github.com/zast-ai/continuity)
 
-Against independent expert review, the framework achieved 73.3% precision and 84.6% F1. A zero-shot LLM over the same specification produced no confirmed findings. The public MIT repository is populated with the PSM benchmark, formal-verification inputs and results, source, and outputs. This makes the work useful as a protocol threat-model corpus, not proof that every deployed A2A system is exploitable.
+## Delegation needs end-principal identity and context ownership
 
-How it fits into strategy: agent gateway governance. A2A's horizontal delegation boundary needs stronger controls than peer discovery and transport authentication. Context ownership, end-principal identity, capability attestation, and task lineage must survive every hop.
+### Finding
 
-Practical tools and methodologies worth exploring now:
+A2ABreak reports 11 vulnerabilities in the A2A protocol that remain exploitable by a specification-compliant adversary. The failures include cross-client context injection, loss of identity across multi-hop delegation, and unattested capability claims. Its formal framework reached 73.3% precision and 84.6% F1 against expert review, and the public repository exposes a populated benchmark and analysis surface.
 
-- `arlotfi79/A2ABreak` as a read-only attack taxonomy and benchmark reference
-- tenant-bound context identifiers with non-transferable ownership
-- end-principal and delegation-chain identity on every task and artifact
-- signed, attested capability manifests rather than self-advertised Agent Cards
-- least-privilege credential delegation with hop limits and audience binding
-- formal state-machine review of A2A lifecycle changes before rollout
+### Why it matters
 
-Evidence caveat: the analysis assumes a fully compliant adversary and evaluates normative gaps in the specification, not measured prevalence across production deployments. Precision of 73.3% also means expert adjudication remains necessary.
+Protocol compliance proves message shape, not delegation safety. A valid hop can still erase who initiated the task, who owns the context, and which capabilities were actually attested.
+
+### Strategy fit
+
+This belongs in agent gateway governance and shared-state agents. The gateway must carry tenant, end principal, delegation lineage, audience, and capability evidence as first-class fields.
+
+### Practical path now
+
+- Bind context IDs to tenant and owner, not only conversation ID.
+- Preserve the end principal across every hop.
+- Attach a signed delegation chain and audience-bound credential to each request.
+- Require capability attestation rather than trusting an Agent Card claim.
+- Test lifecycle edges such as cancellation, reconnect, replay, and cross-client reuse.
 
 Implementability score: 0.73
 
-Core sources: [paper](https://arxiv.org/abs/2609.10871v1), [A2ABreak repository](https://github.com/arlotfi79/A2ABreak), [A2A specification](https://a2a-protocol.org/latest/specification/)
+Core sources:
+- [A2ABreak](https://arxiv.org/abs/2609.10871v1)
+- [A2ABreak repository](https://github.com/arlotfi79/A2ABreak)
+- [A2A specification](https://a2a-protocol.org/latest/specification/)
 
-## Current implication
+## Evidence lineage beats model diversity
 
-Do not spend the next safety dollar on another model reading the same state. Buy independent evidence, bind it atomically to the write, and preserve principal, context, and capability identity across every delegated hop.
+### Finding
+
+VP-CONTROL evaluates verification portfolios under common-mode data faults. Cross-model voting over shared evidence approved 62.9% of unsafe proposals. Adding an independent evidence source reduced unsafe approval to 22.9%. Evidence-source diversity moved outcomes by 40.9 points, compared with 11.3 points for model diversity.
+
+### Why it matters
+
+A committee of different models can agree confidently on the same poisoned or stale source. Independence is a property of lineage, not vendor count.
+
+### Strategy fit
+
+This is the evidence provenance control plane and stateful effect governance. Verifier selection must account for what evidence each verifier can see and who can mutate it.
+
+### Practical path now
+
+- Assign lineage IDs to source observations and derived claims.
+- Reject an independence claim when actor and verifier share the same upstream evidence.
+- Add transactional preconditions at commit time.
+- Calibrate portfolios by unsafe approval, false hold, cost, and latency.
+- Preserve defer as a valid result when independent evidence is unavailable.
+
+Implementability score: 0.74
+
+Core sources:
+- [VP-CONTROL](https://arxiv.org/abs/2609.10969v1)
+- [VP-CONTROL artifact](https://doi.org/10.6084/m9.figshare.33511441.v1)
+
+## Monitor persistent principals above tool dispatch
+
+### Finding
+
+MOLE tracks 150 persistent AI-operated accounts across nine stateful services and 30 workdays. It verifies completed harm in service state, then measures detection under a realistic review budget of the top one through ten accounts per day. Its selected cascade combines cheap behavioral features with expensive semantic review and reached 0.629 budget-AUC at 2.43 times the modeled cost of uniform GPT-4.1, versus 0.571 for uniform GPT-5.5 at 2.5 times cost.
+
+### Why it matters
+
+Per-call policy cannot see slow misuse, cross-service coordination, or persistent identity. An organization needs a monitor that correlates actions over accounts, services, and days without sending every event to an expensive model.
+
+### Strategy fit
+
+This belongs above gateway and execution control as an agent-fleet monitoring plane. It is detection and triage, not autonomous punishment.
+
+### Practical path now
+
+- Give every agent a stable principal ID across services.
+- Compute action rarity, peer deviation, and sequence features cheaply for every principal-day.
+- Route only suspicious windows to semantic review.
+- Ground alerts in verified resulting state, not intent classification alone.
+- Evaluate against the actual analyst review budget and keep human disposition authority.
+
+Implementability score: 0.74
+
+The benchmark is public and populated, but its organization, harmful objectives, and collusions are synthetic. Use it for offline replay and monitor design, not production prevalence claims.
+
+Core sources:
+- [MOLE](https://arxiv.org/abs/2609.06966v1)
+- [MOLE repository](https://github.com/aashiqmuhamed/mole)
+- [MOLE dataset](https://huggingface.co/datasets/forgelab/mole)
+
+## Working conclusion
+
+The control plane should own four things the model cannot self-certify: capability scope, delegation lineage, evidence independence, and persistent principal history. Without those objects, approvals and multi-agent roles are presentation layers over ambient authority.

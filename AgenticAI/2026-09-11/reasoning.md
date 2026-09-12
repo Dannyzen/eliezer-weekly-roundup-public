@@ -1,63 +1,133 @@
-# AgenticAI Daily Analysis - 2026-09-11
+# AgenticAI Weekly Analysis - 2026-09-11
 
-## Freshness and selection
+## Thesis
 
-arXiv exposed a real Friday, 11 Sep 2026 listing batch. The promoted v1 papers were submitted on 9 or 10 Sep UTC and were not present in the existing research corpus. Hugging Face, GitHub, and web surfaces were used for discovery and artifact checks; claims below come from immutable arXiv records, full PDFs, and read-only repository metadata. No external repository was cloned, installed, built, imported, or executed.
+The agent can propose state, but it cannot own the evidence that makes that state authoritative. The implementable stack is converging on runtime-owned lifecycle state, independently qualified tests, provenance-bound memory, and held-out gates for harness change.
 
-## Evolve harnesses from recurring failures, not isolated episodes
+## Runtime-owned truth beats model self-report
 
-Ecdysis treats runtime-harness evolution as failure attribution across tasks. It clusters repeated execution failures, distinguishes model accommodation from harness-level defects, and emits structured modification specifications through Failure-Driven Collaborative Refinement. The operational point is stronger than automatic prompt editing: a harness change should repair a recurring interaction constraint, not memorize one model's mistake on one episode.
+### Finding
 
-Across the paper's evaluated models and benchmarks, Ecdysis reports up to a 1.84x harness-training speedup, an 18.56% reasoning-accuracy improvement, lower inference-time token use, and performance comparable to full-data training with one-quarter of the training data. The public repository has a populated Python tree with source, scripts, tests, and `pyproject.toml`, but no declared license or release. This is a research implementation, not a drop-in production optimizer.
+SilentProbe shows why transport success is not semantic success. Across 721,320 OpenAPI parameters from 2,501 documents, only 15.2% exposed any machine-checkable constraint. In live perturbations, machine-checkable constraints were honest in 111 of 111 cases, while prose-only constraints failed silently in 44 of 61. Downstream agent loops detected the miss only 12% of the time and repaired none.
 
-How it fits into the stack: harness architecture and evaluation. Store failures as typed trajectory evidence, group them by interaction structure, propose one bounded harness mutation, and require held-out tasks plus a second model family before promotion.
+The Unreliable Progress Bar finds the same substitution at the lifecycle boundary. Across StageIF deployments, the gap between model-reported adherence during execution and at completion ranged from 29.4 to 89.3 percentage points. A model can say the task is done without proving that obligations are terminal.
 
-Practical tools and methodologies worth exploring now:
+### Why it matters
 
-- `cuiyu-ai/Ecdysis` as a read-only design reference
-- failure clusters keyed by tool sequence, state transition, and violated invariant
-- explicit model-accommodation versus harness-defect labels
-- machine-readable harness-change proposals
-- held-out task and cross-model acceptance gates
-- token, latency, accuracy, and regression budgets for every harness version
+An HTTP 200 response and a completion phrase are observations. Neither is a state transition. If the runtime accepts them directly, malformed tool queries become false negatives and unfinished work becomes false completion.
 
-Evidence caveat: the headline gains are paper-reported, model and benchmark dependent, and not independently reproduced here. The public repository has no license and no tagged release.
+### Stack fit
+
+This belongs in the agent serving runtime and trajectory-aware evaluation. Tool schemas decide whether an answer is admissible. A runtime state machine decides whether work is terminal. Model reports remain diagnostic.
+
+### Practical path now
+
+- Put finite vocabularies and required constraints in JSON Schema, not examples in prose.
+- Record transport status, schema validity, semantic result, and downstream effect separately.
+- Derive ready, blocked, and done from pending obligations and verified provider state.
+- Retain model progress reports as a comparison signal, never as the sole stop condition.
+
+Implementability score: 0.86
+
+Core sources:
+- [SilentProbe](https://arxiv.org/abs/2609.00035v1)
+- [SilentProbe repository](https://github.com/Jasper0122/silentprobe)
+- [The Unreliable Progress Bar](https://arxiv.org/abs/2609.08589v1)
+
+## Independent acceptance needs independent evidence
+
+### Finding
+
+ExecCritic separates test construction from source repair and freezes the admitted test so the repair agent cannot rewrite its own oracle. The trained test and repair agents reached 72.6% on SWE-bench Verified, while poor generated tests lowered resolution. VP-CONTROL then shows that adding models is not enough when all verifiers inherit the same evidence. In 2,880 deterministic scenarios, cross-model voting over shared evidence approved 62.9% of unsafe proposals, versus 22.9% when one verifier had an independent source.
+
+### Why it matters
+
+A second agent is not an independent critic if it reads the same corrupted state. Test identity, evidence lineage, and write separation matter more than role labels.
+
+### Stack fit
+
+This belongs in the coding-agent control plane and deterministic evaluation. Test authors, repairers, and commit verifiers are separate principals with separate inputs and write scopes.
+
+### Practical path now
+
+- Qualify tests before repair and freeze their content hash.
+- Deny repair agents write access to accepted tests and verifier configuration.
+- Attach evidence-lineage IDs to every verifier result.
+- Add common-mode fault fixtures where multiple models read the same wrong source.
+- Keep explicit defer when current independent evidence cannot be established.
+
+Implementability score: 0.74
+
+Core sources:
+- [ExecCritic](https://arxiv.org/abs/2609.09133v1)
+- [ExecCritic repository](https://github.com/MSR-Orchard/execcritic)
+- [VP-CONTROL](https://arxiv.org/abs/2609.10969v1)
+- [VP-CONTROL artifact](https://doi.org/10.6084/m9.figshare.33511441.v1)
+
+## Mutable memory needs migration and probe admission
+
+### Finding
+
+Memory portability is directional. In a controlled study over 48 synthetic histories, fixed-schema memory transferred cleanly, compressed notes moved by as much as -13.28 percentage points depending on the writer-reader direction, and a mixed embedding index recovered less than half the gain of full re-embedding. Grounding Agent Memory adds the missing write gate: a read-only curator probes the current environment before committing a memory. On CLBench, pass rate rose from 39% to 73%, average queries fell from 8.8 to 4.7, and task-agent cost fell from $3.38 to $1.68.
+
+RD-Forget supplies a complementary read gate. It retains source history, suppresses superseded facts for current-state questions, and re-admits them for historical queries.
+
+### Why it matters
+
+A durable note is not portable merely because the file still opens. Its authority depends on the writer model, reader model, embedding space, source history, and current environment. Deleting stale facts destroys auditability; exposing them without a query-time gate launders obsolete state into current answers.
+
+### Stack fit
+
+This belongs in memory systems and knowledge-state orchestration. Raw evidence remains append-only. Derived memory carries provenance and compatibility metadata. Retrieval creates a query-scoped evidence view.
+
+### Practical path now
+
+- Bind every memory record to writer, reader, embedding model, schema, and source identity.
+- Re-embed as a migration, never mix embedding generations silently.
+- Give curators a bounded read-only probe surface and require probe receipts before write admission.
+- Preserve superseded source facts while filtering their answer-time authority by query.
+- Run paired no-memory and stale-memory evaluations before promotion.
+
+Implementability score: 0.77
+
+Core sources:
+- [Memory Portability](https://arxiv.org/abs/2609.05339v1)
+- [Grounding Agent Memory](https://arxiv.org/abs/2609.11060v1)
+- [RD-Forget](https://arxiv.org/abs/2609.10263v1)
+
+## Harness improvement needs a frozen boundary
+
+### Finding
+
+Ecdysis clusters recurring execution failures across tasks before proposing harness changes. It reports up to 1.84x faster harness training, 18.56% higher reasoning accuracy, and full-data-comparable results from one-quarter of the training data. Skill-Evo4GUI applies the safer release shape: execute against a frozen skill snapshot, derive structured evidence from the trace, and expose accepted changes only in the next iteration. A separate multi-harness RL study found that harness choice moved mean solve rate 4.3x, while cross-harness reward grouping did not produce a statistically clear held-out gain.
+
+### Why it matters
+
+A harness can improve by memorizing one model, one environment, or one failure. Without a frozen snapshot and held-out harness, adaptation is indistinguishable from portable capability.
+
+### Stack fit
+
+This belongs in agent harness architecture and skills-as-control. Harness changes are versioned artifacts. Training, acceptance, and rollout are separate stages.
+
+### Practical path now
+
+- Cluster failures by interaction structure before changing prompts, tools, or control logic.
+- Execute each run against a content-addressed skill and harness snapshot.
+- Admit mutations only into the next version after held-out task and held-out harness checks.
+- Track quality, token cost, regression count, and model portability together.
+- Keep production rollback to the prior snapshot cheap.
 
 Implementability score: 0.61
 
-Core sources: [paper](https://arxiv.org/abs/2609.11677v1), [repository](https://github.com/cuiyu-ai/Ecdysis)
+Ecdysis has a populated public repository but no declared root license or release in the inspected GitHub metadata. Treat it as research code, not a drop-in production dependency.
 
-## Let memory curators ask the environment before they write
+Core sources:
+- [Ecdysis](https://arxiv.org/abs/2609.11677v1)
+- [Ecdysis repository](https://github.com/cuiyu-ai/Ecdysis)
+- [Skill-Evo4GUI](https://arxiv.org/abs/2609.04869v1)
+- [Skill-Evo4GUI repository](https://github.com/LongtaoHu/Skill-Evo4GUI)
+- [Multi-harness RL study](https://arxiv.org/abs/2609.04518v1)
 
-Environment-probing curation gives a post-task memory curator a least-privilege, read-only subset of the same connectors or MCP tools available to the task agent. Before committing a memory, the curator can check the current world, narrow scope, or refresh a stale claim. The task-time agent, retriever, memory representation, and production write authority stay unchanged.
+## Working conclusion
 
-The Microsoft study used a production-like GitHub Copilot SDK harness on 40 CLBench database questions and 90 adapted APEX management-consulting tasks across six worlds. On CLBench, probing raised pass rate from 39% to 73%, lifted pass-discounted reward from 8.60 to 22.60, cut queries from 8.8 to 4.7 per question, and reduced task-agent cost from $3.38 to $1.68. Across six APEX worlds, all 18 memory-versus-baseline mean-reward comparisons were positive and task-agent tool calls fell by 16% to 75%.
-
-How it fits into the stack: memory admission. Raw trajectories remain evidence, but the memory writer becomes a separate principal that may read the world and may only propose scoped memory objects. Production authority still belongs to a downstream admission gate.
-
-Practical tools and methodologies worth exploring now:
-
-- a read-only memory-curator principal over existing MCP connectors
-- candidate-memory states such as verified, scoped, stale, contradicted, and unresolved
-- source, probe command, observation time, and environment version on each memory object
-- paired no-memory, trajectory-only, and environment-probed evaluations
-- explicit curator cost and task-agent tool-call accounting
-- write admission that remains separate from the curator model
-
-Evidence caveat: the authors are from Microsoft, the APEX tasks were adapted, and no study-owned reusable implementation repository resolved. The pattern is directly implementable, but the reported gains still need independent reproduction.
-
-Implementability score: 0.78
-
-Core source: [Grounding Agent Memory](https://arxiv.org/abs/2609.11060v1)
-
-## What is implementable now
-
-- Add a read-only probe phase to memory admission and record the exact observation behind each accepted memory.
-- Cluster recurring harness failures before proposing a mutation, then test the mutation on held-out tasks and another model family.
-- Track harness token, latency, quality, and regression deltas as one versioned receipt.
-
-## Signal separated from noise
-
-- Ecdysis and Grounding Agent Memory were first listed on 11 Sep and submitted on 10 Sep.
-- BenchShield is a strong adjacent signal for benchmark reward integrity, but its public artifact path currently resolves to the broader BenchFlow infrastructure rather than a clearly isolated BenchShield release.
-- ChurnBench reinforces freshness-aware retrieval, but yesterday's repository update already covered query-conditioned memory influence. Environment-probing memory adds a more distinct admission control.
+The practical stack is not short on agents. It is short on independent evidence and frozen transition boundaries. Make lifecycle state, accepted tests, memory lineage, and harness versions runtime-owned objects. Then let models propose changes against them.

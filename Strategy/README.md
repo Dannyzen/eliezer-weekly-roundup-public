@@ -1,27 +1,27 @@
 # Strategy
 
-This index tracks the most recent structured strategy research. Each finding includes a summary, detailed analysis, primary sources, practical paths, and an implementability score.
+This index tracks the most recent structured strategy research. Each finding links to the daily analysis, primary sources, practical methods, and an implementability score.
 
-## Latest Structured Update: 2026-09-11
+## Latest Structured Update: 2026-09-12
 
-### Independent evidence beats a second model at commit time
+### Treat tool registries as untrusted populations
 
-Summary: In VP-CONTROL's 2,880 scenarios, cross-model voting over shared evidence approved 62.9% of unsafe proposals, versus 22.9% with an independent source. Evidence-source diversity moved results by 40.9 points, compared with 11.3 points for model diversity.
+Summary: A seeded random sample found that only 48.8 percent of 400 npm/stdio MCP servers initialized. Working survivors had zero fatal JSON Schema violations across 2,766 tools, but 58.8 percent omitted optional safety annotations. Registry discovery, runtime admission, and benchmark sampling must be separate control surfaces.
 
-Analysis: [daily analysis](2026-09-11/sovereignty.md#independent-evidence-beats-a-second-model-at-commit-time)
-Core sources: [paper](https://arxiv.org/abs/2609.10969v1), [MIT artifact](https://doi.org/10.6084/m9.figshare.33511441.v1)
-Tools and methodologies worth exploring now: evidence-lineage IDs, deterministic fault injection, calibrated verification portfolios, transactional preconditions, explicit defer states, offline replay from frozen records
-Implementability score: 0.74
+Analysis: [daily analysis](2026-09-12/sovereignty.md#treat-tool-registries-as-untrusted-populations)
+Core sources: [MCP registry probability sample](https://arxiv.org/abs/2609.10962v1), [mcp-probe](https://github.com/itguruhaseeb/mcp-probe), [Zenodo archive](https://doi.org/10.5281/zenodo.21347997)
+Tools and methodologies worth exploring now: seeded registry sampling, startup and handshake probes, schema linting, safety-annotation admission, safe round trips, global benchmark deduplication
+Implementability score: 0.91
 
-### Protocol compliance is not delegation safety
+### Preserve control constraints through context management
 
-Summary: A2ABreak reports 11 A2A vulnerabilities exploitable by a specification-compliant adversary, including cross-client context injection, multi-hop identity loss, and unattested capability claims. Its formal framework reached 73.3% precision and 84.6% F1 against expert review.
+Summary: Across 1,800 trajectories, executable unsafe opportunity became dangerous when the control boundary degraded. Preserving constraints through compaction yielded zero loss of control; omitting them yielded 87 percent.
 
-Analysis: [daily analysis](2026-09-11/sovereignty.md#protocol-compliance-is-not-delegation-safety)
-Core sources: [paper](https://arxiv.org/abs/2609.10871v1), [A2ABreak](https://github.com/arlotfi79/A2ABreak), [A2A specification](https://a2a-protocol.org/latest/specification/)
-Tools and methodologies worth exploring now: tenant-bound context IDs, end-principal identity, delegation-chain receipts, capability attestations, audience-bound credentials, formal lifecycle review
-Implementability score: 0.73
+Analysis: [daily analysis](2026-09-12/sovereignty.md#preserve-control-constraints-through-context-management)
+Core sources: [The Missing Boundary](https://arxiv.org/abs/2609.11024v1), [AI-Infra-Guard](https://github.com/Tencent/AI-Infra-Guard)
+Tools and methodologies worth exploring now: typed constraint capsules, protected context fields, post-compaction constraint checks, effect-time admission, unsafe-opportunity fixtures
+Implementability score: 0.87
 
 ## Current implication
 
-Independent models are not independent verifiers when they share evidence. Preserve independent state lineage at commit time, and carry context ownership, principal identity, and capability authority across every A2A hop.
+Catalog entries and compacted context are evidence, not authority. Admit tools through measured probes, preserve binding constraints outside free-form summaries, and revalidate both at the point of effect.

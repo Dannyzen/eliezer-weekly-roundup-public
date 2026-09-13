@@ -6,17 +6,20 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-09-12: [admit tools, preserve constraints, instrument evidence](roundups/2026-09-12.md)
-- AgenticAI daily analysis: [reward lifecycle and temporal validity](AgenticAI/2026-09-12/reasoning.md)
-- Strategy daily analysis: [registry admission and constraint preservation](Strategy/2026-09-12/sovereignty.md)
+- Daily scan, 2026-09-13: [budget skills, schedule workers, contract effects](roundups/2026-09-13.md)
+- AgenticAI daily analysis: [skill evaluation allocation and sandbox memory](AgenticAI/2026-09-13/reasoning.md)
+- Strategy daily analysis: [versioned interaction-effect contracts](Strategy/2026-09-13/sovereignty.md)
 - Friday synthesis, 2026-09-11: [the runtime needs an evidence constitution](roundups/2026-09-11.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 
 ## Current thesis
 
-The agent can propose state, but it cannot own the evidence that makes that state authoritative. A governable stack keeps the following objects outside model self-certification:
+The agent can propose skills, plans, and effects, but the runtime must own evaluation budget, worker resources, and the evidence that makes application state authoritative. A governable stack keeps the following objects outside model self-certification:
 
+- budgeted skill evaluation with frozen candidates, holdouts, and receipts;
+- worker fanout, memory pressure, wait phases, and restore latency;
+- versioned interaction contracts that bind intent, authority, effects, and evidence;
 - measured tool admission state, not registry presence;
 - schema-valid tool results and runtime-owned completion state;
 - binding constraints preserved through compaction and handoff;

@@ -157,6 +157,25 @@ Caveat: the SDK is pre-1.0, so pin and test the exact release before broad adopt
 Source:
 - [OpenAI Agents SDK v0.21.1](https://github.com/openai/openai-agents-python/releases/tag/v0.21.1)
 
+## September 13, 2026 update: schedule memory work around the agent lifecycle
+
+AgentZip shows that sibling sandboxes share more than an initial image. The paper reports 76 to 96 percent template-relative or cross-sandbox page redundancy, up to 8.7 times lower sandbox-owned memory, and a reduction in aggressive-compression slowdown from as high as 3.1 times to 1.40 times through restore prefetching and LLM-wait scheduling.
+
+Practical lesson:
+- measure memory by task fanout, not only per worker;
+- preserve template and sibling identity in serving traces;
+- mark model-wait periods as scheduler-visible slack;
+- compare copy-on-write, KSM, zram, and zswap before custom kernel work;
+- gate warm-page compression on restore and tail-task latency.
+
+Artifact caveat: no public AgentZip implementation was linked. Zeroboot is a related copy-on-write KVM prototype, not a reproduction of AgentZip.
+
+Implementability score: 0.34
+
+Sources:
+- [Memory Compression for High-Fanout Agent Sandboxes](https://arxiv.org/abs/2609.11294v1)
+- [Zeroboot](https://github.com/zerobootdev/zeroboot)
+
 ## Working conclusion
 
-The new default primitive is not an agent with one more tool. It is a resumable worker with a bounded computer.
+The new default primitive is not an agent with one more tool. It is a resumable worker with a bounded computer whose resource lifecycle is observable and schedulable.

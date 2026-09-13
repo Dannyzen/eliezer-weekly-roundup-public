@@ -483,3 +483,21 @@ Implementability score: 0.87
 Sources:
 - [The Missing Boundary](https://arxiv.org/abs/2609.11024v1)
 - [AI-Infra-Guard](https://github.com/Tencent/AI-Infra-Guard)
+
+## September 13, 2026 update: interaction needs an effect contract
+
+Agent-Integrated Software names the missing application-level boundary. User goals, references, proposals, interventions, and outcomes need a maintained correspondence to application effects. Its contract shape separates preconditions, transitions, invariants, postconditions, and dependency versions, while a controller epoch distinguishes asking work to stop from proving old authority is invalid.
+
+Practical lesson:
+- keep the conventional application core authoritative for objects and durable state;
+- bind task revisions, object IDs, roles, controller epoch, and evidence requirements;
+- distinguish requested, acknowledged, admitted, applied, reconciled, and reported states;
+- invalidate claims when their dependency versions change;
+- derive user-visible completion and cancellation from receipts.
+
+Artifact caveat: the paper is a semantic framework and research agenda with no linked implementation.
+
+Implementability score: 0.62
+
+Source:
+- [Agent-Integrated Software: Interaction Contracts and Continuous Assurance](https://arxiv.org/abs/2609.11381v1)

@@ -983,3 +983,23 @@ Artifact caveat: the populated public repository contains prompts, schemas, and 
 Implementability score: 0.72
 
 Sources: [paper](https://arxiv.org/abs/2609.04869v1), [repository](https://github.com/LongtaoHu/Skill-Evo4GUI)
+
+## September 13, 2026 update: allocate evaluation before evolving skills
+
+COBRA-Skills treats each skill as an arm in a budgeted contextual bandit. A neural reward predictor plus LinearUCB selects promising or uncertain candidates, while scheduled regeneration, rollout mutation, and crossover reuse accumulated execution evidence. The paper reports 55 to 58 percent lower optimization cost than SkillOpt across six benchmarks and three target models.
+
+Practical lesson:
+- freeze candidate, dataset, target model, and harness identities;
+- record reward, token cost, and trajectory evidence per evaluation;
+- use an auditable exploration rule before a learned router;
+- mutate on a schedule from accumulated evidence;
+- retain no-skill and frozen-holdout controls;
+- keep promotion and retirement as explicit admission states.
+
+Artifact status: the Apache-2.0 repository is populated with the bandit runtime, six benchmark adapters, manifests, tests, cost accounting, resume guards, and dry-run support. Full experiments still require model endpoints and dataset-specific licensing work.
+
+Implementability score: 0.78
+
+Sources:
+- [COBRA-Skills](https://arxiv.org/abs/2609.11682v1)
+- [Jerry-LuP/COBRA-Skills](https://github.com/Jerry-LuP/COBRA-Skills)

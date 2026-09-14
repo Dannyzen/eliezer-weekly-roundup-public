@@ -1238,3 +1238,22 @@ Sources:
 - [BenchFlow](https://github.com/benchflow-ai/benchflow)
 - [ChurnBench](https://arxiv.org/abs/2609.11515v1)
 - [ChurnBench repository](https://github.com/vsingh45/churnbench)
+
+## September 14, 2026 update: score recovery before terminal success
+
+ParaRecover shows why completion is not a recovery oracle. Across 10,626 parallel tool-use fault cases, evaluated models kept Pass@1 above 89 percent while average process scores remained below 70. Error localization, dependency impact, minimal replanning, invalid-DAG rate, rounds consumed, and final success belong in one record.
+
+Practical lesson:
+- inject faults into intermediate nodes, not only final outputs;
+- preserve the dependency cone and pre-fault state;
+- separate deterministic structural checks from model-judged diagnosis;
+- compare recent-step failures with propagated multi-turn failures;
+- cap recovery loops and classify cap exhaustion explicitly.
+
+Artifact caveat: the public MIT repository contains datasets, a concurrent DAG executor, and evaluation scripts, but the environment is simulated, abstract dimensions use an LLM judge, and the workflow model omits richer loops and asynchronous interactions. It was inspected read-only and not executed.
+
+Implementability score: 0.82
+
+Sources:
+- [ParaRecover](https://arxiv.org/abs/2609.12345v1)
+- [gbw206/ParaRecover](https://github.com/gbw206/ParaRecover)

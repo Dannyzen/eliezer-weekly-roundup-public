@@ -501,3 +501,24 @@ Implementability score: 0.62
 
 Source:
 - [Agent-Integrated Software: Interaction Contracts and Continuous Assurance](https://arxiv.org/abs/2609.11381v1)
+
+## September 14, 2026 update: deployment evidence must reopen the evaluator
+
+Reality Is the Final Verifier separates the requirement gap, stakeholder intent versus written requirements, from the model gap, the real world versus the test environment. A green evaluator establishes conformance only inside those approximations.
+
+The reusable architecture is an outer assurance-revision loop around implementation and verification. Deployment counterexamples, stakeholder rejection, monitoring, and incidents must be able to revise the requirement version, environment model, evaluator, or safeguard that admitted the effect.
+
+Practical lesson:
+- version requirements and environment assumptions separately;
+- bind every test result to both versions and the evaluator identity;
+- classify failures by requirement, model, evaluator, implementation, or control;
+- stage consequential releases and capture counterexamples;
+- convert accepted incidents into frozen regression fixtures;
+- retain stakeholder authority over what counts as acceptable behavior.
+
+Artifact caveat: this is a framework and research agenda with no linked implementation. The two-loop structure is implementable, but organization-specific judgment and deployment telemetry remain the hard part.
+
+Implementability score: 0.58
+
+Source:
+- [Reality Is the Final Verifier](https://arxiv.org/abs/2609.12039v1)

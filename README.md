@@ -6,17 +6,22 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-09-13: [budget skills, schedule workers, contract effects](roundups/2026-09-13.md)
-- AgenticAI daily analysis: [skill evaluation allocation and sandbox memory](AgenticAI/2026-09-13/reasoning.md)
-- Strategy daily analysis: [versioned interaction-effect contracts](Strategy/2026-09-13/sovereignty.md)
+- Daily scan, 2026-09-14: [govern actions, test recovery, bind skills to source](roundups/2026-09-14.md)
+- AgenticAI daily analysis: [parallel recovery and repository-skill evaluation](AgenticAI/2026-09-14/reasoning.md)
+- Strategy daily analysis: [action-time permission and deployment-driven assurance](Strategy/2026-09-14/sovereignty.md)
 - Friday synthesis, 2026-09-11: [the runtime needs an evidence constitution](roundups/2026-09-11.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 
 ## Current thesis
 
-The agent can propose skills, plans, and effects, but the runtime must own evaluation budget, worker resources, and the evidence that makes application state authoritative. A governable stack keeps the following objects outside model self-certification:
+The agent can propose skills, plans, and effects, but the runtime must own permission, process evidence, source binding, and the feedback that revises failed assumptions. A governable stack keeps the following objects outside model self-certification:
 
+- operator-specific action permission after package admission;
+- process-level fault localization and recovery evidence;
+- repository skills bound to one frozen source snapshot and paired controls;
+- separate versions for stakeholder requirements and environment models;
+- deployment counterexamples that can reopen accepted evaluations;
 - budgeted skill evaluation with frozen candidates, holdouts, and receipts;
 - worker fanout, memory pressure, wait phases, and restore latency;
 - versioned interaction contracts that bind intent, authority, effects, and evidence;

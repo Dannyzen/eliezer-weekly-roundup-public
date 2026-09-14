@@ -185,3 +185,22 @@ No public SkillSonar repository resolved. Implement from the paper's control pat
 Sources:
 - [Defense-as-Skill](https://arxiv.org/abs/2609.01487v1)
 - [Defense as Skill deep dive](../defense-as-skill/defense-as-skill.md)
+
+## September 14, 2026 update: admission and action permission are different predicates
+
+Scan the Skill, Govern the Action measures the control seam after installation. A registry can correctly call a skill clean while an operator correctly refuses its concrete action. In the paper's live study, 50 of 144 commands carried a consequence class absent from the documentation's code blocks. A separate run held or blocked all 23 attempted never-graduating actions.
+
+Practical lesson:
+- preserve publish-time verdicts as package evidence, not runtime authority;
+- classify the concrete requested consequence before every side effect;
+- bind permission to principal, resource, action class, and operator policy;
+- emit receipts for allow, hold, block, promotion, demotion, and revocation;
+- test semantics-preserving rewrites and staged multi-command effects.
+
+Artifact status: the Apache-2.0 OATS repository contains schemas, a dependency-free reference runtime, tests, examples, research scripts, and per-command records. Its own 64-case benchmark reports 52 percent macro resolution, and the study is a vendor self-audit with one model, one day, and small live samples. The repository README still carries an older 93-command summary, so the immutable v1 paper is the quantitative source of record.
+
+Implementability score: 0.84
+
+Sources:
+- [Scan the Skill, Govern the Action](https://arxiv.org/abs/2609.12001v1)
+- [OATS](https://github.com/pheo-ai/open-agent-trust-system)

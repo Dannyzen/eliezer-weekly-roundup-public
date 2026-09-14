@@ -1003,3 +1003,23 @@ Implementability score: 0.78
 Sources:
 - [COBRA-Skills](https://arxiv.org/abs/2609.11682v1)
 - [Jerry-LuP/COBRA-Skills](https://github.com/Jerry-LuP/COBRA-Skills)
+
+## September 14, 2026 update: bind optimized skills to one repository snapshot
+
+Skill Issue mines coding tasks by reverse-applying merged pull requests at one frozen base commit, then admits only changes with isolating test failures. This prevents an optimizer from writing one authoritative-looking SKILL from several incompatible eras of repository history.
+
+The measured lift is not the proof. GEPA gained 4.9 percentage points on average across three Kotlin repositories, while SkillOpt gained 0.1, but 20 to 26-task holdouts could not separate the gains from agent variance. The reusable control is the evaluation object: target SHA, reverse-applied change, isolated test specification, fixed agent, seed SKILL, paired rollout, cost, and variance.
+
+Practical lesson:
+- freeze the target SHA before mining tasks;
+- reject historical changes that no longer apply or fail to isolate a test;
+- keep no-skill and seed controls on identical tasks;
+- report uncertainty beside pass-rate movement;
+- require maintainer review before merging synthesized guidance.
+
+Artifact caveat: the paper includes methods, prompts, generated SKILLs, costs, and cases, but no paper-specific public replication repository was linked. Two candidate repositories failed the minimum task-pool gate.
+
+Implementability score: 0.66
+
+Source:
+- [Skill Issue](https://arxiv.org/abs/2609.12742v1)

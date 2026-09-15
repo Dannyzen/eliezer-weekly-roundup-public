@@ -2,26 +2,26 @@
 
 This index tracks the most recent structured strategy research. Each finding links to the daily analysis, primary sources, practical methods, and an implementability score.
 
-## Latest Structured Update: 2026-09-14
+## Latest Structured Update: 2026-09-15
 
-### Govern each executed action, not only the installed skill
+### Make tool effects transaction-aware
 
-Summary: OATS separates publish-time maliciousness checks from operator-specific runtime permission. In its live study, 34.7 percent of 144 commands had a consequence class absent from the skill's code blocks; a deterministic action gate held or blocked all 23 never-graduating actions attempted in a second run.
+Summary: Eight external-effect anomalies show why successful calls can still leave duplicated, missing, provisional, or aborted residue. In a census of 98,291 MCP tools, standard annotations fully express none of the outcome, compensation, staging, dependency, coordination, or visibility semantics a workflow needs.
 
-Analysis: [daily analysis](2026-09-14/sovereignty.md#govern-each-executed-action-not-only-the-installed-skill)
-Core sources: [paper](https://arxiv.org/abs/2609.12001v1), [OATS repository](https://github.com/pheo-ai/open-agent-trust-system)
-Tools and methodologies worth exploring now: consequence classes, per-resource authority lanes, deterministic pre-action resolution, action receipts, evidence-derived promotion thresholds, semantics-preserving evasion fixtures
-Implementability score: 0.84
+Analysis: [daily analysis](2026-09-15/sovereignty.md#require-transactional-contracts-at-every-effect-boundary)
+Core sources: [transactional tool-boundary paper](https://arxiv.org/abs/2609.15397v1), [MIT census artifact](https://github.com/flame-stream/mcp-annotation-census)
+Tools and methodologies worth exploring now: effect IDs, idempotency keys, authoritative status lookup, compensation preconditions, staged release, dependency identity, ambiguous-outcome holds
+Implementability score: 0.78
 
-### Treat deployment counterexamples as evaluator revisions
+### Bind MCP admission to an immutable manifest
 
-Summary: Reality Is the Final Verifier separates requirement gaps from environment-model gaps and adds an outer assurance-revision loop around normal implementation and testing. Deployment evidence must be able to revise requirements, environment assumptions, evaluators, and safeguards.
+Summary: In 8,900 multi-version MCP servers, 40.58 percent changed meaning or destination under stable identifiers and 4.16 percent redirected endpoint hosts. The official registry does not version the tool definitions clients actually execute.
 
-Analysis: [daily analysis](2026-09-14/sovereignty.md#treat-deployment-counterexamples-as-evaluator-revisions)
-Core source: [Reality Is the Final Verifier](https://arxiv.org/abs/2609.12039v1)
-Tools and methodologies worth exploring now: versioned requirement and environment models, staged rollout, incident-to-fixture conversion, failure-class labels, evaluator identity, stakeholder-owned acceptance criteria
-Implementability score: 0.58
+Analysis: [daily analysis](2026-09-15/sovereignty.md#pin-mcp-identity-interface-and-endpoint-across-upgrades)
+Core source: [MCP silent-drift census](https://arxiv.org/abs/2609.14119v1)
+Tools and methodologies worth exploring now: package digests, source revisions, tool-schema hashes, endpoint-origin binding, manifest diffs, approval-gated upgrades, rollback manifests
+Implementability score: 0.88
 
 ## Current implication
 
-A governable system needs two feedback points: one before every side effect and one after reality contradicts the evaluator. Registry verdicts and green tests are evidence, not final authority.
+Connectivity is not authority and call success is not workflow correctness. Pin the exact server contract before execution, then require enough effect semantics to resolve retries, compensation, concurrency, and release.

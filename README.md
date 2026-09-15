@@ -6,17 +6,21 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-09-14: [govern actions, test recovery, bind skills to source](roundups/2026-09-14.md)
-- AgenticAI daily analysis: [parallel recovery and repository-skill evaluation](AgenticAI/2026-09-14/reasoning.md)
-- Strategy daily analysis: [action-time permission and deployment-driven assurance](Strategy/2026-09-14/sovereignty.md)
+- Daily scan, 2026-09-15: [control evidence, collaboration, tool identity, and effects](roundups/2026-09-15.md)
+- AgenticAI daily analysis: [long-trace search and difficulty-aware collaboration](AgenticAI/2026-09-15/reasoning.md)
+- Strategy daily analysis: [transactional tool contracts and MCP identity drift](Strategy/2026-09-15/sovereignty.md)
 - Friday synthesis, 2026-09-11: [the runtime needs an evidence constitution](roundups/2026-09-11.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 
 ## Current thesis
 
-The agent can propose skills, plans, and effects, but the runtime must own permission, process evidence, source binding, and the feedback that revises failed assumptions. A governable stack keeps the following objects outside model self-certification:
+The runtime should purchase evidence and authority deliberately. Long-trace diagnosis must expose what remains unread; multi-agent collaboration must justify its spend per task; MCP admission must bind an exact artifact and endpoint; and a successful tool call must still satisfy workflow-level effect invariants. A governable stack keeps the following objects outside model self-certification:
 
+- unread-evidence coverage and diagnosis revision receipts;
+- per-task collaboration routes calibrated to equal realized spend;
+- immutable tool manifests binding package, source, schema, transport, and origin;
+- transaction-aware effect contracts for status, idempotency, compensation, staging, dependency, coordination, and visibility;
 - operator-specific action permission after package admission;
 - process-level fault localization and recovery evidence;
 - repository skills bound to one frozen source snapshot and paired controls;
@@ -36,7 +40,7 @@ The agent can propose skills, plans, and effects, but the runtime must own permi
 - end-principal identity and context ownership across delegation;
 - persistent principal history across services and days.
 
-Start with cheap boundaries: startup probes, schema enumerations, protected constraint fields, frozen test hashes, stable principal IDs, and explicit runtime states. Add heavier verification portfolios, migration harnesses, and fleet monitors only when fault fixtures justify their cost.
+Start with cheap boundaries: immutable admission manifests, outcome lookup, idempotency keys, unread-evidence ledgers, route receipts, startup probes, and schema enumerations. Add heavier search, collaboration, compensation, and fleet controls only when measured failures justify their cost.
 
 ## Browse by category
 

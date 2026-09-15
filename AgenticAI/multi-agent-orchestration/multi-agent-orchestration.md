@@ -196,3 +196,18 @@ Artifact caveat: the CC BY 4.0 replication package is public and populated; it w
 Sources:
 - [When Agents Coordinate](https://arxiv.org/abs/2608.16801v1)
 - [replication repository](https://github.com/giuseppedestefanis/when-agents-coordinate)
+
+
+## September 15 update: topology is a per-task budget decision
+
+Difficulty-aware routing shows why one multi-agent topology should not govern every task. Hierarchical collaboration costs about 9.95 times more tokens than a single call, while its gain rises from 2.4 pass@1 points on easy problems to 21.1 on hard ones.
+
+Practical lesson:
+- default to the cheapest viable topology;
+- predict each route's success separately from the cost decision;
+- calibrate every router to the same realized spend;
+- keep route, spend, outcome, and counterfactual evidence;
+- prefer interpretable task features until richer encoders prove material value.
+
+Source:
+- [Difficulty-Aware Topology Selection](https://arxiv.org/abs/2609.13890v1)

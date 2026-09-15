@@ -232,3 +232,19 @@ Evidence caveat: all evaluated duplicate-effect schedules closed safely, but the
 
 Source:
 - [AID-Guard](https://arxiv.org/abs/2608.21159v1)
+
+
+## September 15 update: successful calls are not coherent workflows
+
+The agent-tool boundary paper catalogs eight external-effect anomalies caused by unresolved outcomes, workflow structure, and interaction with concurrent executions or observers. Current MCP annotations do not fully express the status, idempotency, compensation, staging, dependency, coordination, or visibility semantics needed to exclude them.
+
+Practical lesson:
+- give every effect a stable identity and authoritative outcome lookup;
+- make retry conditional on outcome resolution or guaranteed idempotency;
+- declare compensation preconditions and residue explicitly;
+- stage irreversible effects until invariants pass;
+- hold workflows whose tool contracts cannot support the required guarantee.
+
+Sources:
+- [Agent-tool boundary anomalies](https://arxiv.org/abs/2609.15397v1)
+- [MCP annotation census artifact](https://github.com/flame-stream/mcp-annotation-census)

@@ -1116,3 +1116,18 @@ Sources:
 - [MCP registry probability sample](https://arxiv.org/abs/2609.10962v1)
 - [mcp-probe](https://github.com/itguruhaseeb/mcp-probe)
 - [Zenodo archive](https://doi.org/10.5281/zenodo.21347997)
+
+
+## September 15 update: registry names are not durable tool identities
+
+A census of the official MCP registry found silent semantic changes in 40.58 percent of multi-version servers and endpoint-host redirection in 4.16 percent. The registry does not version tool definitions, so an approved name cannot prove that the reviewed interface or destination remains unchanged.
+
+Practical lesson:
+- bind admission to package digest, source revision, schema hash, transport, and endpoint origin;
+- diff the complete manifest before upgrades;
+- require explicit approval for endpoint or authority changes;
+- scope credentials and capabilities to the approved origin;
+- preserve the last approved manifest for rollback and incident reconstruction.
+
+Source:
+- [MCP silent-drift census](https://arxiv.org/abs/2609.14119v1)

@@ -1257,3 +1257,19 @@ Implementability score: 0.82
 Sources:
 - [ParaRecover](https://arxiv.org/abs/2609.12345v1)
 - [gbw206/ParaRecover](https://github.com/gbw206/ParaRecover)
+
+
+## September 15 update: long-trace diagnosis needs an unread-evidence loop
+
+Continual Search shows that root-cause attribution improves when the judge must challenge its standing answer and inspect previously unread artifacts. On MegaRCA-Mix, evidence coverage rose from 70.8 percent at turn one to 97.4 percent at turn four; short traces did not benefit reliably.
+
+Practical lesson:
+- track inspected and uninspected evidence classes;
+- require novel artifact access before another diagnosis turn;
+- compare against a one-pass control;
+- stop on coverage or diagnostic-gain thresholds;
+- report short-trace regressions separately;
+- bind every diagnosis to exact source artifacts and trace identity.
+
+Source:
+- [Continual Search](https://arxiv.org/abs/2609.13463v1)

@@ -264,3 +264,12 @@ Implementability score: 0.64
 Sources:
 - [Do GUI Agents Know When Not to Act?](https://arxiv.org/abs/2609.03438v1)
 - [ConflictGuard](https://github.com/serein356/ConflictGuard)
+
+## September 16, 2026 update: approval requires observation parity
+
+Mobile agents can act on screenshots and accessibility metadata that a user cannot see or use. Across 546 tasks, UI desynchronization produced 77.9 percent static and 66.9 percent dynamic misleading rates. Bind consequential approval to the exact screenshot, accessibility tree, widget identity, and application provenance that drove the action.
+
+Implementability score: 0.62
+
+Source:
+- https://arxiv.org/abs/2609.16732v1

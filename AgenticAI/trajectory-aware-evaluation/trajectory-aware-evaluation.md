@@ -1273,3 +1273,13 @@ Practical lesson:
 
 Source:
 - [Continual Search](https://arxiv.org/abs/2609.13463v1)
+
+## September 16, 2026 update: audit benchmark resolution before ranking agents
+
+SWE-bench Verified now has a frontier where score order exceeds statistical resolution. Across 254 submissions, the leading two entries both solve 396 of 500 tasks and all 29 examined frontier pairs are unresolved. Route from evidence-backed tiers, not decimal rank, and freeze model, scaffold, task set, and verdict matrix in the receipt.
+
+Implementability score: 0.86
+
+Sources:
+- https://arxiv.org/abs/2609.17394v1
+- https://github.com/Adkid-Zephyr/resolution-audit

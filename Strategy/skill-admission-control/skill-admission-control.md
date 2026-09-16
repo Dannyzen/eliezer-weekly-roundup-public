@@ -204,3 +204,12 @@ Implementability score: 0.84
 Sources:
 - [Scan the Skill, Govern the Action](https://arxiv.org/abs/2609.12001v1)
 - [OATS](https://github.com/pheo-ai/open-agent-trust-system)
+
+## September 16, 2026 update: registry signals cannot grant privilege
+
+The OpenClaw registry nearly doubled to 65,175 listings in 91 days. Of readable skills, 85.06 percent carried privilege evidence, 77.86 percent had no stars or comments, and three scanners disagreed on 23,702 of 61,990 shared listings. Preserve scanner disagreement, require explicit human review evidence, and attach authority only after host-scoped behavioral probes.
+
+Implementability score: 0.84
+
+Source:
+- https://arxiv.org/abs/2609.17274v1

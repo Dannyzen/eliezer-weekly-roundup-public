@@ -6,17 +6,21 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-09-15: [control evidence, collaboration, tool identity, and effects](roundups/2026-09-15.md)
-- AgenticAI daily analysis: [long-trace search and difficulty-aware collaboration](AgenticAI/2026-09-15/reasoning.md)
-- Strategy daily analysis: [transactional tool contracts and MCP identity drift](Strategy/2026-09-15/sovereignty.md)
+- Daily scan, 2026-09-16: [representation boundaries need evidence gates](roundups/2026-09-16.md)
+- AgenticAI daily analysis: [benchmark resolution and UI observation parity](AgenticAI/2026-09-16/reasoning.md)
+- Strategy daily analysis: [skill admission and cross-principal social harnesses](Strategy/2026-09-16/sovereignty.md)
 - Friday synthesis, 2026-09-11: [the runtime needs an evidence constitution](roundups/2026-09-11.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 
 ## Current thesis
 
-The runtime should purchase evidence and authority deliberately. Long-trace diagnosis must expose what remains unread; multi-agent collaboration must justify its spend per task; MCP admission must bind an exact artifact and endpoint; and a successful tool call must still satisfy workflow-level effect invariants. A governable stack keeps the following objects outside model self-certification:
+The runtime should distrust convenient proxies at representation boundaries. Leaderboard rank is not separability, registry presence is not review, message delivery is not cross-principal coordination, and the human-visible screen is not necessarily the agent's observation. A governable stack keeps the following objects outside model self-certification:
 
+- benchmark resolution, tier membership, and scaffold identity;
+- skill provenance, privilege manifests, review receipts, and probe evidence;
+- cross-principal message identity, protocol state, expiry, and violation evidence;
+- screenshot, accessibility, widget, and approval-view parity;
 - unread-evidence coverage and diagnosis revision receipts;
 - per-task collaboration routes calibrated to equal realized spend;
 - immutable tool manifests binding package, source, schema, transport, and origin;

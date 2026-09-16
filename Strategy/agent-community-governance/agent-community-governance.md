@@ -86,3 +86,13 @@ The overlay is implementable now with manifests, policy checks, traces, and deci
 ## Working conclusion
 
 Do not wait for MCP, A2A, or ACP to become constitutions. Treat them as transport and capability layers, then build community governance as an explicit overlay with membership, dissent, escalation, and replay evidence.
+
+## September 16, 2026 update: govern the inter-agent protocol separately
+
+A 600-run meeting-scheduling study shows that connectivity alone does not produce reliable cross-principal collaboration. Add a social harness for identity, ordered delivery, task-specific norms, action guardrails, and post-hoc accountability while keeping each principal's private state and approval authority local.
+
+Implementability score: 0.68
+
+Sources:
+- https://arxiv.org/abs/2609.17527v1
+- https://github.com/social-harness/social-harness-paper

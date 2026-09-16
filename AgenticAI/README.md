@@ -2,26 +2,26 @@
 
 This index tracks the most recent structured implementation research. Each finding links to the daily analysis, primary sources, practical methods, and an implementability score.
 
-## Latest Structured Update: 2026-09-15
+## Latest Structured Update: 2026-09-16
 
-### Search unread evidence before accepting a root cause
+### Replace saturated coding-agent ranks with evidence-backed tiers
 
-Summary: Continual Search turns long-trace root-cause attribution into iterative evidence retrieval. On 50 MegaRCA-Mix failures with 286K-token median records, Opus-4.8 evidence coverage rose from 70.8 to 97.4 percent and F1 from 0.478 to 0.620, while short traces showed no reliable benefit.
+Summary: An audit of 254 SWE-bench submissions finds the leading two Verified entries tied at 396 of 500 and all 29 examined frontier pairs statistically unresolved. Use tiers first, then deployment-shaped tie-breakers such as cost, latency, recovery, repository fit, and scaffold identity.
 
-Analysis: [daily analysis](2026-09-15/reasoning.md#search-beyond-the-first-plausible-root-cause)
-Core source: [Continual Search paper](https://arxiv.org/abs/2609.13463v1)
-Tools and methodologies worth exploring now: unread-evidence ledgers, challenge prompts, artifact-coverage metrics, source-bound root-cause labels, one-pass controls, coverage-gain stopping rules
-Implementability score: 0.82
+Analysis: [daily analysis](2026-09-16/reasoning.md#replace-saturated-coding-agent-ranks-with-evidence-backed-tiers)
+Core source: [coding-agent benchmark audit](https://arxiv.org/abs/2609.17394v1)
+Tools and methodologies worth exploring now: per-instance verdict matrices, paired separability tests, effective comparison size, tier partitions, frozen scaffold identity, deployment-specific tie-breakers
+Implementability score: 0.86
 
-### Route collaboration per task and compare at equal spend
+### Treat agent-visible UI as a separate untrusted observation
 
-Summary: Across 614 code problems, hierarchical collaboration's advantage grows from 2.4 pass@1 points on easy tasks to 21.1 on hard tasks while costing about 9.95 times more tokens. A difficulty-aware selector reaches 77.7 percent pass@1 at 40 percent of always-hierarchical spend.
+Summary: Across 546 tasks, 13 Android apps, five mobile-agent frameworks, and three models, pre-deployment UI perturbations achieved 77.9 percent static and 66.9 percent dynamic misleading rates. Human approval must be bound to the exact screenshot, accessibility representation, and widget identity the agent used.
 
-Analysis: [daily analysis](2026-09-15/reasoning.md#route-collaboration-per-problem-and-compare-at-equal-spend)
-Core source: [difficulty-aware topology paper](https://arxiv.org/abs/2609.13890v1)
-Tools and methodologies worth exploring now: per-task topology routing, interpretable difficulty features, cached route outcomes, equal-spend calibration, single-agent defaults, route receipts
-Implementability score: 0.76
+Analysis: [daily analysis](2026-09-16/reasoning.md#treat-agent-visible-ui-as-a-separate-untrusted-observation)
+Core source: [UI desynchronization paper](https://arxiv.org/abs/2609.16732v1)
+Tools and methodologies worth exploring now: screenshot-accessibility diffs, observation hashes, signed-app allowlists, hidden-widget rejection, human-agent preview parity, desynchronization regression fixtures
+Implementability score: 0.62
 
 ## Current implication
 
-Do not buy more context or more agents by default. Long failures need controlled evidence expansion; collaboration needs a per-task route whose quality is compared at equal realized spend.
+Do not treat a score or a screen as ground truth. A benchmark must prove it can separate candidates, and an approval surface must prove it matches the representation that drove the agent's action.

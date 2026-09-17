@@ -2,26 +2,35 @@
 
 This index tracks the most recent structured implementation research. Each finding links to the daily analysis, primary sources, practical methods, and an implementability score.
 
-## Latest Structured Update: 2026-09-16
+## Latest Structured Update: 2026-09-17
 
-### Replace saturated coding-agent ranks with evidence-backed tiers
+### Make deceptive task evidence a first-class evaluation dimension
 
-Summary: An audit of 254 SWE-bench submissions finds the leading two Verified entries tied at 396 of 500 and all 29 examined frontier pairs statistically unresolved. Use tiers first, then deployment-shaped tie-breakers such as cost, latency, recovery, repository fit, and scaffold identity.
+Summary: AgentLSD evaluates six models on 11 web CTF challenges with paired clean and contaminated evidence. Clean agents captured 41 percent of flags; traps added about 20 turns and 2,000 reasoning tokens even when the final answer remained correct. Capability evaluation must vary evidence integrity, not only instructions.
 
-Analysis: [daily analysis](2026-09-16/reasoning.md#replace-saturated-coding-agent-ranks-with-evidence-backed-tiers)
-Core source: [coding-agent benchmark audit](https://arxiv.org/abs/2609.17394v1)
-Tools and methodologies worth exploring now: per-instance verdict matrices, paired separability tests, effective comparison size, tier partitions, frozen scaffold identity, deployment-specific tie-breakers
-Implementability score: 0.86
+Analysis: [daily analysis](2026-09-17/reasoning.md#make-deceptive-task-evidence-a-first-class-evaluation-dimension)
+Core source: [AgentLSD paper](https://arxiv.org/abs/2609.19140v1)
+Tools and methodologies worth exploring now: [AgentLSD](https://github.com/Golim/agent-lsd), paired clean-versus-contaminated fixtures, deterministic trap IDs, delivery telemetry, evidence-observation receipts
+Implementability score: 0.88
 
-### Treat agent-visible UI as a separate untrusted observation
+### Treat tool progress as serving telemetry
 
-Summary: Across 546 tasks, 13 Android apps, five mobile-agent frameworks, and three models, pre-deployment UI perturbations achieved 77.9 percent static and 66.9 percent dynamic misleading rates. Human approval must be bound to the exact screenshot, accessibility representation, and widget identity the agent used.
+Summary: Letting running tools report progress made cache-decision signals several times to an order of magnitude more accurate than pre-call predictors and reduced post-tool p90 TTFT by about 20.8 percent against LRU. The serving runtime should read tool lifecycle state without adding it to model context.
 
-Analysis: [daily analysis](2026-09-16/reasoning.md#treat-agent-visible-ui-as-a-separate-untrusted-observation)
-Core source: [UI desynchronization paper](https://arxiv.org/abs/2609.16732v1)
-Tools and methodologies worth exploring now: screenshot-accessibility diffs, observation hashes, signed-app allowlists, hidden-widget rejection, human-agent preview parity, desynchronization regression fixtures
-Implementability score: 0.62
+Analysis: [daily analysis](2026-09-17/reasoning.md#treat-tool-progress-as-serving-telemetry)
+Core source: [tool-progress serving paper](https://arxiv.org/abs/2609.18849v1)
+Tools and methodologies worth exploring now: [MCP progress](https://modelcontextprotocol.io/specification/2025-06-18/basic/utilities/progress), OpenTelemetry span events, [Exgentic traces](https://huggingface.co/datasets/Exgentic/agent-llm-traces), vLLM, SGLang, Mooncake, Dynamo, TensorRT-LLM
+Implementability score: 0.72
+
+### Design one interface with explicit meaning for both readers
+
+Summary: Affora's three controlled studies separate visual freedom from the declared controls, relationships, and state available to computer-use agents. The primary comparison improved completion by about 23 percentage points over baseline. Agent compatibility should be an executable property of the shared interface.
+
+Analysis: [daily analysis](2026-09-17/reasoning.md#design-one-interface-with-explicit-meaning-for-both-readers)
+Core source: [Affora paper](https://arxiv.org/abs/2609.19125v1)
+Tools and methodologies worth exploring now: semantic HTML, ARIA and platform accessibility APIs, stable control identity, explicit state transitions, executable completion and recovery checks
+Implementability score: 0.78
 
 ## Current implication
 
-Do not treat a score or a screen as ground truth. A benchmark must prove it can separate candidates, and an approval surface must prove it matches the representation that drove the agent's action.
+Do not make the model infer state that the environment already owns. Expose trustworthy progress and interface meaning to the runtime, while testing how adversarial evidence changes the trajectory.

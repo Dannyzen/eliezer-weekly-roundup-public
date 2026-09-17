@@ -435,3 +435,22 @@ Sources:
 
 - [SilentProbe](https://arxiv.org/abs/2609.00035v1)
 - [Jasper0122/silentprobe](https://github.com/Jasper0122/silentprobe)
+
+## September 17, 2026 update: trusted tools can carry deceptive evidence
+
+AgentLSD broadens the threat model beyond injected instructions. Fake validation results, decoy endpoints, misleading hints, and hidden cues can change an agent's trajectory while the tool itself remains allowed. Across six models and 11 web CTF challenges, traps added about 20 turns and 2,000 reasoning tokens even when the final flag was recovered.
+
+Practical lesson:
+- separate tool admission from output validity;
+- label evidence origin, integrity, and validation state;
+- add paired clean and contaminated fixtures to agent evaluations;
+- log delivery, observation, action, correction, and memory writeback;
+- require independent validation before consequential effects use task evidence.
+
+The populated MIT repository was inspected read-only and not executed.
+
+Implementability score: 0.88
+
+Sources:
+- [AgentLSD](https://arxiv.org/abs/2609.19140v1)
+- [Golim/agent-lsd](https://github.com/Golim/agent-lsd)

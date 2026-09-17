@@ -129,3 +129,23 @@ Practical lesson:
 Implementability score: 0.90
 
 Source: [The Unreliable Progress Bar](https://arxiv.org/abs/2609.08589v1)
+
+## September 17, 2026 update: tool progress belongs to the serving runtime
+
+A running tool knows more about its remaining work than a scheduler can infer before the call. Across four public agent corpora, explicit progress was several times to an order of magnitude more accurate than published predictors at cache-decision points. Small engine hints reduced post-tool p90 TTFT by 20.7 percent with HBM and 20.8 percent with HBM plus DRAM against LRU.
+
+Practical lesson:
+- emit monotonic progress outside model context;
+- preserve request and progress-token identity;
+- rate-limit updates and cap scheduling benefits from untrusted reports;
+- replay cache retention, offload, and prefetch decisions before online deployment;
+- bind latency gains to exact workload, engine, and memory-tier configuration.
+
+Artifact caveat: no paper-specific implementation repository was found. The paper links a public trace dataset, MCP progress semantics, and existing serving-system issue surfaces. The result needs reproduction on the target engine.
+
+Implementability score: 0.72
+
+Sources:
+- [Ask the Tool, Don't Guess](https://arxiv.org/abs/2609.18849v1)
+- [MCP progress](https://modelcontextprotocol.io/specification/2025-06-18/basic/utilities/progress)
+- [Exgentic agent traces](https://huggingface.co/datasets/Exgentic/agent-llm-traces)

@@ -6,17 +6,22 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-09-16: [representation boundaries need evidence gates](roundups/2026-09-16.md)
-- AgenticAI daily analysis: [benchmark resolution and UI observation parity](AgenticAI/2026-09-16/reasoning.md)
-- Strategy daily analysis: [skill admission and cross-principal social harnesses](Strategy/2026-09-16/sovereignty.md)
+- Daily scan, 2026-09-17: [the runtime should read state rather than make the model infer it](roundups/2026-09-17.md)
+- AgenticAI daily analysis: [adversarial evidence, tool progress, and agent-readable interfaces](AgenticAI/2026-09-17/reasoning.md)
+- Strategy daily analysis: [composed policy and evidence authority](Strategy/2026-09-17/sovereignty.md)
+- Deep Dive Wednesday, 2026-09-16: [the social harness is the missing cross-principal control plane](Strategy/agent-community-governance/agent-community-governance.md)
 - Friday synthesis, 2026-09-11: [the runtime needs an evidence constitution](roundups/2026-09-11.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 
 ## Current thesis
 
-The runtime should distrust convenient proxies at representation boundaries. Leaderboard rank is not separability, registry presence is not review, message delivery is not cross-principal coordination, and the human-visible screen is not necessarily the agent's observation. A governable stack keeps the following objects outside model self-certification:
+The runtime should read authoritative state rather than force the model to infer it. Tool progress belongs to the serving layer, interaction meaning belongs to the interface substrate, evidence lineage belongs to the effect gate, and cumulative policy belongs to the complete execution trace. A governable stack keeps the following objects outside model self-certification:
 
+- tool progress, remaining work, and cache-policy receipts;
+- shared human-agent control identity, relationships, and state;
+- evidence lineage, contamination state, and independent validation;
+- cumulative authority, threshold, and separation-of-duty policy state;
 - benchmark resolution, tier membership, and scaffold identity;
 - skill provenance, privilege manifests, review receipts, and probe evidence;
 - cross-principal message identity, protocol state, expiry, and violation evidence;

@@ -522,3 +522,21 @@ Implementability score: 0.58
 
 Source:
 - [Reality Is the Final Verifier](https://arxiv.org/abs/2609.12039v1)
+
+## September 17, 2026 update: locally compliant steps can compose into a violation
+
+Compositional Policy Violations names four trace-level failure classes: Authority Creep, Threshold Laundering, Cumulative Sum Violation, and Context Collapse. A perfect step classifier still cannot detect a property that no single step determines.
+
+Practical lesson:
+- keep raw action, identity, approval, and effect events authoritative;
+- recompute guarded quantities from provenance at admission time;
+- express cumulative and temporal constraints outside model prose;
+- version policy, trace schema, and derived-state code separately;
+- test workflows where every step passes but the whole execution must fail.
+
+Artifact caveat: the paper provides a taxonomy and runtime architecture but no linked implementation or large empirical benchmark.
+
+Implementability score: 0.64
+
+Source:
+- [Compositional Policy Violations](https://arxiv.org/abs/2609.18820v1)

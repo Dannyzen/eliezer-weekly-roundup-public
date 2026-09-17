@@ -67,6 +67,18 @@ Implementability score: 0.68
 Core source: https://arxiv.org/abs/2609.17527v1
 Artifact: https://github.com/social-harness/social-harness-paper
 
+## Deep Dive Wednesday: make the social harness a separate control plane
+
+This is the week's strongest finding because it identifies a missing control plane rather than only improving a model, benchmark, scanner, or protocol. Transport can deliver messages, but it cannot decide whether a cross-principal message is valid in the active workflow, whether the recipient may act on it, or what evidence must survive for later investigation.
+
+The architecture should keep each principal's private memory, credentials, tools, and final effect authority inside a personal harness. A separate social harness should own verified identities, signed ordered envelopes, task-specific state transitions, violation evidence, and replay. The shared layer may validate a message transition, but the receiving principal's execution-control gate must still release the exact local side effect.
+
+A narrow prototype is implementable now: use A2A or another transport, CloudEvents-style message identity, a JSON Schema state machine, OPA-style policy checks, append-only receipts, and the released 600-run trace corpus as adversarial fixtures. The hard parts are task-specific norms, privacy-preserving evidence exchange, and post-hoc institutional ownership.
+
+Durable deep dive: [Agent Community Governance](../agent-community-governance/agent-community-governance.md)
+
+Implementability score: 0.68
+
 ## Practical next steps
 
 1. Require a privilege manifest and explicit review evidence before a skill can receive shell, network, credential, file, or process authority.

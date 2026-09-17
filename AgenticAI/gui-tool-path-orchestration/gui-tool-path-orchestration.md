@@ -273,3 +273,21 @@ Implementability score: 0.62
 
 Source:
 - https://arxiv.org/abs/2609.16732v1
+
+## September 17, 2026 update: declare interaction meaning without sacrificing visual design
+
+Affora separates what an interface paints from the controls, names, relationships, choices, and task state it declares. Three controlled studies suggest that visual variation can remain broad when interaction meaning survives in the machine-readable substrate. The primary comparison improved completion by about 23 percentage points over baseline.
+
+Practical lesson:
+- use semantic controls and stable accessible names;
+- expose state and relationships directly instead of requiring visual inference;
+- hold the substrate fixed when testing visual variants;
+- verify reachability, error recovery, and terminal state with executable checks;
+- bind approvals to the same control identity and state the agent consumed.
+
+Evidence caveat: the paper exposes no dedicated public implementation repository on its primary pages. The independent-interface gains are conditional on deficits that Affora actually covers.
+
+Implementability score: 0.78
+
+Source:
+- [Affora](https://arxiv.org/abs/2609.19125v1)

@@ -6,9 +6,10 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-09-17: [the runtime should read state rather than make the model infer it](roundups/2026-09-17.md)
-- AgenticAI daily analysis: [adversarial evidence, tool progress, and agent-readable interfaces](AgenticAI/2026-09-17/reasoning.md)
-- Strategy daily analysis: [composed policy and evidence authority](Strategy/2026-09-17/sovereignty.md)
+- Daily scan, 2026-09-18: [the harness is becoming a testable control plane](roundups/2026-09-18.md)
+- AgenticAI daily analysis: [conditional harness design, incident replay, and semantic profiling](AgenticAI/2026-09-18/reasoning.md)
+- Strategy daily analysis: [reversible skill mutation](Strategy/2026-09-18/sovereignty.md)
+- Durable topic: [Incident Replay Testing](AgenticAI/incident-replay-testing/incident-replay-testing.md)
 - Deep Dive Wednesday, 2026-09-16: [the social harness is the missing cross-principal control plane](Strategy/agent-community-governance/agent-community-governance.md)
 - Friday synthesis, 2026-09-11: [the runtime needs an evidence constitution](roundups/2026-09-11.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
@@ -16,7 +17,7 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Current thesis
 
-The runtime should read authoritative state rather than force the model to infer it. Tool progress belongs to the serving layer, interaction meaning belongs to the interface substrate, evidence lineage belongs to the effect gate, and cumulative policy belongs to the complete execution trace. A governable stack keeps the following objects outside model self-certification:
+The harness should be an explicit, testable control plane rather than opaque glue. Component policy belongs to measured model and budget conditions, incident replay belongs in CI, semantic profiling belongs above raw traces, and persistent skill mutation belongs behind localized tests and rollback. A governable stack keeps the following objects outside model self-certification:
 
 - tool progress, remaining work, and cache-policy receipts;
 - shared human-agent control identity, relationships, and state;
@@ -65,6 +66,7 @@ Start with cheap boundaries: immutable admission manifests, outcome lookup, idem
 - [Enterprise MCP Orchestration](AgenticAI/enterprise-mcp-orchestration/enterprise-mcp-orchestration.md)
 - [Agentic Search and Retrieval](AgenticAI/agentic-search/agentic-search.md)
 - [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md)
+- [Incident Replay Testing](AgenticAI/incident-replay-testing/incident-replay-testing.md)
 - [Agent Serving Runtime](AgenticAI/agent-serving-runtime/agent-serving-runtime.md)
 - [Multi-Agent Orchestration](AgenticAI/multi-agent-orchestration/multi-agent-orchestration.md)
 - [Event-Sourced Agent Runtime](AgenticAI/event-sourced-agent-runtime/event-sourced-agent-runtime.md)

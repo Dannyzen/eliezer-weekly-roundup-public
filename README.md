@@ -6,51 +6,33 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-09-18: [the harness is becoming a testable control plane](roundups/2026-09-18.md)
-- AgenticAI daily analysis: [conditional harness design, incident replay, and semantic profiling](AgenticAI/2026-09-18/reasoning.md)
-- Strategy daily analysis: [reversible skill mutation](Strategy/2026-09-18/sovereignty.md)
-- Durable topic: [Incident Replay Testing](AgenticAI/incident-replay-testing/incident-replay-testing.md)
-- Deep Dive Wednesday, 2026-09-16: [the social harness is the missing cross-principal control plane](Strategy/agent-community-governance/agent-community-governance.md)
-- Friday synthesis, 2026-09-11: [the runtime needs an evidence constitution](roundups/2026-09-11.md)
+- Daily scan, 2026-09-19: [trace-backed claims, harness economics, and durable review state](roundups/2026-09-19.md)
+- AgenticAI daily analysis: [verify reports and price harness components](AgenticAI/2026-09-19/reasoning.md)
+- Strategy daily analysis: [turn review findings into durable release state](Strategy/2026-09-19/sovereignty.md)
+- Friday synthesis, 2026-09-18: [trust cannot carry across an agent boundary by default](roundups/2026-09-18.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 
 ## Current thesis
 
-The harness should be an explicit, testable control plane rather than opaque glue. Component policy belongs to measured model and budget conditions, incident replay belongs in CI, semantic profiling belongs above raw traces, and persistent skill mutation belongs behind localized tests and rollback. A governable stack keeps the following objects outside model self-certification:
+Agent output is not operational evidence. Completion claims need trace-derived coverage receipts, harness components need measured cost and failure-liability justification, and review findings need durable state beneath deterministic release policy.
 
-- tool progress, remaining work, and cache-policy receipts;
-- shared human-agent control identity, relationships, and state;
-- evidence lineage, contamination state, and independent validation;
-- cumulative authority, threshold, and separation-of-duty policy state;
-- benchmark resolution, tier membership, and scaffold identity;
-- skill provenance, privilege manifests, review receipts, and probe evidence;
-- cross-principal message identity, protocol state, expiry, and violation evidence;
-- screenshot, accessibility, widget, and approval-view parity;
-- unread-evidence coverage and diagnosis revision receipts;
-- per-task collaboration routes calibrated to equal realized spend;
-- immutable tool manifests binding package, source, schema, transport, and origin;
-- transaction-aware effect contracts for status, idempotency, compensation, staging, dependency, coordination, and visibility;
-- operator-specific action permission after package admission;
-- process-level fault localization and recovery evidence;
-- repository skills bound to one frozen source snapshot and paired controls;
-- separate versions for stakeholder requirements and environment models;
-- deployment counterexamples that can reopen accepted evaluations;
-- budgeted skill evaluation with frozen candidates, holdouts, and receipts;
-- worker fanout, memory pressure, wait phases, and restore latency;
-- versioned interaction contracts that bind intent, authority, effects, and evidence;
-- measured tool admission state, not registry presence;
-- schema-valid tool results and runtime-owned completion state;
-- binding constraints preserved through compaction and handoff;
-- reward lifecycle evidence and temporally valid source truth;
-- qualified tests and evidence lineage;
-- memory provenance, compatibility, and probe receipts;
-- content-addressed skill and harness versions;
-- per-principal capabilities and exact-effect witnesses;
-- end-principal identity and context ownership across delegation;
-- persistent principal history across services and days.
+The current stack therefore emphasizes:
 
-Start with cheap boundaries: immutable admission manifests, outcome lookup, idempotency keys, unread-evidence ledgers, route receipts, startup probes, and schema enumerations. Add heavier search, collaboration, compensation, and fleet controls only when measured failures justify their cost.
+- machine-derived coverage and claim-to-evidence receipts;
+- explicit partial and inconclusive states for unfinished work;
+- fixed-plan, sham-context, and verifier-only harness ablations;
+- component selection by task complexity, false-acceptance liability, and cost;
+- finding identity and transition history across commits;
+- deterministic coverage, test, security, and approval gates;
+- startup probes and immutable tool-admission manifests;
+- operator-specific permission and transaction-aware effect contracts;
+- binding constraints and controller epochs outside mutable context;
+- process scorecards and selective incident replay fixtures;
+- persistent skill updates with localized tests, atomic commit, and rollback;
+- signed cross-principal envelopes and approval receipts bound to exact observation.
+
+Start with cheap boundaries: trace coverage, explicit status, verifier-only controls, stable finding IDs, and repository rules. Add planning, repair loops, and adaptive routing only after measured failures justify their cost.
 
 ## Browse by category
 

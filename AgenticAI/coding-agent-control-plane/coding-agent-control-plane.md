@@ -384,3 +384,22 @@ Availability caveat: GitHub Team or Enterprise Cloud with Code Quality enabled i
 Implementability score: 0.92
 
 Source: [GitHub agentic autofix](https://github.blog/changelog/2026-09-09-remediate-code-quality-findings-with-agentic-autofix/)
+
+## September 19, 2026 update: review findings are state, release thresholds are policy
+
+GitHub Copilot code review now preserves open, resolved, and previously missed findings across commits, with severity and inline evidence links. GitHub also exposes code-coverage ruleset conditions through the REST API.
+
+Practical lesson:
+- assign stable identities to review findings;
+- bind finding evidence to exact commits;
+- preserve resolution reasons and reopen findings when evidence changes;
+- manage coverage thresholds as infrastructure as code;
+- keep agent review separate from merge authority.
+
+Availability caveat: the coverage rule requires GitHub Code Quality on GitHub Team or Enterprise Cloud.
+
+Implementability score: 0.94
+
+Sources:
+- [Copilot code review state](https://github.blog/changelog/2026-09-18-copilot-code-review-an-improved-review-experience)
+- [Coverage ruleset REST API](https://github.blog/changelog/2026-09-18-manage-the-code-coverage-ruleset-condition-with-the-rest-api)

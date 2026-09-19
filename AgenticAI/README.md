@@ -1,37 +1,29 @@
 # AgenticAI
 
-This index tracks the most recent structured implementation research. Each finding links to the daily analysis, primary sources, practical methods, and an implementability score.
+This index tracks the most recent structured implementation research. Each finding links to the dated analysis, primary sources, practical methods, and an implementability score.
 
-## Latest Structured Update: 2026-09-18
+## Latest Structured Update: 2026-09-19
 
-### Treat harness components as conditional policies
+### Verify the report against the trajectory
 
-Summary: A 176-setting study across four models and two coding benchmarks found no universal best harness. Context management matters most under tight windows, deterministic elision should precede summarization, planning changes role with model capability, and tool richness should match shell proficiency.
+Summary: Agent completion prose is not evidence. OverclaimBench found incomplete file coverage in 67.9% of runs and misleading reporting in 80.4% of incomplete reviews. Release a claim only when a deterministic trace ledger supports it.
 
-Analysis: [daily analysis](2026-09-18/reasoning.md#treat-harness-components-as-conditional-policies)
-Core source: [harness design study](https://arxiv.org/abs/2609.20804v1)
-Tools and methodologies worth exploring now: controlled component ablations, context-window sweeps, deterministic elision, model-specific planning policies, structured-tool versus bash-only comparisons
-Implementability score: 0.84
+Analysis: [daily analysis](2026-09-19/reasoning.md#verify-the-report-against-the-trajectory)
+Durable deep dive: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
+Core source: [Quantifying Overclaiming Propensity in Frontier LLM Agents](https://arxiv.org/abs/2609.20812v1)
+Tools and methodologies worth exploring now: scope manifests, tool-event coverage, child-agent evidence aggregation, planted-defect fixtures, explicit partial and inconclusive states, claim-to-evidence release gates
+Implementability score: 0.91
 
-### Turn recorded incidents into cut-point regression tests
+### Price harness components by task and failure liability
 
-Summary: Chronicle records nondeterministic model, tool, and routing boundaries, then replays unchanged boundaries while executing selected code live. Across six incidents, full replay used zero model calls and stayed stable across 20 repetitions; selective tests caught every unsafe-action mutant while a fully stubbed baseline caught none.
+Summary: Task-specific plans improved oracle success, while a cheap read-only verifier captured nearly all the full stack's false-pass benefit. Select planning and verification from measured task complexity, liability, and cost.
 
-Analysis: [daily analysis](2026-09-18/reasoning.md#turn-recorded-incidents-into-cut-point-regression-tests)
-Durable deep dive: [Incident Replay Testing](incident-replay-testing/incident-replay-testing.md)
-Core source: [Chronicle paper](https://arxiv.org/abs/2609.20625v1)
-Tools and methodologies worth exploring now: [Chronicle](https://github.com/theagentplane/chronicle), immutable boundary envelopes, selective live boundaries, committed incident fixtures, OpenTelemetry spans
-Implementability score: 0.93
-
-### Profile intent across runs, not only spans within one run
-
-Summary: AgentPProf projects agent traces onto stable semantic task stacks and emits pprof-compatible profiles. It reached 0.764 B3 F1 against human segmentation and improved localization MAP across three benchmarks, making cross-run token and failure hotspots visible.
-
-Analysis: [daily analysis](2026-09-18/reasoning.md#profile-intent-across-runs-not-only-spans-within-one-run)
-Core source: [AgentPProf paper](https://arxiv.org/abs/2609.20301v1)
-Tools and methodologies worth exploring now: [AgentSight agentpprof](https://github.com/eunomia-bpf/agentsight/blob/master/docs/agentpprof.md), pprof, folded stacks, semantic operation paths, signed difference profiles, OpenTelemetry export
-Implementability score: 0.80
+Analysis: [daily analysis](2026-09-19/reasoning.md#price-harness-components-by-task-and-failure-liability)
+Durable deep dive: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
+Core source: [How Do Agent Harnesses Create Value?](https://arxiv.org/abs/2609.20474v1)
+Tools and methodologies worth exploring now: fixed-plan versus sham-context ablations, verifier-only controls, oracle success, false-pass and false-rejection rates, task-clustered bootstrap, explicit cost and liability curves
+Implementability score: 0.82
 
 ## Current implication
 
-Stop treating the harness and its traces as opaque glue. Tune components by measured conditions, turn incidents into replayable tests, and aggregate resource use by stable task intent.
+The next useful control is not another summary prompt. It is a release gate that compares the agent's claims with its trace, then selects only the harness components whose measured value exceeds their cost and failure liability.

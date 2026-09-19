@@ -1,53 +1,130 @@
-# AI Strategy and Sovereignty Analysis: 2026-09-18
+# Strategy Weekly Sovereignty Analysis - 2026-09-18
 
-## Freshness and evidence boundary
+## Thesis
 
-SkillAA was submitted as v1 on 17 September 2026 and first listed by arXiv on 18 September 2026. The primary paper and its public repository were inspected read-only. The repository was not cloned or executed.
+Sovereignty requires an unbroken trust chain from discovery to effect. Registry presence, stable names, compliant messages, visible interfaces, and local guardrails are representations. The runtime must independently bind identity, authority, policy, resulting state, and accountability.
 
-## Gate persistent skill changes like code changes
+## Build a continuous trust chain from registry to effect
 
 ### Finding
 
-SkillAA treats an external skill library as an addressable graph rather than a flat document. Nodes separate when to use a skill, how to execute it, and when not to use it. Typed edges represent prerequisites, enhancements, and observed co-use. Failed and successful trajectories are compared to route a proposed repair to one graph object, or to NO_PATCH when evidence is insufficient or the failure was an execution lapse.
+A probability sample of 400 MCP servers found that only 48.8% initialized without repair. A separate census of 21,643 registry servers found that 40.58% of multi-version servers changed meaning or destination under stable identifiers and 4.16% redirected endpoint hosts. OATS then showed that package review does not establish action permission: 34.7% of 144 live-agent commands carried a consequence class absent from documentation code blocks.
 
-Each edit passes a Local Gate over affected examples. Related edits are rolled back as an atomic group if they break more than they fix. Surviving edits are merged and evaluated by an epoch-level Big Gate before the graph becomes the next committed state. The held-out test set never participates in patch generation or gate decisions.
-
-With gpt-5.6-sol as teacher and student, the paper reports 81.5 percent on SearchQA, 66.7 percent on LiveMathematicianBench, and 91.2 percent on DocVQA, with the highest observed mean in each main setting.
+The final boundary is transactional. Eight tool-effect anomalies show how retries, speculation, concurrency, and partial failure can leave duplicate, missing, provisional, or aborted state while every individual call reports success. A separate compositional-policy result shows why local compliance is insufficient: cumulative limits, separation of duty, and context-dependent policy must be recomputed over the whole trace.
 
 ### Why it matters
 
-Persistent skills are executable policy. Blindly rewriting a skill after one failure converts a local mistake into shared future behavior. Safe improvement needs explicit edit targets, evidence, affected-case tests, atomic rollback, and a separate commit decision.
+Trust decays at every translation: registry to package, package to runtime, runtime to command, command to effect, and local step to workflow. If any translation inherits trust automatically, an approved label can authorize changed or incomplete behavior.
 
-### Fit in the strategy
+### Strategy fit
 
-This extends skill admission control and agent self-improvement governance. The key object is not a better prompt. It is a versioned capability graph whose mutations follow the same discipline as code changes.
+This is the agent gateway and execution control plane. Admission manifests, action-time permission, transaction contracts, and trace-level policy form one continuous chain.
 
-### Practical tools and methods worth exploring
+### Practical path now
 
-- Split each skill into applicability, procedure, exclusion, and dependency objects with stable IDs.
-- Preserve execution traces and validated usage records separately.
-- Route failures to the smallest authorized edit surface or refuse to patch.
-- Derive regression scope from graph reachability and observed usage.
-- Require net improvement before commit, then evaluate the committed state on untouched holdouts.
-- Store before and after content, evidence, affected examples, gate results, and graph hash in every receipt.
+- Probe startup and schema behavior before catalog admission.
+- Pin package digest, source revision, schema hash, transport, endpoint origin, and approved authority.
+- Reauthorize each side-effecting operator against current state.
+- Require effect IDs, outcome lookup, idempotency keys, compensation preconditions, and visibility state.
+- Evaluate cumulative and separation-of-duty policy over raw provenance before commit.
 
-### Artifact status and caveat
+Implementability score: 0.86
 
-The public repository has a populated `main` branch with configurations, benchmark manifests, graph code, scripts, tests, release verification, and local checks. It has no declared license and no releases. Reproduction requires paid API behavior and benchmark data, and the results use the same named model family for teacher and student. Treat the pattern as implementable governance architecture, not an independently replicated score claim.
+Core sources:
+- [Random MCP registry sample](https://arxiv.org/abs/2609.10962v1)
+- [mcp-probe](https://github.com/itguruhaseeb/mcp-probe)
+- [MCP silent-drift census](https://arxiv.org/abs/2609.14119v1)
+- [Scan the Skill, Govern the Action](https://arxiv.org/abs/2609.12001v1)
+- [OATS repository](https://github.com/pheo-ai/open-agent-trust-system)
+- [Agent-tool effect anomalies](https://arxiv.org/abs/2609.15397v1)
+- [Compositional policy](https://arxiv.org/abs/2609.18820v1)
 
-Implementability score: 0.62
+## Keep binding constraints outside mutable context
 
-Core source: https://arxiv.org/abs/2609.20455v1
-Artifact: https://github.com/Ziqiao-Shang/SkillAA
+### Finding
 
-## Supporting operational signal: usage is inventory, not proof
+Across 1,800 trajectories in The Missing Boundary, restoring the original control boundary cut loss of control to zero. In the compaction ablation, preserving constraints also yielded zero while omitting them yielded 87%. Interaction-contract work adds the lifecycle shape: bind task revisions, referenced objects, role authority, control transitions, postconditions, evidence, dependency versions, and controller epochs.
 
-GitHub added organization and enterprise usage metrics for skills, custom agents, MCP servers, slash commands, and plugins. The API reports top items and distinct-item counts. This is useful for finding what needs governance and evaluation, but interaction counts do not establish correctness, safety, or business value. Join usage telemetry to version, permission, outcome, incident, and rollback receipts before using it as a control signal.
+### Why it matters
 
-Source: https://github.blog/changelog/2026-09-17-agentic-cli-customizations-now-in-the-usage-metrics-api
+A model summary, compacted context, or handoff can omit the rule that made an action safe. Asking an old controller to stop is not the same as proving its authority can no longer admit new work.
 
-## Practical next steps
+### Strategy fit
 
-1. Give skill components stable object IDs and separate applicability from procedure.
-2. Add affected-case regression gates and atomic rollback before any automated skill mutation.
-3. Join usage counts to exact skill version, authority, outcome, and incident evidence.
+This is context-to-execution integrity and operational state preservation. Binding constraints live in runtime-owned policy objects, and every action references the exact policy and controller epoch that authorized it.
+
+### Practical path now
+
+- Store binding constraints outside free-form summaries.
+- Attach policy version and controller epoch to every queued action.
+- Recheck constraints at tool admission and effect commit.
+- Revoke old epochs before a new controller begins.
+- Test compaction, cancellation, reconnect, retry, and handoff as authority transitions.
+
+Implementability score: 0.87
+
+Core sources:
+- [The Missing Boundary](https://arxiv.org/abs/2609.11024v1)
+- [Agent-Integrated Software](https://arxiv.org/abs/2609.11381v1)
+
+## Put cross-principal communication behind a social harness
+
+### Finding
+
+Across 600 released scheduling runs, capable agents with basic messaging did not reliably produce satisfactory coordination across principals. Honest agents degraded under scale and concurrency, while faulty agents could stall or steer outcomes. The proposed social harness separates identity, ordered communication, personal firewalls, task-specific norms, and accountability from the underlying transport.
+
+### Why it matters
+
+A valid message proves only that a transport moved bytes. It does not prove who the end principal is, whether the transition is allowed, whether local authority permits the resulting effect, or who can investigate a violation.
+
+### Strategy fit
+
+This belongs above A2A or MCP connectivity and below local execution authority. It complements, rather than replaces, per-principal capabilities and exact-effect gates.
+
+### Practical path now
+
+- Sign envelopes with principal identity, task state, expiry, sequence, and allowed transition.
+- Keep each principal's effect gate local and non-delegable.
+- Encode one bounded workflow as a deterministic state machine.
+- Append decision and violation receipts to an auditable log.
+- Use released traces as fixtures before generalizing norms across task families.
+
+Implementability score: 0.68
+
+The public repository contains paper material and released traces, not a production social-harness runtime. General norms and consequence institutions remain conceptual.
+
+Core sources:
+- [Agentic Societies Need a Social Harness](https://arxiv.org/abs/2609.17527v1)
+- [Social harness artifact](https://github.com/social-harness/social-harness-paper)
+
+## Bind approval to the agent's actual observation
+
+### Finding
+
+Across 546 mobile tasks, 13 apps, five frameworks, and three models, UI-desynchronization attacks produced 77.9% static and 66.9% dynamic misleading rates. Affora's controlled studies support a concrete response: declare shared control identity, relationships, state, error, recovery, and terminal semantics for both human and machine readers. Its primary comparison improved task completion by about 23 percentage points over baseline.
+
+### Why it matters
+
+A user can approve one visible representation while the agent acts on a different accessibility tree, hidden control, stale target, or ambiguous state. Approval without observation parity is interface theater.
+
+### Strategy fit
+
+This is context-to-execution integrity at the browser and device boundary. The approval object must bind the exact observation, target identity, proposed action, and expected effect.
+
+### Practical path now
+
+- Capture screenshot, accessibility tree, target identity, and relevant state in one observation digest.
+- Show the same target and effect semantics on the approval surface.
+- Reject stale approvals when any bound observation changes.
+- Add executable interface checks for identity, relationships, errors, recovery, and terminal success.
+- Preserve before and after state receipts for consequential actions.
+
+Implementability score: 0.66
+
+Core sources:
+- [UI desynchronization attacks](https://arxiv.org/abs/2609.16732v1)
+- [Affora](https://arxiv.org/abs/2609.19125v1)
+
+## Working conclusion
+
+The weekly sovereignty rule is simple: no representation should authorize the next layer by itself. Registries, names, messages, summaries, local checks, and visible screens become trustworthy only when the runtime binds them to exact identity, current authority, global policy, resulting state, and durable receipts.

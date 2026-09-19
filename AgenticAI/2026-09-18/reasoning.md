@@ -1,111 +1,143 @@
-# Agentic AI Research Analysis: 2026-09-18
+# AgenticAI Weekly Analysis - 2026-09-18
 
-## Freshness and evidence boundary
+## Thesis
 
-The harness study, Chronicle, and SkillAA were submitted as v1 on 17 September 2026 and first listed by arXiv on 18 September 2026. AgentPProf was submitted on 14 September and first listed in today's cs.AI batch, so it is current by listing date but outside a strict trailing 48-hour submission window. Primary abstract pages, HTML papers, PDFs, and linked repositories were inspected read-only. No external repository was cloned, installed, built, imported, or executed.
+The agentic stack should preserve the process evidence that final answers erase. Evaluation, diagnosis, harness routing, and skill improvement become more reliable when trajectories, incidents, budgets, and mutations are explicit runtime objects.
 
-## Treat harness components as conditional policies
-
-### Finding
-
-An Empirical Study of Harness Design for Coding Agents holds the execution loop fixed while varying planning, action space, and context management across four models, SWE-Bench Verified, Terminal-Bench 2.1, five context-management strategies, four context windows, and 176 matched settings.
-
-The main result is not a universal best harness. Context management matters most at tight windows because it prevents overflow. Rule-based elision before summarization gives the strongest overall efficiency. Recoverable elision adds machinery that models rarely use and produces no accuracy gain. Planning helps weaker models reach correct solutions but mainly saves cost for stronger models. Predefined tools help models with weaker shell ability, while bash-capable models can be cheaper with a bash-only interface.
-
-### Why it matters
-
-Harness design should be calibrated to model capability, task shape, and budget. Adding every scaffold can increase cost and complexity without improving outcomes. The right unit of evaluation is a controlled component ablation, not a brand-level comparison between monolithic agents.
-
-### Fit in the stack
-
-This belongs in agent harness architecture, context economy, and model routing. Harness configuration is a policy chosen from measured task and model characteristics.
-
-### Practical tools and methods worth exploring
-
-- Reproduce a small component matrix across context budgets before standardizing a harness.
-- Apply deterministic elision before paid summarization.
-- Keep elided-content recall optional until traces show models use it.
-- Compare structured tools with bash-only execution per model family and task type.
-- Measure success, context overflow, token cost, stop location, and verification behavior together.
-
-### Artifact status and caveat
-
-No paper-specific public implementation repository was found on the primary paper pages. The paper supplies a detailed modular method and 176-setting evaluation, but the exact harness is not packaged for direct reuse. Results were measured on four models and two coding benchmarks, so transfer should be checked locally.
-
-Implementability score: 0.84
-
-Core source: https://arxiv.org/abs/2609.20804v1
-PDF: https://arxiv.org/pdf/2609.20804v1
-
-## Turn recorded incidents into cut-point regression tests
+## Evaluate the process, then replay the failure
 
 ### Finding
 
-Chronicle records model calls, tool calls, and routing decisions as immutable boundary envelopes. Full replay serves every recorded boundary. Cut-point replay serves the unchanged boundaries from the record while executing selected boundaries live with new code.
+ParaRecover provides 10,626 faulted parallel tool-use cases across 14 error types. Models kept Pass@1 above 89% while average process scores stayed below 70, exposing weak localization and replanning behind successful completion. The SWE-bench resolution audit reaches the same conclusion from a different direction: among 254 submissions, the leading two Verified entries tied at 396 of 500 and all 29 examined frontier pairs were statistically unresolved.
 
-On six recorded failures with simulated model boundaries, recording added 23 microseconds per crossing, full replay issued zero model calls and stayed bit-stable across 20 repetitions, and cut-point tests rejected faulty code while accepting guarded and benign changes for all six incidents. Its mutation study caught every mutant that allowed the recorded unsafe action through. A baseline that stubbed every boundary caught none.
+AgentLSD adds adversarial task evidence. Across 3,061 trap trials on 11 web security challenges, clean agents captured 41% of flags, while deceptive artifacts added about 20 turns and 2,000 reasoning tokens even when the flag was recovered. Chronicle turns those failures into durable regression tests by recording nondeterministic boundaries and replaying only selected cut points against changed code. Its six incidents were stable across repeated replays, and selective tests caught every unsafe-action mutant while a fully stubbed baseline caught none.
 
 ### Why it matters
 
-A production failure should become a durable regression fixture. Re-running the whole agent is expensive and nondeterministic. Stubbing everything can hide the very behavior a fix must exercise. Selective replay keeps the real incident context while running only the changed control surface.
+A correct final answer can hide a brittle process, wasted search, unsafe intermediate state, or an evaluation unable to distinguish systems. Terminal success is necessary, not sufficient.
 
-### Fit in the stack
+### Stack fit
 
-This extends event-sourced runtimes, trajectory-aware evaluation, and CI. The test primitive is a recorded incident plus an explicit live boundary set.
+This belongs in trajectory-aware evaluation, incident replay testing, coding-agent control planes, and multi-agent orchestration. The canonical object is an evidence-bearing trajectory with process scores and replayable boundaries.
 
-### Practical tools and methods worth exploring
+### Practical path now
 
-- Record immutable input, output, model, sampling, tool, and routing envelopes at nondeterministic boundaries.
-- Redact secrets before storage and retain stable boundary names plus occurrence indexes.
-- Run tool gates, routers, validators, or policy checks live while stubbing expensive model calls.
-- Commit incident records and assertions as regression fixtures when privacy permits.
-- Emit OpenTelemetry spans so replay tests and production traces share one vocabulary.
+- Inject intermediate faults and adversarial evidence into existing task fixtures.
+- Score localization, dependency impact, repair minimality, invalid plans, rounds, cost, and terminal outcome separately.
+- Replace small leaderboard rank differences with statistically separable tiers.
+- Commit production incidents as immutable boundary envelopes.
+- Keep only the code boundary under test live, then compare resulting effects deterministically.
 
-### Artifact status and caveat
+Implementability score: 0.88
 
-The public MIT repository has a populated `main` branch, Python packaging, examples, fixtures, tests, CI, documentation, and published releases. It was inspected read-only and not executed. The empirical benchmark has only six incidents and simulated model boundaries, so the method is highly implementable but not yet broad evidence of production coverage.
+Core sources:
+- [ParaRecover](https://arxiv.org/abs/2609.12345v1)
+- [ParaRecover repository](https://github.com/gbw206/ParaRecover)
+- [Coding Agents Have Converged](https://arxiv.org/abs/2609.17394v1)
+- [Resolution audit repository](https://github.com/Adkid-Zephyr/resolution-audit)
+- [AgentLSD](https://arxiv.org/abs/2609.19140v1)
+- [AgentLSD repository](https://github.com/Golim/agent-lsd)
+- [Chronicle](https://arxiv.org/abs/2609.20625v1)
+- [Chronicle repository](https://github.com/theagentplane/chronicle)
 
-Implementability score: 0.93
-
-Core source: https://arxiv.org/abs/2609.20625v1
-Artifact: https://github.com/theagentplane/chronicle
-
-## Profile intent across runs, not only spans within one run
+## Treat the harness as a conditional policy
 
 ### Finding
 
-AgentPProf compiles prompts, model calls, tool operations, and system effects into pprof-compatible semantic operation stacks. Instead of grouping only by timestamps or raw request tags, it segments trajectories into stable task-intent paths such as diagnose authentication, then aggregates tokens, time, files, or operation counts across runs.
+A 176-setting study across four models and two coding benchmarks found no universal best harness. Context management mattered most under tight windows, deterministic elision should precede summarization, planning changed role with model capability, and tool richness needed to match shell proficiency.
 
-Against human annotations on CodeTraceBench, recursive segmentation reached 0.764 B3 F1 versus 0.663 for a statistical baseline and 0.541 for raw actions. Across three localization benchmarks, the profile improved mean average precision by 0.031, 0.107, and 0.117. One profile-derived repair reduced agent tokens by 19 percent without degrading task quality. The study includes 41 long-horizon sessions, 440 web-agent runs, eight public benchmarks, and three real trajectory datasets.
+COBRA-Skills applies the same conditional logic to skill optimization. It uses a reward predictor plus LinearUCB to spend evaluations on promising or uncertain candidates and reports 55% to 58% lower optimization cost than SkillOpt across six benchmarks and three target models. Difficulty-aware collaboration adds a topology gate: hierarchical collaboration cost about 9.95 times more tokens than a single call, while its gain rose from 2.4 pass@1 points on easy problems to 21.1 on hard ones.
 
 ### Why it matters
 
-Tracing answers what happened in one run. Profiling answers where a fleet spends its time, tokens, and risk budget across many runs. Stable semantic paths are the missing aggregation key between user intent and low-level effects.
+A fixed harness bakes model-specific and task-specific assumptions into the product. It can waste tokens on easy work, hide which component mattered, and turn one benchmark's scaffolding into a false universal.
 
-### Fit in the stack
+### Stack fit
 
-This belongs in agent observability and fleet monitoring. OpenTelemetry spans remain useful, but a profiling layer must project them onto task intent and workflow phase.
+This belongs in agent harness architecture, model routing, and context economy. The runtime chooses prompt, planning, tool, memory, and collaboration policies from measured conditions under a fixed budget.
 
-### Practical tools and methods worth exploring
+### Practical path now
 
-- Export trace events into a uniform operation schema with additive measures.
-- Add stable semantic paths above raw agent and tool spans.
-- Generate pprof, folded-stack, and flamegraph views for tokens, time, files, network, and operation count.
-- Compare successful and failed runs with signed difference profiles.
-- Keep previews off by default because semantic profiles can expose sensitive prompts and paths.
+- Run component ablations per model, task family, context window, and budget.
+- Elide deterministic low-value context before model summarization.
+- Allocate skill evaluations by expected value and uncertainty while preserving frozen holdouts.
+- Default to one agent and route to multi-agent collaboration only when calibrated difficulty predicts value.
+- Record the route, realized token spend, and outcome for later calibration.
 
-### Artifact status and caveat
+Implementability score: 0.79
 
-The implementation is available inside the populated MIT AgentSight repository, with a dedicated agentpprof guide, Codex and Claude Code session support, pprof output, releases, and an optional non-LLM statistical segmenter. It was inspected read-only and not executed. Semantic segmentation still depends on model or statistical labeling quality, and the paper was submitted on 14 September rather than within the strict trailing 48-hour window.
+Core sources:
+- [Harness design study](https://arxiv.org/abs/2609.20804v1)
+- [COBRA-Skills](https://arxiv.org/abs/2609.11682v1)
+- [COBRA-Skills repository](https://github.com/Jerry-LuP/COBRA-Skills)
+- [Difficulty-aware multi-agent collaboration](https://arxiv.org/abs/2609.13890v1)
 
-Implementability score: 0.80
+## Make diagnosis and serving consume runtime evidence
 
-Core source: https://arxiv.org/abs/2609.20301v1
-Artifact: https://github.com/eunomia-bpf/agentsight
-Guide: https://github.com/eunomia-bpf/agentsight/blob/master/docs/agentpprof.md
+### Finding
 
-## Practical next steps
+Continual Search improved Opus-4.8 F1 from 0.478 to 0.620 on 50 MegaRCA-Mix failures with 286K-token median records by expanding evidence coverage from 70.8% to 97.4%. It did not reliably help short traces, so the useful control is not endless reasoning. It is a coverage gate that asks whether meaningful evidence remains unread.
 
-1. Build one small harness ablation matrix around context compaction, planning, and action space.
-2. Convert one known agent incident into a cut-point replay fixture.
-3. Produce one semantic token flamegraph from a week of local agent traces.
+Tool-progress research shows the same principle in serving. Explicit progress was several times to an order of magnitude more accurate than pre-call duration predictors at cache-decision points. Small progress hints reduced post-tool p90 time to first token by about 20.7% in the tested setup. AgentPProf then projects many runs onto stable semantic task stacks, making cross-run token and failure hotspots visible instead of leaving them buried in spans.
+
+### Why it matters
+
+The model turn is not the only place where useful evidence exists. Unread-log coverage, tool progress, and cross-run semantic profiles should shape search, cache, and diagnosis decisions without bloating model context.
+
+### Stack fit
+
+This belongs in agent serving runtimes, observability, and long-trace diagnosis. Runtime telemetry remains outside model context unless a policy selects it for the next decision.
+
+### Practical path now
+
+- Track unread evidence and stop diagnostic expansion when coverage gain disappears.
+- Emit monotonic tool progress as runtime telemetry, not natural-language prompt content.
+- Replay cache decisions offline against actual completion times.
+- Aggregate tokens, latency, retries, and failures by stable semantic operation path.
+- Keep raw traces for drill-down and derived profiles for comparison.
+
+Implementability score: 0.81
+
+Core sources:
+- [Continual Search](https://arxiv.org/abs/2609.13463v1)
+- [Tool-progress serving study](https://arxiv.org/abs/2609.18849v1)
+- [MCP progress specification](https://modelcontextprotocol.io/specification/2025-06-18/basic/utilities/progress)
+- [AgentPProf](https://arxiv.org/abs/2609.20301v1)
+- [AgentPProf guide](https://github.com/eunomia-bpf/agentsight/blob/master/docs/agentpprof.md)
+
+## Mutate persistent skills through localized, reversible change sets
+
+### Finding
+
+Skill Issue evaluates repository guidance by reverse-applying merged pull requests at a frozen base commit and comparing generated skills against a seed. Its reported 4.9-point gain could not be separated from agent variance on 20 to 26-task holdouts, which makes the paired frozen-snapshot method more durable than the result.
+
+SkillAA gives the mutable state a stronger internal structure. It separates applicability, procedure, exclusion, and dependency objects, routes a failure to one editable location or `NO_PATCH`, retests affected cases, rolls back harmful atomic groups, and commits only a net-positive merged graph.
+
+### Why it matters
+
+Blindly rewriting a skill after a failure destroys attribution and makes rollback ambiguous. A persistent skill is executable policy, so its update path should look like a small, evidence-bound software release.
+
+### Stack fit
+
+This belongs in skills-as-control, agent self-improvement, and coding-agent control planes. Skills are content-addressed graphs with stable object identities, affected-case tests, epoch commits, and prior-version rollback.
+
+### Practical path now
+
+- Bind each evaluation to one frozen repository and skill snapshot.
+- Keep no-skill and prior-version controls.
+- Give applicability, procedure, exclusion, and dependency records stable IDs.
+- Route failures to the smallest editable object and allow `NO_PATCH`.
+- Run localized regressions before an atomic epoch commit.
+
+Implementability score: 0.70
+
+The public SkillAA repository is populated and active, but GitHub did not expose a recognized license in the inspected metadata. Treat it as a methodology and research artifact until reuse rights and independent replication are clearer.
+
+Core sources:
+- [Skill Issue](https://arxiv.org/abs/2609.12742v1)
+- [SkillAA](https://arxiv.org/abs/2609.20455v1)
+- [SkillAA repository](https://github.com/Ziqiao-Shang/SkillAA)
+
+## Working conclusion
+
+The practical advantage does not come from making every agent reason longer. It comes from preserving the evidence final answers erase, then using that evidence to replay incidents, route harness policy, focus diagnosis, and constrain persistent change.

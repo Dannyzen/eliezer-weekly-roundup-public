@@ -1368,3 +1368,20 @@ Implementability score: 0.61
 Sources:
 - [Ecdysis](https://arxiv.org/abs/2609.11677v1)
 - [cuiyu-ai/Ecdysis](https://github.com/cuiyu-ai/Ecdysis)
+
+## September 19, 2026 update: price planning and verification separately
+
+A matched tau-squared benchmark study found that static task-specific guidance improved oracle-verified success by 7.17 percentage points over word-count-matched shuffled context. A read-only terminal verifier rejected 61% of invalid Retail episodes and captured nearly all the full stack's avoided false-pass benefit at one twelfth of the incremental cost.
+
+Practical lesson:
+- keep a minimal harness control;
+- test fixed guidance against sham context;
+- measure oracle success, false passes, false rejection, and cost separately;
+- deploy verifier-only first when erroneous acceptance dominates the loss function;
+- add planning when task complexity creates measured execution gains.
+
+Evidence caveat: the study uses public benchmark tasks, some runtime metadata is missing, and no public study repository was available in the inspected version.
+
+Implementability score: 0.82
+
+Source: [How Do Agent Harnesses Create Value?](https://arxiv.org/abs/2609.20474v1)

@@ -1063,3 +1063,20 @@ Evidence caveat: the authors are from Microsoft, the APEX tasks were adapted, an
 Implementability score: 0.78
 
 Source: [Grounding Agent Memory](https://arxiv.org/abs/2609.11060v1)
+
+## September 20, 2026 update: current recall does not prove update sufficiency
+
+A paired-history audit shows that two compressed histories can answer the current question identically yet require different answers after the same future update. Identifier renaming, tombstone deletion, and late-reference replay expose distinctions that ordinary current-answer accuracy misses.
+
+Practical lesson:
+- pair equal-current-answer histories with divergent future obligations;
+- replay the same update against raw and compressed state;
+- preserve tombstones and source episodes until update tests pass;
+- use identifier-renaming metamorphic tests;
+- separate retained-state adequacy from delivery and answer formatting.
+
+Evidence caveat: the paper reports a small synthetic pilot with no natural-task validation, and public code was not yet available.
+
+Implementability score: 0.66
+
+Source: [Correct Now, Insufficient Later](https://arxiv.org/abs/2609.20045v1)

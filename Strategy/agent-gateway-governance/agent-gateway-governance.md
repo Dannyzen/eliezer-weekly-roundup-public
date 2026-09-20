@@ -1131,3 +1131,20 @@ Practical lesson:
 
 Source:
 - [MCP silent-drift census](https://arxiv.org/abs/2609.14119v1)
+
+## September 20, 2026 update: resolution must precede authorization
+
+A policy gate can evaluate only a call bound to a real contract. Closed-world resolution rejects unknown tool names and undeclared signatures before authorization, while qualified MCP identities prevent collisions and shadowing across merged server namespaces.
+
+Practical lesson:
+- require exact registry membership before policy evaluation;
+- validate arguments against the admitted signature;
+- qualify tool identity by server, revision, schema hash, and endpoint origin;
+- reject collisions and shadowed definitions during merge;
+- record resolution failure separately from policy denial.
+
+Evidence caveat: the study assumes a trusted registry and no public implementation repository resolved from the primary paper surfaces.
+
+Implementability score: 0.94
+
+Source: [Closed-World Resolution Against Tool Hallucination in LLM Agents](https://arxiv.org/abs/2609.19425v1)

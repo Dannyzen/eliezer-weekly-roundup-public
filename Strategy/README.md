@@ -2,18 +2,18 @@
 
 This index tracks the most recent structured strategy research. Each finding links to the dated analysis, durable topics, primary sources, practical methods, and an implementability score.
 
-## Latest Structured Update: 2026-09-19
+## Latest Structured Update: 2026-09-20
 
-### Turn review findings into durable release state
+### Run a closed-world resolver before policy gates
 
-Summary: Review comments should survive new commits as typed finding records, while coverage and other objective quality thresholds remain platform-owned policy. Agents discover and explain; the release system owns state transitions and merge authority.
+Summary: Selection and authorization both assume that a model-emitted call resolves to a real tool and declared signature. Enforce exact registry membership and schema resolution first, especially when multiple MCP servers share a namespace.
 
-Analysis: [daily strategy analysis](2026-09-19/sovereignty.md#turn-review-findings-into-durable-release-state)
-Durable deep dive: [Coding Agent Control Plane](../AgenticAI/coding-agent-control-plane/coding-agent-control-plane.md)
-Core sources: [Copilot code review state](https://github.blog/changelog/2026-09-18-copilot-code-review-an-improved-review-experience), [coverage ruleset REST API](https://github.blog/changelog/2026-09-18-manage-the-code-coverage-ruleset-condition-with-the-rest-api)
-Tools and methodologies worth exploring now: stable finding IDs, commit-bound evidence, explicit resolution reasons, reopened and previously missed states, GitHub rulesets API, independent test, coverage, security, and approval gates
+Analysis: [daily strategy analysis](2026-09-20/sovereignty.md#run-a-closed-world-resolver-before-policy-gates)
+Durable deep dive: [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md)
+Core source: [Closed-World Resolution Against Tool Hallucination in LLM Agents](https://arxiv.org/abs/2609.19425v1)
+Tools and methodologies worth exploring now: closed-world registries, exact signature checks, qualified MCP identities, collision rejection, resolution receipts, separate resolution and policy failure classes
 Implementability score: 0.94
 
 ## Current implication
 
-Agent review becomes governable when findings are durable state and merge conditions are deterministic policy. Never let a polished review summary, or a model-generated resolution, become release authority by itself.
+A policy engine cannot govern an unresolved call. Bind the model's emitted name and arguments to one admitted contract before authorization, transaction policy, or execution begins.

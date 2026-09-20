@@ -1385,3 +1385,22 @@ Evidence caveat: the study uses public benchmark tasks, some runtime metadata is
 Implementability score: 0.82
 
 Source: [How Do Agent Harnesses Create Value?](https://arxiv.org/abs/2609.20474v1)
+
+## September 20, 2026 update: useful work per token is a harness acceptance metric
+
+SoL-Pi reports comparable performance on 51 EdgeBench tasks while reducing recorded token traffic by 44.7% to 49.0% and API cost by about one third. The reusable control is a component-level efficiency gate, not an assumption that shorter context is better.
+
+Practical lesson:
+- measure task success, token traffic, cost, and latency together;
+- ablate action execution, compaction, observation handling, and delegated reading separately;
+- retain native and minimal harness controls;
+- require held-out environments before promotion;
+- reject savings that reduce useful work or hide failures.
+
+Evidence caveat: the study evaluates an author-built Pi extension on one benchmark and two frontier-model configurations. The MIT repository was inspected read-only and not executed.
+
+Implementability score: 0.80
+
+Sources:
+- [SoL-Pi](https://arxiv.org/abs/2609.20519v1)
+- [NVlabs/SoL-Pi](https://github.com/NVlabs/SoL-Pi)

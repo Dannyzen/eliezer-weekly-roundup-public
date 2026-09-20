@@ -1300,3 +1300,23 @@ Evidence caveat: the benchmark covers five deliberately demanding scenarios, and
 Implementability score: 0.91
 
 Source: [Quantifying Overclaiming Propensity in Frontier LLM Agents](https://arxiv.org/abs/2609.20812v1)
+
+## September 20, 2026 update: repeated decisions need calibrated cheap task sets
+
+DeltaSelect found that only 22 of 113 DeepSWE tasks met its conservative correlation threshold for tracking full-benchmark performance. A cheap regression set should therefore be selected, weighted, frozen, and periodically recalibrated rather than assembled from convenient examples.
+
+Practical lesson:
+- choose tasks against a declared budget and historical correlation floor;
+- preserve task IDs, weights, verifier mappings, cost, and execution provenance;
+- compare baseline and candidate on the same frozen set;
+- report local decision evidence, not leaderboard capability;
+- rerun a larger suite often enough to detect selector drift.
+
+Evidence caveat: selection from past DeepSWE trials does not guarantee transfer across harnesses or future changes. The MIT artifact was inspected read-only and not executed.
+
+Implementability score: 0.88
+
+Sources:
+- [DeltaSelect](https://arxiv.org/abs/2609.19607v1)
+- [DeltaSelect tool](https://agent-layer.dev/deltaselect)
+- [Agent Layer](https://github.com/conn-castle/agent-layer)

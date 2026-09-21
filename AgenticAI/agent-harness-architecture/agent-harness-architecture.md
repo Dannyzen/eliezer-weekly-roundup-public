@@ -1404,3 +1404,24 @@ Implementability score: 0.80
 Sources:
 - [SoL-Pi](https://arxiv.org/abs/2609.20519v1)
 - [NVlabs/SoL-Pi](https://github.com/NVlabs/SoL-Pi)
+
+## September 21, 2026 update: executable behavior should ground both tests and training tasks
+
+RecreationWorld and CodeMidas converge on one harness rule from opposite directions. RecreationWorld uses running applications as oracles for action-conditioned programmatic and visual assertions. CodeMidas uses original program execution to construct and filter reinforcement-learning tasks from behavior rather than ticket history.
+
+Practical lesson:
+- discover observable behavior before writing a task;
+- derive tests from reference executions;
+- separate programmatic state checks from visual checks;
+- validate generated tests against the reference and incomplete candidates;
+- preserve source revision, specification, test, rollout, and license lineage;
+- freeze reviewed evaluation suites before model comparison.
+
+Artifact caveat: RecreationWorld's repository and dataset are public and were inspected read-only. No public CodeMidas implementation artifact resolved from the paper's primary surface.
+
+Implementability score: 0.68 for RecreationWorld-style outcome testing; 0.46 for CodeMidas-scale task generation.
+
+Sources:
+- [RecreationWorld](https://arxiv.org/abs/2609.22000v1)
+- [RecreationWorld repository](https://github.com/QwenLM/RecreationWorld)
+- [CodeMidas](https://arxiv.org/abs/2609.22068v1)

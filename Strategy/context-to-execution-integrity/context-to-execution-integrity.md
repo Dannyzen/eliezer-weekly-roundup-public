@@ -540,3 +540,22 @@ Implementability score: 0.64
 
 Source:
 - [Compositional Policy Violations](https://arxiv.org/abs/2609.18820v1)
+
+## September 21, 2026 update: approval must bind to the released action
+
+Loopjacking shows that human approval fails when the reviewed representation and released action are different objects. The control is an exact binding, not a stronger prompt: canonicalize the complete action, bind approval to that digest, and compare it again at the last reversible point before execution.
+
+Practical lesson:
+- render all material action fields and dependencies;
+- sign or hash the reviewed manifest;
+- invalidate approval on any material mutation;
+- protect pending workflow state from unauthorized writes;
+- retain the reviewed manifest, approval, final invocation, and outcome as one receipt.
+
+Artifact caveat: the public archive contains reproduction material, but all runs were operated by one researcher and the product set does not estimate ecosystem prevalence.
+
+Implementability score: 0.96
+
+Sources:
+- [Loopjacking](https://arxiv.org/abs/2609.21081v1)
+- [Evidence archive](https://github.com/adithyan-ak/loopjacking)

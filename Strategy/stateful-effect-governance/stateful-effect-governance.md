@@ -248,3 +248,22 @@ Practical lesson:
 Sources:
 - [Agent-tool boundary anomalies](https://arxiv.org/abs/2609.15397v1)
 - [MCP annotation census artifact](https://github.com/flame-stream/mcp-annotation-census)
+
+## September 21, 2026 update: payment policy belongs at the commit boundary
+
+APort Vault separates model planning from payment authorization. Across 69,297 evaluations behind a deterministic pre-action policy layer, the study recorded zero forbidden-recipient transfers while 25,370 payments still executed. The matched comparison was 105 forbidden transfers without the layer versus zero with it.
+
+Practical lesson:
+- encode allowed recipients, amounts, time windows, and approval requirements as typed policy;
+- bind policy to user, account, session, and tool identity;
+- evaluate the final transfer request immediately before commit;
+- log request, policy decision, transfer, and authoritative outcome separately;
+- replay matched attack traces against model-only and policy-backed configurations.
+
+Artifact caveat: the public dataset card is verified, but corpus access requires accepting gated research conditions and no reproduction was performed in this run.
+
+Implementability score: 0.93
+
+Sources:
+- [APort Vault](https://arxiv.org/abs/2609.22076v1)
+- [Dataset](https://huggingface.co/datasets/aporthq/vault-benchmark-v1)

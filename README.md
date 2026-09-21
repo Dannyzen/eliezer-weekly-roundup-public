@@ -6,30 +6,32 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-09-20: [resolve, calibrate, meter, and preserve](roundups/2026-09-20.md)
-- AgenticAI daily analysis: [cheap A/B tests, harness efficiency, and update-safe memory](AgenticAI/2026-09-20/reasoning.md)
-- Strategy daily analysis: [closed-world tool resolution before policy](Strategy/2026-09-20/sovereignty.md)
+- Daily scan, 2026-09-21: [bind approval and policy to verified effects](roundups/2026-09-21.md)
+- AgenticAI daily analysis: [outcome-grounded computer use and behavior-derived training tasks](AgenticAI/2026-09-21/reasoning.md)
+- Strategy daily analysis: [canonical approvals and deterministic payment authorization](Strategy/2026-09-21/sovereignty.md)
 - Friday synthesis, 2026-09-18: [trust cannot carry across an agent boundary by default](roundups/2026-09-18.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
+
 ## Current thesis
 
-Agent reliability improves when cheap controls bind each ambiguous boundary to explicit evidence: emitted tool calls resolve against admitted contracts, repeated engineering decisions use calibrated task sets, harness changes prove useful work per token, and compressed memory survives future updates.
+Evidence becomes operationally trustworthy when it stays bound to the effect it governs. Human approval needs an immutable action manifest, payment policy needs a deterministic commit-boundary check, computer-use evaluation needs action-conditioned outcome tests, and generated training tasks need executable reference behavior plus provenance.
 
 The current stack therefore emphasizes:
 
-- closed-world tool identity and signature resolution before policy;
-- namespace-qualified MCP catalogs with collision rejection;
-- fixed, budgeted task sets for repeated baseline-versus-candidate evaluation;
-- periodic full-suite recalibration to detect selector drift;
-- task success, token traffic, cost, and latency as one harness record;
-- held-out environments for recursively discovered harness changes;
-- paired-history memory tests with shared future updates;
-- tombstone, identifier-renaming, and late-reference replay fixtures;
-- machine-derived coverage and claim-to-evidence receipts;
-- durable review state beneath deterministic release policy.
+- canonical action manifests for consequential operations;
+- complete approval rendering and use-time equality checks;
+- typed payment policy outside model reasoning;
+- separate request, authorization, execution, and outcome events;
+- reference applications as test oracles;
+- programmatic and visual assertions after real interactions;
+- source revision and test lineage for generated tasks;
+- repeated solution rollouts before task admission;
+- model-plus-policy comparisons on matched traces;
+- durable receipts from reviewed intent through final effect.
 
-Start with the cheapest non-model controls: registry resolution, frozen A/B sets, component meters, and future-update fixtures. Add adaptive routing and autonomous harness evolution only after these receipts show where the cost or failure remains.
+Start with the cheapest binding controls: canonical manifests, deterministic pre-action policy, state-transition assertions, and task provenance. Add full cross-platform harnesses or RL-scale environment generation only after these smaller controls prove where the remaining failure lies.
+
 ## Browse by category
 
 - [AgenticAI](AgenticAI/README.md): implementation analysis on evaluation, memory, context policy, search, tools, and orchestration.

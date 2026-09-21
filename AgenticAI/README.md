@@ -2,38 +2,28 @@
 
 This index tracks the most recent structured implementation research. Each finding links to the dated analysis, primary sources, practical methods, and an implementability score.
 
-## Latest Structured Update: 2026-09-20
+## Latest Structured Update: 2026-09-21
 
-### Use correlated task sets for cheap coding-agent A/B tests
+### Verify hybrid computer-use agents with action-conditioned outcome tests
 
-Summary: Ad hoc smoke tasks do not reliably stand in for a full coding-agent benchmark. DeltaSelect chooses a fixed, budgeted set whose historical results track the larger suite and preserves the evidence needed for repeated baseline-versus-candidate decisions.
+Summary: RecreationWorld combines GUI and code or terminal work across five platforms, then grades agents with hidden programmatic and visual assertions against running references. Static resemblance is insufficient: the leading model passed every programmatic test on only 2.8 percent of tasks.
 
-Analysis: [daily analysis](2026-09-20/reasoning.md#use-correlated-task-sets-for-cheap-coding-agent-ab-tests)
-Durable deep dive: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
-Core sources: [DeltaSelect paper](https://arxiv.org/abs/2609.19607v1), [tool](https://agent-layer.dev/deltaselect), [repository](https://github.com/conn-castle/agent-layer)
-Tools and methodologies worth exploring now: fixed task sets, task weights, cost budgets, verifier normalization, provenance receipts, periodic full-suite recalibration
-Implementability score: 0.88
-
-### Treat token efficiency as a measured harness outcome
-
-Summary: SoL-Pi reports comparable 51-task performance while cutting recorded token traffic by 44.7% to 49.0%. Promote harness changes only when useful work, token traffic, cost, latency, and held-out regressions are measured together.
-
-Analysis: [daily analysis](2026-09-20/reasoning.md#treat-token-efficiency-as-a-measured-harness-outcome)
+Analysis: [daily analysis](2026-09-21/reasoning.md#verify-hybrid-computer-use-agents-with-action-conditioned-outcome-tests)
 Durable deep dive: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
-Core sources: [SoL-Pi paper](https://arxiv.org/abs/2609.20519v1), [repository](https://github.com/NVlabs/SoL-Pi), [project page](https://nvlabs.github.io/SoL-Pi/)
-Tools and methodologies worth exploring now: native and minimal harness controls, component ablations, EdgeBench-style executable tasks, utility-per-token reporting, held-out environment gates
-Implementability score: 0.80
+Core sources: [paper](https://arxiv.org/abs/2609.22000v1), [repository](https://github.com/QwenLM/RecreationWorld), [dataset](https://huggingface.co/datasets/Qwen/RecreationBench), [project](https://recreation-bench.cc/)
+Tools and methodologies worth exploring now: reference applications as oracles, action-conditioned state assertions, rendered visual checks, frozen reviewed tests, isolated platform images, complete-workflow scoring
+Implementability score: 0.68
 
-### Audit compressed memory against future updates
+### Derive executable training environments from behavior, not ticket history
 
-Summary: Current-answer accuracy can hide that compression erased a distinction needed by a later update. Use paired histories, shared updates, identifier renaming, tombstones, and late-reference replay to test update sufficiency.
+Summary: CodeMidas compiles implemented source behavior into specifications, executable tests, filtered tasks, and reinforcement-learning environments. The behavior-first pattern broadens the task supply beyond issues and commits, but the public implementation artifact did not resolve.
 
-Analysis: [daily analysis](2026-09-20/reasoning.md#audit-compressed-memory-against-future-updates)
-Durable deep dive: [Memory Systems](memory-systems/memory-systems.md)
-Core source: [Correct Now, Insufficient Later](https://arxiv.org/abs/2609.20045v1)
-Tools and methodologies worth exploring now: paired-history fixtures, raw-history controls, metamorphic identifier tests, tombstone replay, retained-state versus delivery classification
-Implementability score: 0.66
+Analysis: [daily analysis](2026-09-21/reasoning.md#derive-executable-training-environments-from-behavior-not-ticket-history)
+Durable deep dive: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
+Core source: [CodeMidas](https://arxiv.org/abs/2609.22068v1)
+Tools and methodologies worth exploring now: behavioral discovery, reference execution, generated test validation, repeated solution rollouts, task lineage, license and contamination gates
+Implementability score: 0.46
 
 ## Current implication
 
-Cheap evaluation is useful only when it preserves what the decision needs. Calibrate the task subset, measure harness utility per token, and reject memory compression that cannot survive a future update.
+Treat executable reference behavior as the source of truth for both evaluation and task construction. A screenshot, ticket, or generated test becomes useful only after outcome checks prove that it captures the behavior that matters.

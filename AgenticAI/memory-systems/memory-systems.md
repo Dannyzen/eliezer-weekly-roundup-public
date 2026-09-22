@@ -1080,3 +1080,23 @@ Evidence caveat: the paper reports a small synthetic pilot with no natural-task 
 Implementability score: 0.66
 
 Source: [Correct Now, Insufficient Later](https://arxiv.org/abs/2609.20045v1)
+
+## September 22, 2026 update: grade memory by future effects on a Pareto surface
+
+DolphinBench evaluates 600 future tool-use tasks across three roughly 500,000-token persona histories. Each test is certified with paired oracle-history and no-history runs, then official submissions report action accuracy, total cost, and latency. The result shows that memory rankings depend on the model and harness around them.
+
+Practical lesson:
+- test whether buried history changes a later effect correctly;
+- certify that the task passes with the needed history and fails without it;
+- grade exact tool, target, arguments, and content;
+- compare built-in and external memory under the same model and harness;
+- report accuracy, ingestion cost, test cost, and latency together.
+
+Evidence caveat: Mem0 created the benchmark and is one evaluated vendor. Histories are synthetic and cover three knowledge-work personas.
+
+Implementability score: 0.82
+
+Sources:
+- [DolphinBench paper](https://arxiv.org/abs/2609.24971v1)
+- [DolphinBench repository](https://github.com/mem0ai/dolphinbench)
+- [DolphinBench results](https://dolphinbench.ai/)

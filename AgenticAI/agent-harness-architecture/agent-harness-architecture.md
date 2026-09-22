@@ -1425,3 +1425,22 @@ Sources:
 - [RecreationWorld](https://arxiv.org/abs/2609.22000v1)
 - [RecreationWorld repository](https://github.com/QwenLM/RecreationWorld)
 - [CodeMidas](https://arxiv.org/abs/2609.22068v1)
+
+## September 22, 2026 update: use optimized harnesses as training-time teachers
+
+Harness-Zero translates specialized harness guidance into corrections in a fixed student action space, fine-tunes accepted trajectories, then removes the teacher at deployment. Reported macro-average task success rose from 23.3 percent to 44.3 percent, above the 41.7 percent result with the specialized harness attached.
+
+Practical lesson:
+- freeze the target deployment harness before collection;
+- keep teacher-only policy, skills, and memory outside deploy authority;
+- review proposals at the student action boundary;
+- train only on filtered reviewed trajectories;
+- require held-out task and behavior-pattern recovery with the teacher removed.
+
+Evidence caveat: collection requires a capable harnessing model and one extra review call per proposal. Some harness functions, especially context management, do not translate cleanly into student responses.
+
+Implementability score: 0.52
+
+Sources:
+- [Harness-Zero](https://arxiv.org/abs/2609.24974v1)
+- [Harness-Zero repository](https://github.com/metaevo-ai/harness-zero)

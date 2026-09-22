@@ -1115,3 +1115,21 @@ Sources:
 - [A Finger on the Scale](https://arxiv.org/abs/2609.02564v1)
 - [ACLE-MCP](https://arxiv.org/abs/2609.02690v1)
 - [A Blind Trust, the Bloody Thrust](https://arxiv.org/abs/2609.03884v1)
+
+## September 22, 2026 update: model-drafted policy needs solver certification and deterministic release
+
+ActGov uses an LLM to propose policies, Z3 to reject inconsistent or unsafe bundles, and a deterministic runtime monitor to decide each external action. In-domain attack success fell to zero or near zero across AgentDojo and AgentDyn, but clean utility sometimes dropped and cross-environment policy transfer was poor.
+
+Practical lesson:
+- give model-generated policy no direct deployment authority;
+- define a finite shared record schema for offline proof and runtime checks;
+- freeze verified policy by version and digest;
+- evaluate the exact candidate action at the last reversible point;
+- report clean utility, attacked utility, and attack success together;
+- treat policy portability as a separate held-out test.
+
+Artifact caveat: no public ActGov implementation resolved from the primary paper or exact-title search.
+
+Implementability score: 0.48
+
+Source: [ActGov](https://arxiv.org/abs/2609.24446v1)

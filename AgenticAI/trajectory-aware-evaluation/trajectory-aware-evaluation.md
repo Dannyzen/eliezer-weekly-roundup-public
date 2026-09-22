@@ -1320,3 +1320,22 @@ Sources:
 - [DeltaSelect](https://arxiv.org/abs/2609.19607v1)
 - [DeltaSelect tool](https://agent-layer.dev/deltaselect)
 - [Agent Layer](https://github.com/conn-castle/agent-layer)
+
+## September 22, 2026 update: select regression subsets from behavior, then recalibrate
+
+Trajectory-aware subset selection combines historical outcome groups with sanitized trace embeddings and deterministic centroid selection. Across 31,779 trajectories from 58 runs and five frameworks, a 10 percent subset cut measured token use from 3.44 billion to 345 million while keeping median resolve-rate estimation error below 5 percent.
+
+Practical lesson:
+- build cheap sets from prior behavior rather than convenient tasks;
+- remove explicit outcome and identity leakage before embedding;
+- bind selector inputs and task IDs to a versioned receipt;
+- measure both median and worst-case error against later full runs;
+- keep the full suite as a periodic calibration and release gate.
+
+Evidence caveat: the evaluated workloads are code-repair benchmarks, and historical full runs are required before the selector has evidence.
+
+Implementability score: 0.88
+
+Sources:
+- [Trajectory-aware subset paper](https://arxiv.org/abs/2609.24928v1)
+- [Public repository](https://github.com/SAILResearch/swe-agent-subset-selection)

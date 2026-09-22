@@ -2,28 +2,38 @@
 
 This index tracks the most recent structured implementation research. Each finding links to the dated analysis, primary sources, practical methods, and an implementability score.
 
-## Latest Structured Update: 2026-09-21
+## Latest Structured Update: 2026-09-22
 
-### Verify hybrid computer-use agents with action-conditioned outcome tests
+### Select regression tasks from prior trajectories
 
-Summary: RecreationWorld combines GUI and code or terminal work across five platforms, then grades agents with hidden programmatic and visual assertions against running references. Static resemblance is insufficient: the leading model passed every programmatic test on only 2.8 percent of tasks.
+Summary: Historical trajectories can select a small deterministic regression set that better tracks full-benchmark behavior than convenient examples or random samples. A 10 percent subset cut measured token use by about 90 percent while holding median resolve-rate estimation error below 5 percent.
 
-Analysis: [daily analysis](2026-09-21/reasoning.md#verify-hybrid-computer-use-agents-with-action-conditioned-outcome-tests)
+Analysis: [daily analysis](2026-09-22/reasoning.md#select-regression-tasks-from-prior-trajectories-not-convenient-examples)
+Durable deep dive: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
+Core sources: [paper](https://arxiv.org/abs/2609.24928v1), [repository](https://github.com/SAILResearch/swe-agent-subset-selection)
+Tools and methodologies worth exploring now: normalized traces, outcome-leakage sanitization, outcome stratification, centroid selection, frozen small sets, periodic full-suite recalibration
+Implementability score: 0.88
+
+### Evaluate memory by future effects, cost, and latency
+
+Summary: DolphinBench grades 600 future actions whose correctness depends on buried history, then reports accuracy, cost, and latency together. Memory rankings change across models and harnesses, so memory must be evaluated as a complete system configuration.
+
+Analysis: [daily analysis](2026-09-22/reasoning.md#evaluate-memory-by-future-effects-cost-and-latency)
+Durable deep dive: [Memory Systems](memory-systems/memory-systems.md)
+Core sources: [paper](https://arxiv.org/abs/2609.24971v1), [repository](https://github.com/mem0ai/dolphinbench), [project](https://dolphinbench.ai/)
+Tools and methodologies worth exploring now: future-action fixtures, oracle-history versus no-history certification, exact effect graders, pinned histories and app state, cost and latency accounting
+Implementability score: 0.82
+
+### Distill harness behavior before deployment
+
+Summary: Harness-Zero uses a specialized harness as a training-time teacher, then deploys the student under one fixed minimal harness. Reported macro-average task success rose from 23.3 percent to 44.3 percent after distillation.
+
+Analysis: [daily analysis](2026-09-22/reasoning.md#distill-harness-behavior-into-the-model-before-deployment)
 Durable deep dive: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
-Core sources: [paper](https://arxiv.org/abs/2609.22000v1), [repository](https://github.com/QwenLM/RecreationWorld), [dataset](https://huggingface.co/datasets/Qwen/RecreationBench), [project](https://recreation-bench.cc/)
-Tools and methodologies worth exploring now: reference applications as oracles, action-conditioned state assertions, rendered visual checks, frozen reviewed tests, isolated platform images, complete-workflow scoring
-Implementability score: 0.68
-
-### Derive executable training environments from behavior, not ticket history
-
-Summary: CodeMidas compiles implemented source behavior into specifications, executable tests, filtered tasks, and reinforcement-learning environments. The behavior-first pattern broadens the task supply beyond issues and commits, but the public implementation artifact did not resolve.
-
-Analysis: [daily analysis](2026-09-21/reasoning.md#derive-executable-training-environments-from-behavior-not-ticket-history)
-Durable deep dive: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
-Core source: [CodeMidas](https://arxiv.org/abs/2609.22068v1)
-Tools and methodologies worth exploring now: behavioral discovery, reference execution, generated test validation, repeated solution rollouts, task lineage, license and contamination gates
-Implementability score: 0.46
+Core sources: [paper](https://arxiv.org/abs/2609.24974v1), [repository](https://github.com/metaevo-ai/harness-zero)
+Tools and methodologies worth exploring now: fixed target harnesses, teacher review at the student action boundary, filtered rollout collection, LoRA SFT, held-out pattern recovery tests
+Implementability score: 0.52
 
 ## Current implication
 
-Treat executable reference behavior as the source of truth for both evaluation and task construction. A screenshot, ticket, or generated test becomes useful only after outcome checks prove that it captures the behavior that matters.
+Reuse execution evidence in three different ways: traces can choose cheaper regression sets, future actions can grade memory, and optimized harnesses can compile training data. Keep the full benchmark, raw history, and minimal deploy harness as calibration anchors.

@@ -6,31 +6,33 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-09-21: [bind approval and policy to verified effects](roundups/2026-09-21.md)
-- AgenticAI daily analysis: [outcome-grounded computer use and behavior-derived training tasks](AgenticAI/2026-09-21/reasoning.md)
-- Strategy daily analysis: [canonical approvals and deterministic payment authorization](Strategy/2026-09-21/sovereignty.md)
+- Daily scan, 2026-09-22: [reuse execution evidence, certify effect policy](roundups/2026-09-22.md)
+- AgenticAI daily analysis: [trajectory-selected tests, action-based memory, and harness distillation](AgenticAI/2026-09-22/reasoning.md)
+- Strategy daily analysis: [certified policy outside model authority](Strategy/2026-09-22/sovereignty.md)
 - Friday synthesis, 2026-09-18: [trust cannot carry across an agent boundary by default](roundups/2026-09-18.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 
 ## Current thesis
 
-Evidence becomes operationally trustworthy when it stays bound to the effect it governs. Human approval needs an immutable action manifest, payment policy needs a deterministic commit-boundary check, computer-use evaluation needs action-conditioned outcome tests, and generated training tasks need executable reference behavior plus provenance.
+Execution evidence should remain reusable without becoming ambient authority. Historical trajectories can select cheaper regression tasks, future actions can grade memory, and optimized harnesses can teach a fixed deployment model. Policy for external effects still belongs in a separately certified deterministic boundary.
 
 The current stack therefore emphasizes:
 
-- canonical action manifests for consequential operations;
-- complete approval rendering and use-time equality checks;
-- typed payment policy outside model reasoning;
-- separate request, authorization, execution, and outcome events;
-- reference applications as test oracles;
-- programmatic and visual assertions after real interactions;
-- source revision and test lineage for generated tasks;
-- repeated solution rollouts before task admission;
-- model-plus-policy comparisons on matched traces;
-- durable receipts from reviewed intent through final effect.
+- normalized trajectories as regression-selection inputs;
+- periodic full-suite recalibration for every cheap task set;
+- memory evaluation through exact future effects;
+- accuracy, cost, and latency as one memory result;
+- fixed target harnesses for transfer experiments;
+- teacher review expressed in the student action space;
+- held-out behavior recovery before removing specialized harnesses;
+- finite typed policy records;
+- offline counterexample checking before policy promotion;
+- deterministic action authorization immediately before effects;
+- matched security and utility measurements;
+- receipts that bind evidence, policy, decision, effect, and outcome.
 
-Start with the cheapest binding controls: canonical manifests, deterministic pre-action policy, state-transition assertions, and task provenance. Add full cross-platform harnesses or RL-scale environment generation only after these smaller controls prove where the remaining failure lies.
+Start with trajectory-selected regression tests and future-effect memory fixtures. Harness distillation and solver-backed policy compilation need more infrastructure, stronger calibration, and explicit utility gates.
 
 ## Browse by category
 

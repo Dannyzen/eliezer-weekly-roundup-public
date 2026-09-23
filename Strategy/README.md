@@ -2,18 +2,28 @@
 
 This index tracks the most recent structured strategy research. Each finding links to the dated analysis, durable topics, primary sources, practical methods, and an implementability score.
 
-## Latest Structured Update: 2026-09-22
+## Latest Structured Update: 2026-09-23
 
-### Let models propose policy, then certify and freeze it before effects
+### Treat MCP metadata and outputs as untrusted control inputs
 
-Summary: ActGov uses an LLM to propose policy, Z3 to check the complete bundle against declared invariants, and a deterministic runtime monitor to authorize each external action. The split preserves adaptive planning while keeping effect authority outside the model.
+Summary: A2M attacks MCP agents in two places: tool descriptions attract invocation, then adversarial return content redirects reasoning. Authentication and valid schemas do not establish semantic trust.
 
-Analysis: [daily strategy analysis](2026-09-22/sovereignty.md#let-models-propose-policy-then-certify-and-freeze-it-before-effects)
-Durable deep dive: [Runtime Governance](runtime-governance/runtime-governance.md)
-Core source: [ActGov](https://arxiv.org/abs/2609.24446v1)
-Tools and methodologies worth exploring now: finite policy records, offline counterexample checking, frozen policy digests, deterministic pre-action enforcement, matched security and utility metrics, decision receipts
-Implementability score: 0.48
+Analysis: [daily strategy analysis](2026-09-23/sovereignty.md#treat-mcp-metadata-and-tool-outputs-as-untrusted-control-inputs)
+Durable deep dive: [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md)
+Core sources: [paper](https://arxiv.org/abs/2609.26761v1), [public repository](https://github.com/Lilaizhen/A2M)
+Tools and methodologies worth exploring now: metadata admission, manifest diffing, result provenance, taint classes, token and retry budgets, least-privilege isolation, adversarial replay fixtures
+Implementability score: 0.78
+
+### Standardize lifecycle telemetry with sensitive content off by default
+
+Summary: GitHub Copilot now exports OpenTelemetry traces, metrics, and events through enterprise-managed settings. Prompts, responses, and tool arguments are excluded by default and should remain disabled until a governed investigation needs them.
+
+Analysis: [daily strategy analysis](2026-09-23/sovereignty.md#standardize-agent-telemetry-while-keeping-content-capture-off-by-default)
+Durable deep dive: [Agent Fleet Monitoring Control Plane](agent-fleet-monitoring-control-plane/agent-fleet-monitoring-control-plane.md)
+Core sources: [release note](https://github.blog/changelog/2026-09-22-opentelemetry-in-the-github-copilot-app), [documentation](https://docs.github.com/en/enterprise-cloud@latest/copilot/concepts/enterprise/opentelemetry)
+Tools and methodologies worth exploring now: OTLP collectors, session and tool spans, token metrics, edit-feedback events, content exclusion, retention policy, state-linked incident receipts
+Implementability score: 0.92
 
 ## Current implication
 
-Use models to draft policy and discover gaps. Use formal checks to certify a bounded policy model, then use deterministic runtime code to decide whether one exact external effect may proceed. Policy portability remains a separate test.
+Govern semantic inputs and observability outputs as data classes with distinct authority, sensitivity, retention, and isolation rules. Standard telemetry helps only when identity and external state remain linked to each session.

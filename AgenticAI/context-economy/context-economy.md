@@ -422,6 +422,27 @@ Artifact caveat: the paper describes released trial records, but no exact public
 Source:
 - [The Working Set of a Coding Agent](https://arxiv.org/abs/2608.16630v1)
 
+
+## September 23, 2026 update: faithful compaction operates on original evidence
+
+CliffCompaction reduces active context by truncating or dropping original content. It never rewrites retained material and never compacts a prior compaction. The paper reports up to 50 percent lower cost under a bounded context while maintaining or improving Terminal-Bench and KernelBench results.
+
+Practical lesson:
+- keep original events outside the active prompt;
+- compact only original material and discard prior compacted views;
+- preserve span identity for retained and dropped content;
+- compare against full context, fixed windows, and ordinary summarization;
+- measure accepted outcome, token count, latency, and cost together;
+- reject compaction policies that save tokens by hiding failures.
+
+Artifact caveat: the public MIT repository contains a package, proxy, provider dialects, and tests. It was inspected read-only and not executed.
+
+Implementability score: 0.86
+
+Sources:
+- [CliffCompaction](https://arxiv.org/abs/2609.26779v1)
+- [nguyenvuthientrang/cliffcompaction](https://github.com/nguyenvuthientrang/cliffcompaction)
+
 ## Working conclusion
 
 The future agent stack is not context maximalism. It is context accounting. Systems that know what to admit, retrieve, compress, cache, update incrementally, preserve prefix continuity, and audit will beat systems that merely buy larger windows and hope the model sorts it out.

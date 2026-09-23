@@ -1148,3 +1148,24 @@ Evidence caveat: the study assumes a trusted registry and no public implementati
 Implementability score: 0.94
 
 Source: [Closed-World Resolution Against Tool Hallucination in LLM Agents](https://arxiv.org/abs/2609.19425v1)
+
+## September 23, 2026 update: tool metadata and returns form one semantic supply chain
+
+A2M optimizes MCP tool descriptions to attract selection, then uses execution traces to refine adversarial return content. Direct attacks on GLM-4.6 reached a 93.6 percent malicious invocation rate and a 74.4 percent mean attack success rate across three consequence classes. Transfer to four other models remained material.
+
+Practical lesson:
+- bind admission to publisher, artifact digest, schema hash, endpoint origin, and reviewed metadata;
+- diff descriptions and annotations as authority-relevant changes;
+- separate relevance ranking from permission to invoke;
+- mark tool returns as tainted and preserve their origin;
+- cap tokens, retries, and tool-chain depth;
+- isolate tools from unrelated credentials, files, and network destinations;
+- replay adversarial metadata and result fixtures across every supported model and router.
+
+Evidence caveat: the study assumes malicious-tool registration and evaluates one benchmark with a fixed ReAct-style stack. The public repository is populated but has no detected license and was not executed.
+
+Implementability score: 0.78
+
+Sources:
+- [A2M](https://arxiv.org/abs/2609.26761v1)
+- [Lilaizhen/A2M](https://github.com/Lilaizhen/A2M)

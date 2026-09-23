@@ -6,33 +6,31 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-09-22: [reuse execution evidence, certify effect policy](roundups/2026-09-22.md)
-- AgenticAI daily analysis: [trajectory-selected tests, action-based memory, and harness distillation](AgenticAI/2026-09-22/reasoning.md)
-- Strategy daily analysis: [certified policy outside model authority](Strategy/2026-09-22/sovereignty.md)
+- Daily scan, 2026-09-23: [govern the state between model calls](roundups/2026-09-23.md)
+- AgenticAI daily analysis: [faithful compaction and failure-informed runtime policy](AgenticAI/2026-09-23/reasoning.md)
+- Strategy daily analysis: [untrusted MCP semantics and privacy-bounded telemetry](Strategy/2026-09-23/sovereignty.md)
 - Friday synthesis, 2026-09-18: [trust cannot carry across an agent boundary by default](roundups/2026-09-18.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 
 ## Current thesis
 
-Execution evidence should remain reusable without becoming ambient authority. Historical trajectories can select cheaper regression tasks, future actions can grade memory, and optimized harnesses can teach a fixed deployment model. Policy for external effects still belongs in a separately certified deterministic boundary.
+Delivered agent quality depends on governed state transitions around the model. Faithful compaction controls what survives, incident-derived policies correct known failure states, gateway admission constrains semantic supply-chain inputs, and OpenTelemetry makes lifecycle behavior inspectable without copying sensitive content by default.
 
 The current stack therefore emphasizes:
 
-- normalized trajectories as regression-selection inputs;
-- periodic full-suite recalibration for every cheap task set;
-- memory evaluation through exact future effects;
-- accuracy, cost, and latency as one memory result;
-- fixed target harnesses for transfer experiments;
-- teacher review expressed in the student action space;
-- held-out behavior recovery before removing specialized harnesses;
-- finite typed policy records;
-- offline counterexample checking before policy promotion;
-- deterministic action authorization immediately before effects;
-- matched security and utility measurements;
-- receipts that bind evidence, policy, decision, effect, and outcome.
+- original evidence outside the active prompt;
+- deletion-only compaction with span lineage;
+- repeated-success metrics beside best-of-k capability;
+- failure-state policies with sham controls and rollback;
+- metadata admission and manifest diffing for MCP tools;
+- taint and provenance for tool returns;
+- token, retry, and chain-depth budgets;
+- model and tool spans linked by durable session identity;
+- content-free telemetry as the default;
+- external state checks before incident closure.
 
-Start with trajectory-selected regression tests and future-effect memory fixtures. Harness distillation and solver-backed policy compilation need more infrastructure, stronger calibration, and explicit utility gates.
+Start with OTLP lifecycle traces, compaction receipts, and adversarial MCP fixtures. Promote learned runtime policies only after held-out replay proves they improve repeated delivery without hiding capability loss.
 
 ## Browse by category
 

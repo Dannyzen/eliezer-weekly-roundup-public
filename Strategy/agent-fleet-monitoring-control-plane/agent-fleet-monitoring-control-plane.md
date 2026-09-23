@@ -166,6 +166,28 @@ This strengthens the existing thesis that agent operations are a fleet-managemen
 - [MOLE dataset](https://huggingface.co/datasets/forgelab/mole)
 - [OpenAI research acceleration disclosure](https://openai.com/index/research-acceleration-view-inside-openai/)
 
+
+## September 23, 2026 update: OpenTelemetry is becoming the agent lifecycle evidence contract
+
+GitHub Copilot now exports traces, metrics, and events through enterprise-managed OpenTelemetry settings. Traces connect model calls and tool use, metrics include token counts, and events can record edit acceptance or rejection. Prompts, responses, and tool arguments are excluded by default.
+
+Practical lesson:
+- send OTLP to a controlled backend or collector;
+- preserve principal, task, session, model, tool, policy, and outcome IDs;
+- keep content capture disabled until a documented investigation requires it;
+- separate operational metrics from sensitive payload evidence;
+- define access, retention, redaction, and deletion before rollout;
+- verify per-client property support;
+- connect session traces to external state checks before incident closure.
+
+Availability caveat: enterprise owners need managed settings and an OTLP-compatible backend. Supported clients do not all support every property.
+
+Implementability score: 0.92
+
+Sources:
+- [GitHub release note](https://github.blog/changelog/2026-09-22-opentelemetry-in-the-github-copilot-app)
+- [GitHub OpenTelemetry documentation](https://docs.github.com/en/enterprise-cloud@latest/copilot/concepts/enterprise/opentelemetry)
+
 ## Working conclusion
 
 A safe agent fleet cannot be governed one prompt or tool call at a time. Preserve durable principals, correlate behavior across services and days, verify harm in system state, rank cases under the real review budget, and keep intervention outside the monitor.

@@ -833,6 +833,27 @@ Sources:
 - [IdeaAMBIG](https://arxiv.org/abs/2609.10539v1)
 - [Yiling-Ma/IdeaAMBIG](https://github.com/Yiling-Ma/IdeaAMBIG)
 
+
+## September 23, 2026 update: compile incident evidence into narrow runtime policies
+
+FIRE applies targeted instructions or action denials at states that preceded observed failures. Across 87 Terminal-Bench 2.1 tasks, repeated success increased in all three tested model tiers, while best-of-two moved much less for the strongest tier.
+
+Practical lesson:
+- cluster failures by state and procedural mistake;
+- express each correction as a narrow instruction or deterministic denial;
+- match only at explicit runtime states;
+- compare real policies with sham timing and generic verification controls;
+- measure repeated success separately from reachable capability;
+- version eligibility, trigger evidence, action, outcome, and retirement criteria.
+
+Evidence caveat: the study has two attempts per task and uses one English benchmark, one harness, one model family, and one reasoning effort. The public dataset is available, but no standalone policy engine was identified.
+
+Implementability score: 0.74
+
+Sources:
+- [FIRE](https://arxiv.org/abs/2609.26048v1)
+- [FIRE dataset](https://huggingface.co/datasets/failproofai/fire-runtime-policy-reliability)
+
 ## Working conclusion
 
 Agent harness architecture is becoming one of the clearest ways to tell whether a team is building a toy, a developer tool, or a real operating substrate. The winning systems will make context explicit, tool boundaries governable, restore paths safe, typed component interfaces inspectable, orchestration empirically justified and quality-gated, skill routing compositional, test-oracle strength machine-checkable, evidence easy to inspect, environment-specific falsification surfaces routine, real-session misalignment labels routine, proposal-soundness gates explicit, failed trajectories layer-attributed, process discipline measurable, and production failures routinely promoted into versioned regression fixtures with trajectory and outcome graders.

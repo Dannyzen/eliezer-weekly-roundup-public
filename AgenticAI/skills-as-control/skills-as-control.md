@@ -1023,3 +1023,22 @@ Implementability score: 0.66
 
 Source:
 - [Skill Issue](https://arxiv.org/abs/2609.12742v1)
+
+## September 26, 2026 update: compile skills into replay-checked state machines
+
+HEXIS compiles a skill document into an extended finite state machine. Local instructions stay inside states. The machine records progress and intermediate results. Explicit transition conditions choose the next operation. Machine edits are accepted only after static checks and replay of the current trace plus every previously accepted trace.
+
+Across four benchmarks and four executors, HEXIS improves success over Skill + ReAct by 16.1 percentage points on average. Qwen3.8-27B execution tokens fall 38.4 to 88.9 percent. The same compiled machines transfer across models without target-model recompilation.
+
+Practical lesson:
+- treat SKILL.md as compiler source, not as another prompt;
+- bind intermediate artifacts to named machine data slots;
+- accept control-graph edits only after full-trace replay;
+- keep the model as an in-state executor, not as the owner of control flow.
+
+Artifact status: no paper-owned public repository resolved from the abstract, HTML, or PDF. Related cited tools such as OpenCode are existing executors, not a HEXIS compiler.
+
+Implementability score: 0.62
+
+Source:
+- [HEXIS](https://arxiv.org/abs/2609.30123v1)

@@ -1465,3 +1465,12 @@ Implementability score: 0.52
 Sources:
 - [Harness-Zero](https://arxiv.org/abs/2609.24974v1)
 - [Harness-Zero repository](https://github.com/metaevo-ai/harness-zero)
+
+## September 27, 2026 update: keep the planner off the tap loop
+
+Jev-Mobile is a harness split: the VLM emits a local goal, then a typed executor selects live accessibility-tree actions until the goal is done or blocked. Paying a frontier model for every tap is the expensive default. Keep timing and cost metrics on successful trajectories, and keep an independent terminal score as the outcome.
+
+Implementability score: 0.46
+
+Source:
+- [Jev-Mobile](https://arxiv.org/abs/2609.30186v1)

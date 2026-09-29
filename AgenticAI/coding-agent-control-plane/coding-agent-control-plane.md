@@ -403,3 +403,39 @@ Implementability score: 0.94
 Sources:
 - [Copilot code review state](https://github.blog/changelog/2026-09-18-copilot-code-review-an-improved-review-experience)
 - [Coverage ruleset REST API](https://github.blog/changelog/2026-09-18-manage-the-code-coverage-ruleset-condition-with-the-rest-api)
+
+
+## September 24, 2026 update: recurring workflow prose is executable specification
+
+An empirical study of 1,248 GitHub Agentic Workflow files across 276 repositories finds a median instruction length of 556.5 words, continuing month-four maintenance in 78.2 percent of sufficiently observed files, and explicit prompt-injection defenses in only 9.4 percent.
+
+Practical lesson:
+- lint task, output, process, constraint, safety, budget, evidence, and communication fields;
+- diff frontmatter authority and instruction semantics separately;
+- bind compiled YAML and run receipts to the source revision;
+- assign owners and review cadence to recurring workflows;
+- preserve provenance when workflows are copied or referenced.
+
+Artifact caveat: the replication package and GitHub's gh-aw repository were inspected read-only and not executed.
+
+Implementability score: 0.93
+
+Sources:
+- [Empirical study](https://arxiv.org/abs/2609.27263v1)
+- [Replication package](https://github.com/stilab-ets/ghaw)
+- [GitHub Agentic Workflows](https://github.com/github/gh-aw)
+
+## September 27, 2026 update: grade open-ended retrofits as governance, not patches
+
+SWE-Prometheus starts from a repository snapshot and a general retrofit objective. The agent must choose interventions, keep observable behavior green, and produce execution-backed evidence across tests, quality gates, docs, structure, environment, and dependency security. Template-only CI and documentation gains are measurable, and they are not sufficient.
+
+Practical lesson:
+- treat "improve the repo" as a control-plane task with a behavior gate;
+- require clean-environment probes for environment and dependency claims;
+- keep no-op and template baselines so artifact addition is not confused with outcome.
+
+Implementability score: 0.80
+
+Sources:
+- [SWE-Prometheus](https://arxiv.org/abs/2609.29465v1)
+- [CosmosMind-ai/SWE-Prometheus](https://github.com/CosmosMind-ai/SWE-Prometheus)

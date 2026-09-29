@@ -83,3 +83,23 @@ Sources:
 0.74
 
 The pattern is implementable now with registries, probes, traces, and rerankers. The harder work is building representative probes, normalizing outcomes across heterogeneous agents, and keeping capability records fresh as the agent ecosystem changes.
+
+
+## September 28, 2026 update: tool discovery needs hard neighbors and trajectory credit
+
+ToolSearcher trains large-catalog search with same-category discrimination, event rewards for discovering target tools, and trajectory credit through final selection. It reports StableToolBench F1 of 0.513 versus 0.496 and AppWorld task completion of 0.334 versus 0.277.
+
+Practical lesson:
+- retrieve hard negatives from the same functional category;
+- reward target discovery and final task completion separately;
+- version the catalog in every trace;
+- evaluate out of distribution in a stateful environment;
+- block deployment of research code until its license is explicit.
+
+Artifact caveat: the public repository is populated but has no detected license or release tag.
+
+Implementability score: 0.72
+
+Sources:
+- [ToolSearcher paper](https://arxiv.org/abs/2609.30906v1)
+- [ToolSearcher repository](https://github.com/zhenlongDai/ToolSearcher)

@@ -163,3 +163,22 @@ Practical lesson:
 Implementability score: 0.84
 
 Source: [permission-policy study](https://arxiv.org/abs/2608.27443v1)
+
+## September 26, 2026 update: specifications must sign off, not the acting model
+
+Agents now generate, decide, execute, and declare completion inside one loop. Specifications remain context for the same model. On SkillsBench, 509 source-grounded task directions are satisfied only 79.6 to 86.4 percent of the time across seven models, while completion-claim rates exceed official pass rates by 28.7 to 37.9 percentage points.
+
+SpecHarness compiles visible specifications into source-linked obligations and governs execution through versioned obligation state. Agents may request completion. Only admissible evidence from qualified providers may establish specification-governed state.
+
+Practical lesson:
+- compile visible specs into source-linked obligations before the first tool call;
+- keep versioned obligation state outside the model context;
+- allow completion only after qualified evidence lands;
+- keep subjective requirements advisory rather than fake-verified.
+
+Artifact status: no public SpecHarness repository resolved from the paper surfaces.
+
+Implementability score: 0.72
+
+Source:
+- [Who Holds the Pen?](https://arxiv.org/abs/2609.29921v1)

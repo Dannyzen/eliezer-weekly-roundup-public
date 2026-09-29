@@ -6,31 +6,37 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-09-23: [govern the state between model calls](roundups/2026-09-23.md)
-- AgenticAI daily analysis: [faithful compaction and failure-informed runtime policy](AgenticAI/2026-09-23/reasoning.md)
-- Strategy daily analysis: [untrusted MCP semantics and privacy-bounded telemetry](Strategy/2026-09-23/sovereignty.md)
-- Friday synthesis, 2026-09-18: [trust cannot carry across an agent boundary by default](roundups/2026-09-18.md)
+- Daily scan, 2026-09-29: [validated harnesses, signed intervention utility, and execution-state memory](roundups/2026-09-29.md)
+- AgenticAI daily analysis: [delivery-complete evaluation, net-utility governance, and typed state](AgenticAI/2026-09-29/reasoning.md)
+- Strategy daily analysis: [effect-complete evidence and validator governance](Strategy/2026-09-29/sovereignty.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
+- Friday synthesis, 2026-09-25: [agent reliability is a custody problem](roundups/2026-09-25.md)
 
 ## Current thesis
 
-Delivered agent quality depends on governed state transitions around the model. Faithful compaction controls what survives, incident-derived policies correct known failure states, gateway admission constrains semantic supply-chain inputs, and OpenTelemetry makes lifecycle behavior inspectable without copying sensitive content by default.
+Agent reliability depends on evidence-bearing controls. Models may propose claims, routes, tools, and effects. Runtime-owned services must prove the tested input arrived, score exact arguments and effects, measure whether intervention helped, and preserve the resulting state for replay.
 
 The current stack therefore emphasizes:
 
-- original evidence outside the active prompt;
-- deletion-only compaction with span lineage;
-- repeated-success metrics beside best-of-k capability;
-- failure-state policies with sham controls and rollback;
-- metadata admission and manifest diffing for MCP tools;
-- taint and provenance for tool returns;
-- token, retry, and chain-depth budgets;
-- model and tool spans linked by durable session identity;
-- content-free telemetry as the default;
-- external state checks before incident closure.
+- machine-checkable payload and policy delivery receipts;
+- exact tool-argument and realized-effect predicates;
+- environment identity and conformance per evaluation scenario;
+- paired governed and ungoverned trajectory replay;
+- signed intervention ledgers that count false alarms and lost corrections;
+- versioned handoff contracts whose validators are tested as software;
+- typed execution-state nodes with references to immutable raw observations;
+- progressive evidence access instead of full transcript replay;
+- provenance-root collapse before shared-memory admission;
+- source-class gates, contest state, and supersession for persistent claims;
+- hard same-category negatives and downstream outcomes for large-catalog tool search;
+- separate client authentication, delegated credential admission, tool authorization, and effect receipts;
+- canonical action manifests with resolved tool identity and typed arguments;
+- source-linked obligation ledgers that the model cannot close by claiming completion;
+- independent trace capture with remote retention and sequence-gap detection;
+- deterministic shutdown, credential, network, queue, and compute revocation below orchestration.
 
-Start with OTLP lifecycle traces, compaction receipts, and adversarial MCP fixtures. Promote learned runtime policies only after held-out replay proves they improve repeated delivery without hiding capability loss.
+Start with the evidence path: prove delivery, bind exact effects, grade intervention utility, and keep typed state linked to raw proof.
 
 ## Browse by category
 

@@ -559,3 +559,129 @@ Implementability score: 0.96
 Sources:
 - [Loopjacking](https://arxiv.org/abs/2609.21081v1)
 - [Evidence archive](https://github.com/adithyan-ak/loopjacking)
+
+## September 23, 2026 deep dive: approval is a single-use release object
+
+### Overview
+
+Loopjacking is the strongest finding from the September 17 to 23 window because it turns a familiar promise, human approval, into a precise runtime invariant that can be tested at the final effect boundary. A person approves action A. The system must prove that the complete action about to execute is still A, then consume that approval exactly once.
+
+This beat the other strong findings because it sits below model quality, prompting, memory, and tool selection. CliffCompaction can lower context cost, FIRE can improve repeated delivery, A2M can harden the MCP semantic supply chain, and OpenTelemetry can expose lifecycle traces. None of those controls makes a consequential effect authorized. Exact-action approval binding does.
+
+Primary fit: Strategy, specifically context-to-execution integrity and the agent execution control plane.
+
+### Core innovation
+
+The paper separates one approval failure into two mechanically different paths:
+
+1. Representation mismatch: action B is already encoded, but the approval view shows an incomplete or misleading A.
+2. Post-approval substitution: the human sees exact A, then mutable workflow state replaces it with B before the decision is consumed.
+
+The portable control is an action-bound release object. It should bind the complete canonical action identity, every material argument, target resource, side-effect class, initiating and approving principals, task scope, nonce, expiry, consumption state, and a digest of the same descriptor shown to the human.
+
+Immediately before the effect, the runtime reconstructs the fully resolved current operation after parsing, templating, state reduction, defaults, wrapper expansion, and argument resolution. It compares that object with the approved descriptor. Any material difference requires rejection or fresh approval. The decision is then atomically consumed with the effect or with an idempotent commit token.
+
+### Evidence
+
+The study uses a purposive product set and paired controls:
+
+- Seven tested Agno AgentOS releases ending at 3.0.9 accepted a changed continuation under a previously cleared approval state. The 3.0.9 attack produced the substituted action in 5 of 5 trials, while direct B was denied in 3 of 3.
+- Twelve tested versions of a conditional in-memory LangGraph Agent Server composition ending at 0.14.0 executed substituted pending state when a custom authorization policy allowed a non-approver to update the shared thread. A supported deny-update policy blocked the path.
+- OpenClaw 2026.2.23 reproduced a representation mismatch in 3 of 3 trials. OpenClaw 2026.2.24 rejected the mismatch in 3 of 3 while preserving unchanged A.
+- OpenAI Agents SDK 0.22.0 and 0.22.2 were negative controls. Each rejected same-call-ID mutation in 3 of 3 trials and executed unchanged serialized A in 3 of 3.
+
+The evidence archive has a populated public tree with 419 files, including frozen requests, responses, approval records, result oracles, package manifests, checksums, and local reproduction harnesses. It was inspected read-only. No external code was installed or executed for this deep dive.
+
+### Why it matters
+
+Most approval systems treat approval as a moment in the interface. Stateful agents need to treat it as a security object with stable meaning across pause, resume, delegation, retry, compaction, serialization, and recovery.
+
+A run-level approved flag is too weak because later continuation data can change. A call ID is too weak because arguments can be replaced under the same ID. A friendly summary is too weak because execution may consume a richer object. Permission to mutate a pending thread is too broad when that thread carries an action already reviewed by a different principal.
+
+The architectural consequence is direct: approval belongs at the release boundary, below the model and outside mutable conversational state.
+
+### Fit into the agentic stack
+
+The control path should be explicit:
+
+`request -> canonical action manifest -> human-visible rendering -> authenticated approval record -> mutable workflow -> final effect resolution -> exact comparison -> atomic consume -> external-state receipt`
+
+This spans four layers:
+
+- Interaction layer: show the complete material action in language a person can understand.
+- Workflow layer: preserve the approval object separately from mutable session and task state.
+- Execution-control layer: reconstruct and compare the current effect at the last reversible point.
+- Evidence layer: retain the reviewed descriptor, final descriptor, decision, effect, and observed outcome in one receipt.
+
+MCP, A2A, queueing systems, agent checkpoints, and multi-agent handoffs can carry state through this path. They do not define authorization by themselves. The product that releases the effect owns the final comparison.
+
+### Practical tools, repositories, and methodologies worth trying now
+
+1. Define a typed `ActionManifest` for one consequential surface, such as outbound messaging, public publication, payment, deployment, or resource deletion.
+2. Canonicalize the exact material fields with a deterministic serialization, then hash the canonical bytes.
+3. Generate the approval view from the manifest itself. Reject hidden arguments, wrapper state, environment changes, unresolved aliases, or destinations that cannot be rendered faithfully.
+4. Store approval as a one-shot record with manifest digest, principal, scope, nonce, expiry, policy version, and consumption state.
+5. Resolve the real operation again immediately before dispatch. Compare all material fields and current policy, then reject or reauthorize drift.
+6. Atomically consume approval with dispatch or an idempotent commit token. Keep retry and ambiguous-outcome handling outside the approval record.
+7. Emit a receipt containing the reviewed manifest, final manifest, comparison verdict, approval identity, dispatch identity, and verified external outcome.
+8. Add adversarial fixtures for same-ID argument replacement, pending-thread mutation, shell-wrapper expansion, target alias changes, expiry, replay, and wrong-principal reuse.
+
+Useful starting points:
+
+- Loopjacking evidence and reproduction archive: https://github.com/adithyan-ak/loopjacking
+- Microsoft Action-Bound Approval Protocol design: https://github.com/microsoft/agent-governance-toolkit/blob/main/docs/adr/0030-action-bound-approval-protocol.md
+- A2A clarification that interrupted-task authorization must bind to the resumed operation: https://github.com/a2aproject/A2A/pull/2081
+- OPA or Cedar for deterministic current-policy checks.
+- OpenTelemetry or append-only JSONL receipts for approval-to-effect traces.
+
+### Implementation complexity
+
+Implementability score: 0.90
+
+A narrow pilot is ordinary engineering: a typed manifest, deterministic serialization, digest, approval table, use-time comparison, single-use consumption, and sink assertion. The evidence archive provides concrete negative and positive test shapes.
+
+Production adoption is harder because every side-effecting path must use the same gate. Shell quoting, default insertion, target aliases, current resource state, retries, concurrent updates, partial effects, and recovery can all change meaning after review. The control fails if one alternate dispatch path can bypass the comparison.
+
+### What remains conceptual or unproven
+
+The paper does not estimate ecosystem prevalence. The product set is purposive, all experiments were operated by one researcher, and no independent reproduction is reported. The LangGraph result is conditional on the tested in-memory composition and authorization policy. No vendor-fixed Agno release is established in the archive. Human comprehension and approval-dialog quality were deliberately outside the experiment.
+
+The repository has no detected license metadata, so its harnesses should be treated as evidence to inspect rather than code to absorb until licensing is clarified. The paper itself is CC BY 4.0.
+
+The September 22 GitHub public-preview release of assisted approvals makes the boundary strategically current, but it is product context rather than evidence that GitHub has the paper failure. The release note does not document exact-action binding internals.
+
+### Strategic implications for Danny's worldview and product thinking
+
+Human approval should be modeled as a scoped capability over one fully resolved action, not as consent to a conversation, plan, tool name, session, or mutable slot.
+
+For Hermes and FriendVM, this means consequential operations should carry a typed release object that survives model changes and workflow restarts without broadening. Public posting, sending messages, moving money, provisioning infrastructure, deleting resources, and exporting sensitive data each need a final exact-effect comparison plus an external-state receipt.
+
+This preserves Danny's authority while allowing agents to plan freely. The agent can revise proposals, recover from failures, and continue long-running work. Every material revision creates a new action manifest and, when required, a new approval. Autonomy expands inside the planning loop while authority remains fixed at the effect boundary.
+
+### Core source links
+
+- Loopjacking: Hijacking Human-in-the-Loop Approval: https://arxiv.org/abs/2609.21081v1
+- Immutable paper PDF: https://arxiv.org/pdf/2609.21081v1
+- Evidence and reproduction archive: https://github.com/adithyan-ak/loopjacking
+- GitHub Copilot assisted approvals release context: https://github.blog/changelog/2026-09-22-new-features-and-improvements-in-copilot-for-jetbrains/
+- GitHub enterprise managed agent permissions: https://github.blog/changelog/2026-09-09-enterprise-managed-permissions-for-github-copilot-agent-operations/
+
+## September 26, 2026 update: approval must bind the transitive effect closure
+
+Loopjacking showed that an approved representation can diverge from the later released operation. Approval laundering is the next failure: the durable record names a truthful entry invocation, while the developer tool executes the workflow that invocation activates. Package installation can run lifecycle hooks and write files. An MCP call can exercise network authority.
+
+Across 111 fixed approval-object and trace pairs, residual records fall from 40 under explicit fields to 13 with decision-time metadata. Source-backed predictions on 17 holdout workflows reach 0.926 macro recall and 0.941 macro precision; binding them cuts residual effects from 10 to 3. A Claude Code PreToolUse integration carries the frozen record without automatic approval. GitHub proof of presence adds a live IdP challenge for high-impact enterprise actions, with a two-hour sudo window after success.
+
+Practical lesson:
+- bind approval to a source-backed prediction of the workflow's transitive boundary;
+- compare that frozen prediction at use time;
+- treat npm hooks, generated files, and MCP network calls as in-scope effects;
+- require a live presence challenge for token, webhook, and recovery-code paths.
+
+Artifact status: no paper-owned public repository resolved. Proof of presence is an Entra ID EMU public preview.
+
+Implementability score: 0.78
+
+Sources:
+- [Agent Approval Laundering](https://arxiv.org/abs/2609.28586v1)
+- [Require proof of presence for high-impact actions](https://github.blog/changelog/2026-09-24-require-proof-of-presence-for-high-impact-actions)

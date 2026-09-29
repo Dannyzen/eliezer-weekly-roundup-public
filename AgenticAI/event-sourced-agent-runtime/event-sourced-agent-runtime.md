@@ -196,3 +196,22 @@ Implementability score: 0.45
 Source:
 
 - [DNative-Twin](https://arxiv.org/abs/2609.03787v1)
+
+## September 25, 2026 update: exactly-once belongs in the effect contract
+
+LIMBO runs 25,930 episodes across nine models, three production harnesses, six services, twelve fault modes, and two contract variants. Universal idempotency keys reduce duplicate effects from 28 percent to 4 percent. Models handle lost acknowledgements when immediate read-back exists, but ambiguous in-flight commits and redelivery remain contract problems.
+
+Practical lesson:
+- assign stable effect IDs before dispatch;
+- require idempotency keys on every consequential write;
+- persist intent and committed outcome in an external ledger;
+- inject late commits, redelivery, partial batches, stale reads, and missing read paths;
+- reconcile or compensate when the outcome stays ambiguous;
+- grade the ledger, not the agent's success claim.
+
+Artifact caveat: code and data are promised upon publication but are unavailable today.
+
+Implementability score: 0.94
+
+Source:
+- [Where Does Exactly-Once Live?](https://arxiv.org/abs/2609.29095v1)

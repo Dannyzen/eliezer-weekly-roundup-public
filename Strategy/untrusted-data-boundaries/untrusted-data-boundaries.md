@@ -454,3 +454,36 @@ Implementability score: 0.88
 Sources:
 - [AgentLSD](https://arxiv.org/abs/2609.19140v1)
 - [Golim/agent-lsd](https://github.com/Golim/agent-lsd)
+
+## September 26, 2026 update: local agent state is an untrusted data plane
+
+Coding-agent home directories hold MCP definitions, session logs, command history, SQLite stores, saved permission decisions, and plaintext token fallbacks. Those files can capture credentials after a vault retrieval, then never enter git. Safer OAuth and variable-reference patterns exist in Cursor, Claude Code, and Copilot docs, but they are not enforced.
+
+Practical lesson:
+- treat home-directory agent state as untrusted until scanned;
+- redact logs and history before they become standing memory;
+- fail closed when a coding agent can read production credentials;
+- use honeytokens on developer machines as a last-line detector.
+
+Implementability score: 0.84
+
+Sources:
+- [AI Coding Agents Are Leaking Credentials on Endpoints](https://blog.gitguardian.com/ai-coding-agents-credential-security/)
+- [ggshield](https://github.com/GitGuardian/ggshield)
+
+## September 27, 2026 update: leftover live context is still a secret store
+
+PrivDrift seeds a user secret, inserts content-dense unrelated turns, then probes. Across three long-context models and 1,000 dialogues, hybrid leakage stays between 38.7% and 54.6%. Extra drift inside the tested window does not reliably reduce leakage. Secret type and persuasion intensity matter more than elapsed topic shift.
+
+Practical lesson:
+- vault secrets at disclosure and keep only a handle in the model context;
+- add post-drift extraction probes to session evaluations;
+- score leakage by secret type, not only by a generic confidentiality rubric;
+- do not treat compaction or unused-memory TTL as active-context suppression.
+
+Artifact status: no public implementation repository resolved.
+
+Implementability score: 0.74
+
+Source:
+- [PrivDrift](https://arxiv.org/abs/2609.30094v1)

@@ -808,6 +808,23 @@ Implementability score: 0.68
 
 Source: [What Should an Agent Forget?](https://arxiv.org/abs/2609.10263v1)
 
+
+## September 29 update: execution state is the compact memory surface
+
+FlowState separates typed execution state from raw historical observations. Incremental updates maintain goals, decisions, dependencies, and progress. Progressive access retrieves older states and evidence only when a later decision needs them.
+
+Practical lesson:
+- store typed state nodes and explicit relations;
+- retain immutable raw tool observations behind references;
+- update state after material evidence or effects;
+- measure stale-state errors and unsupported transitions alongside token savings.
+
+The paper reports 4.55 and 13.95 percentage-point gains on two long-horizon benchmarks while cutting token use by 43.2% and 40.6% against full context with the same model.
+
+Implementability score: 0.74
+
+Source: [FlowState](https://arxiv.org/abs/2609.34565v1)
+
 ## Working conclusion
 
 The next generation of agents will be differentiated less by how eloquently they speak and more by how faithfully and safely they remember. The winning systems will preserve evidence, route memory writes explicitly, retrieve context adaptively, abstain when memory is unsafe, validate high-value writes, make retention and pruning decisions replayable, query local graphs when code structure matters, promote only the right lessons into durable guidance, attach enough context for updates and temporal reasoning, choose abstraction levels that transfer across tasks, keep the most sensitive memory close to the user and under policy control, run durable memory through a governed database-backed state core, separate evaluation memory from user-facing memory, measure whether memories remain usable under scale, budgets, and writeback review, expose operation-level provenance, make reasoning history diffable, test belief-state stay/update/isolate decisions, gate retrieval by policy, resolve contradictions with bitemporal evidence, evaluate memory against heterogeneous evolving source streams, and defend memory write/read paths against poisoning so failures can be traced instead of guessed.
@@ -1100,3 +1117,42 @@ Sources:
 - [DolphinBench paper](https://arxiv.org/abs/2609.24971v1)
 - [DolphinBench repository](https://github.com/mem0ai/dolphinbench)
 - [DolphinBench results](https://dolphinbench.ai/)
+
+## September 26, 2026 update: retrieve memories only in the family that certified them
+
+Orthogonal Regression Control already gates persistent skill edits with execution evidence. Retrieving those accepted skills globally still dropped mean hidden trajectory utility to 0.713, below the static agent's 0.775, because locally valid edits interfered with unrelated families.
+
+Matching retrieval scope to certification scope reversed that. Family-scoped retrieval raised mean hidden trajectory utility from 0.713 to 0.816 and changed harmful deployments from six of eight streams to none. In 27 paired randomized-order streams, Scoped-ORC accepted 63 updates rather than 12 and recorded 0 of 63 harmful acceptances.
+
+Practical lesson:
+- store accepted skills with an originating family or repository identity;
+- retrieve only memories whose certification scope matches the current task;
+- keep a static or no-memory control beside global and scoped variants;
+- count harmful accepts as checkpoint regressions.
+
+Artifact status: no public implementation repository resolved. ProcStream-RSI is a synthetic repair stream.
+
+Implementability score: 0.70
+
+Source:
+- [Scope Before You Persist](https://arxiv.org/abs/2609.29144v1)
+
+
+## September 28, 2026 update: repeated claims are not independent memory evidence
+
+CPB-Static and CPB-Live grade whether a claim should enter shared memory while tracking source lineage, writes, retrievals, and downstream adoption. Uncontested false beliefs were repeated in 0.97 to 0.99 of probes. A declared-source-type gate reduced false adoption to 0.06 to 0.09.
+
+Practical lesson:
+- store provenance roots beside candidate claims;
+- collapse copies and paraphrases before counting support;
+- separate writer permission from claim admission;
+- test contested, uncontested, and correlated-agreement cases;
+- preserve demote and supersede operations for future correction tests.
+
+Evidence caveat: live scenarios are authored fiction, correction is untested, and transcripts remain withheld until acceptance.
+
+Implementability score: 0.88
+
+Sources:
+- [Epistemic Admission in Shared Agent Memory](https://arxiv.org/abs/2609.30813v1)
+- [lxy1134/iclr_2027](https://github.com/lxy1134/iclr_2027)

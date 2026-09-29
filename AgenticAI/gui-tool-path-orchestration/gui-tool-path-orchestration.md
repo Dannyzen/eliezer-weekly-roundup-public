@@ -291,3 +291,20 @@ Implementability score: 0.78
 
 Source:
 - [Affora](https://arxiv.org/abs/2609.19125v1)
+
+## September 27, 2026 update: execute from the live accessibility tree
+
+Jev-Mobile keeps a VLM on local goals and lets a typed executor select actions from the current accessibility tree. On the full AndroidWorld suite, task success is 0.79 versus 0.84 for a step-wise VLM, while successful trajectories cut mean time 32.7% and mean model API cost 73.4%. Targets absent from the tree cannot be turned into coordinate clicks.
+
+Practical lesson:
+- regenerate candidates from the live tree after every action;
+- allow several executor steps under one planner goal;
+- treat BLOCKED as a first-class return;
+- keep timing and cost metrics conditional on success.
+
+Artifact status: no public implementation repository resolved from the paper surfaces.
+
+Implementability score: 0.46
+
+Source:
+- [Jev-Mobile](https://arxiv.org/abs/2609.30186v1)

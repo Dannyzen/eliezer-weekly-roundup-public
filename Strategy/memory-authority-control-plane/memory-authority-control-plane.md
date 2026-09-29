@@ -355,3 +355,46 @@ Sources:
 - [Give Your Coding Agents a Memory You Own](https://huggingface.co/blog/funes)
 - [huggingface/funes](https://github.com/huggingface/funes)
 - [HookPry](https://arxiv.org/abs/2609.03884v1)
+
+## September 27, 2026 update: shared autofix memory is an authority object
+
+GitHub agentic autofix now reads Copilot Memory and writes the resulting fix pattern back as a repository fact. Official docs say those facts carry citations, are re-checked against the current branch, and can be consumed by Copilot code review, Copilot cloud agent, and Copilot CLI. Unused entries may be deleted after 28 days. The same Friday changelog adds an in-product validator for `copilot/managed-settings.json`.
+
+PrivDrift adds the complementary live-context rule: topic drift does not erase a disclosed secret. Vault at disclosure; do not wait for memory TTL.
+
+Practical lesson:
+- review repository-level memories the way you review custom instructions;
+- require citation validation against the current branch before a stored fix pattern can fire;
+- keep user-level preferences out of code review;
+- validate managed-settings JSON after every policy commit;
+- redact secrets from the live transcript, not only from durable memory.
+
+Evidence caveat: Copilot Memory and agentic autofix are public preview. PrivDrift has no public code artifact.
+
+Implementability scores: 0.86 for Copilot Memory review and managed-settings validation; 0.74 for disclosure-time vaulting.
+
+Sources:
+- [Agentic autofix now uses Copilot Memory](https://github.blog/changelog/2026-09-25-agentic-autofix-now-uses-copilot-memory/)
+- [About GitHub Copilot Memory](https://docs.github.com/en/copilot/concepts/agents/copilot-memory)
+- [Enterprise managed settings in-product validator](https://github.blog/changelog/2026-09-25-enterprise-managed-settings-in-product-validator/)
+- [PrivDrift](https://arxiv.org/abs/2609.30094v1)
+
+
+## September 28, 2026 update: admission must collapse correlated evidence
+
+CPB shows that a shared store can mistake copied or paraphrased claims for independent support. Uncontested false beliefs were repeated in 0.97 to 0.99 of probes, while a source-type gate reduced false adoption to 0.06 to 0.09.
+
+Practical lesson:
+- require source class and provenance root before admission;
+- count independent citations, not agent repetitions;
+- separate write permission from epistemic acceptance;
+- preserve contest, demote, supersede, and tombstone state;
+- re-evaluate claims when cited sources change.
+
+Evidence caveat: authored live scenarios and untested correction operations limit deployment claims.
+
+Implementability score: 0.88
+
+Sources:
+- [Epistemic Admission in Shared Agent Memory](https://arxiv.org/abs/2609.30813v1)
+- [lxy1134/iclr_2027](https://github.com/lxy1134/iclr_2027)

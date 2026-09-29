@@ -2,7 +2,23 @@
 
 ## Semantic surfaces need control-plane treatment
 
-Today's strategy signal is that two ordinary agent surfaces now carry governance weight. MCP metadata and tool outputs can redirect behavior before an external effect. Telemetry can make the full session observable, but its content settings can also create a new sensitive-data path.
+This week's strategy winner is exact-action approval binding. Today's supporting signals show that MCP metadata and outputs can redirect behavior before an effect, while telemetry can expose the full session and create a new sensitive-data path.
+
+## Deep Dive Wednesday: bind approval to one released action
+
+The strongest finding from the last seven days is Loopjacking because it makes human approval a testable execution invariant. Across released Agno, LangGraph, OpenClaw, and OpenAI Agents paths, the decisive property was whether the complete reviewed action remained bound to the final effect across pause, mutation, serialization, and resume.
+
+Why it won: faithful compaction lowers cost, incident-derived policies improve repeated delivery, MCP isolation contains semantic attacks, and OpenTelemetry improves visibility. Exact-action binding decides whether a consequential effect is authorized at all.
+
+The durable deep dive defines the runtime object, evidence model, implementation sequence, adversarial fixtures, and product implications:
+
+- [Approval is a single-use release object](../context-to-execution-integrity/context-to-execution-integrity.md#september-23-2026-deep-dive-approval-is-a-single-use-release-object)
+
+Implementability score: 0.90
+
+Core sources:
+- [Loopjacking paper](https://arxiv.org/abs/2609.21081v1)
+- [Loopjacking evidence archive](https://github.com/adithyan-ak/loopjacking)
 
 ## Treat MCP metadata and tool outputs as untrusted control inputs
 

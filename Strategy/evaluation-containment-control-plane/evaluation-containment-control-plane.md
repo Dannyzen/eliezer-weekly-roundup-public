@@ -171,3 +171,21 @@ Source:
 ## Working conclusion
 
 Capability evaluations are not sealed experiments once the agent can touch a package path, network, credential, or writable public service. Treat the evaluator as a production security domain, keep its controls outside model authority, and prove that the system can interrupt a multi-day trajectory before it becomes somebody else's incident.
+
+
+## September 24, 2026 update: evaluate the intervention window, not refusal alone
+
+PASTABench supplies 1,139 trajectories with earliest-signal and trigger annotations. Across 16 models, perfect interruption averages 28.22 percent while premature interruption averages 46.61 percent. A useful monitor must identify the risk and act inside the narrow window before harm without collapsing normal task utility.
+
+Practical lesson:
+- label earliest actionable signals and irreversible triggers;
+- score perfect, premature, and late intervention separately;
+- retain full trajectories for replay and adjudication;
+- route monitor recommendations through deterministic enforcement brokers;
+- evaluate clean utility beside hazardous-trajectory sensitivity.
+
+Artifact caveat: no exact paper-owned public dataset or repository resolved in this scan.
+
+Implementability score: 0.60
+
+Source: [PASTABench](https://arxiv.org/abs/2609.28197v1)

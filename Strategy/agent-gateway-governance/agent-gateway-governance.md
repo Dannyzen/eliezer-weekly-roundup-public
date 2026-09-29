@@ -1169,3 +1169,43 @@ Implementability score: 0.78
 Sources:
 - [A2M](https://arxiv.org/abs/2609.26761v1)
 - [Lilaizhen/A2M](https://github.com/Lilaizhen/A2M)
+
+## September 26, 2026 update: MCP configs on developer endpoints are credential stores
+
+Cursor, Claude Code, and GitHub Copilot leave credentials in project MCP files, home-directory configs, logs, shell history, and plaintext token fallbacks. Repository and CI scanners never see most of that trail. GitGuardian's State of Secrets Sprawl 2026 analysis found 24,008 unique secrets in public MCP configuration files, 2,117 of them valid, and a 3.2 percent leak rate in Claude Code-assisted public commits against a 1.5 percent baseline.
+
+Documented September 2026 paths include Cursor `.cursor/mcp.json` and `~/.cursor/mcp.json`, Claude Code `.mcp.json` plus relocatable `CLAUDE_CONFIG_DIR`, and Copilot CLI `~/.copilot/` with a plaintext token fallback. `ggshield` v1.55.0 documents prompt, pre-tool, and post-tool hooks.
+
+Practical lesson:
+- inventory agents and MCP servers on each developer machine;
+- ban inline tokens in committed MCP files;
+- block secrets at prompt and pre-tool boundaries;
+- treat relocatable config directories as first-class inventory objects.
+
+The sprawl counts are vendor research, and the 3.2 percent figure is not proof of causation. The paths and hook CLI are still operationally useful.
+
+Implementability score: 0.88
+
+Sources:
+- [AI Coding Agents Are Leaking Credentials on Endpoints](https://blog.gitguardian.com/ai-coding-agents-credential-security/)
+- [Secret scanning for AI coding tools](https://docs.gitguardian.com/ggshield-docs/integrations/ai-coding-tools/secret-scanning-for-ai-coding-tools)
+
+
+## September 28, 2026 update: MCP credentials do not grant tool authority
+
+Codex CLI 0.158.0 adds pre-registered MCP OAuth client secrets and bearer-authenticated exec-server WebSockets. LiteLLM 1.103.0 requires admission for delegated MCP OAuth and preserves request-selected guardrails through tool execution.
+
+Practical lesson:
+- store client secrets outside agent context;
+- admit delegated OAuth separately from authenticating the client;
+- bind bearer tokens to audience and short expiry;
+- bind admitted server revision, schema, guardrails, principal, and invocation receipt;
+- canary upgrades that change authentication or policy behavior.
+
+Release caveat: LiteLLM reverted two OAuth isolation and cold-restart tests in the same release, so those boundaries need local regression proof.
+
+Implementability score: 0.91
+
+Sources:
+- [OpenAI Codex CLI 0.158.0](https://github.com/openai/codex/releases/tag/rust-v0.158.0)
+- [LiteLLM 1.103.0](https://github.com/BerriAI/litellm/releases/tag/v1.103.0)

@@ -443,6 +443,41 @@ Sources:
 - [CliffCompaction](https://arxiv.org/abs/2609.26779v1)
 - [nguyenvuthientrang/cliffcompaction](https://github.com/nguyenvuthientrang/cliffcompaction)
 
+## September 25, 2026 update: compress reasoning after externalization
+
+Interaction Aware Compression for Long Horizon Reasoning improves average WorkBuddyBench reward from 0.699 to 0.718 across 260 tasks while reducing input tokens by 25.5 percent, output tokens by 14.4 percent, and cache reads by 33.3 percent. The useful rule is state-aware: historical reasoning becomes safer to remove after its derived state is present in code, files, tool outputs, or environmental feedback.
+
+Practical lesson:
+- label derived plans, constraints, relations, and conclusions;
+- require a verified durable carrier before pruning their source reasoning;
+- preserve actions, observations, tool results, and source identity;
+- replay compressed and full-history trajectories against the same tasks;
+- measure reward, token use, and trajectory divergence together.
+
+Artifact caveat: the method repository is unavailable. WorkBuddyBench and its dataset resolve publicly and were inspected read-only.
+
+Implementability score: 0.68
+
+Sources:
+- [When Can Agents Forget Their Reasoning?](https://arxiv.org/abs/2609.29875v1)
+- [Tencent WorkBuddy Bench](https://github.com/Tencent/workbuddy-bench)
+- [WorkBuddyBench dataset](https://huggingface.co/datasets/tencent/workbuddy-bench)
+
+
+## September 29 update: compact state should point back to raw evidence
+
+FlowState offers a useful context-economy pattern: keep the current execution model small and typed, then retrieve historical states and supporting observations on demand. This avoids both full transcript replay and one irreversible summary.
+
+Practical lesson:
+- budget always-visible context for current typed state;
+- keep raw observations outside that budget;
+- retrieve evidence by unresolved dependency or decision need;
+- audit state transitions for unsupported compression.
+
+Implementability score: 0.74
+
+Source: [FlowState](https://arxiv.org/abs/2609.34565v1)
+
 ## Working conclusion
 
 The future agent stack is not context maximalism. It is context accounting. Systems that know what to admit, retrieve, compress, cache, update incrementally, preserve prefix continuity, and audit will beat systems that merely buy larger windows and hope the model sorts it out.

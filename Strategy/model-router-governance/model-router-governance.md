@@ -335,3 +335,22 @@ Artifact caveat: no public implementation repository was exposed in the primary 
 
 Source:
 - [Pandora's AI Model Routing Box](https://arxiv.org/abs/2608.20316v1)
+
+
+## September 28, 2026 update: route workflow roles with intervention evidence
+
+Learning What to Skip turns component omission into a calibrated routing decision. Controlled skip interventions teach when planning, execution, verification, or summarization changes the outcome. The paper reports 8.6 to 31.2 percent token savings while preserving or improving aggregate accuracy.
+
+Practical lesson:
+- collect counterfactual component traces before changing routes;
+- calibrate each route separately;
+- keep domain invariants as hard guards;
+- preserve a fall-through route for uncertain decisions;
+- record tokens, outcome, and role-specific regressions.
+
+Evidence caveat: fixed topology, two 7B model families, and no resolved public repository limit immediate generalization.
+
+Implementability score: 0.83
+
+Source:
+- [Learning What to Skip](https://arxiv.org/abs/2609.30734v1)

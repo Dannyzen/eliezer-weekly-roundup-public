@@ -728,6 +728,27 @@ Sources:
 - [Jasper0122/silentprobe](https://github.com/Jasper0122/silentprobe)
 - [Unstable Measurement](https://arxiv.org/abs/2609.04198v1)
 
+
+## September 29 update: validate stimulus delivery and intervention utility
+
+Silent Failures demonstrates that evaluation validity is an executable property. Payload delivery, environment identity, exact arguments, and retained traces must be machine-checkable. Re-scoring identical traces changed measured attack success from 21.7% to 1.2%.
+
+Maat and DebateLedger add the second gate: controls need signed intervention utility. Maat found 35 false alarms among 94 governed halts. DebateLedger found that one freeze prevented 29 collapses while losing 108 corrections.
+
+Practical lesson:
+- prove stimulus and policy delivery before scoring behavior;
+- score arguments and realized effects, not tool names;
+- separate refusal, incapacity, and environment failure;
+- pair governed and ungoverned trajectories;
+- record prevented harm, false alarms, preserved corrections, and lost corrections.
+
+Implementability score: 0.94 for harness validity, 0.86 for signed intervention accounting
+
+Sources:
+- [Silent Failures in Agentic Security Evaluation](https://arxiv.org/abs/2609.32691v1)
+- [Maat](https://arxiv.org/abs/2609.34017v1)
+- [Measuring Collapse and Correction](https://arxiv.org/abs/2609.35279v1)
+
 ## Working conclusion
 
 Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, fingerprinted, severity-scored, causally sliced, and scored across safety, robustness, parameter correctness, environment fidelity, runtime-specific harm dimensions, staged semantic/audit/sandbox harm, agent-effort telemetry, real-user collaboration traces, realistic workspace state, live workflow demand, cost, adversarial task quality, long-range state propagation, abstention, protocol conformance, tool-shortlist quality, environment-factory coverage, quantitative goal persistence, procedural behavior, partial-progress preference, oracle strength, deterministic evidence paths, and coding-process discipline, improvement efforts will stay shallow and trust claims will stay unearned.
@@ -1339,3 +1360,64 @@ Implementability score: 0.88
 Sources:
 - [Trajectory-aware subset paper](https://arxiv.org/abs/2609.24928v1)
 - [Public repository](https://github.com/SAILResearch/swe-agent-subset-selection)
+
+
+## September 24, 2026 update: dynamic reasoning needs execution-harvested oracles
+
+SWE-Flux measures repository-level runtime reasoning with 480 deterministic instances across 12 pinned Python repositories. The best evaluated model reaches 37.71 percent accuracy, runtime dataflow falls to 6 percent, and fresh perturbations cut the selected GPT-5.4 control from 100 percent to 43.1 percent.
+
+Practical lesson:
+- harvest ground truth from instrumented executions;
+- bind repository SHA, test identity, environment, and oracle schema;
+- separate single-test from suite-level reasoning;
+- label semantic failures apart from formatting errors;
+- generate fresh variants and retain transfer controls;
+- keep dynamic reasoning as a separate gate from patch success.
+
+Artifact caveat: the populated public repository was inspected read-only and not executed.
+
+Implementability score: 0.82
+
+Sources:
+- [SWE-Flux](https://arxiv.org/abs/2609.28449v1)
+- [SWE-Flux repository](https://github.com/HamedTaherkhani/SWE-Flux)
+
+## September 25, 2026 update: screen customer agents before live exposure
+
+Nubank used simulated users and tool outputs to compare four deployed support-agent versions and screen more than 16,000 conversations. A simulation-selected configuration increased self-service rate by 8.82 points in a live A/B test with no statistically significant tNPS change.
+
+Practical lesson:
+- freeze simulated users, product state, tools, and evaluators by release candidate;
+- compare synthetic and production ordering across multiple deployed versions;
+- retain a simple baseline and off-topic control;
+- test tool-boundary behavior without production credentials;
+- confirm the selected candidate in a small live test.
+
+Evidence caveat: Snowglobe is hosted and the full Nubank evaluation stack is private. The official product page and public Apache-2.0 skills repository were inspected read-only.
+
+Implementability score: 0.84
+
+Sources:
+- [Screen Before You Serve](https://arxiv.org/abs/2609.30137v1)
+- [Snowglobe](https://guardrailsai.com/snowglobe)
+- [Snowglobe skills](https://github.com/guardrails-ai/snowglobe-skills)
+
+## September 27, 2026 update: grade governance with behavior gates
+
+SWE-Prometheus gives a coding agent a pinned repository, no issue, and no reference patch. Scoring covers six governance dimensions with paired evidence, clean-environment probes, and characterization tests that must stay green. On the public 22-task subset, mean NGI ranges from 0.0568 to 0.5760 and behavior breakage ranges from 0% to 23%. A repository-blind template reaches 0.272 NGI while improving Reproducible Environment and Dependency and Security on none of a frozen ten-repository batch.
+
+Practical lesson:
+- keep FAIL_TO_PASS empty on retrofit tasks;
+- pin characterization tests as a behavior gate;
+- drop behavior-broken runs from the mean;
+- report NGI, breakage, coverage, and verified claims together;
+- do not credit a new workflow file without a clean-environment probe.
+
+Artifact caveat: the public GitHub package and Hugging Face dataset were inspected read-only and not executed. Thirty-eight tasks remain held out.
+
+Implementability score: 0.80
+
+Sources:
+- [SWE-Prometheus](https://arxiv.org/abs/2609.29465v1)
+- [CosmosMind-ai/SWE-Prometheus](https://github.com/CosmosMind-ai/SWE-Prometheus)
+- [CosmosMind/SWE-Prometheus dataset](https://huggingface.co/datasets/CosmosMind/SWE-Prometheus)

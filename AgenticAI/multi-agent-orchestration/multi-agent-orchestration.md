@@ -211,3 +211,40 @@ Practical lesson:
 
 Source:
 - [Difficulty-Aware Topology Selection](https://arxiv.org/abs/2609.13890v1)
+
+
+## September 28, 2026 update: skip roles only after controlled interventions
+
+Learning What to Skip treats planner, executor, verifier, and summarizer omission as counterfactual credit assignment. Controlled skip traces support action-specific policies that report 8.6 to 31.2 percent token savings while preserving or improving aggregate accuracy.
+
+Practical lesson:
+- collect full traces and controlled single-role omissions;
+- calibrate skip safety per role and domain;
+- keep hard guards for domain-native invariants;
+- fall through when the skip policy is uncertain;
+- report token savings beside component-level regressions.
+
+Evidence caveat: the topology is fixed, the models are 7B, and no independently resolvable public repository was found.
+
+Implementability score: 0.83
+
+Source:
+- [Learning What to Skip](https://arxiv.org/abs/2609.30734v1)
+
+## September 29 update: deterministic handoff controls need their own scorecard
+
+Maat shows that versioned handoff contracts can catch contract-expressible defects without another model in the validation path. It also shows the failure mode: 37% of reviewed halts were validator false alarms, and counting them as failed work put governance below baseline in four of six workflows.
+
+DebateLedger supplies the right scorecard. Record both harmful collapse and useful correction, then grade a freeze, verifier, or escalation policy by signed intervention utility.
+
+Practical lesson:
+- keep handoff contracts versioned and deterministic;
+- test validators with malformed and boundary cases;
+- retain paired baseline and governed runs;
+- promote policies only when prevented harm exceeds blocked recovery.
+
+Implementability score: 0.86
+
+Sources:
+- [Maat](https://arxiv.org/abs/2609.34017v1)
+- [Measuring Collapse and Correction](https://arxiv.org/abs/2609.35279v1)

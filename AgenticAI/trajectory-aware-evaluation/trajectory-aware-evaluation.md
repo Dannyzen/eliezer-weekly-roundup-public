@@ -1421,3 +1421,24 @@ Sources:
 - [SWE-Prometheus](https://arxiv.org/abs/2609.29465v1)
 - [CosmosMind-ai/SWE-Prometheus](https://github.com/CosmosMind-ai/SWE-Prometheus)
 - [CosmosMind/SWE-Prometheus dataset](https://huggingface.co/datasets/CosmosMind/SWE-Prometheus)
+
+## September 30, 2026 update: test the harness, delivery path, and realized effect
+
+The executable-contract audit shows that a benchmark can reward an action whose tool never changed state. pikit adds a composable adversarial surface across attack wording, delivery channel, defense, target agent, trace, and verdict. Together they move evaluation below the final answer and into the execution path.
+
+Practical lesson:
+- contract-test tool and evaluator state transitions before model comparison;
+- prove adversarial payload delivery;
+- score exact arguments and realized effects;
+- keep clean, attacked, and negative-control traces;
+- mutation-test both the environment and the scorer.
+
+Artifact caveat: both public artifacts were inspected read-only and not executed. The contract checker has weak dynamic recall, and pikit's reported study used one anonymized model in one production-like coding-agent setup.
+
+Implementability scores: 0.86 for tool contracts; 0.88 for the pikit test matrix.
+
+Sources:
+- [Executable-contract audit](https://arxiv.org/abs/2609.37315v1)
+- [tool-contract-conformance](https://github.com/rohithreddybc/tool-contract-conformance)
+- [pikit](https://arxiv.org/abs/2609.36817v1)
+- [pikit repository](https://github.com/Tencent/AI-Infra-Guard/tree/main/Research/pikit)

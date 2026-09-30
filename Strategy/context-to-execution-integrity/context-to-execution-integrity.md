@@ -685,3 +685,21 @@ Implementability score: 0.78
 Sources:
 - [Agent Approval Laundering](https://arxiv.org/abs/2609.28586v1)
 - [Require proof of presence for high-impact actions](https://github.blog/changelog/2026-09-24-require-proof-of-presence-for-high-impact-actions)
+
+## September 30, 2026 update: authorize capability shapes, revalidate concrete values
+
+ToolFence compiles a typed authorization blueprint before execution and checks each concrete call against tool identity, effect class, and argument provenance. Runtime expansion grants a reusable capability shape, while concrete values are still revalidated in the current session.
+
+Practical lesson:
+- bind the release to tool, effect, parameter source, and target class;
+- cache capability shapes, never prior concrete values;
+- require a new grant for a sensitive target outside the blueprint;
+- compare the final call to the typed manifest at dispatch;
+- retain grant, denial, policy, and effect receipts.
+
+Evidence caveat: no public implementation artifact resolved. Provenance-only enforcement can still permit the wrong choice among multiple authorized values.
+
+Implementability score: 0.64
+
+Source:
+- [ToolFence](https://arxiv.org/abs/2609.37196v1)

@@ -6,37 +6,44 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-09-29: [validated harnesses, signed intervention utility, and execution-state memory](roundups/2026-09-29.md)
-- AgenticAI daily analysis: [delivery-complete evaluation, net-utility governance, and typed state](AgenticAI/2026-09-29/reasoning.md)
-- Strategy daily analysis: [effect-complete evidence and validator governance](Strategy/2026-09-29/sovereignty.md)
+- Daily scan, 2026-09-30: [composable harnesses, executable contracts, and typed authority](roundups/2026-09-30.md)
+- AgenticAI daily analysis: [worker contracts, benchmark conformance, and adversarial test matrices](AgenticAI/2026-09-30/reasoning.md)
+- Strategy daily analysis: [capability-bound effects and audience-bound memory](Strategy/2026-09-30/sovereignty.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 - Friday synthesis, 2026-09-25: [agent reliability is a custody problem](roundups/2026-09-25.md)
 
 ## Current thesis
 
-Agent reliability depends on evidence-bearing controls. Models may propose claims, routes, tools, and effects. Runtime-owned services must prove the tested input arrived, score exact arguments and effects, measure whether intervention helped, and preserve the resulting state for replay.
+Agent reliability depends on executable authority. Models may propose plans, workers, tools, memories, and effects. Runtime-owned services must validate the worker contract, prove tool state transitions, preserve adversarial delivery evidence, bind memories to viewer sets, and release actions only through typed capabilities.
 
 The current stack therefore emphasizes:
 
+- versioned worker identities, capabilities, budgets, artifacts, and terminal receipts;
+- execution graphs with typed handoffs and explicit dependency order;
+- executable benchmark contracts for tool state and evaluator reads;
+- mutation tests for benchmark checkers and scorers;
+- composable attack, channel, defense, agent, trace, and verdict matrices;
 - machine-checkable payload and policy delivery receipts;
 - exact tool-argument and realized-effect predicates;
+- typed capability shapes with current-session value validation;
+- audience labels that survive derivation and consolidation;
+- object-specific grants for memory scope widening;
+- exact viewer-set and delivered-context receipts;
 - environment identity and conformance per evaluation scenario;
 - paired governed and ungoverned trajectory replay;
 - signed intervention ledgers that count false alarms and lost corrections;
-- versioned handoff contracts whose validators are tested as software;
 - typed execution-state nodes with references to immutable raw observations;
 - progressive evidence access instead of full transcript replay;
 - provenance-root collapse before shared-memory admission;
 - source-class gates, contest state, and supersession for persistent claims;
-- hard same-category negatives and downstream outcomes for large-catalog tool search;
 - separate client authentication, delegated credential admission, tool authorization, and effect receipts;
 - canonical action manifests with resolved tool identity and typed arguments;
 - source-linked obligation ledgers that the model cannot close by claiming completion;
 - independent trace capture with remote retention and sequence-gap detection;
 - deterministic shutdown, credential, network, queue, and compute revocation below orchestration.
 
-Start with the evidence path: prove delivery, bind exact effects, grade intervention utility, and keep typed state linked to raw proof.
+Start with the executable boundary: validate worker and tool contracts, prove delivery and effects, bind context to viewers, and bind dispatch to typed capabilities.
 
 ## Browse by category
 

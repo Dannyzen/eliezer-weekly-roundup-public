@@ -1474,3 +1474,24 @@ Implementability score: 0.46
 
 Source:
 - [Jev-Mobile](https://arxiv.org/abs/2609.30186v1)
+
+## September 30, 2026 update: make worker and benchmark contracts executable
+
+Raven makes the execution graph, worker registry, artifact ledger, and persistent archive first-class harness objects. The tool-contract audit supplies the missing lower boundary: the tools and graders used to certify those workers must prove the state transitions they advertise.
+
+Practical lesson:
+- version worker inputs, outputs, capabilities, budgets, and terminal receipts;
+- validate graph edges before dispatch;
+- contract-test tool preconditions, state changes, returns, and evaluator reads;
+- retain defect-to-score provenance;
+- mutation-test the contract checker itself.
+
+Evidence caveat: Raven is company-authored and was inspected read-only. The audit's checker missed most injected defects and its benchmark sample does not support prevalence claims.
+
+Implementability scores: 0.68 for Raven-style composition; 0.86 for executable benchmark contracts.
+
+Sources:
+- [Raven](https://arxiv.org/abs/2609.33439v1)
+- [EverMind-AI/Raven](https://github.com/EverMind-AI/Raven)
+- [Executable-contract audit](https://arxiv.org/abs/2609.37315v1)
+- [tool-contract-conformance](https://github.com/rohithreddybc/tool-contract-conformance)

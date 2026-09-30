@@ -248,3 +248,22 @@ Implementability score: 0.86
 Sources:
 - [Maat](https://arxiv.org/abs/2609.34017v1)
 - [Measuring Collapse and Correction](https://arxiv.org/abs/2609.35279v1)
+
+## September 30, 2026 update: compose model and harness pairs as explicit workers
+
+Raven treats a model plus its harness as one callable worker, then uses a host agent to decompose goals, assign specialists, order dependencies, and retain artifacts for later nodes. The useful primitive is the execution graph with typed handoffs, not the claim that one orchestrator can cover every domain.
+
+Practical lesson:
+- register worker identity, harness version, capabilities, and cost envelope;
+- represent dependencies and artifacts explicitly;
+- compare standalone workers with the composed graph on the same tasks;
+- keep the host agent outside worker-internal reasoning;
+- require receipts for every handoff and terminal state.
+
+Evidence caveat: the public Apache-2.0 repository is populated and includes Hermes Agent among 13 adapter presets, but it was not executed. The technical report is company-authored and needs independent replication.
+
+Implementability score: 0.68
+
+Sources:
+- [Raven](https://arxiv.org/abs/2609.33439v1)
+- [EverMind-AI/Raven](https://github.com/EverMind-AI/Raven)

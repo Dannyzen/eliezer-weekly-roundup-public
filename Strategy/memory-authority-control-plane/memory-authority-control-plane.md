@@ -398,3 +398,21 @@ Implementability score: 0.88
 Sources:
 - [Epistemic Admission in Shared Agent Memory](https://arxiv.org/abs/2609.30813v1)
 - [lxy1134/iclr_2027](https://github.com/lxy1134/iclr_2027)
+
+## September 30, 2026 update: audience scope must survive derivation
+
+Audience-Bound Persistent Memory carries the capture audience on each item, intersects audience scope across derived items, requires object-specific grants for widening, and checks the exact viewer set at context assembly. Unresolved identity fails closed to public-only retrieval.
+
+Practical lesson:
+- capture audience and provenance on every write;
+- intersect permissions across consolidation and derivation;
+- mediate direct lookup and retrieval through the same rule;
+- require explicit grants for scope widening;
+- retain the exact viewer set and delivered-context receipt.
+
+Evidence caveat: the 10,000-history result uses synthetic multi-party histories and depends on explicit identity, complete provenance, and complete mediation. No public implementation repository resolved.
+
+Implementability score: 0.58
+
+Source:
+- [Audience-Bound Persistent Memory](https://arxiv.org/abs/2609.36373v1)

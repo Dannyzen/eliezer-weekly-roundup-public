@@ -2,32 +2,32 @@
 
 This index tracks the most recent structured strategy research. Each finding links to the dated analysis, durable topics, primary sources, practical methods, and an implementability score.
 
-## Latest Structured Update: 2026-09-29 Daily Scan
+## Latest Structured Update: 2026-09-30 Daily Scan
 
-Today's control rule is direct: a runtime must measure the evidence path and the intervention's net utility before granting authority to a validator.
+Today's authority rule is direct: bind permission before context assembly and before effect release.
 
-### Make evaluation evidence delivery-complete and effect-complete
+### Authorize effects as typed capabilities
 
-Summary: Silent Failures shows that undelivered payloads and identity-only tool scoring can invert security results. Corrected scoring changed measured attack success from 21.7% to 1.2%.
+Summary: ToolFence binds tool identity, effect class, and argument provenance in a typed blueprint, then revalidates concrete values at dispatch. It reduced AgentDojo attack success from 21.20% to 0.20% with a 3.80-point clean-utility drop in the reported Qwen3-max study.
 
-Analysis: [daily strategy analysis](2026-09-29/sovereignty.md#make-evaluation-evidence-delivery-complete-and-effect-complete)
-Durable deep dives: [Evidence Provenance Control Plane](evidence-provenance-control-plane/evidence-provenance-control-plane.md), [Runtime Governance](runtime-governance/runtime-governance.md)
-Core source: [Silent Failures in Agentic Security Evaluation](https://arxiv.org/abs/2609.32691v1)
-Tools and methodologies worth exploring now: delivery receipts, exact effect predicates, environment conformance tests, replayable traces
-Implementability score: 0.94
+Analysis: [daily strategy analysis](2026-09-30/sovereignty.md#authorize-effects-as-typed-capabilities)
+Durable deep dives: [Context-to-Execution Integrity](context-to-execution-integrity/context-to-execution-integrity.md), [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md)
+Core source: [ToolFence](https://arxiv.org/abs/2609.37196v1)
+Tools and methodologies worth exploring now: typed action manifests, provenance-aware argument validators, Open Policy Agent, capability grants, effect receipts
+Implementability score: 0.64
 
-### Govern validators by net utility, not halt count
+### Bind memory to the audience before retrieval
 
-Summary: Maat's deterministic contracts caught real defects and reduced cost, yet 37% of reviewed halts were false alarms. DebateLedger shows that blocking harmful collapse can also block more useful correction.
+Summary: Audience-Bound Persistent Memory carries viewer scope through capture, derivation, grants, and retrieval. In 10,000 synthetic histories, the scoped designs admitted no forbidden item while unscoped retrieval exposed forbidden items in 82% of contexts.
 
-Analysis: [daily strategy analysis](2026-09-29/sovereignty.md#govern-validators-by-net-utility-not-halt-count)
-Durable deep dives: [Runtime Governance](runtime-governance/runtime-governance.md), [Evidence Provenance Control Plane](evidence-provenance-control-plane/evidence-provenance-control-plane.md)
-Core sources: [Maat](https://arxiv.org/abs/2609.34017v1), [Measuring Collapse and Correction](https://arxiv.org/abs/2609.35279v1)
-Tools and repositories worth exploring now: [Maat benchmarks](https://github.com/Lorelys/maat-benchmarks), [DebateLedger](https://github.com/LiXin97/DebateLedger), paired replay, signed intervention ledgers
-Implementability score: 0.86
+Analysis: [daily strategy analysis](2026-09-30/sovereignty.md#bind-memory-to-the-audience-before-retrieval)
+Durable deep dives: [Memory Authority Control Plane](memory-authority-control-plane/memory-authority-control-plane.md), [Evidence Provenance Control Plane](evidence-provenance-control-plane/evidence-provenance-control-plane.md)
+Core source: [Audience-Bound Persistent Memory](https://arxiv.org/abs/2609.36373v1)
+Tools and methodologies worth exploring now: audience labels, provenance-preserving derivation, object-specific grants, context-admission tests, viewer-set receipts
+Implementability score: 0.58
 
 ## Current implication
 
-A control becomes an authority boundary only after input delivery, exact effects, false alarms, lost corrections, and net utility are all visible and replayable.
+The model should never infer who may see a memory or which concrete effect is authorized. Those decisions belong to runtime-owned, typed policy objects.
 
 Friday synthesis remains the current week-level map: [2026-09-25 sovereignty](2026-09-25/sovereignty.md).

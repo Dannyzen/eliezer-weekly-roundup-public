@@ -487,3 +487,22 @@ Implementability score: 0.74
 
 Source:
 - [PrivDrift](https://arxiv.org/abs/2609.30094v1)
+
+## September 30, 2026 update: adversarial delivery needs a matrix and a receipt
+
+pikit decomposes indirect prompt injection into attack wording, carrier, defense, target agent, trace, and verdict. Its public test surface includes 13 attacks, 16 carriers, 9 prevention strategies, and adapters for common frameworks, OpenClaw, and Hermes Agent.
+
+Practical lesson:
+- freeze every test dimension and runtime version;
+- prove that the payload reached the intended observation;
+- use simulated consequential tools that record attempts without side effects;
+- score partial and unreached attacks separately;
+- keep clean controls and exact-effect verdicts.
+
+Evidence caveat: the paper reports one anonymized model and one production-like coding-agent environment. Heuristic detectors had perfect precision but low recall.
+
+Implementability score: 0.88
+
+Sources:
+- [pikit](https://arxiv.org/abs/2609.36817v1)
+- [pikit repository](https://github.com/Tencent/AI-Infra-Guard/tree/main/Research/pikit)

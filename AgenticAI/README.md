@@ -2,42 +2,42 @@
 
 This index tracks the most recent structured implementation research. Each finding links to the dated analysis, primary sources, practical methods, and an implementability score.
 
-## Latest Structured Update: 2026-09-29 Daily Scan
+## Latest Structured Update: 2026-09-30 Daily Scan
 
-Tuesday's listing strengthens three runtime primitives: validated security harnesses, signed intervention ledgers, and typed execution-state memory.
+Wednesday's scan strengthens three implementation surfaces: explicit worker contracts, executable benchmark contracts, and composable adversarial testing.
 
-### Prove payload delivery and score the exact effect
+### Compose harnesses through explicit worker contracts
 
-Summary: An indirect prompt-injection harness audit found silent payload non-delivery, identity-only scoring, environment mismatch, and missing audit trails. Corrected scoring changed attack success from 21.7% to 1.2%.
+Summary: Raven exposes model and harness pairs as callable workers, then coordinates them through a host agent, execution graph, artifact ledger, and persistent archive. Its public stack includes adapters for 13 external agents, including Hermes Agent.
 
-Analysis: [daily analysis](2026-09-29/reasoning.md#prove-payload-delivery-and-score-the-exact-effect)
-Durable deep dives: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Incident Replay Testing](incident-replay-testing/incident-replay-testing.md)
-Core source: [Silent Failures in Agentic Security Evaluation](https://arxiv.org/abs/2609.32691v1)
-Tools and methodologies worth exploring now: payload-delivery receipts, argument-level effect predicates, environment conformance, replayable traces
-Implementability score: 0.94
+Analysis: [daily analysis](2026-09-30/reasoning.md#compose-harnesses-through-explicit-worker-contracts)
+Durable deep dives: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Multi-Agent Orchestration](multi-agent-orchestration/multi-agent-orchestration.md)
+Core sources: [Raven paper](https://arxiv.org/abs/2609.33439v1), [Raven repository](https://github.com/EverMind-AI/Raven)
+Tools and repositories worth exploring now: Raven, ACP, execution graphs, artifact ledgers, worker-contract validation
+Implementability score: 0.68
 
-### Judge deterministic controls by signed intervention utility
+### Make benchmark tool surfaces executable contracts
 
-Summary: Maat found 35 false alarms among 94 governed halts. DebateLedger found that a freeze prevented 29 harmful collapses while losing 108 useful corrections. Stop counts are insufficient.
+Summary: An audit of 34 mutating tools across four benchmarks confirmed seven tool defects and one evaluator property. The checker also missed most injected defects, which makes mutation testing of the checker part of the contract.
 
-Analysis: [daily analysis](2026-09-29/reasoning.md#judge-deterministic-controls-by-signed-intervention-utility)
-Durable deep dives: [Multi-Agent Orchestration](multi-agent-orchestration/multi-agent-orchestration.md), [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
-Core sources: [Maat](https://arxiv.org/abs/2609.34017v1), [Measuring Collapse and Correction](https://arxiv.org/abs/2609.35279v1)
-Tools and repositories worth exploring now: [Maat benchmarks](https://github.com/Lorelys/maat-benchmarks), [DebateLedger](https://github.com/LiXin97/DebateLedger), paired replay, signed intervention utility
+Analysis: [daily analysis](2026-09-30/reasoning.md#make-benchmark-tool-surfaces-executable-contracts)
+Durable deep dives: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
+Core sources: [Executable-contract audit](https://arxiv.org/abs/2609.37315v1), [replication artifact](https://github.com/rohithreddybc/tool-contract-conformance)
+Tools and repositories worth exploring now: tool-contract-conformance, JSON Schema, state-transition assertions, mutation testing, evaluator provenance
 Implementability score: 0.86
 
-### Treat execution state as memory
+### Turn prompt injection into a composable test matrix
 
-Summary: FlowState stores typed state nodes and references to raw tool observations, then retrieves older evidence on demand. It reports higher task success with roughly 40% lower token use than full context.
+Summary: pikit separates attacks, carriers, defenses, agents, traces, and verdicts. The public toolkit includes 13 attacks, 16 channels, 9 defenses, and adapters for common agent frameworks plus OpenClaw and Hermes Agent.
 
-Analysis: [daily analysis](2026-09-29/reasoning.md#treat-execution-state-as-memory)
-Durable deep dives: [Memory Systems](memory-systems/memory-systems.md), [Context Economy](context-economy/context-economy.md)
-Core source: [FlowState](https://arxiv.org/abs/2609.34565v1)
-Tools and methodologies worth exploring now: typed state graphs, incremental state updates, progressive evidence access, immutable observation logs
-Implementability score: 0.74
+Analysis: [daily analysis](2026-09-30/reasoning.md#turn-prompt-injection-into-a-composable-test-matrix)
+Durable deep dives: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Incident Replay Testing](incident-replay-testing/incident-replay-testing.md)
+Core sources: [pikit paper](https://arxiv.org/abs/2609.36817v1), [pikit repository](https://github.com/Tencent/AI-Infra-Guard/tree/main/Research/pikit)
+Tools and repositories worth exploring now: pikit, delivery receipts, exact-effect judges, paired clean and attacked fixtures
+Implementability score: 0.88
 
 ## Current implication
 
-Prove that stimuli arrived, score the exact effect, and measure whether controls blocked more harm than recovery. Keep the resulting evidence available through typed execution state instead of replaying every token.
+Scale agent composition only after worker interfaces, benchmark tools, adversarial delivery, and realized effects are executable and replayable.
 
 Friday synthesis remains the current week-level map: [2026-09-25 reasoning](2026-09-25/reasoning.md).

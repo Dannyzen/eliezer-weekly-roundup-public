@@ -354,3 +354,24 @@ Implementability score: 0.83
 
 Source:
 - [Learning What to Skip](https://arxiv.org/abs/2609.30734v1)
+
+## October 1, 2026 update: route complete workflows with invariant policy
+
+HydraFusion now exposes single, cascade, and cross-family critique workflows in Visual Studio Code and the GitHub Copilot app. Its useful governance pattern is complete accounting across drafting, critique, revision, escalation, retry, and fallback, plus read-only critics and validation-gated patch application.
+
+Practical lesson:
+- route workflow shape and model identity together;
+- keep privacy, authority, budget, and effect rules invariant across routes;
+- account for every leg and fallback;
+- isolate critics from tools and repository writes;
+- reject patches after cancellation or failed validation;
+- shadow the router against fixed policies before trusting online adaptation.
+
+Preview caveat: HydraFusion is closed, has no SLA, and is not intended for production workloads. The September 30 update broadens access; it does not independently validate the September benchmark claims.
+
+Implementability score: 0.84
+
+Sources:
+- [HydraFusion release extension](https://github.blog/changelog/2026-09-30-hydrafusion-in-vs-code-and-the-github-copilot-app/)
+- [HydraFusion research](https://github.blog/ai-and-ml/github-copilot/project-hydrafusion-frontier-quality-via-multi-model-orchestration/)
+- [HydraFusion documentation](https://docs.github.com/en/early-access/copilot/hydrafusion)

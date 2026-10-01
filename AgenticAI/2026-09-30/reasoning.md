@@ -1,34 +1,43 @@
 # Daily Agent Research: 2026-09-30
 
-Today's strongest implementation signal is that composability only helps when the harness, tool surface, and adversarial test surface are executable contracts. Popularity is secondary to inspectable interfaces, state checks, and replayable traces.
+The Deep Dive Wednesday winner is the Raven composable model-harness architecture. It matters more than the other findings from the week because it changes the deployment unit of the stack: each model plus its harness becomes a registered worker with an explicit graph position, artifact boundary, and resource envelope.
 
-## Compose harnesses through explicit worker contracts
+## Deep Dive Wednesday winner: Treat the model-harness pair as the deployment unit
 
-Raven treats each model and harness pair as a callable worker, then uses a host agent to decompose work, assign specialists, enforce dependency order, and retain artifacts for later handoffs. The public repository includes ACP, CLI, and OpenAI-compatible adapters plus presets for 13 external agents, including Hermes Agent. Hugging Face ranked Raven as its number one paper on September 30. The paper itself was submitted on September 27, so this is a fresh adoption signal rather than a strict 48-hour paper submission.
+Raven uses a Host Agent to decompose work, select registered specialists, emit a dependency graph, validate the plan, schedule ready nodes, retain artifacts, and integrate the deliverable. The public repository documents ACP, CLI, and OpenAI-compatible adapters plus presets for 13 external agents, including Hermes Agent.
 
-### Why it matters
+### Why it won the week
 
-A harness of harnesses makes the execution graph the unit of composition. Worker identity, accepted inputs, produced artifacts, dependency order, budget, and terminal proof have to survive across heterogeneous agents. This is more useful than routing one prompt to one general agent, but it also creates a larger coordination and authority surface.
+Executable benchmark contracts, prompt-injection matrices, and typed tool authorization strengthen important controls. Raven has wider architectural leverage. It makes the worker registry, execution graph, artifact handoff, persistent archive, and harness adaptation one inspectable system. This is the bridge between isolated agents and a governed agent fleet.
+
+### Evidence
+
+The Multi-Agent Orchestration Benchmark contains 140 occupational requests with reference graphs over four specialists. Under matched backbones, Raven reported exact graph match of 0.711 versus 0.607 for the strongest Qwen3.8-27B baseline and 0.867 versus 0.762 for the strongest DeepSeek-V4-Flash-0731 baseline. These are planning-graph results, not end-to-end proof of product reliability.
+
+The repository is public, Apache-2.0 licensed, has a populated `main` branch, and exposed 4,268 blobs plus 4,936 stars at verification time. The paper and repository were inspected read-only. No external installer or source was executed. EverMind authored both the system and report, so independent reproduction remains necessary.
 
 ### How it fits
 
-Raven belongs in the orchestration and harness layers. Its Host Agent, registry, artifact ledger, and persistent archive are implementation references for composing specialized workers. The reusable lesson is to bind every worker edge to a typed handoff contract and keep the orchestrator separate from the worker's internal reasoning.
+Raven belongs in the orchestration and harness layers. Its reusable primitive is a versioned worker contract that binds model identity, harness policy, capabilities, accepted inputs, produced artifacts, resource budget, authority envelope, and terminal receipt. The Host Agent can propose the graph. Runtime-owned services must still control authority and evidence.
 
 ### Practical method
 
-- model each worker as a versioned executor plus harness contract;
-- express the run as a dependency graph with explicit input and artifact types;
-- keep budgets, retries, receipts, and terminal state on the graph;
-- admit third-party agents through read-only capability discovery before granting tools;
-- validate the same task on a standalone worker and the composed graph.
+- define a versioned worker contract before adding adapters;
+- compile proposed graphs through deterministic admission checks;
+- use immutable artifact IDs and schema-checked handoffs;
+- keep credentials, network access, tools, and effect grants outside the worker registry;
+- compare each composed run with the best standalone worker on outcome, cost, latency, and evidence completeness;
+- defer self-evolution and shared group memory until static composition is reliable.
 
-Artifact status: `EverMind-AI/Raven` is public, Apache-2.0 licensed, has a populated `main` branch, 4,262 inspected blobs, and 4,912 stars at verification time. The repository and paper were inspected read-only. No installer or source code was executed. The report is company-authored and covers a broad system, so benchmark claims still need independent reproduction.
+Deep dive: [Composable Agent Harnesses](../composable-agent-harnesses/composable-agent-harnesses.md)
 
-Tools and repositories worth exploring now: [Raven](https://github.com/EverMind-AI/Raven), ACP, explicit execution graphs, artifact ledgers, worker-contract validation
+Tools and repositories worth exploring now: [Raven](https://github.com/EverMind-AI/Raven), ACP, explicit execution graphs, artifact ledgers, worker-contract validation, policy-gated dispatch
 
 Implementability score: 0.68
 
 Core sources: [Raven paper](https://arxiv.org/abs/2609.33439v1), [Raven repository](https://github.com/EverMind-AI/Raven)
+
+## Supporting signals from the daily scan
 
 ## Make benchmark tool surfaces executable contracts
 

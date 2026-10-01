@@ -6,18 +6,24 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-09-30: [composable harnesses, executable contracts, and typed authority](roundups/2026-09-30.md)
-- AgenticAI daily analysis: [worker contracts, benchmark conformance, and adversarial test matrices](AgenticAI/2026-09-30/reasoning.md)
-- Strategy daily analysis: [capability-bound effects and audience-bound memory](Strategy/2026-09-30/sovereignty.md)
+- Daily scan, 2026-10-01: [inspectable adaptation across harnesses, memory, routing, and verification](roundups/2026-10-01.md)
+- AgenticAI daily analysis: [SelfSearch, persistent context graphs, and workflow routing](AgenticAI/2026-10-01/reasoning.md)
+- Strategy daily analysis: [world-model audits for action verifiers](Strategy/2026-10-01/sovereignty.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
+- Deep Dive Wednesday, 2026-09-30: [the model-harness pair is the deployment unit](roundups/2026-09-30.md)
 - Friday synthesis, 2026-09-25: [agent reliability is a custody problem](roundups/2026-09-25.md)
 
 ## Current thesis
 
-Agent reliability depends on executable authority. Models may propose plans, workers, tools, memories, and effects. Runtime-owned services must validate the worker contract, prove tool state transitions, preserve adversarial delivery evidence, bind memories to viewer sets, and release actions only through typed capabilities.
+Agent reliability depends on executable authority and inspectable adaptation. The model-harness pair remains the deployment unit, while external control planes must preserve raw evidence, freeze evaluation, validate world models, and own promotion. An editable agent may propose a new harness, memory policy, or route. It must not certify or promote itself.
 
 The current stack therefore emphasizes:
+
+- versioned self-improvement episodes with external evaluation and promotion;
+- persistent context graphs that select original evidence instead of rewriting it;
+- workflow routing with complete cost, latency, fallback, and validation receipts;
+- versioned action-state graphs plus mutation tests and randomized attestation;
 
 - versioned worker identities, capabilities, budgets, artifacts, and terminal receipts;
 - execution graphs with typed handoffs and explicit dependency order;
@@ -59,6 +65,7 @@ Start with the executable boundary: validate worker and tool contracts, prove de
 - [Enterprise MCP Orchestration](AgenticAI/enterprise-mcp-orchestration/enterprise-mcp-orchestration.md)
 - [Agentic Search and Retrieval](AgenticAI/agentic-search/agentic-search.md)
 - [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md)
+- [Composable Agent Harnesses](AgenticAI/composable-agent-harnesses/composable-agent-harnesses.md)
 - [Incident Replay Testing](AgenticAI/incident-replay-testing/incident-replay-testing.md)
 - [Agent Serving Runtime](AgenticAI/agent-serving-runtime/agent-serving-runtime.md)
 - [Multi-Agent Orchestration](AgenticAI/multi-agent-orchestration/multi-agent-orchestration.md)

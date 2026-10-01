@@ -478,6 +478,25 @@ Implementability score: 0.74
 
 Source: [FlowState](https://arxiv.org/abs/2609.34565v1)
 
+## October 1, 2026 update: query a persistent context graph, not a rewritten summary
+
+RECAP keeps attention-derived importance and dependency edges, then combines them with current-request relevance to select original messages. It reports about 95% lower estimated compaction and cold-restoration latency than Codex summarization, roughly half the historical context on SWE-Together at comparable quality, and 19.8 and 41.2 point gains over full history on Lost-in-Conversation code tasks.
+
+Practical lesson:
+- retain original messages as canonical evidence;
+- store importance, dependency, supersession, and protected-context edges separately;
+- apply request relevance only when assembling the next context;
+- log selected block IDs, token count, cache state, latency, and outcome;
+- compare against full history, fixed windows, and summarization on the same tasks.
+
+Artifact caveat: the linked public repository existed but was empty on 2026-10-01.
+
+Implementability score: 0.56
+
+Sources:
+- [RECAP](https://arxiv.org/abs/2609.40118v1)
+- [announced repository](https://github.com/UCSB-NLP-Chang/ReCAP)
+
 ## Working conclusion
 
 The future agent stack is not context maximalism. It is context accounting. Systems that know what to admit, retrieve, compress, cache, update incrementally, preserve prefix continuity, and audit will beat systems that merely buy larger windows and hope the model sorts it out.

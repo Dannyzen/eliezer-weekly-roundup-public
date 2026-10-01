@@ -2,42 +2,42 @@
 
 This index tracks the most recent structured implementation research. Each finding links to the dated analysis, primary sources, practical methods, and an implementability score.
 
-## Latest Structured Update: 2026-09-30 Daily Scan
+## Latest Structured Update: 2026-10-01 Daily Scan
 
-Wednesday's scan strengthens three implementation surfaces: explicit worker contracts, executable benchmark contracts, and composable adversarial testing.
+Today's implementation rule is to keep adaptation inspectable. Harness evolution, memory selection, and workflow routing should emit versioned evidence while evaluation and promotion remain external.
 
-### Compose harnesses through explicit worker contracts
+### Evolve harnesses from self-improvement episodes
 
-Summary: Raven exposes model and harness pairs as callable workers, then coordinates them through a host agent, execution graph, artifact ledger, and persistent archive. Its public stack includes adapters for 13 external agents, including Hermes Agent.
+Summary: SelfSearch carries reasoning, tool actions, local checks, and outcomes from earlier self-modification attempts into later generations. Population-mean success improved in all six model-benchmark settings, with individual gains up to 11.2 points on Terminal-Bench 2.1.
 
-Analysis: [daily analysis](2026-09-30/reasoning.md#compose-harnesses-through-explicit-worker-contracts)
-Durable deep dives: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Multi-Agent Orchestration](multi-agent-orchestration/multi-agent-orchestration.md)
-Core sources: [Raven paper](https://arxiv.org/abs/2609.33439v1), [Raven repository](https://github.com/EverMind-AI/Raven)
-Tools and repositories worth exploring now: Raven, ACP, execution graphs, artifact ledgers, worker-contract validation
-Implementability score: 0.68
+Analysis: [daily analysis](2026-10-01/reasoning.md#evolve-harnesses-from-self-improvement-episodes)
+Durable topics: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Agent Self-Improvement Governance](../Strategy/agent-self-improvement-governance/agent-self-improvement-governance.md)
+Core source: [SelfSearch v2](https://arxiv.org/abs/2609.37968v2)
+Tools and methodologies worth exploring now: versioned episode records, editable agent copies, frozen evaluation packs, sandbox replay, external promotion gates
+Implementability score: 0.62
 
-### Make benchmark tool surfaces executable contracts
+### Persist context dependencies instead of rewriting history
 
-Summary: An audit of 34 mutating tools across four benchmarks confirmed seven tool defects and one evaluator property. The checker also missed most injected defects, which makes mutation testing of the checker part of the contract.
+Summary: RECAP stores attention-derived importance and dependency links, then combines them with request relevance to select original messages. It reports about 95% lower estimated compaction and cold-restoration latency than summarization, but its linked repository is currently empty.
 
-Analysis: [daily analysis](2026-09-30/reasoning.md#make-benchmark-tool-surfaces-executable-contracts)
-Durable deep dives: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
-Core sources: [Executable-contract audit](https://arxiv.org/abs/2609.37315v1), [replication artifact](https://github.com/rohithreddybc/tool-contract-conformance)
-Tools and repositories worth exploring now: tool-contract-conformance, JSON Schema, state-transition assertions, mutation testing, evaluator provenance
-Implementability score: 0.86
+Analysis: [daily analysis](2026-10-01/reasoning.md#persist-context-dependencies-instead-of-rewriting-history)
+Durable topics: [Context Economy](context-economy/context-economy.md), [Memory Systems](memory-systems/memory-systems.md)
+Core sources: [RECAP paper](https://arxiv.org/abs/2609.40118v1), [announced repository](https://github.com/UCSB-NLP-Chang/ReCAP)
+Tools and methodologies worth exploring now: immutable event logs, persistent context graphs, dependency expansion, full-history controls, task-level token and latency accounting
+Implementability score: 0.56
 
-### Turn prompt injection into a composable test matrix
+### Route workflows, not only models
 
-Summary: pikit separates attacks, carriers, defenses, agents, traces, and verdicts. The public toolkit includes 13 attacks, 16 channels, 9 defenses, and adapters for common agent frameworks plus OpenClaw and Hermes Agent.
+Summary: HydraFusion now runs in Visual Studio Code and the GitHub Copilot app. It selects a single, cascade, or cross-family critique workflow, accounts for every leg, isolates critics, and applies no patch after cancellation or failed validation.
 
-Analysis: [daily analysis](2026-09-30/reasoning.md#turn-prompt-injection-into-a-composable-test-matrix)
-Durable deep dives: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Incident Replay Testing](incident-replay-testing/incident-replay-testing.md)
-Core sources: [pikit paper](https://arxiv.org/abs/2609.36817v1), [pikit repository](https://github.com/Tencent/AI-Infra-Guard/tree/main/Research/pikit)
-Tools and repositories worth exploring now: pikit, delivery receipts, exact-effect judges, paired clean and attacked fixtures
-Implementability score: 0.88
+Analysis: [daily analysis](2026-10-01/reasoning.md#route-workflows-not-only-models)
+Durable topic: [Model Router Governance](../Strategy/model-router-governance/model-router-governance.md)
+Core sources: [September 30 release](https://github.blog/changelog/2026-09-30-hydrafusion-in-vs-code-and-the-github-copilot-app/), [research and benchmarks](https://github.blog/ai-and-ml/github-copilot/project-hydrafusion-frontier-quality-via-multi-model-orchestration/)
+Tools and methodologies worth exploring now: HydraFusion preview, rules-based single/cascade/critique routes, read-only critics, full workflow accounting, validation-gated patch application
+Implementability score: 0.84
 
 ## Current implication
 
-Scale agent composition only after worker interfaces, benchmark tools, adversarial delivery, and realized effects are executable and replayable.
+Treat every adaptive layer as a versioned runtime component. Preserve raw evidence and keep evaluation, hard policy, and promotion outside the component being optimized.
 
-Friday synthesis remains the current week-level map: [2026-09-25 reasoning](2026-09-25/reasoning.md).
+Latest roundup: [2026-10-01](../roundups/2026-10-01.md).

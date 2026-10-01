@@ -147,3 +147,21 @@ Implementability score: 0.63
 
 Source:
 - [EvoUndo](https://arxiv.org/abs/2608.28363v1)
+
+## October 1, 2026 update: let agents edit, keep selection outside
+
+SelfSearch makes the whole agent repository editable and carries modification episodes across generations. That can improve tools and procedures without benchmark rewards during search. It also makes the external boundary load-bearing.
+
+Practical lesson:
+- keep evaluation tasks, hidden tests, model settings, budgets, and promotion rules outside the editable repository;
+- bind every candidate to a parent version and complete modification episode;
+- require independent regression and transfer proof;
+- inspect authority deltas in tools, skills, network, credentials, and memory;
+- promote through a reversible canary rather than replacing the active harness directly.
+
+Evidence caveat: the paper calls search reward-free, while downstream evaluation and candidate selection still occur separately. No public implementation artifact was resolved.
+
+Implementability score: 0.62
+
+Source:
+- [SelfSearch v2](https://arxiv.org/abs/2609.37968v2)

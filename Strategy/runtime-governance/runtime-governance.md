@@ -1226,3 +1226,21 @@ Sources:
 - [Agentic autofix now uses Copilot Memory](https://github.blog/changelog/2026-09-25-agentic-autofix-now-uses-copilot-memory/)
 - [About GitHub Copilot Memory](https://docs.github.com/en/copilot/concepts/agents/copilot-memory)
 - [Enterprise managed settings in-product validator](https://github.blog/changelog/2026-09-25-enterprise-managed-settings-in-product-validator/)
+
+## October 1, 2026 update: verify the world model behind the certificate
+
+Who Verifies the Graph corrupts only the committed action-state graph used by a causal action verifier. One missing edge raises false executions from 0% to 15.3%; one reversed direction produces 48.9% false executions. Every harmful action still carries an internally valid certificate.
+
+Practical lesson:
+- version and hash the graph beside every decision certificate;
+- mutation-test missing edges, reversed directions, stale state, and omitted confounders;
+- add bounded randomized attestation for high-impact executions;
+- audit rejections separately to measure wrongful inaction;
+- fail closed when graph identity, environment identity, or attestation budget is missing.
+
+Evidence caveat: the benchmark is synthetic, the author is red-teaming his own earlier verifier, and no public implementation artifact was resolved. Safety recovery also suppresses many beneficial actions unless rejection audits spend more experimental budget.
+
+Implementability score: 0.64
+
+Source:
+- [Who Verifies the Graph?](https://arxiv.org/abs/2609.40027v1)

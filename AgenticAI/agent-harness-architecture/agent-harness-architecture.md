@@ -1495,3 +1495,23 @@ Sources:
 - [EverMind-AI/Raven](https://github.com/EverMind-AI/Raven)
 - [Executable-contract audit](https://arxiv.org/abs/2609.37315v1)
 - [tool-contract-conformance](https://github.com/rohithreddybc/tool-contract-conformance)
+
+Deep dive: [Composable Agent Harnesses](../composable-agent-harnesses/composable-agent-harnesses.md)
+
+## October 1, 2026 update: treat self-improvement episodes as harness evidence
+
+SelfSearch evolves an agent from records of earlier self-modification attempts rather than downstream benchmark rewards during search. Population-mean success improved in all six model-benchmark settings, and individual gains reached 11.2 points on Terminal-Bench 2.1.
+
+Practical lesson:
+- store modification episodes beside the produced agent version;
+- keep evaluation tasks and resource limits outside the editable repository;
+- require frozen regressions, no-change controls, and cross-model transfer before promotion;
+- classify new tools and skills as authority changes;
+- preserve failed edits because they expose missing inspection and verification interfaces.
+
+Evidence caveat: evaluation and candidate selection remain separate costs. No paper-owned public implementation repository was resolved, and independent searches were not repeated.
+
+Implementability score: 0.62
+
+Source:
+- [SelfSearch v2](https://arxiv.org/abs/2609.37968v2)

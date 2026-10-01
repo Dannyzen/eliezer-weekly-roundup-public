@@ -1156,3 +1156,22 @@ Implementability score: 0.88
 Sources:
 - [Epistemic Admission in Shared Agent Memory](https://arxiv.org/abs/2609.30813v1)
 - [lxy1134/iclr_2027](https://github.com/lxy1134/iclr_2027)
+
+## October 1, 2026 update: keep memory selection derived and source-preserving
+
+RECAP separates raw history from a derived context graph. Stored attention supplies historical importance and dependency edges. The arriving request supplies current relevance. The selected payload remains original message blocks rather than a new summary.
+
+Practical lesson:
+- make raw events canonical and the graph rebuildable;
+- keep message IDs and dependency paths in every retrieval receipt;
+- protect instructions, unresolved obligations, and tool results from ordinary compaction;
+- test stale edges, superseded facts, and future references;
+- reject memory savings that improve token counts by hiding failures.
+
+Artifact caveat: the linked public repository was empty when inspected.
+
+Implementability score: 0.56
+
+Sources:
+- [Persistent Context Graphs for Efficient Memory Compaction in LLM Agents](https://arxiv.org/abs/2609.40118v1)
+- [UCSB-NLP-Chang/ReCAP](https://github.com/UCSB-NLP-Chang/ReCAP)

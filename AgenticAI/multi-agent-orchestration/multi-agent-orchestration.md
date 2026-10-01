@@ -267,3 +267,5 @@ Implementability score: 0.68
 Sources:
 - [Raven](https://arxiv.org/abs/2609.33439v1)
 - [EverMind-AI/Raven](https://github.com/EverMind-AI/Raven)
+
+Deep dive: [Composable Agent Harnesses](../composable-agent-harnesses/composable-agent-harnesses.md)

@@ -1515,3 +1515,23 @@ Implementability score: 0.62
 
 Source:
 - [SelfSearch v2](https://arxiv.org/abs/2609.37968v2)
+
+## October 2, 2026 update: evaluate the complete deployed configuration
+
+Agents Are Systems, Not Models varies task information, reasoning, self-verification, time budget, and backbone model across four scientific coding tasks. About 54 percent of outcome variance came from repeated runs of the same configuration. Better task information mattered more than model size or time, and a dedicated verification tool changed behavior more than a verification prompt.
+
+Practical lesson:
+- treat model, harness, context, tools, and budget as one versioned test cell;
+- repeat every important cell before ranking systems;
+- decompose variance before claiming a model effect;
+- supply verification as a tool when behavior must change;
+- retain trajectories for behavior-taxonomy review.
+
+Artifact caveat: the public repository currently contains only a README. The public Hugging Face dataset is ungated and the paper reports more than 18,000 trajectories. The benchmark covers four scientific tasks and three Qwen3.5 sizes.
+
+Implementability score: 0.82
+
+Sources:
+- [Agents Are Systems, Not Models](https://arxiv.org/abs/2610.01618v1)
+- [research repository](https://github.com/lusxvr/rethinking-agent-evaluation)
+- [trajectory dataset](https://huggingface.co/datasets/lusxvr/agentic-science-trajectories)

@@ -1175,3 +1175,22 @@ Implementability score: 0.56
 Sources:
 - [Persistent Context Graphs for Efficient Memory Compaction in LLM Agents](https://arxiv.org/abs/2609.40118v1)
 - [UCSB-NLP-Chang/ReCAP](https://github.com/UCSB-NLP-Chang/ReCAP)
+
+## October 2, 2026 update: intervene on retrieval before judging memory utility
+
+Causal Memory Policy shows that a memory never retrieved cannot reveal its effect through store-level comparisons. Identification failed for 54 percent of required memories on LongMemEval and 67 percent on LoCoMo. Bounded randomized retrieval with known propensities improved required-memory discrimination from 0.54 to 0.66 AUC.
+
+Practical lesson:
+- reserve a small retrieval exploration budget;
+- log candidate sets, propensities, and exposed memories;
+- separate per-query utility from future-query retention value;
+- demote reversibly before deleting;
+- retain a no-delete control and test on unseen queries.
+
+Artifact status: the paper-linked 4open.science snapshot exposes pinned requirements, scripts, configs, raw results, manifests, and offline analysis files. It was inspected read-only and not cloned or executed. Regenerating raw draws needs API keys and the README estimates about $195 in API cost. Identified utility still failed to predict unseen-query value.
+
+Implementability score: 0.68
+
+Sources:
+- [Causal Memory Policy](https://arxiv.org/abs/2610.02070v1)
+- [paper-linked implementation artifact](https://anonymous.4open.science/r/cmp-release-D0C3/)

@@ -2,22 +2,22 @@
 
 This index tracks the most recent structured strategy research. Each finding links to the dated analysis, durable topics, primary sources, practical methods, and an implementability score.
 
-## Latest Structured Update: 2026-10-01 Daily Scan
+## Latest Structured Update: 2026-10-02 Daily Scan
 
-Today's authority rule is direct: audit the world model that makes a certificate valid.
+Today's authority rule is direct: enforce provenance and effect scope immediately before execution.
 
-### Audit the verifier's committed world model
+### Enforce provenance and authority at the final tool boundary
 
-Summary: Removing one edge from a causal action graph raised false executions from 0% to 15.3%; reversing one direction produced 48.9% false executions. The actions still carried internally valid certificates. Bounded randomized attestation recovered measured safety, while auditing wrongful inaction required much more experimental budget.
+Summary: PACE combines influence-path confinement with capability and effect verification at dispatch. Across eight security benchmarks and three model families, its evaluated configuration recorded the lowest attack success in 62 of 79 eligible columns and tied in 14, while native utility fell by at most three points.
 
-Analysis: [daily strategy analysis](2026-10-01/sovereignty.md#audit-the-verifiers-committed-world-model)
-Durable topics: [Runtime Governance](runtime-governance/runtime-governance.md), [Evidence Provenance Control Plane](evidence-provenance-control-plane/evidence-provenance-control-plane.md), [Context-to-Execution Integrity](context-to-execution-integrity/context-to-execution-integrity.md)
-Core source: [Who Verifies the Graph?](https://arxiv.org/abs/2609.40027v1)
-Tools and methodologies worth exploring now: versioned action-state graphs, graph mutation tests, bounded randomized attestation, abstention, rejection audits, effect receipts
-Implementability score: 0.64
+Analysis: [daily strategy analysis](2026-10-02/sovereignty.md#enforce-provenance-and-authority-at-the-final-tool-boundary)
+Durable topics: [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md), [Context-to-Execution Integrity](context-to-execution-integrity/context-to-execution-integrity.md)
+Core source: [PACE](https://arxiv.org/abs/2610.01349v1)
+Tools and methodologies worth exploring now: provenance labels, authenticated capability manifests, effect classes, path-confinement checks, refusal controls, adversarial cross-tool fixtures
+Implementability score: 0.54
 
 ## Current implication
 
-A valid proof can authorize the wrong effect when its assumptions are wrong. Bind every certificate to the exact graph, environment, assumptions, attestation evidence, and audit budget used to produce it.
+Artifact admission cannot authorize a later side effect. Bind every released action to authenticated scope, represented provenance, exact tool identity, concrete arguments, target, effect class, and a verified outcome.
 
-Latest roundup: [2026-10-01](../roundups/2026-10-01.md).
+Latest roundup: [2026-10-02](../roundups/2026-10-02.md).

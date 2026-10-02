@@ -6,9 +6,9 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-10-01: [inspectable adaptation across harnesses, memory, routing, and verification](roundups/2026-10-01.md)
-- AgenticAI daily analysis: [SelfSearch, persistent context graphs, and workflow routing](AgenticAI/2026-10-01/reasoning.md)
-- Strategy daily analysis: [world-model audits for action verifiers](Strategy/2026-10-01/sovereignty.md)
+- Daily scan, 2026-10-02: [coded orchestration, system-level evaluation, causal memory exposure, and use-time authority](roundups/2026-10-02.md)
+- AgenticAI daily analysis: [dynamic workflows, complete configuration evaluation, and causal memory policy](AgenticAI/2026-10-02/reasoning.md)
+- Strategy daily analysis: [provenance-aware capability enforcement at dispatch](Strategy/2026-10-02/sovereignty.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 - Deep Dive Wednesday, 2026-09-30: [the model-harness pair is the deployment unit](roundups/2026-09-30.md)
@@ -16,15 +16,18 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Current thesis
 
-Agent reliability depends on executable authority and inspectable adaptation. The model-harness pair remains the deployment unit, while external control planes must preserve raw evidence, freeze evaluation, validate world models, and own promotion. An editable agent may propose a new harness, memory policy, or route. It must not certify or promote itself.
+Agent reliability depends on explicit orchestration, system-level evaluation, observable evidence selection, and executable authority. Stable workflow structure belongs in code. The model, harness, tools, context, budget, and repeated-run variance form one evaluation unit. Memory policies need controlled retrieval exposure. Side effects need a deterministic final gate over authenticated scope, provenance, concrete arguments, and realized effects.
 
 The current stack therefore emphasizes:
 
+- coded workflows with typed stages, deterministic joins, checkpoints, and run limits;
+- factorial model-harness-tool-context-budget evaluation with repeated cells;
+- randomized retrieval exposure before memory utility or deletion decisions;
+- provenance-aware capability and effect checks immediately before dispatch;
 - versioned self-improvement episodes with external evaluation and promotion;
 - persistent context graphs that select original evidence instead of rewriting it;
 - workflow routing with complete cost, latency, fallback, and validation receipts;
 - versioned action-state graphs plus mutation tests and randomized attestation;
-
 - versioned worker identities, capabilities, budgets, artifacts, and terminal receipts;
 - execution graphs with typed handoffs and explicit dependency order;
 - executable benchmark contracts for tool state and evaluator reads;
@@ -49,7 +52,7 @@ The current stack therefore emphasizes:
 - independent trace capture with remote retention and sequence-gap detection;
 - deterministic shutdown, credential, network, queue, and compute revocation below orchestration.
 
-Start with the executable boundary: validate worker and tool contracts, prove delivery and effects, bind context to viewers, and bind dispatch to typed capabilities.
+Start with the executable boundary: compile the workflow, test the whole deployed configuration, instrument evidence exposure, and bind dispatch to typed capabilities.
 
 ## Browse by category
 

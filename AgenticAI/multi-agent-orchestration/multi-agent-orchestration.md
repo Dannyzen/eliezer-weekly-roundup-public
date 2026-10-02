@@ -269,3 +269,23 @@ Sources:
 - [EverMind-AI/Raven](https://github.com/EverMind-AI/Raven)
 
 Deep dive: [Composable Agent Harnesses](../composable-agent-harnesses/composable-agent-harnesses.md)
+
+## October 2, 2026 update: compile recurring agent work into code
+
+GitHub Dynamic Workflows place deterministic commands, tool calls, sequential or parallel agent stages, structured handoffs, checkpoints, and resume behavior inside a Copilot extension. Agents handle judgment; the program owns the repeatable control flow.
+
+Practical lesson:
+- encode stage order and parallel branches explicitly;
+- require typed outputs at every join;
+- place human review at named checkpoints;
+- persist run state and resume from the last valid stage;
+- attach limits and terminal receipts to each run;
+- compare the workflow with the prompt-only process it replaces.
+
+Release caveat: the feature is a public preview. Copilot CLI requires experimental mode, and it was not run in this cron.
+
+Implementability score: 0.90
+
+Sources:
+- [Dynamic workflows release](https://github.blog/changelog/2026-10-01-dynamic-workflows-in-copilot-cli-and-the-copilot-app/)
+- [Using dynamic workflows](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-dynamic-workflows)

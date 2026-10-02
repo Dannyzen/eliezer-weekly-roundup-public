@@ -703,3 +703,21 @@ Implementability score: 0.64
 
 Source:
 - [ToolFence](https://arxiv.org/abs/2609.37196v1)
+
+## October 2, 2026 update: provenance is part of the release object
+
+PACE extends exact-action release with represented influence provenance. The final gate must know which pages, memories, skills, tool descriptions, and tool returns shaped the proposed action, then verify the concrete effect against authority compiled from the authenticated request.
+
+Practical lesson:
+- add provenance roots to the action manifest;
+- make tool, target, arguments, and effect class explicit;
+- reject unresolved or out-of-scope influence paths;
+- require declared repairs to preserve the certified boundary;
+- bind the release verdict to a verified external outcome.
+
+Evidence caveat: evaluation spans eight executable security benchmarks, but the adaptive search contains 30 out-of-authority targets and no public repository resolved.
+
+Implementability score: 0.54
+
+Source:
+- [PACE](https://arxiv.org/abs/2610.01349v1)

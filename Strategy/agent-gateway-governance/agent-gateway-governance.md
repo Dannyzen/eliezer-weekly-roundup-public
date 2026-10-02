@@ -1209,3 +1209,21 @@ Implementability score: 0.91
 Sources:
 - [OpenAI Codex CLI 0.158.0](https://github.com/openai/codex/releases/tag/rust-v0.158.0)
 - [LiteLLM 1.103.0](https://github.com/BerriAI/litellm/releases/tag/v1.103.0)
+
+## October 2, 2026 update: enforce represented provenance at dispatch
+
+PACE mediates each tool call immediately before execution. It combines an influence-path cut with capability and effect verification compiled from the authenticated request. Across eight executable security benchmarks and three model families, its evaluated configuration had the lowest attack success in 62 of 79 eligible columns and tied in 14, while native utility fell by at most three points.
+
+Practical lesson:
+- label provenance for pages, memory, skills, tool metadata, and returns;
+- compile authority from the authenticated principal and request;
+- resolve exact tool identity, arguments, target, and effect class;
+- enforce the influence cut immediately before dispatch;
+- preserve denials, declared repairs, releases, and verified effects.
+
+Artifact caveat: the paper says source code is in supplemental material. No paper-owned public repository resolved, and no external source code was downloaded or executed.
+
+Implementability score: 0.54
+
+Source:
+- [PACE](https://arxiv.org/abs/2610.01349v1)

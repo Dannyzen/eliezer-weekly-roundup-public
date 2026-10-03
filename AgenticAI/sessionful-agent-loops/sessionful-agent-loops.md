@@ -163,3 +163,20 @@ Implementability score: 0.86
 Sources:
 - [LoopArena paper](https://arxiv.org/abs/2608.28281v1)
 - [LoopArena repository](https://github.com/AMAP-ML/LoopArena)
+
+## October 3, 2026 update: durability needs replay-safe recovery
+
+Cloudflare PiHarness binds Pi Durable to the Agents SDK lifecycle so a long-running turn can survive Durable Object restarts, crashes, network issues, and interruption. The useful primitive is persisted execution state, not simply a longer timeout.
+
+Practical lesson:
+- persist run identity, current step, tool receipt, and resume cursor;
+- label each tool as replay-safe, receipt-checkable, or manual-recovery-only;
+- inject interruption before, during, and after every side effect;
+- separate liveness, cancellation, recovery, and terminal-state receipts.
+
+Evidence caveat: the release provides documented integration code but no measured recovery or duplicate-effect rates. Adoption binds the harness to Cloudflare Durable Objects and Earendil Pi packages. External code was inspected only through documentation and was not executed.
+
+Implementability score: 0.86
+
+Source:
+- [Cloudflare PiHarness](https://developers.cloudflare.com/changelog/post/2026-10-02-pi-harness/)

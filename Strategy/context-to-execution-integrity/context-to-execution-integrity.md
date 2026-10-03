@@ -721,3 +721,22 @@ Implementability score: 0.54
 
 Source:
 - [PACE](https://arxiv.org/abs/2610.01349v1)
+
+## October 3, 2026 update: authorize the composed object
+
+FlowReview shows that individually admissible fragments can jointly reconstruct a governed object and enable a prohibited action. Local artifact review permitted 413 of 480 denied commits; combined-artifact review permitted 0 of 480 while preserving 459 of 480 authorized objects in both arms.
+
+Practical lesson:
+- resolve canonical object identity across all contributing artifacts;
+- bind trusted permission to the proposed use;
+- review the union before final dispatch;
+- assemble validated artifacts in runtime code;
+- require paired evidence for denied effects and preserved authorized utility.
+
+Evidence caveat: controlled banks establish the composition mechanism. Natural-workflow prevalence, representation coverage, and permission recovery need broader study. The public FlowReview repository was inspected read-only and was not executed.
+
+Implementability score: 0.78
+
+Sources:
+- [Deny Without Disabling](https://arxiv.org/abs/2610.00371v1)
+- [FlowReview](https://github.com/yunbeizhang/FlowReview)

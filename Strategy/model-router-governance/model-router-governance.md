@@ -375,3 +375,21 @@ Sources:
 - [HydraFusion release extension](https://github.blog/changelog/2026-09-30-hydrafusion-in-vs-code-and-the-github-copilot-app/)
 - [HydraFusion research](https://github.blog/ai-and-ml/github-copilot/project-hydrafusion-frontier-quality-via-multi-model-orchestration/)
 - [HydraFusion documentation](https://docs.github.com/en/early-access/copilot/hydrafusion)
+
+## October 3, 2026 update: baseline selection can create a false floor
+
+False Floors shows that selecting the best fixed model on evaluation labels privileges the baseline. The cost was 0.003 to 0.030 harm under random splits and 0.045 to 0.113 under held-out request categories, comparable to the router deficit being measured.
+
+Practical lesson:
+- select the fixed comparator inside each training or validation fold;
+- evaluate it on the same held-out categories or suites as the router;
+- report honest and in-sample conventions side by side;
+- audit judge dependence and model-pool saturation;
+- require branching trajectories when mid-run switching is the production claim.
+
+Evidence caveat: the large shift effect was concentrated in HELM harm_bench, the chat data are largely English and single-turn, and automated judges label most harm. No public implementation artifact resolved.
+
+Implementability score: 0.72
+
+Source:
+- [False Floors](https://arxiv.org/abs/2610.01535v1)

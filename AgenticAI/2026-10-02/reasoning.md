@@ -1,95 +1,103 @@
-# Daily Agent Research: 2026-10-02
+# AgenticAI Weekly Analysis: 2026-10-02
+
+This week’s strongest implementation signal is that reliable agent systems are becoming executable evidence pipelines. Stable workflow structure belongs in code, evaluation must vary the deployed configuration rather than the model alone, and memory policy must expose the evidence-selection process before it optimizes retention.
 
 ## Compile recurring multi-agent work into code
 
-GitHub Dynamic Workflows put deterministic orchestration inside a Copilot extension. A program defines commands, tool calls, service calls, sequential or parallel agent stages, structured handoffs, review checkpoints, and resume behavior. Agents remain responsible for analysis and judgment, while code owns the repeatable control flow.
+GitHub Dynamic Workflows let a Copilot extension define deterministic commands, tool calls, sequential or parallel agent stages, structured handoffs, review checkpoints, resume behavior, schedules, and run limits. HEXIS reaches the same architectural boundary from the research side by compiling SKILL.md procedures into extended finite state machines, leaving local judgment to the model while the runtime owns progress and allowed transitions.
 
 ### Why it matters
 
-This is a practical boundary between ordinary automation and agentic work. The workflow can collect evidence, fan work out, join structured results, pause for review, and resume without asking one model to remember the process. GitHub exposes creation, monitoring, resumption, scheduling, and AI-credit limits in the product surface.
+Prompt-only orchestration asks the model to remember both the task and the procedure. Coded orchestration makes the execution graph inspectable, replayable, and resumable. It also gives cost limits, checkpoints, and structured joins a real enforcement surface.
 
 ### Fit in the stack
 
-Dynamic workflows belong in orchestration and harness architecture. They make the execution graph a program artifact rather than an implicit prompt convention. The preview is available across Copilot plans, though Copilot CLI requires experimental mode and the surface can still change.
+This belongs in orchestration and harness architecture. The practical route is GitHub’s public preview or an equivalent Temporal, LangGraph, or explicit state-machine implementation. HEXIS is a design reference because no paper-owned public compiler resolved during this scan.
 
 ### Practical tools and methodologies worth exploring
 
-- GitHub Copilot CLI dynamic workflows in experimental mode
-- Copilot extensions as versioned workflow packages
-- typed stage outputs and deterministic joins
-- explicit parallel branches, review checkpoints, and resume points
-- per-run AI-credit limits and terminal receipts
-- paired runs against the current prompt-only process
-
-Artifact status: official public preview and documentation verified. The feature was not run in this cron.
+- GitHub Copilot Dynamic Workflows with typed stage outputs and explicit joins
+- Temporal or LangGraph for durable waits, retries, and resumable state
+- finite-state or statechart compilation for stable skill procedures
+- versioned workflow definitions, review checkpoints, and run-budget limits
+- replay tests that assert allowed states, transitions, and terminal receipts
 
 Implementability score: 0.90
 
-Core sources:
-- [Dynamic workflows release](https://github.blog/changelog/2026-10-01-dynamic-workflows-in-copilot-cli-and-the-copilot-app/)
-- [Using dynamic workflows](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-dynamic-workflows)
+Core sources: [GitHub Dynamic Workflows release](https://github.blog/changelog/2026-10-01-dynamic-workflows-in-copilot-cli-and-the-copilot-app/), [GitHub operating documentation](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-dynamic-workflows), [HEXIS](https://arxiv.org/abs/2609.30123v1)
 
-## Evaluate the model, harness, tools, prompt, and budget as one system
+## Evaluate the model, harness, tools, and budget as one system
 
-Agents Are Systems, Not Models varies task information, reasoning, self-verification instructions, time budget, and backbone model across four scientific coding tasks. About 54 percent of outcome variance came from repeated runs of the same configuration. Task information mattered more than model size or time budget, and a dedicated verification tool changed verification behavior more than an instruction to self-verify.
+Agents Are Systems, Not Models studies complete configurations across four scientific coding tasks. Repeated runs of the same configuration account for about 54 percent of outcome variance. Task information mattered more than model size or time budget, and a dedicated verification tool changed behavior more than a self-verification prompt. The executable-contract audit adds the missing lower layer: across 34 mutating tools in four benchmarks, the authors found seven tool defects and one evaluator property that could let a benchmark report success without the intended state transition.
 
 ### Why it matters
 
-A model leaderboard cannot answer whether a deployed agent is reliable. The unit under test is the complete configuration, including the evidence supplied, the tools available, the budget, and run-to-run variance. More time helps only when the model and information are sufficient to use it.
+A model leaderboard cannot predict a deployed agent when instructions, tools, budgets, harness behavior, and repeated-run variance materially change the outcome. A benchmark score also cannot certify anything when the environment contract is wrong.
 
 ### Fit in the stack
 
-This strengthens the model-harness pair thesis with a concrete factorial evaluation method. It belongs in harness design and trajectory-aware evaluation: treat configuration dimensions as experimental factors, repeat each cell, and inspect behavior traces rather than relying on final scores.
+The deployment unit is the model plus harness plus tools plus context plus budget plus evaluator. Evaluation needs repeated factorial cells above the tool layer and executable state-transition contracts below it.
 
 ### Practical tools and methodologies worth exploring
 
-- factorial model, harness, information, tool, and budget sweeps
-- repeated runs per configuration cell
-- variance decomposition before leaderboard claims
-- dedicated verification tools instead of verification-only prompts
-- public trajectory corpora for behavior-taxonomy development
-
-Artifact status: the public repository contains only a README and says full code and benchmark are coming soon. The linked Hugging Face dataset is public and ungated, with more than 18,000 trajectories reported by the paper.
-
-Evidence caveat: the benchmark has four astrophysics and genomics tasks and three Qwen3.5 model sizes. Its configuration effects should be tested on other domains and models before generalization.
+- factorial configuration sweeps with repeated cells and variance decomposition
+- dedicated verification tools instead of self-verification prompts alone
+- contract schemas for tool preconditions, state transitions, returns, and evaluator reads
+- dynamic probes and mutation tests for benchmark tools and scorers
+- trajectory taxonomies that separate model, harness, environment, and evaluator failures
 
 Implementability score: 0.82
 
-Core sources:
-- [Agents Are Systems, Not Models](https://arxiv.org/abs/2610.01618v1)
-- [research repository](https://github.com/lusxvr/rethinking-agent-evaluation)
-- [agentic science trajectories](https://huggingface.co/datasets/lusxvr/agentic-science-trajectories)
+Core sources: [Agents Are Systems, Not Models](https://arxiv.org/abs/2610.01618v1), [public trajectory repository](https://github.com/lusxvr/rethinking-agent-evaluation), [Executable-Contract Audit](https://arxiv.org/abs/2609.37315v1), [MIT-licensed audit artifact](https://github.com/rohithreddybc/tool-contract-conformance)
 
-## Intervene on retrieval before using memory utility
+## Make security evaluation a composable evidence matrix
 
-Causal Memory Policy identifies a blind spot in memory optimization. A memory that is never retrieved cannot reveal its effect through store-level comparisons. On LongMemEval and LoCoMo, this identification failure affected 54 percent and 67 percent of required memories. Reserving retrieval slots with known sampling propensities improved required-versus-non-required discrimination from 0.54 to 0.66 AUC.
+pikit separates attack wording, delivery carrier, prevention strategy, target agent, trace, and verdict. Its public toolkit includes 13 attacks, 16 carriers, 9 prevention strategies, and runtime adapters for OpenClaw and Hermes Agent. This matters because an audited prompt-injection harness changed measured attack success from 21.7 percent to 1.2 percent after correcting payload delivery and tool-argument scoring.
 
 ### Why it matters
 
-A memory policy can delete useful records because its own retriever never exposed them. Logging memory operations does not reveal this failure. Evaluation needs randomized retrieval exposure, known propensities, and a separate decision rule for irreversible retention changes.
+Security evaluation is invalid when the payload never reaches the model or the grader checks the wrong effect. A composable matrix makes the delivery path and verdict predicate explicit, so new defenses can be compared against the same evidence contract.
 
 ### Fit in the stack
 
-CMP belongs between memory retrieval and retention policy. Raw events stay canonical. A bounded exploration lane exposes candidate memories, a causal estimator scores observed query utility, and a separate policy decides whether evidence is strong enough for deletion or consolidation.
+This belongs in trajectory-aware evaluation and the harness test layer. It should sit beside environment-specific delivery receipts, exact tool-argument predicates, and realized-effect checks.
 
 ### Practical tools and methodologies worth exploring
 
-- fixed exploration slots in retrieval payloads
-- logged sampling propensities and inverse-propensity estimates
-- no-delete controls and reversible demotion before deletion
-- per-query utility reports separated from future-query retention value
-- LongMemEval and LoCoMo tests with retrieval intervention enabled and disabled
+- pikit as a fixture generator and trace collector
+- delivery receipts for browser, document, memory, MCP, and tool-output carriers
+- exact argument and realized-effect predicates
+- paired defended and undefended replays against the same payload corpus
+- regression matrices keyed by attack, carrier, defense, agent, and verdict version
 
-Artifact status: the paper-linked 4open.science snapshot resolved and was inspected read-only. It exposes pinned requirements, scripts, configs, raw results, manifests, and offline analysis files. Regenerating raw draws needs API keys and the README estimates about $195 in API cost; the artifact was not cloned or executed.
+Implementability score: 0.88
 
-Evidence caveat: identified utility reached 0.78 AUC for the query on which it was estimated, but no tested aggregation predicted value on unseen queries. CMP improves measurement; it does not solve long-term retention.
+Core sources: [pikit paper](https://arxiv.org/abs/2609.36817v1), [pikit in AI-Infra-Guard](https://github.com/Tencent/AI-Infra-Guard/tree/main/Research/pikit), [Auditing Agent Security Benchmarks](https://arxiv.org/abs/2609.32691v1)
+
+## Intervene on retrieval and gate shared-memory admission
+
+Causal Memory Policy shows that store-level utility estimates fail when retrieval never exposes the memory. The paper reports identification failure for 54 percent of required LongMemEval memories and 67 percent on LoCoMo, then improves discrimination with randomized retrieval slots and known propensities. The shared-memory admission benchmark finds a related failure: uncontested false beliefs were repeated in 0.97 to 0.99 of probes, while a declared-source-type gate reduced false adoption to 0.06 to 0.09.
+
+### Why it matters
+
+A memory can look useless because retrieval never surfaced it, and a repeated claim can look corroborated when every copy descends from one source. Retention and admission decisions need controlled exposure plus lineage, not frequency alone.
+
+### Fit in the stack
+
+Memory is an evidence-selection system. Retrieval policy, provenance roots, source classes, contest state, and retention policy must be observable and separately testable.
+
+### Practical tools and methodologies worth exploring
+
+- bounded randomized retrieval slots with propensity logging
+- reversible demotion and no-delete controls while utility is unidentified
+- provenance-root collapse before corroboration counts
+- source-class admission gates, contest state, and temporal supersession
+- replay tests that vary retrieval exposure while holding the task fixed
 
 Implementability score: 0.68
 
-Core sources:
-- [Causal Memory Policy](https://arxiv.org/abs/2610.02070v1)
-- [paper-linked implementation artifact](https://anonymous.4open.science/r/cmp-release-D0C3/)
+Core sources: [Causal Memory Policy](https://arxiv.org/abs/2610.02070v1), [Epistemic Admission in Shared Agent Memory](https://arxiv.org/abs/2609.30813v1), [public benchmark artifact](https://github.com/lxy1134/iclr_2027)
 
-## Working conclusion
+## Weekly implication
 
-Compile stable control flow into code, evaluate the complete deployed configuration, and instrument memory exploration before optimizing retention. The common rule is to expose hidden system choices as versioned, testable factors.
+Treat the workflow program, full deployed configuration, evidence-selection policy, and evaluator contract as one inspectable system. Optimization comes after the trace can show which program path ran, which evidence was available, what effect occurred, and which component deserves credit or blame.

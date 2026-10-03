@@ -439,3 +439,20 @@ Implementability score: 0.80
 Sources:
 - [SWE-Prometheus](https://arxiv.org/abs/2609.29465v1)
 - [CosmosMind-ai/SWE-Prometheus](https://github.com/CosmosMind-ai/SWE-Prometheus)
+
+## October 3, 2026 update: make advisory review a callable stage
+
+GitHub now lets workflows request Copilot code review through REST or GraphQL and select effort per request. A coding-agent control plane can therefore invoke review after a pull request update instead of relying on a person to click the UI.
+
+Practical lesson:
+- run repository-native checks before requesting model review;
+- choose effort from diff risk, affected authority, and change size;
+- record request identity, effort, completion, findings, and disposition;
+- keep merge authority behind deterministic policy and human approval where required.
+
+Product caveat: review is advisory and plan-gated. Balanced is now the inherited default unless Lite was selected, so cost and latency may change without a repository-local edit.
+
+Implementability score: 0.94
+
+Source:
+- [Copilot code review API](https://github.blog/changelog/2026-10-02-copilot-code-review-api-support-and-new-default-effort-level/)

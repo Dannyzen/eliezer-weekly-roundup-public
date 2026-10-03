@@ -2,42 +2,52 @@
 
 This index tracks the most recent structured implementation research. Each finding links to the dated analysis, primary sources, practical methods, and an implementability score.
 
-## Latest Structured Update: 2026-10-02 Daily Scan
+## Latest Structured Update: 2026-10-03
 
-Today's implementation rule is to expose control flow and experimental factors. Compile repeatable orchestration into code, evaluate the deployed configuration as a system, and intervene on retrieval before optimizing memory.
+Saturday's strongest signal is that agent reliability depends on the correct evaluation and recovery unit. Review the object composed by the team, select routing baselines without test-label privilege, make review callable from the workflow, and persist enough execution state to resume interrupted turns safely.
 
-### Compile recurring multi-agent work into code
+### Review the composed object
 
-Summary: GitHub Dynamic Workflows let a Copilot extension define deterministic commands, tool calls, sequential or parallel agent stages, structured handoffs, checkpoints, resume behavior, and run limits. The feature is a public preview and Copilot CLI requires experimental mode.
+Summary: separately admissible fragments can jointly enable a prohibited use. FlowReview reduced denied commits from 413 of 480 under local review to 0 of 480 under combined-artifact review, while preserving authorized supply at 459 of 480.
 
-Analysis: [daily analysis](2026-10-02/reasoning.md#compile-recurring-multi-agent-work-into-code)
-Durable topic: [Multi-Agent Orchestration](multi-agent-orchestration/multi-agent-orchestration.md)
-Core sources: [release](https://github.blog/changelog/2026-10-01-dynamic-workflows-in-copilot-cli-and-the-copilot-app/), [documentation](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-dynamic-workflows)
-Tools and methodologies worth exploring now: Copilot CLI dynamic workflows, typed stage outputs, deterministic joins, explicit parallel branches, review checkpoints, AI-credit limits
-Implementability score: 0.90
+Analysis: [daily analysis](2026-10-03/reasoning.md#review-the-composed-object)
+Durable topics: [Multi-Agent Orchestration](multi-agent-orchestration/multi-agent-orchestration.md), [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
+Core sources: [paper](https://arxiv.org/abs/2610.00371v1), [FlowReview](https://github.com/yunbeizhang/FlowReview)
+Tools and methodologies worth exploring now: governed-object identity, authorization-paired evaluation, isolated permission ranking, runtime assembly, deterministic commit gates
+Implementability score: 0.78
 
-### Evaluate the whole deployed agent configuration
+### Use held-out baselines for safety routing
 
-Summary: A factorial study across four scientific coding tasks found that repeated runs of the same configuration produced about 54 percent of outcome variance. Task information mattered more than model size or time budget, and a dedicated verification tool changed behavior more than a self-verification prompt.
+Summary: a best-single-model baseline chosen on test labels creates a false floor under distribution shift. Select the comparator inside each fold and report category-held-out performance.
 
-Analysis: [daily analysis](2026-10-02/reasoning.md#evaluate-the-model-harness-tools-prompt-and-budget-as-one-system)
-Durable topic: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
-Core sources: [paper](https://arxiv.org/abs/2610.01618v1), [trajectory dataset](https://huggingface.co/datasets/lusxvr/agentic-science-trajectories)
-Tools and methodologies worth exploring now: factorial configuration sweeps, repeated cells, variance decomposition, dedicated verification tools, trajectory taxonomies
-Implementability score: 0.82
+Analysis: [daily analysis](2026-10-03/reasoning.md#use-held-out-baselines-for-safety-routing)
+Durable topics: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
+Core source: [False Floors](https://arxiv.org/abs/2610.01535v1)
+Tools and methodologies worth exploring now: nested baseline selection, held-out categories, suite holdouts, judge-sensitivity checks, branching rollouts
+Implementability score: 0.72
 
-### Intervene on retrieval before optimizing memory
+### Trigger code review through the API
 
-Summary: Causal Memory Policy found that 54 percent of required LongMemEval memories and 67 percent on LoCoMo were never exposed to a utility estimator. Randomized retrieval slots with known propensities improved discrimination from 0.54 to 0.66 AUC, while unseen-query retention value remained unresolved.
+Summary: GitHub's REST and GraphQL APIs can now request Copilot code review and set effort per request. This turns review into a callable workflow stage.
 
-Analysis: [daily analysis](2026-10-02/reasoning.md#intervene-on-retrieval-before-using-memory-utility)
-Durable topic: [Memory Systems](memory-systems/memory-systems.md)
-Core source: [Causal Memory Policy](https://arxiv.org/abs/2610.02070v1)
-Tools and methodologies worth exploring now: bounded retrieval exploration, propensity logging, inverse-propensity estimates, reversible demotion, no-delete controls
-Implementability score: 0.68
+Analysis: [daily analysis](2026-10-03/reasoning.md#trigger-code-review-through-the-api)
+Durable topic: [Coding Agent Control Plane](coding-agent-control-plane/coding-agent-control-plane.md)
+Core source: [GitHub changelog](https://github.blog/changelog/2026-10-02-copilot-code-review-api-support-and-new-default-effort-level/)
+Tools and methodologies worth exploring now: risk-based review effort, API-triggered review, review receipts, deterministic merge gates
+Implementability score: 0.94
+
+### Make long turns restart-safe
+
+Summary: Cloudflare PiHarness binds Pi Durable to Durable Object lifecycle persistence so long-running work can survive interruption. Adoption still needs explicit replay-safety and recovery tests.
+
+Analysis: [daily analysis](2026-10-03/reasoning.md#make-long-turns-restart-safe)
+Durable topic: [Sessionful Agent Loops](sessionful-agent-loops/sessionful-agent-loops.md)
+Core source: [Cloudflare changelog](https://developers.cloudflare.com/changelog/post/2026-10-02-pi-harness/)
+Tools and methodologies worth exploring now: PiHarness, Durable Objects, resume cursors, replay-safe tool classes, interruption fixtures
+Implementability score: 0.86
 
 ## Current implication
 
-Make workflow structure, configuration choices, and retrieval exposure visible in the trace. Optimization is trustworthy only when the system records which control path and evidence opportunity produced the result.
+Use the right system boundary. Compose artifacts before authorization, choose baselines without hidden label access, call review from the workflow, and prove that durable turns recover without duplicating side effects.
 
-Latest roundup: [2026-10-02](../roundups/2026-10-02.md).
+Latest roundup: [2026-10-03](../roundups/2026-10-03.md).

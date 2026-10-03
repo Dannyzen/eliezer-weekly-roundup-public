@@ -6,53 +6,31 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-10-02: [coded orchestration, system-level evaluation, causal memory exposure, and use-time authority](roundups/2026-10-02.md)
-- AgenticAI daily analysis: [dynamic workflows, complete configuration evaluation, and causal memory policy](AgenticAI/2026-10-02/reasoning.md)
-- Strategy daily analysis: [provenance-aware capability enforcement at dispatch](Strategy/2026-10-02/sovereignty.md)
+- Daily research, 2026-10-03: [composition-aware authorization, honest router baselines, API review, and durable turns](roundups/2026-10-03.md)
+- Latest implementation analysis: [AgenticAI](AgenticAI/2026-10-03/reasoning.md)
+- Latest strategy analysis: [Strategy](Strategy/2026-10-03/sovereignty.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
-- Deep Dive Wednesday, 2026-09-30: [the model-harness pair is the deployment unit](roundups/2026-09-30.md)
-- Friday synthesis, 2026-09-25: [agent reliability is a custody problem](roundups/2026-09-25.md)
+- Friday synthesis, 2026-10-02: [agents as executable evidence pipelines](roundups/2026-10-02.md)
 
 ## Current thesis
 
-Agent reliability depends on explicit orchestration, system-level evaluation, observable evidence selection, and executable authority. Stable workflow structure belongs in code. The model, harness, tools, context, budget, and repeated-run variance form one evaluation unit. Memory policies need controlled retrieval exposure. Side effects need a deterministic final gate over authenticated scope, provenance, concrete arguments, and realized effects.
+Reliable agent systems need explicit decision units. Multi-agent authorization must resolve the object composed across workers before it releases an action. Router evaluation must select fixed baselines without access to test labels. Long-running execution must persist step and receipt state so recovery does not duplicate side effects. Review should be a callable workflow stage with risk-selected effort and a separate deterministic merge gate.
 
 The current stack therefore emphasizes:
 
-- coded workflows with typed stages, deterministic joins, checkpoints, and run limits;
-- factorial model-harness-tool-context-budget evaluation with repeated cells;
-- randomized retrieval exposure before memory utility or deletion decisions;
-- provenance-aware capability and effect checks immediately before dispatch;
-- versioned self-improvement episodes with external evaluation and promotion;
-- persistent context graphs that select original evidence instead of rewriting it;
-- workflow routing with complete cost, latency, fallback, and validation receipts;
-- versioned action-state graphs plus mutation tests and randomized attestation;
-- versioned worker identities, capabilities, budgets, artifacts, and terminal receipts;
-- execution graphs with typed handoffs and explicit dependency order;
-- executable benchmark contracts for tool state and evaluator reads;
-- mutation tests for benchmark checkers and scorers;
-- composable attack, channel, defense, agent, trace, and verdict matrices;
-- machine-checkable payload and policy delivery receipts;
-- exact tool-argument and realized-effect predicates;
-- typed capability shapes with current-session value validation;
-- audience labels that survive derivation and consolidation;
-- object-specific grants for memory scope widening;
-- exact viewer-set and delivered-context receipts;
-- environment identity and conformance per evaluation scenario;
-- paired governed and ungoverned trajectory replay;
-- signed intervention ledgers that count false alarms and lost corrections;
-- typed execution-state nodes with references to immutable raw observations;
-- progressive evidence access instead of full transcript replay;
-- provenance-root collapse before shared-memory admission;
-- source-class gates, contest state, and supersession for persistent claims;
-- separate client authentication, delegated credential admission, tool authorization, and effect receipts;
-- canonical action manifests with resolved tool identity and typed arguments;
-- source-linked obligation ledgers that the model cannot close by claiming completion;
-- independent trace capture with remote retention and sequence-gap detection;
-- deterministic shutdown, credential, network, queue, and compute revocation below orchestration.
+- governed-object identity across artifacts, agents, and representations;
+- paired deny and allow evaluation that preserves authorized utility;
+- isolated trusted permission ranking and deterministic commit enforcement;
+- comparator selection inside held-out folds for routing evaluations;
+- category and suite holdouts that represent deployment shift;
+- judge-sensitivity and model-pool saturation checks;
+- API-triggered advisory review after repository-native gates;
+- effort selection tied to change risk and affected authority;
+- durable run identity, step state, resume cursors, and tool receipts;
+- replay-safety classes plus interruption tests around every side effect.
 
-Start with the executable boundary: compile the workflow, test the whole deployed configuration, instrument evidence exposure, and bind dispatch to typed capabilities.
+Start at the boundary: resolve what the workflow assembled, prove what the benchmark exposed, and persist what recovery needs.
 
 ## Browse by category
 

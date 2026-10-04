@@ -1535,3 +1535,26 @@ Sources:
 - [Agents Are Systems, Not Models](https://arxiv.org/abs/2610.01618v1)
 - [research repository](https://github.com/lusxvr/rethinking-agent-evaluation)
 - [trajectory dataset](https://huggingface.co/datasets/lusxvr/agentic-science-trajectories)
+
+## October 4, 2026 update: score terminal state and harness fit
+
+ThinkingBox and Mingbird expose two different harness obligations. ThinkingBox makes terminal backend state the oracle across 507 workflows and 20 repeats per task. Mingbird shows that small local models need strict prefill budgets, completion gates, and loop detection before model capability becomes usable task completion.
+
+The shared architecture rule is to make the harness own the conditions the model cannot verify reliably:
+
+- isolate state and evaluate required, forbidden, and unchanged effects;
+- repeat trials so reliability is distinct from pass@1;
+- bind model evaluations to an exact harness version and machine budget;
+- reject completion until deterministic gates pass;
+- retain traces and state snapshots for causal diagnosis.
+
+ThinkingBox is directly explorable through OpenEnv. Mingbird v1.9.2 is public and Apache-2.0, but its performance evidence remains author-run and single-machine.
+
+Implementability score: 0.88 for state-based repeated evaluation; 0.82 for the Mingbird harness pattern.
+
+Sources:
+- https://huggingface.co/blog/microsoft/thinkingbox
+- https://arxiv.org/abs/2608.19741v4
+- https://github.com/huggingface/OpenEnv/tree/main/envs/thinkingbox_env
+- https://arxiv.org/abs/2610.02001v1
+- https://github.com/Mingbird/Mingbird-agent

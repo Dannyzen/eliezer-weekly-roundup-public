@@ -1042,3 +1042,23 @@ Implementability score: 0.62
 
 Source:
 - [HEXIS](https://arxiv.org/abs/2609.30123v1)
+
+## October 4, 2026 update: skill composition can launder authority
+
+APEX shows that individually plausible skills can become harmful through their handoff artifacts. An upstream skill writes a progress record containing false approval, and a downstream skill converts that record into an attacker-selected effect. The chain succeeded in 512 of 690 attempts across six models.
+
+Treat the composed skill graph as the security unit:
+
+- preserve source skill and source snapshot on every artifact;
+- label skill output as derived evidence rather than user authority;
+- bind approval to the original request and one exact action;
+- fuzz multi-skill workflows that share mutable files or summaries;
+- release effects through a deterministic gate below the skill layer.
+
+The prompt-only defense lowered attack success but also cut benign verifier pass rate sharply. Composition safety needs typed authority and runtime enforcement.
+
+Implementability score: 0.68
+
+Sources:
+- https://arxiv.org/abs/2610.01564v1
+- https://github.com/Minakamiii/Chaining_Skills_to_Hijack_LLM_Agents

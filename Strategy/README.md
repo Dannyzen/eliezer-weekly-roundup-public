@@ -2,32 +2,52 @@
 
 This index tracks the most recent structured strategy research. Each finding links to the dated analysis, durable topics, primary sources, practical methods, and an implementability score.
 
-## Latest Structured Update: 2026-10-03
+## Latest Structured Update: 2026-10-04
 
-Today's authority rule is that the decision boundary must see the same object and evidence as the effect or claim it governs. Multi-agent authorization must review the composed object. Router evaluation must deny the baseline privileged access to test labels.
+Today's rule is that prose cannot prove completion or grant authority. Terminal state proves the workflow landed. Origin-bound grants prove approval. Request-bound filters prove tool necessity. Local execution earns sovereignty through measured reliability.
 
-### Composition is an authorization boundary
+### Make terminal state the source of truth
 
-Summary: individually admissible contributions can compose into a prohibited object or use. Govern canonical object identity, trusted permission, proposed action, and final enforcement as one release unit.
+Summary: ThinkingBox evaluates persistent effects across 507 workflows and 20 repetitions per task. The gap between pass@1 and pass^20 shows why occasional success is insufficient for consequential automation.
 
-Analysis: [daily strategy analysis](2026-10-03/sovereignty.md#composition-is-an-authorization-boundary)
-Durable topics: [Context-to-Execution Integrity](context-to-execution-integrity/context-to-execution-integrity.md), [Agent Execution Control Plane](agent-execution-control-plane/agent-execution-control-plane.md)
-Core sources: [Deny Without Disabling](https://arxiv.org/abs/2610.00371v1), [FlowReview](https://github.com/yunbeizhang/FlowReview)
-Tools and methodologies worth exploring now: composed-object resolution, authorization-paired evaluation, isolated permission ranking, deterministic commit gates, effect receipts
-Implementability score: 0.78
+Analysis: [daily strategy analysis](2026-10-04/sovereignty.md#terminal-state-is-the-reliability-contract)
+Durable topic: [Evaluation Containment Control Plane](evaluation-containment-control-plane/evaluation-containment-control-plane.md)
+Core sources: [implementation article](https://huggingface.co/blog/microsoft/thinkingbox), [paper v4](https://arxiv.org/abs/2608.19741v4)
+Tools and methodologies worth exploring now: terminal-state contracts, isolated MCP sessions, repeated trials, pass^k, cost per successful state transition
+Implementability score: 0.88
 
-### Baseline selection is a governance decision
+### Define local-first through measured routing
 
-Summary: selecting a fixed-model comparator on evaluation labels grants it information unavailable to the router. Put comparator selection, fold construction, judge identity, and saturation checks inside the evaluation contract.
+Summary: Mingbird shows that local model capability depends on harness fit. Keep tasks local only when a model and harness pair clears a measured quality floor, then log explicit escalation reasons.
 
-Analysis: [daily strategy analysis](2026-10-03/sovereignty.md#baseline-selection-is-a-governance-decision)
-Durable topic: [Model Router Governance](model-router-governance/model-router-governance.md)
-Core source: [False Floors](https://arxiv.org/abs/2610.01535v1)
-Tools and methodologies worth exploring now: nested comparator selection, category holdouts, suite holdouts, dual-convention reporting, judge audits
-Implementability score: 0.72
+Analysis: [daily strategy analysis](2026-10-04/sovereignty.md#local-first-is-a-measured-operating-mode)
+Durable topic: [Local-First Agents](local-first-agents/local-first-agents.md)
+Core sources: [paper v1](https://arxiv.org/abs/2610.02001v1), [repository](https://github.com/Mingbird/Mingbird-agent)
+Tools and methodologies worth exploring now: local eligibility matrices, harness-version binding, explicit cloud escalation, local failure telemetry
+Implementability score: 0.82
+
+### Prevent authority laundering through skill artifacts
+
+Summary: APEX shows that an upstream skill can place false approval in a progress artifact that a downstream skill treats as authority. Derived artifacts must never increase execution privilege.
+
+Analysis: [daily strategy analysis](2026-10-04/sovereignty.md#skill-handoffs-cannot-mint-approval)
+Durable topics: [Untrusted Data Boundaries](untrusted-data-boundaries/untrusted-data-boundaries.md), [Agent Execution Control Plane](agent-execution-control-plane/agent-execution-control-plane.md)
+Core sources: [paper v1](https://arxiv.org/abs/2610.01564v1), [repository](https://github.com/Minakamiii/Chaining_Skills_to_Hijack_LLM_Agents)
+Tools and methodologies worth exploring now: derived-evidence labels, origin-bound approval, source-snapshot lineage, composition tests, exact-effect release
+Implementability score: 0.68
+
+### Bind sensitive access to the request
+
+Summary: OverAct finds that models retrieve more private data than requests require. Pre-dispatch request-grounded filtering reduced privacy-oriented excess by 43%.
+
+Analysis: [daily strategy analysis](2026-10-04/sovereignty.md#tool-access-must-be-request-bound)
+Durable topic: [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md)
+Core source: [OverAct paper v1](https://arxiv.org/abs/2610.01508v1)
+Tools and methodologies worth exploring now: purpose-bound grants, minimal tool sets, deterministic necessity checks, denied-call telemetry
+Implementability score: 0.76
 
 ## Current implication
 
-Govern the information boundary before trusting either an action or an evaluation. The approved object and the scored comparator must not receive hidden privileges unavailable to the system being judged.
+Keep completion truth, approval authority, and data-access purpose outside model-authored prose. The model may propose. The control plane must verify and release.
 
-Latest roundup: [2026-10-03](../roundups/2026-10-03.md).
+Latest roundup: [2026-10-04](../roundups/2026-10-04.md).

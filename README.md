@@ -6,31 +6,31 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily research, 2026-10-03: [composition-aware authorization, honest router baselines, API review, and durable turns](roundups/2026-10-03.md)
-- Latest implementation analysis: [AgenticAI](AgenticAI/2026-10-03/reasoning.md)
-- Latest strategy analysis: [Strategy](Strategy/2026-10-03/sovereignty.md)
+- Daily research, 2026-10-04: [state truth, local harness fit, skill-chain authority, and request-bound tools](roundups/2026-10-04.md)
+- Latest implementation analysis: [AgenticAI](AgenticAI/2026-10-04/reasoning.md)
+- Latest strategy analysis: [Strategy](Strategy/2026-10-04/sovereignty.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 - Friday synthesis, 2026-10-02: [agents as executable evidence pipelines](roundups/2026-10-02.md)
 
 ## Current thesis
 
-Reliable agent systems need explicit decision units. Multi-agent authorization must resolve the object composed across workers before it releases an action. Router evaluation must select fixed baselines without access to test labels. Long-running execution must persist step and receipt state so recovery does not duplicate side effects. Review should be a callable workflow stage with risk-selected effort and a separate deterministic merge gate.
+Reliable agent systems need deterministic boundaries around effects. Completion is a terminal-state claim, not a sentence. Local capability belongs to a tested model and harness pair. Skill artifacts may carry evidence but cannot mint approval. Sensitive tool calls require request-bound necessity before dispatch.
 
 The current stack therefore emphasizes:
 
-- governed-object identity across artifacts, agents, and representations;
-- paired deny and allow evaluation that preserves authorized utility;
-- isolated trusted permission ranking and deterministic commit enforcement;
-- comparator selection inside held-out folds for routing evaluations;
-- category and suite holdouts that represent deployment shift;
-- judge-sensitivity and model-pool saturation checks;
-- API-triggered advisory review after repository-native gates;
-- effort selection tied to change risk and affected authority;
-- durable run identity, step state, resume cursors, and tool receipts;
-- replay-safety classes plus interruption tests around every side effect.
+- executable terminal-state predicates for required, forbidden, and unchanged effects;
+- repeated trials that separate occasional capability from dependable completion;
+- cost per successful state transition rather than cost per attempted run;
+- harness-specific prefill budgets, completion gates, and loop detection;
+- explicit local eligibility and cloud escalation policy;
+- source identity and immutable lineage across skill handoffs;
+- origin-bound approval grants tied to one exact action;
+- composed skill testing rather than package-only review;
+- minimal required tool sets and request-grounded justification;
+- pre-dispatch filtering plus receipts for suppressed sensitive calls.
 
-Start at the boundary: resolve what the workflow assembled, prove what the benchmark exposed, and persist what recovery needs.
+Start at the effect boundary: verify what changed, who authorized it, and why each data access was necessary.
 
 ## Browse by category
 

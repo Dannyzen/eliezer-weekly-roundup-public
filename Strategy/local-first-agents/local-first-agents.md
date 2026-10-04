@@ -226,3 +226,24 @@ Sources:
 ## Current read
 
 The important shift is not just that local models beat every hosted model. They do not. The shift is that local-first is now viable enough to become the default for a meaningful slice of agent workloads, especially when paired with explicit escalation rules, local privacy filters, narrow multimodal action surfaces, and trace governance for privileged local tools. That forces better architecture decisions: explicit routing, explicit scopes, explicit reasons for what leaves the device, explicit evidence for what the agent did locally, and operator surfaces that preserve human supervision.
+
+## October 4, 2026 update: small local models need bounded harness mechanics
+
+Mingbird makes a useful local-first claim: model capability depends on the harness that budgets context, accepts completion, and detects loops. Its reported 288-cell comparison favors strict prefill control, task re-read finish gates, and signature-level loop detection.
+
+Use the pattern without overclaiming the benchmark:
+
+- bind each local model to an exact harness and machine profile;
+- measure task completion with deterministic artifact checks;
+- keep context prefill within a fixed byte or token budget;
+- require explicit completion conditions;
+- escalate to a hosted model only with a recorded reason.
+
+The repository and v1.9.2 release are public, but the paper uses a self-built benchmark, one machine, and largely single-trial scoring. Local-first becomes a credible operating mode through repeated evidence, not model size or deployment location.
+
+Implementability score: 0.82
+
+Sources:
+- https://arxiv.org/abs/2610.02001v1
+- https://github.com/Mingbird/Mingbird-agent
+- https://github.com/Mingbird/Mingbird-agent/releases/tag/v1.9.2

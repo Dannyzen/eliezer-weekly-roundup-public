@@ -2,52 +2,52 @@
 
 This index tracks the most recent structured implementation research. Each finding links to the dated analysis, primary sources, practical methods, and an implementability score.
 
-## Latest Structured Update: 2026-10-03
+## Latest Structured Update: 2026-10-04
 
-Saturday's strongest signal is that agent reliability depends on the correct evaluation and recovery unit. Review the object composed by the team, select routing baselines without test-label privilege, make review callable from the workflow, and persist enough execution state to resume interrupted turns safely.
+Sunday has no new arXiv listing. The strongest fresh implementation signal is ThinkingBox through OpenEnv. The best non-duplicate Friday papers reinforce three adjacent controls: harness fit for small local models, authority lineage across skill chains, and request-bound filtering before sensitive tool calls.
 
-### Review the composed object
+### Score terminal state, then repeat
 
-Summary: separately admissible fragments can jointly enable a prohibited use. FlowReview reduced denied commits from 413 of 480 under local review to 0 of 480 under combined-artifact review, while preserving authorized supply at 459 of 480.
+Summary: ThinkingBox grades 507 stateful workflows through executable backend checks and repeats each task 20 times. The strongest reported model falls from 65.36% pass@1 to 25.25% pass^20.
 
-Analysis: [daily analysis](2026-10-03/reasoning.md#review-the-composed-object)
-Durable topics: [Multi-Agent Orchestration](multi-agent-orchestration/multi-agent-orchestration.md), [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
-Core sources: [paper](https://arxiv.org/abs/2610.00371v1), [FlowReview](https://github.com/yunbeizhang/FlowReview)
-Tools and methodologies worth exploring now: governed-object identity, authorization-paired evaluation, isolated permission ranking, runtime assembly, deterministic commit gates
-Implementability score: 0.78
+Analysis: [daily analysis](2026-10-04/reasoning.md#score-the-state-left-behind)
+Durable topic: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
+Core sources: [implementation article](https://huggingface.co/blog/microsoft/thinkingbox), [paper v4](https://arxiv.org/abs/2608.19741v4), [OpenEnv environment](https://github.com/huggingface/OpenEnv/tree/main/envs/thinkingbox_env)
+Tools and methodologies worth exploring now: OpenEnv, ThinkingBox data tag, terminal-state predicates, repeated trials, pass@k and pass^k, state snapshots
+Implementability score: 0.88
 
-### Use held-out baselines for safety routing
+### Fit the harness to small local models
 
-Summary: a best-single-model baseline chosen on test labels creates a false floor under distribution shift. Select the comparator inside each fold and report category-held-out performance.
+Summary: Mingbird uses strict prefill budgets, task re-read completion gates, and loop detection to recover useful task performance from small Ollama models. The public v1.9.2 release is available now, with narrow evidence caveats.
 
-Analysis: [daily analysis](2026-10-03/reasoning.md#use-held-out-baselines-for-safety-routing)
-Durable topics: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md), [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
-Core source: [False Floors](https://arxiv.org/abs/2610.01535v1)
-Tools and methodologies worth exploring now: nested baseline selection, held-out categories, suite holdouts, judge-sensitivity checks, branching rollouts
-Implementability score: 0.72
+Analysis: [daily analysis](2026-10-04/reasoning.md#fit-the-harness-to-the-model)
+Durable topics: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md), [Context Economy](context-economy/context-economy.md)
+Core sources: [paper v1](https://arxiv.org/abs/2610.02001v1), [repository](https://github.com/Mingbird/Mingbird-agent), [release](https://github.com/Mingbird/Mingbird-agent/releases/tag/v1.9.2)
+Tools and methodologies worth exploring now: Ollama, byte-level prefill budgets, finish gates, signature-level loop detection, artifact scoring, explicit cloud escalation
+Implementability score: 0.82
 
-### Trigger code review through the API
+### Test skill chains as composed programs
 
-Summary: GitHub's REST and GraphQL APIs can now request Copilot code review and set effort per request. This turns review into a callable workflow stage.
+Summary: APEX used agent-written handoff artifacts to carry false approval across otherwise plausible skills, succeeding in 512 of 690 attempts. Prompt-only mitigation caused a large benign-utility loss.
 
-Analysis: [daily analysis](2026-10-03/reasoning.md#trigger-code-review-through-the-api)
-Durable topic: [Coding Agent Control Plane](coding-agent-control-plane/coding-agent-control-plane.md)
-Core source: [GitHub changelog](https://github.blog/changelog/2026-10-02-copilot-code-review-api-support-and-new-default-effort-level/)
-Tools and methodologies worth exploring now: risk-based review effort, API-triggered review, review receipts, deterministic merge gates
-Implementability score: 0.94
+Analysis: [daily analysis](2026-10-04/reasoning.md#treat-skill-composition-as-a-single-security-boundary)
+Durable topic: [Skills as Control](skills-as-control/skills-as-control.md)
+Core sources: [paper v1](https://arxiv.org/abs/2610.01564v1), [repository](https://github.com/Minakamiii/Chaining_Skills_to_Hijack_LLM_Agents)
+Tools and methodologies worth exploring now: origin labels, immutable handoff lineage, exact approval grants, composition fuzzing, deterministic effect gates
+Implementability score: 0.68
 
-### Make long turns restart-safe
+### Filter unnecessary sensitive calls before dispatch
 
-Summary: Cloudflare PiHarness binds Pi Durable to Durable Object lifecycle persistence so long-running work can survive interruption. Adoption still needs explicit replay-safety and recovery tests.
+Summary: OverAct scores excess tool scope deterministically across 720 episodes. Request-grounded filtering reduced privacy-oriented excess by 43% without oracle access.
 
-Analysis: [daily analysis](2026-10-03/reasoning.md#make-long-turns-restart-safe)
-Durable topic: [Sessionful Agent Loops](sessionful-agent-loops/sessionful-agent-loops.md)
-Core source: [Cloudflare changelog](https://developers.cloudflare.com/changelog/post/2026-10-02-pi-harness/)
-Tools and methodologies worth exploring now: PiHarness, Durable Objects, resume cursors, replay-safe tool classes, interruption fixtures
-Implementability score: 0.86
+Analysis: [daily analysis](2026-10-04/reasoning.md#filter-tool-calls-against-the-literal-request)
+Durable topic: [Agent Gateway Governance](../Strategy/agent-gateway-governance/agent-gateway-governance.md)
+Core source: [OverAct paper v1](https://arxiv.org/abs/2610.01508v1)
+Tools and methodologies worth exploring now: minimal required tool sets, request-grounded justifications, pre-dispatch filtering, suppressed-call receipts, excess-access metrics
+Implementability score: 0.76
 
 ## Current implication
 
-Use the right system boundary. Compose artifacts before authorization, choose baselines without hidden label access, call review from the workflow, and prove that durable turns recover without duplicating side effects.
+Treat effect correctness, harness fit, artifact authority, and tool necessity as explicit runtime contracts. Model output can propose each decision. Deterministic infrastructure must verify it.
 
-Latest roundup: [2026-10-03](../roundups/2026-10-03.md).
+Latest roundup: [2026-10-04](../roundups/2026-10-04.md).

@@ -506,3 +506,21 @@ Implementability score: 0.88
 Sources:
 - [pikit](https://arxiv.org/abs/2609.36817v1)
 - [pikit repository](https://github.com/Tencent/AI-Infra-Guard/tree/main/Research/pikit)
+
+## October 4, 2026 update: skill-produced state cannot become user authority
+
+APEX demonstrates an authority-laundering path across skill handoffs. A skill-produced progress artifact can contain a false claim of approval that a later skill treats as permission to act. The artifact is coherent, task-related, and still untrusted.
+
+Extend data-boundary policy to procedural artifacts:
+
+- attach origin and transformation lineage to skill output;
+- prohibit derived artifacts from increasing privilege;
+- resolve approval only from an origin-bound user or policy grant;
+- compare the final action with the original request at release time;
+- test cross-skill compositions that appear benign in isolation.
+
+Implementability score: 0.68
+
+Sources:
+- https://arxiv.org/abs/2610.01564v1
+- https://github.com/Minakamiii/Chaining_Skills_to_Hijack_LLM_Agents

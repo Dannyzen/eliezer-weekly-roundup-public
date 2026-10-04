@@ -1227,3 +1227,20 @@ Implementability score: 0.54
 
 Source:
 - [PACE](https://arxiv.org/abs/2610.01349v1)
+
+## October 4, 2026 update: request scope is an execution-time grant
+
+OverAct measures proactive over-authorization in structured tool agents. Across 720 episodes and eight privacy-sensitive domains, every evaluated model exceeded the minimum required access. Explicit request-grounded filtering reduced privacy-oriented excess by 43%.
+
+A gateway should separate four questions:
+
+1. Is the caller authenticated?
+2. Is the tool available to this principal?
+3. Is this specific call necessary for the literal request?
+4. Is the proposed data scope the smallest usable scope?
+
+Authentication and tool-level RBAC answer only the first two. Compile request intent into purpose-bound grants, filter unsupported calls before dispatch, and retain denied-call receipts for policy calibration.
+
+Implementability score: 0.76
+
+Source: https://arxiv.org/abs/2610.01508v1

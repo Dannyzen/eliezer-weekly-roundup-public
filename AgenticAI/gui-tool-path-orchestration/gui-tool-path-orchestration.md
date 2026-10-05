@@ -308,3 +308,9 @@ Implementability score: 0.46
 
 Source:
 - [Jev-Mobile](https://arxiv.org/abs/2609.30186v1)
+
+## October 5, 2026 update: treat every browser step as a verified round trip
+
+WebFovea separates action parsing, page effect, observation reporting, and returned context. Its same-model score increase from 31.0 to 57.0 shows that browser reliability is a harness property. Record a receipt for each stage and fail closed when the intended action cannot be matched to a changed page state.
+
+Source: [WebFovea paper v1](https://arxiv.org/abs/2610.03036v1)

@@ -1558,3 +1558,9 @@ Sources:
 - https://github.com/huggingface/OpenEnv/tree/main/envs/thinkingbox_env
 - https://arxiv.org/abs/2610.02001v1
 - https://github.com/Mingbird/Mingbird-agent
+
+## October 5, 2026 update: generate evidence after candidate commitment
+
+GTDD separates implementation from testing and generates fresh cases only after the candidate is fixed. Reduced counterexamples become regression fixtures, while independent samples remain the acceptance gate. The durable harness pattern is post-commit evidence: visible tests guide development, fresh audits estimate contract coverage, and no model-authored success claim closes the loop.
+
+Source: [GTDD paper v1](https://arxiv.org/abs/2610.02952v1)

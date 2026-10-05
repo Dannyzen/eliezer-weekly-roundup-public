@@ -1244,3 +1244,9 @@ Implementability score: 0.64
 
 Source:
 - [Who Verifies the Graph?](https://arxiv.org/abs/2609.40027v1)
+
+## October 5, 2026 update: restore constraints at the action boundary
+
+GHOST shows that safety instructions stated far back in a benign trajectory can disappear from execution behavior. Keep durable, source-linked constraints outside conversational recall, restore the applicable subset before each consequential action, and apply a deterministic veto to the exact proposed effect.
+
+Source: [GHOST paper v1](https://arxiv.org/abs/2610.02664v1)

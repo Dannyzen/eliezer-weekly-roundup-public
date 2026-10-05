@@ -1244,3 +1244,9 @@ Authentication and tool-level RBAC answer only the first two. Compile request in
 Implementability score: 0.76
 
 Source: https://arxiv.org/abs/2610.01508v1
+
+## October 5, 2026 update: qualify detectors on the governed data plane
+
+Prompt-injection detector rankings transfer poorly from public benchmarks to AgentDojo and tau-bench tool outputs. Gateway admission should use replay from the deployed tool-output distribution, measure detection at a fixed low false-positive rate, and count legitimate tasks blocked by the filter.
+
+Sources: [paper v1](https://arxiv.org/abs/2610.03448v1), [benchmark repository](https://github.com/lzwhehe/benign-instruction-bench)

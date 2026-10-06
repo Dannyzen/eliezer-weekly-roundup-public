@@ -6,30 +6,28 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily research, 2026-10-05: [post-commit audits, browser round trips, restored constraints, and deployment-shaped detector evaluation](roundups/2026-10-05.md)
-- Latest implementation analysis: [AgenticAI](AgenticAI/2026-10-05/reasoning.md)
-- Latest strategy analysis: [Strategy](Strategy/2026-10-05/sovereignty.md)
+- Daily research, 2026-10-06: [inspectable behavior, executable repository policy, hard memory ownership, and visible security coverage](roundups/2026-10-06.md)
+- Latest implementation analysis: [AgenticAI](AgenticAI/2026-10-06/reasoning.md)
+- Latest strategy analysis: [Strategy](Strategy/2026-10-06/sovereignty.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 - Friday synthesis, 2026-10-02: [agents as executable evidence pipelines](roundups/2026-10-02.md)
-
 ## Current thesis
 
-Reliable agent systems collect evidence after proposals are fixed and at the exact effect boundary. Fresh audits test contracts beyond visible examples. Browser round trips prove actions landed. Constraint restoration preserves long-horizon policy. Deployment-shaped replay qualifies security filters.
+Reliable agent systems convert soft assumptions into checkable state. Behavior stays linked to source evidence. Repository guidance becomes executable policy. Retrieved memory passes an owner gate. Fleet security controls expose effective coverage.
 
 The current stack therefore emphasizes:
 
-- candidate commitment before fresh generated audits;
-- reduced counterexamples captured as regression fixtures;
-- independent final acceptance samples;
-- browser parse, effect, observation, and context stages;
-- post-action state assertions rather than optimistic click dispatch;
-- provenance-bearing safety-constraint registers;
-- deterministic pre-execution vetoes;
-- prompt-injection testing on real tool-output distributions;
-- fixed low false-positive operating points and blocked-task accounting.
+- source-linked behavior graphs for consequential decisions;
+- separate decision-identification and evidence-localization scores;
+- deterministic repository-policy checkers;
+- trajectory and final-artifact compliance audits;
+- hard owner and tenant gates after semantic retrieval;
+- fail-closed context assembly when authority is missing;
+- repository-level security-control inventory;
+- explicit separation of enablement, scan execution, findings, and remediation.
 
-Start at the effect boundary: freeze the proposal, restore its constraints, then demand evidence from the real environment.
+Start with the checkable boundary: preserve evidence, enforce local policy, authorize each retrieved object, and reconcile control coverage across the fleet.
 
 ## Browse by category
 

@@ -456,3 +456,22 @@ Implementability score: 0.94
 
 Source:
 - [Copilot code review API](https://github.blog/changelog/2026-10-02-copilot-code-review-api-support-and-new-default-effort-level/)
+
+## October 6, 2026 update: compile repository policy into trajectory checks
+
+SWE-CC converts contribution documentation into 823 deterministic checkers across 12 repositories and evaluates 500 end-to-end contribution tasks. Functionally correct patches still violated 43.1% of applicable policies, while 50.3% of violations occurred during intermediate execution.
+
+Practical lesson:
+- compile mandatory guidance into revision-bound checkers;
+- inspect trajectories and final artifacts;
+- preserve not-applicable outcomes;
+- measure policy discovery separately from policy reasoning;
+- keep functional correctness and repository compliance as separate release gates.
+
+Artifact caveat: the public repository has a populated default branch with benchmark data, adapters, checker code, a datasheet, and a license file. It was inspected read-only and not executed.
+
+Implementability score: 0.90
+
+Sources:
+- [SWE-CC](https://arxiv.org/abs/2610.06193v1)
+- [SWE-CC repository](https://github.com/dangtruong01/swe-cc-arxiv)

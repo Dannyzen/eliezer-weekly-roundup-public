@@ -416,3 +416,21 @@ Implementability score: 0.58
 
 Source:
 - [Audience-Bound Persistent Memory](https://arxiv.org/abs/2609.36373v1)
+
+## October 6, 2026 update: authorize after semantic retrieval
+
+MemLeak shows that pooled vector retrieval can cross user boundaries without an exploit. Incidental leakage reached 70 to 100 percent in the tested same-team setting, and hard post-retrieval ownership gating restored the reported clean contamination baseline with roughly 1.4 milliseconds of overhead.
+
+Practical lesson:
+- treat embedding similarity only as candidate selection;
+- attach trusted owner and tenant identity to every memory object;
+- recheck authorization after retrieval and before context assembly;
+- fail closed when object authority is absent or ambiguous;
+- test both retrieval leakage and generated-response contamination.
+
+Evidence caveat: some ablations use small samples, the scenarios are bounded and authored, and no public implementation repository resolved from the primary page.
+
+Implementability score: 0.93
+
+Source:
+- [MemLeak](https://arxiv.org/abs/2610.04195v1)

@@ -2,32 +2,32 @@
 
 This index tracks the most recent structured strategy research. Each finding links to the dated analysis, durable topics, primary sources, practical methods, and an implementability score.
 
-## Latest Structured Update: 2026-10-05
+## Latest Structured Update: 2026-10-06
 
-Historical safety context and generic detector benchmarks both fail when treated as execution authority. Restore constraints at release time and qualify filters on the exact tool-output distribution they govern.
+The governance signal is operational: enforce memory ownership after retrieval, and make security-control enablement visible across the repository fleet.
 
-### Restore historical constraints before execution
+### Enforce memory ownership after retrieval
 
-Summary: GHOST reports an 11.5% benign long-horizon constraint-violation rate on GPT-5.5. STAR-Guard combines semantic constraint restoration with a deterministic pre-execution audit.
+Summary: MemLeak reports 70 to 100 percent incidental leakage under pooled same-team retrieval and shows that hard post-retrieval ownership gating restored the clean contamination baseline with roughly 1.4 milliseconds of overhead.
 
-Analysis: [daily strategy analysis](2026-10-05/sovereignty.md#restore-historical-constraints-before-every-consequential-action)
-Durable topics: [Runtime Governance](runtime-governance/runtime-governance.md), [Context-to-Execution Integrity](context-to-execution-integrity/context-to-execution-integrity.md)
-Core source: [GHOST paper v1](https://arxiv.org/abs/2610.02664v1)
-Tools and methodologies worth exploring now: provenance-bearing constraint registers, applicability checks, exact-effect manifests, deterministic vetoes, long-history regression journeys
-Implementability score: 0.81
+Analysis: [daily strategy analysis](2026-10-06/sovereignty.md#enforce-memory-ownership-after-retrieval)
+Durable topic: [Memory Authority Control Plane](memory-authority-control-plane/memory-authority-control-plane.md)
+Core source: [MemLeak paper v1](https://arxiv.org/abs/2610.04195v1)
+Tools and methodologies worth exploring now: object ownership metadata, post-retrieval authorization, semantic-neighbor attack fixtures, response-contamination scoring, fail-closed identity resolution
+Implementability score: 0.93
 
-### Evaluate detectors on deployed tool outputs
+### Make security-control adoption visible by repository
 
-Summary: Prompt-injection detector rankings transferred poorly across public and agent-shaped benchmarks. False-positive rates on tool outputs ranged from zero to over 90%.
+Summary: GitHub security overview now reports effective AI Scan enablement by repository, supports coverage filters, and exports the field in CSV.
 
-Analysis: [daily strategy analysis](2026-10-05/sovereignty.md#evaluate-prompt-injection-detectors-on-deployed-tool-outputs)
-Durable topics: [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md), [Untrusted Data Boundaries](untrusted-data-boundaries/untrusted-data-boundaries.md)
-Core sources: [paper v1](https://arxiv.org/abs/2610.03448v1), [benchmark repository](https://github.com/lzwhehe/benign-instruction-bench)
-Tools and methodologies worth exploring now: tool-output replay, differential injection replay, fixed low-FPR evaluation, blocked-task accounting, training-data provenance audits
-Implementability score: 0.91
+Analysis: [daily strategy analysis](2026-10-06/sovereignty.md#make-security-control-adoption-visible-by-repository)
+Durable topic: [Agent Fleet Monitoring Control Plane](agent-fleet-monitoring-control-plane/agent-fleet-monitoring-control-plane.md)
+Core source: [GitHub changelog](https://github.blog/changelog/2026-10-06-code-scanning-ai-scan-enablement-status-in-security-overview)
+Tools and methodologies worth exploring now: scheduled coverage exports, expected-versus-effective reconciliation, exception ownership, rollout dashboards, source-bound coverage snapshots
+Implementability score: 0.97
 
 ## Current implication
 
-Context and benchmark rank may inform a decision. The execution control plane must restore, test, and enforce the decision against live action data.
+Control existence is not control coverage. Bind every memory object to an authorized audience and every fleet security promise to visible repository-level state.
 
-Latest roundup: [2026-10-05](../roundups/2026-10-05.md).
+Latest roundup: [2026-10-06](../roundups/2026-10-06.md).

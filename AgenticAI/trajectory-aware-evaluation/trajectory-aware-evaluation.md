@@ -1442,3 +1442,22 @@ Sources:
 - [tool-contract-conformance](https://github.com/rohithreddybc/tool-contract-conformance)
 - [pikit](https://arxiv.org/abs/2609.36817v1)
 - [pikit repository](https://github.com/Tencent/AI-Infra-Guard/tree/main/Research/pikit)
+
+## October 6, 2026 update: preserve source-linked evidence for consequential decisions
+
+AgentMonBench separates consequential-decision identification from evidence localization across omitted requirements, semantic behavior swaps, and real feedback traces. EBG deterministically organizes source-linked behaviors before a semantic monitor judges them.
+
+Practical lesson:
+- preserve source locations and behavior relations as first-class evaluation objects;
+- score whether the monitor found the decision and whether it found supporting evidence;
+- route only consequential choices into scarce human review;
+- keep the semantic verdict separate from deterministic evidence assembly.
+
+Artifact caveat: the public repository and ungated dataset were inspected read-only and not executed. The benchmark is under 1,000 examples, and the real-world demonstration covers five cases.
+
+Implementability score: 0.82
+
+Sources:
+- [AgentMonBench and EBG](https://arxiv.org/abs/2610.06406v1)
+- [EBG repository](https://github.com/zhk-lab/EBG)
+- [AgentMonBench dataset](https://huggingface.co/datasets/ZhaoHongKang/AgentMonBench)

@@ -188,6 +188,24 @@ Sources:
 - [GitHub release note](https://github.blog/changelog/2026-09-22-opentelemetry-in-the-github-copilot-app)
 - [GitHub OpenTelemetry documentation](https://docs.github.com/en/enterprise-cloud@latest/copilot/concepts/enterprise/opentelemetry)
 
+## October 6, 2026 update: inventory AI Scan enablement by repository
+
+GitHub security overview now exposes effective AI Scan for pull requests enablement as summary counts, repository rows, filters, and a coverage CSV field.
+
+Practical lesson:
+- define the repository fleet expected to carry the control;
+- reconcile expected and effective enablement on a schedule;
+- assign owners and expiry dates to exceptions;
+- distinguish enabled, scanned, finding-free, and remediated states;
+- retain coverage exports with release evidence.
+
+Product caveat: enablement visibility does not prove a scan ran, found every issue, or blocked release. Availability depends on GitHub organization or enterprise security features.
+
+Implementability score: 0.97
+
+Source:
+- [GitHub AI Scan enablement status](https://github.blog/changelog/2026-10-06-code-scanning-ai-scan-enablement-status-in-security-overview)
+
 ## Working conclusion
 
 A safe agent fleet cannot be governed one prompt or tool call at a time. Preserve durable principals, correlate behavior across services and days, verify harm in system state, rank cases under the real review budget, and keep intervention outside the monitor.

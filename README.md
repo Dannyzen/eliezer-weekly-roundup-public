@@ -6,29 +6,28 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily research, 2026-10-06: [inspectable behavior, executable repository policy, hard memory ownership, and visible security coverage](roundups/2026-10-06.md)
-- Latest implementation analysis: [AgenticAI](AgenticAI/2026-10-06/reasoning.md)
-- Latest strategy analysis: [Strategy](Strategy/2026-10-06/sovereignty.md)
+- Daily research, 2026-10-07: [reviewable long runs, attack-tested harness controls, auditable fleet resources, and reusable capability artifacts](roundups/2026-10-07.md)
+- Latest implementation analysis: [AgenticAI](AgenticAI/2026-10-07/reasoning.md)
+- Latest strategy analysis: [Strategy](Strategy/2026-10-07/sovereignty.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 - Friday synthesis, 2026-10-02: [agents as executable evidence pipelines](roundups/2026-10-02.md)
 ## Current thesis
 
-Reliable agent systems convert soft assumptions into checkable state. Behavior stays linked to source evidence. Repository guidance becomes executable policy. Retrieved memory passes an owner gate. Fleet security controls expose effective coverage.
+Reliable agent systems make both behavior and operating cost checkable. Long runs preserve source-linked observability. Harness controls are tested against utility and forbidden effects. Fleet runtimes prove resource ownership and cleanup. Repetitive workloads earn reusable artifacts only after quality and cost gates pass.
 
 The current stack therefore emphasizes:
 
-- source-linked behavior graphs for consequential decisions;
-- separate decision-identification and evidence-localization scores;
-- deterministic repository-policy checkers;
-- trajectory and final-artifact compliance audits;
-- hard owner and tenant gates after semantic retrieval;
-- fail-closed context assembly when authority is missing;
-- repository-level security-control inventory;
-- explicit separation of enablement, scan execution, findings, and remediation.
+- source-linked timelines for long-horizon agent evaluation;
+- structural scanners before semantic behavior labels;
+- paired harness-control trials with separate utility and attack oracles;
+- explicit testing of alternative execution paths;
+- per-agent process-tree and memory attribution;
+- admission control, cleanup receipts, and escaped-process detection;
+- build-versus-call routing for repetitive workloads;
+- held-out quality, marginal-cost, and drift gates for reusable artifacts.
 
-Start with the checkable boundary: preserve evidence, enforce local policy, authorize each retrieved object, and reconcile control coverage across the fleet.
-
+Start with the checkable boundary: preserve the source event, verify the realized effect, bind resources to a principal, and scale artifacts only after they beat honest controls.
 ## Browse by category
 
 - [AgenticAI](AgenticAI/README.md): implementation analysis on evaluation, memory, context policy, search, tools, and orchestration.

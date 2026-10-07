@@ -1461,3 +1461,22 @@ Sources:
 - [AgentMonBench and EBG](https://arxiv.org/abs/2610.06406v1)
 - [EBG repository](https://github.com/zhk-lab/EBG)
 - [AgentMonBench dataset](https://huggingface.co/datasets/ZhaoHongKang/AgentMonBench)
+
+## October 7, 2026 update: preserve observability across long-horizon evaluation
+
+Transect aligns structural events, token use, sub-agent activity, and judge labels on one turn-based timeline. Every generated label can retain source-turn provenance, and the resulting frames can be exported for cross-run analysis.
+
+Practical lesson:
+- render structural signals before semantic labels;
+- bind every label to source turns, model, prompt, and scanner settings;
+- use agreement diagnostics to find unstable classifications;
+- require independent expert evidence for validity;
+- preserve exported frames so later reviewers can reproduce the interpretation.
+
+Artifact caveat: the public MIT repository is populated but has no tagged release. The paper demonstrates one almost 13-million-token AI research run, and it states that judge reliability does not establish validity.
+
+Implementability score: 0.88
+
+Sources:
+- [Transect paper v1](https://arxiv.org/abs/2610.08364v1)
+- [Transect repository](https://github.com/AI-Safety-Institute/transect)

@@ -393,3 +393,22 @@ Implementability score: 0.72
 
 Source:
 - [False Floors](https://arxiv.org/abs/2610.01535v1)
+
+## October 7, 2026 update: route repetitive work through verified artifacts
+
+BOTTLED treats artifact creation as a routing option. The agent can spend a fixed budget to build a reusable program or small model, then compare workload quality and cost against per-item general inference and same-budget distillation.
+
+Practical lesson:
+- add build, validate, reuse as a route beside direct inference;
+- cap artifact-building time, compute, and API tokens;
+- require held-out quality before full-workload scale-out;
+- retain zero-shot and distillation controls;
+- rebuild or retire artifacts when workload drift breaks the gate.
+
+Artifact caveat: the benchmark covers three tasks in one OpenCode harness with ten-hour, A100-backed runs. The public MIT repository is populated but has no release and still promises some result-processing code.
+
+Implementability score: 0.61
+
+Sources:
+- [BOTTLED paper v1](https://arxiv.org/abs/2610.08775v1)
+- [BOTTLED repository](https://github.com/aktsonthalia/bottled)

@@ -206,6 +206,25 @@ Implementability score: 0.97
 Source:
 - [GitHub AI Scan enablement status](https://github.blog/changelog/2026-10-06-code-scanning-ai-scan-enablement-status-in-security-overview)
 
+## October 7, 2026 update: verify resource ownership for every agent process tree
+
+MemMux treats memory budgets, process attribution, descendant cleanup, and escaped children as runtime-verification signals. Its benchmark reports zero swap under a 7.5 GiB budget, complete tested cleanup, and detection of all ten injected escapes.
+
+Practical lesson:
+- bind every launched process tree to a durable agent identity;
+- admit work against a real host resource budget;
+- verify descendant cleanup after every stop or failure;
+- surface escaped processes as fleet incidents;
+- measure the monitor's own CPU and memory cost.
+
+Artifact caveat: the public MIT repository publishes prereleases through v0.9.0. Most stress tests use synthetic ballast, the live check covers three Claude Code sessions, and monitoring reaches 2.7 percent CPU at ten agents, above the paper's target.
+
+Implementability score: 0.84
+
+Sources:
+- [MemMux paper v1](https://arxiv.org/abs/2610.07257v1)
+- [MemMux repository](https://github.com/sumanyumuku98/MemMux)
+
 ## Working conclusion
 
 A safe agent fleet cannot be governed one prompt or tool call at a time. Preserve durable principals, correlate behavior across services and days, verify harm in system state, rank cases under the real review budget, and keep intervention outside the monitor.

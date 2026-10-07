@@ -1564,3 +1564,22 @@ Sources:
 GTDD separates implementation from testing and generates fresh cases only after the candidate is fixed. Reduced counterexamples become regression fixtures, while independent samples remain the acceptance gate. The durable harness pattern is post-commit evidence: visible tests guide development, fresh audits estimate contract coverage, and no model-authored success claim closes the loop.
 
 Source: [GTDD paper v1](https://arxiv.org/abs/2610.02952v1)
+
+## October 7, 2026 update: test harness controls as paired effects
+
+HarnessSecurity-Bench separates legitimate utility from attack effects across paired control-on and control-off trials. Auto-approve raised attack success from 29.2 percent to 95.6 percent, and alternative execution paths kept some unauthorized operations reachable.
+
+Practical lesson:
+- freeze the harness, model, task, and security setting per test cell;
+- grade legitimate completion and forbidden state separately;
+- enumerate alternate paths to every protected operation;
+- capture effective settings rather than configuration intent;
+- report utility, attack success, tool calls, and execution cost together.
+
+Artifact caveat: the public task repository is populated but has no tagged release or GitHub-reported license. The study uses one base model and Docker-based simulated services.
+
+Implementability score: 0.81
+
+Sources:
+- [HarnessSecurity-Bench paper v1](https://arxiv.org/abs/2610.07639v1)
+- [HarnessSecurity-Benchmark repository](https://github.com/TsingPig/HarnessSecurity-Benchmark)

@@ -1194,3 +1194,13 @@ Implementability score: 0.68
 Sources:
 - [Causal Memory Policy](https://arxiv.org/abs/2610.02070v1)
 - [paper-linked implementation artifact](https://anonymous.4open.science/r/cmp-release-D0C3/)
+
+## 2026-10-08: Ground learned experience in artifact identity
+
+ExperienceIndex stores single-artifact contributions and artifact-pair relations learned from prior traces. Across seven datasets it reports better answer quality and lower online cost than no memory, abstracted memory, and offline enrichment baselines.
+
+Practical pattern: key memory by stable artifact ID and source version, preserve task lineage, separate single-source claims from pair relations, and revalidate against current artifacts before injection.
+
+Implementability score: 0.65
+
+Source: [paper v1](https://arxiv.org/abs/2610.10091v1)

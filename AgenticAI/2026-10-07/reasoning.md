@@ -4,6 +4,18 @@
 
 Long-horizon agent evaluation needs two independent surfaces: a reviewable account of what the agent did, and attack-shaped tests of what the harness actually prevents. Final answers and static settings do not prove either one.
 
+## Deep Dive Wednesday: verify security effects behind control labels
+
+HarnessSecurity-Bench is the week's strongest architectural finding because it turns a security setting into a paired effect test. The benchmark freezes the task and execution environment, compares the control enabled and disabled, and grades legitimate completion separately from the forbidden state.
+
+That pattern is more durable than a harness ranking. It gives release engineering a control-effect contract: source identity, effective setting, protected effect, authorized completion path, deterministic utility and attack oracles, alternative-path coverage, cost, and a release decision.
+
+The public task repository is useful as a design corpus. It is not a complete runner. The paper uses one base model, six open-source harnesses, Docker-based services, and ten repetitions per condition. Local workload fixtures remain the deployment proof.
+
+Deep dive: [Harness Security Effect Verification](../harness-security-effect-verification/harness-security-effect-verification.md)
+
+Implementability score: 0.81
+
 ## Freshness and evidence scope
 
 Both papers were first listed by arXiv on 2026-10-07. Transect v1 and HarnessSecurity-Bench v1 were submitted on 2026-10-06. The papers, public repositories, and repository metadata were inspected read-only. No external repository was cloned, installed, built, imported, or executed.

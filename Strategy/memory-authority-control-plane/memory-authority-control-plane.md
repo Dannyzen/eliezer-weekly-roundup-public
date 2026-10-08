@@ -434,3 +434,11 @@ Implementability score: 0.93
 
 Source:
 - [MemLeak](https://arxiv.org/abs/2610.04195v1)
+
+## 2026-10-08: Artifact identity is the memory authority anchor
+
+ExperienceIndex supports a practical memory primitive: learned claims attach to stable artifacts and artifact-pair relations. Production use still needs source version, task lineage, confidence, supersession, and contradiction checks before a memory can influence action.
+
+Implementability score: 0.65
+
+Source: [paper v1](https://arxiv.org/abs/2610.10091v1)

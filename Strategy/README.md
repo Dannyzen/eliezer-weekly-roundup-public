@@ -2,32 +2,52 @@
 
 This index tracks the most recent structured strategy research. Each finding links to the dated analysis, durable topics, primary sources, practical methods, and an implementability score.
 
-## Latest Structured Update: 2026-10-07
+## Latest Structured Update: 2026-10-08
 
-The governance signal is economic and operational: make agent resource ownership checkable, then decide whether repeated work belongs in a reusable artifact or repeated general-model calls.
+The governance signal is consistent: models can propose estimates, delegation, skills, and memories. Runtime-owned contracts decide what executes or persists.
 
-### Make agent-fleet resource ownership checkable
+### Treat time budgets as runtime contracts
 
-Summary: MemMux attributes process trees, checks descendant cleanup, detects escaped children, and enforces a memory admission budget. Under a 7.5 GiB limit it reported zero swap, complete tested cleanup, and detection of all ten injected escapes.
+Summary: AgentTime shows that duration instructions do not reliably produce useful work for the requested period. External schedulers need to own deadlines, cancellation, progress evidence, and active-work accounting.
 
-Analysis: [daily strategy analysis](2026-10-07/sovereignty.md#make-agent-fleet-resource-ownership-checkable-at-runtime)
-Durable topic: [Agent Fleet Monitoring Control Plane](agent-fleet-monitoring-control-plane/agent-fleet-monitoring-control-plane.md)
-Core sources: [paper v1](https://arxiv.org/abs/2610.07257v1), [MemMux repository](https://github.com/sumanyumuku98/MemMux)
-Tools and methodologies worth exploring now: cgroup-based ownership, per-agent memory attribution, admission control, cleanup receipts, escaped-process detection, host-stamped runtime benchmarks
-Implementability score: 0.84
+Analysis: [daily strategy analysis](2026-10-08/sovereignty.md#treat-time-budgets-as-runtime-contracts)
+Durable topic: [Runtime Governance](runtime-governance/runtime-governance.md)
+Core sources: [paper v1](https://arxiv.org/abs/2610.09944v1), [repository](https://github.com/michaelofengenden/agenttimebench)
+Tools and methodologies worth exploring now: scheduler deadlines, heartbeats, cancellation, active-versus-idle metrics, score-versus-time curves
+Implementability score: 0.90
 
-### Bottle repeated cognition before routing millions of calls
+### Make concurrency an earned execution mode
 
-Summary: BOTTLED tests whether an agent can spend a fixed budget to build a reusable program or small model. Most runs underperformed direct or distillation controls, but one task retained about 82 percent of zero-shot quality at roughly 657 times lower reported cost.
+Summary: Dynamic concurrency helped some long, decomposable coding tasks and harmed bounded ones. Parallel execution needs an explicit admission rule and parent-owned integration proof.
 
-Analysis: [daily strategy analysis](2026-10-07/sovereignty.md#bottle-repeated-cognition-before-routing-millions-of-calls)
-Durable topic: [Model Router Governance](model-router-governance/model-router-governance.md)
-Core sources: [paper v1](https://arxiv.org/abs/2610.08775v1), [BOTTLED repository](https://github.com/aktsonthalia/bottled)
-Tools and methodologies worth exploring now: build-versus-call routing, fixed artifact budgets, zero-shot and distillation controls, workload-level cost accounting, drift-triggered rebuilds
-Implementability score: 0.61
+Analysis: [daily strategy analysis](2026-10-08/sovereignty.md#make-concurrency-an-earned-execution-mode)
+Durable topic: [Governed Workflow Substrates](governed-workflow-substrates/governed-workflow-substrates.md)
+Core sources: [paper v1](https://arxiv.org/abs/2610.10263v1), [trajectory artifact](https://github.com/schwerli/Concurrency-Failures-Trajectory-Artifact)
+Tools and methodologies worth exploring now: decomposability checks, shared-state risk scoring, single-writer lanes, join deadlines, cumulative gates
+Implementability score: 0.86
+
+### Require admission evidence before skill reuse
+
+Summary: Passive downstream reuse leaves many skills untested. SkillSandbox turns admission into a paired execution test in a novel scenario.
+
+Analysis: [daily strategy analysis](2026-10-08/sovereignty.md#require-admission-evidence-before-skill-reuse)
+Durable topic: [Skill Admission Control](skill-admission-control/skill-admission-control.md)
+Core sources: [paper v1](https://arxiv.org/abs/2610.10088v1), [implementation snapshot](https://anonymous.4open.science/r/skillsandbox-647C/)
+Tools and methodologies worth exploring now: versioned skill claims, synthesized scenarios, paired executions, rejection reasons, reversible admission
+Implementability score: 0.74
+
+### Bind learned memory to source artifacts
+
+Summary: Artifact-grounded memory can improve quality and cost, but learned relations need source IDs, versions, lineage, and supersession state before they become durable authority.
+
+Analysis: [daily strategy analysis](2026-10-08/sovereignty.md#bind-learned-memory-to-source-artifacts)
+Durable topic: [Memory Authority Control Plane](memory-authority-control-plane/memory-authority-control-plane.md)
+Core source: [paper v1](https://arxiv.org/abs/2610.10091v1)
+Tools and methodologies worth exploring now: origin-bound records, source-version checks, claim confidence, supersession, contradiction tests
+Implementability score: 0.65
 
 ## Current implication
 
-Fleet governance should account for both host resources and inference economics. Bind each agent to a verifiable runtime envelope, and route repetitive work through reusable artifacts only after held-out quality and cost gates pass.
+External contracts should own time, delegation, skill admission, and memory authority. This keeps autonomy measurable, reversible, and reviewable.
 
-Latest roundup: [2026-10-07](../roundups/2026-10-07.md).
+Latest roundup: [2026-10-08](../roundups/2026-10-08.md).

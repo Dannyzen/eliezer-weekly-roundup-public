@@ -180,3 +180,13 @@ Evidence caveat: ARTIC reports a 28-point task-resolution gain across 488 instan
 
 Source:
 - [Natural-Language Workflows Are Not Software Yet](https://arxiv.org/abs/2608.21341v1)
+
+## 2026-10-08: Admit concurrency by task shape
+
+Dynamic concurrency is useful when work decomposes cleanly and integration remains bounded. It is costly when lanes contend over shared state or the parent cannot verify the combined result.
+
+Governance pattern: require a decomposition record, ownership map, join policy, resource budget, and parent-owned cumulative gate before enabling parallel sub-agents.
+
+Implementability score: 0.86
+
+Sources: [paper v1](https://arxiv.org/abs/2610.10263v1), [trajectory artifact](https://github.com/schwerli/Concurrency-Failures-Trajectory-Artifact)

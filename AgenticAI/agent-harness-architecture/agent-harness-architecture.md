@@ -1580,6 +1580,8 @@ Artifact caveat: the public task repository is populated but has no tagged relea
 
 Implementability score: 0.81
 
+Deep dive: [Harness Security Effect Verification](../harness-security-effect-verification/harness-security-effect-verification.md)
+
 Sources:
 - [HarnessSecurity-Bench paper v1](https://arxiv.org/abs/2610.07639v1)
 - [HarnessSecurity-Benchmark repository](https://github.com/TsingPig/HarnessSecurity-Benchmark)

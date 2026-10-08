@@ -289,3 +289,13 @@ Implementability score: 0.90
 Sources:
 - [Dynamic workflows release](https://github.blog/changelog/2026-10-01-dynamic-workflows-in-copilot-cli-and-the-copilot-app/)
 - [Using dynamic workflows](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-dynamic-workflows)
+
+## 2026-10-08: Dynamic concurrency is an earned mode
+
+A study of 2,124 coding-agent trajectories found that dynamic concurrency increased mean runtime in 14 of 15 agent-benchmark combinations and produced task-dependent quality changes. Parallelism helped some long, decomposable work and harmed bounded tasks.
+
+Practical pattern: gate concurrency on independence, shared-state risk, and integration cost. Assign single-writer lanes, join deadlines, result contracts, and a parent-owned cumulative verification gate.
+
+Implementability score: 0.86
+
+Sources: [paper v1](https://arxiv.org/abs/2610.10263v1), [trajectory artifact](https://github.com/schwerli/Concurrency-Failures-Trajectory-Artifact)

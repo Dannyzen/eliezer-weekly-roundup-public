@@ -6,28 +6,31 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily research, 2026-10-07: [reviewable long runs, attack-tested harness controls, auditable fleet resources, and reusable capability artifacts](roundups/2026-10-07.md)
-- Latest implementation analysis: [AgenticAI](AgenticAI/2026-10-07/reasoning.md)
-- Latest strategy analysis: [Strategy](Strategy/2026-10-07/sovereignty.md)
+- Daily research, 2026-10-08: [runtime control, selective concurrency, skill admission, and artifact-grounded memory](roundups/2026-10-08.md)
+- Latest implementation analysis: [AgenticAI](AgenticAI/2026-10-08/reasoning.md)
+- Latest strategy analysis: [Strategy](Strategy/2026-10-08/sovereignty.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
+- Deep Dive Wednesday, 2026-10-07: [Harness Security Effect Verification](AgenticAI/harness-security-effect-verification/harness-security-effect-verification.md)
 - Friday synthesis, 2026-10-02: [agents as executable evidence pipelines](roundups/2026-10-02.md)
+
 ## Current thesis
 
-Reliable agent systems make both behavior and operating cost checkable. Long runs preserve source-linked observability. Harness controls are tested against utility and forbidden effects. Fleet runtimes prove resource ownership and cleanup. Repetitive workloads earn reusable artifacts only after quality and cost gates pass.
+Reliable agent systems make time, delegation, skill reuse, and memory writes explicit control-plane decisions. Models can estimate runtime, propose sub-agents, distill procedures, and learn source relationships. External contracts decide what executes, persists, or earns authority.
 
 The current stack therefore emphasizes:
 
-- source-linked timelines for long-horizon agent evaluation;
-- structural scanners before semantic behavior labels;
-- paired harness-control trials with separate utility and attack oracles;
-- explicit testing of alternative execution paths;
-- per-agent process-tree and memory attribution;
-- admission control, cleanup receipts, and escaped-process detection;
-- build-versus-call routing for repetitive workloads;
-- held-out quality, marginal-cost, and drift gates for reusable artifacts.
+- scheduler-owned deadlines, heartbeats, cancellation, and active-work accounting;
+- selective concurrency based on decomposability and integration cost;
+- single-writer ownership and parent-owned cumulative gates;
+- synthesized paired scenarios before skill admission;
+- versioned Keep or Reject receipts for reusable procedures;
+- memory records bound to stable source IDs and versions;
+- staleness, contradiction, and supersession checks before memory injection;
+- source-linked observability and effect verification across the full trajectory.
 
-Start with the checkable boundary: preserve the source event, verify the realized effect, bind resources to a principal, and scale artifacts only after they beat honest controls.
+Start with the external contract: own the clock, admit parallelism deliberately, test reusable procedures, and bind learned state to evidence.
+
 ## Browse by category
 
 - [AgenticAI](AgenticAI/README.md): implementation analysis on evaluation, memory, context policy, search, tools, and orchestration.
@@ -42,6 +45,7 @@ Start with the checkable boundary: preserve the source event, verify the realize
 - [Enterprise MCP Orchestration](AgenticAI/enterprise-mcp-orchestration/enterprise-mcp-orchestration.md)
 - [Agentic Search and Retrieval](AgenticAI/agentic-search/agentic-search.md)
 - [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md)
+- [Harness Security Effect Verification](AgenticAI/harness-security-effect-verification/harness-security-effect-verification.md)
 - [Composable Agent Harnesses](AgenticAI/composable-agent-harnesses/composable-agent-harnesses.md)
 - [Incident Replay Testing](AgenticAI/incident-replay-testing/incident-replay-testing.md)
 - [Agent Serving Runtime](AgenticAI/agent-serving-runtime/agent-serving-runtime.md)

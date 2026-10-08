@@ -1250,3 +1250,11 @@ Source:
 GHOST shows that safety instructions stated far back in a benign trajectory can disappear from execution behavior. Keep durable, source-linked constraints outside conversational recall, restore the applicable subset before each consequential action, and apply a deterministic veto to the exact proposed effect.
 
 Source: [GHOST paper v1](https://arxiv.org/abs/2610.02664v1)
+
+## 2026-10-08: Runtime contracts own the clock
+
+AgentTime shows that a duration instruction does not reliably produce useful work for the requested period. The runtime should own deadlines, cancellation, heartbeat cadence, active-work accounting, and completion evidence. Model estimates remain advisory.
+
+Implementability score: 0.90
+
+Sources: [paper v1](https://arxiv.org/abs/2610.09944v1), [repository](https://github.com/michaelofengenden/agenttimebench)

@@ -1062,3 +1062,13 @@ Implementability score: 0.68
 Sources:
 - https://arxiv.org/abs/2610.01564v1
 - https://github.com/Minakamiii/Chaining_Skills_to_Hijack_LLM_Agents
+
+## 2026-10-08: Verify skills in synthesized paired scenarios
+
+SkillSandbox constructs a novel executable scenario around each candidate skill and compares runs with and without it. Passive downstream reuse left 17% to 32% of skills unexercised after 500 tasks.
+
+Practical pattern: encode each skill claim, synthesize positive and boundary scenarios, run paired executions, and retain versioned admission evidence.
+
+Implementability score: 0.74
+
+Sources: [paper v1](https://arxiv.org/abs/2610.10088v1), [implementation snapshot](https://anonymous.4open.science/r/skillsandbox-647C/)

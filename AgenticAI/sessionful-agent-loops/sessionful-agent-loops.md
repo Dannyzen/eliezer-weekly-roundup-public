@@ -180,3 +180,13 @@ Implementability score: 0.86
 
 Source:
 - [Cloudflare PiHarness](https://developers.cloudflare.com/changelog/post/2026-10-02-pi-harness/)
+
+## 2026-10-08: Time control belongs to the runtime
+
+AgentTime evaluates duration following, forecasting, and retrospective time estimates across 222 tasks from 18 benchmark families. The result separates apparent wall-clock compliance from useful active work: some agents stop early, overrun, or sleep after apparent completion.
+
+Practical pattern: record requested, predicted, active, idle, blocked, and elapsed time separately. Keep deadlines, cancellation, and completion authority outside the model. Use model forecasts as telemetry only.
+
+Implementability score: 0.90
+
+Sources: [paper v1](https://arxiv.org/abs/2610.09944v1), [repository](https://github.com/michaelofengenden/agenttimebench)

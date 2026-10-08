@@ -213,3 +213,11 @@ Implementability score: 0.84
 
 Source:
 - https://arxiv.org/abs/2609.17274v1
+
+## 2026-10-08: Admission requires novel execution evidence
+
+SkillSandbox shows that waiting for organic reuse leaves many skills untested. A skill should enter a reusable library only after paired execution in a novel scenario demonstrates useful effect without boundary violations.
+
+Implementability score: 0.74
+
+Sources: [paper v1](https://arxiv.org/abs/2610.10088v1), [implementation snapshot](https://anonymous.4open.science/r/skillsandbox-647C/)

@@ -6,9 +6,9 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily research, 2026-10-08: [runtime control, selective concurrency, skill admission, and artifact-grounded memory](roundups/2026-10-08.md)
-- Latest implementation analysis: [AgenticAI](AgenticAI/2026-10-08/reasoning.md)
-- Latest strategy analysis: [Strategy](Strategy/2026-10-08/sovereignty.md)
+- Daily research, 2026-10-09: [live intervention, terminal obligations, skill routing, and compiled policy gates](roundups/2026-10-09.md)
+- Latest implementation analysis: [AgenticAI](AgenticAI/2026-10-09/reasoning.md)
+- Latest strategy analysis: [Strategy](Strategy/2026-10-09/sovereignty.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 - Deep Dive Wednesday, 2026-10-07: [Harness Security Effect Verification](AgenticAI/harness-security-effect-verification/harness-security-effect-verification.md)
@@ -16,20 +16,20 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Current thesis
 
-Reliable agent systems make time, delegation, skill reuse, and memory writes explicit control-plane decisions. Models can estimate runtime, propose sub-agents, distill procedures, and learn source relationships. External contracts decide what executes, persists, or earns authority.
+Reliable agent systems move authority to the earliest decisive boundary. Models can propose actions, skills, completion, and policy interpretations. External controls decide which capability loads, whether required work is complete, when a trajectory should pause, and whether a state-changing call may execute.
 
 The current stack therefore emphasizes:
 
-- scheduler-owned deadlines, heartbeats, cancellation, and active-work accounting;
-- selective concurrency based on decomposability and integration cost;
-- single-writer ownership and parent-owned cumulative gates;
-- synthesized paired scenarios before skill admission;
-- versioned Keep or Reject receipts for reusable procedures;
-- memory records bound to stable source IDs and versions;
-- staleness, contradiction, and supersession checks before memory injection;
-- source-linked observability and effect verification across the full trajectory.
+- first-read skill selection with overlap detection and receipts;
+- positive obligations for cleanup, verification, rollback, and handoff;
+- streaming trajectory monitoring with warn, pause, and abort policy;
+- typed policy compilation and tool-schema validation;
+- replay preflight against known-good traces;
+- deterministic action gates with versioned block receipts;
+- safety and benign-utility measurements from the same release object;
+- shadow evaluation before automated intervention.
 
-Start with the external contract: own the clock, admit parallelism deliberately, test reusable procedures, and bind learned state to evidence.
+Start with the boundary contract: bind capability selection, terminal obligations, live intervention, and state-changing calls to inspectable evidence.
 
 ## Browse by category
 

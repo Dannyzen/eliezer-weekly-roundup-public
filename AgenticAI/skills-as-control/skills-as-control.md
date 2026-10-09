@@ -1072,3 +1072,11 @@ Practical pattern: encode each skill claim, synthesize positive and boundary sce
 Implementability score: 0.74
 
 Sources: [paper v1](https://arxiv.org/abs/2610.10088v1), [implementation snapshot](https://anonymous.4open.science/r/skillsandbox-647C/)
+
+## 2026-10-09: Skill conflict is decided at first read
+
+The co-installed-skill study shows that task completion can remain green while an overlapping skill silently displaces the intended one and drops exclusive normative requirements. Treat the first skill read as a control event: detect overlap before installation, intercept selection, emit a receipt, and regress exclusive core functions under paired configurations.
+
+Implementability score: 0.90
+
+Sources: [paper v1](https://arxiv.org/abs/2610.11647v1), [replication package](https://github.com/ltroin/conflict)

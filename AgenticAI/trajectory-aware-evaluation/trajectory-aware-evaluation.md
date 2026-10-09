@@ -1480,3 +1480,11 @@ Implementability score: 0.88
 Sources:
 - [Transect paper v1](https://arxiv.org/abs/2610.08364v1)
 - [Transect repository](https://github.com/AI-Safety-Institute/transect)
+
+## 2026-10-09: Streaming structure can trigger early intervention
+
+OnTrack moves trajectory analysis into the live loop. It compares partial tool-call structure with reference runs at about one millisecond per step, then supports warn or abort policy before the run completes. The reported abort precision is preliminary because only six runs were interrupted, so deployment should progress from shadow scoring to warnings and human-approved pauses before automatic abort.
+
+Implementability score: 0.62
+
+Source: [OnTrack paper v1](https://arxiv.org/abs/2610.12375v1)

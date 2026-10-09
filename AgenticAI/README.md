@@ -2,52 +2,52 @@
 
 This index tracks the most recent structured implementation research. Each finding links to the dated analysis, primary sources, practical methods, and an implementability score.
 
-## Latest Structured Update: 2026-10-08
+## Latest Structured Update: 2026-10-09
 
-The implementation signal is to move control out of prompts and into measurable harness contracts for time, concurrency, reusable skills, and memory.
+The implementation signal is to move control earlier in execution: monitor trajectory structure, check terminal obligations, govern the first skill read, and compile policy into deterministic gates.
 
-### Measure time control in native harnesses
+### Guard the first skill read
 
-Summary: AgentTime evaluates duration following, runtime forecasting, and retrospective time estimates across 222 tasks from 18 benchmark families. Performance varies sharply by agent, and on-time completion can conceal idle waiting.
+Summary: A similar co-installed skill displaced the intended skill in one in five runs without lowering task completion. A pre-tool first-read hook restored fidelity on exclusive core functions.
 
-Analysis: [dated analysis](2026-10-08/reasoning.md#measure-time-control-in-native-harnesses)
-Durable topic: [Sessionful Agent Loops](sessionful-agent-loops/sessionful-agent-loops.md)
-Core sources: [paper v1](https://arxiv.org/abs/2610.09944v1), [repository](https://github.com/michaelofengenden/agenttimebench), [transcript dataset](https://huggingface.co/datasets/mofengenden/agenttime-transcripts)
-Tools and methodologies worth exploring now: runtime telemetry, scheduler-owned deadlines, active-versus-idle accounting, cancellation, native task graders, timing regression tests
+Analysis: [dated analysis](2026-10-09/reasoning.md#guard-the-first-skill-read)
+Durable topic: [Skills as Control](skills-as-control/skills-as-control.md)
+Core sources: [paper v1](https://arxiv.org/abs/2610.11647v1), [replication package](https://github.com/ltroin/conflict)
+Tools and methodologies worth exploring now: similarity scans, exclusive core functions, first-read hooks, selected-skill receipts, paired configuration tests
 Implementability score: 0.90
 
-### Enable dynamic concurrency selectively
+### Detect required actions that never happened
 
-Summary: Across 2,124 coding-agent trajectories, dynamic concurrency did not consistently improve task success and increased mean runtime in 14 of 15 agent-benchmark combinations. Benefits concentrated in difficult, decomposable, long-horizon tasks.
+Summary: ObligationBench evaluates safety-critical actions that remained undone. The public package includes 240 expert-validated trajectories, 40,000 training examples, prompts, checksums, and evaluation code.
 
-Analysis: [dated analysis](2026-10-08/reasoning.md#enable-dynamic-concurrency-selectively)
-Durable topic: [Multi-Agent Orchestration](multi-agent-orchestration/multi-agent-orchestration.md)
-Core sources: [paper v1](https://arxiv.org/abs/2610.10263v1), [trajectory artifact](https://github.com/schwerli/Concurrency-Failures-Trajectory-Artifact)
-Tools and methodologies worth exploring now: selective delegation, single-writer ownership, join deadlines, result contracts, parent-owned integration gates, concurrent-versus-sequential bakeoffs
-Implementability score: 0.86
+Analysis: [dated analysis](2026-10-09/reasoning.md#detect-required-actions-that-never-happened)
+Durable topic: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
+Core sources: [paper v1](https://arxiv.org/abs/2610.11773v1), [public repository](https://github.com/THU-Agent/ObligationGuard)
+Tools and methodologies worth exploring now: positive obligations, terminal-state graders, unresolved-obligation reports, cleanup and handoff checks
+Implementability score: 0.78
 
-### Admit skills through synthesized paired tests
+### Intervene on trajectory structure before failure completes
 
-Summary: SkillSandbox creates a novel executable scenario for each skill, then compares executions with and without it. After 500 downstream tasks, 17% to 32% of skills remained unexercised and 45% to 56% lacked five execution opportunities.
+Summary: OnTrack performs streaming structural comparison of partial agent trajectories. Its SWE-bench evaluation reports about one millisecond per step and 18% compute savings on failing runs under an abort policy.
 
-Analysis: [dated analysis](2026-10-08/reasoning.md#admit-skills-through-synthesized-paired-tests)
-Durable topic: [Skills as Control](skills-as-control/skills-as-control.md)
-Core sources: [paper v1](https://arxiv.org/abs/2610.10088v1), [implementation snapshot](https://anonymous.4open.science/r/skillsandbox-647C/)
-Tools and methodologies worth exploring now: synthesized positive and boundary scenarios, paired runs, effect oracles, Keep or Reject receipts, versioned skill lineage
-Implementability score: 0.74
+Analysis: [dated analysis](2026-10-09/reasoning.md#intervene-on-trajectory-structure-before-failure-completes)
+Durable topic: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
+Core source: [paper v1](https://arxiv.org/abs/2610.12375v1)
+Tools and methodologies worth exploring now: normalized event streams, reference trajectories, warn and pause thresholds, intervention receipts, false-positive review
+Implementability score: 0.62
 
-### Ground memory in stable artifact identities
+### Compile policy into schema-checked tool gates
 
-Summary: ExperienceIndex stores single-artifact and artifact-pair experience from prior traces. Across seven datasets it reports up to 11.0 points better answer quality and up to 50.5% lower online cost.
+Summary: NOMOS compiles written policy into deterministic rules, rejects rules that do not fit tool schemas, and enforces state-changing calls without an online LLM.
 
-Analysis: [dated analysis](2026-10-08/reasoning.md#ground-memory-in-stable-artifact-identities)
-Durable topic: [Memory Systems](memory-systems/memory-systems.md)
-Core source: [paper v1](https://arxiv.org/abs/2610.10091v1)
-Tools and methodologies worth exploring now: stable artifact IDs, source versions, single-artifact claims, pair relations, lineage-aware retrieval, staleness and contradiction tests
-Implementability score: 0.65
+Analysis: [dated analysis](2026-10-09/reasoning.md#compile-policy-into-schema-checked-tool-gates)
+Durable topic: [Enterprise MCP Orchestration](enterprise-mcp-orchestration/enterprise-mcp-orchestration.md)
+Core sources: [paper v1](https://arxiv.org/abs/2610.11030v1), [artifact repository](https://github.com/iamupd/NOMOS), [Zenodo record](https://zenodo.org/records/22123420)
+Tools and methodologies worth exploring now: typed rule IR, tool-schema validation, good-transcript replay, deterministic block receipts, safety plus utility measurement
+Implementability score: 0.58
 
 ## Current implication
 
-Treat model outputs as proposals to a harness that owns time, work allocation, skill admission, and memory provenance. The highest leverage comes from adding external contracts before adding more autonomous behavior.
+The next harness layer should own capability selection, terminal obligations, live intervention, and state-change gates. Model output remains a proposal until those controls issue evidence.
 
-Latest roundup: [2026-10-08](../roundups/2026-10-08.md).
+Latest roundup: [2026-10-09](../roundups/2026-10-09.md).

@@ -1258,3 +1258,11 @@ AgentTime shows that a duration instruction does not reliably produce useful wor
 Implementability score: 0.90
 
 Sources: [paper v1](https://arxiv.org/abs/2610.09944v1), [repository](https://github.com/michaelofengenden/agenttimebench)
+
+## 2026-10-09: Runtime authority spans intervention and obligations
+
+Two new controls belong outside the model loop. Streaming trajectory monitors can warn or pause before failure completes, while terminal obligation checks prevent allowed actions from masking incomplete cleanup, verification, rollback, or handoff. Roll out intervention in shadow mode, and make obligation evidence part of completion authority.
+
+Implementability scores: 0.62 for streaming intervention, 0.78 for obligation checks.
+
+Sources: [OnTrack](https://arxiv.org/abs/2610.12375v1), [ObligationGuard](https://arxiv.org/abs/2610.11773v1)

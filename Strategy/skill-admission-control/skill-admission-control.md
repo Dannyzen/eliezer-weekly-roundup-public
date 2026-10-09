@@ -221,3 +221,11 @@ SkillSandbox shows that waiting for organic reuse leaves many skills untested. A
 Implementability score: 0.74
 
 Sources: [paper v1](https://arxiv.org/abs/2610.10088v1), [implementation snapshot](https://anonymous.4open.science/r/skillsandbox-647C/)
+
+## 2026-10-09: Admission must include conflict behavior
+
+A skill can be valid alone and unsafe in a catalog. Similar co-installed skills displaced intended behavior in one in five runs while task completion stayed green. Admission should therefore include semantic overlap scans, namespace and precedence rules, paired conflict tests, and a first-read selection receipt.
+
+Implementability score: 0.90
+
+Sources: [paper v1](https://arxiv.org/abs/2610.11647v1), [replication package](https://github.com/ltroin/conflict)

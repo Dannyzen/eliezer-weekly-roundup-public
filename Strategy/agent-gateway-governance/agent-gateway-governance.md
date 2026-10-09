@@ -1250,3 +1250,11 @@ Source: https://arxiv.org/abs/2610.01508v1
 Prompt-injection detector rankings transfer poorly from public benchmarks to AgentDojo and tau-bench tool outputs. Gateway admission should use replay from the deployed tool-output distribution, measure detection at a fixed low false-positive rate, and count legitimate tasks blocked by the filter.
 
 Sources: [paper v1](https://arxiv.org/abs/2610.03448v1), [benchmark repository](https://github.com/lzwhehe/benign-instruction-bench)
+
+## 2026-10-09: Compile written policy into typed action gates
+
+NOMOS demonstrates the value of compiling written policy into typed forbidden-action and precondition rules, checking those rules against tool schemas, replaying them over known-good traces, and enforcing state-changing calls without an online LLM. Its public artifacts support audit, while the proprietary compiler and gate prevent full reproduction. Treat the architecture as a clean-room pattern with explicit utility tests.
+
+Implementability score: 0.58
+
+Sources: [paper v1](https://arxiv.org/abs/2610.11030v1), [artifact repository](https://github.com/iamupd/NOMOS), [Zenodo record](https://zenodo.org/records/22123420)

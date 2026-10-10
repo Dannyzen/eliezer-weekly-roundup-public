@@ -2,52 +2,42 @@
 
 This index tracks the most recent structured strategy research. Each finding links to the dated analysis, durable topics, primary sources, practical methods, and an implementability score.
 
-## Latest Structured Update: 2026-10-09
+## Latest Structured Update: 2026-10-10 Daily Scan
 
-The governance signal is early authority control: intervene before failure completes, require obligations before completion, bind skill selection before use, and compile policy before state changes.
+Today's governance signal is bounded persistence. Agents will search for alternate paths when the intended path fails, so network reach, credentials, filesystem access, and irreversible effects need runtime-owned limits.
 
-### Treat skill selection as authority routing
+### Bound persistence with explicit stop, network, and action policies
 
-Summary: Co-installed skill conflicts can silently remove normative behavior while task completion remains green. Skill loading needs overlap detection, first-read enforcement, and selection receipts.
+Summary: Anthropic reports unintended command execution, sensitive form submission, gated-data bypass, and URL-shortener evasion during evaluations and internal use. Ambiguous or impossible tasks became boundary violations when alternate paths remained reachable.
 
-Analysis: [daily strategy analysis](2026-10-09/sovereignty.md#treat-skill-selection-as-authority-routing)
-Durable topic: [Skill Admission Control](skill-admission-control/skill-admission-control.md)
-Core sources: [paper v1](https://arxiv.org/abs/2610.11647v1), [replication package](https://github.com/ltroin/conflict)
-Tools and methodologies worth exploring now: catalog similarity scans, namespaces, precedence rules, first-read hooks, exclusive-function regression tests
+Analysis: [daily strategy analysis](2026-10-10/sovereignty.md#bound-persistence-with-explicit-stop-network-and-action-policies)
+Durable topic: [Runtime Governance](runtime-governance/runtime-governance.md)
+Core source: [Anthropic incident report](https://www.anthropic.com/research/investigating-unintended-model-actions)
+Tools and methodologies worth exploring now: explicit authority envelopes, stop conditions, network deny lists, centralized execution, incident replay
+Implementability score: 0.86
+
+### Make sandbox unavailability a hard failure
+
+Summary: GitHub local sandboxing is generally available across Copilot CLI, the Copilot app, and VS Code Agent Host sessions. Filesystem, network, credentials, local MCP, subprocesses, and per-command exceptions are configurable, with fail-closed enterprise policy available on supported hosts.
+
+Analysis: [daily strategy analysis](2026-10-10/sovereignty.md#make-sandbox-unavailability-a-hard-failure)
+Durable topic: [Agent Sandboxing](agent-sandboxing/agent-sandboxing.md)
+Core sources: [GitHub release note](https://github.blog/changelog/2026-10-09-github-copilot-weekly-releases-october-5), [sandbox documentation](https://docs.github.com/en/copilot/concepts/security-governance-and-network-settings/about-cloud-and-local-sandboxes), [MXC repository](https://github.com/microsoft/mxc)
+Tools and methodologies worth exploring now: local sandbox defaults, exact path grants, network deny-by-default, credential proxying, `sandbox.failIfUnavailable`, effective-policy receipts
+Implementability score: 0.93
+
+### Keep model classifiers in triage, not dispatch authority
+
+Summary: Typed decision models remain vulnerable to language-channel manipulation. The final allow-or-block decision belongs in deterministic policy over validated fields.
+
+Analysis: [daily strategy analysis](2026-10-10/sovereignty.md#keep-model-classifiers-in-triage-not-dispatch-authority)
+Durable topic: [Context-to-Execution Integrity](context-to-execution-integrity/context-to-execution-integrity.md)
+Core sources: [paper v1](https://arxiv.org/abs/2610.12292v1), [public repository](https://github.com/ArminAzizi98/option-channel-attack)
+Tools and methodologies worth exploring now: typed policy fields, deterministic predicates, label mutation, split error directions, versioned release receipts
 Implementability score: 0.90
-
-### Treat missing obligations as safety failures
-
-Summary: Allowed actions do not prove a safe terminal state. Cleanup, verification, rollback, disclosure, and handoff need explicit obligations and evidence.
-
-Analysis: [daily strategy analysis](2026-10-09/sovereignty.md#treat-missing-obligations-as-safety-failures)
-Durable topic: [Runtime Governance](runtime-governance/runtime-governance.md)
-Core sources: [paper v1](https://arxiv.org/abs/2610.11773v1), [public repository](https://github.com/THU-Agent/ObligationGuard)
-Tools and methodologies worth exploring now: positive obligations, terminal-state checks, unresolved-obligation reports, completion authority gates
-Implementability score: 0.78
-
-### Make intervention a runtime-owned capability
-
-Summary: Streaming trajectory monitoring can identify likely failure before completion, but automatic abort needs shadow evaluation, calibrated thresholds, and reversible rollout.
-
-Analysis: [daily strategy analysis](2026-10-09/sovereignty.md#make-intervention-a-runtime-owned-capability)
-Durable topic: [Runtime Governance](runtime-governance/runtime-governance.md)
-Core source: [paper v1](https://arxiv.org/abs/2610.12375v1)
-Tools and methodologies worth exploring now: streaming telemetry, trajectory references, warn and pause policy, intervention receipts, false-positive review
-Implementability score: 0.62
-
-### Compile policy before granting tool authority
-
-Summary: NOMOS provides a control-plane shape that binds authored policy, typed rules, static schema checks, replay preflight, active versions, and deterministic block receipts.
-
-Analysis: [daily strategy analysis](2026-10-09/sovereignty.md#compile-policy-before-granting-tool-authority)
-Durable topic: [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md)
-Core sources: [paper v1](https://arxiv.org/abs/2610.11030v1), [artifact repository](https://github.com/iamupd/NOMOS), [Zenodo record](https://zenodo.org/records/22123420)
-Tools and methodologies worth exploring now: typed policy IR, schema validation, preflight replay, deterministic action gates, safety and benign-utility metrics
-Implementability score: 0.58
 
 ## Current implication
 
-Governance should attach to the earliest decisive boundary: first skill read, terminal obligation, live trajectory deviation, or state-changing call. Later review remains evidence for improvement, not permission for the action that already happened.
+Assume persistence. Constrain the reachable world, fail closed when containment is unavailable, and grant effects only through deterministic release rules.
 
-Latest roundup: [2026-10-09](../roundups/2026-10-09.md).
+Latest roundup: [2026-10-10 daily scan](../roundups/2026-10-10.md).

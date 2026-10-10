@@ -182,6 +182,27 @@ Source:
 
 Caveat: v0.82.8 is a prerelease. gVisor support is implementable, but runner topology, Docker-in-Docker choices, socket exposure, mount policy, and local validation still determine the real isolation boundary.
 
+## October 10, 2026 update: local sandboxing can fail closed
+
+GitHub made local sandboxing generally available for Copilot CLI, the Copilot app, and VS Code Agent Host sessions. Policy can cover filesystem paths, network, credentials, subprocesses, local MCP servers, language servers, and exceptions. On supported enterprise configurations, `sandbox.enabled` plus `sandbox.failIfUnavailable` can block model requests and tool execution when isolation cannot be enforced.
+
+Practical lesson:
+- enable local sandboxing for routine coding-agent work;
+- deny network, credentials, and unrelated paths by default;
+- preserve effective backend and policy receipts;
+- fail closed when required controls are unavailable;
+- escalate high-risk work to containers or microVMs.
+
+Caveat: local sandboxing is lighter than a VM or container, remote MCP servers are outside it, and in-process built-in file tools enforce policy on a best-effort basis. MXC v1.0.0 is public and MIT licensed.
+
+Implementability score: 0.93
+
+Sources:
+- [GitHub release note](https://github.blog/changelog/2026-10-09-github-copilot-weekly-releases-october-5)
+- [Sandbox documentation](https://docs.github.com/en/copilot/concepts/security-governance-and-network-settings/about-cloud-and-local-sandboxes)
+- [microsoft/mxc](https://github.com/microsoft/mxc)
+- [MXC v1.0.0](https://github.com/microsoft/mxc/releases/tag/v1.0.0)
+
 ## Current read
 
 Agent sandboxing is not a niche hardening detail. It is becoming part of the default operating model for serious coding-agent use. The winning pattern is not "trust the model less" in the abstract. It is "give the model a smaller, declared, killable, inspectable world and preserve proof that the declared controls were active."

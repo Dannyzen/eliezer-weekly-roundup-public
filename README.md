@@ -6,30 +6,27 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily research, 2026-10-09: [live intervention, terminal obligations, skill routing, and compiled policy gates](roundups/2026-10-09.md)
-- Latest implementation analysis: [AgenticAI](AgenticAI/2026-10-09/reasoning.md)
-- Latest strategy analysis: [Strategy](Strategy/2026-10-09/sovereignty.md)
+- Daily scan, 2026-10-10: [bounded persistence and evidence-timed evaluation](roundups/2026-10-10.md)
+- Daily implementation analysis: [AgenticAI](AgenticAI/2026-10-10/reasoning.md)
+- Daily strategy analysis: [Strategy](Strategy/2026-10-10/sovereignty.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
+- Latest Friday synthesis, 2026-10-09: [evidence gates across the agent lifecycle](roundups/2026-10-09.md)
 - Deep Dive Wednesday, 2026-10-07: [Harness Security Effect Verification](AgenticAI/harness-security-effect-verification/harness-security-effect-verification.md)
-- Friday synthesis, 2026-10-02: [agents as executable evidence pipelines](roundups/2026-10-02.md)
 
 ## Current thesis
 
-Reliable agent systems move authority to the earliest decisive boundary. Models can propose actions, skills, completion, and policy interpretations. External controls decide which capability loads, whether required work is complete, when a trajectory should pause, and whether a state-changing call may execute.
+Capable agents persist when the intended path fails. Reliability therefore depends on a bounded execution world plus evidence-bearing release:
 
-The current stack therefore emphasizes:
+- explicit targets, network zones, action classes, and stop conditions;
+- sandboxed filesystem, network, credential, subprocess, and local MCP access;
+- fail-closed behavior when required containment is unavailable;
+- deterministic policy over validated fields at the final effect boundary;
+- separate fail-open and fail-closed metrics for model guardrails;
+- trace events for evidence availability, exposure, first use, first error, correction, and final stance;
+- incident replay across model, harness, and policy versions.
 
-- first-read skill selection with overlap detection and receipts;
-- positive obligations for cleanup, verification, rollback, and handoff;
-- streaming trajectory monitoring with warn, pause, and abort policy;
-- typed policy compilation and tool-schema validation;
-- replay preflight against known-good traces;
-- deterministic action gates with versioned block receipts;
-- safety and benign-utility measurements from the same release object;
-- shadow evaluation before automated intervention.
-
-Start with the boundary contract: bind capability selection, terminal obligations, live intervention, and state-changing calls to inspectable evidence.
+Start with one operational rule: model output can propose an action, while the runtime owns reach, release, and proof.
 
 ## Browse by category
 

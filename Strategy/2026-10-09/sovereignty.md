@@ -1,65 +1,73 @@
-# Daily Strategy Analysis: 2026-10-09
+# Strategy Weekly Analysis: 2026-10-09
 
 ## Thesis
 
-Agent governance needs control over four moments: the live trajectory, terminal obligations, capability selection, and state-changing tool calls. Evidence that arrives after execution is useful for learning and insufficient for authority.
+The strategic primitive is an evidence-bearing authority boundary. Agent proposals become authorized only when the runtime can identify the capability, mediate the effect path, supervise the live run, verify terminal obligations, and justify the chosen topology.
 
-All four papers were submitted on 2026-10-08 and first listed on 2026-10-09.
+## Completion authority belongs to terminal state
 
-## Make intervention a runtime-owned capability
+ThinkingBox shows that repeated stateful success is far weaker than single-run success. ObligationGuard shows that safe actions can still produce an unsafe ending when required work remains undone.
 
-OnTrack shows that trajectory structure can support warnings or aborts before a run completes. The strategic pattern is a monitor outside the model loop that consumes normalized events, compares partial execution with known trajectories, and applies a separately governed intervention policy.
+The governance implication is direct: completion authority should require both achieved state and fulfilled obligations. A final answer, progress bar, or green subtask status cannot substitute for backend predicates, cleanup evidence, verification, rollback readiness, and handoff.
 
-The strongest objection is the small abort sample: only six runs were interrupted. That makes the 83% precision estimate fragile. The survivable path is shadow monitoring first, then warnings, then human-approved pause, with automatic abort reserved for high-confidence and reversible conditions.
+Implementable now: terminal-state contracts, positive obligation registers, repeated trials, failure snapshots, and unresolved-obligation gates.
 
-Implementable now: streaming event schemas, reference-trajectory stores, warn and pause thresholds, intervention receipts, and false-positive review.
+Implementability score: 0.88
 
-Implementability score: 0.62
+Core sources: [ThinkingBox article](https://huggingface.co/blog/microsoft/thinkingbox), [ThinkingBox paper v4](https://arxiv.org/abs/2608.19741v4), [ObligationGuard paper v1](https://arxiv.org/abs/2610.11773v1)
 
-Core source: [OnTrack paper v1](https://arxiv.org/abs/2610.12375v1)
+## Approval must mediate the protected effect
 
-## Treat missing obligations as safety failures
+HarnessSecurity-Bench demonstrates that nominal controls can leave alternate execution paths open. The governance object should therefore name the protected effect, approved path, denied paths, utility oracle, attack oracle, and exact harness version.
 
-ObligationGuard identifies required safety actions that never occurred. Its benchmark shows that omission risk can exceed explicit forbidden-action risk. A task can be operationally unsafe even when every individual action was permitted.
+The unflattering fact is that the public task repository does not include the full evaluation runner and has no detected license. The control-effect contract remains implementable because it can be built from local incident and acceptance fixtures without depending on the research code.
 
-The strategic consequence is direct: completion authority should require proof of required cleanup, verification, rollback, disclosure, and handoff. These obligations belong in the task contract and final gate, not in a model's implicit memory.
+Implementable now: paired utility and attack fixtures, alternate-path enumeration, deterministic effect oracles, and versioned release receipts.
 
-The public benchmark is useful but narrow, with 240 trajectories in three domains. Use its schema as a starting method, then build domain-specific obligation sets from incidents and operating procedures.
+Implementability score: 0.81
 
-Implementable now: positive obligations in action manifests, terminal-state checks, unresolved-obligation reports, and approval gates for incomplete cleanup.
+Core sources: [HarnessSecurity-Bench paper v1](https://arxiv.org/abs/2610.07639v1), [task repository](https://github.com/TsingPig/HarnessSecurity-Benchmark)
 
-Implementability score: 0.78
+## Runtime owns time, observation, and intervention
 
-Core sources: [ObligationGuard paper v1](https://arxiv.org/abs/2610.11773v1), [public repository](https://github.com/THU-Agent/ObligationGuard)
+Transect makes long runs reviewable through a shared timeline. AgentTime shows that duration following depends on the model and harness, and that apparent on-time behavior may include artificial sleeping after work is done. OnTrack suggests that trajectory structure can support early warnings and selective abort.
 
-## Treat skill selection as authority routing
+The governance implication is that the scheduler, not the model, should own deadlines, active versus idle time, cancellation, recovery, and intervention policy. All of those decisions should share one event identity and receipt model.
 
-The skill-conflict study shows that one overlapping skill can silently displace another while the task still passes. Installation location influences selection, first-read order locks in behavior, and final responses rarely disclose the substitution.
+The weakest evidence is automatic abort. OnTrack interrupted six runs, so the deployment sequence should be shadow, warn, human-approved pause, then narrow automatic abort for reversible cases.
 
-This makes skill loading an authority event. A runtime should identify overlap, bind normative requirements to the intended skill, intercept the first read, and issue a selection receipt. Catalog size without conflict control expands ambiguity and weakens policy fidelity.
+Implementable now: normalized event streams, scheduler-owned deadlines, recovery checkpoints, shadow intervention, and intervention receipts.
 
-The replication package is inspectable and the mitigation is small. The main deployment constraint is governance: teams need ownership for skill identity, precedence, and conflict adjudication.
+Implementability score: 0.76
 
-Implementable now: similarity scans, namespace and precedence rules, first-read hooks, selected-skill receipts, and exclusive-function regression tests.
+Core sources: [Transect paper v1](https://arxiv.org/abs/2610.08364v1), [AgentTime paper v1](https://arxiv.org/abs/2610.09944v1), [OnTrack paper v1](https://arxiv.org/abs/2610.12375v1)
 
-Implementability score: 0.90
+## Catalog governance and action governance must converge
 
-Core sources: [One Skill Too Many paper v1](https://arxiv.org/abs/2610.11647v1), [replication package](https://github.com/ltroin/conflict)
+One Skill Too Many shows that capability selection can silently remove normative behavior while task completion remains green. NOMOS shows how written policy can become typed, statically checked gates around state-changing calls.
 
-## Compile policy before granting tool authority
+The combined governance object should carry capability identity, catalog precedence, conflict evidence, first-read receipt, policy source, compiled rule version, schema report, replay result, and effect receipt. This creates a trace from what the runtime intended to load to what it allowed to change.
 
-NOMOS turns written policy into deterministic tool-call gates and rejects rules that do not fit the tool schema. The combination of compilation, static checks, replay preflight, and microsecond runtime decisions is a credible control-plane shape.
+The unflattering fact is that NOMOS withholds its compiler and runtime gate, and the skill-conflict repository has no detected license. A clean-room narrow policy compiler is feasible, while general policy compilation needs meaningful architecture and validation.
 
-The unflattering fact is that the public package excludes the compiler and runtime gate. It supports audit of rule artifacts and reported numbers, not reproduction of the system. The method remains implementable as a clean-room pattern, with a meaningful engineering and validation burden.
+Implementable now: overlap scans, namespaces, first-read hooks, typed policy IR, schema validation, replay preflight, and deterministic state-change gates.
 
-A production design should keep authored policy, compiled rules, static-check reports, preflight results, active rule version, block receipts, and benign-utility measurements as one release object.
+Implementability score: 0.70
 
-Implementable now: typed rule IR, schema validation, good-transcript replay, deterministic state-change gates, versioned policy bundles, and dual safety plus utility metrics.
+Core sources: [One Skill Too Many paper v1](https://arxiv.org/abs/2610.11647v1), [replication package](https://github.com/ltroin/conflict), [NOMOS paper v1](https://arxiv.org/abs/2610.11030v1), [artifact repository](https://github.com/iamupd/NOMOS)
 
-Implementability score: 0.58
+## Scale-out needs topology authority
 
-Core sources: [NOMOS paper v1](https://arxiv.org/abs/2610.11030v1), [public artifact repository](https://github.com/iamupd/NOMOS), [Zenodo v1.0 record](https://zenodo.org/records/22123420)
+The dynamic-concurrency study finds that parallel sub-agents usually cost more time and can reduce task success. The strategic error is to treat parallelism as an intelligence multiplier rather than a topology choice with coordination cost.
+
+A topology authority should approve concurrency only when decomposition quality, write ownership, integration cost, budget, and benchmark evidence support it. Serial execution remains the safe default for tightly coupled repository work.
+
+Implementable now: task-shape classification, single-writer boundaries, explicit merge stages, serial-versus-parallel trials, and workload-specific routing rules.
+
+Implementability score: 0.86
+
+Core sources: [dynamic-concurrency paper v1](https://arxiv.org/abs/2610.10263v1), [trajectory artifact](https://github.com/schwerli/Concurrency-Failures-Trajectory-Artifact)
 
 ## Strategic conclusion
 
-The shared control-plane pattern is early and explicit authority. Monitor before failure completes, require obligations before completion, resolve skill conflicts before capability use, and compile policy before state-changing calls.
+The lifecycle needs one chain of authority: selected capability, compiled policy, mediated effect, supervised execution, verified terminal state, and justified topology. Break any link and the system can remain persuasive while becoming ungoverned.

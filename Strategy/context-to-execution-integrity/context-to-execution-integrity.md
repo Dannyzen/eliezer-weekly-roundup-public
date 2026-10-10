@@ -740,3 +740,22 @@ Implementability score: 0.78
 Sources:
 - [Deny Without Disabling](https://arxiv.org/abs/2610.00371v1)
 - [FlowReview](https://github.com/yunbeizhang/FlowReview)
+
+## 2026-10-10: Typed model output is not deterministic authority
+
+The option-channel attack shows that a typed decision model can reverse allow-or-block outcomes when irrelevant logs or attacker-controlled option labels enter its language input. In the reported synthetic tool-call suite, six log lines raise one fail-open rate from 0% to 63%, while permissive-option renaming reaches 93% through 100% on four affected models.
+
+Practical lesson:
+- keep model classifiers in triage or reviewer-prioritization roles;
+- parse fields into typed values outside the model;
+- release through deterministic predicates over those values;
+- mutation-test labels, order, irrelevant context, aliases, and alternate dispatch paths;
+- retain policy version, validated fields, verdict, and effect receipt.
+
+Artifact status: the public MIT repository contains code, GuardBench generation, cached runs, and figure and table scripts. It was inspected read-only and was not executed.
+
+Implementability score: 0.90
+
+Sources:
+- [One Word Opens the Gate](https://arxiv.org/abs/2610.12292v1)
+- [option-channel-attack](https://github.com/ArminAzizi98/option-channel-attack)

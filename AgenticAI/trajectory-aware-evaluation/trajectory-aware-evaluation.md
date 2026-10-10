@@ -1488,3 +1488,19 @@ OnTrack moves trajectory analysis into the live loop. It compares partial tool-c
 Implementability score: 0.62
 
 Source: [OnTrack paper v1](https://arxiv.org/abs/2610.12375v1)
+
+## 2026-10-10: Fault adoption needs an evidence-window denominator
+
+SSCBench separates authoritative counterevidence that exists, counterevidence the agent actually sees, and counterevidence visible before first use. Across 1,191 faulted executions, 44 adopted runs eventually exposed counterevidence; only 17 exposed it before first use, while 27 exposed it afterward.
+
+Practical lesson:
+- identify the exact observation that refutes each injected fact;
+- timestamp availability, exposure, first use, first faulty reliance, and correction;
+- report the population that actually received timely counterevidence;
+- keep final adoption and recovery as separate metrics.
+
+Artifact caveat: no paper-owned public implementation artifact was identified.
+
+Implementability score: 0.68
+
+Source: [SSCBench paper v1](https://arxiv.org/abs/2610.11514v1)

@@ -1,106 +1,119 @@
-# Daily AgenticAI Analysis: 2026-10-09
+# AgenticAI Weekly Analysis: 2026-10-09
 
 ## Thesis
 
-The useful shift is from post-hoc agent review to pre-action and in-flight control: monitor trajectory structure, check required obligations, govern skill selection, and compile policy into deterministic tool gates.
+This week's work converges on an evidence-gated agent lifecycle. Capability selection, live execution, consequential effects, completion, and scale-out each need a machine-checkable contract outside the model loop.
 
-All four papers were submitted on 2026-10-08 and first listed in the relevant arXiv categories on 2026-10-09.
+## Build terminal-state proof into the harness
 
-## Intervene on trajectory structure before failure completes
+ThinkingBox evaluates 507 workflows against backend state and repeats every task 20 times. The strongest reported model falls from 65.36% pass@1 to 25.25% pass^20. ObligationGuard adds required actions to the acceptance surface: cleanup, verification, rollback, disclosure, and handoff can remain undone even when no forbidden action occurred.
 
-OnTrack compares a live agent trajectory with recorded successful runs through streaming structure-aware optimal transport. It supports three evidence regimes: historical runs plus tool schemas, tool schemas only, and logs only. The available intervention degrades from plan-violation detection to generic loop, stall, and repeated-call detection as reference evidence disappears.
+Why it matters: a final response is a claim about work. The harness must inspect the state that work was meant to change and the obligations that had to accompany it.
 
-On SWE-bench trajectories, the first eight steps improved failing-versus-success ranking by 0.057 AUROC over content-similarity baselines. Its abort policy saved about 18% of compute on failing runs, and five of six interrupted runs were headed toward failure. The paper reports about one millisecond of monitoring overhead per step.
-
-Why it matters: observability becomes operational only when it can interrupt a run before the expensive or irreversible effect. The strongest implementation pattern is a streaming trajectory monitor with explicit abstain, warn, and abort thresholds.
-
-Stack fit: trajectory-aware evaluation, sessionful loops, runtime telemetry, and intervention policy.
+Stack fit: terminal-state evaluation, repeated-trial reliability, recovery testing, and completion authority.
 
 Implementable now:
-- normalize tool calls and dependency edges into a streaming event schema;
-- compare partial runs with successful and failed reference traces;
-- separate warn, pause, and abort policies;
-- record every intervention with evidence and false-positive review;
-- evaluate compute saved alongside task success and interruption precision.
+- encode backend predicates for the desired terminal state;
+- declare positive obligations before execution;
+- run repeated trials for stateful workflows;
+- preserve failure snapshots and unresolved obligations;
+- refuse completion when state or obligation evidence is missing.
 
-Implementability score: 0.62
+Implementability score: 0.88
 
-Core source: [OnTrack paper v1](https://arxiv.org/abs/2610.12375v1)
+Core sources: [ThinkingBox article](https://huggingface.co/blog/microsoft/thinkingbox), [ThinkingBox paper v4](https://arxiv.org/abs/2608.19741v4), [ObligationGuard paper v1](https://arxiv.org/abs/2610.11773v1), [public repository](https://github.com/THU-Agent/ObligationGuard)
 
-Artifact status: paper and full method were inspected. No public implementation artifact was linked from the paper. The abort result contains only six interventions, so the 83% precision estimate is preliminary.
+Artifact status: the ThinkingBox OpenEnv environment and ObligationGuard benchmark are public. ObligationGuard has a populated main branch, benchmark data, prompts, tests, and documentation. GitHub reports no detected repository license for ObligationGuard.
 
-## Detect required actions that never happened
+## Test controls against effects
 
-ObligationGuard expands agent safety from forbidden actions to required safety-critical actions that remain unperformed. In its preliminary study, 56.92% of GLM-5.3 trajectories contained unfulfilled obligations, compared with 30.00% containing forbidden actions. ObligationBench contains 240 expert-validated trajectories across issue resolution, feature development, and terminal operations.
+HarnessSecurity-Bench pairs legitimate tasks with attacks against the same control and environment. It reports 2,500 trials and 81,155 tool calls. Auto-approve raised attack success from 29.2% to 95.6%, and alternate execution paths remained a bypass source.
 
-Across 14 representative models, the best obligation recall was 48.97% and exact match was 10.00%. A model trained on 40,000 synthetic examples reached 57.52% recall and 21.67% exact match. The public repository includes the benchmark, training and validation splits, prompts, checksums, evaluation code, and local tests.
+Why it matters: a visible control setting does not prove the protected effect is mediated. Testing must identify the exact effect, every path to it, and both utility and attack outcomes.
 
-Why it matters: a safe-looking sequence of actions can still end in an unsafe state because cleanup, verification, disclosure, rollback, or handoff never occurred. Completion contracts need positive obligations, not only denial rules.
-
-Stack fit: harness acceptance criteria, terminal-state evaluation, recovery checks, and safety policy.
+Stack fit: harness security, release gates, incident replay, and deterministic evaluation.
 
 Implementable now:
-- add explicit obligations to task contracts before execution;
-- evaluate terminal state against required cleanup, verification, and handoff actions;
-- preserve evidence for each obligation and unresolved item;
-- score obligation recall and exact completion separately from task success;
-- use post-run obligation checks before granting completion authority.
+- bind each control to a protected effect and authorized path;
+- create paired utility and forbidden-effect fixtures;
+- cover shell, file, browser, network, and delegated alternate paths;
+- report utility cost beside attack prevention;
+- version the control, harness, fixture, and release decision together.
 
-Implementability score: 0.78
+Implementability score: 0.81
 
-Core sources: [ObligationGuard paper v1](https://arxiv.org/abs/2610.11773v1), [public repository](https://github.com/THU-Agent/ObligationGuard)
+Core sources: [HarnessSecurity-Bench paper v1](https://arxiv.org/abs/2610.07639v1), [project site](https://tsingpig.github.io/HarnessSecurity-Benchmark/), [task repository](https://github.com/TsingPig/HarnessSecurity-Benchmark)
 
-Artifact status: repository contents were inspected read-only. It has a populated main branch with benchmark data, training data, prompts, tests, and documentation. GitHub did not detect a repository license, so reuse terms need clarification.
+Artifact status: the public repository exposes task packages and examples. GitHub reports no detected license, and the full runner plus complete trial artifacts are unavailable.
 
-## Guard the first skill read
+## Unify observability and intervention
 
-One Skill Too Many studies conflicts between co-installed coding-agent skills. From 20,947 repository snapshots, the authors mined 822,109 candidate similar-skill pairs, judged 3,754, and executed 312 confirmed pairs across three models. The study covers 6,368 runs, 169,294 tool calls, and 542 agent-hours.
+Transect aligns events, token use, sub-agent activity, structural signals, and judge labels on one turn-based timeline. AgentTime measures duration control across 222 tasks and 18 benchmark families. OnTrack compares partial trajectories with reference runs and reports about one millisecond per step plus roughly 18% compute savings on failing runs under an abort policy.
 
-A similar skill displaced the installed skill in one in five runs without lowering task completion. When the similar skill was opened first, more than one third of the installed skill's exclusive core functions were lost. The final response named the selected skill in only 0.9% of substituted runs. A pre-tool hook at the first skill read restored fidelity to the level seen when the intended skill was opened first.
+Why it matters: logs become operational only when they share identity and time semantics, and when policy can use them to warn, pause, recover, or abort.
 
-Why it matters: skill selection is an early control-plane decision. Task-passing benchmarks can hide loss of normative requirements such as a prohibition on touching Git. Skill catalogs need conflict detection, selection receipts, and first-read enforcement.
-
-Stack fit: skills as control, capability discovery, coding-agent configuration, and harness evaluation.
+Stack fit: sessionful loops, event-sourced runtimes, trajectory evaluation, fleet monitoring, and recovery.
 
 Implementable now:
-- detect semantically overlapping skills before installation;
-- define exclusive core functions for normative skills;
-- intercept the first skill read and route to the intended skill;
-- log which skill was selected and why;
-- test paired skill configurations, including installation-location changes.
+- normalize tool calls, model turns, sub-agent work, and resource events;
+- distinguish active, idle, blocked, and recovery time;
+- attach source identity and ownership to every event;
+- evaluate intervention thresholds in shadow mode;
+- issue receipts for warnings, pauses, aborts, and resumed work.
 
-Implementability score: 0.90
+Implementability score: 0.76
 
-Core sources: [One Skill Too Many paper v1](https://arxiv.org/abs/2610.11647v1), [replication package](https://github.com/ltroin/conflict)
+Core sources: [Transect paper v1](https://arxiv.org/abs/2610.08364v1), [repository](https://github.com/AI-Safety-Institute/transect), [AgentTime paper v1](https://arxiv.org/abs/2610.09944v1), [repository](https://github.com/michaelofengenden/agenttimebench), [OnTrack paper v1](https://arxiv.org/abs/2610.12375v1)
 
-Artifact status: the public repository has a populated main branch, run-level data, analysis scripts, prompts, and a first-read guard example. GitHub did not detect a repository license, so copy or redistribution rights are unclear.
+Artifact status: Transect and AgentTime have populated public repositories. OnTrack links no public implementation artifact. Its automatic intervention result contains six cases and needs replication before deployment.
 
-## Compile policy into schema-checked tool gates
+## Join skill admission to policy gates
 
-NOMOS uses a four-pass compiler to turn written policy into deterministic tool-call rules. Static checks operate against tool schemas without an online LLM, prover, or solver. Those checks repaired or rejected 37% of airline candidates and 13% of retail candidates that would otherwise have produced unusable rules.
+One Skill Too Many covers 6,368 runs and 169,294 tool calls. A similar co-installed skill displaced the intended skill in one in five runs without lowering task completion. A first-read hook restored fidelity. NOMOS provides the next boundary: typed policy rules, static validation against tool schemas, replay preflight, and deterministic state-change gates.
 
-On tau2-bench, violations of reference-encoded clauses among state-changing calls fell from 66.3% to 2.6% in airline and from 30.8% to 6.9% in retail. AgentDojo attack success reached zero on banking and at most 3.6% on the other evaluated suites. Decisions run in microseconds, with domain-dependent benign-utility cost.
+Why it matters: selecting the wrong capability can silently remove normative behavior before any tool call reaches the policy layer. Admission and effect gating must share identity and versioning.
 
-Why it matters: written policy should compile into an auditable action gate with schema checks, preflight replay, and explicit rejection. Per-action LLM judgment is slower, less deterministic, and harder to audit.
-
-Stack fit: tool gateways, policy compilation, static verification, and runtime enforcement.
+Stack fit: skill catalogs, capability discovery, coding-agent configuration, enterprise tool gateways, and policy compilation.
 
 Implementable now:
-- compile policy clauses into typed forbidden-action and precondition rules;
-- verify every rule against tool names and available arguments;
-- replay rules over known-good transcripts before activation;
-- block state-changing calls deterministically and emit rule receipts;
-- measure policy violations and benign utility together.
+- scan skill catalogs for semantic overlap;
+- define precedence and exclusive core functions;
+- intercept and receipt the first skill read;
+- compile narrow policies into typed rules;
+- validate rules against tool schemas and replay known-good traces;
+- bind every state-change receipt to capability and policy versions.
 
-Implementability score: 0.58
+Implementability score: 0.70
 
-Core sources: [NOMOS paper v1](https://arxiv.org/abs/2610.11030v1), [public artifact repository](https://github.com/iamupd/NOMOS), [Zenodo v1.0 record](https://zenodo.org/records/22123420)
+Core sources: [One Skill Too Many paper v1](https://arxiv.org/abs/2610.11647v1), [replication package](https://github.com/ltroin/conflict), [NOMOS paper v1](https://arxiv.org/abs/2610.11030v1), [artifact repository](https://github.com/iamupd/NOMOS), [Zenodo record](https://zenodo.org/records/22123420)
 
-Artifact status: rules, policies, reports, logs, result summaries, and analysis scripts are public under CC BY-NC 4.0. The compiler, behavioral preflight, runtime gate, predicate tables, and raw simulation transcripts are withheld, so the headline system cannot be reproduced from the public package alone.
+Artifact status: the skill-conflict package exposes run-level data, prompts, analysis scripts, and a guard example. NOMOS publishes rules, policies, reports, and analyses under CC BY-NC 4.0. Its compiler and runtime gate are withheld. GitHub reports no detected license for the skill-conflict repository.
 
-## Practical priority
+## Route concurrency by workload evidence
 
-1. Add obligation checks and first-skill-read receipts immediately.
-2. Prototype streaming warn and pause decisions against existing traces before enabling aborts.
-3. Compile one narrow policy domain into typed tool rules and run replay preflight.
-4. Keep all four mechanisms subordinate to human-reviewed thresholds and reversible rollout.
+The dynamic-concurrency study evaluates 2,124 trajectories across Codex, Claude Code, and Kimi Code. Mean runtime increased in 14 of 15 agent-benchmark combinations. Claude Code lost 24.0 pass-rate points on SWE-bench Verified and gained 14.3 points on LoopsBench.
+
+Why it matters: concurrency adds coordination, context, integration, and write-collision costs. More agents are useful only when the task shape and harness can absorb those costs.
+
+Stack fit: multi-agent orchestration, scheduling, model routing, and work ownership.
+
+Implementable now:
+- classify task decomposability before delegation;
+- require disjoint write ownership or explicit merge stages;
+- estimate integration and context cost;
+- compare serial and parallel routes on the same workload class;
+- disable dynamic concurrency when measured gains disappear.
+
+Implementability score: 0.86
+
+Core sources: [dynamic-concurrency paper v1](https://arxiv.org/abs/2610.10263v1), [trajectory artifact](https://github.com/schwerli/Concurrency-Failures-Trajectory-Artifact)
+
+Artifact status: the public repository contains trajectory artifacts on a populated main branch. GitHub reports no detected license.
+
+## Implementation order
+
+1. Add terminal-state predicates and positive obligations.
+2. Add paired control-effect tests.
+3. Normalize the event spine and run intervention in shadow mode.
+4. Gate first-read capability selection and compile one narrow policy domain.
+5. Measure serial and parallel routes before enabling dynamic concurrency.

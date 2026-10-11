@@ -6,9 +6,9 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-10-10: [bounded persistence and evidence-timed evaluation](roundups/2026-10-10.md)
-- Daily implementation analysis: [AgenticAI](AgenticAI/2026-10-10/reasoning.md)
-- Daily strategy analysis: [Strategy](Strategy/2026-10-10/sovereignty.md)
+- Daily scan, 2026-10-11: [timing and capability activation as control surfaces](roundups/2026-10-11.md)
+- Daily implementation analysis: [AgenticAI](AgenticAI/2026-10-11/reasoning.md)
+- Daily strategy analysis: [Strategy](Strategy/2026-10-11/sovereignty.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 - Latest Friday synthesis, 2026-10-09: [evidence gates across the agent lifecycle](roundups/2026-10-09.md)
@@ -16,17 +16,17 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Current thesis
 
-Capable agents persist when the intended path fails. Reliability therefore depends on a bounded execution world plus evidence-bearing release:
+Reliable agents need explicit timing and activation controls:
 
-- explicit targets, network zones, action classes, and stop conditions;
-- sandboxed filesystem, network, credential, subprocess, and local MCP access;
-- fail-closed behavior when required containment is unavailable;
-- deterministic policy over validated fields at the final effect boundary;
-- separate fail-open and fail-closed metrics for model guardrails;
-- trace events for evidence availability, exposure, first use, first error, correction, and final stance;
-- incident replay across model, harness, and policy versions.
+- inspect trajectories when health degrades rather than on a blind fixed interval;
+- distinguish advisory guidance from replacement intervention;
+- grade generated tests against valid and invalid implementation sets;
+- spend fresh reasoning when prior reasoning no longer supports subsequent actions;
+- keep configured MCP servers inactive until a session deliberately enables them;
+- distinguish model defaults from model enforcement;
+- preserve triggers, interventions, costs, active capabilities, and outcomes in the trace.
 
-Start with one operational rule: model output can propose an action, while the runtime owns reach, release, and proof.
+Start with one operational rule: fixed defaults are hypotheses. Promote them into adaptive controls only after the trigger and outcome are measurable.
 
 ## Browse by category
 

@@ -412,3 +412,19 @@ Implementability score: 0.61
 Sources:
 - [BOTTLED paper v1](https://arxiv.org/abs/2610.08775v1)
 - [BOTTLED repository](https://github.com/aktsonthalia/bottled)
+
+## October 11, 2026 update: route reasoning at the turn boundary
+
+RACE treats fresh reasoning as a per-turn routing decision. LoGiC estimates whether removing a reasoning step materially reduces support for subsequent reference actions, then uses that signal in supervised fine-tuning and agentic reinforcement learning. Across four benchmarks, RACE remains within 1.40 performance points of standard SFT plus GRPO while reducing reasoning tokens by 32.3% to 80.2%.
+
+Practical lesson:
+- measure reasoning tokens per turn and per trajectory;
+- define environment changes, failed actions, and plan contradictions as forced-reasoning events;
+- compare adaptive policies against fixed-think and fixed-skip baselines;
+- require held-out quality and cost gates before online activation.
+
+Artifact caveat: the named public repository has no default branch and zero content. The method is artifact-not-ready and its reported results depend on SFT plus reinforcement learning.
+
+Implementability score: 0.42
+
+Sources: [RACE paper v1](https://arxiv.org/abs/2610.12061v1), [currently empty repository](https://github.com/HututuAI/RACE)

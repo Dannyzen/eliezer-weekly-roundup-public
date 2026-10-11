@@ -1258,3 +1258,17 @@ NOMOS demonstrates the value of compiling written policy into typed forbidden-ac
 Implementability score: 0.58
 
 Sources: [paper v1](https://arxiv.org/abs/2610.11030v1), [artifact repository](https://github.com/iamupd/NOMOS), [Zenodo record](https://zenodo.org/records/22123420)
+
+## 2026-10-11: Treat MCP startup as capability activation
+
+GitHub Copilot for JetBrains can now disable automatic MCP server startup for Copilot and Claude. This creates a useful distinction between a configured server and an active server. Enterprise-managed default models also provide fleet guidance, although the retained model picker means the default is not an enforceable allow list.
+
+Practical lesson:
+- track installed, configured, started, authorized, and invoked as separate states;
+- keep MCP servers inactive until the session needs them;
+- bind startup to sandbox, network, credential, and tool policy;
+- describe a model default as preference unless another layer enforces model choice.
+
+Implementability score: 0.96
+
+Source: [GitHub release](https://github.blog/changelog/2026-10-10-new-controls-and-chat-improvements-in-copilot-for-jetbrains)

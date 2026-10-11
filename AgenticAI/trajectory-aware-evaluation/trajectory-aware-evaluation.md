@@ -1504,3 +1504,19 @@ Artifact caveat: no paper-owned public implementation artifact was identified.
 Implementability score: 0.68
 
 Source: [SSCBench paper v1](https://arxiv.org/abs/2610.11514v1)
+
+## 2026-10-11: Trigger intervention from health and grade tests against implementation sets
+
+Cadence replaces fixed review intervals with severity-dependent scheduling. Advisory findings relax the next interval, while replacement-level findings tighten it. Across 300 SWE-bench Lite tasks, the paper reports 76 more resolved mini-swe-agent tasks and 47 more resolved Moatless tasks than vanilla agents. The public MIT repository and published result artifacts make a read-only implementation review possible, while reproduction still requires a substantial Modal and provider setup.
+
+TestPrism strengthens the evaluator side. Its Joint Success Function requires tests to fail the initial program, accept all valid candidates, and reject all invalid candidates. Fourteen coding-agent configurations score 59.67% against one reference and 28.00% against the full implementation set.
+
+Practical lesson:
+- preserve monitor severity, inspection timing, intervention type, and outcome in the trajectory;
+- shadow adaptive schedules before allowing replacement interventions;
+- grade tests against multiple valid and invalid implementations;
+- keep candidate provenance and evaluator identity beside every score.
+
+Implementability scores: Cadence 0.72; TestPrism 0.64
+
+Sources: [Cadence paper v1](https://arxiv.org/abs/2610.12269v1), [Cadence repository](https://github.com/LogAnalysisTech/Cadence), [TestPrism paper v1](https://arxiv.org/abs/2610.12289v1)

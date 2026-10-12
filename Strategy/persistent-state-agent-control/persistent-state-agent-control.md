@@ -147,3 +147,22 @@ Practical lesson:
 Implementability score: 0.68
 
 Source: [SPA](https://arxiv.org/abs/2608.27234v1)
+
+## October 12, 2026 update: restore provenance when artifacts re-enter a session
+
+SkillRelayBench shows that files, configurations, caches, and database records can carry malicious influence across fresh conversations. SkillRelayGuard restores producer and evidence context when an artifact is read, then reviews the proposed operation before execution.
+
+Practical lesson:
+- attach producer skill, principal, session, source inputs, intended scope, and evidence to retained objects;
+- restore that lineage at read time;
+- treat artifact content as data until the current request authorizes an effect;
+- review the exact proposed operation against current scope;
+- preserve guard advice, agent choice, final request, and external receipt together.
+
+Evidence caveat: results rely on model judges and stochastic runs. The public implementation is populated but unlicensed, and its operation review is advisory with explicit coverage gaps.
+
+Implementability score: 0.79
+
+Sources:
+- [SkillRelay paper v1](https://arxiv.org/abs/2610.13227v1)
+- [SkillRelay repository](https://github.com/Dianshu-Liao/SkillRelay)

@@ -2,22 +2,32 @@
 
 This index tracks the most recent structured strategy research. Each finding links to the dated analysis, durable topics, primary sources, practical methods, and an implementability score.
 
-## Latest Structured Update: 2026-10-11 Daily Scan
+## Latest Structured Update: 2026-10-12 Daily Scan
 
-Today's governance signal is explicit capability activation. Installed or configured tools should remain inactive until the session deliberately enables them under a bounded policy.
+The current governance signal is representation-to-authority control. Tool schemas and persistent artifacts both need evidence-bearing gates before they can cause effects.
 
-### Treat MCP startup as capability activation
+### Compile tool metadata into semantic admission tests
 
-Summary: Copilot for JetBrains can now disable automatic MCP server startup for Copilot and Claude. Enterprise administrators can also select a default agent model, although users retain the model picker.
+Summary: ToFu maps tool metadata to 74 CWE-guided sanitizers and runtime oracles. It reports 253 verified bugs affecting 343 tools across 118 of 273 evaluated MCP servers.
 
-Analysis: [daily strategy analysis](2026-10-11/sovereignty.md#treat-mcp-startup-as-capability-activation)
+Analysis: [daily strategy analysis](2026-10-12/sovereignty.md#tofu-compile-tool-metadata-into-security-tests)
 Durable topic: [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md)
-Core source: [GitHub release](https://github.blog/changelog/2026-10-10-new-controls-and-chat-improvements-in-copilot-for-jetbrains)
-Tools and methodologies worth exploring now: startup-disabled MCP, session capability receipts, installed-configured-started-authorized-invoked states, explicit server activation, honest model-default labeling
-Implementability score: 0.96
+Core source: [paper v1](https://arxiv.org/abs/2610.13651v1)
+Tools and methodologies worth exploring now: metadata-to-policy compilation, schema-valid fuzzing, effect introspection, version-bound sanitizer suites, catalog admission receipts
+Implementability score: 0.72
+
+### Restore artifact provenance before reuse
+
+Summary: SkillRelayGuard restores artifact origin and evidence at read time, then reviews the proposed operation before execution. It reduces aggregate attack success from 69.5% to 10.9% on a 270-case benchmark.
+
+Analysis: [daily strategy analysis](2026-10-12/sovereignty.md#skillrelayguard-restore-artifact-provenance-before-reuse)
+Durable topic: [Persistent-State Agent Control](persistent-state-agent-control/persistent-state-agent-control.md)
+Core sources: [paper v1](https://arxiv.org/abs/2610.13227v1), [SkillRelay repository](https://github.com/Dianshu-Liao/SkillRelay)
+Tools and methodologies worth exploring now: artifact lineage, read-time context restoration, current-request authorization, pre-execution advisory review, exact-effect receipts
+Implementability score: 0.79
 
 ## Current implication
 
-Treat startup as an authority transition. Log it, bind it to policy, and keep an installed server inert until the session needs it.
+Persistent availability does not grant current authority. Restore origin, scope, and evidence before reused state can influence an external effect.
 
-Latest roundup: [2026-10-11 daily scan](../roundups/2026-10-11.md).
+Latest roundup: [2026-10-12 daily scan](../roundups/2026-10-12.md).

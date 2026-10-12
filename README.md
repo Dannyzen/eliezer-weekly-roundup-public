@@ -6,9 +6,9 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-10-11: [timing and capability activation as control surfaces](roundups/2026-10-11.md)
-- Daily implementation analysis: [AgenticAI](AgenticAI/2026-10-11/reasoning.md)
-- Daily strategy analysis: [Strategy](Strategy/2026-10-11/sovereignty.md)
+- Daily scan, 2026-10-12: [execution feedback and provenance-aware authority](roundups/2026-10-12.md)
+- Daily implementation analysis: [AgenticAI](AgenticAI/2026-10-12/reasoning.md)
+- Daily strategy analysis: [Strategy](Strategy/2026-10-12/sovereignty.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 - Latest Friday synthesis, 2026-10-09: [evidence gates across the agent lifecycle](roundups/2026-10-09.md)
@@ -16,17 +16,17 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Current thesis
 
-Reliable agents need explicit timing and activation controls:
+Reliable agents need evidence-sensitive boundaries:
 
-- inspect trajectories when health degrades rather than on a blind fixed interval;
-- distinguish advisory guidance from replacement intervention;
-- grade generated tests against valid and invalid implementation sets;
-- spend fresh reasoning when prior reasoning no longer supports subsequent actions;
-- keep configured MCP servers inactive until a session deliberately enables them;
-- distinguish model defaults from model enforcement;
-- preserve triggers, interventions, costs, active capabilities, and outcomes in the trace.
+- rerank tools with recent execution outcomes, not semantic relevance alone;
+- decay stale reliability evidence and preserve cold-start uncertainty;
+- scale code review effort to complexity, dependency span, and missing project context;
+- compile tool metadata into semantic negative tests and effect assertions;
+- attach origin, scope, evidence, and version lineage to persistent artifacts;
+- restore that context when a later session reads the artifact;
+- recheck current authorization immediately before an external effect.
 
-Start with one operational rule: fixed defaults are hypotheses. Promote them into adaptive controls only after the trigger and outcome are measurable.
+Start with one operational rule: availability and relevance are evidence, not authority.
 
 ## Browse by category
 

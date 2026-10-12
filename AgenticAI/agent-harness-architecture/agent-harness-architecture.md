@@ -1585,3 +1585,22 @@ Deep dive: [Harness Security Effect Verification](../harness-security-effect-ver
 Sources:
 - [HarnessSecurity-Bench paper v1](https://arxiv.org/abs/2610.07639v1)
 - [HarnessSecurity-Benchmark repository](https://github.com/TsingPig/HarnessSecurity-Benchmark)
+
+## October 12, 2026 update: review depth should follow change complexity
+
+CRBugBench grounds code review in 1,800 human-verified bug tasks. The best reported review agent catches 71.9% within its top five comments, but performance falls on proprietary repositories, complex diffs, and bugs requiring non-local context.
+
+Practical lesson:
+- mine historical bug-introducing changes as review fixtures;
+- stratify recall by change size, dependency span, repository, and context availability;
+- scale prompt depth, model strength, and human review to the risk tier;
+- retrieve project history and policy before reviewing non-local changes;
+- preserve misses as regression cases after the candidate review is fixed.
+
+Artifact caveat: the public benchmark contains 995 open-source tasks and no GitHub-reported license. Full execution is expensive in storage and judge calls, while the proprietary package is unavailable.
+
+Implementability score: 0.73
+
+Sources:
+- [CRBugBench paper v1](https://arxiv.org/abs/2610.13668v1)
+- [CRBugBench repository](https://github.com/malusamayo/CRBugBench)

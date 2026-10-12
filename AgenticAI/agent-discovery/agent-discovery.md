@@ -103,3 +103,22 @@ Implementability score: 0.72
 Sources:
 - [ToolSearcher paper](https://arxiv.org/abs/2609.30906v1)
 - [ToolSearcher repository](https://github.com/zhenlongDai/ToolSearcher)
+
+## October 12, 2026 update: observed reliability belongs in retrieval
+
+RATED adds recent execution outcomes to semantic tool retrieval. On EcoAgent, it improves MRR by 52.2% relative to the ToolLLM API retriever and cuts fault selection from 86.2% to 2.9% under a simulated 30% persistent outage.
+
+Practical lesson:
+- record success, failure class, latency, and retry outcome by exact tool version;
+- decay stale reliability evidence;
+- preserve cold-start uncertainty for new tools;
+- rerank in shadow mode before online promotion;
+- evaluate semantic relevance and runtime availability separately.
+
+Evidence caveat: outage behavior is simulated. Live runtime validation and newly added tool cold starts remain open.
+
+Implementability score: 0.88
+
+Sources:
+- [RATED paper v1](https://arxiv.org/abs/2610.13889v1)
+- [EcoAgent repository](https://github.com/Elliotes/EcoAgent)

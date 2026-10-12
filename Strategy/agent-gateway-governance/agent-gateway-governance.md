@@ -1272,3 +1272,20 @@ Practical lesson:
 Implementability score: 0.96
 
 Source: [GitHub release](https://github.blog/changelog/2026-10-10-new-controls-and-chat-improvements-in-copilot-for-jetbrains)
+
+## 2026-10-12: Compile tool metadata into semantic admission tests
+
+ToFu turns tool descriptions and schemas into CWE-guided semantic sanitizers, schema-valid fuzz inputs, and runtime or outcome oracles. Across 273 MCP servers and 3,405 tools, it reports 253 verified bugs affecting 343 tools in 118 servers.
+
+Practical lesson:
+- treat schemas as shape constraints and descriptions as partial semantic specifications;
+- compile path, URL, SQL, shell, identifier, and scope semantics into negative tests;
+- bind findings to exact tool, metadata, sanitizer, input, and observed effect;
+- rerun admission tests on metadata, code, dependency, permission, or environment change;
+- add stateful multi-call tests before granting broader authority.
+
+Evidence caveat: no public implementation artifact was found. The paper leaves stateful call sequences and deep coverage of external components for future work.
+
+Implementability score: 0.72
+
+Source: [ToFu paper v1](https://arxiv.org/abs/2610.13651v1)

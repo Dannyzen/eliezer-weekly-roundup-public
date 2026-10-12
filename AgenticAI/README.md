@@ -2,42 +2,32 @@
 
 This index tracks the most recent structured implementation research. Each finding links to the dated analysis, primary sources, practical methods, and an implementability score.
 
-## Latest Structured Update: 2026-10-11 Daily Scan
+## Latest Structured Update: 2026-10-12 Daily Scan
 
-Today's implementation signal is timing as a control surface. Adaptive agents need explicit rules for when to inspect a trajectory, when to spend another reasoning step, and when generated tests have enough evidence to support release.
+The current implementation signal is feedback-shaped control. Tool routing should respond to observed reliability, and review effort should respond to change complexity and missing repository context.
 
-### Adapt monitoring pressure to trajectory health
+### Route tools with execution feedback
 
-Summary: Cadence uses advisory and replacement interventions to tighten or relax inspection intervals. Across 300 SWE-bench Lite tasks, it resolves 76 more mini-swe-agent tasks and 47 more Moatless tasks than vanilla agents.
+Summary: RATED combines semantic retrieval with a contextual bandit updated from execution outcomes. It reduces fault selection from 86.2% to 2.9% under a simulated 30% persistent outage over a 5,172-tool benchmark.
 
-Analysis: [daily analysis](2026-10-11/reasoning.md#cadence-adapt-monitoring-pressure-to-execution-health)
-Durable topic: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
-Core sources: [paper v1](https://arxiv.org/abs/2610.12269v1), [public MIT repository](https://github.com/LogAnalysisTech/Cadence), [results dataset](https://huggingface.co/datasets/dengdan1999/Cadence-Experiment-Results)
-Tools and methodologies worth exploring now: severity-coded interventions, adaptive inspection intervals, shadow monitoring, false-intervention metrics, source-bound run artifacts
-Implementability score: 0.72
+Analysis: [daily analysis](2026-10-12/reasoning.md#rated-route-tools-with-execution-feedback)
+Durable topic: [Agent Discovery](agent-discovery/agent-discovery.md)
+Core sources: [paper v1](https://arxiv.org/abs/2610.13889v1), [EcoAgent repository](https://github.com/Elliotes/EcoAgent)
+Tools and methodologies worth exploring now: invocation outcome ledgers, reliability decay, contextual-bandit reranking, shadow routing, catalog-version receipts
+Implementability score: 0.88
 
-### Grade tests against implementation sets
+### Scale review effort to change complexity
 
-Summary: TestPrism's Joint Success Function requires generated tests to fail the initial program, accept every valid candidate, and reject every invalid candidate. Fourteen configurations score 59.67% against one reference and 28.00% against the full implementation set.
+Summary: CRBugBench evaluates 1,800 human-verified bug tasks. The best review agent catches 71.9% within its top five comments, while proprietary and non-local changes remain substantially harder.
 
-Analysis: [daily analysis](2026-10-11/reasoning.md#testprism-validate-tests-against-an-implementation-set)
-Durable topic: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
-Core source: [TestPrism paper v1](https://arxiv.org/abs/2610.12289v1)
-Tools and methodologies worth exploring now: valid-implementation corpora, invalid behavioral mutants, Joint Success Function, oracle provenance, single-reference comparison
-Implementability score: 0.64
-
-### Route reasoning at the turn boundary
-
-Summary: RACE learns when earlier reasoning still supports subsequent actions. Across four benchmarks, it stays within 1.40 performance points of standard SFT plus GRPO while reducing reasoning tokens by 32.3% to 80.2%.
-
-Analysis: [daily analysis](2026-10-11/reasoning.md#race-route-reasoning-at-the-turn-boundary)
-Durable topic: [Model Router Governance](../Strategy/model-router-governance/model-router-governance.md)
-Core sources: [RACE paper v1](https://arxiv.org/abs/2610.12061v1), [currently empty repository](https://github.com/HututuAI/RACE)
-Tools and methodologies worth exploring now: per-turn token accounting, forced-reasoning events, fixed-think and fixed-skip baselines, shadow skip policies, held-out quality-cost gates
-Implementability score: 0.42
+Analysis: [daily analysis](2026-10-12/reasoning.md#crbugbench-scale-review-effort-to-change-complexity)
+Durable topic: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
+Core sources: [paper v1](https://arxiv.org/abs/2610.13668v1), [open-source benchmark subset](https://github.com/malusamayo/CRBugBench)
+Tools and methodologies worth exploring now: historical bug mining, complexity-tiered review, repository knowledge retrieval, human escalation, recall by change class
+Implementability score: 0.73
 
 ## Current implication
 
-Replace fixed schedules with evidence-triggered timing, then preserve the trigger, intervention, cost, and outcome in the trajectory.
+Replace static tool rankings and uniform review depth with evidence-sensitive routing. Preserve the evidence and keep high-risk release authority outside the reviewing agent.
 
-Latest roundup: [2026-10-11 daily scan](../roundups/2026-10-11.md).
+Latest roundup: [2026-10-12 daily scan](../roundups/2026-10-12.md).

@@ -175,3 +175,22 @@ These are architecture and ecosystem problems. They do not block a narrow first 
 - [Inspect AI evaluation framework](https://inspect.aisi.org.uk/)
 - [Transect: Retaining Observability for Long-Horizon LLM Agent Evaluations](https://arxiv.org/abs/2610.08364v1)
 - [What Did the Agent Actually Do? Evidence-Grounded Oversight for Long-Horizon Agents](https://arxiv.org/abs/2610.06406v1)
+
+## October 13, 2026 update: generate tests from cross-service effect dependencies
+
+X-AgentRed represents tools by execution preconditions, effects, and possible harms, then generates multi-service scenarios from the resulting dependency graph. Across four frontier agents and 250 candidate scenarios per target, it reports 1.77 times the harmful path rate and 2.99 times the average tool coverage of the strongest comparison.
+
+Practical lesson:
+- type tool preconditions, effects, principals, data classes, and destinations;
+- generate paths where one effect satisfies the next precondition;
+- verify final recipients and system state with deterministic oracles;
+- refine blocked paths instead of restarting broad prompt search;
+- convert confirmed harmful chains into release fixtures.
+
+Artifact caveat: the paper publishes a project page and detailed method, but no paper-owned code or dataset repository was identified. The simulated environment, LLM judges, and graph maintenance cost limit direct transfer.
+
+Implementability score: 0.69
+
+Sources:
+- [X-AgentRed paper v1](https://arxiv.org/abs/2610.13886v1)
+- [X-AgentRed project page](https://yeonsungjung.github.io/projects/x-agentred/)

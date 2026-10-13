@@ -228,3 +228,23 @@ Sources:
 ## Working conclusion
 
 A safe agent fleet cannot be governed one prompt or tool call at a time. Preserve durable principals, correlate behavior across services and days, verify harm in system state, rank cases under the real review budget, and keep intervention outside the monitor.
+
+## October 13, 2026 update: separate principal attribution from payload capture
+
+GitHub Copilot enterprise settings can now export `user.name`, `process.user.name`, and `host.name` independently from five sensitive content classes: prompts, responses, tool arguments, tool output, and policy detail. Every class is off by default, and managed settings override local configuration.
+
+Practical lesson:
+- begin with principal, host, session, model, tool, policy, and outcome identifiers;
+- keep prompts and tool content disabled during baseline monitoring;
+- enable one content class only for a bounded investigation;
+- document access, retention, redaction, expiry, and deletion first;
+- join OTel traces to deterministic external-state receipts.
+
+Availability caveat: supported Copilot clients, enterprise-managed settings, and an approved OTel backend are required. Content capture can expose source code, commands, tool output, filesystem paths, and user-profile paths.
+
+Implementability score: 0.93
+
+Sources:
+- [GitHub release note](https://github.blog/changelog/2026-10-12-client-telemetry-user-attribution-and-configurable-capture)
+- [GitHub enterprise managed settings](https://docs.github.com/copilot/reference/enterprise-administrators/enterprise-managed-settings)
+- [VS Code agent OpenTelemetry guide](https://code.visualstudio.com/docs/agents/guides/monitoring-agents)

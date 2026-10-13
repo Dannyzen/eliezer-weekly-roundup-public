@@ -2,32 +2,32 @@
 
 This index tracks the most recent structured strategy research. Each finding links to the dated analysis, durable topics, primary sources, practical methods, and an implementability score.
 
-## Latest Structured Update: 2026-10-12 Daily Scan
+## Latest Structured Update: 2026-10-13 Daily Scan
 
-The current governance signal is representation-to-authority control. Tool schemas and persistent artifacts both need evidence-bearing gates before they can cause effects.
+The current governance signal is effect-path proof with minimum necessary telemetry. Agents cross service boundaries, while observability systems must avoid collecting every sensitive payload by default.
 
-### Compile tool metadata into semantic admission tests
+### Red-team complete cross-service effect paths
 
-Summary: ToFu maps tool metadata to 74 CWE-guided sanitizers and runtime oracles. It reports 253 verified bugs affecting 343 tools across 118 of 273 evaluated MCP servers.
+Summary: X-AgentRed builds tool-dependency graphs from preconditions and effects, then uses execution feedback to discover harmful multi-service paths. Across four frontier agents, it reports 1.77 times the harmful path rate and 2.99 times the average tool coverage of the strongest comparison.
 
-Analysis: [daily strategy analysis](2026-10-12/sovereignty.md#tofu-compile-tool-metadata-into-security-tests)
-Durable topic: [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md)
-Core source: [paper v1](https://arxiv.org/abs/2610.13651v1)
-Tools and methodologies worth exploring now: metadata-to-policy compilation, schema-valid fuzzing, effect introspection, version-bound sanitizer suites, catalog admission receipts
-Implementability score: 0.72
+Analysis: [daily strategy analysis](2026-10-13/sovereignty.md#x-agentred-red-team-the-path-across-services)
+Durable topic: [Harness Security Effect Verification](../AgenticAI/harness-security-effect-verification/harness-security-effect-verification.md)
+Core sources: [paper v1](https://arxiv.org/abs/2610.13886v1), [project page](https://yeonsungjung.github.io/projects/x-agentred/)
+Tools and methodologies worth exploring now: precondition-effect graphs, path generation, destination-aware state oracles, blocked-step refinement, incident-to-regression conversion
+Implementability score: 0.69
 
-### Restore artifact provenance before reuse
+### Separate identity telemetry from content capture
 
-Summary: SkillRelayGuard restores artifact origin and evidence at read time, then reviews the proposed operation before execution. It reduces aggregate attack success from 69.5% to 10.9% on a 270-case benchmark.
+Summary: GitHub Copilot enterprise controls can now export user, OS-account, and host identity independently from prompts, responses, tool arguments, tool output, and policy detail. Every capture class is off by default.
 
-Analysis: [daily strategy analysis](2026-10-12/sovereignty.md#skillrelayguard-restore-artifact-provenance-before-reuse)
-Durable topic: [Persistent-State Agent Control](persistent-state-agent-control/persistent-state-agent-control.md)
-Core sources: [paper v1](https://arxiv.org/abs/2610.13227v1), [SkillRelay repository](https://github.com/Dianshu-Liao/SkillRelay)
-Tools and methodologies worth exploring now: artifact lineage, read-time context restoration, current-request authorization, pre-execution advisory review, exact-effect receipts
-Implementability score: 0.79
+Analysis: [daily strategy analysis](2026-10-13/sovereignty.md#github-copilot-telemetry-make-identity-and-content-capture-separate-controls)
+Durable topic: [Agent Fleet Monitoring Control Plane](agent-fleet-monitoring-control-plane/agent-fleet-monitoring-control-plane.md)
+Core sources: [GitHub release note](https://github.blog/changelog/2026-10-12-client-telemetry-user-attribution-and-configurable-capture), [managed settings](https://docs.github.com/copilot/reference/enterprise-administrators/enterprise-managed-settings), [VS Code OTel guide](https://code.visualstudio.com/docs/agents/guides/monitoring-agents)
+Tools and methodologies worth exploring now: OTel identity attribution, approved collectors, content-class deny-by-default, investigation expiry, trace-to-effect receipts
+Implementability score: 0.93
 
 ## Current implication
 
-Persistent availability does not grant current authority. Restore origin, scope, and evidence before reused state can influence an external effect.
+Prove who acted and what changed without turning routine monitoring into a copy of every prompt, file, command, and tool result.
 
-Latest roundup: [2026-10-12 daily scan](../roundups/2026-10-12.md).
+Latest roundup: [2026-10-13 daily scan](../roundups/2026-10-13.md).

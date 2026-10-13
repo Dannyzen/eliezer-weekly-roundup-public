@@ -1520,3 +1520,23 @@ Practical lesson:
 Implementability scores: Cadence 0.72; TestPrism 0.64
 
 Sources: [Cadence paper v1](https://arxiv.org/abs/2610.12269v1), [Cadence repository](https://github.com/LogAnalysisTech/Cadence), [TestPrism paper v1](https://arxiv.org/abs/2610.12289v1)
+
+## October 13, 2026 update: separate test validity from behavioral adequacy
+
+TestSuiteBench evaluates complete agent-generated test suites across 165 applications. Generated tests are mostly valid against the reference implementation, yet every evaluated frontier agent remains below a 60% mutation score against requirement-targeted mutants.
+
+Practical lesson:
+- compile requirements into targeted wrong implementations;
+- freeze the generated tests before hidden mutation evaluation;
+- report validity and mutation adequacy separately;
+- retain requirement, mutant, killing test, and trajectory provenance;
+- route surviving high-risk mutants into human review.
+
+Artifact caveat: the public MIT repository and three Hugging Face datasets were inspected read-only. Full use requires Linux x86_64, Docker, provider credentials, and substantial storage.
+
+Implementability score: 0.87
+
+Sources:
+- [TestSuiteBench paper v1](https://arxiv.org/abs/2610.13065v1)
+- [TestSuiteBench repository](https://github.com/eth-sri/testsuitebench)
+- [TestSuiteBench datasets](https://huggingface.co/collections/eth-sri/testsuitebench)

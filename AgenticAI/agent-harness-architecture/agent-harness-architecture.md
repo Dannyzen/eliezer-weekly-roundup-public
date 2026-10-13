@@ -1604,3 +1604,21 @@ Implementability score: 0.73
 Sources:
 - [CRBugBench paper v1](https://arxiv.org/abs/2610.13668v1)
 - [CRBugBench repository](https://github.com/malusamayo/CRBugBench)
+
+## October 13, 2026 update: make evidence lifecycle a harness primitive
+
+LongHarness separates active source-linked evidence, evolving conclusions, unresolved gaps, and prior actions. Removing persistent states reduced OfficeQA Pro V2 exact match by 7.8 points; removing evidence-conclusion coevolution reduced it by 9.4 points.
+
+Practical lesson:
+- keep evidence and conclusions outside the transcript;
+- require conclusions to cite active evidence IDs;
+- surface conclusions that still depend on invalidated evidence;
+- let unresolved gaps drive the next search;
+- score retrieval, evidence adoption, and final transformation separately.
+
+Evidence caveat: harness comparisons use one run per setting, AA-LCR outputs use an LLM grader, and no dedicated public implementation repository was identified.
+
+Implementability score: 0.66
+
+Source:
+- [LongHarness paper v1](https://arxiv.org/abs/2610.13075v1)

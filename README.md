@@ -6,9 +6,9 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-10-12: [execution feedback and provenance-aware authority](roundups/2026-10-12.md)
-- Daily implementation analysis: [AgenticAI](AgenticAI/2026-10-12/reasoning.md)
-- Daily strategy analysis: [Strategy](Strategy/2026-10-12/sovereignty.md)
+- Daily scan, 2026-10-13: [explicit evidence and privacy-scoped proof](roundups/2026-10-13.md)
+- Daily implementation analysis: [AgenticAI](AgenticAI/2026-10-13/reasoning.md)
+- Daily strategy analysis: [Strategy](Strategy/2026-10-13/sovereignty.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 - Latest Friday synthesis, 2026-10-09: [evidence gates across the agent lifecycle](roundups/2026-10-09.md)
@@ -16,18 +16,16 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Current thesis
 
-Reliable agents need evidence-sensitive boundaries:
+Reliable agents need explicit verification state:
 
-- rerank tools with recent execution outcomes, not semantic relevance alone;
-- decay stale reliability evidence and preserve cold-start uncertainty;
-- scale code review effort to complexity, dependency span, and missing project context;
-- compile tool metadata into semantic negative tests and effect assertions;
-- attach origin, scope, evidence, and version lineage to persistent artifacts;
-- restore that context when a later session reads the artifact;
-- recheck current authorization immediately before an external effect.
+- preserve source-linked evidence outside the transcript;
+- track conclusions and unresolved gaps as runtime objects;
+- grade tests against requirement-targeted wrong implementations;
+- red-team complete cross-service effect paths;
+- attribute agent activity without capturing sensitive payloads by default;
+- join every completion claim to a deterministic external-state receipt.
 
-Start with one operational rule: availability and relevance are evidence, not authority.
-
+Start with one operational rule: model output proposes completion, independent evidence establishes it.
 ## Browse by category
 
 - [AgenticAI](AgenticAI/README.md): implementation analysis on evaluation, memory, context policy, search, tools, and orchestration.

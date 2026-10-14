@@ -1540,3 +1540,22 @@ Sources:
 - [TestSuiteBench paper v1](https://arxiv.org/abs/2610.13065v1)
 - [TestSuiteBench repository](https://github.com/eth-sri/testsuitebench)
 - [TestSuiteBench datasets](https://huggingface.co/collections/eth-sri/testsuitebench)
+
+## October 14, 2026 update: derive references before judging candidates
+
+DeRef exposes a derivation gap in tool-call verification. Seven judges accept correct arguments less often when the source is missing and can prefer a visible wrong reference over a correct hidden derivation. A separate candidate-blind derivation stage raises controlled-test AUROC to 98.40 through 99.59.
+
+Practical lesson:
+- derive expected values without showing the candidate;
+- preserve source spans, schema defaults, transformations, and uncertainty;
+- score derivation quality separately from candidate agreement;
+- use deterministic checks for exact identifiers and effectful arguments;
+- send ambiguous or high-impact cases to a person.
+
+Artifact caveat: the Apache-2.0 public repository is populated with code and benchmark adapters but has no tagged release. Single-gold-value benchmarks can reject other valid arguments.
+
+Implementability score: 0.81
+
+Sources:
+- [Judges Follow the Reference](https://arxiv.org/abs/2610.18497v1)
+- [DeRef implementation](https://github.com/SarielMa/DeRef_release)

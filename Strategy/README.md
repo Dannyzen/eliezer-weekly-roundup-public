@@ -2,32 +2,32 @@
 
 This index tracks the most recent structured strategy research. Each finding links to the dated analysis, durable topics, primary sources, practical methods, and an implementability score.
 
-## Latest Structured Update: 2026-10-13 Daily Scan
+## Latest Structured Update: 2026-10-14 Daily Scan
 
-The current governance signal is effect-path proof with minimum necessary telemetry. Agents cross service boundaries, while observability systems must avoid collecting every sensitive payload by default.
+The current governance signal is authority lifecycle control. Risk can be forecast before execution, and granted capability should disappear immediately after its last justified use.
 
-### Red-team complete cross-service effect paths
+### Gate unauthorized actions before execution
 
-Summary: X-AgentRed builds tool-dependency graphs from preconditions and effects, then uses execution feedback to discover harmful multi-service paths. Across four frontier agents, it reports 1.77 times the harmful path rate and 2.99 times the average tool coverage of the strongest comparison.
+Summary: A linear readout of open-weight model residual states forecasts unauthorized actions before the tool call with AUROC 0.94. The signal can reduce violations, but it requires model access, domain calibration, and an external authority gate.
 
-Analysis: [daily strategy analysis](2026-10-13/sovereignty.md#x-agentred-red-team-the-path-across-services)
-Durable topic: [Harness Security Effect Verification](../AgenticAI/harness-security-effect-verification/harness-security-effect-verification.md)
-Core sources: [paper v1](https://arxiv.org/abs/2610.13886v1), [project page](https://yeonsungjung.github.io/projects/x-agentred/)
-Tools and methodologies worth exploring now: precondition-effect graphs, path generation, destination-aware state oracles, blocked-step refinement, incident-to-regression conversion
-Implementability score: 0.69
+Analysis: [daily strategy analysis](2026-10-14/sovereignty.md#internal-state-gates-can-stop-unauthorized-actions-before-execution)
+Durable topic: [Runtime Governance](runtime-governance/runtime-governance.md)
+Core sources: [paper v1](https://arxiv.org/abs/2610.17301v1), [code and experimental record](https://github.com/AryaFayyazi/Honesty)
+Tools and methodologies worth exploring now: matched authorization twins, pre-action shadow scoring, conformal thresholds, escalation budgets, frozen readouts, domain-transfer gates
+Implementability score: 0.44
 
-### Separate identity telemetry from content capture
+### Expire capabilities after their last justified use
 
-Summary: GitHub Copilot enterprise controls can now export user, OS-account, and host identity independently from prompts, responses, tool arguments, tool output, and policy detail. Every capture class is off by default.
+Summary: CreepScope measures stale authority at every workflow step. An injected stale send succeeds in all nine persistent-policy episodes and none of the three step-lease episodes in its local agent case.
 
-Analysis: [daily strategy analysis](2026-10-13/sovereignty.md#github-copilot-telemetry-make-identity-and-content-capture-separate-controls)
-Durable topic: [Agent Fleet Monitoring Control Plane](agent-fleet-monitoring-control-plane/agent-fleet-monitoring-control-plane.md)
-Core sources: [GitHub release note](https://github.blog/changelog/2026-10-12-client-telemetry-user-attribution-and-configurable-capture), [managed settings](https://docs.github.com/copilot/reference/enterprise-administrators/enterprise-managed-settings), [VS Code OTel guide](https://code.visualstudio.com/docs/agents/guides/monitoring-agents)
-Tools and methodologies worth exploring now: OTel identity attribution, approved collectors, content-class deny-by-default, investigation expiry, trace-to-effect receipts
-Implementability score: 0.93
+Analysis: [daily strategy analysis](2026-10-14/sovereignty.md#creepscope-expire-authority-after-its-last-justified-step)
+Durable topic: [Agent Execution Control Plane](agent-execution-control-plane/agent-execution-control-plane.md)
+Core source: [paper v1](https://arxiv.org/abs/2610.15988v1)
+Tools and methodologies worth exploring now: step-bound leases, grant-use-expiry event logs, Capability-Step Exposure, Residual Privilege Debt, stale-action injection, exact replay-grid gates
+Implementability score: 0.78
 
 ## Current implication
 
-Prove who acted and what changed without turning routine monitoring into a copy of every prompt, file, command, and tool result.
+Evaluate authorization as a lifecycle: predict risk before effect release, bind capability to one justified step, and prove expiry afterward.
 
-Latest roundup: [2026-10-13 daily scan](../roundups/2026-10-13.md).
+Latest roundup: [2026-10-14 daily scan](../roundups/2026-10-14.md).

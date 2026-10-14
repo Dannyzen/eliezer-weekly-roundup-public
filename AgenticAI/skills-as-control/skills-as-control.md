@@ -1080,3 +1080,22 @@ The co-installed-skill study shows that task completion can remain green while a
 Implementability score: 0.90
 
 Sources: [paper v1](https://arxiv.org/abs/2610.11647v1), [replication package](https://github.com/ltroin/conflict)
+
+## October 14, 2026 update: preselect skills before execution
+
+Lost in Implicit Routing shows that a growing catalog can make relevant skills effectively disappear. With 1,000 irrelevant skills, loaded-skill recall falls from 73.6% to 27.4%, while explicit preselection retains 73.9% recall.
+
+Practical lesson:
+- separate skill discovery from task execution;
+- freeze catalog identity and record considered, selected, loaded, and used skills;
+- measure zero-load and substitution failures beside task success;
+- retain no-skill and golden-skill controls;
+- budget preselection latency and recover omitted skills through bounded replanning.
+
+Artifact caveat: the official public repository is populated with manifests, experiments, documentation, and offline tests, but no root license or tagged release was detected.
+
+Implementability score: 0.88
+
+Sources:
+- [Lost in Implicit Routing](https://arxiv.org/abs/2610.18522v1)
+- [official repository](https://github.com/jinlinll/lost-in-implicit-routing)

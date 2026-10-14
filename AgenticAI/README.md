@@ -2,32 +2,32 @@
 
 This index tracks the most recent structured implementation research. Each finding links to the dated analysis, primary sources, practical methods, and an implementability score.
 
-## Latest Structured Update: 2026-10-13 Daily Scan
+## Latest Structured Update: 2026-10-14 Daily Scan
 
-The current implementation signal is explicit verification state. Long-horizon agents need source-linked evidence and open gaps outside the transcript, while coding agents need test adequacy measured against requirement-targeted failures.
+The current implementation signal is explicit routing and derivation. Large catalogs need a selection stage outside task execution, and tool-call judges need a candidate-blind reference before scoring arguments.
 
-### Separate evidence, conclusions, and unresolved gaps
+### Preselect skills before task execution
 
-Summary: LongHarness keeps active evidence, evolving conclusions, and open information gaps as distinct runtime state. On OfficeQA Pro V2, removing persistent states reduces exact match by 7.8 points and removing evidence-conclusion coevolution reduces it by 9.4 points.
+Summary: With 1,000 irrelevant skills, loaded-skill recall falls from 73.6% to 27.4% and the zero-load rate rises from 9.3% to 51.6%. Explicit preselection from the same library retains 73.9% recall.
 
-Analysis: [daily analysis](2026-10-13/reasoning.md#longharness-separate-evidence-conclusions-and-unresolved-gaps)
-Durable topic: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
-Core source: [LongHarness paper v1](https://arxiv.org/abs/2610.13075v1)
-Tools and methodologies worth exploring now: typed evidence records, active or inactive status, conclusion-to-evidence links, unresolved-gap search, citation validation, retrieval-adoption-transformation metrics
-Implementability score: 0.66
+Analysis: [daily analysis](2026-10-14/reasoning.md#lost-in-implicit-routing-preselect-skills-before-task-execution)
+Durable topic: [Skills as Control](skills-as-control/skills-as-control.md)
+Core sources: [paper v1](https://arxiv.org/abs/2610.18522v1), [official repository](https://github.com/jinlinll/lost-in-implicit-routing)
+Tools and methodologies worth exploring now: explicit top-k preselection, loaded-skill recall, zero-load rate, description ablations, catalog snapshot receipts, no-skill and golden-skill controls
+Implementability score: 0.88
 
-### Grade tests against requirement-targeted mutants
+### Derive the expected argument before judging the candidate
 
-Summary: TestSuiteBench covers 165 applications and shows that frontier agents generate mostly valid tests while remaining below 60% mutation score. The public MIT artifact includes a populated benchmark tree and three Hugging Face datasets.
+Summary: Seven judges show a derivation gap when the source of a correct tool argument is missing. DeRef uses a separate candidate-blind derivation stage and raises controlled-test AUROC from chance or below to 98.40 through 99.59.
 
-Analysis: [daily analysis](2026-10-13/reasoning.md#testsuitebench-grade-test-adequacy-against-requirement-targeted-mutants)
+Analysis: [daily analysis](2026-10-14/reasoning.md#deref-derive-the-expected-argument-before-seeing-the-candidate)
 Durable topic: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
-Core sources: [paper v1](https://arxiv.org/abs/2610.13065v1), [repository](https://github.com/eth-sri/testsuitebench), [datasets](https://huggingface.co/collections/eth-sri/testsuitebench)
-Tools and methodologies worth exploring now: requirement-targeted mutation, independent wrong implementations, validity versus adequacy scoring, frozen hidden mutant sets, surviving-mutant review
-Implementability score: 0.87
+Core sources: [paper v1](https://arxiv.org/abs/2610.18497v1), [Apache-2.0 implementation](https://github.com/SarielMa/DeRef_release)
+Tools and methodologies worth exploring now: candidate-blind derivation, source-span receipts, separate derivation and match scores, deterministic schema checks, high-impact human review
+Implementability score: 0.81
 
 ## Current implication
 
-Move verification state out of prose. Evidence needs lifecycle state and source identity, while tests need independent wrong implementations that prove behavioral discrimination.
+Move selection and derivation out of the executor's hidden reasoning. Preserve each routing decision and reference as reviewable evidence.
 
-Latest roundup: [2026-10-13 daily scan](../roundups/2026-10-13.md).
+Latest roundup: [2026-10-14 daily scan](../roundups/2026-10-14.md).

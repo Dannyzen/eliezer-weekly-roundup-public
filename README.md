@@ -6,9 +6,9 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-10-13: [explicit evidence and privacy-scoped proof](roundups/2026-10-13.md)
-- Daily implementation analysis: [AgenticAI](AgenticAI/2026-10-13/reasoning.md)
-- Daily strategy analysis: [Strategy](Strategy/2026-10-13/sovereignty.md)
+- Daily scan, 2026-10-14: [explicit routing and authority lifecycles](roundups/2026-10-14.md)
+- Daily implementation analysis: [AgenticAI](AgenticAI/2026-10-14/reasoning.md)
+- Daily strategy analysis: [Strategy](Strategy/2026-10-14/sovereignty.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 - Latest Friday synthesis, 2026-10-09: [evidence gates across the agent lifecycle](roundups/2026-10-09.md)
@@ -16,16 +16,17 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Current thesis
 
-Reliable agents need explicit verification state:
+Reliable agents need explicit routing and authority lifecycles:
 
-- preserve source-linked evidence outside the transcript;
-- track conclusions and unresolved gaps as runtime objects;
-- grade tests against requirement-targeted wrong implementations;
-- red-team complete cross-service effect paths;
-- attribute agent activity without capturing sensitive payloads by default;
-- join every completion claim to a deterministic external-state receipt.
+- preselect relevant skills before task execution;
+- derive expected tool arguments independently of the candidate;
+- score action risk before effect release;
+- expire capabilities after their last justified use;
+- preserve routing, derivation, authorization, and expiry receipts;
+- keep deterministic policy and external-state proof authoritative.
 
-Start with one operational rule: model output proposes completion, independent evidence establishes it.
+Start with one operational rule: hidden model judgment may recommend an action, while explicit runtime evidence decides whether it can execute.
+
 ## Browse by category
 
 - [AgenticAI](AgenticAI/README.md): implementation analysis on evaluation, memory, context policy, search, tools, and orchestration.

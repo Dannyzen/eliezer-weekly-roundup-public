@@ -1283,3 +1283,22 @@ Evidence caveat: Anthropic reports minimal impact and provides no per-category d
 Implementability score: 0.86
 
 Source: [Anthropic incident report](https://www.anthropic.com/research/investigating-unintended-model-actions)
+
+## October 14, 2026 update: predict action risk before effect release
+
+The Agent Knew trains linear readouts over open-weight model residual states to forecast unauthorized actions before the tool call. On matched authorization tasks, the readout reaches AUROC 0.94, and forecast-triggered gates reduce violations across four model families.
+
+Practical lesson:
+- shadow-score proposed actions before execution;
+- calibrate on matched authorized and unauthorized twins;
+- freeze readouts and require domain-transfer evidence;
+- route flags to an external policy gate or approver;
+- keep internal-state signals advisory when deterministic authorization is available.
+
+Artifact caveat: the public experimental record is extensive, but the frozen readout did not transfer directly to AgentDojo and required in-domain fitting. The stack needs open-weight residual access and specialized GPU infrastructure.
+
+Implementability score: 0.44
+
+Sources:
+- [The Agent Knew](https://arxiv.org/abs/2610.17301v1)
+- [code, data, and preregistration record](https://github.com/AryaFayyazi/Honesty)

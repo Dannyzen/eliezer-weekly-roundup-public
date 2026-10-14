@@ -285,3 +285,21 @@ Sources:
 - [Authority Is Not a String](https://arxiv.org/abs/2609.08371v1)
 - [CapScope research artifact](https://figshare.com/s/86184ed20f66d1f0cf91)
 - [GitHub enterprise-managed sandbox preview](https://github.blog/changelog/2026-09-08-enterprise-managed-sandbox-in-copilot-for-jetbrains)
+
+## October 14, 2026 update: expire authority after last use
+
+CreepScope makes post-use authority measurable. Capability-Step Exposure counts stepwise overexposure, while Residual Privilege Debt records capability left reachable at termination. In its local mail case, stale send authority executes under every persistent policy episode and under no step-lease episode.
+
+Practical lesson:
+- bind capability to one principal, effect, object set, and workflow step;
+- emit grant, use, expiry, denied-use, and final-state events;
+- inject stale actions after the last legitimate use;
+- reject incomplete or duplicated evaluation grids;
+- separate early exposure, stale-after-use exposure, and terminal residue.
+
+Artifact caveat: no paper-owned public implementation repository was linked. The agent evidence is one Qwen2 7B mail simulation, and zero exposure assumes oracle step boundaries.
+
+Implementability score: 0.78
+
+Source:
+- [CreepScope](https://arxiv.org/abs/2610.15988v1)

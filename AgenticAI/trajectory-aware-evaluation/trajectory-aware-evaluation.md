@@ -749,6 +749,23 @@ Sources:
 - [Maat](https://arxiv.org/abs/2609.34017v1)
 - [Measuring Collapse and Correction](https://arxiv.org/abs/2609.35279v1)
 
+## October 15, 2026: Grade what reports preserve, not only whether the task succeeds
+
+CTXGAP separates outcome success from report-mediated supervision. Across 37 coding tasks and 4,799 valid probes, full execution context supports 92.7% task-state recovery while accumulated reports support 52.0%. Full terminal scrollback reaches 73.6%, which shows that a richer view helps without replacing the retained execution record.
+
+Practical lesson:
+- define task-state atoms for failures, decisions, risks, dependencies, and superseded assumptions;
+- ask identical probes against reports, terminal-visible history, and full evidence;
+- keep the trajectory as canonical state and the report as a tested projection;
+- gate handoffs on recoverability of supervision-relevant state, not prose quality alone;
+- preserve privacy disclosures when evidence depends on private reasoning or memory.
+
+Implementability score: 0.82
+
+Sources:
+- [CTXGAP paper v1](https://arxiv.org/abs/2610.20003v1)
+- [public benchmark repository](https://github.com/Kaguraaaaaa/Ctxgap)
+
 ## Working conclusion
 
 Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, fingerprinted, severity-scored, causally sliced, and scored across safety, robustness, parameter correctness, environment fidelity, runtime-specific harm dimensions, staged semantic/audit/sandbox harm, agent-effort telemetry, real-user collaboration traces, realistic workspace state, live workflow demand, cost, adversarial task quality, long-range state propagation, abstention, protocol conformance, tool-shortlist quality, environment-factory coverage, quantitative goal persistence, procedural behavior, partial-progress preference, oracle strength, deterministic evidence paths, and coding-process discipline, improvement efforts will stay shallow and trust claims will stay unearned.

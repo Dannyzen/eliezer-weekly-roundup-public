@@ -1289,3 +1289,22 @@ Evidence caveat: no public implementation artifact was found. The paper leaves s
 Implementability score: 0.72
 
 Source: [ToFu paper v1](https://arxiv.org/abs/2610.13651v1)
+
+## October 15, 2026: Keep the MCP data plane beside the systems it governs
+
+Apigee hybrid 1.17.0 can compile approved OpenAPI 3.0.x operations into MCP tools while the data plane runs inside the customer's Kubernetes cluster. Request traffic stays in the cluster, existing API controls govern invocation, and W3C trace context can link the AI client, gateway, and backend effect.
+
+Practical lesson:
+- derive the tool catalog from reviewed API contracts;
+- keep MCP ingress restricted to authorized runtime pods;
+- reuse OAuth, mTLS, quotas, threat protection, and audit controls;
+- propagate one trace identity through request, policy decision, and backend effect;
+- treat enablement and rollback as maintenance-window changes with ordered chart upgrades.
+
+This pattern is available now for existing Apigee hybrid estates. It remains conditional on Kubernetes and Apigee operational maturity.
+
+Implementability score: 0.68
+
+Sources:
+- [Google Developers announcement](https://developers.googleblog.com/en/announcing-mcp-support-in-apigee-hybrid-agentic-tools-that-run-in-your-own-cluster/)
+- [Apigee MCP architecture documentation](https://docs.cloud.google.com/apigee/docs/api-platform/apigee-mcp/apigee-mcp-overview)

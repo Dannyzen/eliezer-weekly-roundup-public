@@ -1,6 +1,6 @@
 # Skills as Control
 
-Last updated: 2026-09-02
+Last updated: 2026-10-14
 
 Core sources:
 - From Research Question to Scientific Workflow: Leveraging Agentic AI for Science Automation: https://arxiv.org/abs/2604.21910v1
@@ -1081,21 +1081,142 @@ Implementability score: 0.90
 
 Sources: [paper v1](https://arxiv.org/abs/2610.11647v1), [replication package](https://github.com/ltroin/conflict)
 
-## October 14, 2026 update: preselect skills before execution
+## October 14, 2026 deep dive: make skill routing an explicit control plane
 
-Lost in Implicit Routing shows that a growing catalog can make relevant skills effectively disappear. With 1,000 irrelevant skills, loaded-skill recall falls from 73.6% to 27.4%, while explicit preselection retains 73.9% recall.
+### Overview
+
+A skill catalog is useful only when the runtime can reliably select from it. Lost in Implicit Routing shows that availability and access separate sharply as a library grows: the relevant skill remains installed, yet the executor increasingly behaves as if no useful skill exists.
+
+The architectural correction is to move skill discovery out of the executor's hidden reasoning. The runtime should admit skills into a versioned catalog, select a bounded candidate set before execution, record that decision, let the executor load from the selected set, and evaluate selection separately from task success.
+
+### Why this won the week
+
+This finding beat the week's other strong candidates because it combines architectural importance, direct relevance to production agent systems, measured scale failure, and a practical migration path.
+
+- DeRef improves tool-argument judgment through candidate-blind reference derivation, but it addresses one verifier boundary after routing has already occurred.
+- The Agent Knew offers a novel pre-action risk signal, but its strongest mechanism depends on open-weight residual states, specialized calibration, and in-domain transfer.
+- CreepScope gives capability expiry a useful metric, but its agent study is a small simulated mail workflow and the oracle step lease is not a drop-in runtime.
+- Lost in Implicit Routing tests 82 executable SkillsBench tasks across three open-weight executors, more than 15,000 trajectories, over 10 billion tokens, and a 37-task proprietary-model consistency check. Its mitigation uses ordinary retrieval and selection components that can be shadowed now.
+
+The paper also catches a failure that end-task success can hide. At 100 irrelevant skills, GLM-5 task success stays near baseline while loaded-skill recall falls substantially. A strong model can route around a missing procedure for a while, leaving the skill system degraded without an obvious product failure.
+
+### Core innovation
+
+The paper separates two questions that agent runtimes often collapse:
+
+1. Can the model recognize the relevant skill when selection is its only job?
+2. Will the same model load that skill while also reading files, planning commands, and completing the task?
+
+With 1,000 irrelevant skills, aggregate loaded-skill recall falls from 73.6% to 27.4% and the zero-load rate rises from 9.3% to 51.6%. Explicit selection from the same library retains 73.9% recall. Non-golden loading is rare, so the main failure is under-loading rather than frequent substitution.
+
+The ablations point to two mechanisms:
+
+- semantic interference: meaningful irrelevant descriptions suppress loading more than equally long masked placeholders;
+- instruction interference: asking the executor to plan skill use still recalls fewer golden skills than a separate selector that performs only routing.
+
+The practical contribution is not a new router. It is evidence that routing deserves its own component, metrics, and failure budget. At 10,000 distractors, hybrid preselection reaches 55.2% loaded-skill recall and 50.4% Pass@3, compared with 48.5% and 41.5% for single-query RAG. At 1,000 distractors, the reported aggregate token total falls from 1.952 million executor-input tokens under implicit exposure to 547,000 total tokens with LLM preselection.
+
+### Why it matters
+
+Skill libraries are becoming software supply chains. Teams review, version, distribute, and retire procedural packages, yet the runtime can still fail before any skill body is loaded.
+
+That creates four distinct risks:
+
+- quality risk: the executor misses domain procedures and silently improvises;
+- audit risk: task success stays green while required procedural controls were never consulted;
+- cost risk: full-catalog metadata inflates context even when most entries are irrelevant;
+- security risk: selection behavior becomes an opaque authority boundary where descriptions can suppress, displace, or bias what the agent reads.
+
+The control-plane lesson is broader than skills. Retrieval, model routing, tool discovery, memory recall, and policy attachment all need separately observable selection stages when the available catalog becomes large.
+
+### Fit in the agentic stack
+
+Skill routing belongs between catalog governance and task execution:
+
+1. Catalog admission verifies provenance, license, schema, risk class, and compatibility.
+2. Candidate generation retrieves a broad set through deterministic filters, lexical search, embeddings, or both.
+3. Candidate selection chooses a bounded set against the task, required operations, policy, and current environment.
+4. Execution can load full bodies only from that selected set.
+5. Verification measures what was selected, loaded, used, and proven in the final artifact.
+6. Lifecycle management promotes, patches, or retires skills from accumulated evidence.
+
+The minimum routing receipt should preserve the catalog snapshot hash, task identity, candidate IDs, selection method and version, selected skill hashes, selection scores or reasons, skills actually loaded, skills actually used, reroute events, and final verification result.
+
+### Practical tools, repositories, and methodologies worth trying now
+
+- Use the paper's [official repository](https://github.com/jinlinll/lost-in-implicit-routing) as a read-only reference for manifests, routing strategies, source indexes, offline tests, and analysis scripts. It is populated, but it has no detected root license or tagged release, so reuse requires license clarification.
+- Use [SkillsBench](https://github.com/benchflow-ai/skillsbench) and its [Hugging Face mirror](https://huggingface.co/datasets/benchflow/skillsbench) for executable task shapes, skill composition, verifiers, and no-skill versus with-skill controls.
+- Start with a deterministic metadata filter plus lexical or embedding retrieval. Add an LLM reranker only when candidate recall or multi-skill coverage justifies its latency.
+- Compare four conditions on one frozen task set: full implicit exposure, retrieval top-k, hybrid retrieval plus reranking, and a golden-skill upper bound.
+- Track selected-skill recall, loaded-skill recall, zero-load rate, substitution rate, all-gold coverage, task success, latency, and token cost as separate metrics.
+- Run description-masking and catalog-growth ablations. They reveal whether failure comes from context length, semantic interference, or execution competition.
+- Add bounded rerouting during execution when new evidence changes the required operations. Preserve each reroute as a new receipt against the same catalog snapshot.
+
+### Implementation complexity
+
+The first useful version is medium complexity. Catalog snapshots, top-k retrieval, selection receipts, and shadow metrics use standard infrastructure. A production version becomes harder when it must handle multi-skill dependency coverage, catalog churn, tenant policy, low-latency retrieval, and safe rerouting after execution starts.
+
+The weakest point is fixed preselection. It can omit a skill needed later, and the paper reports median routing latency rising from 8 to 19 seconds for LLM preselection and from 33 to 41 seconds for the two-call hybrid as distractors grow from 10 to 1,000. The guardrail is a bounded dynamic route: start with a small selected set, allow an explicit reroute on missing capability evidence, and never reopen the entire catalog inside the executor prompt.
+
+### What is implementable now
+
+1. Freeze and hash the skill catalog seen by each run.
+2. Separate candidate generation from task execution.
+3. Emit considered, selected, loaded, used, and rerouted skill events.
+4. Add a no-skill control and a golden-skill upper bound to representative tasks.
+5. Shadow lexical, embedding, and hybrid selectors before changing production routing.
+6. Fail visibly when no skill is selected for a task class that normally requires one.
+7. Review latency, coverage, and task success together before promoting a selector.
+
+### What remains conceptual or unproven
+
+- The main benchmark covers executable technical tasks, not every business workflow or regulated domain.
+- The proprietary-model check uses only 37 tasks and does not repeat every routing condition.
+- Field-level masking uses a smaller subset and fewer repetitions than the main study.
+- The reported latency depends on one serving setup, and precomputed embeddings exclude online indexing cost.
+- Optimal dynamic rerouting, catalog partitioning, and adversarial resistance remain open.
+- The paper's semantic-interference explanation is a behavioral interpretation, not a direct measurement of model internals.
+
+### Implementability score
+
+**0.88**
+
+> Choose explicit preselection with bounded rerouting. You gain observable, testable skill access and lower context cost, while giving up some first-token latency and accepting that a fixed top-k can miss later needs.
+
+### Strategic implications for Danny's worldview and product thinking
+
+The durable product lesson is that packaged expertise does not scale through storage alone. It scales through governed discovery.
+
+For Hermes and Friend Node style systems, a large skill directory should behave like a capability registry with visible selection receipts, not like a prompt appendix. The interface should make considered, selected, loaded, and blocked capabilities inspectable. This supports Danny's preference for physical, visible control surfaces and keeps reusable expertise transferable without turning the model's hidden attention into the authority layer.
+
+The business implication is equally direct: customers can own and review their procedures while the platform owns routing quality, evidence, and lifecycle controls. That boundary preserves customer truth and makes agent behavior easier to explain, test, and improve across deployments.
+
+### Core and supporting sources
+
+Core:
+- [Lost in Implicit Routing, arXiv v1](https://arxiv.org/abs/2610.18522v1)
+- [Official implementation and reproducibility repository](https://github.com/jinlinll/lost-in-implicit-routing)
+
+Supporting:
+- [SkillsBench repository](https://github.com/benchflow-ai/skillsbench)
+- [SkillsBench Hugging Face dataset](https://huggingface.co/datasets/benchflow/skillsbench)
+- [Anthropic Agent Skills documentation](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview)
+
+## October 15, 2026: Profile capability before installation
+
+A 6,309-listing study shows why maliciousness detection is too narrow for skill admission. Seven in ten sampled listings carried at least one elevated capability, while only 770 of 6,061 parseable listings declared anything. Among declaring listings, 59% understated what the bundle could do.
 
 Practical lesson:
-- separate skill discovery from task execution;
-- freeze catalog identity and record considered, selected, loaded, and used skills;
-- measure zero-load and substitution failures beside task success;
-- retain no-skill and golden-skill controls;
-- budget preselection latency and recover omitted skills through bounded replanning.
+- inspect the whole bundle, dependencies, scripts, opaque assets, and referenced accounts;
+- generate an enforceable capability manifest for shell, filesystem, network, environment, and credential reach;
+- compare declarations to inferred and observed capability;
+- pin the accepted surface in version control and block unexplained drift;
+- pair static admission with representative sandbox detonation and runtime restrictions.
 
-Artifact caveat: the official public repository is populated with manifests, experiments, documentation, and offline tests, but no root license or tagged release was detected.
+The public SkilLock project is a concrete capability-lockfile pattern. It does not replace sandboxing or runtime authorization.
 
-Implementability score: 0.88
+Implementability score: 0.70
 
 Sources:
-- [Lost in Implicit Routing](https://arxiv.org/abs/2610.18522v1)
-- [official repository](https://github.com/jinlinll/lost-in-implicit-routing)
+- [Beyond Maliciousness paper v1](https://arxiv.org/abs/2610.19264v1)
+- [SkilLock](https://github.com/skills-lock/skil-lock)

@@ -4,6 +4,14 @@
 
 Selection and verification fail when the model must infer hidden references while executing the task. Route skills explicitly, and derive expected tool arguments independently before judging a candidate call.
 
+## Deep Dive Wednesday winner: skill routing is a control plane
+
+Lost in Implicit Routing is the week's strongest finding because it exposes a system boundary that large skill catalogs currently leave inside the executor's hidden reasoning. The failure is measured at scale, can remain invisible in task-success metrics, and has a practical mitigation that uses ordinary retrieval and routing components.
+
+The durable conclusion is stronger than “use RAG for skills.” Catalog admission, candidate generation, selection, loading, use, and final verification need separate evidence. Fixed preselection also needs a bounded reroute path because later execution evidence can reveal a missing capability.
+
+Deep dive: [Skills as Control: make skill routing an explicit control plane](../skills-as-control/skills-as-control.md#october-14-2026-deep-dive-make-skill-routing-an-explicit-control-plane)
+
 ## Lost in Implicit Routing: preselect skills before task execution
 
 Reusable skills save context only if the agent loads the right one. This study holds SkillsBench tasks and their golden skills fixed, then adds irrelevant skills. With 1,000 irrelevant skills, loaded-skill recall falls from 73.6% to 27.4%, while the zero-load rate rises from 9.3% to 51.6%. Explicit selection from the same library retains 73.9% recall.

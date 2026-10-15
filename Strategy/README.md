@@ -2,32 +2,32 @@
 
 This index tracks the most recent structured strategy research. Each finding links to the dated analysis, durable topics, primary sources, practical methods, and an implementability score.
 
-## Latest Structured Update: 2026-10-14 Daily Scan
+## Latest Structured Update: 2026-10-15 Daily Scan
 
-The current governance signal is authority lifecycle control. Risk can be forecast before execution, and granted capability should disappear immediately after its last justified use.
+The current governance signal is boundary ownership. Skill admission needs capability evidence before installation, and tool invocation needs an authorized gateway beside the systems of record.
 
-### Gate unauthorized actions before execution
+### Profile skill capability before installation
 
-Summary: A linear readout of open-weight model residual states forecasts unauthorized actions before the tool call with AUROC 0.94. The signal can reduce violations, but it requires model access, domain calibration, and an external authority gate.
+Summary: A study of 6,309 marketplace listings found elevated capability in seven of ten skills, while only 770 of 6,061 parseable listings declared anything. Among declaring listings, 59% understated what the bundle could do.
 
-Analysis: [daily strategy analysis](2026-10-14/sovereignty.md#internal-state-gates-can-stop-unauthorized-actions-before-execution)
-Durable topic: [Runtime Governance](runtime-governance/runtime-governance.md)
-Core sources: [paper v1](https://arxiv.org/abs/2610.17301v1), [code and experimental record](https://github.com/AryaFayyazi/Honesty)
-Tools and methodologies worth exploring now: matched authorization twins, pre-action shadow scoring, conformal thresholds, escalation budgets, frozen readouts, domain-transfer gates
-Implementability score: 0.44
+Analysis: [daily strategy analysis](2026-10-15/sovereignty.md#capability-profiling-measure-what-a-skill-can-reach)
+Durable topic: [Skills as Control](../AgenticAI/skills-as-control/skills-as-control.md#october-15-2026-profile-capability-before-installation)
+Core sources: [paper v1](https://arxiv.org/abs/2610.19264v1), [SkilLock](https://github.com/skills-lock/skil-lock)
+Tools and methodologies worth exploring now: whole-bundle static analysis, dependency provenance, capability manifests, capability lockfiles, CI drift checks, unbiased sandbox detonation
+Implementability score: 0.70
 
-### Expire capabilities after their last justified use
+### Keep MCP authorization and traffic inside the governed cluster
 
-Summary: CreepScope measures stale authority at every workflow step. An injected stale send succeeds in all nine persistent-policy episodes and none of the three step-lease episodes in its local agent case.
+Summary: Apigee hybrid 1.17.0 can compile approved OpenAPI operations into MCP tools while its data plane, request traffic, authorization, quotas, and trace propagation remain inside the customer's Kubernetes cluster.
 
-Analysis: [daily strategy analysis](2026-10-14/sovereignty.md#creepscope-expire-authority-after-its-last-justified-step)
-Durable topic: [Agent Execution Control Plane](agent-execution-control-plane/agent-execution-control-plane.md)
-Core source: [paper v1](https://arxiv.org/abs/2610.15988v1)
-Tools and methodologies worth exploring now: step-bound leases, grant-use-expiry event logs, Capability-Step Exposure, Residual Privilege Debt, stale-action injection, exact replay-grid gates
-Implementability score: 0.78
+Analysis: [daily strategy analysis](2026-10-15/sovereignty.md#apigee-hybrid-keep-mcp-traffic-inside-the-governed-cluster)
+Durable topic: [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md#october-15-2026-keep-the-mcp-data-plane-beside-the-systems-it-governs)
+Core sources: [Google Developers announcement](https://developers.googleblog.com/en/announcing-mcp-support-in-apigee-hybrid-agentic-tools-that-run-in-your-own-cluster/), [Apigee MCP documentation](https://docs.cloud.google.com/apigee/docs/api-platform/apigee-mcp/apigee-mcp-overview)
+Tools and methodologies worth exploring now: OpenAPI-derived tool catalogs, in-cluster MCP ingress, existing OAuth and mTLS policy, W3C trace context, maintenance-window canary rollout
+Implementability score: 0.68
 
 ## Current implication
 
-Evaluate authorization as a lifecycle: predict risk before effect release, bind capability to one justified step, and prove expiry afterward.
+Require two receipts: a capability manifest that explains what a package may reach, and a gateway trace that proves what an invocation actually did.
 
-Latest roundup: [2026-10-14 daily scan](../roundups/2026-10-14.md).
+Latest roundup: [2026-10-15 daily scan](../roundups/2026-10-15.md).

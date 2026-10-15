@@ -2,32 +2,32 @@
 
 This index tracks the most recent structured implementation research. Each finding links to the dated analysis, primary sources, practical methods, and an implementability score.
 
-## Latest Structured Update: 2026-10-14 Daily Scan
+## Latest Structured Update: 2026-10-15 Daily Scan
 
-The current implementation signal is explicit routing and derivation. Large catalogs need a selection stage outside task execution, and tool-call judges need a candidate-blind reference before scoring arguments.
+The current implementation signal is that task success and user-visible reporting need separate gates. Retain the execution record, test what the report preserves, and connect runtime monitors through explicit effect boundaries.
 
-### Preselect skills before task execution
+### Measure task-state recoverability from reports
 
-Summary: With 1,000 irrelevant skills, loaded-skill recall falls from 73.6% to 27.4% and the zero-load rate rises from 9.3% to 51.6%. Explicit preselection from the same library retains 73.9% recall.
+Summary: Across 37 coding tasks and 4,799 valid probes, CTXGAP reports 92.7% task-state recovery from full execution context and 52.0% from accumulated reports. Full terminal scrollback reaches 73.6%, so more visible logs help without closing the gap.
 
-Analysis: [daily analysis](2026-10-14/reasoning.md#lost-in-implicit-routing-preselect-skills-before-task-execution)
-Durable topic: [Skills as Control](skills-as-control/skills-as-control.md)
-Core sources: [paper v1](https://arxiv.org/abs/2610.18522v1), [official repository](https://github.com/jinlinll/lost-in-implicit-routing)
-Tools and methodologies worth exploring now: explicit top-k preselection, loaded-skill recall, zero-load rate, description ablations, catalog snapshot receipts, no-skill and golden-skill controls
-Implementability score: 0.88
+Analysis: [dated analysis](2026-10-15/reasoning.md#ctxgap-grade-report-recoverability-as-its-own-dimension)
+Durable topic: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md#october-15-2026-grade-what-reports-preserve-not-only-whether-the-task-succeeds)
+Core sources: [paper v1](https://arxiv.org/abs/2610.20003v1), [public benchmark repository](https://github.com/Kaguraaaaaa/Ctxgap)
+Tools and methodologies worth exploring now: task-state atoms, paired report and trajectory probes, frozen judge prompts, terminal-view ablations, privacy audits, report-rewrite gates
+Implementability score: 0.82
 
-### Derive the expected argument before judging the candidate
+### Put heterogeneous monitors behind one event and reaction contract
 
-Summary: Seven judges show a derivation gap when the source of a correct tool argument is missing. DeRef uses a separate candidate-blind derivation stage and raises controlled-test AUROC from chance or below to 98.40 through 99.59.
+Summary: AgenticRV normalizes LangGraph, MCP, and A2A events, gives each monitor an authorized projection, normalizes native verdicts, and applies reactions only where the adapter can actually interpose. The public alpha includes 179 passing repository tests.
 
-Analysis: [daily analysis](2026-10-14/reasoning.md#deref-derive-the-expected-argument-before-seeing-the-candidate)
-Durable topic: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
-Core sources: [paper v1](https://arxiv.org/abs/2610.18497v1), [Apache-2.0 implementation](https://github.com/SarielMa/DeRef_release)
-Tools and methodologies worth exploring now: candidate-blind derivation, source-span receipts, separate derivation and match scores, deterministic schema checks, high-impact human review
-Implementability score: 0.81
+Analysis: [dated analysis](2026-10-15/reasoning.md#agenticrv-separate-event-collection-from-monitor-logic)
+Durable topic: [Runtime Governance](../Strategy/runtime-governance/runtime-governance.md#october-15-2026-normalize-observations-then-interpose-at-effect-boundaries)
+Core sources: [paper v1](https://arxiv.org/abs/2610.19818v1), [MIT-licensed implementation](https://github.com/AngeloFerrando/agentic-rv)
+Tools and methodologies worth exploring now: versioned event envelopes, monitor-specific projections, normalized verdicts, deny-overrides arbitration, blocked-effect tests, recovery-after-rejection tests
+Implementability score: 0.76
 
 ## Current implication
 
-Move selection and derivation out of the executor's hidden reasoning. Preserve each routing decision and reference as reviewable evidence.
+Treat the report as a derived view and the event stream as the operational record. Test both: one for recoverable supervision state, the other for authority over realized effects.
 
-Latest roundup: [2026-10-14 daily scan](../roundups/2026-10-14.md).
+Latest roundup: [2026-10-15 daily scan](../roundups/2026-10-15.md).

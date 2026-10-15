@@ -6,27 +6,25 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-10-14: [explicit routing and authority lifecycles](roundups/2026-10-14.md)
-- Daily implementation analysis: [AgenticAI](AgenticAI/2026-10-14/reasoning.md)
-- Daily strategy analysis: [Strategy](Strategy/2026-10-14/sovereignty.md)
+- Daily scan, 2026-10-15: [independent evidence at every authority boundary](roundups/2026-10-15.md)
+- Dated implementation analysis: [AgenticAI](AgenticAI/2026-10-15/reasoning.md)
+- Dated strategy analysis: [Strategy](Strategy/2026-10-15/sovereignty.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 - Latest Friday synthesis, 2026-10-09: [evidence gates across the agent lifecycle](roundups/2026-10-09.md)
-- Deep Dive Wednesday, 2026-10-07: [Harness Security Effect Verification](AgenticAI/harness-security-effect-verification/harness-security-effect-verification.md)
 
 ## Current thesis
 
-Reliable agents need explicit routing and authority lifecycles:
+The strongest current architecture lesson is that every authority boundary needs independent evidence:
 
-- preselect relevant skills before task execution;
-- derive expected tool arguments independently of the candidate;
-- score action risk before effect release;
-- expire capabilities after their last justified use;
-- preserve routing, derivation, authorization, and expiry receipts;
-- keep deterministic policy and external-state proof authoritative.
+- retain execution state separately from user-facing reports;
+- grade what reports preserve, not only whether the task succeeded;
+- normalize runtime events before choosing monitor technology;
+- interpose only where an adapter can retain the operation before effect;
+- profile the capability surface of skills before installation;
+- keep tool authorization, traffic, and traces beside the systems of record.
 
-Start with one operational rule: hidden model judgment may recommend an action, while explicit runtime evidence decides whether it can execute.
-
+Start with one operational rule: a narrative may explain progress, while source-owned state and effect receipts decide what is true and what may proceed.
 ## Browse by category
 
 - [AgenticAI](AgenticAI/README.md): implementation analysis on evaluation, memory, context policy, search, tools, and orchestration.

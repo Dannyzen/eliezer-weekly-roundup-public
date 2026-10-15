@@ -733,6 +733,26 @@ Sources:
 - [Maat](https://arxiv.org/abs/2609.34017v1)
 - [Measuring Collapse and Correction](https://arxiv.org/abs/2609.35279v1)
 
+## October 15, 2026: Normalize observations, then interpose at effect boundaries
+
+AgenticRV separates source adapters, canonical events, monitor-specific projections, verdict normalization, and deterministic reactions. Its key governance distinction is exact: a pre-operation event is only an enforcement point when the responsible adapter can retain the operation until policy resolves.
+
+Practical lesson:
+- version the event envelope independently of monitor implementation;
+- declare observation and intervention support per boundary;
+- give each monitor only the fields its property requires;
+- normalize verdicts before deterministic arbitration;
+- test allowed, blocked, timed-out, late, cancelled, and recovered paths against realized effects;
+- distinguish rejected attempts from completed effects in monitor state.
+
+The MIT-licensed alpha supports LangGraph, MCP, and A2A and reports 179 passing repository tests. Remote-monitor latency, concurrency, cold starts, and substantive monitor costs remain deployment work.
+
+Implementability score: 0.76
+
+Sources:
+- [AgenticRV paper v1](https://arxiv.org/abs/2610.19818v1)
+- [AgenticRV repository](https://github.com/AngeloFerrando/agentic-rv)
+
 ## Working conclusion
 
 Runtime governance is not a niche enterprise concern. It is the natural consequence of giving agents durable memory, tool access, repository permissions, CI/CD authority, local storage, plugins, delegated secrets, shared inference infrastructure, sandboxed execution environments, mutable skills, router paths, workflow definitions that compile into automations, broker-mediated mutation paths, authority manifests, and revocable capability handles. The control plane has to move into runtime: inventory the agents, bind identity and scope, manage execution environments, preserve trace evidence, enforce valid next transitions before privileged tools execute, calibrate trust from outcomes, test trajectory-level guardrails offline, budget the guardrails themselves, record serving conditions for replayability, constrain network and inference routes, keep skills immutable while active, and keep tainted inputs from silently becoming trusted agent instructions or script data.

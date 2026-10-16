@@ -825,6 +825,24 @@ Implementability score: 0.74
 
 Source: [FlowState](https://arxiv.org/abs/2609.34565v1)
 
+
+## October 16, 2026 update: give memory state its own oracle
+
+FEB-30 constructs documents from known fact-evolution trajectories and inspects the memory store after each ingestion step. In the evaluated system, intrinsic and downstream scores diverge by 16 percentage points on average, and core memory operations are classified correctly only 20 percent of the time.
+
+Practical lesson:
+- define expected memory state before generating test documents;
+- grade create, update, reinforce, supersede, contradiction, and lineage behavior separately;
+- compare intrinsic state correctness with retrieval and final-answer accuracy;
+- keep failures replayable from source artifacts and state transitions;
+- use downstream QA as an end-to-end measure, not a memory diagnosis.
+
+Artifact caveat: the benchmark uses synthetic documents and 30 trajectories. The paper-linked GitHub repository returned 404 during this scan.
+
+Implementability score: 0.66
+
+Source:
+- [Beyond Downstream QA: Rethinking How We Evaluate Agent Memory](https://arxiv.org/abs/2610.22209v1)
 ## Working conclusion
 
 The next generation of agents will be differentiated less by how eloquently they speak and more by how faithfully and safely they remember. The winning systems will preserve evidence, route memory writes explicitly, retrieve context adaptively, abstain when memory is unsafe, validate high-value writes, make retention and pruning decisions replayable, query local graphs when code structure matters, promote only the right lessons into durable guidance, attach enough context for updates and temporal reasoning, choose abstraction levels that transfer across tasks, keep the most sensitive memory close to the user and under policy control, run durable memory through a governed database-backed state core, separate evaluation memory from user-facing memory, measure whether memories remain usable under scale, budgets, and writeback review, expose operation-level provenance, make reasoning history diffable, test belief-state stay/update/isolate decisions, gate retrieval by policy, resolve contradictions with bitemporal evidence, evaluate memory against heterogeneous evolving source streams, and defend memory write/read paths against poisoning so failures can be traced instead of guessed.

@@ -497,6 +497,25 @@ Sources:
 - [RECAP](https://arxiv.org/abs/2609.40118v1)
 - [announced repository](https://github.com/UCSB-NLP-Chang/ReCAP)
 
+
+## October 16, 2026 update: review grounded prefixes instead of regenerating every step
+
+SpecAgent turns the strong model into a reviewer of weak-model trajectories. The weak model may execute reads while drafting, but the first state-changing action is held until the strong model accepts the longest semantically valid prefix.
+
+Practical lesson:
+- classify tool effects by reversibility;
+- retain observations from drafted reads;
+- stop drafting at the first mutation;
+- verify semantic progress in chunks rather than matching one action at a time;
+- measure accepted outcome, strong-model tokens, memory traffic, wall time, and total compute together.
+
+Artifact caveat: the public MIT repository is populated and was inspected read-only. The method raises total FLOPs on the reported local benchmarks, and edge-cloud wall time does not improve when the weak model is not faster.
+
+Implementability score: 0.78
+
+Sources:
+- [Trajectory-Level Speculation with Semantic Verification for Tool-Using Agents](https://arxiv.org/abs/2610.21463v1)
+- [SpecAgent](https://github.com/LARK-AI-Lab/SpecAgent)
 ## Working conclusion
 
 The future agent stack is not context maximalism. It is context accounting. Systems that know what to admit, retrieve, compress, cache, update incrementally, preserve prefix continuity, and audit will beat systems that merely buy larger windows and hope the model sorts it out.

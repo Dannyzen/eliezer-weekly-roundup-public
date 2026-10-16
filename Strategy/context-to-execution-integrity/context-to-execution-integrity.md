@@ -759,3 +759,22 @@ Implementability score: 0.90
 Sources:
 - [One Word Opens the Gate](https://arxiv.org/abs/2610.12292v1)
 - [option-channel-attack](https://github.com/ArminAzizi98/option-channel-attack)
+
+## October 16, 2026 update: approval must release one canonical stored effect
+
+Agent Step-Up renders approval from a canonical effect descriptor, binds a passkey assertion to its digest, and executes only the stored call. This closes the gap where an agent obtains approval for one description and submits different arguments afterward.
+
+Practical lesson:
+- canonicalize the full effect outside the model;
+- render every target and argument from the stored call;
+- bind freshness and single-use identity to the approval;
+- reject any resubmission or changed arguments;
+- retain approval, execution, and outcome receipts.
+
+Evidence caveat: the study has no human data, the attack suite is scripted, and the public repository has no declared license or release.
+
+Implementability score: 0.72
+
+Sources:
+- [Approve What, Exactly?](https://arxiv.org/abs/2610.21063v1)
+- [Agent Step-Up](https://github.com/Sports-Vision-Inc/agent-step-up)

@@ -6,25 +6,26 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-10-15: [independent evidence at every authority boundary](roundups/2026-10-15.md)
-- Dated implementation analysis: [AgenticAI](AgenticAI/2026-10-15/reasoning.md)
-- Dated strategy analysis: [Strategy](Strategy/2026-10-15/sovereignty.md)
+- Daily scan, 2026-10-16: [control at the state transition](roundups/2026-10-16.md)
+- Dated implementation analysis: [AgenticAI](AgenticAI/2026-10-16/reasoning.md)
+- Dated strategy analysis: [Strategy](Strategy/2026-10-16/sovereignty.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 - Latest Friday synthesis, 2026-10-09: [evidence gates across the agent lifecycle](roundups/2026-10-09.md)
 
 ## Current thesis
 
-The strongest current architecture lesson is that every authority boundary needs independent evidence:
+The strongest current architecture lesson is that control belongs at the state transition:
 
-- retain execution state separately from user-facing reports;
-- grade what reports preserve, not only whether the task succeeded;
-- normalize runtime events before choosing monitor technology;
-- interpose only where an adapter can retain the operation before effect;
-- profile the capability surface of skills before installation;
-- keep tool authorization, traffic, and traces beside the systems of record.
+- let cheap models draft grounded reads, then review before mutation;
+- inspect memory state directly instead of inferring it from final answers;
+- bind approval to a canonical stored effect;
+- execute exactly once under that approval;
+- preserve semantic and OS evidence as separate classes;
+- mark every inferred attribution and retain its supporting events.
 
-Start with one operational rule: a narrative may explain progress, while source-owned state and effect receipts decide what is true and what may proceed.
+Start with one operational rule: proposals may be probabilistic, while release and evidence identity must be explicit.
+
 ## Browse by category
 
 - [AgenticAI](AgenticAI/README.md): implementation analysis on evaluation, memory, context policy, search, tools, and orchestration.

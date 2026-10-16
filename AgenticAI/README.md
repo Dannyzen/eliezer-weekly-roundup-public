@@ -1,33 +1,41 @@
 # AgenticAI
 
-This index tracks the most recent structured implementation research. Each finding links to the dated analysis, primary sources, practical methods, and an implementability score.
+Implementation analysis for agent evaluation, memory, context policy, tools, model routing, and orchestration.
 
-## Latest Structured Update: 2026-10-15 Daily Scan
+## Latest Structured Update: 2026-10-16 Daily Scan
 
-The current implementation signal is that task success and user-visible reporting need separate gates. Retain the execution record, test what the report preserves, and connect runtime monitors through explicit effect boundaries.
+### Route cheap models by reversible progress
 
-### Measure task-state recoverability from reports
+Summary: SpecAgent lets a weak model execute grounded reads and draft a trajectory, then asks a strong model to accept the longest valid prefix before releasing a state-changing action.
 
-Summary: Across 37 coding tasks and 4,799 valid probes, CTXGAP reports 92.7% task-state recovery from full execution context and 52.0% from accumulated reports. Full terminal scrollback reaches 73.6%, so more visible logs help without closing the gap.
+Analysis: [weak model drafts, strong model reviews the trajectory](2026-10-16/reasoning.md#weak-model-drafts-strong-model-reviews-the-trajectory)
 
-Analysis: [dated analysis](2026-10-15/reasoning.md#ctxgap-grade-report-recoverability-as-its-own-dimension)
-Durable topic: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md#october-15-2026-grade-what-reports-preserve-not-only-whether-the-task-succeeds)
-Core sources: [paper v1](https://arxiv.org/abs/2610.20003v1), [public benchmark repository](https://github.com/Kaguraaaaaa/Ctxgap)
-Tools and methodologies worth exploring now: task-state atoms, paired report and trajectory probes, frozen judge prompts, terminal-view ablations, privacy audits, report-rewrite gates
-Implementability score: 0.82
+Core sources: [paper v1](https://arxiv.org/abs/2610.21463v1), [SpecAgent](https://github.com/LARK-AI-Lab/SpecAgent)
 
-### Put heterogeneous monitors behind one event and reaction contract
+Implementable now:
+- classify tool effects by reversibility;
+- hold the first mutation;
+- return prefix acceptance and repair from the reviewer;
+- measure quality, strong-model tokens, memory traffic, latency, and effects together.
 
-Summary: AgenticRV normalizes LangGraph, MCP, and A2A events, gives each monitor an authorized projection, normalizes native verdicts, and applies reactions only where the adapter can actually interpose. The public alpha includes 179 passing repository tests.
+Implementability score: 0.78
 
-Analysis: [dated analysis](2026-10-15/reasoning.md#agenticrv-separate-event-collection-from-monitor-logic)
-Durable topic: [Runtime Governance](../Strategy/runtime-governance/runtime-governance.md#october-15-2026-normalize-observations-then-interpose-at-effect-boundaries)
-Core sources: [paper v1](https://arxiv.org/abs/2610.19818v1), [MIT-licensed implementation](https://github.com/AngeloFerrando/agentic-rv)
-Tools and methodologies worth exploring now: versioned event envelopes, monitor-specific projections, normalized verdicts, deny-overrides arbitration, blocked-effect tests, recovery-after-rejection tests
-Implementability score: 0.76
+### Grade the memory store directly
+
+Summary: FEB-30 shows that downstream answer quality can hide broken memory or blame correct memory for retrieval and generation failures. The expected memory state needs its own oracle.
+
+Analysis: [inspect memory state, not only final answers](2026-10-16/reasoning.md#inspect-memory-state-not-only-final-answers)
+
+Core source: [paper v1](https://arxiv.org/abs/2610.22209v1)
+
+Implementable now:
+- create explicit fact-evolution trajectories;
+- assert memory state after each ingestion step;
+- separate create, update, reinforce, supersede, retrieval, and generation failures;
+- keep intrinsic and end-to-end scores side by side.
+
+Implementability score: 0.66
 
 ## Current implication
 
-Treat the report as a derived view and the event stream as the operational record. Test both: one for recoverable supervision state, the other for authority over realized effects.
-
-Latest roundup: [2026-10-15 daily scan](../roundups/2026-10-15.md).
+Route on effect boundaries and test state where it is produced. Final answers and whole-request model selection hide the failures that matter.

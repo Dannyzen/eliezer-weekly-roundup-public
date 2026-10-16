@@ -1,33 +1,41 @@
 # Strategy
 
-This index tracks the most recent structured strategy research. Each finding links to the dated analysis, durable topics, primary sources, practical methods, and an implementability score.
+Governance analysis for identity, authority, execution control, evidence provenance, gateways, containment, and sovereignty.
 
-## Latest Structured Update: 2026-10-15 Daily Scan
+## Latest Structured Update: 2026-10-16 Daily Scan
 
-The current governance signal is boundary ownership. Skill admission needs capability evidence before installation, and tool invocation needs an authorized gateway beside the systems of record.
+### Bind approval to the exact stored effect
 
-### Profile skill capability before installation
+Summary: Agent Step-Up shows that an approval is meaningful only when a compromised agent cannot produce it and when the approval names the exact effect that will execute.
 
-Summary: A study of 6,309 marketplace listings found elevated capability in seven of ten skills, while only 770 of 6,061 parseable listings declared anything. Among declaring listings, 59% understated what the bundle could do.
+Analysis: [approve a canonical effect, then execute the stored call](2026-10-16/sovereignty.md#approve-a-canonical-effect-then-execute-the-stored-call)
 
-Analysis: [daily strategy analysis](2026-10-15/sovereignty.md#capability-profiling-measure-what-a-skill-can-reach)
-Durable topic: [Skills as Control](../AgenticAI/skills-as-control/skills-as-control.md#october-15-2026-profile-capability-before-installation)
-Core sources: [paper v1](https://arxiv.org/abs/2610.19264v1), [SkilLock](https://github.com/skills-lock/skil-lock)
-Tools and methodologies worth exploring now: whole-bundle static analysis, dependency provenance, capability manifests, capability lockfiles, CI drift checks, unbiased sandbox detonation
+Core sources: [paper v1](https://arxiv.org/abs/2610.21063v1), [Agent Step-Up](https://github.com/Sports-Vision-Inc/agent-step-up)
+
+Implementable now:
+- canonicalize tool, target, and arguments outside the model;
+- render approval from the stored call;
+- bind a passkey to the effect digest;
+- execute once and retain a verifiable receipt.
+
+Implementability score: 0.72
+
+### Preserve evidence class before correlating execution
+
+Summary: ExecWeave keeps framework events and OS-observed process, file, and network activity distinct, then labels every cross-layer bridge as observed, inferred, or causal.
+
+Analysis: [keep semantic and OS evidence separate until attribution is justified](2026-10-16/sovereignty.md#keep-semantic-and-os-evidence-separate-until-attribution-is-justified)
+
+Core sources: [paper v1](https://arxiv.org/abs/2610.21146v1), [ExecWeave](https://github.com/Irish-kw/ExecWeave)
+
+Implementable now:
+- preserve separate evidence planes;
+- attach support IDs and confidence to derived relations;
+- abstain on ambiguity or missing observations;
+- propagate stable request and process identities where possible.
+
 Implementability score: 0.70
-
-### Keep MCP authorization and traffic inside the governed cluster
-
-Summary: Apigee hybrid 1.17.0 can compile approved OpenAPI operations into MCP tools while its data plane, request traffic, authorization, quotas, and trace propagation remain inside the customer's Kubernetes cluster.
-
-Analysis: [daily strategy analysis](2026-10-15/sovereignty.md#apigee-hybrid-keep-mcp-traffic-inside-the-governed-cluster)
-Durable topic: [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md#october-15-2026-keep-the-mcp-data-plane-beside-the-systems-it-governs)
-Core sources: [Google Developers announcement](https://developers.googleblog.com/en/announcing-mcp-support-in-apigee-hybrid-agentic-tools-that-run-in-your-own-cluster/), [Apigee MCP documentation](https://docs.cloud.google.com/apigee/docs/api-platform/apigee-mcp/apigee-mcp-overview)
-Tools and methodologies worth exploring now: OpenAPI-derived tool catalogs, in-cluster MCP ingress, existing OAuth and mTLS policy, W3C trace context, maintenance-window canary rollout
-Implementability score: 0.68
 
 ## Current implication
 
-Require two receipts: a capability manifest that explains what a package may reach, and a gateway trace that proves what an invocation actually did.
-
-Latest roundup: [2026-10-15 daily scan](../roundups/2026-10-15.md).
+A user-facing narrative can explain an action. Authority comes from a canonical effect release, and accountability comes from source-typed evidence tied to the realized outcome.

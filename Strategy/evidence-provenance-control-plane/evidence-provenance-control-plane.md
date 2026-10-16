@@ -325,6 +325,25 @@ Implementability score: 0.94
 
 Source: [Silent Failures in Agentic Security Evaluation](https://arxiv.org/abs/2609.32691v1)
 
+
+## October 16, 2026 update: preserve evidence class before attribution
+
+ExecWeave materializes provider semantics and independently observed process, file, and network events into one typed graph without pretending they are equivalent. Cross-layer associations retain support, inference, and causal-status metadata.
+
+Practical lesson:
+- separate application claims from OS observations;
+- preserve event IDs behind every derived relation;
+- label heuristic bridges as inferred and non-causal;
+- abstain when candidate identity is ambiguous or evidence is missing;
+- propagate request and process identity where the runtime can support it.
+
+Evidence caveat: the evaluation is Linux-only, uses one AutoGen and Ollama end-to-end case, and does not measure human debugging benefit. The public implementation has releases, but GitHub classifies its license as `Other`.
+
+Implementability score: 0.70
+
+Sources:
+- [ExecWeave](https://arxiv.org/abs/2610.21146v1)
+- [ExecWeave repository](https://github.com/Irish-kw/ExecWeave)
 ## Working conclusion
 
 The architectural lesson is simple: do not confuse artifacts with proof.

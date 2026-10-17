@@ -475,3 +475,22 @@ Implementability score: 0.90
 Sources:
 - [SWE-CC](https://arxiv.org/abs/2610.06193v1)
 - [SWE-CC repository](https://github.com/dangtruong01/swe-cc-arxiv)
+
+## October 17, 2026 update: treat maintainability as agent inference economics
+
+A pre-registered study of 465 agent-authored pull requests from 246 repositories found that each additional CodeHealth point was associated with 3.5% to 6.1% lower token cost across three frozen five-agent review-and-fix pipelines. The association appeared mainly in review, where agents iterated more on unhealthy code without producing more comments.
+
+Practical lesson:
+- record review, fix, and verification tokens separately;
+- measure deterministic maintainability and file-size features before review;
+- stratify results by repository, language, and model;
+- require refactoring proposals to show measured agent-cost or defect benefit;
+- preserve a no-refactor control.
+
+Evidence caveat: the result is observational, and adjusting for scored-file size absorbed the association. Treat maintainability as a measured cost signal, not a guaranteed causal lever.
+
+Implementability score: 0.90
+
+Sources:
+- [CodeHealth study](https://arxiv.org/abs/2610.21914v1)
+- [open replication package](https://doi.org/10.5281/zenodo.22127920)

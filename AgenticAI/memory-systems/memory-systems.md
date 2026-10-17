@@ -1222,3 +1222,23 @@ Practical pattern: key memory by stable artifact ID and source version, preserve
 Implementability score: 0.65
 
 Source: [paper v1](https://arxiv.org/abs/2610.10091v1)
+
+## October 17, 2026 update: precompute an answer-facing workspace with source fallback
+
+Librarian Agents trains a builder to reorganize raw documents into a hierarchical filesystem of synthetic files and reference links before future queries arrive. The paper reports a 33-point gain over its strongest baseline on BrowseComp-Plus and a 31-point average zero-shot gain on BRIGHT.
+
+Practical lesson:
+- treat raw documents as canonical and generated workspace files as derived;
+- preserve direct references from every synthesis to source paths;
+- build timelines, indexes, and cross-source views for repeated query families;
+- measure construction cost against repeated-query savings;
+- invalidate or rebuild derived files when source versions change.
+
+Evidence caveat: evaluation is limited to question answering over static corpora. Reliable maintenance under changing documents remains open.
+
+Implementability score: 0.61
+
+Sources:
+- [Librarian Agents](https://arxiv.org/abs/2610.22273v1)
+- [project page](https://librarian-agents.github.io/)
+- [public repository](https://github.com/teresaz05/librarian-agents)

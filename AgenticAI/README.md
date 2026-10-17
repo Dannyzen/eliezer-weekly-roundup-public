@@ -2,40 +2,56 @@
 
 Implementation analysis for agent evaluation, memory, context policy, tools, model routing, and orchestration.
 
-## Latest Structured Update: 2026-10-16 Daily Scan
+## Latest Structured Update: 2026-10-17 Daily Scan
 
-### Route cheap models by reversible progress
+### Gate computer-use escalation with observed uncertainty
 
-Summary: SpecAgent lets a weak model execute grounded reads and draft a trajectory, then asks a strong model to accept the longest valid prefix before releasing a state-changing action.
+Summary: Weak-to-strong routing should react to task and step uncertainty, then keep lightweight oversight active after handoff.
 
-Analysis: [weak model drafts, strong model reviews the trajectory](2026-10-16/reasoning.md#weak-model-drafts-strong-model-reviews-the-trajectory)
+Analysis: [gate computer-use escalation with observed uncertainty](2026-10-17/reasoning.md#gate-computer-use-escalation-with-observed-uncertainty)
 
-Core sources: [paper v1](https://arxiv.org/abs/2610.21463v1), [SpecAgent](https://github.com/LARK-AI-Lab/SpecAgent)
-
-Implementable now:
-- classify tool effects by reversibility;
-- hold the first mutation;
-- return prefix acceptance and repair from the reviewer;
-- measure quality, strong-model tokens, memory traffic, latency, and effects together.
-
-Implementability score: 0.78
-
-### Grade the memory store directly
-
-Summary: FEB-30 shows that downstream answer quality can hide broken memory or blame correct memory for retrieval and generation failures. The expected memory state needs its own oracle.
-
-Analysis: [inspect memory state, not only final answers](2026-10-16/reasoning.md#inspect-memory-state-not-only-final-answers)
-
-Core source: [paper v1](https://arxiv.org/abs/2610.22209v1)
+Core source: [LEASH paper v1](https://arxiv.org/abs/2610.22280v1)
 
 Implementable now:
-- create explicit fact-evolution trajectories;
-- assert memory state after each ingestion step;
-- separate create, update, reinforce, supersede, retrieval, and generation failures;
-- keep intrinsic and end-to-end scores side by side.
+- retain labeled success and failure trajectories;
+- score task and action uncertainty;
+- compare against random and always-strong baselines;
+- preserve post-handoff observation.
 
-Implementability score: 0.66
+Implementability score: 0.67
+
+### Treat code quality as inference cost control
+
+Summary: A pre-registered study links higher maintainability scores to lower multi-agent review token cost across three LLMs.
+
+Analysis: [treat code quality as inference cost control](2026-10-17/reasoning.md#treat-code-quality-as-inference-cost-control)
+
+Core sources: [paper v1](https://arxiv.org/abs/2610.21914v1), [replication package](https://doi.org/10.5281/zenodo.22127920)
+
+Implementable now:
+- record tokens by review stage;
+- measure deterministic maintainability and file size;
+- stratify by repository and language;
+- compare refactoring against a no-change control.
+
+Implementability score: 0.90
+
+### Build anticipatory workspaces with source fallback
+
+Summary: Reorganize high-reuse corpora into derived files and indexes before queries arrive, while preserving links to canonical evidence.
+
+Analysis: [build anticipatory workspaces with source fallback](2026-10-17/reasoning.md#build-anticipatory-workspaces-with-source-fallback)
+
+Core sources: [paper v1](https://arxiv.org/abs/2610.22273v1), [project page](https://librarian-agents.github.io/), [repository](https://github.com/teresaz05/librarian-agents)
+
+Implementable now:
+- build source-linked timelines and indexes;
+- keep raw documents canonical;
+- measure construction cost against repeated-query savings;
+- invalidate derived files when sources change.
+
+Implementability score: 0.61
 
 ## Current implication
 
-Route on effect boundaries and test state where it is produced. Final answers and whole-request model selection hide the failures that matter.
+Measure the runtime condition that causes failure or cost, then turn it into an explicit gate. Confidence text and successful final answers are weak substitutes for trajectory, token, and source-state evidence.

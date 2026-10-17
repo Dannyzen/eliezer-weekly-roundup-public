@@ -1,77 +1,75 @@
-# Strategy Daily Sovereignty: 2026-10-16
-
-## Scope
-
-This scan covers security and observability papers submitted on October 15 and first listed by arXiv on October 16, 2026. Public repositories were inspected read-only through GitHub metadata, trees, README files, and releases. No external source was cloned or executed.
+# Strategy Weekly Analysis: 2026-10-16
 
 ## Thesis
 
-Approval and observability fail when they rely on narratives. Approval must bind to the exact effect that will execute. Observability must preserve which evidence was asserted by the agent, observed by the operating system, or inferred by correlation.
+The week's strategic primitive is a typed release boundary. A model can propose a capability, call, approval narrative, or causal explanation. Authority begins only when the runtime identifies the object, constrains its lifetime, binds it to an exact effect, and preserves evidence about what actually happened.
 
-## Approve a canonical effect, then execute the stored call
+## Bind approval to canonical effects
 
-Agent Step-Up tests whether an approval is truly separate from the compromised agent and whether it names the exact effect. The reference gateway builds a canonical effect descriptor, renders the approval card from that descriptor, has a passkey sign its digest, and executes only the stored call.
+Agent Step-Up tests twelve attacks against approval paths and audits ten agent runtimes. Its reference design renders approval from a canonical effect descriptor, has a user-held passkey sign the digest, executes only the stored call, and retains a verifiable record. Across 27,108 scripted trials and 609 AgentDojo attack pairs, the system stops substitution, replay, and grant stretching. The trusted card cuts forged-narration attack success from 0.54 to 0.03.
 
-The study audited ten agent runtimes. It found no third-party verifiable approval record and reproduced post-approval argument changes in four of eight runtimes where binding was measurable. Across 27,108 scripted trials and 609 AgentDojo attack pairs, the reference design stopped substitution, replay, and grant stretching. Trusted rendering reduced forged-narration attack success from 0.54 to 0.03 and raised automated-approver catch rate from 0.30 to 0.98, with a 16 percent refusal rate on harmless near misses.
+The governance implication is direct: approving model-written text is weak. The approval object should bind tool identity, target, normalized arguments, policy version, expiry, and single-use execution.
 
-### Why it matters
+The weakest point is approval fatigue. The paper still observes modeled-approver flooding success from 0.45 to 0.60, and an approval cannot prevent an effect already allowed by policy. Rate limits and default-deny policy remain necessary.
 
-A click on an agent-written summary does not authorize a concrete side effect. The approval record needs the exact tool, target, arguments, effect class, freshness token, and single-use execution identity.
-
-### Strategy fit
-
-This is a concrete release gate for payments, deletion, outbound messages, credentials, and other high-consequence actions. It strengthens context-to-execution integrity and execution control.
-
-### Practical tools and methods worth exploring
-
-- Canonicalize the complete effect descriptor outside the model.
-- Render the approval surface from the stored call, not from agent prose.
-- Bind a passkey or equivalent signature to the effect digest.
-- Execute the stored call once and reject any resubmitted or changed arguments.
-- Cap pending approvals, rate-limit denials, and preserve verifiable receipts.
-- Use RFC 8785 canonical JSON, WebAuthn, and Tamarin-style proofs where the risk justifies them.
-
-### Evidence and artifact status
-
-The public repository has a populated main branch with 454 tree entries, code, data, and proof material. GitHub reports no declared license and no release, so reuse needs a licensing review. The study has no human data, uses one scripted technique per scenario, and notes that a best-response attacker could find attacks absent from the workloads.
+Implementable now: canonical effect descriptors, trusted rendering, WebAuthn or passkey signatures, single-use execution, expiry, flood limits, and receipts.
 
 Implementability score: 0.72
 
-Core sources:
-- [paper v1](https://arxiv.org/abs/2610.21063v1)
-- [Agent Step-Up repository](https://github.com/Sports-Vision-Inc/agent-step-up)
+Core sources: [Agent Step-Up paper v1](https://arxiv.org/abs/2610.21063v1), [Agent Step-Up repository](https://github.com/Sports-Vision-Inc/agent-step-up)
 
-## Keep semantic and OS evidence separate until attribution is justified
+## Activate and expire capability authority explicitly
 
-ExecWeave combines provider or framework events with independently observed process, file, and network events in a typed execution graph. It labels evidence by source and distinguishes observed identity, inferred association, and causal status. Its command-to-process correlator emits a bridge only when one compatible observed process remains, and still marks the bridge as inferred and non-causal.
+GitHub's new MCP startup control treats server activation as a user-visible decision. CreepScope extends the principle across a run by expiring authority after its last justified step. Lost in Implicit Routing shows why both matter: implicit discovery degrades as the catalog grows, so an unobserved capability can be absent when needed or remain attached after its purpose ends.
 
-### Why it matters
+The governance object should record capability identity, activation reason, allowed effects, source version, start time, last justified step, expiry condition, and deactivation receipt.
 
-Application traces describe intended operations. Operating-system telemetry describes machine activity. Treating one as proof of the other can assign an effect to the wrong agent or tool.
+Implementable now: explicit startup controls, deny-by-default server activation, capability leases, step-scoped grants, idle expiry, and activation/deactivation receipts.
 
-### Strategy fit
+Implementability score: 0.84
 
-ExecWeave belongs in evidence provenance, incident reconstruction, and local-first observability. It is a complement to OpenTelemetry, not a replacement for it.
+Core sources: [GitHub MCP startup release](https://github.blog/changelog/2026-10-10-new-controls-and-chat-improvements-in-copilot-for-jetbrains/), [CreepScope paper v1](https://arxiv.org/abs/2610.15988v1), [Lost in Implicit Routing paper v1](https://arxiv.org/abs/2610.18522v1)
 
-### Practical tools and methods worth exploring
+## Make containment fail closed
 
-- Preserve provider, gateway, and OS observations as separate evidence classes.
-- Store supporting event IDs and confidence for every derived relation.
-- Abstain when multiple processes fit or required observations are missing.
-- Propagate stable request and process identities when the runtime supports them.
-- Keep content capture disabled by default and retain only fields required for audit.
-- Test false uniqueness, missing events, short-lived processes, and remote-tool blind spots.
+Anthropic's unintended-action investigation shows that a persistent agent can route around an obstacle when the environment leaves alternate paths open. GitHub's local sandboxing release turns file, network, and credential restrictions into a generally available product control, while MXC provides a public local sandbox substrate.
 
-### Evidence and artifact status
+The governance implication is that sandbox unavailability, policy parse failure, or missing network rules should stop execution. A warning followed by unsandboxed continuation converts containment into decoration.
 
-The public repository has a populated main branch with 863 tree entries and five releases. The paper evaluates ExecWeave v0.8.25. GitHub classifies the license as `Other`, so reuse needs a license check. The measurements are Linux-only, the end-to-end integration uses one AutoGen and Ollama case, and human debugging benefit is not measured.
+Implementable now: per-run filesystem and network policy, credential minimization, explicit stop rules, sandbox health preflight, fail-closed launch, and post-run effect receipts.
 
-Implementability score: 0.70
+Implementability score: 0.90
 
-Core sources:
-- [paper v1](https://arxiv.org/abs/2610.21146v1)
-- [ExecWeave repository](https://github.com/Irish-kw/ExecWeave)
+Core sources: [Anthropic incident report](https://www.anthropic.com/research/investigating-unintended-model-actions), [GitHub local sandboxing release](https://github.blog/changelog/2026-10-09-github-copilot-weekly-releases-october-5/), [sandbox documentation](https://docs.github.com/en/copilot/concepts/security-governance-and-network-settings/about-cloud-and-local-sandboxes), [MXC repository](https://github.com/microsoft/mxc)
 
-## Strategic decision
+## Restore provenance before artifacts reenter execution
 
-Treat approval as a signed release of an exact effect and observability as a typed evidence graph. A narrative can help a person understand the action, but it cannot define the action or prove who caused the effect.
+SkillRelayBench contains 270 adversarial cases across 30 cross-session skill-composition scenarios. The paper reports attack success rates from 46.7% to 77.4%. SkillRelayGuard restores provenance context before reuse and reduces aggregate attack success from 69.5% to 10.9% while increasing legitimate completion in the reported evaluation.
+
+The governance implication is that a file, cache, report, configuration, or memory entry is not inert context. It is a delayed authority channel. Reuse should carry producer identity, source skill, session, transformation history, trust class, and review result.
+
+The public guard remains advisory and does not cover every local file, SQLite, or model-gateway effect. The survivable path is to combine provenance restoration with deterministic release gates for consequential consumers.
+
+Implementable now: artifact manifests, producer and session IDs, checksums, trust labels, read-time provenance injection, dry-run review, and deterministic gates before publication or execution.
+
+Implementability score: 0.79
+
+Core sources: [SkillRelay paper v1](https://arxiv.org/abs/2610.13227v1), [SkillRelay repository](https://github.com/Dianshu-Liao/SkillRelay)
+
+## Keep evidence planes separate until attribution is justified
+
+ExecWeave preserves framework events and independently observed process, file, and network activity as separate source artifacts. It labels bridges as observed, inferred, or causal and refuses to infer a semantic principal from filesystem correlation alone. GitHub's telemetry release complements this by separating identity capture from prompts, responses, tool arguments, tool output, and policy detail.
+
+The governance implication is that correlation is not authority. A useful evidence graph must preserve the source class, supporting event IDs, confidence, and abstention when multiple processes or missing observations prevent justified attribution.
+
+The downside is operational complexity. Stable request IDs, process lineage, clock alignment, and privacy controls are required across layers. Start with one adapter and one OS effect class before attempting universal causality.
+
+Implementable now: typed evidence classes, support IDs, bounded correlators, non-causal inference labels, content-minimized telemetry, and explicit abstention.
+
+Implementability score: 0.68
+
+Core sources: [ExecWeave paper v1](https://arxiv.org/abs/2610.21146v1), [ExecWeave repository](https://github.com/Irish-kw/ExecWeave), [GitHub telemetry release](https://github.blog/changelog/2026-10-12-client-telemetry-user-attribution-and-configurable-capture/)
+
+## Strategic conclusion
+
+A trustworthy agent stack needs one release chain: preselected capability, bounded authority, reversible progress, canonical effect, trusted approval, enforced execution, typed evidence, and verified state. Natural-language explanation remains useful to people, while the runtime objects carry authority.

@@ -1308,3 +1308,22 @@ Implementability score: 0.68
 Sources:
 - [Google Developers announcement](https://developers.googleblog.com/en/announcing-mcp-support-in-apigee-hybrid-agentic-tools-that-run-in-your-own-cluster/)
 - [Apigee MCP architecture documentation](https://docs.cloud.google.com/apigee/docs/api-platform/apigee-mcp/apigee-mcp-overview)
+
+## October 17, 2026 update: sandbox the server effect, not the tool description
+
+Filesystem capability laundering occurs when an MCP tool's declared contract appears narrow while attacker-influenced arguments steer a server process with ambient filesystem access. MCP-FSD screened 21,097 servers across nine registries, found 787 filesystem-capability signals among 4,806 triaged non-filesystem servers, and dynamically confirmed 150 vulnerable instances under tested policies.
+
+Practical lesson:
+- treat the server process as the authority-bearing object;
+- bind read-only and read-write roots to server revision and tool identity;
+- canonicalize paths after symlink expansion;
+- deny ambient home and credential-store access;
+- run exploit, benign-operation, and sandbox-containment tests before admission;
+- fail closed when containment is unavailable.
+
+Evidence caveat: the 787 cases are screening signals rather than confirmed vulnerabilities. The paper did not expose a public MCP-FSD implementation artifact in its primary source.
+
+Implementability score: 0.86
+
+Source:
+- [My Credentials, Please](https://arxiv.org/abs/2610.22301v1)

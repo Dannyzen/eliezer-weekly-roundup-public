@@ -6,25 +6,23 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-10-16: [control at the state transition](roundups/2026-10-16.md)
-- Dated implementation analysis: [AgenticAI](AgenticAI/2026-10-16/reasoning.md)
-- Dated strategy analysis: [Strategy](Strategy/2026-10-16/sovereignty.md)
+- Daily scan, 2026-10-17: [measured runtime state for effects, routing, cost, and context](roundups/2026-10-17.md)
+- Daily implementation analysis: [AgenticAI](AgenticAI/2026-10-17/reasoning.md)
+- Daily strategy analysis: [Strategy](Strategy/2026-10-17/sovereignty.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
-- Latest Friday synthesis, 2026-10-09: [evidence gates across the agent lifecycle](roundups/2026-10-09.md)
 
 ## Current thesis
 
-The strongest current architecture lesson is that control belongs at the state transition:
+The strongest current architecture lesson is that runtime evidence should control agent authority and cost:
 
-- let cheap models draft grounded reads, then review before mutation;
-- inspect memory state directly instead of inferring it from final answers;
-- bind approval to a canonical stored effect;
-- execute exactly once under that approval;
-- preserve semantic and OS evidence as separate classes;
-- mark every inferred attribution and retain its supporting events.
+- constrain the server process rather than trusting a tool description;
+- escalate from observed task and step uncertainty;
+- measure code quality as part of agent inference economics;
+- materialize reusable context while preserving canonical source links;
+- keep typed release points before consequential effects.
 
-Start with one operational rule: proposals may be probabilistic, while release and evidence identity must be explicit.
+Start with one operational rule: models may propose transitions, while the runtime measures state, constrains effects, and owns release.
 
 ## Browse by category
 

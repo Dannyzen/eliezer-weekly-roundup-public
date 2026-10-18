@@ -1576,3 +1576,23 @@ Implementability score: 0.81
 Sources:
 - [Judges Follow the Reference](https://arxiv.org/abs/2610.18497v1)
 - [DeRef implementation](https://github.com/SarielMa/DeRef_release)
+
+## October 18, 2026 update: grade delivery by customer outcome
+
+FDE-Gym turns ambiguous customer delivery into a reproducible evaluation object: a live-like system, hidden constraints, scripted stakeholders, a customer-owned metric, an incident cap, and explicit interaction costs. The best evaluated configuration resolved only 14 of 95 realistic tasks, and complete key-fact discovery still produced adequate uplift on only 10 of 23 affected tasks.
+
+Practical lesson:
+- keep written-request compliance separate from customer outcome;
+- grade hidden production traffic rather than visible examples;
+- meter stakeholder contact, retries, and waiting;
+- treat incidents as a hard outcome boundary;
+- preserve every clarification, action, state change, and grader receipt.
+
+Artifact caveat: three example cases are open, while the full 20-scenario dataset is gated under manual access terms. Scripted stakeholders remain a simulation boundary.
+
+Implementability score: 0.82
+
+Sources:
+- [FDE-Gym paper](https://arxiv.org/abs/2610.22350v1)
+- [FDE-Gym repository](https://github.com/deeplethe/fde-gym)
+- [open example cases](https://huggingface.co/datasets/DeepLethe/FDE-Gym-examples)

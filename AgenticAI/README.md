@@ -2,56 +2,40 @@
 
 Implementation analysis for agent evaluation, memory, context policy, tools, model routing, and orchestration.
 
-## Latest Structured Update: 2026-10-17 Daily Scan
+## Latest Structured Update: 2026-10-18 Daily Scan
 
-### Gate computer-use escalation with observed uncertainty
+### Grade customer outcomes, not ticket completion
 
-Summary: Weak-to-strong routing should react to task and step uncertainty, then keep lightweight oversight active after handoff.
+Summary: Delivery agents should be scored on customer uplift, incidents, hidden constraints, and stakeholder cost rather than whether they completed the written request.
 
-Analysis: [gate computer-use escalation with observed uncertainty](2026-10-17/reasoning.md#gate-computer-use-escalation-with-observed-uncertainty)
+Analysis: [grade customer outcomes, not ticket completion](2026-10-18/reasoning.md#grade-customer-outcomes-not-ticket-completion)
 
-Core source: [LEASH paper v1](https://arxiv.org/abs/2610.22280v1)
-
-Implementable now:
-- retain labeled success and failure trajectories;
-- score task and action uncertainty;
-- compare against random and always-strong baselines;
-- preserve post-handoff observation.
-
-Implementability score: 0.67
-
-### Treat code quality as inference cost control
-
-Summary: A pre-registered study links higher maintainability scores to lower multi-agent review token cost across three LLMs.
-
-Analysis: [treat code quality as inference cost control](2026-10-17/reasoning.md#treat-code-quality-as-inference-cost-control)
-
-Core sources: [paper v1](https://arxiv.org/abs/2610.21914v1), [replication package](https://doi.org/10.5281/zenodo.22127920)
+Core sources: [FDE-Gym paper v1](https://arxiv.org/abs/2610.22350v1), [repository](https://github.com/deeplethe/fde-gym), [open examples](https://huggingface.co/datasets/DeepLethe/FDE-Gym-examples)
 
 Implementable now:
-- record tokens by review stage;
-- measure deterministic maintainability and file size;
-- stratify by repository and language;
-- compare refactoring against a no-change control.
+- convert one workflow into a hidden-acceptance case;
+- grade business uplift and cap incidents;
+- charge for clarification, retries, waiting, and stakeholder contact;
+- preserve a complete evidence receipt.
 
-Implementability score: 0.90
+Implementability score: 0.82
 
-### Build anticipatory workspaces with source fallback
+### Train on windows between verified experiments
 
-Summary: Reorganize high-reuse corpora into derived files and indexes before queries arrive, while preserving links to canonical evidence.
+Summary: Group the decisions between deterministic experiment results into one learning window, then separate infrastructure failures from model errors.
 
-Analysis: [build anticipatory workspaces with source fallback](2026-10-17/reasoning.md#build-anticipatory-workspaces-with-source-fallback)
+Analysis: [train on windows between verified experiments](2026-10-18/reasoning.md#train-on-windows-between-verified-experiments)
 
-Core sources: [paper v1](https://arxiv.org/abs/2610.22273v1), [project page](https://librarian-agents.github.io/), [repository](https://github.com/teresaz05/librarian-agents)
+Core sources: [MLExpert paper v1](https://arxiv.org/abs/2610.22344v1), [repository](https://github.com/InternScience/MLExpert), [model](https://huggingface.co/InternScience/MLExpert)
 
 Implementable now:
-- build source-linked timelines and indexes;
-- keep raw documents canonical;
-- measure construction cost against repeated-query savings;
-- invalidate derived files when sources change.
+- segment trajectories at experiment-result boundaries;
+- attach code, inputs, metrics, cost, and environment identity;
+- filter infrastructure failures;
+- retain a persistent best-candidate workspace.
 
-Implementability score: 0.61
+Implementability score: 0.47
 
 ## Current implication
 
-Measure the runtime condition that causes failure or cost, then turn it into an explicit gate. Confidence text and successful final answers are weak substitutes for trajectory, token, and source-state evidence.
+Agent harnesses need two proof layers: an outcome layer showing whether the delivered system improved the target metric, and an execution layer showing which bounded decision window produced each measured result.

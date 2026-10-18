@@ -179,3 +179,22 @@ Sources:
 ## Working conclusion
 
 The new default primitive is not an agent with one more tool. It is a resumable worker with a bounded computer whose resource lifecycle is observable and schedulable.
+
+## October 18, 2026 update: separate sandbox lifecycle from command streams
+
+SPACE models templates, sandboxes, processes, command sessions, and asynchronous operations as separate runtime objects. A sandbox can outlive both the request that created it and the connection carrying command output, which makes pause, suspend, wake, retry, and recovery explicit rather than implicit process behavior.
+
+Practical lesson:
+- record resolved template digests at creation;
+- use session-scoped attachment authority for command streams;
+- make lifecycle operations asynchronous, idempotent, and observable;
+- retain process and operation identity through reconnects;
+- test stale attachments, concurrent creates, retries, and recovery.
+
+Artifact caveat: the Apache 2.0 repository is large and operationally heavy. It was inspected read-only and not qualified on local hardware.
+
+Implementability score: 0.64
+
+Sources:
+- [SPACE repository](https://github.com/perplexityai/SPACE)
+- [SPACE architecture guide](https://space.docs.perplexity.ai/guide/architecture.html)

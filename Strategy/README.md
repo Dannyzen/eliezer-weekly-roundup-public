@@ -2,26 +2,25 @@
 
 Governance analysis for identity, authority, execution control, evidence provenance, gateways, containment, and sovereignty.
 
-## Latest Structured Update: 2026-10-17 Daily Scan
+## Latest Structured Update: 2026-10-18 Daily Scan
 
-### Sandbox the server effect, not the tool description
+### Make sandbox state, identity, and egress runtime objects
 
-Summary: MCP approval can authorize a process with ambient host permissions. Tool contracts need process-level filesystem enforcement.
+Summary: Safe code execution requires a control plane that binds template identity, lifecycle state, command authorization, and effective egress policy outside the untrusted guest.
 
-Analysis: [sandbox the server effect, not the tool description](2026-10-17/sovereignty.md#sandbox-the-server-effect-not-the-tool-description)
+Analysis: [make sandbox state, identity, and egress runtime objects](2026-10-18/sovereignty.md#make-sandbox-state-identity-and-egress-runtime-objects)
 
-Core source: [My Credentials, Please paper v1](https://arxiv.org/abs/2610.22301v1)
+Core sources: [official SPACE announcement](https://www.perplexity.ai/hub/blog/open-sourcing-space), [repository](https://github.com/perplexityai/SPACE), [architecture guide](https://space.docs.perplexity.ai/guide/architecture.html), [egress profiles](https://space.docs.perplexity.ai/guide/egress-profiles.html)
 
 Implementable now:
-- launch servers with explicit read-only and read-write roots;
-- remove ambient credential and home-directory access;
-- canonicalize paths after symlink expansion;
-- bind roots to server revision and tool identity;
-- test exploit, benign, and containment cases;
-- fail closed when containment is unavailable.
+- bind sandboxes to resolved template digests and principals;
+- separate lifecycle operations from command-stream authorization;
+- keep credentials and egress policy outside the guest;
+- fail closed on invalid or missing policy;
+- test concurrency, retries, stale attachment, and recovery.
 
-Implementability score: 0.86
+Implementability score: 0.64
 
 ## Current implication
 
-Capability governance belongs below model narration. Bind server identity, process permissions, path policy, sandbox health, and observed effects before approval can authorize execution.
+A sandbox should be governed as a state machine, not treated as an opaque process container. Isolation, identity, network policy, lifecycle, and receipts must converge before execution authority is granted.

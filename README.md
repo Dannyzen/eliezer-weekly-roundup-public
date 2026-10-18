@@ -6,23 +6,21 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-10-17: [measured runtime state for effects, routing, cost, and context](roundups/2026-10-17.md)
-- Daily implementation analysis: [AgenticAI](AgenticAI/2026-10-17/reasoning.md)
-- Daily strategy analysis: [Strategy](Strategy/2026-10-17/sovereignty.md)
+- Daily scan, 2026-10-18: [customer outcomes, execution windows, and sandbox state](roundups/2026-10-18.md)
+- Daily implementation analysis: [AgenticAI](AgenticAI/2026-10-18/reasoning.md)
+- Daily strategy analysis: [Strategy](Strategy/2026-10-18/sovereignty.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 
 ## Current thesis
 
-The strongest current architecture lesson is that runtime evidence should control agent authority and cost:
+The strongest current architecture lesson is that agents need explicit evidence at three runtime boundaries:
 
-- constrain the server process rather than trusting a tool description;
-- escalate from observed task and step uncertainty;
-- measure code quality as part of agent inference economics;
-- materialize reusable context while preserving canonical source links;
-- keep typed release points before consequential effects.
+- customer outcomes prove whether delivery improved the real target;
+- experiment windows connect measured results to the decisions that produced them;
+- sandbox state binds identity, templates, lifecycle, egress, and recovery before execution.
 
-Start with one operational rule: models may propose transitions, while the runtime measures state, constrains effects, and owns release.
+Start with one operational rule: models may propose work, while the harness defines the outcome, the execution boundary, and the authority receipt.
 
 ## Browse by category
 

@@ -1622,3 +1622,23 @@ Implementability score: 0.66
 
 Source:
 - [LongHarness paper v1](https://arxiv.org/abs/2610.13075v1)
+
+## October 18, 2026 update: use execution results as trajectory boundaries
+
+MLExpert's useful harness pattern is Windowed Interaction Reinforcement Learning. Decisions between successive experiment results form one window, receive a shared measured reward, and exclude windows whose feedback is invalid because infrastructure failed.
+
+Practical lesson:
+- segment trajectories at deterministic experiment-result boundaries;
+- bind each window to source revision, data, environment, metrics, and cost;
+- separate infrastructure failure from model-quality failure;
+- retain experiment history and the best candidate in a persistent workspace;
+- review generated task preparation and graders before trusting rewards.
+
+Artifact caveat: the public 35B model and Kaggle task factory are inspectable, while reproduction requires multi-GPU serving and substantial post-training infrastructure. The GitHub repository has no detected top-level license.
+
+Implementability score: 0.47
+
+Sources:
+- [MLExpert paper](https://arxiv.org/abs/2610.22344v1)
+- [MLExpert repository](https://github.com/InternScience/MLExpert)
+- [MLExpert model](https://huggingface.co/InternScience/MLExpert)

@@ -206,3 +206,23 @@ Sources:
 ## Current read
 
 Agent sandboxing is not a niche hardening detail. It is becoming part of the default operating model for serious coding-agent use. The winning pattern is not "trust the model less" in the abstract. It is "give the model a smaller, declared, killable, inspectable world and preserve proof that the declared controls were active."
+
+## October 18, 2026 update: bind sandbox identity to template and egress state
+
+SPACE makes two often-hidden sandbox controls explicit: the resolved template digest and the effective egress profile. Operator profiles use exact domains, IPs, and CIDRs, fail startup on invalid definitions, and return admission failures when selected policy is unavailable.
+
+Practical lesson:
+- bind principal, template digest, sandbox identity, and egress policy before create;
+- keep credentials and network enforcement outside the guest;
+- reject wildcard or missing policy rather than silently broadening access;
+- emit policy-admission and configuration-drift telemetry;
+- upgrade policy readers and executors before producers can select new policy features.
+
+Artifact caveat: Perplexity's production and security claims are first-party. Independent deployment and adversarial qualification remain required before promotion.
+
+Implementability score: 0.64
+
+Sources:
+- [official SPACE announcement](https://www.perplexity.ai/hub/blog/open-sourcing-space)
+- [SPACE egress profiles](https://space.docs.perplexity.ai/guide/egress-profiles.html)
+- [SPACE repository](https://github.com/perplexityai/SPACE)

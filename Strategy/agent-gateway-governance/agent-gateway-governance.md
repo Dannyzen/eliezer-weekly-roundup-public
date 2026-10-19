@@ -1327,3 +1327,20 @@ Implementability score: 0.86
 
 Source:
 - [My Credentials, Please](https://arxiv.org/abs/2610.22301v1)
+
+## October 19, 2026 update: recommend only inside the eligible authority scope
+
+Arcade's Tool Recommendation runs after gateway allowlists and access policy define the eligible catalog. The runtime then executes under the calling user's authorization, checks service consent and tool scope again, and keeps credentials outside model context.
+
+Practical lesson:
+- filter by principal and policy before ranking;
+- treat recommendation as evidence, not a grant;
+- repeat authorization at invocation time;
+- return consent workflows instead of credentials;
+- test policy changes between recommendation and execution.
+
+Evidence caveat: the system is vendor-operated and no public implementation artifact was identified.
+
+Implementability score: 0.82
+
+Source: [Tool Recommendation for Multi-Step Agents v1](https://arxiv.org/abs/2610.23707v1)

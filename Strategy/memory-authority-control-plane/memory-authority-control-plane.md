@@ -442,3 +442,20 @@ ExperienceIndex supports a practical memory primitive: learned claims attach to 
 Implementability score: 0.65
 
 Source: [paper v1](https://arxiv.org/abs/2610.10091v1)
+
+## October 19, 2026 update: relevant memory does not authorize interruption
+
+ProPerAgent separates memory content from intervention timing. Its benchmark requires the assistant to act inside a human-verified trigger window and remain silent outside it. Oracle evidence at the correct time reached 96%, while chosen timing reduced performance to 38%.
+
+Practical lesson:
+- require both source-linked evidence and a current trigger;
+- model interruption as a separate scoped effect;
+- enforce cooldown, deduplication, and attention budgets;
+- retain suppressed and issued intervention receipts;
+- keep notification and state-changing authority separate.
+
+Artifact caveat: the benchmark and code are not public yet, and deployment privacy remains untested.
+
+Implementability score: 0.45
+
+Source: [ProPerAgent v1](https://arxiv.org/abs/2610.22671v1)

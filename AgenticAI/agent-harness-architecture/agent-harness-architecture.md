@@ -1642,3 +1642,22 @@ Sources:
 - [MLExpert paper](https://arxiv.org/abs/2610.22344v1)
 - [MLExpert repository](https://github.com/InternScience/MLExpert)
 - [MLExpert model](https://huggingface.co/InternScience/MLExpert)
+
+## October 19, 2026 update: hold harness budgets fixed before blaming the model
+
+ToolBottleneckBench compiles matched task variants and changes one harness pressure at a time. Across 21 configurations and 26,576 scored conditions, a sixteenfold completion-cap increase reduced the pooled large-menu penalty for truncation-heavy configurations from 43.7 points to 2.7 points.
+
+Practical lesson:
+- freeze token, episode, call, and turn budgets;
+- record first unmet obligation and terminal limit;
+- sweep caps before attributing menu failures to selection quality;
+- compare routers and controllers against model switches;
+- retain exact graders and scored traces as release evidence.
+
+Artifact status: the public MIT repository contains the compiler, sandbox, exact grader, results, protocols, and tests. It was inspected read-only and not executed.
+
+Implementability score: 0.86
+
+Sources:
+- [ToolBottleneckBench paper v1](https://arxiv.org/abs/2610.21098v1)
+- [zichuanxu/tool-bottleneck-bench](https://github.com/zichuanxu/tool-bottleneck-bench)

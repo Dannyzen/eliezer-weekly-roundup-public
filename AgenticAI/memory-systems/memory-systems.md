@@ -1242,3 +1242,37 @@ Sources:
 - [Librarian Agents](https://arxiv.org/abs/2610.22273v1)
 - [project page](https://librarian-agents.github.io/)
 - [public repository](https://github.com/teresaz05/librarian-agents)
+
+## October 19, 2026 update: store situational insights instead of next-tool edges
+
+Across nine models and two benchmarks, tool graph memory rarely improved reliably over a memory-free agent. H-EPM averaged 2.72 times as many LLM calls and 2.21 times as many tokens on ToolSandbox, while random or absent suggestions retained most of its gain. Natural-language insight memory produced a better performance-cost tradeoff.
+
+Practical lesson:
+- keep episodes as canonical evidence;
+- distill source-linked situation, action, success, and failure insights;
+- retrieve insights as soft priors rather than next-action prescriptions;
+- compare against no-memory, random-guidance, and extra-compute controls;
+- measure cost beside task success.
+
+Artifact status: no public implementation repository was identified from the primary source.
+
+Implementability score: 0.74
+
+Source: [Rethinking the Role of Tool Graph Memory v1](https://arxiv.org/abs/2610.21571v1)
+
+## October 19, 2026 update: proactive memory needs a timing gate
+
+ProPerMem hides target evidence averaging 0.19% of histories with 618K tokens on average and grades both intervention content and human-verified timing. Oracle evidence at the correct time reached 96%; chosen timing fell to 38%, and retrieval in place of oracle evidence fell to 15%.
+
+Practical lesson:
+- score retrieval, timing, content, early firing, repeated firing, and silence separately;
+- gate retrieval on whether evidence is worth interrupting for;
+- bind every alert to source memory IDs and a current trigger;
+- preserve user attention budgets and cooldown state;
+- keep proactive execution authority separate from notification authority.
+
+Artifact caveat: code and the evaluation set are promised upon publication but are not public.
+
+Implementability score: 0.45
+
+Source: [ProPerAgent v1](https://arxiv.org/abs/2610.22671v1)

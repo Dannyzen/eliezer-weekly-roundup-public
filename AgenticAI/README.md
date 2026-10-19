@@ -2,40 +2,72 @@
 
 Implementation analysis for agent evaluation, memory, context policy, tools, model routing, and orchestration.
 
-## Latest Structured Update: 2026-10-18 Daily Scan
+## Latest Structured Update: 2026-10-19 Daily Scan
 
-### Grade customer outcomes, not ticket completion
+### Recommend tools behind a scoped gateway
 
-Summary: Delivery agents should be scored on customer uplift, incidents, hidden constraints, and stakeholder cost rather than whether they completed the written request.
+Summary: Replace static tool catalogs with a fixed discovery and execution interface that recommends only inside the principal's eligible scope.
 
-Analysis: [grade customer outcomes, not ticket completion](2026-10-18/reasoning.md#grade-customer-outcomes-not-ticket-completion)
+Analysis: [recommend tools behind a scoped gateway](2026-10-19/reasoning.md#recommend-tools-behind-a-scoped-gateway)
 
-Core sources: [FDE-Gym paper v1](https://arxiv.org/abs/2610.22350v1), [repository](https://github.com/deeplethe/fde-gym), [open examples](https://huggingface.co/datasets/DeepLethe/FDE-Gym-examples)
+Core source: [Tool Recommendation for Multi-Step Agents v1](https://arxiv.org/abs/2610.23707v1)
 
 Implementable now:
-- convert one workflow into a hidden-acceptance case;
-- grade business uplift and cap incidents;
-- charge for clarification, retries, waiting, and stakeholder contact;
-- preserve a complete evidence receipt.
+- expose fixed select, execute, and list interfaces;
+- retrieve only from policy-eligible tools;
+- rerank ambiguous candidates;
+- measure complete required-tool coverage, tokens, cost, and outcome.
 
 Implementability score: 0.82
 
-### Train on windows between verified experiments
+### Hold harness budgets fixed before blaming the model
 
-Summary: Group the decisions between deterministic experiment results into one learning window, then separate infrastructure failures from model errors.
+Summary: Agent benchmarks must freeze menus, token caps, call limits, turn limits, and result encoding before attributing a failure to the model.
 
-Analysis: [train on windows between verified experiments](2026-10-18/reasoning.md#train-on-windows-between-verified-experiments)
+Analysis: [hold harness budgets fixed before blaming the model](2026-10-19/reasoning.md#hold-harness-budgets-fixed-before-blaming-the-model)
 
-Core sources: [MLExpert paper v1](https://arxiv.org/abs/2610.22344v1), [repository](https://github.com/InternScience/MLExpert), [model](https://huggingface.co/InternScience/MLExpert)
+Core sources: [ToolBottleneckBench paper v1](https://arxiv.org/abs/2610.21098v1), [MIT repository](https://github.com/zichuanxu/tool-bottleneck-bench)
 
 Implementable now:
-- segment trajectories at experiment-result boundaries;
-- attach code, inputs, metrics, cost, and environment identity;
-- filter infrastructure failures;
-- retain a persistent best-candidate workspace.
+- compile matched pressure variants;
+- record first unmet obligation and terminal limit;
+- sweep completion caps before drawing model conclusions;
+- compare harness repairs against model switches.
 
-Implementability score: 0.47
+Implementability score: 0.86
+
+### Store situational insights instead of next-tool prescriptions
+
+Summary: Tool-transition graphs rarely justified their inference cost; source-linked natural-language insights were the stronger memory form.
+
+Analysis: [store situational insights instead of next-tool prescriptions](2026-10-19/reasoning.md#store-situational-insights-instead-of-next-tool-prescriptions)
+
+Core source: [Rethinking the Role of Tool Graph Memory v1](https://arxiv.org/abs/2610.21571v1)
+
+Implementable now:
+- keep raw episodes canonical;
+- distill situation, action, outcome, and failure insights;
+- retrieve insights as soft priors;
+- retain no-memory, random-guidance, and extra-compute controls.
+
+Implementability score: 0.74
+
+### Gate proactive memory on interruption value and timing
+
+Summary: Relevant memory is insufficient for proactive assistance; the harness needs a separate gate for whether the current moment warrants interruption.
+
+Analysis: [gate proactive memory on interruption value and timing](2026-10-19/reasoning.md#gate-proactive-memory-on-interruption-value-and-timing)
+
+Core source: [ProPerAgent v1](https://arxiv.org/abs/2610.22671v1)
+
+Implementable now:
+- annotate trigger windows and required silence;
+- grade retrieval, timing, content, early firing, and repeats separately;
+- bind alerts to memory evidence and observed triggers;
+- keep proactive actions read-only until separately authorized.
+
+Implementability score: 0.45
 
 ## Current implication
 
-Agent harnesses need two proof layers: an outcome layer showing whether the delivered system improved the target metric, and an execution layer showing which bounded decision window produced each measured result.
+The agent stack needs selection systems that preserve source, scope, budget, and authority. Tool discovery, memory retrieval, and evaluation diagnostics should narrow choices without silently granting execution or attention rights.

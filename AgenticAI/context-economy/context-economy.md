@@ -516,6 +516,24 @@ Implementability score: 0.78
 Sources:
 - [Trajectory-Level Speculation with Semantic Verification for Tool-Using Agents](https://arxiv.org/abs/2610.21463v1)
 - [SpecAgent](https://github.com/LARK-AI-Lab/SpecAgent)
+
+## October 19, 2026 update: replace static catalogs with scoped recommendation
+
+Arcade's Tool Recommendation serves an 8,252-tool catalog through three fixed interfaces. ToolRet complete top-ten coverage rose from 28.8% for BM25 to 45.2%, and the first recommendation covered every required tool in 304 of 327 Codex sessions. Paired sessions used fewer input tokens and cost less than a fixed 100-tool list without changing completion.
+
+Practical lesson:
+- keep the full catalog outside model context;
+- retrieve only within the policy-eligible scope;
+- optimize for complete required-tool coverage;
+- log recommendation, cache, token, cost, and outcome receipts;
+- preserve a fixed-list control for regressions.
+
+Evidence caveat: this is a vendor-authored deployed-system report with 14 paired cost runs and no public implementation artifact identified.
+
+Implementability score: 0.82
+
+Source: [Tool Recommendation for Multi-Step Agents v1](https://arxiv.org/abs/2610.23707v1)
+
 ## Working conclusion
 
 The future agent stack is not context maximalism. It is context accounting. Systems that know what to admit, retrieve, compress, cache, update incrementally, preserve prefix continuity, and audit will beat systems that merely buy larger windows and hope the model sorts it out.

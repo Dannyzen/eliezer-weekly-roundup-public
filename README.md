@@ -6,21 +6,22 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-10-18: [customer outcomes, execution windows, and sandbox state](roundups/2026-10-18.md)
-- Daily implementation analysis: [AgenticAI](AgenticAI/2026-10-18/reasoning.md)
-- Daily strategy analysis: [Strategy](Strategy/2026-10-18/sovereignty.md)
+- Daily scan, 2026-10-19: [selection systems need explicit contracts](roundups/2026-10-19.md)
+- Daily implementation analysis: [AgenticAI](AgenticAI/2026-10-19/reasoning.md)
+- Daily strategy analysis: [Strategy](Strategy/2026-10-19/sovereignty.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 
 ## Current thesis
 
-The strongest current architecture lesson is that agents need explicit evidence at three runtime boundaries:
+The strongest current architecture lesson is that selection must stay inside explicit contracts:
 
-- customer outcomes prove whether delivery improved the real target;
-- experiment windows connect measured results to the decisions that produced them;
-- sandbox state binds identity, templates, lifecycle, egress, and recovery before execution.
+- tool discovery narrows an already-authorized catalog;
+- benchmark diagnosis holds harness budgets fixed before blaming a model;
+- memory contributes source-linked situational insight rather than prescribing the next action;
+- proactive assistance requires a separate timing and attention gate.
 
-Start with one operational rule: models may propose work, while the harness defines the outcome, the execution boundary, and the authority receipt.
+Start with one operational rule: recommendation and retrieval may propose evidence, while runtime policy owns authority, budgets, and effect receipts.
 
 ## Browse by category
 

@@ -2,72 +2,58 @@
 
 Implementation analysis for agent evaluation, memory, context policy, tools, model routing, and orchestration.
 
-## Latest Structured Update: 2026-10-19 Daily Scan
+## Latest Structured Update: 2026-10-20 Daily Scan
 
-### Recommend tools behind a scoped gateway
+### Test evidence exposure, not only tool execution
 
-Summary: Replace static tool catalogs with a fixed discovery and execution interface that recommends only inside the principal's eligible scope.
+Summary: Correct tool execution can still produce a wrong answer when retrieval makes the agent use a non-authoritative output.
 
-Analysis: [recommend tools behind a scoped gateway](2026-10-19/reasoning.md#recommend-tools-behind-a-scoped-gateway)
+Analysis: [test evidence exposure, not only tool execution](2026-10-20/reasoning.md#test-evidence-exposure-not-only-tool-execution)
 
-Core source: [Tool Recommendation for Multi-Step Agents v1](https://arxiv.org/abs/2610.23707v1)
-
-Implementable now:
-- expose fixed select, execute, and list interfaces;
-- retrieve only from policy-eligible tools;
-- rerank ambiguous candidates;
-- measure complete required-tool coverage, tokens, cost, and outcome.
-
-Implementability score: 0.82
-
-### Hold harness budgets fixed before blaming the model
-
-Summary: Agent benchmarks must freeze menus, token caps, call limits, turn limits, and result encoding before attributing a failure to the model.
-
-Analysis: [hold harness budgets fixed before blaming the model](2026-10-19/reasoning.md#hold-harness-budgets-fixed-before-blaming-the-model)
-
-Core sources: [ToolBottleneckBench paper v1](https://arxiv.org/abs/2610.21098v1), [MIT repository](https://github.com/zichuanxu/tool-bottleneck-bench)
+Core source: [Same Simulation, Different Evidence v1](https://arxiv.org/abs/2610.26836v1)
 
 Implementable now:
-- compile matched pressure variants;
-- record first unmet obligation and terminal limit;
-- sweep completion caps before drawing model conclusions;
-- compare harness repairs against model switches.
+- label authoritative tool outputs;
+- record build, exposure, and closure stages;
+- replay deterministic calls to isolate computation from evidence use;
+- compare inline, indexed, and authority-labeled retrieval.
 
-Implementability score: 0.86
+Implementability score: 0.88
 
-### Store situational insights instead of next-tool prescriptions
+### Grade compression on evidence preservation
 
-Summary: Tool-transition graphs rarely justified their inference cost; source-linked natural-language insights were the stronger memory form.
+Summary: Downstream QA can hide unfaithful compression; evaluate whether qualifiers, alternatives, and minority evidence survive.
 
-Analysis: [store situational insights instead of next-tool prescriptions](2026-10-19/reasoning.md#store-situational-insights-instead-of-next-tool-prescriptions)
+Analysis: [grade compression on evidence preservation](2026-10-20/reasoning.md#grade-compression-on-evidence-preservation)
 
-Core source: [Rethinking the Role of Tool Graph Memory v1](https://arxiv.org/abs/2610.21571v1)
-
-Implementable now:
-- keep raw episodes canonical;
-- distill situation, action, outcome, and failure insights;
-- retrieve insights as soft priors;
-- retain no-memory, random-guidance, and extra-compute controls.
-
-Implementability score: 0.74
-
-### Gate proactive memory on interruption value and timing
-
-Summary: Relevant memory is insufficient for proactive assistance; the harness needs a separate gate for whether the current moment warrants interruption.
-
-Analysis: [gate proactive memory on interruption value and timing](2026-10-19/reasoning.md#gate-proactive-memory-on-interruption-value-and-timing)
-
-Core source: [ProPerAgent v1](https://arxiv.org/abs/2610.22671v1)
+Core sources: [KEEP-Bench v1](https://arxiv.org/abs/2610.26827v1), [repository](https://github.com/PlusLabNLP/KEEP-Bench), [dataset](https://huggingface.co/datasets/uclanlp/KEEP-Bench)
 
 Implementable now:
-- annotate trigger windows and required silence;
-- grade retrieval, timing, content, early firing, and repeats separately;
-- bind alerts to memory evidence and observed triggers;
-- keep proactive actions read-only until separately authorized.
+- run proposition-level evidence recall;
+- test parallel, conditional, and imbalanced evidence;
+- retain raw spans outside the compressed view;
+- measure recall, tokens, FLOPs, latency, and outcome together.
 
-Implementability score: 0.45
+Implementability score: 0.76
+
+### Evaluate coding agents against complete delivery contracts
+
+Summary: Component production and passing isolated tests do not prove that a full PRD, including integration obligations, was delivered.
+
+Analysis: [evaluate coding agents against complete delivery contracts](2026-10-20/reasoning.md#evaluate-coding-agents-against-complete-delivery-contracts)
+
+Core source: [When Coding Agents Outpace Review v1](https://arxiv.org/abs/2610.26394v1)
+
+Implementable now:
+- decompose PRDs into atomic Code Points;
+- bind criteria to source, test, integration, or inspection evidence;
+- report component, integration, and complete-delivery scores separately;
+- sample independent expert review.
+
+Artifact caveat: the paper's named repository did not resolve during this scan.
+
+Implementability score: 0.62
 
 ## Current implication
 
-The agent stack needs selection systems that preserve source, scope, budget, and authority. Tool discovery, memory retrieval, and evaluation diagnostics should narrow choices without silently granting execution or attention rights.
+Agent evaluation should trace authoritative evidence through computation, retrieval, compression, integration, and acceptance. Final answers and passing components are weak proof when the harness cannot show which evidence survived and which obligations were delivered.

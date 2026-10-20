@@ -494,3 +494,21 @@ Implementability score: 0.90
 Sources:
 - [CodeHealth study](https://arxiv.org/abs/2610.21914v1)
 - [open replication package](https://doi.org/10.5281/zenodo.22127920)
+
+## October 20, 2026 update: grade full PRD delivery, not component production
+
+PACE evaluates 43 enterprise tasks against 750 expert-audited Code Points. The best complete-delivery rate was 14.0 percent across 11 model and scaffold configurations. Incomplete implementation and missing integration dominated even when agents produced plausible components.
+
+Practical lesson:
+- reconstruct the PRD into atomic, frozen acceptance obligations before execution;
+- bind each obligation to source, test, integration, or inspection evidence;
+- report component, integration, and full-delivery scores separately;
+- sample independent review against expert consensus;
+- treat harness changes as measured interventions on the same task suite.
+
+Artifact caveat: the paper names `TianqiLiu1/PACE-Bench`, but the repository did not resolve during this scan. Exact reproduction remains blocked.
+
+Implementability score: 0.62
+
+Source:
+- [When Coding Agents Outpace Review](https://arxiv.org/abs/2610.26394v1)

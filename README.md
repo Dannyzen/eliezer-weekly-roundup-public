@@ -6,22 +6,22 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-10-19: [selection systems need explicit contracts](roundups/2026-10-19.md)
-- Daily implementation analysis: [AgenticAI](AgenticAI/2026-10-19/reasoning.md)
-- Daily strategy analysis: [Strategy](Strategy/2026-10-19/sovereignty.md)
+- Daily scan, 2026-10-20: [bind evidence and effects to exact runtime objects](roundups/2026-10-20.md)
+- Daily implementation analysis: [AgenticAI](AgenticAI/2026-10-20/reasoning.md)
+- Daily strategy analysis: [Strategy](Strategy/2026-10-20/sovereignty.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 
 ## Current thesis
 
-The strongest current architecture lesson is that selection must stay inside explicit contracts:
+The strongest current architecture lesson is that evidence integrity must survive the full path from tool execution to external effect:
 
-- tool discovery narrows an already-authorized catalog;
-- benchmark diagnosis holds harness budgets fixed before blaming a model;
-- memory contributes source-linked situational insight rather than prescribing the next action;
-- proactive assistance requires a separate timing and attention gate.
+- tool traces distinguish correct computation from the evidence used to answer;
+- context compression is graded on preserved propositions, qualifiers, and minority evidence;
+- coding-agent acceptance covers complete delivery and integration obligations;
+- outbound connections remain held until a one-time verdict authorizes that exact socket and destination.
 
-Start with one operational rule: recommendation and retrieval may propose evidence, while runtime policy owns authority, budgets, and effect receipts.
+Start with one operational rule: bind every derived context to authoritative source evidence, and bind every approval to one concrete effect.
 
 ## Browse by category
 

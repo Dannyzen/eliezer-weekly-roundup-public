@@ -166,6 +166,26 @@ Sources:
 - [A3S-Bench](https://arxiv.org/abs/2605.22321v1)
 - [Agent3Sigma-Stage](https://github.com/antgroup/Agent3Sigma-Stage)
 
+## October 20, 2026 update: bind egress approval to one kernel-held connection
+
+Connection Escrow moves the decision point below application proxies and SDK hooks. It holds outbound TCP inside the kernel, attributes the socket to process, executable, cgroup, pod, and SPIFFE identity, then releases only on a signed verdict bound to one socket and destination.
+
+Practical additions:
+- use per-connection verdicts instead of reusable destination approvals;
+- include expiry, single use, socket identity, and destination in the signed decision;
+- fail closed when the verifier is late or unavailable;
+- keep verifier keys and policy outside the supervised workload;
+- retain signed, hash-chained receipts for allowed and denied egress;
+- test child processes, raw sockets, replay, rebinding, and verifier reachability.
+
+Artifact caveat: the MIT prototype is populated and reports 36 adversarial checks, 600 gated connections on single-node Kubernetes, and about 4.5 ms median hold time. It requires privileged Linux node control, is IPv4-only, pins rather than escrows UDP, and has content-gate coverage gaps.
+
+Implementability score: 0.58
+
+Sources:
+- [Connection Escrow](https://arxiv.org/abs/2610.26501v1)
+- [benign-attach-gateway](https://github.com/45h0kg/benign-attach-gateway)
+
 ## Working conclusion
 
 Agent network containment is the next governance layer after tool permissioning. Once agents can discover, message, delegate, and relay across principals, the operator has to govern the graph: who spoke, who acted, what data crossed, what policy allowed it, and how the system can stop spread when a benign-looking workflow turns viral.

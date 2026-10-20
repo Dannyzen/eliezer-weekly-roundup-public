@@ -2,40 +2,40 @@
 
 Governance analysis for identity, authority, execution control, evidence provenance, gateways, containment, and sovereignty.
 
-## Latest Structured Update: 2026-10-19 Daily Scan
+## Latest Structured Update: 2026-10-20 Daily Scan
 
-### Discovery must not expand authority
+### Bind outbound connections to one-time signed verdicts
 
-Summary: Dynamic tool recommendation should run only after principal and gateway policy produce the eligible catalog, with authorization checked again at execution.
+Summary: Hold each agent connection before packets leave, then release only on a signed, unexpired, single-use verdict bound to that socket and destination.
 
-Analysis: [discovery must not expand authority](2026-10-19/sovereignty.md#discovery-must-not-expand-authority)
+Analysis: [bind every outbound connection to a one-time signed verdict](2026-10-20/sovereignty.md#bind-every-outbound-connection-to-a-one-time-signed-verdict)
 
-Core source: [Tool Recommendation for Multi-Step Agents v1](https://arxiv.org/abs/2610.23707v1)
-
-Implementable now:
-- compile eligible tools from principal, tenant, agent, service, and tool policy;
-- rank only inside that scope;
-- keep credentials outside model context;
-- bind every effect receipt to principal, tool version, policy, and result.
-
-Implementability score: 0.82
-
-### Relevant memory does not authorize interruption
-
-Summary: Retrieval creates candidate evidence; a separate runtime policy must decide whether the assistant may consume human attention now.
-
-Analysis: [relevant memory does not authorize interruption](2026-10-19/sovereignty.md#relevant-memory-does-not-authorize-interruption)
-
-Core source: [ProPerAgent v1](https://arxiv.org/abs/2610.22671v1)
+Core sources: [Connection Escrow v1](https://arxiv.org/abs/2610.26501v1), [repository](https://github.com/45h0kg/benign-attach-gateway)
 
 Implementable now:
-- require a current trigger and source-linked memory;
-- grade silence outside approved windows;
-- impose cooldown, deduplication, and attention budgets;
-- separate notification authority from write authority.
+- hold high-risk pod egress at the kernel boundary;
+- bind verdicts to socket, destination, principal, expiry, and single use;
+- isolate verifier keys and fail closed;
+- preserve signed release and denial receipts.
 
-Implementability score: 0.45
+Implementability score: 0.58
+
+### Make evidence authority explicit before action
+
+Summary: Retrieval and compression create derived views; the runtime must preserve authoritative source identity and omissions before those views justify an effect.
+
+Analysis: [make evidence authority explicit before action](2026-10-20/sovereignty.md#make-evidence-authority-explicit-before-action)
+
+Core sources: [Same Simulation, Different Evidence v1](https://arxiv.org/abs/2610.26836v1), [KEEP-Bench v1](https://arxiv.org/abs/2610.26827v1)
+
+Implementable now:
+- mark authoritative and advisory outputs;
+- preserve source IDs and omission manifests;
+- rehydrate sources for high-risk actions;
+- bind effect receipts to the evidence version used.
+
+Implementability score: 0.81
 
 ## Current implication
 
-Recommendation and retrieval are evidence operations. They become authority only through explicit runtime policy, current identity, bounded scope, and an effect receipt.
+Evidence and approval both need exact bindings. Derived context must point back to authoritative sources, and runtime approval must name the one effect it authorizes.

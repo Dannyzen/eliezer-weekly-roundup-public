@@ -534,6 +534,27 @@ Implementability score: 0.82
 
 Source: [Tool Recommendation for Multi-Step Agents v1](https://arxiv.org/abs/2610.23707v1)
 
+## October 20, 2026 update: preserve authoritative evidence across retrieval and compression
+
+Two studies expose different losses behind ordinary context metrics. Same Simulation, Different Evidence shows that indexed retrieval can make an agent substitute a non-authoritative output even when the tool computed the keyed value. KEEP-Bench shows that a compressed context can support a correct answer while dropping qualifiers, alternate referents, or minority evidence.
+
+Practical lesson:
+- label authoritative tool outputs and preserve their source IDs;
+- split tool evaluation into build, exposure, and closure stages;
+- grade compressed views on proposition-level evidence recall;
+- preserve omission manifests and raw source spans outside active context;
+- require source rehydration before high-risk actions when evidence is incomplete.
+
+Artifact status: KEEP-Bench has a populated MIT repository and public CC BY-NC 4.0 dataset. The simulator study does not identify a public implementation artifact.
+
+Implementability score: 0.82
+
+Sources:
+- [Same Simulation, Different Evidence](https://arxiv.org/abs/2610.26836v1)
+- [KEEP-Bench](https://arxiv.org/abs/2610.26827v1)
+- [KEEP-Bench repository](https://github.com/PlusLabNLP/KEEP-Bench)
+- [KEEP-Bench dataset](https://huggingface.co/datasets/uclanlp/KEEP-Bench)
+
 ## Working conclusion
 
 The future agent stack is not context maximalism. It is context accounting. Systems that know what to admit, retrieve, compress, cache, update incrementally, preserve prefix continuity, and audit will beat systems that merely buy larger windows and hope the model sorts it out.

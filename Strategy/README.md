@@ -2,40 +2,42 @@
 
 Governance analysis for identity, authority, execution control, evidence provenance, gateways, containment, and sovereignty.
 
-## Latest Structured Update: 2026-10-20 Daily Scan
+## Latest Structured Update: 2026-10-21 Daily Scan
 
-### Bind outbound connections to one-time signed verdicts
+### Treat persistent state as delayed execution authority
 
-Summary: Hold each agent connection before packets leave, then release only on a signed, unexpired, single-use verdict bound to that socket and destination.
+Summary: Memory files and scheduled wake-ups can replay a one-time injection after the attacker and user are gone; govern every persistent write as a future authority request.
 
-Analysis: [bind every outbound connection to a one-time signed verdict](2026-10-20/sovereignty.md#bind-every-outbound-connection-to-a-one-time-signed-verdict)
+Analysis: [treat persistent state as delayed execution authority](2026-10-21/sovereignty.md#treat-persistent-state-as-delayed-execution-authority)
 
-Core sources: [Connection Escrow v1](https://arxiv.org/abs/2610.26501v1), [repository](https://github.com/45h0kg/benign-attach-gateway)
-
-Implementable now:
-- hold high-risk pod egress at the kernel boundary;
-- bind verdicts to socket, destination, principal, expiry, and single use;
-- isolate verifier keys and fail closed;
-- preserve signed release and denial receipts.
-
-Implementability score: 0.58
-
-### Make evidence authority explicit before action
-
-Summary: Retrieval and compression create derived views; the runtime must preserve authoritative source identity and omissions before those views justify an effect.
-
-Analysis: [make evidence authority explicit before action](2026-10-20/sovereignty.md#make-evidence-authority-explicit-before-action)
-
-Core sources: [Same Simulation, Different Evidence v1](https://arxiv.org/abs/2610.26836v1), [KEEP-Bench v1](https://arxiv.org/abs/2610.26827v1)
+Core sources: [carryover attacks paper v1](https://arxiv.org/abs/2610.28425v1), [CarryoverBench repository](https://github.com/igloomatics/CarryoverBench)
 
 Implementable now:
-- mark authoritative and advisory outputs;
-- preserve source IDs and omission manifests;
-- rehydrate sources for high-risk actions;
-- bind effect receipts to the evidence version used.
+- quarantine untrusted instructions before persistence;
+- label writes with origin, principal, scope, and authority;
+- test planting and triggering separately across clean sessions;
+- reauthorize scheduled wake-ups and memory resurfacing.
 
-Implementability score: 0.81
+Implementability score: 0.78
+
+### Monitor policy across executions, not only actions
+
+Summary: Individually permitted calls can combine into a forbidden purpose, consent, provenance, or delegation outcome; some policies require cross-execution comparison.
+
+Analysis: [monitor policy across executions, not only actions](2026-10-21/sovereignty.md#monitor-policy-across-executions-not-only-actions)
+
+Core sources: [Local Allow, Global Deny paper v1](https://arxiv.org/abs/2610.27620v1), [empty advertised repository](https://github.com/anmolpandey299/al-synth)
+
+Implementable now:
+- bind workflows to declared purpose and principal;
+- retain policy projections of prior executions;
+- generate relational witnesses with formal or property-based methods;
+- state the accepted false-alarm trade explicitly.
+
+Artifact caveat: the named repository has no default branch or populated tree.
+
+Implementability score: 0.56
 
 ## Current implication
 
-Evidence and approval both need exact bindings. Derived context must point back to authoritative sources, and runtime approval must name the one effect it authorizes.
+Authority must remain coherent across time and across executions. Per-call approval cannot govern delayed triggers or relational policy by itself.

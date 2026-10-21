@@ -555,6 +555,26 @@ Sources:
 - [KEEP-Bench repository](https://github.com/PlusLabNLP/KEEP-Bench)
 - [KEEP-Bench dataset](https://huggingface.co/datasets/uclanlp/KEEP-Bench)
 
+
+## October 21, 2026 update: compact by phase without dropping live evidence
+
+TraceLite keeps recent observations as text, renders older observations compactly, removes overlap, and drops payloads after their workflow phase expires. On 400 SWE-bench Verified tasks it matched the full-trace baseline statistically while reducing average input tokens 33.05% and API cost 21.30%.
+
+Practical lesson:
+- classify evidence by authority, recency, redundancy, and workflow phase;
+- keep active errors and authoritative outputs in high fidelity;
+- require task-outcome parity against a full-trace control;
+- measure tokens, cost, latency, and evidence loss together;
+- provide source rehydration for verification.
+
+Artifact status: the public repository is populated with Python policies and rendering utilities. It was inspected read-only.
+
+Implementability score: 0.84
+
+Sources:
+- [TraceLite paper v1](https://arxiv.org/abs/2610.28612v1)
+- [TraceLite repository](https://github.com/xjywhu/TraceLite)
+
 ## Working conclusion
 
 The future agent stack is not context maximalism. It is context accounting. Systems that know what to admit, retrieve, compress, cache, update incrementally, preserve prefix continuity, and audit will beat systems that merely buy larger windows and hope the model sorts it out.

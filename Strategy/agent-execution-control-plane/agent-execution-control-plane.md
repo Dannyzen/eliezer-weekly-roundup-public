@@ -303,3 +303,22 @@ Implementability score: 0.78
 
 Source:
 - [CreepScope](https://arxiv.org/abs/2610.15988v1)
+
+## October 21, 2026 update: authorize relations across executions
+
+Local Allow, Global Deny proves that some purpose violations are visible only by comparing executions. A zero-false-alarm per-action monitor detects none of these 2-safety failures; nine LLM judges largely approved isolated witnesses and flagged the paired view.
+
+Practical lesson:
+- bind each workflow to purpose, principal, consent, provenance, and delegation state;
+- retain a policy projection of prior executions;
+- compare effects and disclosures across runs;
+- synthesize minimal relational witnesses with SAT, SMT, or property-based methods;
+- choose and document the false-alarm trade when cross-execution evidence is incomplete.
+
+Artifact caveat: the named `al-synth` repository exists but has no default branch or populated tree.
+
+Implementability score: 0.56
+
+Sources:
+- [Local Allow, Global Deny paper v1](https://arxiv.org/abs/2610.27620v1)
+- [al-synth repository](https://github.com/anmolpandey299/al-synth)

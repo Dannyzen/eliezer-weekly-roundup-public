@@ -6,22 +6,22 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-10-20: [bind evidence and effects to exact runtime objects](roundups/2026-10-20.md)
-- Daily implementation analysis: [AgenticAI](AgenticAI/2026-10-20/reasoning.md)
-- Daily strategy analysis: [Strategy](Strategy/2026-10-20/sovereignty.md)
+- Daily scan, 2026-10-21: [govern workflow state across time and executions](roundups/2026-10-21.md)
+- Daily implementation analysis: [AgenticAI](AgenticAI/2026-10-21/reasoning.md)
+- Daily strategy analysis: [Strategy](Strategy/2026-10-21/sovereignty.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 
 ## Current thesis
 
-The strongest current architecture lesson is that evidence integrity must survive the full path from tool execution to external effect:
+The strongest current architecture lesson is that the harness must reason over workflow state, not isolated context windows or tool calls:
 
-- tool traces distinguish correct computation from the evidence used to answer;
-- context compression is graded on preserved propositions, qualifiers, and minority evidence;
-- coding-agent acceptance covers complete delivery and integration obligations;
-- outbound connections remain held until a one-time verdict authorizes that exact socket and destination.
+- phase-aware trace reduction preserves live evidence while removing redundant history;
+- executable business rules grade messages, tool calls, identities, and state transitions;
+- persistent writes and scheduled wake-ups are delayed execution channels;
+- relational policy requires cross-execution monitoring or an explicit false-alarm trade.
 
-Start with one operational rule: bind every derived context to authoritative source evidence, and bind every approval to one concrete effect.
+Start with one operational rule: preserve authoritative evidence before compression, and bind authority to the full workflow across time and executions.
 
 ## Browse by category
 

@@ -2,58 +2,42 @@
 
 Implementation analysis for agent evaluation, memory, context policy, tools, model routing, and orchestration.
 
-## Latest Structured Update: 2026-10-20 Daily Scan
+## Latest Structured Update: 2026-10-21 Daily Scan
 
-### Test evidence exposure, not only tool execution
+### Compress traces by phase and evidence value
 
-Summary: Correct tool execution can still produce a wrong answer when retrieval makes the agent use a non-authoritative output.
+Summary: Preserve recent and authoritative observations in high fidelity, compact redundant history, and expire payloads only when the workflow phase makes them irrelevant.
 
-Analysis: [test evidence exposure, not only tool execution](2026-10-20/reasoning.md#test-evidence-exposure-not-only-tool-execution)
+Analysis: [compress traces by phase and evidence value](2026-10-21/reasoning.md#compress-traces-by-phase-and-evidence-value)
 
-Core source: [Same Simulation, Different Evidence v1](https://arxiv.org/abs/2610.26836v1)
-
-Implementable now:
-- label authoritative tool outputs;
-- record build, exposure, and closure stages;
-- replay deterministic calls to isolate computation from evidence use;
-- compare inline, indexed, and authority-labeled retrieval.
-
-Implementability score: 0.88
-
-### Grade compression on evidence preservation
-
-Summary: Downstream QA can hide unfaithful compression; evaluate whether qualifiers, alternatives, and minority evidence survive.
-
-Analysis: [grade compression on evidence preservation](2026-10-20/reasoning.md#grade-compression-on-evidence-preservation)
-
-Core sources: [KEEP-Bench v1](https://arxiv.org/abs/2610.26827v1), [repository](https://github.com/PlusLabNLP/KEEP-Bench), [dataset](https://huggingface.co/datasets/uclanlp/KEEP-Bench)
+Core sources: [TraceLite paper v1](https://arxiv.org/abs/2610.28612v1), [repository](https://github.com/xjywhu/TraceLite)
 
 Implementable now:
-- run proposition-level evidence recall;
-- test parallel, conditional, and imbalanced evidence;
-- retain raw spans outside the compressed view;
-- measure recall, tokens, FLOPs, latency, and outcome together.
+- classify observations by phase and evidence value;
+- keep authoritative outputs and active errors in text;
+- shadow compressed runs against full-trace controls;
+- measure completion, tokens, cost, latency, and evidence loss together.
 
-Implementability score: 0.76
+Implementability score: 0.84
 
-### Evaluate coding agents against complete delivery contracts
+### Turn business rules into executable agent tests
 
-Summary: Component production and passing isolated tests do not prove that a full PRD, including integration obligations, was delivered.
+Summary: Mine candidate rules into reviewed Given-When-Then contracts, construct satisfying states, and assert over messages, tool calls, identities, and final state.
 
-Analysis: [evaluate coding agents against complete delivery contracts](2026-10-20/reasoning.md#evaluate-coding-agents-against-complete-delivery-contracts)
+Analysis: [turn business rules into executable agent tests](2026-10-21/reasoning.md#turn-business-rules-into-executable-agent-tests)
 
-Core source: [When Coding Agents Outpace Review v1](https://arxiv.org/abs/2610.26394v1)
+Core source: [AgenTest paper v1](https://arxiv.org/abs/2610.28116v1)
 
 Implementable now:
-- decompose PRDs into atomic Code Points;
-- bind criteria to source, test, integration, or inspection evidence;
-- report component, integration, and complete-delivery scores separately;
-- sample independent expert review.
+- extract rules from prompts, tool schemas, and domain policy;
+- review them with business owners;
+- generate stateful fixtures and simulated users;
+- retain full trajectories for hybrid oracles.
 
-Artifact caveat: the paper's named repository did not resolve during this scan.
+Artifact caveat: no public implementation repository was linked.
 
-Implementability score: 0.62
+Implementability score: 0.72
 
 ## Current implication
 
-Agent evaluation should trace authoritative evidence through computation, retrieval, compression, integration, and acceptance. Final answers and passing components are weak proof when the harness cannot show which evidence survived and which obligations were delivered.
+Context efficiency is safe only when the harness preserves authoritative evidence and verifies the entire workflow. Token counts and final states are weak acceptance criteria by themselves.

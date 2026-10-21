@@ -166,3 +166,22 @@ Implementability score: 0.79
 Sources:
 - [SkillRelay paper v1](https://arxiv.org/abs/2610.13227v1)
 - [SkillRelay repository](https://github.com/Dianshu-Liao/SkillRelay)
+
+## October 21, 2026 update: govern persistence as delayed execution
+
+CarryoverBench shows that a one-time indirect prompt injection can survive through memory files or scheduled wake-ups and re-fire across future sessions. Across 101 attack tasks and five models, planted payloads showed no measurable decay over five trigger rounds. Hermes reduced latent-channel attack success but did not eliminate it.
+
+Practical lesson:
+- separate planting, persistence, resurfacing, and action gates;
+- attach origin, principal, scope, and authority to every persistent write;
+- quarantine instructions derived from webpages and tool results;
+- reauthorize scheduled wake-ups as fresh requests;
+- test delayed triggers after clean sessions and user absence.
+
+Artifact status: CarryoverBench has a populated public repository with benchmark code and task fixtures. It was inspected read-only and not executed.
+
+Implementability score: 0.78
+
+Sources:
+- [Carryover attacks paper v1](https://arxiv.org/abs/2610.28425v1)
+- [CarryoverBench repository](https://github.com/igloomatics/CarryoverBench)

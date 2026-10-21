@@ -194,3 +194,21 @@ Implementability score: 0.69
 Sources:
 - [X-AgentRed paper v1](https://arxiv.org/abs/2610.13886v1)
 - [X-AgentRed project page](https://yeonsungjung.github.io/projects/x-agentred/)
+
+## October 21, 2026 update: test mined business rules across the full trajectory
+
+AgenTest turns rules distributed across prompts, tools, and domain knowledge into Given-When-Then specifications, constructs satisfying states, and checks messages, tool calls, and state changes. It mined 551 refined specifications and found 89 and 121 violations with two models, while about 60% of bug-triggering runs were invisible in final state.
+
+Practical lesson:
+- review mined rules into explicit business contracts;
+- generate fixtures that make each rule reachable;
+- assert identity, resource ownership, calls, messages, and state transitions;
+- retain the whole trajectory for the oracle;
+- promote confirmed failures into deterministic release fixtures.
+
+Artifact caveat: no public implementation repository was linked. Reproducing the rule miner and hybrid oracle requires meaningful engineering.
+
+Implementability score: 0.72
+
+Source:
+- [AgenTest paper v1](https://arxiv.org/abs/2610.28116v1)

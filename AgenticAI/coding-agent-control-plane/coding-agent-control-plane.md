@@ -512,3 +512,11 @@ Implementability score: 0.62
 
 Source:
 - [When Coding Agents Outpace Review](https://arxiv.org/abs/2610.26394v1)
+
+## October 22, 2026 update: plan once before the first durable edit
+
+PAUSE identifies the first source-code edit as a deterministic steering boundary. The executor has usually gathered substantial repository evidence by then, but has not committed to a repair. Insert one independent planning pass at this point, resume the same workspace, and measure whether the gate improves task success without repeated oversight cost.
+
+Implementability score: 0.82
+
+Source: [PAUSE](https://arxiv.org/abs/2610.29870v1)

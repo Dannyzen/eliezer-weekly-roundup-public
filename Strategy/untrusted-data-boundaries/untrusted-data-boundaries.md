@@ -524,3 +524,11 @@ Implementability score: 0.68
 Sources:
 - https://arxiv.org/abs/2610.01564v1
 - https://github.com/Minakamiii/Chaining_Skills_to_Hijack_LLM_Agents
+
+## October 22, 2026 update: compaction is a provenance boundary
+
+Compaction Laundering shows that untrusted content can become apparent user authority when a harness flattens typed messages into text labels before summarization. Keep roles and source identity typed, escape in-band labels, and require source-backed authorization after compaction.
+
+Implementability score: 0.91
+
+Sources: [paper](https://arxiv.org/abs/2610.29869v1), [repository](https://github.com/pixee/compaction-laundering)

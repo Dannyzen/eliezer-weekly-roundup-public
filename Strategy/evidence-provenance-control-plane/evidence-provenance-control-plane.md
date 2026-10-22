@@ -349,3 +349,11 @@ Sources:
 The architectural lesson is simple: do not confuse artifacts with proof.
 
 A serious agent runtime needs source-owned evidence packets that bind claims, tests, skills, tools, memory writes, delegated agents, policy verdicts, and final effects into one replayable control plane. That is the next layer above tracing and below governance dashboards.
+
+## October 22, 2026 update: derived summaries need source lineage
+
+A compacted summary is a derived evidence object. Every user-attributed claim should retain a link to a genuine user turn, and unsupported claims from tool output should be rejected or downgraded before they can influence authorization.
+
+Implementability score: 0.91
+
+Sources: [Compaction Laundering](https://arxiv.org/abs/2610.29869v1), [repository](https://github.com/pixee/compaction-laundering)

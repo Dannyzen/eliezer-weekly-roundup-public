@@ -2,42 +2,29 @@
 
 Governance analysis for identity, authority, execution control, evidence provenance, gateways, containment, and sovereignty.
 
-## Latest Structured Update: 2026-10-21 Daily Scan
+## Latest Structured Update: 2026-10-22 Daily Scan
 
-### Treat persistent state as delayed execution authority
+### Preserve origin through context compaction
 
-Summary: Memory files and scheduled wake-ups can replay a one-time injection after the attacker and user are gone; govern every persistent write as a future authority request.
+Summary: Context compaction becomes an authority vulnerability when a harness flattens typed messages into plain text. Forged role markers can survive summarization as apparent user instructions after their real origin is discarded.
 
-Analysis: [treat persistent state as delayed execution authority](2026-10-21/sovereignty.md#treat-persistent-state-as-delayed-execution-authority)
+Analysis: [preserve origin through context compaction](2026-10-22/sovereignty.md#preserve-origin-through-context-compaction)
 
-Core sources: [carryover attacks paper v1](https://arxiv.org/abs/2610.28425v1), [CarryoverBench repository](https://github.com/igloomatics/CarryoverBench)
+Durable deep dive: [Context Compaction Provenance](context-compaction-provenance/context-compaction-provenance.md)
 
-Implementable now:
-- quarantine untrusted instructions before persistence;
-- label writes with origin, principal, scope, and authority;
-- test planting and triggering separately across clean sessions;
-- reauthorize scheduled wake-ups and memory resurfacing.
-
-Implementability score: 0.78
-
-### Monitor policy across executions, not only actions
-
-Summary: Individually permitted calls can combine into a forbidden purpose, consent, provenance, or delegation outcome; some policies require cross-execution comparison.
-
-Analysis: [monitor policy across executions, not only actions](2026-10-21/sovereignty.md#monitor-policy-across-executions-not-only-actions)
-
-Core sources: [Local Allow, Global Deny paper v1](https://arxiv.org/abs/2610.27620v1), [empty advertised repository](https://github.com/anmolpandey299/al-synth)
+Core sources: [Compaction Laundering paper v1](https://arxiv.org/abs/2610.29869v1), [repository](https://github.com/pixee/compaction-laundering)
 
 Implementable now:
-- bind workflows to declared purpose and principal;
-- retain policy projections of prior executions;
-- generate relational witnesses with formal or property-based methods;
-- state the accepted false-alarm trade explicitly.
+- keep message roles and source identities typed through compaction;
+- escape role-like labels in untrusted payloads;
+- bind compacted claims to source messages;
+- reject unsupported user-attributed summary claims;
+- require current authorization before a compacted claim can cause an effect.
 
-Artifact caveat: the named repository has no default branch or populated tree.
+Artifact caveat: the public MIT-licensed repository is populated and was inspected read-only. The study is author-run against pinned harness versions.
 
-Implementability score: 0.56
+Implementability score: 0.91
 
 ## Current implication
 
-Authority must remain coherent across time and across executions. Per-call approval cannot govern delayed triggers or relational policy by itself.
+A summary may preserve meaning while destroying authority boundaries. Treat compaction as a typed security transform with provenance tests, not as ordinary text compression.

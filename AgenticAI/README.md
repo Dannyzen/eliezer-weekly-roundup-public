@@ -2,42 +2,45 @@
 
 Implementation analysis for agent evaluation, memory, context policy, tools, model routing, and orchestration.
 
-## Latest Structured Update: 2026-10-21 Daily Scan
+## Latest Structured Update: 2026-10-22 Daily Scan
 
-### Compress traces by phase and evidence value
+### Gate the first source edit with one grounded plan
 
-Summary: Preserve recent and authoritative observations in high fidelity, compact redundant history, and expire payloads only when the workflow phase makes them irrelevant.
+Summary: Use the first proposed source-code edit as a deterministic intervention point, ask one independent planner to convert accumulated evidence into a repair plan, then resume the same executor and workspace.
 
-Analysis: [compress traces by phase and evidence value](2026-10-21/reasoning.md#compress-traces-by-phase-and-evidence-value)
+Analysis: [insert one planning gate before the first source edit](2026-10-22/reasoning.md#insert-one-planning-gate-before-the-first-source-edit)
 
-Core sources: [TraceLite paper v1](https://arxiv.org/abs/2610.28612v1), [repository](https://github.com/xjywhu/TraceLite)
-
-Implementable now:
-- classify observations by phase and evidence value;
-- keep authoritative outputs and active errors in text;
-- shadow compressed runs against full-trace controls;
-- measure completion, tokens, cost, latency, and evidence loss together.
-
-Implementability score: 0.84
-
-### Turn business rules into executable agent tests
-
-Summary: Mine candidate rules into reviewed Given-When-Then contracts, construct satisfying states, and assert over messages, tool calls, identities, and final state.
-
-Analysis: [turn business rules into executable agent tests](2026-10-21/reasoning.md#turn-business-rules-into-executable-agent-tests)
-
-Core source: [AgenTest paper v1](https://arxiv.org/abs/2610.28116v1)
+Core source: [PAUSE paper v1](https://arxiv.org/abs/2610.29870v1)
 
 Implementable now:
-- extract rules from prompts, tool schemas, and domain policy;
-- review them with business owners;
-- generate stateful fixtures and simulated users;
-- retain full trajectories for hybrid oracles.
+- intercept the first durable source edit;
+- snapshot inspected evidence and test output;
+- request one plan without repeated monitoring;
+- resume the original executor;
+- compare success and planner cost against ungated runs.
 
-Artifact caveat: no public implementation repository was linked.
+Artifact caveat: no public implementation repository was verified.
 
-Implementability score: 0.72
+Implementability score: 0.82
+
+### Test coding agents against evolving users
+
+Summary: Convert static tasks into adaptive multi-turn interactions with grounded user personas, then grade target completion, regressions, cost, churn, and turns.
+
+Analysis: [evaluate coding agents against evolving users](2026-10-22/reasoning.md#evaluate-coding-agents-against-evolving-users)
+
+Core sources: [SWE-DIVE paper v1](https://arxiv.org/abs/2610.30047v1), [repository](https://github.com/lorenzbrehme/swe-dive_usersim)
+
+Implementable now:
+- split acceptance tasks into incremental requirements;
+- derive personas from real user behavior;
+- validate simulator prompts against hidden task truth;
+- track newly failing tests separately from target-test success.
+
+Evidence caveat: the current quantitative evidence is an 11-task pilot, and the public repository has no declared license.
+
+Implementability score: 0.70
 
 ## Current implication
 
-Context efficiency is safe only when the harness preserves authoritative evidence and verifies the entire workflow. Token counts and final states are weak acceptance criteria by themselves.
+Coding-agent harnesses need control before mutation and evaluation across the full collaboration. One-shot task success proves neither planning quality nor resilience to ordinary user clarification and change.

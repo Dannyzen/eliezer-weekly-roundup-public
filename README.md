@@ -6,22 +6,23 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-10-21: [govern workflow state across time and executions](roundups/2026-10-21.md)
-- Daily implementation analysis: [AgenticAI](AgenticAI/2026-10-21/reasoning.md)
-- Daily strategy analysis: [Strategy](Strategy/2026-10-21/sovereignty.md)
+- Daily scan, 2026-10-22: [compaction provenance, pre-edit planning, and multi-turn coding evaluation](roundups/2026-10-22.md)
+- Durable deep dive: [Context Compaction Provenance](Strategy/context-compaction-provenance/context-compaction-provenance.md)
+- Dated strategy analysis: [Strategy](Strategy/2026-10-22/sovereignty.md)
+- Daily implementation analysis: [AgenticAI](AgenticAI/2026-10-22/reasoning.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 
 ## Current thesis
 
-The strongest current architecture lesson is that the harness must reason over workflow state, not isolated context windows or tool calls:
+Agent control is strongest at typed state transitions:
 
-- phase-aware trace reduction preserves live evidence while removing redundant history;
-- executable business rules grade messages, tool calls, identities, and state transitions;
-- persistent writes and scheduled wake-ups are delayed execution channels;
-- relational policy requires cross-execution monitoring or an explicit false-alarm trade.
+- compaction must preserve role, source identity, and claim lineage;
+- the first durable edit is a cheap point for one grounded planning pass;
+- static issues need multi-turn tests with clarification and changing requirements;
+- task success and newly introduced regressions must be scored separately.
 
-Start with one operational rule: preserve authoritative evidence before compression, and bind authority to the full workflow across time and executions.
+Start with one rule: never let a derived summary silently upgrade untrusted evidence into user authority.
 
 ## Browse by category
 
@@ -66,6 +67,7 @@ Start with one operational rule: preserve authoritative evidence before compress
 - [Context-to-Execution Integrity](Strategy/context-to-execution-integrity/context-to-execution-integrity.md)
 - [Untrusted Data Boundaries](Strategy/untrusted-data-boundaries/untrusted-data-boundaries.md)
 - [Persistent-State Agent Control](Strategy/persistent-state-agent-control/persistent-state-agent-control.md)
+- [Context Compaction Provenance](Strategy/context-compaction-provenance/context-compaction-provenance.md)
 - [Agent Execution Control Plane](Strategy/agent-execution-control-plane/agent-execution-control-plane.md)
 - [Agent Community Governance](Strategy/agent-community-governance/agent-community-governance.md)
 - [Memory Authority Control Plane](Strategy/memory-authority-control-plane/memory-authority-control-plane.md)

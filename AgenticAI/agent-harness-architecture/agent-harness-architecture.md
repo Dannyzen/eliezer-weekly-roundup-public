@@ -1661,3 +1661,11 @@ Implementability score: 0.86
 Sources:
 - [ToolBottleneckBench paper v1](https://arxiv.org/abs/2610.21098v1)
 - [zichuanxu/tool-bottleneck-bench](https://github.com/zichuanxu/tool-bottleneck-bench)
+
+## October 22, 2026 update: test collaboration, not only complete issues
+
+SWE-DIVE turns static tasks into adaptive conversations with grounded user personas and deterministic repository grading. The current 11-task pilot is small, but the harness pattern is immediately useful: validate simulator turns against hidden task truth, then score target completion, regressions, churn, cost, and turns by interaction style.
+
+Implementability score: 0.70
+
+Sources: [SWE-DIVE](https://arxiv.org/abs/2610.30047v1), [repository](https://github.com/lorenzbrehme/swe-dive_usersim)

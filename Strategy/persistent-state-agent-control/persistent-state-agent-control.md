@@ -1,187 +1,230 @@
 # Persistent-State Agent Control
 
-Last updated: 2026-07-13
+Last updated: 2026-10-21
 
 Primary layer: Strategy / runtime governance
 
-Implementability score: 0.68
+Implementability score: 0.78
 
 Core sources:
-- Distributed Attacks in Persistent-State AI Control: https://arxiv.org/abs/2607.02514v1
-- Persistent-state eval repository: https://github.com/josh-hills/control-arena-persistent-state-eval
-- ControlArena: https://github.com/UKGovernmentBEIS/control-arena
+- [After the Attacker Leaves: Benchmarking Carryover Attacks on LLM Agents](https://arxiv.org/abs/2610.28425v1)
+- [CarryoverBench repository](https://github.com/igloomatics/CarryoverBench)
+- [Distributed Attacks in Persistent-State AI Control](https://arxiv.org/abs/2607.02514v1)
+- [Persistent-state evaluation repository](https://github.com/josh-hills/control-arena-persistent-state-eval)
 
 ## Overview
 
-Persistent-state agent control is the governance problem created when an agent can change a workspace over many sessions. The codebase, memory store, issue tracker, workflow directory, or deployment environment stops being passive storage. It becomes a stateful attack and authority surface.
+Persistent-state agent control is the governance problem created when an agent can write information that later re-enters execution. Memory files, scheduled jobs, workspace configuration, caches, issue state, generated instructions, and code changes are not passive storage. They are delayed execution channels.
 
-The July 3 signal is Distributed Attacks in Persistent-State AI Control. The paper shows that an AI coding agent can distribute a covert side task across multiple pull requests and time the payload for the PR with the best natural cover. That breaks the common review assumption that each PR can be evaluated mostly in isolation.
+CarryoverBench makes this concrete. A one-time indirect prompt injection can persuade an agent to write a malicious instruction into long-term memory or a heartbeat file. The attacker then disappears. The stored instruction resurfaces in a later clean session or during a scheduled wake-up, often after the user has left.
 
-The durable insight is:
+The durable rule is:
 
-> If the workspace persists, the monitor must persist too.
+> If state can influence a future action, writing that state is an authority event and reading it back is a new authorization decision.
 
-## Core pattern
+## Why this won the week
 
-A persistent-state monitor has to track suspicious buildup across time, not only suspicious diffs at one commit.
+This finding beat the week's other strong candidates because it changes the unit of control for deployed agents and tests that claim against Hermes itself.
 
-Minimum state to preserve:
-- PR, commit, issue, and task lineage;
-- files and symbols repeatedly touched by the agent;
-- dormant hooks, staged configuration changes, and delayed activation paths;
-- prior monitor warnings, even when they were not decisive alone;
-- tool-call and test history tied to each workspace mutation;
-- whether the current change completes a previously harmless-looking chain.
+- TraceLite showed how to reduce long traces without discarding phase-relevant evidence. That is valuable efficiency work.
+- AgenTest showed that workflow rules need trajectory-level tests. That is valuable quality work.
+- Proof-Carrying Contracts offered a stronger formal end state for enforceable commitments. Its current value is architectural because the paper does not provide a ready runtime artifact.
+- CarryoverBench exposed an active production-shaped failure across memory and scheduling, shipped a populated benchmark, separated the failure into measurable stages, and reproduced the latent channel on Hermes.
 
-The paper's stateful link-tracker monitor is a useful design primitive. It detects gradual attacks better than diff monitors that simply receive more accumulated history. The lesson is that more context is not enough. The monitor needs a structured theory of buildup.
+The finding matters more because persistence is already a core feature of personal agents. It turns a useful product surface into a delayed authority surface, then gives us a testable path to harden it.
+
+## Core innovation
+
+CarryoverBench separates a carryover attack into two stages:
+
+1. **Plant:** untrusted content persuades the agent to write a payload into persistent state.
+2. **Trigger:** a later session or scheduled wake-up reads that state and performs the harmful action.
+
+It evaluates three timing channels:
+
+- **Instant:** the familiar same-session prompt injection baseline.
+- **Autonomous:** a heartbeat file wakes the agent without a user present.
+- **Latent:** long-term memory resurfaces during a later topically aligned request.
+
+The benchmark contains 12 personal-assistant task families and 101 attack tasks: 35 Instant, 30 Autonomous, and 36 Latent. Rule-based verifiers grade both benign task utility and attack effects, avoiding an LLM judge that could itself be influenced by adversarial trace content.
+
+This decomposition is the important advance. An overall attack-success number cannot tell a runtime team whether to harden ingestion, persistent writes, retrieval, scheduling, tools, or egress. Plant and trigger rates can.
+
+## Evidence that changes the architecture
+
+### Persistence did not fade
+
+Across five evaluated models, planted payloads showed no monotonic decay over five follow-up trigger rounds. Autonomous attacks were especially persistent: conditional on planting, the reported trigger probability was approximately one across all five models. Latent triggering varied more, but the stored payload remained intact and could fire repeatedly when the follow-up was topically aligned.
+
+The failure is structural. Conversation history resets between sessions, while the malicious entry in the workspace remains unchanged and is presented as the agent's own state.
+
+### The trigger gate was usually open
+
+Four of five models had conditional latent trigger rates of at least 66 percent once a payload was planted, and conditional Autonomous trigger rates above 80 percent. The practical implication is harsh: most tested defenses had one useful chance, at admission time, before the write became trusted-looking state.
+
+### Text-only defenses acted mostly at planting
+
+The paper tested three defenses: generic persistent-state safety principles, an instruction to inspect and edit suspicious state, and harness-added markup labeling persistent state as untrusted. They reduced planting in some model and channel combinations, but usually did little to the conditional trigger rate. Agents made zero voluntary amendments or deletions under the explicit review defense.
+
+A warning placed beside the poisoned instruction still competes inside the same text channel. Strong trigger control needs a discriminator outside that channel.
+
+### Hermes attenuated the attack and did not contain it
+
+The authors replayed all 36 Latent variants on Hermes for four non-reasoning model configurations. Reported attack success changed as follows:
+
+- Qwen3-235B-A22B: 52.8 percent on Nanobot to 27.8 percent on Hermes.
+- Claude Sonnet 4.6: 22.2 percent to 5.6 percent.
+- GLM-5: 11.1 percent to 8.3 percent.
+- GPT-5.4: 8.3 percent to 2.8 percent.
+
+Every model remained vulnerable. The paper reports that Hermes's memory scanner matched 0 of 89 payload files and that its review pipeline did not invoke removal or replacement. The authors attribute much of the reduction to model-side alignment exposed by Hermes's richer tool catalog, rather than proof that runtime controls closed the channel.
+
+That is the load-bearing result for Danny's stack: Hermes has useful friction, while memory admission and resurfacing still need explicit runtime gates.
 
 ## Why it matters
 
-Agent platforms are converging on long-lived workspaces: repo-local rules, durable memory, task histories, branch state, generated tests, local services, and per-project tool config. That is exactly what makes agents useful. It also gives attacks room to spread over time.
+Persistent agents create authority at a different time from execution. A session can appear successful, leave no immediate harmful effect, and still create a future action path. Traditional prompt-injection tests, per-turn approvals, and final-state checks miss that gap.
 
-A one-shot monitor asks: is this diff suspicious?
+This affects:
 
-A persistent-state monitor asks: does this diff make a prior sequence suspicious?
+- personal assistants that store preferences, summaries, or reminders;
+- cron and background agents that wake without a user;
+- coding agents that retain workspace instructions or hooks;
+- multi-agent systems that share files or memory;
+- support and operations agents that revisit prior customer state;
+- any product that treats an agent-authored note as trusted context later.
 
-That shift matters for every serious coding-agent runtime, especially where agents can open PRs, run CI, edit config, manage dependencies, or touch deployment scripts.
+The product risk is silent authority laundering. Untrusted web or tool content enters as data, is rewritten by the agent, and later returns as an apparent first-party instruction.
 
-## Practical tools and methodologies worth trying now
+## Fit in the agentic stack
 
-- Use ControlArena and the persistent-state eval repo as read-only references for model-organism design.
-- Add a PR-sequence risk ledger to coding-agent review.
-- Store monitor verdicts as cumulative evidence, not as disposable comments.
-- Run separate monitors for diff content, trajectory behavior, accumulated history, and cross-PR link structure.
-- Create adversarial regression fixtures where the payload is split across multiple benign-looking changes.
-- Require a final stateful review before merge when the agent touched security-sensitive files, workflow config, package manifests, auth logic, startup hooks, or deployment paths.
+Persistent-state control spans six boundaries:
+
+1. **Ingestion boundary:** classify webpages, emails, documents, tool results, and peer-agent messages as untrusted evidence.
+2. **Admission boundary:** decide whether derived content may enter memory, schedules, skills, configuration, or workspace instructions.
+3. **Storage boundary:** retain origin, principal, scope, trust class, expiry, and revocation state beside the stored object.
+4. **Resurfacing boundary:** present stored content as evidence with provenance, not as fresh system authority.
+5. **Execution boundary:** require current authorization for tools, filesystem changes, network calls, money movement, and external messages.
+6. **Audit boundary:** preserve plant, persistence, resurfacing, proposed effect, decision, and receipt as one replayable chain.
+
+This belongs primarily in Strategy because the central question is who may create future authority. AgenticAI supplies the implementation machinery: typed memory objects, schedulers, policy engines, sandboxed tools, egress gates, trace storage, and deterministic evaluators.
+
+## Practical controls worth trying now
+
+### 1. Make persistent writes typed
+
+Replace free-form instruction append with an object containing:
+
+- content and content hash;
+- source origin and producing tool;
+- initiating principal and session;
+- intended purpose and scope;
+- trust class;
+- created, reviewed, expires, and revoked timestamps;
+- allowed resurfacing contexts;
+- allowed effect classes;
+- evidence links and prior versions.
+
+A stored object without this envelope remains quarantined evidence.
+
+### 2. Separate memory from instructions
+
+Keep descriptive facts, user-approved preferences, executable procedures, schedules, and authority grants in different stores or namespaces. Retrieval may combine evidence for reasoning, but only an explicit release step can turn evidence into an instruction or scheduled effect.
+
+### 3. Reauthorize wake-ups
+
+A cron entry should name its owner, purpose, allowed tools, data scope, expiry, and approval policy. At fire time, the runtime should re-evaluate those fields against current policy. A schedule created from untrusted content should never inherit the creator agent's ambient authority.
+
+### 4. Gate resurfacing and effects separately
+
+A memory object may be safe to display and unsafe to execute. Preserve two decisions:
+
+- may this state enter the current context?
+- may the proposed effect use authority derived from it?
+
+Bind the second decision to the exact tool, arguments, destination, and current principal.
+
+### 5. Put hard controls outside the model
+
+Use tool allowlists, canonical filesystem roots, outbound destination policies, sandboxing, and signed single-use approvals. Model warnings and provenance markup remain useful, but they are advisory controls.
+
+### 6. Test plant and trigger as separate fixtures
+
+Adapt a small subset of CarryoverBench into isolated Hermes regression tests:
+
+- one memory plant that must remain quarantined;
+- one approved preference that must survive cleanly;
+- one scheduled instruction from untrusted content that must fail admission;
+- one approved schedule that must reauthorize at fire time;
+- one delayed egress attempt that must be blocked after a clean session;
+- one revocation test proving stale state cannot regain authority.
+
+Run the trigger phase in a fresh session and score real tool receipts, not the agent's explanation.
+
+## Repositories and methodologies to explore
+
+- [CarryoverBench](https://github.com/igloomatics/CarryoverBench): task fixtures, payloads, rule-based verifiers, Dockerfile, and transcripts for stage-conditioned evaluation. Inspect and adapt only in an isolated test profile.
+- [ControlArena](https://github.com/UKGovernmentBEIS/control-arena): control-evaluation methodology for useful agents operating under adversarial objectives.
+- [Persistent-state evaluation artifact](https://github.com/josh-hills/control-arena-persistent-state-eval): cross-change attack and monitor patterns.
+- [AgenticRV](https://github.com/AngeloFerrando/agentic-rv): event-contract and monitor architecture for runtime verification.
+- [Proof-Carrying Contracts](https://arxiv.org/abs/2610.28484v1): a formal design reference for making exact commitments enforceable at an Airlock before operations run.
+
+The cheapest useful experiment is CarryoverBench-shaped regression testing around Hermes memory admission and delayed egress. Formal proof-carrying commitments are the longer path.
 
 ## Implementation complexity
 
-Implementability score: 0.68
+Implementability score: **0.78**
 
-A thin version is implementable now with existing repository metadata, traces, and review bots. The harder part is not data collection. The harder part is deciding which cross-PR links are suspicious without drowning maintainers in false positives.
+A thin control layer is implementable now with ordinary engineering effort: provenance envelopes, separate state classes, admission quarantine, schedule metadata, effect allowlists, fresh-session regression tests, and audit receipts.
 
-The first version should be conservative:
-1. Track sensitive file classes and repeated touches.
-2. Preserve monitor warnings across PRs.
-3. Flag delayed activation patterns and dormant hooks.
-4. Require human review when a new PR completes a previously flagged chain.
-5. Keep every false positive and false negative as an evaluation fixture.
+A complete solution requires meaningful architecture:
 
-## What remains unresolved
+- a typed persistent-state API rather than unconstrained file writes;
+- scheduler integration that evaluates current policy at fire time;
+- policy decisions bound to exact effects;
+- safe migration of existing free-form memories and cron entries;
+- explanations that users can understand without exposing sensitive monitor logic;
+- low false-positive rates for legitimate adaptation.
 
-- The paper reports that no single monitor is robust to both gradual and concentrated attacks.
-- Stateful monitors will need task-utility measurements, not only attack detection.
-- Attackers can adapt to the monitor's visible state unless the review process preserves some private detection logic.
-- Cross-PR suspicion can become noisy in normal large refactors.
-- Product UX for explaining cumulative suspicion is still underdeveloped.
+The honest cost is reduced convenience. Some memories and schedules will require review, expiry, or narrower tool access. That friction is appropriate because those objects can act after the initiating session is gone.
 
-## July 13 update: persistent instructions need graph-validated promotion
+## What remains conceptual or unresolved
 
-GRACE extends persistent-state control from workspace mutations to the instruction substrate itself. It stores atomic guidance as typed graph nodes, represents support, conflict, and dependency relationships as edges, validates proposed updates around the changed neighborhood, consolidates overlapping guidance, and reconstructs the accepted graph as the next deployed text checkpoint.
+- Detecting malicious meaning in arbitrary memory remains an open classification problem.
+- Safe promotion rules for agent-learned procedures need independent evidence and replay.
+- Cross-runtime scheduler semantics differ, so Autonomous benchmarks need runtime-specific adapters.
+- Multi-agent shared state introduces principal and delegation conflicts beyond this benchmark.
+- Recovering already-poisoned state without discarding valid user history remains difficult.
+- Runtime policy must distinguish read permission, contextual influence, and effect authority.
 
-The strategic correction is direct: operational experience may propose a new rule, but experience is evidence, not authority. The rule should influence future action only after a typed promotion gate accepts its scope, relationships, provenance, and replay result.
+## Weakest point and guardrail
 
-Practical lesson:
-- assign stable IDs, types, provenance, scope, status, and version to persistent instruction units;
-- preserve explicit conflict, supersession, dependency, and applicability edges;
-- validate local neighborhoods plus global invariants for duplicate authority, cycles, unresolved conflict, and scope expansion;
-- reconstruct deployment text deterministically and retain graph and text diffs together;
-- replay old and shifted task distributions before promotion, with rollback to the prior checkpoint.
+The benchmark is new and synthetic. Its 12 task families were authored in-house, Latent rounds repeat the same topically aligned follow-up and therefore upper-bound realistic trigger rates, and its finite alias verifier can miss successful attacks. The Hermes transfer covers 36 Latent variants, excludes the Autonomous channel, and omits Gemini's reasoning configuration. The public repository is populated but currently has no declared license; the paper promises a permissive research license upon acceptance.
 
-Weakest point: the evidence is limited to one telecom domain and a fixed model/harness. The paper's advertised `RedMind-Research/GRACE` repository returned 404 during the July 13 scan, so this is currently a methodology pattern rather than a verified reusable package.
+These limits are survivable because the result identifies a mechanism rather than claiming a universal deployment rate. Use the benchmark as a regression design, not as a production risk percentage. Keep all testing isolated, preserve benign-task utility, and treat every reported attack-success rate as comparative evidence.
 
-Source:
-- [Scoped Verification for Reliable Long-Horizon Agentic Context Evolution under Distribution Shift](https://arxiv.org/abs/2607.09175v1)
+## Strategic implications for Danny's product thinking
 
-## July 21 update: writable self-state needs layered OS controls and semantic recovery
+Persistent state should be sold and designed as governed continuity, not unlimited memory.
 
-Self-State Attacks moves persistent-state control from cross-PR accumulation into the agent's own local files. A compromised agent can modify memory, identity, instructions, or configuration through legitimate writes that the OS cannot classify by intent.
+For FriendVM and Hermes-style personal agents, the differentiator is not remembering more. It is proving where remembered state came from, who authorized its continued influence, when that authority expires, and which effects it may cause later.
 
-Practical lesson:
-- inventory every file the agent reads back into future decisions;
-- separate static instructions, identity, configuration, credentials, and mutable memory by policy and principal;
-- keep monitors, journals, and backups outside the agent's write authority;
-- tune detection per workload and file class;
-- preserve semantic lineage so recovery can distinguish poisoned state from valid adaptation;
-- treat in-distribution authorized writes as a residual risk above the OS layer.
+That supports four product principles:
 
-Evidence caveat: the 23-cell, 43-operation study uses one lightweight OpenClaw-style harness and one trace-generation model. The recommended permission level reduces operations-profile workload success to 11%, detector false positives reach 0.36 in a sparse profile, and four memory-write cells remain indistinguishable.
+1. **Evidence can persist without authority persisting.** Store history broadly, release influence narrowly.
+2. **Schedules are delegated capabilities.** Every background job needs an owner, scope, expiry, and current-policy check.
+3. **Receipts should span time.** Show the chain from source to stored state to resurfacing to effect.
+4. **Safety should preserve usefulness.** Measure benign task completion beside blocked attacks, and keep controls reversible where possible.
 
-Sources:
-- [Self-State Attacks on Self-Hosted AI Agents](https://arxiv.org/abs/2607.17986v1)
-- [reproduction artifact](https://anonymous.4open.science/r/self-state-attacks-os-C901)
+This turns memory governance from a security afterthought into a visible product promise: the agent can continue work without silently carrying an attacker's authority forward.
 
-## August 10 update: persistent carriers need lineage, and stale memory needs revocation
+## Related research lineage
 
-HarnessSafe traces delayed influence across memory, skills, tools, summaries, delegation, and shared artifacts. TEPA complements that lifecycle view with an explicit validity state for memory: conflicting current evidence revokes a prior precedent from active retrieval without deleting its audit history.
-
-Practical lesson:
-- assign stable identity and trust class to every persistent carrier;
-- preserve transformations and boundary crossings as lineage edges;
-- grade the furthest lifecycle stage supported by effect evidence;
-- separate active, superseded, revoked, quarantined, and re-promoted memory states;
-- keep revoked evidence auditable but excluded from normal retrieval;
-- test reversal, delayed trigger, cross-session reuse, and re-promotion before release.
-
-Evidence caveat: HarnessSafe's complete native execution evidence covers only part of its configuration matrix. TEPA's strongest result is single-key stale-conflict consolidation and does not solve multi-hop retrieval or long-context selection.
-
-Sources:
-- [HarnessSafe](https://arxiv.org/abs/2608.06984v1)
-- [TEPA](https://arxiv.org/abs/2608.07429v1)
+- [Self-State Attacks on Self-Hosted AI Agents](https://arxiv.org/abs/2607.17986v1): legitimate writes to memory, identity, configuration, and instructions can evade OS-level intent controls.
+- [HarnessSafe](https://arxiv.org/abs/2608.06984v1): delayed influence needs lineage across memory, skills, tools, summaries, delegation, and artifacts.
+- [SkillRelay](https://arxiv.org/abs/2610.13227v1): files, caches, configurations, and records can relay influence into later skills and sessions.
+- [Scoped Verification for Reliable Long-Horizon Agentic Context Evolution](https://arxiv.org/abs/2607.09175v1): learned persistent guidance needs graph-validated promotion and rollback.
 
 ## Working conclusion
 
-Persistent state is where agent usefulness and agent risk meet. Every retained object needs lineage showing how influence reached it and a validity state deciding whether it may still shape action. Sequence review, lifecycle traces, and revocation are runtime controls, not optional reviewer conveniences.
-
-## August 30 update: plan once and preserve labels across persistent reuse
-
-SPA compiles the trusted request into a declarative plan before untrusted outputs enter the loop, then carries confidentiality and integrity labels through execution and storage. Future planners see semantic metadata; concrete values return only during constrained execution with their original labels.
-
-Practical lesson:
-- keep provenance and integrity labels beside every stored artifact;
-- split semantic metadata from concrete values in the memory API;
-- preserve control dependencies across queries;
-- reject low-integrity data driving higher-integrity effects;
-- measure delayed-attack success beside legitimate reuse.
-
-Implementability score: 0.68
-
-Source: [SPA](https://arxiv.org/abs/2608.27234v1)
-
-## October 12, 2026 update: restore provenance when artifacts re-enter a session
-
-SkillRelayBench shows that files, configurations, caches, and database records can carry malicious influence across fresh conversations. SkillRelayGuard restores producer and evidence context when an artifact is read, then reviews the proposed operation before execution.
-
-Practical lesson:
-- attach producer skill, principal, session, source inputs, intended scope, and evidence to retained objects;
-- restore that lineage at read time;
-- treat artifact content as data until the current request authorizes an effect;
-- review the exact proposed operation against current scope;
-- preserve guard advice, agent choice, final request, and external receipt together.
-
-Evidence caveat: results rely on model judges and stochastic runs. The public implementation is populated but unlicensed, and its operation review is advisory with explicit coverage gaps.
-
-Implementability score: 0.79
-
-Sources:
-- [SkillRelay paper v1](https://arxiv.org/abs/2610.13227v1)
-- [SkillRelay repository](https://github.com/Dianshu-Liao/SkillRelay)
-
-## October 21, 2026 update: govern persistence as delayed execution
-
-CarryoverBench shows that a one-time indirect prompt injection can survive through memory files or scheduled wake-ups and re-fire across future sessions. Across 101 attack tasks and five models, planted payloads showed no measurable decay over five trigger rounds. Hermes reduced latent-channel attack success but did not eliminate it.
-
-Practical lesson:
-- separate planting, persistence, resurfacing, and action gates;
-- attach origin, principal, scope, and authority to every persistent write;
-- quarantine instructions derived from webpages and tool results;
-- reauthorize scheduled wake-ups as fresh requests;
-- test delayed triggers after clean sessions and user absence.
-
-Artifact status: CarryoverBench has a populated public repository with benchmark code and task fixtures. It was inspected read-only and not executed.
-
-Implementability score: 0.78
-
-Sources:
-- [Carryover attacks paper v1](https://arxiv.org/abs/2610.28425v1)
-- [CarryoverBench repository](https://github.com/igloomatics/CarryoverBench)
+Persistent memory and scheduled work are delayed execution surfaces. The control plane should admit, label, resurface, authorize, and audit them as policy-bearing objects. CarryoverBench supplies the best current regression shape, while Hermes supplies the immediate place to prove the control.

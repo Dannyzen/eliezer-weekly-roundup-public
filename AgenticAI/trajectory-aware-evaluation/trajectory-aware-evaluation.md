@@ -1596,3 +1596,11 @@ Sources:
 - [FDE-Gym paper](https://arxiv.org/abs/2610.22350v1)
 - [FDE-Gym repository](https://github.com/deeplethe/fde-gym)
 - [open example cases](https://huggingface.co/datasets/DeepLethe/FDE-Gym-examples)
+
+## October 23, 2026 update: terminal state can become the reward contract
+
+ThinkingBox Training reuses deterministic database-state and side-effect checks for task selection, rollout reward, and repeated evaluation. The reusable architecture is the shared executable oracle. The published 24-H100 run is too heavy to copy casually, and its slight pass@20 decline shows why breadth and repeatability need separate gates.
+
+Implementability score: 0.62
+
+Sources: [implementation article](https://huggingface.co/blog/microsoft/thinkingbox-training), [repository](https://github.com/microsoft/thinkingbox-training)

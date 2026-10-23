@@ -6,23 +6,23 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-10-22: [compaction provenance, pre-edit planning, and multi-turn coding evaluation](roundups/2026-10-22.md)
-- Durable deep dive: [Context Compaction Provenance](Strategy/context-compaction-provenance/context-compaction-provenance.md)
-- Dated strategy analysis: [Strategy](Strategy/2026-10-22/sovereignty.md)
-- Daily implementation analysis: [AgenticAI](AgenticAI/2026-10-22/reasoning.md)
+- Daily scan, 2026-10-23: [replayable diagnosis, evidence recovery, adaptive skills, and executable rewards](roundups/2026-10-23.md)
+- Dated strategy analysis: [Strategy](Strategy/2026-10-23/sovereignty.md)
+- Daily implementation analysis: [AgenticAI](AgenticAI/2026-10-23/reasoning.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 
 ## Current thesis
 
-Agent control is strongest at typed state transitions:
+Agent reliability improves when the runtime owns the transition from evidence to action:
 
-- compaction must preserve role, source identity, and claim lineage;
-- the first durable edit is a cheap point for one grounded planning pass;
-- static issues need multi-turn tests with clarification and changing requirements;
-- task success and newly introduced regressions must be scored separately.
+- normalize tool lifecycles into replayable events;
+- require critical facts or a bounded recovery attempt before consequential effects;
+- route between macro skills and primitive tools from observed execution state;
+- grade terminal world state rather than narrative completion;
+- preserve separate metrics for average success, breadth, and repeatability.
 
-Start with one rule: never let a derived summary silently upgrade untrusted evidence into user authority.
+Start with one rule: missing evidence narrows authority. It never silently widens it.
 
 ## Browse by category
 

@@ -1220,3 +1220,11 @@ Implementability score: 0.70
 Sources:
 - [Beyond Maliciousness paper v1](https://arxiv.org/abs/2610.19264v1)
 - [SkilLock](https://github.com/skills-lock/skil-lock)
+
+## October 23, 2026 update: route skill granularity at runtime
+
+Skill retrieval should return candidates, not commit the executor to one abstraction level. Adaptive Skill Granularity adds a runtime controller that chooses primitive tools, macro skills, or macro-to-micro recovery from task features and observed state. The immediate pattern is to bind every macro to preconditions, postconditions, and a verified fallback path.
+
+Implementability score: 0.78
+
+Sources: [paper v1](https://arxiv.org/abs/2610.31461v1), [repository](https://github.com/Jayceon-3/Adaptive-Skill-Agent)

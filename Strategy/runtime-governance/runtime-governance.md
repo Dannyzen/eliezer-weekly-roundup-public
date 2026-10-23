@@ -1322,3 +1322,11 @@ Implementability score: 0.44
 Sources:
 - [The Agent Knew](https://arxiv.org/abs/2610.17301v1)
 - [code, data, and preregistration record](https://github.com/AryaFayyazi/Honesty)
+
+## October 23, 2026 update: missing evidence narrows execution authority
+
+EpiSEM-Bench isolates truthful but incomplete tool responses. The governance rule is direct: identify effect-critical facts, recover them when possible, and withhold the effect when they remain absent. Matched safe and unsafe worlds keep useful completion distinct from blanket refusal.
+
+Implementability score: 0.68
+
+Source: [paper v1](https://arxiv.org/abs/2610.31650v1)

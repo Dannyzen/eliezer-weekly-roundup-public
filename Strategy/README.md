@@ -2,29 +2,44 @@
 
 Governance analysis for identity, authority, execution control, evidence provenance, gateways, containment, and sovereignty.
 
-## Latest Structured Update: 2026-10-22 Daily Scan
+## Latest Structured Update: 2026-10-23 Daily Scan
 
-### Preserve origin through context compaction
+### Make security diagnosis replayable across runtimes
 
-Summary: Context compaction becomes an authority vulnerability when a harness flattens typed messages into plain text. Forged role markers can survive summarization as apparent user instructions after their real origin is discarded.
+Summary: Normalize heterogeneous runtime telemetry into one canonical event contract, derive policy-decisive evidence slices, and require every diagnosis claim to cite recorded events.
 
-Analysis: [preserve origin through context compaction](2026-10-22/sovereignty.md#preserve-origin-through-context-compaction)
+Analysis: [make security diagnosis replayable across agent runtimes](2026-10-23/sovereignty.md#make-security-diagnosis-replayable-across-agent-runtimes)
 
-Durable deep dive: [Context Compaction Provenance](context-compaction-provenance/context-compaction-provenance.md)
-
-Core sources: [Compaction Laundering paper v1](https://arxiv.org/abs/2610.29869v1), [repository](https://github.com/pixee/compaction-laundering)
+Core sources: [paper v1](https://arxiv.org/abs/2610.30738v1), [Apache-2.0 repository](https://github.com/AsnGs/agenttriage-open-source)
 
 Implementable now:
-- keep message roles and source identities typed through compaction;
-- escape role-like labels in untrusted payloads;
-- bind compacted claims to source messages;
-- reject unsupported user-attributed summary claims;
-- require current authorization before a compacted claim can cause an effect.
+- join invocation and result lifecycles deterministically;
+- distinguish native from synthesized identity;
+- version runtime overlays and policy oracles;
+- abstain when required evidence is missing.
 
-Artifact caveat: the public MIT-licensed repository is populated and was inspected read-only. The study is author-run against pinned harness versions.
+Evidence caveat: the evaluation is author-run across five overlays and some identity fields are synthesized by adapters.
 
-Implementability score: 0.91
+Implementability score: 0.84
+
+### Require evidence recovery before consequential action
+
+Summary: Treat omitted safety facts as an authorization failure, try an explicit recovery path, then abstain if required evidence remains unavailable.
+
+Analysis: [missing evidence must trigger recovery or abstention](2026-10-23/sovereignty.md#missing-evidence-must-trigger-recovery-or-abstention)
+
+Core source: [EpiSEM-Bench paper v1](https://arxiv.org/abs/2610.31650v1)
+
+Implementable now:
+- enumerate critical evidence per effect class;
+- test matched prohibited and permissible worlds;
+- grade unsafe execution and excessive refusal separately;
+- expose a bounded evidence-recovery tool path.
+
+Artifact caveat: no public implementation repository was verified.
+
+Implementability score: 0.68
 
 ## Current implication
 
-A summary may preserve meaning while destroying authority boundaries. Treat compaction as a typed security transform with provenance tests, not as ordinary text compression.
+Evidence is part of execution authority. A runtime needs both a complete-enough evidence gate before action and a replayable evidence chain after action.

@@ -2,45 +2,44 @@
 
 Implementation analysis for agent evaluation, memory, context policy, tools, model routing, and orchestration.
 
-## Latest Structured Update: 2026-10-22 Daily Scan
+## Latest Structured Update: 2026-10-23 Daily Scan
 
-### Gate the first source edit with one grounded plan
+### Route skill granularity during execution
 
-Summary: Use the first proposed source-code edit as a deterministic intervention point, ask one independent planner to convert accumulated evidence into a repair plan, then resume the same executor and workspace.
+Summary: Treat micro tools, macro skills, and macro-to-micro recovery as runtime modes selected from task structure, current state, and verified macro outcomes.
 
-Analysis: [insert one planning gate before the first source edit](2026-10-22/reasoning.md#insert-one-planning-gate-before-the-first-source-edit)
+Analysis: [route skill granularity at runtime and recover from failed macros](2026-10-23/reasoning.md#route-skill-granularity-at-runtime-and-recover-from-failed-macros)
 
-Core source: [PAUSE paper v1](https://arxiv.org/abs/2610.29870v1)
-
-Implementable now:
-- intercept the first durable source edit;
-- snapshot inspected evidence and test output;
-- request one plan without repeated monitoring;
-- resume the original executor;
-- compare success and planner cost against ungated runs.
-
-Artifact caveat: no public implementation repository was verified.
-
-Implementability score: 0.82
-
-### Test coding agents against evolving users
-
-Summary: Convert static tasks into adaptive multi-turn interactions with grounded user personas, then grade target completion, regressions, cost, churn, and turns.
-
-Analysis: [evaluate coding agents against evolving users](2026-10-22/reasoning.md#evaluate-coding-agents-against-evolving-users)
-
-Core sources: [SWE-DIVE paper v1](https://arxiv.org/abs/2610.30047v1), [repository](https://github.com/lorenzbrehme/swe-dive_usersim)
+Core sources: [paper v1](https://arxiv.org/abs/2610.31461v1), [public repository](https://github.com/Jayceon-3/Adaptive-Skill-Agent)
 
 Implementable now:
-- split acceptance tasks into incremental requirements;
-- derive personas from real user behavior;
-- validate simulator prompts against hidden task truth;
-- track newly failing tests separately from target-test success.
+- add explicit macro preconditions and postconditions;
+- record route and transition reasons;
+- downgrade to primitive tools after verified macro failure;
+- learn routing only after deterministic outcome logs exist.
 
-Evidence caveat: the current quantitative evidence is an 11-task pilot, and the public repository has no declared license.
+Evidence caveat: the main comparison uses 12 mixed tasks.
 
-Implementability score: 0.70
+Implementability score: 0.78
+
+### Train against executable terminal state
+
+Summary: Reuse deterministic checks of database state and side effects as evaluation oracles, task-selection signals, and training rewards.
+
+Analysis: [train agents against executable terminal state](2026-10-23/reasoning.md#train-agents-against-executable-terminal-state)
+
+Core sources: [implementation article](https://huggingface.co/blog/microsoft/thinkingbox-training), [public repository](https://github.com/microsoft/thinkingbox-training)
+
+Implementable now:
+- write deterministic end-state checks;
+- separate the simulated user from the grader;
+- track pass@1, pass@20, and repeated success;
+- keep training and benchmark tasks disjoint.
+
+Evidence caveat: the validated training run uses 24 H100 GPUs and a private training pool. The reusable result is the executable reward contract, not the reference compute footprint.
+
+Implementability score: 0.62
 
 ## Current implication
 
-Coding-agent harnesses need control before mutation and evaluation across the full collaboration. One-shot task success proves neither planning quality nor resilience to ordinary user clarification and change.
+Skills and rewards should be runtime-owned objects. Retrieve candidate procedures, then route and verify their execution. Judge the resulting world, not the agent's account of it.

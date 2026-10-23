@@ -357,3 +357,11 @@ A compacted summary is a derived evidence object. Every user-attributed claim sh
 Implementability score: 0.91
 
 Sources: [Compaction Laundering](https://arxiv.org/abs/2610.29869v1), [repository](https://github.com/pixee/compaction-laundering)
+
+## October 23, 2026 update: normalize runtime evidence before diagnosis
+
+AgentTriage shows how a canonical event contract can make security diagnosis portable and replayable across five heterogeneous agent runtimes. Every admitted claim cites recorded events, synthesized identity remains distinguishable from native identity, and missing mandatory evidence forces abstention.
+
+Implementability score: 0.84
+
+Sources: [paper v1](https://arxiv.org/abs/2610.30738v1), [repository](https://github.com/AsnGs/agenttriage-open-source)

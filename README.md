@@ -6,23 +6,25 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-10-23: [replayable diagnosis, evidence recovery, adaptive skills, and executable rewards](roundups/2026-10-23.md)
-- Dated strategy analysis: [Strategy](Strategy/2026-10-23/sovereignty.md)
-- Daily implementation analysis: [AgenticAI](AgenticAI/2026-10-23/reasoning.md)
+- Daily update, 2026-10-24: [action-specific evidence and explicit execution contracts](roundups/2026-10-24.md)
+- Previous Friday synthesis, week ending 2026-10-23: [evidence lineage, runtime authority, and replayable effects](roundups/2026-10-23.md)
+- Latest strategy analysis: [Strategy](Strategy/2026-10-24/sovereignty.md)
+- Latest implementation analysis: [AgenticAI](AgenticAI/2026-10-24/reasoning.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 
 ## Current thesis
 
-Agent reliability improves when the runtime owns the transition from evidence to action:
+Evidence can inform authority. It cannot silently become authority through memory, compaction, retrieval, tool discovery, or guest execution.
 
-- normalize tool lifecycles into replayable events;
-- require critical facts or a bounded recovery attempt before consequential effects;
-- route between macro skills and primitive tools from observed execution state;
-- grade terminal world state rather than narrative completion;
-- preserve separate metrics for average success, breadth, and repeatability.
+Build the stack in this order:
 
-Start with one rule: missing evidence narrows authority. It never silently widens it.
+- preserve typed roles, source lineage, and authoritative-output identity;
+- instrument harness limits, first failures, and terminal effects;
+- route skills and models from observed execution state;
+- reauthorize persistent state when it resurfaces;
+- bind high-impact grants to exact capabilities, resources, destinations, and effects;
+- retain replayable receipts for evaluation, diagnosis, and recovery.
 
 ## Browse by category
 

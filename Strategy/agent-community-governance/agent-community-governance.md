@@ -169,3 +169,11 @@ That is survivable because the proposed layers map to mature distributed-systems
 - A2A protocol: https://github.com/a2aproject/A2A
 - CloudEvents specification: https://github.com/cloudevents/spec
 - Open Policy Agent: https://github.com/open-policy-agent/opa
+
+## 2026-10-24: Govern capability, model, evaluation, and sandbox interfaces separately
+
+AAIF's addition of Agent Skills, Open Responses, OpenEnv, and OpenSandbox places four adjacent stack interfaces under neutral governance. Treat this as a contract map, not a promise of automatic interoperability. Run independent conformance tests at each seam and keep model portability separate from execution authority.
+
+Source: https://aaif.io/news/agentic-ai-foundation-announces-four-new-projects
+
+Implementability score: 0.82

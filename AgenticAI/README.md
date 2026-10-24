@@ -2,44 +2,106 @@
 
 Implementation analysis for agent evaluation, memory, context policy, tools, model routing, and orchestration.
 
-## Latest Structured Update: 2026-10-23 Daily Scan
+## Latest Structured Update: 2026-10-24
 
-### Route skill granularity during execution
+### Verify remembered premises against the pending effect
 
-Summary: Treat micro tools, macro skills, and macro-to-micro recovery as runtime modes selected from task structure, current state, and verified macro outcomes.
+Summary: Memory verification should scale with the action a remembered claim would authorize. AMV-Guard reports 33.9% lower ToolSandbox verification cost while retaining 100% safe-proceed recall and 0% gate-level harmful execution.
 
-Analysis: [route skill granularity at runtime and recover from failed macros](2026-10-23/reasoning.md#route-skill-granularity-at-runtime-and-recover-from-failed-macros)
+Analysis: [action-conditioned memory verification](2026-10-24/reasoning.md#1-verify-remembered-claims-in-proportion-to-the-action-they-authorize)
 
-Core sources: [paper v1](https://arxiv.org/abs/2610.31461v1), [public repository](https://github.com/Jayceon-3/Adaptive-Skill-Agent)
+Core source: [When Is a Memory Safe Enough to Act On?](https://arxiv.org/abs/2610.31446v1)
 
 Implementable now:
-- add explicit macro preconditions and postconditions;
-- record route and transition reasons;
-- downgrade to primitive tools after verified macro failure;
-- learn routing only after deterministic outcome logs exist.
-
-Evidence caveat: the main comparison uses 12 mixed tasks.
+- classify effects by impact and reversibility;
+- extract the remembered premises required by each effect;
+- verify only premises that can change the admission decision;
+- abstain when evidence is insufficient.
 
 Implementability score: 0.78
 
-### Train against executable terminal state
+### Grade the assurance suite with seeded faults
 
-Summary: Reuse deterministic checks of database state and side effects as evaluation oracles, task-selection signals, and training rewards.
+Summary: REGATTA evaluates whether tests expose specified faults, separating predicted coverage from observed detection. Its uncovered requirement tail makes a green aggregate score insufficient.
 
-Analysis: [train agents against executable terminal state](2026-10-23/reasoning.md#train-agents-against-executable-terminal-state)
+Analysis: [fault-injected assurance coverage](2026-10-24/reasoning.md#2-grade-the-assurance-suite-by-seeded-faults-not-only-agent-success)
 
-Core sources: [implementation article](https://huggingface.co/blog/microsoft/thinkingbox-training), [public repository](https://github.com/microsoft/thinkingbox-training)
+Core source: [REGATTA](https://arxiv.org/abs/2610.30924v1)
 
 Implementable now:
-- write deterministic end-state checks;
-- separate the simulated user from the grader;
-- track pass@1, pass@20, and repeated success;
-- keep training and benchmark tasks disjoint.
+- define the fault catalog first;
+- inject controlled deviations;
+- report uncovered requirements and judge disagreement;
+- audit source rules before treating them as ground truth.
 
-Evidence caveat: the validated training run uses 24 H100 GPUs and a private training pool. The reusable result is the executable reward contract, not the reference compute footprint.
+Implementability score: 0.66
 
-Implementability score: 0.62
+## Previous Structured Update: Week Ending 2026-10-23
+
+### Preserve typed evidence through context transformations
+
+Summary: Compaction, retrieval, and summarization need direct provenance and evidence-preservation tests. Correct computation is insufficient when the harness answers from the wrong output or turns untrusted text into apparent user authority.
+
+Analysis: [preserve typed provenance through retrieval and compaction](2026-10-23/reasoning.md#1-preserve-typed-provenance-through-retrieval-and-compaction)
+
+Core sources: [Compaction Laundering](https://arxiv.org/abs/2610.29869v1), [KEEP-Bench](https://arxiv.org/abs/2610.26827v1), [Same Simulation, Different Evidence](https://arxiv.org/abs/2610.26836v1)
+
+Implementable now:
+- preserve typed roles and source IDs;
+- mark authoritative outputs;
+- run proposition-level preservation fixtures;
+- fail closed on missing required lineage.
+
+Implementability score: 0.91
+
+### Measure model and harness failures separately
+
+Summary: Frozen budgets, first-failure records, user interaction, and terminal outcome grading reveal when an apparent model failure is a harness limit or a delivery failure.
+
+Analysis: [treat benchmark scores as model plus harness scores](2026-10-23/reasoning.md#2-treat-benchmark-scores-as-model-plus-harness-scores)
+
+Core sources: [ToolBottleneckBench](https://arxiv.org/abs/2610.21098v1), [FDE-Gym](https://arxiv.org/abs/2610.22350v1)
+
+Implementable now:
+- freeze tool menus and completion caps;
+- record first unmet obligations;
+- grade integration and customer outcome separately;
+- pair static tasks with multi-turn user simulations.
+
+Implementability score: 0.86
+
+### Route execution abstractions from observed state
+
+Summary: Choose micro tools, macro skills, model escalation, and planning gates during execution, after state and failure evidence exist.
+
+Analysis: [route execution abstractions from observed state](2026-10-23/reasoning.md#3-route-execution-abstractions-from-observed-state)
+
+Core sources: [Adaptive Skill Granularity](https://arxiv.org/abs/2610.31461v1), [LEASH](https://arxiv.org/abs/2610.22280v1), [PAUSE](https://arxiv.org/abs/2610.29870v1)
+
+Implementable now:
+- add macro preconditions and postconditions;
+- record route transitions and costs;
+- add one planner gate before the first source edit;
+- shadow learned routers against deterministic rules.
+
+Implementability score: 0.78
+
+### Gate proactive memory on evidence and timing
+
+Summary: Relevant memory does not prove that interruption or action is useful now. Retrieval, timing, silence, expiry, and reauthorization need separate tests.
+
+Analysis: [gate proactive memory on evidence and timing](2026-10-23/reasoning.md#4-gate-proactive-memory-on-evidence-and-timing)
+
+Core sources: [ProPerAgent](https://arxiv.org/abs/2610.22671v1), [CarryoverBench](https://arxiv.org/abs/2610.28425v1)
+
+Implementable now:
+- add trigger windows and cooldowns;
+- store lineage and expiry with memory;
+- separate facts from procedures and grants;
+- test planting and triggering across sessions.
+
+Implementability score: 0.45
 
 ## Current implication
 
-Skills and rewards should be runtime-owned objects. Retrieve candidate procedures, then route and verify their execution. Judge the resulting world, not the agent's account of it.
+Preserve evidence first, instrument the harness second, then optimize routing and models. Proactive memory remains the least mature layer because usefulness and authority both change over time.

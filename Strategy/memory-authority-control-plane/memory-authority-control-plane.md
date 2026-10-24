@@ -459,3 +459,11 @@ Artifact caveat: the benchmark and code are not public yet, and deployment priva
 Implementability score: 0.45
 
 Source: [ProPerAgent v1](https://arxiv.org/abs/2610.22671v1)
+
+## 2026-10-24: Verify memory according to the action it authorizes
+
+Memory trust is action-dependent. Before a durable effect, extract the remembered premises the effect requires, estimate which checks can change admission, and spend verification effort according to reversibility and harm. AMV-Guard is the current concrete pattern; its transfer result also shows that gate savings do not automatically preserve task success across environments.
+
+Sources: https://arxiv.org/abs/2610.31446v1 and https://anonymous.4open.science/r/AMV-Guard-AEF6/
+
+Implementability score: 0.78

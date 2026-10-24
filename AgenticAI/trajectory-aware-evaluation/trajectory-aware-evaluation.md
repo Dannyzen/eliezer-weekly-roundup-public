@@ -1604,3 +1604,11 @@ ThinkingBox Training reuses deterministic database-state and side-effect checks 
 Implementability score: 0.62
 
 Sources: [implementation article](https://huggingface.co/blog/microsoft/thinkingbox-training), [repository](https://github.com/microsoft/thinkingbox-training)
+
+## 2026-10-24: Fault-inject the assurance suite
+
+REGATTA treats the evaluation suite as an object under test. Define a fault catalog, seed controlled deviations, separate predicted coverage from observed detection, and preserve the uncovered requirement tail. The paper's 66% to 69% design-versus-execution agreement is a warning against one-stage or one-judge assurance.
+
+Source: https://arxiv.org/abs/2610.30924v1
+
+Implementability score: 0.66

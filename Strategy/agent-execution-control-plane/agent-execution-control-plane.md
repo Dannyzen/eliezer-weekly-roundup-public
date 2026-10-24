@@ -322,3 +322,13 @@ Implementability score: 0.56
 Sources:
 - [Local Allow, Global Deny paper v1](https://arxiv.org/abs/2610.27620v1)
 - [al-synth repository](https://github.com/anmolpandey299/al-synth)
+
+## 2026-10-24: Model approvals and budgets as consumable execution state
+
+A Petri-net supervisor provides a formal version of the execution-control pattern: parse a proposed tool call, map it to a typed transition, verify required marks, consult a least-intrusive supervisor, then execute or refuse. The key reusable idea is consumable authority. A grant that has been spent cannot silently authorize a later action.
+
+Source: https://arxiv.org/abs/2610.31376v1
+
+Artifact status: paper only; no verified public implementation identified in this scan.
+
+Implementability score: 0.56

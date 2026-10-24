@@ -2,44 +2,121 @@
 
 Governance analysis for identity, authority, execution control, evidence provenance, gateways, containment, and sovereignty.
 
-## Latest Structured Update: 2026-10-23 Daily Scan
+## Latest Structured Update: 2026-10-24
 
-### Make security diagnosis replayable across runtimes
+### Admit effects through explicit consumable state
 
-Summary: Normalize heterogeneous runtime telemetry into one canonical event contract, derive policy-decisive evidence slices, and require every diagnosis claim to cite recorded events.
+Summary: A formal execution supervisor can represent approvals, budgets, capabilities, and spent grants outside model reasoning. The design is compelling, but no verified public implementation was identified.
 
-Analysis: [make security diagnosis replayable across agent runtimes](2026-10-23/sovereignty.md#make-security-diagnosis-replayable-across-agent-runtimes)
+Analysis: [certified execution admission](2026-10-24/sovereignty.md#1-put-a-certified-admission-layer-between-reasoning-and-action)
 
-Core sources: [paper v1](https://arxiv.org/abs/2610.30738v1), [Apache-2.0 repository](https://github.com/AsnGs/agenttriage-open-source)
+Core source: [Certified Execution Harness for Agentic AI](https://arxiv.org/abs/2610.31376v1)
 
 Implementable now:
-- join invocation and result lifecycles deterministically;
-- distinguish native from synthesized identity;
-- version runtime overlays and policy oracles;
-- abstain when required evidence is missing.
+- type every side-effecting transition;
+- bind grants to principal, resource, and effect;
+- consume one-use approvals;
+- retain admitted and refused transition receipts.
 
-Evidence caveat: the evaluation is author-run across five overlays and some identity fields are synthesized by adapters.
+Implementability score: 0.56
+
+### Keep an explicit cannot-determine release state
+
+Summary: Matched safe and harmful lifecycles can expose identical offline evidence. Release decisions therefore need fresh deployment outcomes, subgroup denominators, and a valid undecided state.
+
+Analysis: [post-audit identifiability](2026-10-24/sovereignty.md#2-treat-offline-audits-as-incomplete-without-deployment-identifying-evidence)
+
+Core source: [Post-Audit Mirage](https://arxiv.org/abs/2610.31130v1)
+
+Implementable now:
+- define the audit observation boundary;
+- preserve deploy, hold, cannot determine, and unsupported;
+- bind canary rollout to fresh outcome evidence;
+- stop when relevant harm is not identifiable.
+
+Implementability score: 0.76
+
+### Govern agent interfaces independently
+
+Summary: AAIF now hosts Agent Skills, Open Responses, OpenEnv, and OpenSandbox. The strategic value is a portable seam across capability packaging, model exchange, evaluation episodes, and execution environments.
+
+Analysis: [neutral governance across four agent interfaces](2026-10-24/sovereignty.md#3-neutral-governance-now-spans-four-adjacent-agent-interfaces)
+
+Core source: [AAIF project announcement](https://aaif.io/news/agentic-ai-foundation-announces-four-new-projects)
+
+Implementable now:
+- contract-test each interface independently;
+- keep model interoperability separate from tool authorization;
+- keep sandbox lifecycle separate from model and skill selection.
+
+Implementability score: 0.82
+
+## Previous Structured Update: Week Ending 2026-10-23
+
+### Reauthorize persistent state when it resurfaces
+
+Summary: Memory and scheduled tasks are delayed execution channels. Stored evidence may persist, while authority must be re-established when it enters planning and again before an effect.
+
+Analysis: [reauthorize persistent state when it resurfaces](2026-10-23/sovereignty.md#1-reauthorize-persistent-state-when-it-resurfaces)
+
+Core sources: [CarryoverBench](https://arxiv.org/abs/2610.28425v1), [public repository](https://github.com/igloomatics/CarryoverBench)
+
+Implementable now:
+- attach origin, purpose, expiry, and revocation to writes;
+- quarantine instructions from untrusted sources;
+- reauthorize scheduled and memory-derived effects;
+- test planting and triggering separately.
+
+Implementability score: 0.78
+
+### Enforce capability below declared tool intent
+
+Summary: Tool schemas describe intent. Filesystem, credential, process, and network authority need sandbox and host enforcement below the tool server.
+
+Analysis: [enforce capability below declared tool intent](2026-10-23/sovereignty.md#2-enforce-capability-below-declared-tool-intent)
+
+Core sources: [My Credentials, Please](https://arxiv.org/abs/2610.22301v1), [Arcade dynamic tool discovery](https://arxiv.org/abs/2610.23707v1)
+
+Implementable now:
+- run tool servers under exact roots and dedicated identities;
+- deny ambient credential access;
+- fail startup when containment is unavailable;
+- filter eligible tools before ranking.
+
+Implementability score: 0.86
+
+### Make effects and diagnoses replayable
+
+Summary: Normalize tool lifecycles into canonical events, bind claims to recorded evidence, and reuse deterministic world-state checks for audit, evaluation, and release.
+
+Analysis: [make effects and diagnoses replayable](2026-10-23/sovereignty.md#3-make-effects-and-diagnoses-replayable)
+
+Core sources: [AgentTriage](https://arxiv.org/abs/2610.30738v1), [Apache-2.0 repository](https://github.com/AsnGs/agenttriage-open-source), [ThinkingBox Training](https://huggingface.co/blog/microsoft/thinkingbox-training)
+
+Implementable now:
+- define canonical ingress, intent, result, and effect events;
+- distinguish native from synthesized identity;
+- version overlays and policy oracles;
+- abstain when mandatory evidence is absent.
 
 Implementability score: 0.84
 
-### Require evidence recovery before consequential action
+### Bind approval to the exact effect path
 
-Summary: Treat omitted safety facts as an authorization failure, try an explicit recovery path, then abstain if required evidence remains unavailable.
+Summary: Keep sandbox lifecycle, egress policy, and recovery outside the guest. Bind high-risk approval to the exact template, destination, socket, expiry, and use.
 
-Analysis: [missing evidence must trigger recovery or abstention](2026-10-23/sovereignty.md#missing-evidence-must-trigger-recovery-or-abstention)
+Analysis: [bind approval to the exact effect path](2026-10-23/sovereignty.md#4-bind-approval-to-the-exact-effect-path)
 
-Core source: [EpiSEM-Bench paper v1](https://arxiv.org/abs/2610.31650v1)
+Core sources: [SPACE](https://www.perplexity.ai/hub/blog/open-sourcing-space), [Connection Escrow](https://arxiv.org/abs/2610.26501v1)
 
 Implementable now:
-- enumerate critical evidence per effect class;
-- test matched prohibited and permissible worlds;
-- grade unsafe execution and excessive refusal separately;
-- expose a bounded evidence-recovery tool path.
+- bind creates to template digests and egress profiles;
+- retain host-side lifecycle receipts;
+- use single-use effect grants;
+- test fail-closed controller recovery.
 
-Artifact caveat: no public implementation repository was verified.
-
-Implementability score: 0.68
+Implementability score: 0.58
 
 ## Current implication
 
-Evidence is part of execution authority. A runtime needs both a complete-enough evidence gate before action and a replayable evidence chain after action.
+Evidence can inform authority. It cannot silently become authority through persistence, compaction, retrieval, tool discovery, or guest execution.

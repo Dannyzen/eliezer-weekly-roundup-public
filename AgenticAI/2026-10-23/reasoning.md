@@ -1,48 +1,112 @@
-# AgenticAI Daily Analysis - 2026-10-23
+# AgenticAI Weekly Analysis - 2026-10-23
 
-## Route skill granularity at runtime and recover from failed macros
+## Weekly thesis: preserve evidence before optimizing agents
 
-Adaptive Skill Granularity treats skill use as an execution policy rather than a retrieval decision. A coding agent can stay at primitive tool level, invoke a macro skill, or fall back from a failed macro to micro tools through a finite-state recovery path. The paper's deterministic protocol grades success, route match, transition correctness, recovery, steps, and token cost.
+The week's implementation signal is that context, tools, skills, and benchmarks are all harness objects. Model quality cannot compensate for provenance destroyed during compaction, authoritative evidence hidden during retrieval, work truncated by a completion cap, or a macro skill whose failed postcondition is never checked.
 
-Why it matters: fixed macro execution saves cost when its assumptions hold and fails sharply when they do not. Fixed micro execution is robust and expensive. The useful control point is the transition between them, where the runtime can inspect task structure, observed state, and macro failure before selecting the next abstraction level.
+The practical stack is therefore ordered: preserve typed evidence, expose deterministic execution state, measure the harness limits, then optimize routing or models.
 
-Fit in the stack: this belongs between skill retrieval and tool execution. The skill catalog proposes capabilities; a runtime granularity controller decides how much procedure to bind into one action and whether to downgrade after failure.
+## 1. Preserve typed provenance through retrieval and compaction
 
-Practical tools and methods worth exploring now:
-- assign each macro skill explicit preconditions, postconditions, and fallback tools;
-- log mode choice, transition reason, verifier result, and normalized cost;
-- start with deterministic routing rules before learning from outcomes;
-- require postcondition checks before treating a late macro error as failure;
-- use the public repository as a read-only design reference before any isolated evaluation.
+Compaction Laundering shows a concrete trust-boundary failure. Five harnesses that flatten typed messages into labeled text preserved forged approvals 87% to 100% of the time, while four role-typed harnesses measured 0%. KEEP-Bench found that strong compressors preserved every required proposition in only 61.6% to 66.8% of 4,102 cases. Same Simulation, Different Evidence then isolated a separate retrieval failure: agents computed the right result and answered from the wrong output.
 
-Evidence and caveat: the public repository is populated, but the reported fixed-versus-adaptive comparison uses 12 mixed tasks. The learned router reaches full success on that small evaluated set, which is promising evidence rather than broad generalization.
+Why it matters: token savings are unsafe when a compressor changes who said something, drops a minority qualifier, or allows a derived file to displace the authoritative result.
+
+Fit in the stack: provenance-preserving serialization and authoritative-output identity belong below retrieval, summarization, and prompt assembly. Evidence-recall tests belong beside latency and token metrics.
+
+Implementable now:
+- preserve typed roles and source IDs instead of flattening messages;
+- escape in-band role labels before any text serializer;
+- mark one output as authoritative and record which evidence closed the task;
+- run proposition-level preservation fixtures for qualifiers, alternatives, and minority evidence;
+- fail closed when a compactor cannot preserve required provenance fields.
+
+Evidence caveat: the compaction study is a single-author preprint, and KEEP-Bench tests short inputs relative to advertised model windows. Together they still establish that compression correctness requires direct tests.
+
+Implementability score: 0.91
+
+Core sources:
+- [Compaction Laundering v1](https://arxiv.org/abs/2610.29869v1)
+- [KEEP-Bench v1](https://arxiv.org/abs/2610.26827v1)
+- [KEEP-Bench repository](https://github.com/PlusLabNLP/KEEP-Bench)
+- [Same Simulation, Different Evidence v1](https://arxiv.org/abs/2610.26836v1)
+
+## 2. Treat benchmark scores as model plus harness scores
+
+ToolBottleneckBench held tasks fixed while varying tool menus, registered catalogs, workflows, returned-state encoding, and harness budgets. Raising one completion cap sixteenfold removed most of the large-menu penalty in truncation-heavy configurations. FDE-Gym reached the opposite edge of the stack: the best configuration resolved only 14 of 95 realistic delivery tasks, even though agents sometimes found every key fact.
+
+Why it matters: a final score can hide whether the model failed, the harness cut it off, the workflow omitted clarification, or the resulting system failed the customer's own objective.
+
+Fit in the stack: deterministic first-failure records, frozen budgets, user interaction, and terminal outcome grading belong in the evaluation harness before model comparisons are trusted.
+
+Implementable now:
+- freeze tool menus, budgets, and completion caps in comparison runs;
+- record the first unmet obligation and the harness limit that ended each episode;
+- grade component completion, integration, incidents, and customer outcome separately;
+- pair static tasks with clarification and changed-requirement user simulations;
+- report cost and review effort alongside task success.
+
+Implementability score: 0.86
+
+Core sources:
+- [ToolBottleneckBench v1](https://arxiv.org/abs/2610.21098v1)
+- [ToolBottleneckBench repository](https://github.com/zichuanxu/tool-bottleneck-bench)
+- [FDE-Gym v1](https://arxiv.org/abs/2610.22350v1)
+- [FDE-Gym repository](https://github.com/deeplethe/fde-gym)
+
+## 3. Route execution abstractions from observed state
+
+Adaptive Skill Granularity treats micro tools, macro skills, and macro-to-micro recovery as runtime modes. LEASH applies the same principle to model routing by escalating during a computer-use trajectory rather than making one irreversible model choice at the start. PAUSE places one independent planning checkpoint immediately before the first durable source edit.
+
+Why it matters: routing before execution lacks the most useful evidence. The runtime learns whether assumptions hold only after tools return state and macro postconditions are checked.
+
+Fit in the stack: a small deterministic controller should sit between capability retrieval and tool execution. It should own mode choice, recovery, escalation, and the first irreversible edit gate.
+
+Implementable now:
+- give macro skills explicit preconditions, postconditions, and primitive fallbacks;
+- record mode, transition reason, verifier outcome, and normalized cost;
+- add one planner gate before the first durable source edit;
+- start with auditable rules and shadow learned routers against them;
+- retain an always-strong baseline for trajectory escalation experiments.
+
+Evidence caveat: the adaptive-skill comparison uses 12 tasks, so its routing pattern is more mature than its generalization claim.
 
 Implementability score: 0.78
 
 Core sources:
-- [paper v1](https://arxiv.org/abs/2610.31461v1)
-- [public repository](https://github.com/Jayceon-3/Adaptive-Skill-Agent)
+- [Adaptive Skill Granularity v1](https://arxiv.org/abs/2610.31461v1)
+- [Adaptive Skill Agent repository](https://github.com/Jayceon-3/Adaptive-Skill-Agent)
+- [LEASH v1](https://arxiv.org/abs/2610.22280v1)
+- [PAUSE v1](https://arxiv.org/abs/2610.29870v1)
 
-## Train agents against executable terminal state
+## 4. Gate proactive memory on evidence and timing
 
-ThinkingBox Training turns deterministic checks of final database state and side effects into reinforcement-learning rewards for multi-turn agents. On 507 held-out benchmark tasks with 20 attempts each, the reported Qwen3.8-27B checkpoint increased pass@1 from 51.70% to 60.78% and increased tasks passed on all 20 attempts from 38 to 107 after 50 GRPO steps.
+ProPerMem separates evidence retrieval from intervention timing over histories averaging 618K tokens. Oracle evidence inside the correct window reached 96%, chosen timing fell to 38%, and retrieval instead of oracle evidence fell to 15%. CarryoverBench adds the security mirror: persistent instructions can re-fire across later sessions without measurable decay.
 
-Why it matters: a narrative judge can reward plausible completion language. Executable state checks bind reward to the resulting world. The strongest lesson is methodological: build deterministic outcome oracles first, then use the same oracle for evaluation, selection, and training.
+Why it matters: retrieving a relevant memory does not prove that an interruption is useful, current, or authorized. Persistence increases both utility and delayed-action risk.
 
-Fit in the stack: terminal-state checks sit beneath model training and above the environment. They provide a common contract for pre-training task selection, rollout rewards, repeated evaluation, and release gating.
+Fit in the stack: memory retrieval should propose evidence. A separate policy should decide whether to surface it, interrupt, schedule work, or remain silent.
 
-Practical tools and methods worth exploring now:
-- define binary checks over database state, side effects, and required cleanup;
-- keep simulated users separate from graders;
-- measure pass@1, at-least-once success, and repeated success separately;
-- freeze the selected training pool before optimization;
-- exclude benchmark tasks from the training source.
+Implementable now:
+- add trigger windows, cooldowns, silence grading, and expiry;
+- store source, purpose, principal, trust, and revocation with persistent entries;
+- separate facts and preferences from procedures and authority grants;
+- test planting and triggering in different sessions;
+- require current authorization before memory-derived effects.
 
-Evidence and caveat: the public Microsoft repository contains the training integration, data-preparation guides, evaluation scripts, and a validated reference configuration. The reported run used 24 H100 GPUs and a private 187-task training pool. Pass@20 declined from 89.35% to 87.97%, so repeatability improved while breadth narrowed.
+Evidence caveat: the benchmark pattern is usable now, while reliable long-horizon retrieval and timing remain materially unsolved.
 
-Implementability score: 0.62
+Implementability score: 0.45
 
 Core sources:
-- [implementation article](https://huggingface.co/blog/microsoft/thinkingbox-training)
-- [public repository](https://github.com/microsoft/thinkingbox-training)
-- [ThinkingBox paper v4](https://arxiv.org/abs/2608.19741v4)
+- [ProPerAgent v1](https://arxiv.org/abs/2610.22671v1)
+- [CarryoverBench v1](https://arxiv.org/abs/2610.28425v1)
+- [CarryoverBench repository](https://github.com/igloomatics/CarryoverBench)
+
+## Implementation order
+
+1. Preserve typed roles, source lineage, and authoritative-output identity.
+2. Add deterministic end-state checks and first-failure records.
+3. Freeze harness budgets before comparing models or routers.
+4. Add macro recovery and first-edit planning gates.
+5. Pilot proactive memory only after timing, silence, expiry, and reauthorization tests exist.

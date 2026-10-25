@@ -2,7 +2,27 @@
 
 Implementation analysis for agent evaluation, memory, context policy, tools, model routing, and orchestration.
 
-## Latest Structured Update: 2026-10-24
+## Latest Structured Update: 2026-10-25
+
+### Give live code precedence over stale descriptive instructions
+
+Summary: Coding agents followed stale instruction files in 90.1% of choices across 320 runs. A one-sentence precedence rule raised code-conforming choices from 4.2% to 91.4%, stopped rewrites of working code, and restored a 100% test pass rate.
+
+Analysis: [stale instruction precedence](2026-10-25/reasoning.md#1-give-live-code-precedence-when-repository-instructions-are-stale)
+
+Core source: [Stale Instruction Files Override the Code in Coding Agents](https://arxiv.org/abs/2610.30571v1)
+
+Artifact: [WenJing95/stale-docs-data](https://github.com/WenJing95/stale-docs-data)
+
+Implementable now:
+- add a live-code precedence rule for descriptive conventions;
+- report every detected instruction-code conflict;
+- seed stale instruction fixtures in coding-agent regression tests;
+- preserve safety, approval, and scope instructions as higher-authority constraints.
+
+Implementability score: 0.97
+
+## Previous Daily Update: 2026-10-24
 
 ### Verify remembered premises against the pending effect
 

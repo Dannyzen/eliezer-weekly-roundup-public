@@ -2,7 +2,41 @@
 
 Governance analysis for identity, authority, execution control, evidence provenance, gateways, containment, and sovereignty.
 
-## Latest Structured Update: 2026-10-24
+## Latest Structured Update: 2026-10-25
+
+### Evaluate memory validity state separately from retrieval
+
+Summary: Governance-state corruption changed the operative projection in 96.25% of 2,080 matched fault pairs. Selected downstream contrasts showed 40.54 points of LongMemEval damage and 30.60 points of Memora FAMA damage, with recovery under enforcement.
+
+Analysis: [memory governance-state corruption](2026-10-25/sovereignty.md#1-evaluate-memory-validity-state-separately-from-retrieval-quality)
+
+Core source: [Governance-State Corruption in Long-Term Memory for LLM Agents](https://arxiv.org/abs/2610.30698v1)
+
+Implementable now:
+- type memory lifecycle states;
+- compile authorized model-visible projections;
+- seed state faults independently from content and retrieval;
+- retain projection and policy receipts.
+
+Implementability score: 0.72
+
+### Grade adaptive phishing by effects, not only detection
+
+Summary: Four of nine evaluated email agents had phishing detection below 10% and malicious-request compliance above 45% under adaptive persuasion. Conventional phishing safety therefore did not predict action safety.
+
+Analysis: [adaptive phishing effect grading](2026-10-25/sovereignty.md#2-test-email-agents-against-adaptive-persuasion-not-only-static-phishing-corpora)
+
+Core source: [AgentPhishing](https://arxiv.org/abs/2610.31404v1)
+
+Implementable now:
+- separate detection from compliance and disclosure outcomes;
+- test held-out adaptive persuasion variants;
+- gate privileged email effects outside message content;
+- replay failures as controlled regression fixtures.
+
+Implementability score: 0.64
+
+## Previous Daily Update: 2026-10-24
 
 ### Admit effects through explicit consumable state
 

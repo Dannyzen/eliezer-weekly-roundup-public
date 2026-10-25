@@ -467,3 +467,13 @@ Memory trust is action-dependent. Before a durable effect, extract the remembere
 Sources: https://arxiv.org/abs/2610.31446v1 and https://anonymous.4open.science/r/AMV-Guard-AEF6/
 
 Implementability score: 0.78
+
+## October 25, 2026 update: fault lifecycle state independently from retrieval
+
+Governance-state corruption leaves retained content and tasks fixed while changing which records enter model-visible context. Evaluate current, superseded, deleted, expired, and quarantined state separately from retrieval quality. Store the compiled projection and its policy decision as evidence, then test recovery under enforcement.
+
+Implementability score: 0.72
+
+Source: https://arxiv.org/abs/2610.30698v1
+
+Artifact caveat: the reproducibility repository advertised by the paper did not resolve during this scan.

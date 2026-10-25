@@ -520,3 +520,11 @@ PAUSE identifies the first source-code edit as a deterministic steering boundary
 Implementability score: 0.82
 
 Source: [PAUSE](https://arxiv.org/abs/2610.29870v1)
+
+## October 25, 2026 update: live code needs explicit precedence over stale descriptions
+
+A coding agent can detect that repository instructions conflict with live code and still obey the stale file because the file enters as an instruction while code arrives as tool output. Add an explicit precedence rule for descriptive conventions, report the mismatch, and regression-test with seeded drift. Keep safety, approval, and scope constraints outside this precedence reversal.
+
+Implementability score: 0.97
+
+Sources: [paper](https://arxiv.org/abs/2610.30571v1), [public data and analysis artifact](https://github.com/WenJing95/stale-docs-data)

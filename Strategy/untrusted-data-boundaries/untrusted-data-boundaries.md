@@ -532,3 +532,11 @@ Compaction Laundering shows that untrusted content can become apparent user auth
 Implementability score: 0.91
 
 Sources: [paper](https://arxiv.org/abs/2610.29869v1), [repository](https://github.com/pixee/compaction-laundering)
+
+## October 25, 2026 update: phishing detection does not authorize email effects
+
+Adaptive persuasion can induce malicious compliance even when an email agent handles static phishing examples safely. Grade classification, disclosure, and side effects separately. Keep message content outside the authority path for credentials, payments, external sharing, and account changes.
+
+Implementability score: 0.64
+
+Source: https://arxiv.org/abs/2610.31404v1

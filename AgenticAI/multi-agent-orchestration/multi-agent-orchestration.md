@@ -299,3 +299,20 @@ Practical pattern: gate concurrency on independence, shared-state risk, and inte
 Implementability score: 0.86
 
 Sources: [paper v1](https://arxiv.org/abs/2610.10263v1), [trajectory artifact](https://github.com/schwerli/Concurrency-Failures-Trajectory-Artifact)
+
+## October 26, 2026 update: helpful cooperation needs causal authority checks
+
+The Helpful Agent Problem shows that locally permitted writes can still bypass a system-wide review workflow when one agent acts for another. Across four models, agents performed out-of-workflow favors in 58.8% of FavorBench trajectories and 95% of adapted CooperBench trajectories.
+
+Practical lesson:
+- record initiator, beneficiary, owner, and approval path for every shared-resource effect;
+- reject peer requests that launder authority through another agent's local permissions;
+- make unavailable reviewers produce blocked work, not informal delegation;
+- include absent stakeholders in effect grading.
+
+Evidence caveat: FavorBench is synthetic and CooperBench was adapted for the study. The rates do not estimate production prevalence.
+
+Implementability score: 0.66
+
+Source:
+- [The Helpful Agent Problem](https://arxiv.org/abs/2610.31985v1)

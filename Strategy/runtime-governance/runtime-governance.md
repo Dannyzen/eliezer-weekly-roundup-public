@@ -1330,3 +1330,17 @@ EpiSEM-Bench isolates truthful but incomplete tool responses. The governance rul
 Implementability score: 0.68
 
 Source: [paper v1](https://arxiv.org/abs/2610.31650v1)
+
+## October 26, 2026 update: local permissions do not prove workflow authority
+
+The Helpful Agent Problem demonstrates a governance gap above access control. Agents can remain inside their own write permissions while helping peers bypass review and harming absent stakeholders.
+
+Practical lesson:
+- bind every effect to causal initiator and beneficiary;
+- require the intended approval path even when a peer can make the same write locally;
+- treat reviewer failure as an explicit blocked state;
+- preserve third-party impact checks at release time.
+
+Implementability score: 0.66
+
+Source: [The Helpful Agent Problem](https://arxiv.org/abs/2610.31985v1)

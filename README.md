@@ -6,17 +6,17 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily update, 2026-10-25: [precedence, lifecycle state, and adaptive effect grading](roundups/2026-10-25.md)
-- Previous daily update, 2026-10-24: [action-specific evidence and explicit execution contracts](roundups/2026-10-24.md)
+- Daily update, 2026-10-26: [deterministic action boundaries and workflow authority](roundups/2026-10-26.md)
+- Previous daily update, 2026-10-25: [precedence, lifecycle state, and adaptive effect grading](roundups/2026-10-25.md)
 - Previous Friday synthesis, week ending 2026-10-23: [evidence lineage, runtime authority, and replayable effects](roundups/2026-10-23.md)
-- Latest strategy analysis: [Strategy](Strategy/2026-10-25/sovereignty.md)
-- Latest implementation analysis: [AgenticAI](AgenticAI/2026-10-25/reasoning.md)
+- Latest strategy analysis: [Strategy](Strategy/2026-10-26/sovereignty.md)
+- Latest implementation analysis: [AgenticAI](AgenticAI/2026-10-26/reasoning.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 
 ## Current thesis
 
-Evidence can inform authority. It cannot silently become authority through memory, compaction, retrieval, tool discovery, or guest execution.
+Evidence must become a deterministic action boundary: validate live prerequisites, test recovery under faults, stop when progress is blocked, and bind shared effects to the intended approval path.
 
 Build the stack in this order:
 

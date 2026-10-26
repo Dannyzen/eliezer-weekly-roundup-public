@@ -1669,3 +1669,23 @@ SWE-DIVE turns static tasks into adaptive conversations with grounded user perso
 Implementability score: 0.70
 
 Sources: [SWE-DIVE](https://arxiv.org/abs/2610.30047v1), [repository](https://github.com/lorenzbrehme/swe-dive_usersim)
+
+## October 26, 2026 update: validate, fault-inject, then stop
+
+Three papers define one harness sequence. StateMirror validates proposed tool prerequisites against live workspace state before execution. MCP-Injector applies seeded protocol faults in staging. ImpasseBench turns sufficient blocker evidence into an explicit blocked transition and structured handoff.
+
+Practical lesson:
+- compile proposed actions into deterministic state predicates;
+- exercise tool paths under reproducible fault schedules;
+- mark the first step where outside authority becomes necessary;
+- stop post-evidence retries and unsafe workarounds;
+- retain blocker, progress, verification, and recovery receipts.
+
+Evidence caveat: StateMirror is strongest on static Python mismatches, MCP-Injector is permanent-fault heavy, and ImpasseBench uses controlled sandbox blockers.
+
+Implementability score: 0.88
+
+Sources:
+- [StateMirror](https://arxiv.org/abs/2610.32648v1)
+- [MCP-Injector](https://arxiv.org/abs/2610.32555v1)
+- [Knowing When to Stop](https://arxiv.org/abs/2610.31895v1)

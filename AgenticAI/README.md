@@ -2,7 +2,56 @@
 
 Implementation analysis for agent evaluation, memory, context policy, tools, model routing, and orchestration.
 
-## Latest Structured Update: 2026-10-25
+## Latest Structured Update: 2026-10-26
+
+### Validate tool prerequisites before execution
+
+Summary: StateMirror converts proposed actions into live workspace predicates. It reached 0.940 precision and 0.817 F1 on 2,508 actions at 1.50 ms median latency, then corrected more than 95% of detected calls during intervention.
+
+Analysis: [pre-execution state validation](2026-10-26/reasoning.md#1-validate-tool-prerequisites-before-execution)
+
+Core source: [StateMirror](https://arxiv.org/abs/2610.32648v1)
+
+Implementable now:
+- validate paths, symbols, packages, and command assumptions before execution;
+- return exact mismatch evidence;
+- keep dynamic runtime failures on a separate fallback path.
+
+Implementability score: 0.89
+
+### Fault-inject the MCP path before release
+
+Summary: In 1,350 experiment cells, realistic MCP faults cut completion quality by 60%. Model scale did not improve retained performance, while harness behavior differed materially.
+
+Analysis: [MCP fault injection](2026-10-26/reasoning.md#2-fault-inject-the-mcp-path-before-release)
+
+Core source: [MCP-Injector paper](https://arxiv.org/abs/2610.32555v1)
+
+Artifact: [MCP-Injector](https://gitlab.com/uniluxembourg/snt/sedan/papers/mcp-injector)
+
+Implementable now:
+- inject seeded timeouts, errors, drops, and payload faults in staging;
+- score completion, retry, and recovery separately;
+- retain synthetic-fault receipts.
+
+Implementability score: 0.91
+
+### Convert impasse evidence into a complete handoff
+
+Summary: Across 19,371 trajectories, agents usually observed enough evidence to know outside help was required but often kept trying. An explicit escalation tool cut budget exhaustion from 34.0% to 6.7%.
+
+Analysis: [evidence-based stopping](2026-10-26/reasoning.md#3-turn-sufficient-evidence-of-an-impasse-into-a-structured-handoff)
+
+Core source: [Knowing When to Stop](https://arxiv.org/abs/2610.31895v1)
+
+Implementable now:
+- define evidence thresholds for environment blockers;
+- expose a blocked terminal action;
+- require blocker, progress, verification, and next authority in every handoff.
+
+Implementability score: 0.84
+
+## Previous Daily Update: 2026-10-25
 
 ### Give live code precedence over stale descriptive instructions
 

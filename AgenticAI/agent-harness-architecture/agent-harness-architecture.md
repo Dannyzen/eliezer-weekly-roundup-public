@@ -1670,6 +1670,20 @@ Implementability score: 0.70
 
 Sources: [SWE-DIVE](https://arxiv.org/abs/2610.30047v1), [repository](https://github.com/lorenzbrehme/swe-dive_usersim)
 
+## October 27, 2026 update: release the model-harness pair, not either component alone
+
+A crossed study of 52,168 trajectories shows harness rankings change across models and tasks. A release gate should therefore bind model, harness, task family, tool surface, limits, and policy into one tested identity.
+
+Practical lesson:
+- cross candidate models and harnesses on matched tasks;
+- separate task success from valid completion and terminal handoff;
+- record token load, latency, and first failure;
+- promote only the tested pair and its exact configuration.
+
+Implementability score: 0.90
+
+Source: [When Agents Fail](https://arxiv.org/abs/2610.32483v1)
+
 ## October 26, 2026 update: validate, fault-inject, then stop
 
 Three papers define one harness sequence. StateMirror validates proposed tool prerequisites against live workspace state before execution. MCP-Injector applies seeded protocol faults in staging. ImpasseBench turns sufficient blocker evidence into an explicit blocked transition and structured handoff.

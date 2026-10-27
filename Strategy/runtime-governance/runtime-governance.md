@@ -1344,3 +1344,20 @@ Practical lesson:
 Implementability score: 0.66
 
 Source: [The Helpful Agent Problem](https://arxiv.org/abs/2610.31985v1)
+
+## October 27, 2026 update: assisted classification stays below policy
+
+GitHub's assisted permissions mode uses an LLM to classify commands, file-system paths, and URLs as clearly safe or approval-required. Enterprise settings can disable Assisted or Allow All and select session defaults.
+
+Practical lesson:
+- establish deterministic denies and always-ask classes first;
+- let classification route only eligible reversible requests;
+- bind decisions to exact principal, command, path, URL, and session;
+- retain policy, classification, and disposition receipts;
+- fail to manual approval when evidence is missing.
+
+Evidence caveat: GitHub provides no public classifier accuracy or false-approval rates in the release materials.
+
+Implementability score: 0.84
+
+Sources: [GitHub release](https://github.blog/changelog/2026-10-26-github-copilot-assisted-permissions-generally-available), [documentation](https://docs.github.com/copilot/concepts/customizations/allowing-safe-commands)

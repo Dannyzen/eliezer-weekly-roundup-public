@@ -2,7 +2,58 @@
 
 Implementation analysis for agent evaluation, memory, context policy, tools, model routing, and orchestration.
 
-## Latest Structured Update: 2026-10-26
+## Latest Structured Update: 2026-10-27
+
+### Evaluate model and harness as one deployed pair
+
+Summary: Across 52,168 trajectories in 111 settings, harness rankings changed by model and task. Task success, valid completion, and token load exposed different execution profiles.
+
+Analysis: [model-harness pair evaluation](2026-10-27/reasoning.md#1-evaluate-the-model-and-harness-as-one-deployed-pair)
+
+Core source: [When Agents Fail](https://arxiv.org/abs/2610.32483v1)
+
+Implementable now:
+- cross models and harnesses on identical tasks;
+- version the whole deployed pair;
+- report valid completion and cost beside success.
+
+Implementability score: 0.90
+
+### Test delayed results as typed state transitions
+
+Summary: On 200 executable tasks, asynchronous delivery reduced average success from 29.7% to 26.0%. Full replanning added calls for only small delayed-result gains.
+
+Analysis: [asynchronous event contracts](2026-10-27/reasoning.md#2-test-delayed-subagent-results-as-state-changing-events)
+
+Core source: [Async-RBench](https://arxiv.org/abs/2610.32429v1)
+
+Artifact: [pope8zdt/Async-RBench](https://github.com/pope8zdt/Async-RBench)
+
+Implementable now:
+- type result relations;
+- compute minimal invalidation;
+- score event handling separately from final success.
+
+Implementability score: 0.82
+
+### Retire skills from unaided capability evidence
+
+Summary: Gain-only retirement removed more than half of uncovered skills under each tested model. Per-model unaided verdicts were more reproducible and can remain reversible.
+
+Analysis: [skill retirement certificates](2026-10-27/reasoning.md#3-retire-a-skill-only-when-unaided-capability-is-proven)
+
+Core source: [Beyond Gain](https://arxiv.org/abs/2610.32322v1)
+
+Artifacts: [SkillCorpus lifecycle](https://github.com/EverMind-AI/SkillCorpus/tree/main/skillcorpus/lifecycle), [dataset](https://huggingface.co/datasets/EverMind-AI/skillcorpus-lifecycle)
+
+Implementable now:
+- test unaided capability;
+- require valid skill-sensitive probes;
+- soft-retire per model with restoration evidence.
+
+Implementability score: 0.78
+
+## Previous Daily Update: 2026-10-26
 
 ### Validate tool prerequisites before execution
 

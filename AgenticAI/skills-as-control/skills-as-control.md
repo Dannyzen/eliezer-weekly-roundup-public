@@ -1221,6 +1221,21 @@ Sources:
 - [Beyond Maliciousness paper v1](https://arxiv.org/abs/2610.19264v1)
 - [SkilLock](https://github.com/skills-lock/skil-lock)
 
+## October 27, 2026 update: retire skills from unaided capability certificates
+
+Near-zero marginal gain does not prove a skill is redundant. It also occurs when both aided and unaided runs fail. Beyond Gain replaces that blind spot with per-model unaided capability evidence, witness-model probe validation, and reversible retirement.
+
+Practical lesson:
+- certify unaided capability on executable tasks;
+- reject probes that no model benefits from;
+- soft-retire per model, never delete globally;
+- retain keep, repair, regenerate, and gather-more-evidence states;
+- reissue certificates after model or skill changes.
+
+Implementability score: 0.78
+
+Sources: [Beyond Gain](https://arxiv.org/abs/2610.32322v1), [SkillCorpus lifecycle](https://github.com/EverMind-AI/SkillCorpus/tree/main/skillcorpus/lifecycle)
+
 ## October 23, 2026 update: route skill granularity at runtime
 
 Skill retrieval should return candidates, not commit the executor to one abstraction level. Adaptive Skill Granularity adds a runtime controller that chooses primitive tools, macro skills, or macro-to-micro recovery from task features and observed state. The immediate pattern is to bind every macro to preconditions, postconditions, and a verified fallback path.

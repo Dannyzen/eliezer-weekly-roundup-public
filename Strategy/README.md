@@ -2,7 +2,25 @@
 
 Governance analysis for identity, authority, execution control, evidence provenance, gateways, containment, and sovereignty.
 
-## Latest Structured Update: 2026-10-26
+## Latest Structured Update: 2026-10-27
+
+### Put assisted permission classification below policy
+
+Summary: GitHub's assisted mode can auto-pass requests classified as clearly safe, while enterprise settings bound whether Assisted and Allow All are available. Public classifier accuracy evidence is absent.
+
+Analysis: [assisted permissions inside deterministic policy](2026-10-27/sovereignty.md#1-keep-assisted-permission-classification-inside-deterministic-policy)
+
+Core source: [GitHub Copilot assisted permissions](https://github.blog/changelog/2026-10-26-github-copilot-assisted-permissions-generally-available)
+
+Implementable now:
+- define deterministic deny and always-ask classes;
+- auto-pass only eligible reversible actions;
+- retain exact-effect permission receipts;
+- fail back to manual approval.
+
+Implementability score: 0.84
+
+## Previous Daily Update: 2026-10-26
 
 ### Bind authority to the causal effect path
 

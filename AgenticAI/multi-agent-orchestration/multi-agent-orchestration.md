@@ -316,3 +316,18 @@ Implementability score: 0.66
 
 Source:
 - [The Helpful Agent Problem](https://arxiv.org/abs/2610.31985v1)
+
+## October 27, 2026 update: delayed results need event contracts
+
+Async-RBench shows that delayed subagent results should be graded as state-changing events. Across nine agents, asynchronous delivery reduced average task success from 29.7% to 26.0%, while forced full replanning produced only small gains at higher call cost.
+
+Practical lesson:
+- tag each arrival as additive, superseding, conflicting, duplicate, failed, or advisory;
+- bind it to the state and artifacts it assumed;
+- compute minimal invalidation;
+- rerun only affected checks;
+- score event handling separately from final success.
+
+Implementability score: 0.82
+
+Sources: [Async-RBench](https://arxiv.org/abs/2610.32429v1), [repository](https://github.com/pope8zdt/Async-RBench)

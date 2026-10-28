@@ -6,17 +6,17 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily update, 2026-10-27: [deployed-pair evaluation, asynchronous handoffs, and capability evidence](roundups/2026-10-27.md)
-- Previous daily update, 2026-10-26: [deterministic action boundaries and workflow authority](roundups/2026-10-26.md)
+- Daily update, 2026-10-28: [live truth, stateful handoffs, behavior-grade tests, and workload identity](roundups/2026-10-28.md)
+- Previous daily update, 2026-10-27: [deployed-pair evaluation, asynchronous handoffs, and capability evidence](roundups/2026-10-27.md)
 - Previous Friday synthesis, week ending 2026-10-23: [evidence lineage, runtime authority, and replayable effects](roundups/2026-10-23.md)
-- Latest strategy analysis: [Strategy](Strategy/2026-10-27/sovereignty.md)
-- Latest implementation analysis: [AgenticAI](AgenticAI/2026-10-27/reasoning.md)
+- Latest strategy analysis: [Strategy](Strategy/2026-10-28/sovereignty.md)
+- Latest implementation analysis: [AgenticAI](AgenticAI/2026-10-28/reasoning.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 
 ## Current thesis
 
-Agent reliability belongs to the deployed loop: evaluate the exact model-harness pair, reconcile delayed results through typed state transitions, retire capabilities only from reproducible evidence, and keep probabilistic permission routing below deterministic policy.
+Agent reliability needs executable current truth, explicit inherited work state, behavior-grade tests, and workload-owned identity. Static labels and borrowed credentials hide failures that only appear when the world changes, work crosses agents, or effects need attribution.
 
 Build the stack in this order:
 

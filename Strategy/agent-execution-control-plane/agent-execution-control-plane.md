@@ -332,3 +332,13 @@ Source: https://arxiv.org/abs/2610.31376v1
 Artifact status: paper only; no verified public implementation identified in this scan.
 
 Implementability score: 0.56
+
+## 2026-10-28: Workload-owned identity for unattended agents
+
+GitHub Copilot SDK now accepts short-lived installation tokens from organization-installed GitHub Apps. This separates the workload principal from human credentials while preserving organization model policy, billing attribution, usage reporting, and independent revocation. Per-app budgets remain unavailable, so strict service-level cost containment still needs an external guard.
+
+Sources:
+- https://github.blog/changelog/2026-10-27-github-copilot-supports-server-to-server-authentication/
+- https://docs.github.com/copilot/how-tos/copilot-sdk/auth/server-to-server-tokens
+
+Implementability score: 0.90

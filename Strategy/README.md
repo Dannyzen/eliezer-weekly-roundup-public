@@ -2,7 +2,27 @@
 
 Governance analysis for identity, authority, execution control, evidence provenance, gateways, containment, and sovereignty.
 
-## Latest Structured Update: 2026-10-27
+## Latest Structured Update: 2026-10-28
+
+### Give autonomous workloads their own revocable identity
+
+Summary: GitHub Copilot SDK now supports short-lived GitHub App installation tokens for organization-owned services. Usage inherits organization policy and budget, carries app attribution, and can be revoked independently from human accounts.
+
+Analysis: [workload-owned agent identity](2026-10-28/sovereignty.md#1-give-autonomous-workloads-their-own-revocable-identity)
+
+Core source: [GitHub Copilot server-to-server authentication](https://github.blog/changelog/2026-10-27-github-copilot-supports-server-to-server-authentication/)
+
+Methodology: [server-to-server token documentation](https://docs.github.com/copilot/how-tos/copilot-sdk/auth/server-to-server-tokens)
+
+Implementable now:
+- issue one bounded workload identity per service or trust domain;
+- use short-lived tokens and disable human-credential fallback;
+- bind usage, model, task, and effect receipts;
+- retain independent revocation.
+
+Implementability score: 0.90
+
+## Previous Daily Update: 2026-10-27
 
 ### Put assisted permission classification below policy
 

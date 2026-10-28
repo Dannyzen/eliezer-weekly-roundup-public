@@ -1612,3 +1612,19 @@ REGATTA treats the evaluation suite as an object under test. Define a fault cata
 Source: https://arxiv.org/abs/2610.30924v1
 
 Implementability score: 0.66
+
+## 2026-10-28: Recompute gold answers from live source programs
+
+LiveSearch freezes the question while executable verifier code calls the authoritative source and deterministically extracts the answer at grading time. Seventy percent of served questions changed gold value across three days. The reusable evaluation contract is question version plus verifier version plus source identity plus as-of receipt.
+
+Source: https://arxiv.org/abs/2610.37166v1
+
+Implementability score: 0.84
+
+## 2026-10-28: Separate passing tests from behavioral adequacy
+
+Req2Test-Bench shows an 82.8% pass rate can coexist with only 33.8% mutation kill-completeness. Generated-test gates should score execution and behavioral equivalence separately, preserve developer tests as hidden oracles, and measure behavior gained per dollar. The paper's advertised repository and dataset were unavailable during this scan.
+
+Source: https://arxiv.org/abs/2610.36584v1
+
+Implementability score: 0.80

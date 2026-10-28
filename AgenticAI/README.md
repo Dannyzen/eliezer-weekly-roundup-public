@@ -2,7 +2,56 @@
 
 Implementation analysis for agent evaluation, memory, context policy, tools, model routing, and orchestration.
 
-## Latest Structured Update: 2026-10-27
+## Latest Structured Update: 2026-10-28
+
+### Recompute mutable gold answers from authoritative sources
+
+Summary: LiveSearch stores questions as executable verifier code. Across three days, 70% of served questions changed gold value, exposing the weakness of static current-fact benchmarks.
+
+Analysis: [live executable truth](2026-10-28/reasoning.md#1-recompute-the-gold-answer-from-live-source-systems)
+
+Core source: [LiveSearch](https://arxiv.org/abs/2610.37166v1)
+
+Implementable now:
+- execute typed source calls and deterministic extractors;
+- bind each score to source and as-of receipts;
+- track per-item correctness over time.
+
+Implementability score: 0.84
+
+### Test agent takeover from inherited work state
+
+Summary: HSC-Bench separates repository evidence recovery from continuation across 1,039 tasks. Structured handoff state improved recovery for every tested model and continuation for most.
+
+Analysis: [handoff state continuity](2026-10-28/reasoning.md#2-evaluate-takeover-from-inherited-work-state)
+
+Core source: [HSC-Bench](https://arxiv.org/abs/2610.36523v1)
+
+Implementable now:
+- serialize decisions, completed effects, rejected paths, file state, and pending checks;
+- grade recovery and continuation separately;
+- test receiver swaps before production routing.
+
+Implementability score: 0.86
+
+### Grade generated tests by behavioral adequacy
+
+Summary: The best Req2Test configuration passed 82.8% of generated tests but reached only 33.8% behavioral adequacy under mutation kill-completeness.
+
+Analysis: [behavior-grade generated tests](2026-10-28/reasoning.md#3-grade-generated-tests-by-behavior-not-execution-success)
+
+Core source: [Req2Test-Bench](https://arxiv.org/abs/2610.36584v1)
+
+Implementable now:
+- separate execution from mutation-equivalent behavior;
+- keep developer tests as hidden oracles;
+- measure behavior gained per dollar.
+
+Artifact caveat: the advertised GitHub repository returned 404 and the dataset API returned 401 during this scan.
+
+Implementability score: 0.80
+
+## Previous Daily Update: 2026-10-27
 
 ### Evaluate model and harness as one deployed pair
 

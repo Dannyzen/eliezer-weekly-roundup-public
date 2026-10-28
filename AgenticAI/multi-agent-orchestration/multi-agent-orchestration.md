@@ -331,3 +331,11 @@ Practical lesson:
 Implementability score: 0.82
 
 Sources: [Async-RBench](https://arxiv.org/abs/2610.32429v1), [repository](https://github.com/pope8zdt/Async-RBench)
+
+## 2026-10-28: Evaluate takeover from structured inherited state
+
+HSC-Bench separates repository evidence recovery from continuation across conversational, tool, and file-work state. Structured handoff state improved evidence recovery for every tested receiver and continuation for most. Production handoffs should encode decisions, completed and non-repeatable effects, rejected paths, protected files, pending work, and verification status as distinct fields.
+
+Source: https://arxiv.org/abs/2610.36523v1
+
+Implementability score: 0.86

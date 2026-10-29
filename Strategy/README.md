@@ -2,7 +2,39 @@
 
 Governance analysis for identity, authority, execution control, evidence provenance, gateways, containment, and sovereignty.
 
-## Latest Structured Update: 2026-10-28
+## Latest Structured Update: 2026-10-29
+
+### Compile reasoning into guarded CI execution
+
+Summary: GitHub Agentic Workflows compiles Markdown into standard Actions YAML, keeps agent jobs read-only and sandboxed by default, and releases configured writes through separate safe-output jobs with scoped permissions.
+
+Analysis: [guarded workflow compilation](2026-10-29/sovereignty.md#1-compile-reasoning-workflows-into-constrained-execution)
+
+Core sources: [GA release](https://github.blog/changelog/2026-10-28-github-agentic-workflows-generally-available/), [github/gh-aw](https://github.com/github/gh-aw)
+
+Implementable now:
+- keep deterministic CI gates outside the model;
+- compile reasoning tasks into reviewable lockfiles;
+- isolate agent execution and release writes separately.
+
+Implementability score: 0.94
+
+### Make authority a runtime protocol
+
+Summary: Concordat models consequential conversations as finite-state protocols, with tool access and human-only decisions enforced by current state.
+
+Analysis: [typed conversation authority](2026-10-29/sovereignty.md#2-make-conversation-authority-a-runtime-protocol)
+
+Core sources: [paper](https://arxiv.org/abs/2610.37461v1), [repository](https://github.com/miladsikaroudi/concordat)
+
+Implementable now:
+- encode approval order as transitions;
+- bind capabilities to current state;
+- reject illegal effects before dispatch.
+
+Implementability score: 0.79
+
+## Previous Structured Update: 2026-10-28
 
 ### Give autonomous workloads their own revocable identity
 

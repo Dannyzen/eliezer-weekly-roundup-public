@@ -1,6 +1,32 @@
 # AgenticAI Daily Analysis, 2026-10-28
 
-The strongest new evidence says static success labels are too weak for agents that search changing systems, inherit ongoing work, or generate their own tests. Reliable evaluation needs executable current truth, explicit inherited state, and behavioral oracles that distinguish a passing test from an adequate one.
+The strongest new evidence says static success labels are too weak for agents that search changing systems, inherit ongoing work, generate their own tests, or reuse remembered facts. Reliable evaluation needs executable current truth, explicit inherited state, behavioral oracles, and compiled decision state that determines whether evidence is valid to use.
+
+## Deep Dive Wednesday: compile memory into decision state
+
+SciValidityBench is the week's strongest finding because it connects memory, provenance, and executable evaluation in one reusable contract. It asks whether a correct remembered fact is valid for the current decision. Its 64 TaskSpecs bind deterministic histories, governing-state definitions, legal actions, programmatic oracles, counterfactual interventions, and automatic scoring across five validity modules and six scientific domains.
+
+Across four locked model families, compiled scientific state improved TaskSpec-balanced valid decision-making by 9.2 to 18.8 percentage points over a generic Event Graph. BM25 retrieval did not reproduce the cross-family gain. Exact repair of missing target state exceeded edit-matched irrelevant repair by 18.6 points on average. The gain comes from exposing governing conditions, not merely retrieving more text or selecting a graph format.
+
+Why it won the week: workload scheduling, evolving agent teams, instruction-stack drift, and workload identity are important subsystem findings. SciValidityBench defines a cross-cutting boundary between retained evidence and action. A fact must carry the conditions that license its use.
+
+Implementable now:
+- preserve immutable events and source lineage;
+- compile typed governing variables with source references and as-of time;
+- define legal actions and a deterministic oracle per bounded workflow;
+- generate counterfactual pairs that change one decisive variable;
+- corrupt required state and require abstention until exact repair;
+- retain compiler, evidence, state, decision, and execution receipts separately.
+
+Weakest point: this is a fresh two-author preprint using generated deterministic histories. The public Apache 2.0 repository is runnable by design but had no tagged release and one GitHub star when inspected. The mechanism is strong; independent production validation remains open.
+
+Artifact status: repository contents inspected read-only. No external source was cloned, installed, imported, or executed.
+
+Implementability score: 0.76
+
+Deep dive: [Decision-State Compilation for Agent Memory](../decision-state-compilation/decision-state-compilation.md)
+
+Core sources: [paper v1](https://arxiv.org/abs/2610.34767v1), [reference implementation](https://github.com/SciValidityBench/SciValidityBench), [project site](https://scivaliditybench.github.io/SciValidityBench/)
 
 ## 1. Recompute the gold answer from live source systems
 

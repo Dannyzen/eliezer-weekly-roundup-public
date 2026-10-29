@@ -2,7 +2,74 @@
 
 Implementation analysis for agent evaluation, memory, context policy, tools, model routing, and orchestration.
 
-## Latest Structured Update: 2026-10-28
+## Latest Structured Update: 2026-10-29
+
+### Compile subtask trees into context
+
+Summary: Spine turns nested work into a persistent execution tree, keeps unfinished scopes detailed, and collapses completed scopes into result objects. On SWE-Milestone with GPT-5.6 Sol, it improved resolved milestones from 14 to 19 of 98 while cutting total cost by 32.4%.
+
+Analysis: [structured work-tree context](2026-10-29/reasoning.md#1-compile-the-work-tree-into-context)
+
+Core source: [Spine](https://arxiv.org/abs/2610.37224v1)
+
+Implementable now:
+- represent work as nested typed scopes;
+- compile context from completion state;
+- separate task decomposition from delegation choice.
+
+Implementability score: 0.78
+
+### Test the complete feature arc
+
+Summary: FeatureArc shows pooled coding-agent success falling from 62.7% on the first stage to 28.5% on the final evolved feature. Inherited defects appeared in 72.9% of failed later stages.
+
+Analysis: [evolving-feature evaluation](2026-10-29/reasoning.md#2-test-coding-agents-across-feature-evolution)
+
+Core source: [FeatureArc](https://arxiv.org/abs/2610.37434v1)
+
+Implementable now:
+- carry the same workspace across staged requirements;
+- rerun prior and new behavioral checks after every stage;
+- report inherited-defect rates.
+
+Implementability score: 0.83
+
+### Enforce consequential dialogue as typed sessions
+
+Summary: Concordat makes tool availability depend on a finite-state protocol and rejects illegal calls before side effects. It eliminated confirmation-skipping changes in the reported airline evaluation.
+
+Analysis: [typed agent sessions](2026-10-29/reasoning.md#3-enforce-consequential-conversations-as-typed-sessions)
+
+Core sources: [paper](https://arxiv.org/abs/2610.37461v1), [Apache-2.0 repository](https://github.com/miladsikaroudi/concordat)
+
+Implementable now:
+- encode legal action order;
+- expose only state-legal tools;
+- split budgets across handoffs.
+
+Implementability score: 0.79
+
+## Previous Structured Update: 2026-10-28
+
+### Deep Dive Wednesday: compile memory into decision state
+
+Summary: SciValidityBench shows that retrieving a correct fact is insufficient when governing conditions determine whether the fact may influence a decision. Compiled state improved valid decisions by 9.2 to 18.8 percentage points over a generic Event Graph across four model families.
+
+Analysis: [decision-state compilation](2026-10-28/reasoning.md#deep-dive-wednesday-compile-memory-into-decision-state)
+
+Durable topic: [Decision-State Compilation for Agent Memory](decision-state-compilation/decision-state-compilation.md)
+
+Core source: [SciValidityBench paper v1](https://arxiv.org/abs/2610.34767v1)
+
+Artifact: [SciValidityBench reference implementation](https://github.com/SciValidityBench/SciValidityBench)
+
+Implementable now:
+- compile source-linked governing state from immutable events;
+- define legal actions and deterministic decision oracles;
+- test state use with counterfactual, corruption, and exact-repair fixtures;
+- keep decision validity separate from execution authority.
+
+Implementability score: 0.76
 
 ### Recompute mutable gold answers from authoritative sources
 

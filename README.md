@@ -6,17 +6,18 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily update, 2026-10-28: [live truth, stateful handoffs, behavior-grade tests, and workload identity](roundups/2026-10-28.md)
+- Daily update, 2026-10-29: [structured work trees, evolving-feature tests, typed sessions, and guarded workflow compilation](roundups/2026-10-29.md)
+- Previous Deep Dive Wednesday, 2026-10-28: [decision-state compilation, live truth, stateful handoffs, behavior-grade tests, and workload identity](roundups/2026-10-28.md)
 - Previous daily update, 2026-10-27: [deployed-pair evaluation, asynchronous handoffs, and capability evidence](roundups/2026-10-27.md)
 - Previous Friday synthesis, week ending 2026-10-23: [evidence lineage, runtime authority, and replayable effects](roundups/2026-10-23.md)
-- Latest strategy analysis: [Strategy](Strategy/2026-10-28/sovereignty.md)
-- Latest implementation analysis: [AgenticAI](AgenticAI/2026-10-28/reasoning.md)
+- Latest strategy analysis: [Strategy](Strategy/2026-10-29/sovereignty.md)
+- Latest implementation analysis: [AgenticAI](AgenticAI/2026-10-29/reasoning.md)
 - Latest implementation index: [AgenticAI](AgenticAI/README.md)
 - Latest governance index: [Strategy](Strategy/README.md)
 
 ## Current thesis
 
-Agent reliability needs executable current truth, explicit inherited work state, behavior-grade tests, and workload-owned identity. Static labels and borrowed credentials hide failures that only appear when the world changes, work crosses agents, or effects need attribution.
+Agent reliability needs explicit structure from work decomposition through effect release. Persistent task trees preserve unfinished reasoning, longitudinal tests expose inherited defects, typed sessions constrain authority, and deterministic workflow substrates release only validated effects.
 
 Build the stack in this order:
 
@@ -36,6 +37,7 @@ Build the stack in this order:
 
 ### AgenticAI
 
+- [Decision-State Compilation for Agent Memory](AgenticAI/decision-state-compilation/decision-state-compilation.md)
 - [Agent Static Analysis](AgenticAI/agent-static-analysis/agent-static-analysis.md)
 - [Coding Agent Control Plane](AgenticAI/coding-agent-control-plane/coding-agent-control-plane.md)
 - [Enterprise MCP Orchestration](AgenticAI/enterprise-mcp-orchestration/enterprise-mcp-orchestration.md)

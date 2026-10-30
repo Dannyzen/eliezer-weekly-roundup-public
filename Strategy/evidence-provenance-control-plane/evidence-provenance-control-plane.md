@@ -365,3 +365,22 @@ AgentTriage shows how a canonical event contract can make security diagnosis por
 Implementability score: 0.84
 
 Sources: [paper v1](https://arxiv.org/abs/2610.30738v1), [repository](https://github.com/AsnGs/agenttriage-open-source)
+
+## October 30, 2026 update: inter-agent claims need proof-carrying messages
+
+PCM turns evidence provenance into a receiver-verifiable message contract. A sender cannot prove a claim with its own report. Claims carry records from an independently controlled append-only log, inclusion proofs, and signer identity. Human authority travels through narrowing grant chains rather than agent assertion.
+
+Practical lesson:
+- separate authenticated transport from claim truth;
+- type every claim as proven, unproven, or failed;
+- record approvals and tool outcomes outside the agent process;
+- bind messages to pinned signer keys, replay state, and exact claim schemas;
+- treat stale evidence as a first-class rejection or revalidation case.
+
+Evidence caveat: PCM is a single-author v1 protocol. Its pre-specified benchmark accepted 10 of 712 lies, all stale-evidence cases, and production deployment requires trusted signers, append-only logs, key distribution, and receiver policy.
+
+Implementability score: 0.72
+
+Sources:
+- [PCM paper v1](https://arxiv.org/abs/2610.39109v1)
+- [PCM protocol repository](https://github.com/Cygnux-Labs/PCM-protocol)

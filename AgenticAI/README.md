@@ -2,7 +2,24 @@
 
 Implementation analysis for agent evaluation, memory, context policy, tools, model routing, and orchestration.
 
-## Latest Structured Update: 2026-10-29
+## Latest Structured Update: 2026-10-30
+
+### Grade every executable prefix
+
+Summary: Prefix Executability checks each tool-call prefix against schemas, state preconditions, and data dependencies. It exposes successful endpoints that rest on invalid intermediate execution.
+
+Analysis: [prefix-level tool evaluation](2026-10-30/reasoning.md#1-grade-every-executable-prefix-of-a-tool-trajectory)
+
+Core source: [Prefix Executability](https://arxiv.org/abs/2610.40444v1)
+
+Implementable now:
+- replay predicted calls against executable fixtures;
+- record first-error depth and recovery;
+- compare terminal success with trajectory executability.
+
+Implementability score: 0.86
+
+## Previous Structured Update: 2026-10-29
 
 ### Compile subtask trees into context
 

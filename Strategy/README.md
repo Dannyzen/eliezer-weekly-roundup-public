@@ -2,7 +2,54 @@
 
 Governance analysis for identity, authority, execution control, evidence provenance, gateways, containment, and sovereignty.
 
-## Latest Structured Update: 2026-10-29
+## Latest Structured Update: 2026-10-30
+
+### Keep runtime feedback diagnostic
+
+Summary: CARI shows that peer-controlled logs, tests, and service output can turn diagnostic authority into unauthorized local action. It succeeded in 94.8% of 3,000 trials across four languages and five models.
+
+Analysis: [runtime feedback as an untrusted boundary](2026-10-30/sovereignty.md#1-treat-runtime-feedback-as-untrusted-diagnostic-data)
+
+Core source: [CARI](https://arxiv.org/abs/2610.38799v1)
+
+Implementable now:
+- label and quarantine imperative runtime text;
+- authorize every effect independently;
+- replay adversarial runtime fixtures.
+
+Implementability score: 0.76
+
+### Carry proof with inter-agent claims
+
+Summary: PCM binds claims to independently written log records and offline-verifiable inclusion proofs. It accepted 10 of 712 benchmark lies, all stale-evidence cases, while plain A2A accepted all 712.
+
+Analysis: [proof-carrying agent messages](2026-10-30/sovereignty.md#2-make-inter-agent-claims-carry-independently-verifiable-proof)
+
+Core sources: [paper](https://arxiv.org/abs/2610.39109v1), [MIT repository](https://github.com/Cygnux-Labs/PCM-protocol)
+
+Implementable now:
+- type claims as proven, unproven, or failed;
+- record evidence outside the agent process;
+- narrow delegated grants through typed caveats.
+
+Implementability score: 0.72
+
+### Bound MCP identity and discovery data
+
+Summary: MCP Gateway Registry 1.35.0 adds Keycloak on-behalf-of token exchange with audience checks, caps registrant metadata, makes model-facing metadata opt-in, strips reserved backend headers, and gates unhealthy or unsafe resources.
+
+Analysis: [bounded gateway authority](2026-10-30/sovereignty.md#3-bound-identity-metadata-and-backend-headers-at-the-mcp-gateway)
+
+Core source: [release 1.35.0](https://github.com/agentic-community/mcp-gateway-registry/releases/tag/1.35.0)
+
+Implementable now:
+- validate delegated-token audience;
+- project only named metadata fields;
+- strip reserved headers and unhealthy routes.
+
+Implementability score: 0.92
+
+## Previous Structured Update: 2026-10-29
 
 ### Compile reasoning into guarded CI execution
 

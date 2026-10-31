@@ -540,3 +540,20 @@ Adaptive persuasion can induce malicious compliance even when an email agent han
 Implementability score: 0.64
 
 Source: https://arxiv.org/abs/2610.31404v1
+
+## October 31, 2026 update: privacy authority must cover the downstream graph
+
+Task-Graph Contextual Integrity evaluates a disclosure against recipient history and intended downstream propagation. MAPLE-Bench contains 144 cases across four scenarios and tests direct, cumulative, and transitive disclosure risks.
+
+Practical lesson:
+- bind sensitive items to subject, type, purpose, recipient, and graph version;
+- compute the allowed propagation subgraph before release;
+- remove or redact the item at its authorization frontier;
+- record disclosure history per recipient;
+- retain a receipt for every downstream transfer.
+
+Evidence caveat: the benchmark is synthetic, and no dedicated public repository resolved in read-only search.
+
+Implementability score: 0.68
+
+Source: [Judging Before Propagation](https://arxiv.org/abs/2610.39532v1)

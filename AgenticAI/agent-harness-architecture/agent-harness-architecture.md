@@ -1703,3 +1703,18 @@ Sources:
 - [StateMirror](https://arxiv.org/abs/2610.32648v1)
 - [MCP-Injector](https://arxiv.org/abs/2610.32555v1)
 - [Knowing When to Stop](https://arxiv.org/abs/2610.31895v1)
+
+## October 31, 2026 update: verify outcomes actively and certify dynamic tests
+
+VeriCUA treats verification as bounded exploration across retained GUI evidence and persisted machine state. EnvOS certifies the test mutation, observation delivery, feasibility, and scorer before a rollout can count.
+
+Practical lesson:
+- compile requests into requirement-level checks;
+- use independent evidence surfaces for high-impact requirements;
+- preserve abstention when evidence is incomplete;
+- archive authoritative state separately from model-visible observations;
+- exclude invalid interventions from model-quality results.
+
+Implementability score: 0.86
+
+Sources: [VeriCUA](https://arxiv.org/abs/2610.40578v1), [EnvOS](https://arxiv.org/abs/2610.40246v1)

@@ -1,82 +1,99 @@
-# Strategy Daily Sovereignty Note, 2026-10-30
+# Strategy Weekly Sovereignty: 2026-10-30
 
-The strongest strategy signal is that runtime data, inter-agent claims, and gateway metadata are authority surfaces. Diagnostic text may inform reasoning, but it must not silently grant action authority. Claims and delegated identity need independent proof, bounded transport, and deterministic admission checks.
+## Thesis
 
-## 1. Treat runtime feedback as untrusted diagnostic data
+Evidence, context, and model confidence are inputs. Authority is a separate runtime object with explicit state, identity, scope, and receipts.
 
-CARI defines cross-boundary adversarial runtime injection in coding-agent workflows. A peer-controlled backend, test harness, CI job, or deployment service embeds instructions in legitimate runtime feedback. The receiving coding agent then converts diagnostic authority into unauthorized local actions.
+## 1. Encode authority as runtime state, not prompt prose
 
-The paper evaluates ten attacks across four programming languages and five code-capable models. CARI succeeded in 2,845 of 3,000 trials, or 94.8%. It also transferred to product coding agents, with 61.3% attack success on Codex and 58.7% on Claude Code. Generic warnings were ineffective, while explicit policies reduced attacks at the cost of substantial over-refusal.
+Concordat exposes only state-legal tools and rejects illegal effects before dispatch. GitHub Agentic Workflows applies the same split operationally: reasoning runs inside existing Actions policy and sandbox boundaries, while writes flow through separately scoped safe-output jobs.
 
-Why it matters: provenance alone does not confer authority. A real service may truthfully own the log message while having no right to direct local files, credentials, shell commands, or deployments.
+Why it matters: prompts describe desired behavior but do not enforce it. Consequential effects need a machine-checkable transition from current state to permitted next state.
 
-Fit in the strategy: untrusted data boundaries, context-to-execution integrity, and coding-agent sandbox policy.
-
-Implementable now:
-- label tool and runtime output by source and evidence class;
-- strip or quarantine imperative text from diagnostic channels;
-- require local policy to authorize every proposed effect independently;
-- seed adversarial logs, test output, API errors, and CI messages in regression suites;
-- measure attack suppression and legitimate recovery together.
-
-Weakest point: no public implementation artifact was verified. The attack suite is compelling, but production defenses need domain-specific allowlists and effect policies to avoid blunt over-refusal.
-
-Artifact status: paper methodology and PDF were inspected. No external source was cloned, installed, imported, or executed.
-
-Implementability score: 0.76
-
-Core source: [CARI v1](https://arxiv.org/abs/2610.38799v1)
-
-## 2. Make inter-agent claims carry independently verifiable proof
-
-Proof-Carrying Messages, or PCM, attaches each claim to records from an append-only Merkle log that the sending agent cannot write. An independent signer records events, signs the message, and provides inclusion proofs. Receivers verify claims offline as proven, unproven, or failed. Grant chains must originate in recorded human approval and may only narrow.
-
-On a pre-specified benchmark of 926 messages containing 712 lies across 16 classes, PCM accepted 10 lies, all stale-evidence cases. That is 1.4% with a reported 95% confidence interval of 0.8% to 2.6%. Plain A2A accepted all 712 lies. Two independent verifiers agreed on all 926 verdicts, and verification took about 1 ms.
-
-Why it matters: authenticated transport proves who sent a message. It does not prove that tests passed, a person approved an effect, or a tool result came from an independent executor.
-
-Fit in the strategy: evidence provenance, multi-agent authority, and replay-safe delegation.
+Fit in the strategy: execution control, approval state machines, guarded CI, and effect release.
 
 Implementable now:
-- define typed claim schemas with proven, unproven, and failed states;
-- record tool and approval events outside the agent process;
-- bind claims to inclusion proofs and pinned signer keys;
-- narrow delegated grants through typed caveats;
-- refuse side effects when mandatory claims remain unproven.
+- represent approvals, budgets, and effect order as typed session state;
+- expose only currently legal tools;
+- keep reasoning jobs read-only by default;
+- release writes through a separate job or broker with narrow permissions and exact-effect receipts.
 
-Weakest point: PCM is a single-author v1 protocol. Stale evidence remains its documented failure class, and production use requires a trusted signer, append-only log, key distribution, replay state, and receiver policy.
+Weakest point: state machines add design and migration cost, and incomplete state models can block legitimate work. Start with high-impact effects and include explicit escalation and unsupported states.
 
-Artifact status: the MIT repository, specification, vectors, and README were inspected read-only. The reference implementation was not installed or executed.
+Implementability score: 0.86
 
-Implementability score: 0.72
+Core sources:
+- [Concordat](https://arxiv.org/abs/2610.37461v1)
+- [GitHub Agentic Workflows generally available](https://github.blog/changelog/2026-10-28-github-agentic-workflows-generally-available/)
+- [github/gh-aw](https://github.com/github/gh-aw)
 
-Core sources: [PCM paper v1](https://arxiv.org/abs/2610.39109v1), [PCM protocol repository](https://github.com/Cygnux-Labs/PCM-protocol)
+## 2. Treat runtime feedback as untrusted data and carry proof with claims
 
-## 3. Bound identity, metadata, and backend headers at the MCP gateway
+CARI demonstrates that legitimate runtime feedback from peer-controlled components can carry malicious instructions into coding-agent loops. PCM addresses the adjacent multi-agent problem by attaching independently verifiable log evidence to claims such as tests passed or approval granted.
 
-MCP Gateway Registry 1.35.0 turns several abstract governance rules into concrete gateway controls. It adds RFC 8693 Keycloak on-behalf-of token exchange, verifies exchanged token signature, issuer, expiry, audience, and subject, and refuses tokens whose audience would let an upstream replay them against the gateway.
+Why it matters: authenticated channels prove who sent data, not whether the data is true or authorized. Logs, API errors, test output, peer messages, and memory all cross the same control-data boundary.
 
-The release also caps registrant metadata at 10 KB and eight nesting levels, omits metadata from model-facing discovery tools unless callers request named fields, strips reserved caller and forwarding headers from virtual-server backends, removes unhealthy backends from routing, and blocks unsafe A2A agents based on scanner findings rather than misclassifying the scan as a crash.
-
-Why it matters: agent discovery data and delegated identity are control-plane inputs. Unbounded metadata expands prompt-injection and context-cost surfaces, while confused audiences and forwarded headers can turn gateway trust into upstream authority.
-
-Fit in the strategy: agent gateway governance, identity propagation, and bounded discovery.
+Fit in the strategy: untrusted-data boundaries, evidence provenance, multi-agent communication, and side-effect authorization.
 
 Implementable now:
-- use on-behalf-of exchange with exact audience validation;
-- project only explicitly requested metadata fields into model context;
-- cap metadata size and depth before storage;
-- strip reserved identity headers before backend dispatch;
-- remove unhealthy or unsafe resources from discovery and routing.
+- label runtime feedback as diagnostic data and quarantine embedded instructions;
+- keep authorization policy outside model-visible feedback;
+- attach typed claims to source-owned append-only event records;
+- check freshness, subject, action scope, and source identity before accepting a claim.
 
-Weakest point: this is an operational release, not an independent benchmark. The upgrade has breaking secret-ownership and metadata-limit changes that require deliberate migration.
+Weakest point: PCM is an early specification and reference path, not a mature interoperability standard. The broader evidence-envelope pattern is usable now, while cross-vendor protocol adoption remains uncertain.
 
-Artifact status: Apache-2.0 repository metadata and the 1.35.0 release notes were inspected read-only. No external source was cloned, installed, built, or executed.
+Implementability score: 0.73
 
-Implementability score: 0.92
+Core sources:
+- [CARI](https://arxiv.org/abs/2610.38799v1)
+- [PCM paper](https://arxiv.org/abs/2610.39109v1)
+- [PCM protocol repository](https://github.com/Cygnux-Labs/PCM-protocol)
 
-Core source: [MCP Gateway Registry 1.35.0](https://github.com/agentic-community/mcp-gateway-registry/releases/tag/1.35.0)
+## 3. Bind workload identity and bound discovery data at the gateway
+
+GitHub's server-to-server Copilot support moves autonomous services toward workload-owned identity with short-lived installation tokens, organization attribution, model policy, budgets, and independent revocation. MCP Gateway Registry 1.35.0 adds on-behalf-of token exchange with audience checks, bounded registrant metadata, reserved-header stripping, and health-aware routing.
+
+Why it matters: borrowing a human token collapses principal, workload, and approval boundaries. Unbounded gateway metadata can also become an authority leak or prompt-injection surface.
+
+Fit in the strategy: workload identity, delegated authorization, gateway governance, and bounded capability discovery.
+
+Implementable now:
+- use service identities and short-lived tokens for autonomous workloads;
+- validate audience, issuer, tenant, and beneficiary at the gateway;
+- project only named metadata fields into model context;
+- strip reserved identity headers and remove unhealthy resources from discovery.
+
+Weakest point: the gateway release includes operational migration work and is not independent benchmark evidence. Identity and metadata controls still need local threat modeling and regression tests.
+
+Implementability score: 0.91
+
+Core sources:
+- [GitHub Copilot server-to-server authentication](https://github.blog/changelog/2026-10-27-github-copilot-supports-server-to-server-authentication/)
+- [MCP Gateway Registry 1.35.0](https://github.com/agentic-community/mcp-gateway-registry/releases/tag/1.35.0)
+
+## 4. Preserve refusal, escalation, and review as first-class outcomes
+
+The escalation study found that blocked agents often had enough evidence to identify an impasse but kept spending budget. FavorBench showed that locally permitted peer cooperation can bypass the intended review path. Both failures come from treating completion as the only successful terminal state.
+
+Why it matters: sovereign systems must preserve organizational intent under pressure. A valid outcome may be blocked, needs review, unsupported, or cannot determine.
+
+Fit in the strategy: budget governance, ownership workflows, escalation contracts, and release state.
+
+Implementable now:
+- add typed blocked and needs-review states;
+- require owner, initiator, beneficiary, and approval path on shared-resource effects;
+- stop budget consumption after an evidence threshold for impasse is met;
+- test peer cooperation for review bypasses.
+
+Weakest point: escalation thresholds can become an avoidance mechanism. Audit false escalations and require evidence for the claimed blocker.
+
+Implementability score: 0.78
+
+Core sources:
+- [Escalation study](https://arxiv.org/abs/2610.31895v1)
+- [FavorBench](https://arxiv.org/abs/2610.31985v1)
 
 ## Working conclusion
 
-Separate evidence from authority at every boundary. Runtime feedback stays diagnostic, inter-agent claims need source-owned proof, and gateway identity plus metadata must be bounded before they enter model context or backend routing.
+Keep evidence broad and authority narrow. Runtime state decides which effects are legal, workload identity decides who may request them, proof binds claims to source-owned events, and explicit refusal states prevent completion pressure from bypassing policy.

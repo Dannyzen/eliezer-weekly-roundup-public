@@ -1,360 +1,126 @@
 # AgenticAI
 
-Implementation analysis for agent evaluation, memory, context policy, tools, model routing, and orchestration.
+Implementation research for the deployed agent loop: tool use, memory, orchestration, evaluation, testing, and work-state continuity.
 
-## Latest Structured Update: 2026-10-30
+## Daily addendum: 2026-10-31
 
-### Grade every executable prefix
+### Make verification an evidence-gathering agent, then certify the test environment
 
-Summary: Prefix Executability checks each tool-call prefix against schemas, state preconditions, and data dependencies. It exposes successful endpoints that rest on invalid intermediate execution.
+Summary: verify persisted outcomes through bounded exploration, and prove the evaluation mutation, observation path, feasibility, and scorer before blaming the model.
 
-Analysis: [prefix-level tool evaluation](2026-10-30/reasoning.md#1-grade-every-executable-prefix-of-a-tool-trajectory)
+Analysis: [Daily analysis](2026-10-31/reasoning.md#1-make-verification-an-evidence-gathering-agent-then-certify-the-test-environment)
 
-Core source: [Prefix Executability](https://arxiv.org/abs/2610.40444v1)
+Core sources: [VeriCUA](https://arxiv.org/abs/2610.40578v1), [EnvOS](https://arxiv.org/abs/2610.40246v1)
 
 Implementable now:
-- replay predicted calls against executable fixtures;
-- record first-error depth and recovery;
-- compare terminal success with trajectory executability.
+- requirement-level evidence rubrics
+- GUI plus persisted-state checks
+- explicit abstention
+- pre-run intervention and scorer certification
+- separate authoritative-state and model-observation logs
 
 Implementability score: 0.86
 
-## Previous Structured Update: 2026-10-29
+### Keep episodic and relational memory as complementary projections
 
-### Compile subtask trees into context
+Summary: preserve narrative sequence and compact relationships in separate source-linked projections, then consolidate offline rather than rewriting canonical history.
 
-Summary: Spine turns nested work into a persistent execution tree, keeps unfinished scopes detailed, and collapses completed scopes into result objects. On SWE-Milestone with GPT-5.6 Sol, it improved resolved milestones from 14 to 19 of 98 while cutting total cost by 32.4%.
+Analysis: [Daily analysis](2026-10-31/reasoning.md#2-keep-episodic-and-relational-memory-as-complementary-projections)
 
-Analysis: [structured work-tree context](2026-10-29/reasoning.md#1-compile-the-work-tree-into-context)
-
-Core source: [Spine](https://arxiv.org/abs/2610.37224v1)
+Core source: [Long-Term Agent Memory through Complementary Curation and Consolidation](https://arxiv.org/abs/2610.39790v1)
 
 Implementable now:
-- represent work as nested typed scopes;
-- compile context from completion state;
-- separate task decomposition from delegation choice.
+- canonical event log
+- episodic and relational projections
+- shared retrieval budget
+- versioned asynchronous consolidation
+- contradiction and supersession tests
 
-Implementability score: 0.78
+Implementability score: 0.74
 
-### Test the complete feature arc
+## Latest structured week: 2026-10-30
 
-Summary: FeatureArc shows pooled coding-agent success falling from 62.7% on the first stage to 28.5% on the final evolved feature. Inherited defects appeared in 72.9% of failed later stages.
+### Gate tool calls before execution and grade every executable prefix
 
-Analysis: [evolving-feature evaluation](2026-10-29/reasoning.md#2-test-coding-agents-across-feature-evolution)
+Summary: validate current environment state before dispatch, then score the whole trajectory for schema validity, state preconditions, dependencies, recovery, and final success.
 
-Core source: [FeatureArc](https://arxiv.org/abs/2610.37434v1)
+Analysis: [Weekly analysis](2026-10-30/reasoning.md#1-gate-tool-calls-before-execution-and-grade-every-executable-prefix)
 
-Implementable now:
-- carry the same workspace across staged requirements;
-- rerun prior and new behavioral checks after every stage;
-- report inherited-defect rates.
-
-Implementability score: 0.83
-
-### Enforce consequential dialogue as typed sessions
-
-Summary: Concordat makes tool availability depend on a finite-state protocol and rejects illegal calls before side effects. It eliminated confirmation-skipping changes in the reported airline evaluation.
-
-Analysis: [typed agent sessions](2026-10-29/reasoning.md#3-enforce-consequential-conversations-as-typed-sessions)
-
-Core sources: [paper](https://arxiv.org/abs/2610.37461v1), [Apache-2.0 repository](https://github.com/miladsikaroudi/concordat)
+Core sources: [StateMirror](https://arxiv.org/abs/2610.32648v1), [Prefix Executability](https://arxiv.org/abs/2610.40444v1)
 
 Implementable now:
-- encode legal action order;
-- expose only state-legal tools;
-- split budgets across handoffs.
+- JSON Schema or Pydantic tool validation
+- environment-state predicates
+- append-only trajectory events
+- first-error depth and prefix-survival metrics
 
-Implementability score: 0.79
+Implementability score: 0.88
 
-## Previous Structured Update: 2026-10-28
+### Fault-inject the harness and test the full work arc
 
-### Deep Dive Wednesday: compile memory into decision state
+Summary: model scale does not substitute for a resilient harness, and one-shot success hides inherited defects across evolving work.
 
-Summary: SciValidityBench shows that retrieving a correct fact is insufficient when governing conditions determine whether the fact may influence a decision. Compiled state improved valid decisions by 9.2 to 18.8 percentage points over a generic Event Graph across four model families.
+Analysis: [Weekly analysis](2026-10-30/reasoning.md#2-fault-inject-the-harness-and-test-the-full-work-arc)
 
-Analysis: [decision-state compilation](2026-10-28/reasoning.md#deep-dive-wednesday-compile-memory-into-decision-state)
-
-Durable topic: [Decision-State Compilation for Agent Memory](decision-state-compilation/decision-state-compilation.md)
-
-Core source: [SciValidityBench paper v1](https://arxiv.org/abs/2610.34767v1)
-
-Artifact: [SciValidityBench reference implementation](https://github.com/SciValidityBench/SciValidityBench)
+Core sources: [MCP fault study](https://arxiv.org/abs/2610.32555v1), [FeatureArc](https://arxiv.org/abs/2610.37434v1), [REGATTA](https://arxiv.org/abs/2610.30924v1)
 
 Implementable now:
-- compile source-linked governing state from immutable events;
-- define legal actions and deterministic decision oracles;
-- test state use with counterfactual, corruption, and exact-repair fixtures;
-- keep decision validity separate from execution authority.
+- seeded MCP fault campaigns
+- model-harness release matrices
+- multi-stage regression fixtures
+- fault detection and recovery scoring
 
-Implementability score: 0.76
+Implementability score: 0.87
 
-### Recompute mutable gold answers from authoritative sources
+### Compile evidence into decision state, then preserve it across handoffs
 
-Summary: LiveSearch stores questions as executable verifier code. Across three days, 70% of served questions changed gold value, exposing the weakness of static current-fact benchmarks.
+Summary: retrieving facts is insufficient. Long-running work needs a source-linked projection of governing state plus typed handoffs for decisions, constraints, effects, open scopes, and verification status.
 
-Analysis: [live executable truth](2026-10-28/reasoning.md#1-recompute-the-gold-answer-from-live-source-systems)
+Analysis: [Weekly analysis](2026-10-30/reasoning.md#3-compile-evidence-into-decision-state-then-preserve-it-across-handoffs)
 
-Core source: [LiveSearch](https://arxiv.org/abs/2610.37166v1)
-
-Implementable now:
-- execute typed source calls and deterministic extractors;
-- bind each score to source and as-of receipts;
-- track per-item correctness over time.
-
-Implementability score: 0.84
-
-### Test agent takeover from inherited work state
-
-Summary: HSC-Bench separates repository evidence recovery from continuation across 1,039 tasks. Structured handoff state improved recovery for every tested model and continuation for most.
-
-Analysis: [handoff state continuity](2026-10-28/reasoning.md#2-evaluate-takeover-from-inherited-work-state)
-
-Core source: [HSC-Bench](https://arxiv.org/abs/2610.36523v1)
+Core sources: [SciValidityBench](https://arxiv.org/abs/2610.34767v1), [HSC-Bench](https://arxiv.org/abs/2610.36523v1), [Spine](https://arxiv.org/abs/2610.37224v1)
 
 Implementable now:
-- serialize decisions, completed effects, rejected paths, file state, and pending checks;
-- grade recovery and continuation separately;
-- test receiver swaps before production routing.
+- source-linked decision-state projections
+- structured handoff schemas
+- nested work scopes with immutable completion results
+- counterfactual state tests
 
-Implementability score: 0.86
+Implementability score: 0.80
 
-### Grade generated tests by behavioral adequacy
+### Test generated tests for behavioral adequacy
 
-Summary: The best Req2Test configuration passed 82.8% of generated tests but reached only 33.8% behavioral adequacy under mutation kill-completeness.
+Summary: passing generated tests are weak release evidence unless they reject seeded wrong implementations and cover the requirement's observable behavior.
 
-Analysis: [behavior-grade generated tests](2026-10-28/reasoning.md#3-grade-generated-tests-by-behavior-not-execution-success)
+Analysis: [Weekly analysis](2026-10-30/reasoning.md#4-test-generated-tests-for-behavioral-adequacy)
 
 Core source: [Req2Test-Bench](https://arxiv.org/abs/2610.36584v1)
 
 Implementable now:
-- separate execution from mutation-equivalent behavior;
-- keep developer tests as hidden oracles;
-- measure behavior gained per dollar.
-
-Artifact caveat: the advertised GitHub repository returned 404 and the dataset API returned 401 during this scan.
-
-Implementability score: 0.80
-
-## Previous Daily Update: 2026-10-27
-
-### Evaluate model and harness as one deployed pair
-
-Summary: Across 52,168 trajectories in 111 settings, harness rankings changed by model and task. Task success, valid completion, and token load exposed different execution profiles.
-
-Analysis: [model-harness pair evaluation](2026-10-27/reasoning.md#1-evaluate-the-model-and-harness-as-one-deployed-pair)
-
-Core source: [When Agents Fail](https://arxiv.org/abs/2610.32483v1)
-
-Implementable now:
-- cross models and harnesses on identical tasks;
-- version the whole deployed pair;
-- report valid completion and cost beside success.
-
-Implementability score: 0.90
-
-### Test delayed results as typed state transitions
-
-Summary: On 200 executable tasks, asynchronous delivery reduced average success from 29.7% to 26.0%. Full replanning added calls for only small delayed-result gains.
-
-Analysis: [asynchronous event contracts](2026-10-27/reasoning.md#2-test-delayed-subagent-results-as-state-changing-events)
-
-Core source: [Async-RBench](https://arxiv.org/abs/2610.32429v1)
-
-Artifact: [pope8zdt/Async-RBench](https://github.com/pope8zdt/Async-RBench)
-
-Implementable now:
-- type result relations;
-- compute minimal invalidation;
-- score event handling separately from final success.
-
-Implementability score: 0.82
-
-### Retire skills from unaided capability evidence
-
-Summary: Gain-only retirement removed more than half of uncovered skills under each tested model. Per-model unaided verdicts were more reproducible and can remain reversible.
-
-Analysis: [skill retirement certificates](2026-10-27/reasoning.md#3-retire-a-skill-only-when-unaided-capability-is-proven)
-
-Core source: [Beyond Gain](https://arxiv.org/abs/2610.32322v1)
-
-Artifacts: [SkillCorpus lifecycle](https://github.com/EverMind-AI/SkillCorpus/tree/main/skillcorpus/lifecycle), [dataset](https://huggingface.co/datasets/EverMind-AI/skillcorpus-lifecycle)
-
-Implementable now:
-- test unaided capability;
-- require valid skill-sensitive probes;
-- soft-retire per model with restoration evidence.
-
-Implementability score: 0.78
-
-## Previous Daily Update: 2026-10-26
-
-### Validate tool prerequisites before execution
-
-Summary: StateMirror converts proposed actions into live workspace predicates. It reached 0.940 precision and 0.817 F1 on 2,508 actions at 1.50 ms median latency, then corrected more than 95% of detected calls during intervention.
-
-Analysis: [pre-execution state validation](2026-10-26/reasoning.md#1-validate-tool-prerequisites-before-execution)
-
-Core source: [StateMirror](https://arxiv.org/abs/2610.32648v1)
-
-Implementable now:
-- validate paths, symbols, packages, and command assumptions before execution;
-- return exact mismatch evidence;
-- keep dynamic runtime failures on a separate fallback path.
-
-Implementability score: 0.89
-
-### Fault-inject the MCP path before release
-
-Summary: In 1,350 experiment cells, realistic MCP faults cut completion quality by 60%. Model scale did not improve retained performance, while harness behavior differed materially.
-
-Analysis: [MCP fault injection](2026-10-26/reasoning.md#2-fault-inject-the-mcp-path-before-release)
-
-Core source: [MCP-Injector paper](https://arxiv.org/abs/2610.32555v1)
-
-Artifact: [MCP-Injector](https://gitlab.com/uniluxembourg/snt/sedan/papers/mcp-injector)
-
-Implementable now:
-- inject seeded timeouts, errors, drops, and payload faults in staging;
-- score completion, retry, and recovery separately;
-- retain synthetic-fault receipts.
-
-Implementability score: 0.91
-
-### Convert impasse evidence into a complete handoff
-
-Summary: Across 19,371 trajectories, agents usually observed enough evidence to know outside help was required but often kept trying. An explicit escalation tool cut budget exhaustion from 34.0% to 6.7%.
-
-Analysis: [evidence-based stopping](2026-10-26/reasoning.md#3-turn-sufficient-evidence-of-an-impasse-into-a-structured-handoff)
-
-Core source: [Knowing When to Stop](https://arxiv.org/abs/2610.31895v1)
-
-Implementable now:
-- define evidence thresholds for environment blockers;
-- expose a blocked terminal action;
-- require blocker, progress, verification, and next authority in every handoff.
-
-Implementability score: 0.84
-
-## Previous Daily Update: 2026-10-25
-
-### Give live code precedence over stale descriptive instructions
-
-Summary: Coding agents followed stale instruction files in 90.1% of choices across 320 runs. A one-sentence precedence rule raised code-conforming choices from 4.2% to 91.4%, stopped rewrites of working code, and restored a 100% test pass rate.
-
-Analysis: [stale instruction precedence](2026-10-25/reasoning.md#1-give-live-code-precedence-when-repository-instructions-are-stale)
-
-Core source: [Stale Instruction Files Override the Code in Coding Agents](https://arxiv.org/abs/2610.30571v1)
-
-Artifact: [WenJing95/stale-docs-data](https://github.com/WenJing95/stale-docs-data)
-
-Implementable now:
-- add a live-code precedence rule for descriptive conventions;
-- report every detected instruction-code conflict;
-- seed stale instruction fixtures in coding-agent regression tests;
-- preserve safety, approval, and scope instructions as higher-authority constraints.
-
-Implementability score: 0.97
-
-## Previous Daily Update: 2026-10-24
-
-### Verify remembered premises against the pending effect
-
-Summary: Memory verification should scale with the action a remembered claim would authorize. AMV-Guard reports 33.9% lower ToolSandbox verification cost while retaining 100% safe-proceed recall and 0% gate-level harmful execution.
-
-Analysis: [action-conditioned memory verification](2026-10-24/reasoning.md#1-verify-remembered-claims-in-proportion-to-the-action-they-authorize)
-
-Core source: [When Is a Memory Safe Enough to Act On?](https://arxiv.org/abs/2610.31446v1)
-
-Implementable now:
-- classify effects by impact and reversibility;
-- extract the remembered premises required by each effect;
-- verify only premises that can change the admission decision;
-- abstain when evidence is insufficient.
-
-Implementability score: 0.78
-
-### Grade the assurance suite with seeded faults
-
-Summary: REGATTA evaluates whether tests expose specified faults, separating predicted coverage from observed detection. Its uncovered requirement tail makes a green aggregate score insufficient.
-
-Analysis: [fault-injected assurance coverage](2026-10-24/reasoning.md#2-grade-the-assurance-suite-by-seeded-faults-not-only-agent-success)
-
-Core source: [REGATTA](https://arxiv.org/abs/2610.30924v1)
-
-Implementable now:
-- define the fault catalog first;
-- inject controlled deviations;
-- report uncovered requirements and judge disagreement;
-- audit source rules before treating them as ground truth.
-
-Implementability score: 0.66
-
-## Previous Structured Update: Week Ending 2026-10-23
-
-### Preserve typed evidence through context transformations
-
-Summary: Compaction, retrieval, and summarization need direct provenance and evidence-preservation tests. Correct computation is insufficient when the harness answers from the wrong output or turns untrusted text into apparent user authority.
-
-Analysis: [preserve typed provenance through retrieval and compaction](2026-10-23/reasoning.md#1-preserve-typed-provenance-through-retrieval-and-compaction)
-
-Core sources: [Compaction Laundering](https://arxiv.org/abs/2610.29869v1), [KEEP-Bench](https://arxiv.org/abs/2610.26827v1), [Same Simulation, Different Evidence](https://arxiv.org/abs/2610.26836v1)
-
-Implementable now:
-- preserve typed roles and source IDs;
-- mark authoritative outputs;
-- run proposition-level preservation fixtures;
-- fail closed on missing required lineage.
-
-Implementability score: 0.91
-
-### Measure model and harness failures separately
-
-Summary: Frozen budgets, first-failure records, user interaction, and terminal outcome grading reveal when an apparent model failure is a harness limit or a delivery failure.
-
-Analysis: [treat benchmark scores as model plus harness scores](2026-10-23/reasoning.md#2-treat-benchmark-scores-as-model-plus-harness-scores)
-
-Core sources: [ToolBottleneckBench](https://arxiv.org/abs/2610.21098v1), [FDE-Gym](https://arxiv.org/abs/2610.22350v1)
-
-Implementable now:
-- freeze tool menus and completion caps;
-- record first unmet obligations;
-- grade integration and customer outcome separately;
-- pair static tasks with multi-turn user simulations.
-
-Implementability score: 0.86
-
-### Route execution abstractions from observed state
-
-Summary: Choose micro tools, macro skills, model escalation, and planning gates during execution, after state and failure evidence exist.
-
-Analysis: [route execution abstractions from observed state](2026-10-23/reasoning.md#3-route-execution-abstractions-from-observed-state)
-
-Core sources: [Adaptive Skill Granularity](https://arxiv.org/abs/2610.31461v1), [LEASH](https://arxiv.org/abs/2610.22280v1), [PAUSE](https://arxiv.org/abs/2610.29870v1)
-
-Implementable now:
-- add macro preconditions and postconditions;
-- record route transitions and costs;
-- add one planner gate before the first source edit;
-- shadow learned routers against deterministic rules.
-
-Implementability score: 0.78
-
-### Gate proactive memory on evidence and timing
-
-Summary: Relevant memory does not prove that interruption or action is useful now. Retrieval, timing, silence, expiry, and reauthorization need separate tests.
-
-Analysis: [gate proactive memory on evidence and timing](2026-10-23/reasoning.md#4-gate-proactive-memory-on-evidence-and-timing)
-
-Core sources: [ProPerAgent](https://arxiv.org/abs/2610.22671v1), [CarryoverBench](https://arxiv.org/abs/2610.28425v1)
-
-Implementable now:
-- add trigger windows and cooldowns;
-- store lineage and expiry with memory;
-- separate facts from procedures and grants;
-- test planting and triggering across sessions.
-
-Implementability score: 0.45
-
-## Current implication
-
-Preserve evidence first, instrument the harness second, then optimize routing and models. Proactive memory remains the least mature layer because usefulness and authority both change over time.
+- mutation testing
+- requirement-to-behavior maps
+- independent release oracles
+- kill-completeness gates
+
+Implementability score: 0.81
+
+## Current working model
+
+1. Compile current state before choosing an action.
+2. Validate the action before dispatch.
+3. Verify persisted outcomes against explicit requirements.
+4. Certify dynamic test environments before attributing failures.
+5. Preserve source evidence and derive fit-for-purpose memory projections.
+6. Grade the full work arc and preserve state across handoffs.
+
+## Browse
+
+- [Daily roundup](../roundups/2026-10-31.md)
+- [Latest dated analysis](2026-10-31/reasoning.md)
+- [Weekly synthesis](../roundups/2026-10-30.md)
+- [Decision-state compilation](decision-state-compilation/decision-state-compilation.md)
+- [Agent harness architecture](agent-harness-architecture/agent-harness-architecture.md)
+- [Memory systems](memory-systems/memory-systems.md)
+- [Trajectory-aware evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
+- [Skills as control](skills-as-control/skills-as-control.md)
+- [Multi-agent orchestration](multi-agent-orchestration/multi-agent-orchestration.md)

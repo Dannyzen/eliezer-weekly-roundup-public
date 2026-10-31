@@ -1276,3 +1276,20 @@ Artifact caveat: code and the evaluation set are promised upon publication but a
 Implementability score: 0.45
 
 Source: [ProPerAgent v1](https://arxiv.org/abs/2610.22671v1)
+
+## October 31, 2026 update: keep episodic and relational projections together
+
+A hybrid memory study reports 90.2 percent on LoCoMo and 85.5 percent on LongMemEval-S by combining timestamped episodic summaries with compact relational tuples. Offline consolidation reduced stored memory by 16.34 percent with little reported performance loss.
+
+Practical lesson:
+- keep raw events canonical;
+- derive episodic and relational stores independently;
+- retrieve from both under one budget;
+- version consolidation outputs and retain source links;
+- test contradiction, supersession, and deletion separately.
+
+Evidence caveat: the study uses LLM-as-a-judge metrics, is company-authored, and has no dedicated public implementation repository identified.
+
+Implementability score: 0.74
+
+Source: [Long-Term Agent Memory through Complementary Curation and Consolidation](https://arxiv.org/abs/2610.39790v1)

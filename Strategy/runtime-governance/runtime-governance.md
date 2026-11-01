@@ -1361,3 +1361,20 @@ Evidence caveat: GitHub provides no public classifier accuracy or false-approval
 Implementability score: 0.84
 
 Sources: [GitHub release](https://github.blog/changelog/2026-10-26-github-copilot-assisted-permissions-generally-available), [documentation](https://docs.github.com/copilot/concepts/customizations/allowing-safe-commands)
+
+## November 1, 2026 update: behavioral probes warn, external policy decides
+
+Pre-Crime for Agents catches 82% of leaking Qwen3-32B calls at a threshold that flags 5% of benign calls, while a gpt-oss-20b reasoning probe reaches AUROC 0.91. A trained bag-of-words classifier comes close, permitted disclosures also trigger, and stopping on every alarm disrupts most benign episodes.
+
+Practical lesson:
+- start with a trained text baseline in shadow mode;
+- calibrate on matched permitted and prohibited disclosures;
+- use warnings to pause or escalate;
+- decide release with recipient, purpose, secret, and channel policy;
+- preserve the warning and disposition as one receipt.
+
+Evidence caveat: the benchmark has six controlled scenarios and one author. The public MIT artifact was inspected read-only.
+
+Implementability score: 0.38
+
+Sources: [paper](https://arxiv.org/abs/2610.40588v1), [artifact](https://github.com/leonidas1712/precrime-agents)

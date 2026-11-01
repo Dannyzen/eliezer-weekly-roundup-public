@@ -1628,3 +1628,17 @@ Req2Test-Bench shows an 82.8% pass rate can coexist with only 33.8% mutation kil
 Source: https://arxiv.org/abs/2610.36584v1
 
 Implementability score: 0.80
+
+## November 1, 2026 update: repair labels need an executor identity
+
+Repairs for Whom? shows that candidate ranking changes with the model that executes the remaining trajectory. Greedy replay loses 0.08 to 0.13 expected net success in ALFWorld and 0.06 to 0.13 net reward in WebShop relative to deployed-policy rollout selection.
+
+Practical lesson:
+- bind repair labels to model, prompt, history protocol, tools, and runtime;
+- measure net gain against keeping the original action;
+- verify candidates with the deployed policy;
+- retain evaluator-executor disagreements as regression fixtures.
+
+Implementability score: 0.86
+
+Source: [Repairs for Whom?](https://arxiv.org/abs/2610.38610v1)

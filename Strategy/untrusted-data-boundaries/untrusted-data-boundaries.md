@@ -557,3 +557,20 @@ Evidence caveat: the benchmark is synthetic, and no dedicated public repository 
 Implementability score: 0.68
 
 Source: [Judging Before Propagation](https://arxiv.org/abs/2610.39532v1)
+
+## November 1, 2026 update: repository instructions are executable context
+
+A 36-task study across 12 CWE classes finds that malicious coding-agent memory files can shape vulnerable code while remaining outside the developer's prompt. Agents that recognize the attack can still emit vulnerable implementations, and final-message disclosure varies sharply by harness.
+
+Practical lesson:
+- protect instruction files with ownership and branch policy;
+- display their diffs as a separate review surface;
+- bind loaded instructions to source commit and trust class;
+- forbid repository context from increasing tool authority;
+- rerun security fixtures after instruction changes.
+
+Evidence caveat: the study is small and reports heterogeneous effects, from minus 8 to plus 6 percentage points in secure completion.
+
+Implementability score: 0.90
+
+Source: [Security Impact of Coding Agent's Memory Files](https://arxiv.org/abs/2610.38521v1)

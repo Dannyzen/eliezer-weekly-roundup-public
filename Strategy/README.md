@@ -2,6 +2,43 @@
 
 Governance research for runtime authority, evidence provenance, identity, gateways, and sovereign control surfaces.
 
+
+## Daily addendum: 2026-11-01
+
+### Treat repository instruction files as untrusted policy-bearing input
+
+Summary: coding-agent memory files are executable context, and model awareness of a malicious file does not reliably protect the generated code.
+
+Analysis: [Daily strategy](2026-11-01/sovereignty.md#1-treat-repository-instruction-files-as-untrusted-policy-bearing-input)
+
+Core source: [Security Impact of Coding Agent's Memory Files](https://arxiv.org/abs/2610.38521v1)
+
+Implementable now:
+- CODEOWNERS and branch rules for instruction files
+- separate instruction-diff review
+- provenance in run manifests
+- no authority amplification from repository context
+- security regression fixtures on instruction changes
+
+Implementability score: 0.90
+
+### Keep behavioral probes advisory and enforce secrets at the release boundary
+
+Summary: activation probes can warn shortly before disclosure, but they confuse permitted and prohibited releases and broad halting disrupts benign work.
+
+Analysis: [Daily strategy](2026-11-01/sovereignty.md#2-keep-behavioral-probes-advisory-and-enforce-secrets-at-the-release-boundary)
+
+Core sources: [Pre-Crime for Agents](https://arxiv.org/abs/2610.40588v1), [read-only artifact](https://github.com/leonidas1712/precrime-agents)
+
+Implementable now:
+- exact secret-release grants
+- trained text baseline in shadow mode
+- matched permitted and prohibited disclosure tests
+- external policy after learned warnings
+- disclosure and disposition receipts
+
+Implementability score: 0.38
+
 ## Daily addendum: 2026-10-31
 
 ### Authorize information for its full propagation scope

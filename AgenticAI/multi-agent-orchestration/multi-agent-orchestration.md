@@ -339,3 +339,20 @@ HSC-Bench separates repository evidence recovery from continuation across conver
 Source: https://arxiv.org/abs/2610.36523v1
 
 Implementability score: 0.86
+
+## November 1, 2026 update: specialize evidence lanes before aggregation
+
+ExploreRepair assigns three agents distinct evidence dimensions, distills their trajectories and patches, and gives the result to independent aggregators. Across 204 vulnerabilities, it reports 39.6% and 71.6% PatchEval success with two models, improving over EvoRepair by 16.0 and 25.4 percentage points.
+
+Practical lesson:
+- partition by evidence type, not duplicate prompts;
+- require source-linked observations and concrete candidate patches;
+- distill evidence before synthesis;
+- verify the final patch independently;
+- compare against a same-model, same-budget single-agent baseline.
+
+Artifact caveat: no public implementation repository resolved from the paper during this scan.
+
+Implementability score: 0.72
+
+Source: [ExploreRepair](https://arxiv.org/abs/2610.39899v1)

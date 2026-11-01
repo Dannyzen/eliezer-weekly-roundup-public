@@ -2,6 +2,43 @@
 
 Implementation research for the deployed agent loop: tool use, memory, orchestration, evaluation, testing, and work-state continuity.
 
+
+## Daily addendum: 2026-11-01
+
+### Specialize evidence collection before aggregating a repair
+
+Summary: assign distinct evidence dimensions to parallel agents, then aggregate source-linked observations and patches under independent verification.
+
+Analysis: [Daily analysis](2026-11-01/reasoning.md#1-specialize-evidence-collection-before-aggregating-a-repair)
+
+Core source: [ExploreRepair](https://arxiv.org/abs/2610.39899v1)
+
+Implementable now:
+- orthogonal evidence lanes
+- typed evidence and patch returns
+- trajectory distillation before synthesis
+- independent final verification
+- same-budget single-agent comparison
+
+Implementability score: 0.72
+
+### Evaluate repairs with the executor that will run them
+
+Summary: repair value is executor-specific, so substitute models and greedy replay can select the wrong intervention for the deployed policy.
+
+Analysis: [Daily analysis](2026-11-01/reasoning.md#2-evaluate-repairs-with-the-executor-that-will-run-them)
+
+Core source: [Repairs for Whom?](https://arxiv.org/abs/2610.38610v1)
+
+Implementable now:
+- executor fingerprints in repair labels
+- deployed-policy rollout checks
+- net-gain scoring against no repair
+- disagreement regression fixtures
+- repair reevaluation after runtime changes
+
+Implementability score: 0.86
+
 ## Daily addendum: 2026-10-31
 
 ### Make verification an evidence-gathering agent, then certify the test environment

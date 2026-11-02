@@ -3,6 +3,41 @@
 Implementation research for the deployed agent loop: tool use, memory, orchestration, evaluation, testing, and work-state continuity.
 
 
+## Daily addendum: 2026-11-02
+
+### Recover from ambiguous tool outcomes with public evidence
+
+Summary: classify timeouts as uncertain effects, query authoritative state, and select retry, continue, compensate, handoff, or unresolved from persisted evidence.
+
+Analysis: [Daily analysis](2026-11-02/reasoning.md#1-recover-from-ambiguous-tool-outcomes-with-public-evidence)
+
+Core source: [Evidence-Guided Recovery](https://arxiv.org/abs/2610.41453v1)
+
+Implementable now:
+- intent, dispatch, settlement, and verification events
+- stable operation IDs and idempotency keys
+- provider state queries before retry
+- explicit partial, pending, and unresolved outcomes
+- replayable recovery fixtures
+
+Implementability score: 0.83
+
+### Evaluate recursive memory for error persistence and retention
+
+Summary: task success cannot show whether recursive memory stopped carrying contradicted claims or preserved correct history.
+
+Analysis: [Daily analysis](2026-11-02/reasoning.md#2-evaluate-recursive-memory-for-error-persistence-not-task-score-alone)
+
+Core source: [KEEPER](https://arxiv.org/abs/2610.41482v1)
+
+Implementable now:
+- source-linked memory claims
+- contradiction and recurrence fixtures
+- separate correction and retention metrics
+- canonical events outside rewritten summaries
+
+Implementability score: 0.55
+
 ## Daily addendum: 2026-11-01
 
 ### Specialize evidence collection before aggregating a repair
@@ -152,8 +187,8 @@ Implementability score: 0.81
 
 ## Browse
 
-- [Daily roundup](../roundups/2026-10-31.md)
-- [Latest dated analysis](2026-10-31/reasoning.md)
+- [Daily roundup](../roundups/2026-11-02.md)
+- [Latest dated analysis](2026-11-02/reasoning.md)
 - [Weekly synthesis](../roundups/2026-10-30.md)
 - [Decision-state compilation](decision-state-compilation/decision-state-compilation.md)
 - [Agent harness architecture](agent-harness-architecture/agent-harness-architecture.md)

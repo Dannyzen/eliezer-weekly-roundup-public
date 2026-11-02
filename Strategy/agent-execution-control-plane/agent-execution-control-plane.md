@@ -342,3 +342,20 @@ Sources:
 - https://docs.github.com/copilot/how-tos/copilot-sdk/auth/server-to-server-tokens
 
 Implementability score: 0.90
+
+## November 2, 2026 update: authorization must bind every effect-bearing route
+
+Cross-Interface Authorization shows why one policy decision cannot be copied blindly across GUI, CLI, API, script, and MCP routes. Interfaces can change defaults, parsing, identity, timing, or durable sinks even when the requested effect sounds identical.
+
+Practical lesson:
+- inventory every route to consequential effects;
+- normalize route inputs into a typed effect manifest;
+- bind grants to route, principal, effect, version, expiry, and state;
+- revalidate mutable state at commit;
+- require a receipt from the durable sink.
+
+Evidence caveat: guarantees apply to fixed, versioned deployment profiles and do not automatically survive upstream changes.
+
+Implementability score: 0.64
+
+Source: [Cross-Interface Authorization](https://arxiv.org/abs/2610.41397v1)

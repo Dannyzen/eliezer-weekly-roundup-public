@@ -574,3 +574,22 @@ Evidence caveat: the study is small and reports heterogeneous effects, from minu
 Implementability score: 0.90
 
 Source: [Security Impact of Coding Agent's Memory Files](https://arxiv.org/abs/2610.38521v1)
+
+## November 2, 2026 update: tool-call telemetry is sensitive behavioral data
+
+PrivacyTrace demonstrates that tool names, arguments, results, and cross-session linkage can support user-profile inference without conversation access. Its synthetic benchmark reports 26.25% attack success from traces versus 17.97% from priors across 1,000 profiles and 4,000 trajectories.
+
+Practical lesson:
+- collect effect receipts separately from full tool payloads;
+- redact identifiers and high-signal attributes before storage;
+- limit cross-session linkage by purpose and retention;
+- isolate trace stores by tenant and principal;
+- test telemetry exports for profile-inference risk.
+
+Evidence caveat: profiles and scenarios are synthetic. The new artifact has no formal release and no specified license.
+
+Implementability score: 0.78
+
+Sources:
+- [PrivacyTrace paper](https://arxiv.org/abs/2610.41885v1)
+- [AI45Lab/PrivacyTrace](https://github.com/AI45Lab/PrivacyTrace)

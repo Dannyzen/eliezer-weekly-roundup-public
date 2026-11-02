@@ -3,6 +3,42 @@
 Governance research for runtime authority, evidence provenance, identity, gateways, and sovereign control surfaces.
 
 
+## Daily addendum: 2026-11-02
+
+### Authorize effects across every interface
+
+Summary: normalize GUI, CLI, API, script, and MCP routes into one effect model, then bind authorization to the concrete route and revalidate state at commit.
+
+Analysis: [Daily strategy](2026-11-02/sovereignty.md#1-authorize-effects-across-every-interface-then-bind-the-decision-to-commit-state)
+
+Core source: [Cross-Interface Authorization](https://arxiv.org/abs/2610.41397v1)
+
+Implementable now:
+- effect-route inventory
+- typed effect manifests
+- route-bound expiring grants
+- commit-time precondition checks
+- sink receipts and bypass mutants
+
+Implementability score: 0.64
+
+### Treat tool-call traces as sensitive behavioral data
+
+Summary: tool names, arguments, returned results, and cross-session linkage can reveal user attributes without conversation access.
+
+Analysis: [Daily strategy](2026-11-02/sovereignty.md#2-treat-tool-call-traces-as-sensitive-behavioral-data)
+
+Core sources: [PrivacyTrace paper](https://arxiv.org/abs/2610.41885v1), [read-only artifact](https://github.com/AI45Lab/PrivacyTrace)
+
+Implementable now:
+- payload minimization and redaction
+- receipt and payload separation
+- tenant-isolated short-lived trace stores
+- purpose-bound cross-session joins
+- profile-inference audits
+
+Implementability score: 0.78
+
 ## Daily addendum: 2026-11-01
 
 ### Treat repository instruction files as untrusted policy-bearing input
@@ -135,8 +171,8 @@ Implementability score: 0.78
 
 ## Browse
 
-- [Daily roundup](../roundups/2026-10-31.md)
-- [Latest dated strategy](2026-10-31/sovereignty.md)
+- [Daily roundup](../roundups/2026-11-02.md)
+- [Latest dated strategy](2026-11-02/sovereignty.md)
 - [Weekly synthesis](../roundups/2026-10-30.md)
 - [Evidence provenance control plane](evidence-provenance-control-plane/evidence-provenance-control-plane.md)
 - [Agent execution control plane](agent-execution-control-plane/agent-execution-control-plane.md)

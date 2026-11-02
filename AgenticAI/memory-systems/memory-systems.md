@@ -1293,3 +1293,19 @@ Evidence caveat: the study uses LLM-as-a-judge metrics, is company-authored, and
 Implementability score: 0.74
 
 Source: [Long-Term Agent Memory through Complementary Curation and Consolidation](https://arxiv.org/abs/2610.39790v1)
+
+## November 2, 2026 update: memory quality is correction plus retention
+
+KEEPER names self-consistency bias, where an incorrect claim persists because each recursive update conditions on prior memory. Task success cannot prove false history was corrected, and low error persistence can hide destructive forgetting.
+
+Practical lesson:
+- retain source event IDs behind memory claims;
+- test contradiction, correction, omission, and recurrence;
+- score valid-information retention separately from error removal;
+- keep canonical events outside mutable summaries.
+
+Evidence caveat: two backbones in one architecture, one tested only on ALFWorld, with qualitative claim-level analysis.
+
+Implementability score: 0.55
+
+Source: [KEEPER](https://arxiv.org/abs/2610.41482v1)

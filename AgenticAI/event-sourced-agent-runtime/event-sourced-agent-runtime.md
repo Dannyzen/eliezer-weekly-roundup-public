@@ -215,3 +215,20 @@ Implementability score: 0.94
 
 Source:
 - [Where Does Exactly-Once Live?](https://arxiv.org/abs/2609.29095v1)
+
+## November 2, 2026 update: recovery is a state machine over uncertain effects
+
+Evidence-Guided Recovery treats a timeout as an uncertain effect. The runtime preserves committed, pending, partial, failed, handoff, and unresolved states, then chooses continuation, retry, compensation, or escalation from public evidence.
+
+Practical lesson:
+- persist intent, dispatch, acknowledgment, settlement, and verification separately;
+- assign idempotency keys before dispatch;
+- query authoritative state before retries;
+- keep unknown and handoff as valid outcomes;
+- replay delayed, duplicated, and partial effects.
+
+Evidence caveat: the 185-record workload is authored mechanism evidence and the model comparison uses one runtime.
+
+Implementability score: 0.83
+
+Source: [Evidence-Guided Recovery](https://arxiv.org/abs/2610.41453v1)

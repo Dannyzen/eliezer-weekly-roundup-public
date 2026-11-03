@@ -1642,3 +1642,22 @@ Practical lesson:
 Implementability score: 0.86
 
 Source: [Repairs for Whom?](https://arxiv.org/abs/2610.38610v1)
+
+## November 3, 2026 update: diagnose structural pressure before comparing agents
+
+What Structurally Breaks an Agent? supplies a fixed-work instrument for separating dependency depth, candidate fan-out, active state width, snapshot visibility, and recovery behavior. Its 49,152-task primary design and 295,936-rollout follow-on establish analytic controller behavior, while the small model studies remain explicitly exploratory.
+
+Practical lesson:
+- keep operation count fixed while varying one structural pressure;
+- report scheduling, selection, retention, and observation failures separately;
+- preserve controller representation and snapshot policy in every result;
+- charge retries and recovery against the tool-call budget;
+- use model runs only after reference-controller calibration.
+
+Artifact status: the public repository is populated with generators, protocols, analysis scripts, and generated artifacts. It was inspected read-only and not executed.
+
+Implementability score: 0.72
+
+Sources:
+- [paper v1](https://arxiv.org/abs/2611.03227v1)
+- [read-only repository](https://github.com/Shereen20112003/what-structurally-breaks-an-agent)

@@ -3,6 +3,59 @@
 Governance research for runtime authority, evidence provenance, identity, gateways, and sovereign control surfaces.
 
 
+## Daily addendum: 2026-11-03
+
+### Reauthorize effects after context compaction
+
+Summary: retaining an operating rule in a summary does not prove the agent will apply it, so consequential actions need a current external policy check.
+
+Analysis: [Daily strategy](2026-11-03/sovereignty.md#1-keep-operating-rules-outside-lossy-compaction-and-test-their-use-after-summarization)
+
+Core sources: [ARCBench paper](https://arxiv.org/abs/2611.03223v1), [read-only repository](https://github.com/VUAISec/ARCBench)
+
+Implementable now:
+- typed policy state outside summaries
+- source and version preservation
+- retention plus compliance fixtures
+- later-conflict tests
+- post-compaction action authorization
+
+Implementability score: 0.84
+
+### Treat MCP metadata and output as untrusted data
+
+Summary: framework defaults do not reliably stop tool poisoning, so admission scans need process containment and canary-backed effect tests.
+
+Analysis: [Daily strategy](2026-11-03/sovereignty.md#2-treat-every-mcp-field-as-untrusted-input-and-verify-actual-effects)
+
+Core sources: [paper](https://arxiv.org/abs/2611.03555v1), [mcpvenom read-only repository](https://github.com/dynatrace-research/mcpvenom)
+
+Implementable now:
+- metadata digest and catalog pinning
+- pre-exposure scanners with measured false positives
+- egress and secret denial by default
+- sandboxed canary effects
+- readmission after metadata or permission change
+
+Implementability score: 0.82
+
+### Make the host own destructive approval
+
+Summary: server elicitation is inconsistent and host defaults are often permissive, so the effect-bearing host must prompt and fail closed for destructive or unknown tools.
+
+Analysis: [Daily strategy](2026-11-03/sovereignty.md#3-make-the-host-own-destructive-approval-and-fail-closed-when-confirmation-cannot-run)
+
+Core source: [When Neither Side Confirms](https://arxiv.org/abs/2611.02527v1)
+
+Implementable now:
+- trusted-read-only, bounded-write, destructive, and unknown classes
+- exact-argument approval manifests
+- host-side deny by default
+- commit-time state rechecks
+- effect receipts
+
+Implementability score: 0.90
+
 ## Daily addendum: 2026-11-02
 
 ### Authorize effects across every interface
@@ -171,8 +224,8 @@ Implementability score: 0.78
 
 ## Browse
 
-- [Daily roundup](../roundups/2026-11-02.md)
-- [Latest dated strategy](2026-11-02/sovereignty.md)
+- [Daily roundup](../roundups/2026-11-03.md)
+- [Latest dated strategy](2026-11-03/sovereignty.md)
 - [Weekly synthesis](../roundups/2026-10-30.md)
 - [Evidence provenance control plane](evidence-provenance-control-plane/evidence-provenance-control-plane.md)
 - [Agent execution control plane](agent-execution-control-plane/agent-execution-control-plane.md)

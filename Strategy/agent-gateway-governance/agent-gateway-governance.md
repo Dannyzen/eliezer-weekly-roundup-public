@@ -1344,3 +1344,23 @@ Evidence caveat: the system is vendor-operated and no public implementation arti
 Implementability score: 0.82
 
 Source: [Tool Recommendation for Multi-Step Agents v1](https://arxiv.org/abs/2610.23707v1)
+
+## November 3, 2026 update: tool metadata is an untrusted execution input
+
+The mcpvenom study measures 2,113 vulnerable cells in a 9,720-cell matrix across 12 frameworks, 18 models, and 45 attack scenarios. Nine core frameworks cluster between 23% and 26% attack success, and the code audit finds no intentional framework-layer tool-poisoning defense in the tested versions.
+
+Practical lesson:
+- pin server identity, tool metadata, permissions, and catalog digests;
+- scan descriptions and schemas before model exposure;
+- preserve scanner false-positive measurements;
+- deny ambient egress and secret access at the server process;
+- confirm real effects with canary-backed sandbox tests;
+- readmit on metadata, dependency, permission, or runtime change.
+
+Artifact caveat: the public repository includes frozen results and reproduction tooling under a restricted distribution license. It was inspected read-only and not executed.
+
+Implementability score: 0.82
+
+Sources:
+- [paper v1](https://arxiv.org/abs/2611.03555v1)
+- [mcpvenom repository](https://github.com/dynatrace-research/mcpvenom)

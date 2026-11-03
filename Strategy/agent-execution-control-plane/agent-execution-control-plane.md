@@ -359,3 +359,20 @@ Evidence caveat: guarantees apply to fixed, versioned deployment profiles and do
 Implementability score: 0.64
 
 Source: [Cross-Interface Authorization](https://arxiv.org/abs/2610.41397v1)
+
+## November 3, 2026 update: the host owns destructive approval
+
+A 1,000-repository MCP sample estimates that 90% of destructive tools lack server-side confirmation. Thirty-two of 41 popular hosts and SDKs lack approval by default, leaving 60.7% of sampled server-host pairings without enforced approval. Host prompting for every tool not explicitly trusted as read-only or non-destructive reduces that measured share to 5.4%.
+
+Practical lesson:
+- classify tools as trusted read-only, bounded write, destructive, or unknown;
+- require host-side approval for destructive and unknown effects;
+- bind grants to principal, exact arguments, target, state, and expiry;
+- fail closed when confirmation transport is unavailable;
+- recheck mutable state before dispatch and record the final effect.
+
+Evidence caveat: the source study is a broad sampled snapshot over changing projects and has no paper-owned public implementation repository.
+
+Implementability score: 0.90
+
+Source: [When Neither Side Confirms paper v1](https://arxiv.org/abs/2611.02527v1)

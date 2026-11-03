@@ -6,9 +6,9 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-11-02: [evidence-bound recovery, cross-interface authorization, and trace privacy](roundups/2026-11-02.md)
-- Latest implementation analysis: [AgenticAI](AgenticAI/2026-11-02/reasoning.md)
-- Latest strategy analysis: [Strategy](Strategy/2026-11-02/sovereignty.md)
+- Daily scan, 2026-11-03: [host-owned approval, compaction compliance, and structural evaluation](roundups/2026-11-03.md)
+- Latest implementation analysis: [AgenticAI](AgenticAI/2026-11-03/reasoning.md)
+- Latest strategy analysis: [Strategy](Strategy/2026-11-03/sovereignty.md)
 - Latest implementation index: [AgenticAI README](AgenticAI/README.md)
 - Latest strategy index: [Strategy README](Strategy/README.md)
 - Weekly synthesis, week ending 2026-10-30: [evidence is not authority](roundups/2026-10-30.md)

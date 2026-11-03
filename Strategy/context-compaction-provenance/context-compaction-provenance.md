@@ -38,3 +38,22 @@ Implementability score: 0.91
 Sources:
 - [Compaction Laundering paper v1](https://arxiv.org/abs/2610.29869v1)
 - [Compaction Laundering repository](https://github.com/pixee/compaction-laundering)
+
+## November 3, 2026 update: retained policy still needs external enforcement
+
+ARCBench shows that post-compaction compliance can fail even when the governing rule survives in context. Compacted runs that retained the rule violated more than twice as often as full-history runs, and the strongest summary defense restored the rule without eliminating violations.
+
+Practical lesson:
+- store governing policy outside lossy conversation summaries;
+- preserve source identity and policy version through compaction;
+- score rule retention and action compliance separately;
+- test later requests that conflict with retained policy;
+- reauthorize consequential effects against current policy after compaction.
+
+Artifact status: the public repository contains benchmark cases, metrics, tests, a pinned harness, and reproduction scripts. Study rows are absent, and reproduction requires model access.
+
+Implementability score: 0.84
+
+Sources:
+- [ARCBench paper v1](https://arxiv.org/abs/2611.03223v1)
+- [ARCBench repository](https://github.com/VUAISec/ARCBench)

@@ -3,6 +3,25 @@
 Implementation research for the deployed agent loop: tool use, memory, orchestration, evaluation, testing, and work-state continuity.
 
 
+## Daily addendum: 2026-11-03
+
+### Audit workflow structure before changing models
+
+Summary: separate scheduling, candidate-selection, state-retention, and snapshot failures with fixed-work executable fixtures and first-failure evidence.
+
+Analysis: [Daily analysis](2026-11-03/reasoning.md#1-audit-workflow-structure-instead-of-collapsing-failure-into-one-task-score)
+
+Core sources: [paper](https://arxiv.org/abs/2611.03227v1), [read-only repository](https://github.com/Shereen20112003/what-structurally-breaks-an-agent)
+
+Implementable now:
+- fixed-operation workflow families
+- dependency-depth and candidate-fan-out sweeps
+- state-width and snapshot-visibility variants
+- first-failure mechanism labels
+- explicit retry and recovery cost
+
+Implementability score: 0.72
+
 ## Daily addendum: 2026-11-02
 
 ### Recover from ambiguous tool outcomes with public evidence
@@ -187,8 +206,8 @@ Implementability score: 0.81
 
 ## Browse
 
-- [Daily roundup](../roundups/2026-11-02.md)
-- [Latest dated analysis](2026-11-02/reasoning.md)
+- [Daily roundup](../roundups/2026-11-03.md)
+- [Latest dated analysis](2026-11-03/reasoning.md)
 - [Weekly synthesis](../roundups/2026-10-30.md)
 - [Decision-state compilation](decision-state-compilation/decision-state-compilation.md)
 - [Agent harness architecture](agent-harness-architecture/agent-harness-architecture.md)

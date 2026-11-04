@@ -1718,3 +1718,20 @@ Practical lesson:
 Implementability score: 0.86
 
 Sources: [VeriCUA](https://arxiv.org/abs/2610.40578v1), [EnvOS](https://arxiv.org/abs/2610.40246v1)
+
+## November 4, 2026 update: retain evolution guidance, discard run-local edits
+
+Meta2 separates reusable knowledge about when to adapt from the task-specific harness edit itself. A frozen act, avoid, and hold Meta-Skill guides bounded within-run changes, while every realized edit expires when the task ends. Retaining edits across tasks reduced performance by 2.67 points on Terminal-Bench and 5.33 points on DeepSWE.
+
+Practical lesson:
+- make keep or evolve an explicit checkpoint decision;
+- constrain edits to typed, reviewable channels;
+- preserve the active environment and trajectory across an edit;
+- reset the harness at each task boundary;
+- promote only reviewed cross-task guidance.
+
+Artifact status: the public project page was inspected read-only and marks code as coming soon.
+
+Implementability score: 0.67
+
+Sources: [Meta2 paper](https://arxiv.org/abs/2611.05139v1), [project page](https://meta-square.github.io/)

@@ -1661,3 +1661,20 @@ Implementability score: 0.72
 Sources:
 - [paper v1](https://arxiv.org/abs/2611.03227v1)
 - [read-only repository](https://github.com/Shereen20112003/what-structurally-breaks-an-agent)
+
+## November 4, 2026 update: audit the instrument that produces the score
+
+A read-only audit of HAL and tau2-bench artifacts found missing grades, duplicated cost spans, grader actions mixed into agent trajectories, and version-sensitive re-grades. Every result should carry grading coverage, cost-root checks, action provenance, evaluator versions, and per-task re-grade diffs.
+
+Practical lesson:
+- separate graded, ungraded, failed, and dropped runs;
+- deduplicate nested usage records;
+- tag who produced every trajectory action;
+- pin evaluator and task-data versions;
+- attach machine-readable errata to frozen archives.
+
+Evidence caveat: the audit covers two public leaderboards, not the prevalence of the failure class across all agent evaluation.
+
+Implementability score: 0.91
+
+Sources: [paper](https://arxiv.org/abs/2611.04399v1), [read-only repository](https://github.com/YangzeLiu/eval-instrument-disclosure)

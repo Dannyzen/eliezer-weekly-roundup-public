@@ -2,6 +2,42 @@
 
 Governance research for runtime authority, evidence provenance, identity, gateways, and sovereign control surfaces.
 
+## Daily addendum: 2026-11-04
+
+### Compile skill approval into effect-bound runtime tickets
+
+Summary: bind the task, exact skill version, allowed recipients, objects, amounts, and budgets into a frozen ticket that can narrow host grants but never expand them.
+
+Analysis: [Daily strategy](2026-11-04/sovereignty.md#1-convert-skill-approval-into-effect-bound-runtime-obligations)
+
+Core source: [RuntimeTickets](https://arxiv.org/abs/2611.03772v1)
+
+Implementable now:
+- task and skill-version binding
+- source-linked obligations
+- recipient, object, amount, and budget gates
+- trusted egress and workspace witnesses
+- deterministic obligation receipts
+
+Implementability score: 0.62
+
+### Authorize the evidence behind critical tool arguments
+
+Summary: validate who supplied each recipient, amount, location, or other critical value, then require semantic support and task-specific source authority before dispatch.
+
+Analysis: [Daily strategy](2026-11-04/sovereignty.md#2-authorize-the-evidence-behind-every-task-critical-tool-argument)
+
+Core source: [Right Tool, Wrong Parameters](https://arxiv.org/abs/2611.04673v1)
+
+Implementable now:
+- critical-parameter annotations in tool schemas
+- fact and source authority maps
+- evidence-linked parameter derivations
+- pre-dispatch verification and repair
+- provenance in effect receipts
+
+Implementability score: 0.70
+
 
 ## Daily addendum: 2026-11-03
 

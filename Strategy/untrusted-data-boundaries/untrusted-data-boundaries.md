@@ -593,3 +593,20 @@ Implementability score: 0.78
 Sources:
 - [PrivacyTrace paper](https://arxiv.org/abs/2610.41885v1)
 - [AI45Lab/PrivacyTrace](https://github.com/AI45Lab/PrivacyTrace)
+
+## November 4, 2026 update: tool arguments need source authority
+
+Parameter poisoning preserves the intended tool call while untrusted data changes a critical argument. AuthorityFlow traces each candidate value to supporting evidence, then requires semantic support and task-specific source authorization before dispatch.
+
+Practical lesson:
+- annotate critical arguments in tool schemas;
+- define authority per fact and use;
+- preserve direct and intermediate evidence paths;
+- verify and repair before execution;
+- bind the final evidence path into the effect receipt.
+
+Evidence caveat: the verifier is model-based, depends on complete metadata and provenance, and no public implementation artifact was verified.
+
+Implementability score: 0.70
+
+Source: [Right Tool, Wrong Parameters](https://arxiv.org/abs/2611.04673v1)

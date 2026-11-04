@@ -376,3 +376,20 @@ Evidence caveat: the source study is a broad sampled snapshot over changing proj
 Implementability score: 0.90
 
 Source: [When Neither Side Confirms paper v1](https://arxiv.org/abs/2611.02527v1)
+
+## November 4, 2026 update: compile skill runs into effect-bound tickets
+
+RuntimeTickets binds a task and exact skill version to source-linked obligations, selected host grants, recipients, objects, amounts, and budgets. A model may propose the ticket once, but model-free gates decide effects and trusted witnesses produce obligation-level receipts.
+
+Practical lesson:
+- allow tickets to narrow host grants only;
+- validate every consequential effect at the last refusal boundary;
+- observe both egress and workspace state;
+- keep proposal, enforcement, evidence, and decoding separate;
+- fail closed on unresolved obligations.
+
+Evidence caveat: the 60-pair study uses mock services and synthetic canaries, and no paper-owned public implementation was verified.
+
+Implementability score: 0.62
+
+Source: [RuntimeTickets](https://arxiv.org/abs/2611.03772v1)

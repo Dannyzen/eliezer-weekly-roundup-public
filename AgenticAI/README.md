@@ -2,6 +2,42 @@
 
 Implementation research for the deployed agent loop: tool use, memory, orchestration, evaluation, testing, and work-state continuity.
 
+## Daily addendum: 2026-11-04
+
+### Publish instrument provenance beside every agent score
+
+Summary: report grading coverage, root-span cost, action authorship, evaluator versions, and re-grade diffs so plausible pipeline errors cannot masquerade as model performance.
+
+Analysis: [Daily analysis](2026-11-04/reasoning.md#1-audit-the-evaluation-instrument-beside-every-agent-score)
+
+Core sources: [paper](https://arxiv.org/abs/2611.04399v1), [read-only reproduction repository](https://github.com/YangzeLiu/eval-instrument-disclosure)
+
+Implementable now:
+- graded and ungraded episode counts
+- root-span or response-ID cost deduplication
+- producer tags on every action
+- pinned evaluator and task-data versions
+- per-task re-grade diffs and archive errata
+
+Implementability score: 0.91
+
+### Keep harness edits local while retaining reviewed evolution guidance
+
+Summary: reuse cross-task act, avoid, and hold guidance, but discard the task-specific harness edits produced during each active run.
+
+Analysis: [Daily analysis](2026-11-04/reasoning.md#2-reuse-evolution-guidance-then-discard-task-local-harness-edits)
+
+Core sources: [Meta2 paper](https://arxiv.org/abs/2611.05139v1), [project page](https://meta-square.github.io/)
+
+Implementable now:
+- typed keep or evolve checkpoints
+- bounded notice, instruction, hook, and tool edits
+- preserved active environment and partial trajectory
+- per-task harness reset
+- fixed-seed and checkpoint-cost comparisons
+
+Implementability score: 0.67
+
 
 ## Daily addendum: 2026-11-03
 

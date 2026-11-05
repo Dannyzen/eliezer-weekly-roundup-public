@@ -44,6 +44,16 @@ Implementability score: 0.70
 
 Source: [Right Tool, Wrong Parameters](https://arxiv.org/abs/2611.04673v1)
 
+## Deep Dive Wednesday: effect-bound skill execution
+
+RuntimeTickets is the week's strongest finding because it composes the adjacent control problems into one runtime object. Skill provenance, task facts, host grants, parameter authority, route mediation, budgets, validators, witnesses, and receipts all meet in a frozen per-task ticket. The model may propose a narrower contract, while deterministic code owns the authority decision and incomplete evidence remains `Unknown`.
+
+The durable analysis is [Effect-Bound Skill Execution](../effect-bound-skill-execution/effect-bound-skill-execution.md). It explains the protocol, the 60-pair and 246-account evidence, the send-centric limits, the missing public implementation, and a bounded implementation path for one skill and one effect family.
+
+Implementability score: 0.62
+
+Core source: [RuntimeTickets](https://arxiv.org/abs/2611.03772v1)
+
 ## Working conclusion
 
 Approval must survive contact with execution. Bind skill runs to frozen effect obligations, and bind every critical argument to authorized evidence before the host commits the side effect.

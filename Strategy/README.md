@@ -2,6 +2,70 @@
 
 Governance research for runtime authority, evidence provenance, identity, gateways, and sovereign control surfaces.
 
+## Daily addendum: 2026-11-05
+
+### Treat self-written handoff policy as an untrusted claim
+
+Summary: a successor may follow permissions or requirements invented during compaction, so summaries must cite an external authority ledger and effects must be reauthorized.
+
+Analysis: [Daily strategy](2026-11-05/sovereignty.md#1-treat-self-written-handoff-policy-as-an-untrusted-claim)
+
+Core sources: [paper](https://arxiv.org/abs/2611.06545v1), [read-only artifact](https://github.com/Chuw1/handoff-audit)
+
+Implementable now:
+- typed permission and requirement ledger
+- source links for summary policy claims
+- quoted, derived, and unsupported claim classes
+- same-snapshot neutralization tests
+- post-handoff effect authorization
+
+Implementability score: 0.91
+
+### Compile browser authority before reading untrusted pages
+
+Summary: compile the user-authorized workflow against a trusted action surface before live webpage content can influence planning.
+
+Analysis: [Daily strategy](2026-11-05/sovereignty.md#2-compile-browser-authority-before-reading-untrusted-pages)
+
+Core source: [Securing Web Agents with the Compile-Then-Execute Paradigm](https://arxiv.org/abs/2611.06039v1)
+
+Implementable now:
+- typed trusted website APIs
+- precompiled control flow
+- runtime data restricted to values and predefined branches
+- bounded error-only replanning
+- effect-bound validation and human fallback
+
+Implementability score: 0.64
+
+## Deep Dive Wednesday: 2026-11-04
+
+### Effect-bound skill execution
+
+Summary: compile each consequential skill run into a task and skill-version-bound ticket that can only narrow host grants, then enforce effects with model-free gates and decode authenticated evidence into supported, violated, or unknown obligations.
+
+Deep dive: [Effect-Bound Skill Execution](effect-bound-skill-execution/effect-bound-skill-execution.md)
+
+Dated analysis: [Strategy analysis](2026-11-04/sovereignty.md#deep-dive-wednesday-effect-bound-skill-execution)
+
+Core source: [RuntimeTickets](https://arxiv.org/abs/2611.03772v1)
+
+Implementable now:
+- typed task and skill-version-bound tickets
+- deterministic subset checks against host grants
+- recipient, object, amount, and budget gates
+- source-authorized critical parameters
+- trusted witnesses and recomputable receipts
+- benign and malicious twin tests with bypass mutants
+
+Explore next:
+- Pydantic or JSON Schema for ticket contracts
+- Open Policy Agent or Cedar for mandatory host policy
+- egress proxies and route adapters for effect mediation
+- OpenTelemetry plus signed receipt chains for audit evidence
+
+Implementability score: 0.62
+
 ## Daily addendum: 2026-11-04
 
 ### Compile skill approval into effect-bound runtime tickets

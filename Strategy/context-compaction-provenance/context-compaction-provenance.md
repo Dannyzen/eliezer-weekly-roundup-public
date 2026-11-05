@@ -57,3 +57,23 @@ Implementability score: 0.84
 Sources:
 - [ARCBench paper v1](https://arxiv.org/abs/2611.03223v1)
 - [ARCBench repository](https://github.com/VUAISec/ARCBench)
+
+
+## November 5, 2026 update: summaries can manufacture policy without an attacker
+
+Unsupported Policy in Self-Written Handoff Summaries shows that compaction can create authority errors even without prompt injection. Two readers confirmed unsupported restrictions in 1.2% and 2.4% of readable summaries and unsupported authorizations in 0.1% and 1.3%. Neutralizing false approvals reduced unauthorized actions from 24 to 7 of 120 held-out runs in a post hoc analysis.
+
+Practical lesson:
+- store permissions and requirements outside the model-authored summary;
+- classify summary policy claims as quoted, derived, or unsupported;
+- require source links for approval and prohibition claims;
+- reauthorize every consequential effect after handoff;
+- use same-snapshot replay to test whether a sentence changes successor behavior.
+
+Evidence caveat: the pre-specified restriction replay was not significant. The restriction effect is fragile, while the false-approval result and source-of-authority prompt intervention are stronger operational signals.
+
+Implementability score: 0.91
+
+Sources:
+- [paper v1](https://arxiv.org/abs/2611.06545v1)
+- [read-only code and data repository](https://github.com/Chuw1/handoff-audit)

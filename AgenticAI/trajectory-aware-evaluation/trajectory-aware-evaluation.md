@@ -1678,3 +1678,19 @@ Evidence caveat: the audit covers two public leaderboards, not the prevalence of
 Implementability score: 0.91
 
 Sources: [paper](https://arxiv.org/abs/2611.04399v1), [read-only repository](https://github.com/YangzeLiu/eval-instrument-disclosure)
+
+
+## November 5, 2026 update: use trace geometry for cheap screening
+
+Task-Efficient Agent Evaluation Using Cached Traces converts execution traces into task-specific structured summaries and combines their embedding geometry with an item-response model. With one random task, mean absolute error fell from 0.13 to 0.08 on SWE-bench Verified and from 0.14 to 0.12 on Terminal-Bench 2.0.
+
+Practical lesson:
+- retain typed traces from every evaluated system;
+- summarize traces against a task-specific rubric;
+- validate screening estimates on held-out model and harness families;
+- use adaptive subsets for iteration;
+- keep full source-bound tests for release and safety decisions.
+
+Implementability score: 0.78
+
+Source: [paper v1](https://arxiv.org/abs/2611.06803v1)

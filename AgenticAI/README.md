@@ -2,6 +2,42 @@
 
 Implementation research for the deployed agent loop: tool use, memory, orchestration, evaluation, testing, and work-state continuity.
 
+## Daily addendum: 2026-11-05
+
+### Preserve production traces as a reusable evaluation corpus
+
+Summary: retain typed run, attempt, tool, failure, and hash evidence so production execution can become a failure taxonomy and regression corpus.
+
+Analysis: [Daily analysis](2026-11-05/reasoning.md#1-preserve-production-traces-as-a-reusable-evaluation-corpus)
+
+Core sources: [GH-AWTrace paper](https://arxiv.org/abs/2611.06866v1), [dataset](https://huggingface.co/datasets/jaykay9999/GHAWTrace)
+
+Implementable now:
+- linked workflow, revision, run, and attempt identities
+- producer-typed logs and failure classes
+- hashes and retention receipts
+- privacy and licensing review
+- trace-derived regression fixtures
+
+Implementability score: 0.86
+
+### Use cached traces to choose a smaller evaluation slice
+
+Summary: summarize and embed prior traces to select informative screening tasks, then keep the full benchmark for release decisions.
+
+Analysis: [Daily analysis](2026-11-05/reasoning.md#2-use-cached-traces-to-choose-a-smaller-evaluation-slice)
+
+Core source: [Task-Efficient Agent Evaluation Using Cached Traces](https://arxiv.org/abs/2611.06803v1)
+
+Implementable now:
+- task-specific trace rubric schemas
+- summary embeddings instead of raw-trace embeddings
+- item-response plus trace-geometry estimates
+- held-out family validation
+- full-suite release gate
+
+Implementability score: 0.78
+
 ## Daily addendum: 2026-11-04
 
 ### Publish instrument provenance beside every agent score

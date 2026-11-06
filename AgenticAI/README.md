@@ -2,6 +2,60 @@
 
 Implementation research for the deployed agent loop: tool use, memory, orchestration, evaluation, testing, and work-state continuity.
 
+
+## Daily addendum: 2026-11-06
+
+### Treat benchmarks as maintained software
+
+Summary: version tasks, verifiers, infrastructure, and resource budgets together, then preserve reports, traces, oracle checks, and human-gated repairs as benchmark maintenance evidence.
+
+Analysis: [Daily analysis](2026-11-06/reasoning.md#1-treat-benchmarks-as-maintained-software)
+
+Core sources: [paper](https://arxiv.org/abs/2611.08417v1), [Terminal-Bench 2.1](https://github.com/harbor-framework/terminal-bench-2-1)
+
+Implementable now:
+- task and oracle versioning
+- trace-backed defect reports
+- human-gated repairs and grade diffs
+- resource-budget sensitivity checks
+- archived old and repaired results
+
+Implementability score: 0.92
+
+### Build MCP tests around structural failure triggers
+
+Summary: construct tests that isolate Branch Collapse, Unreachable Goal, Tool Misuse, and Context Forgetting instead of compressing them into one task-success number.
+
+Analysis: [Daily analysis](2026-11-06/reasoning.md#2-build-mcp-tests-around-structural-failure-triggers)
+
+Core sources: [paper](https://arxiv.org/abs/2611.07689v1), [repository](https://github.com/J1zz/mcp_hallu)
+
+Implementable now:
+- infeasible-goal fixtures
+- near-pair tool catalogs
+- delayed intermediate-value checks
+- structural trajectory scoring
+- subtype-specific release reports
+
+Implementability score: 0.84
+
+### Validate compressed memory at near and far scales
+
+Summary: qualify memory compression against nearest-neighbor retention and global rank structure so clustering, consolidation, deletion, and deduplication do not inherit silent geometric damage.
+
+Analysis: [Daily analysis](2026-11-06/reasoning.md#3-validate-compressed-memory-at-near-and-far-scales)
+
+Core sources: [paper](https://arxiv.org/abs/2611.08341v1), [LAQ repository](https://github.com/hank08819/LAQ)
+
+Implementable now:
+- local and global fidelity gates
+- source-vector rollback
+- production-distribution qualification
+- codec and encoder versioning
+- consolidation and clustering regression tests
+
+Implementability score: 0.68
+
 ## Daily addendum: 2026-11-05
 
 ### Preserve production traces as a reusable evaluation corpus

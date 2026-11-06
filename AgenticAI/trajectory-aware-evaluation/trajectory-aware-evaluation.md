@@ -1694,3 +1694,18 @@ Practical lesson:
 Implementability score: 0.78
 
 Source: [paper v1](https://arxiv.org/abs/2611.06803v1)
+
+## November 6, 2026 update: benchmarks need continuous maintenance
+
+Terminal-Bench 2.1 treats tasks, oracles, infrastructure, and resource policy as one versioned measurement system. Its audit found issues in roughly 30 percent of Terminal-Bench 2.0, changed accuracy by more than 10 points, and showed that time budgets can materially change apparent harness gaps.
+
+Practical lesson:
+- retain reports and trajectories as defect evidence;
+- automate oracle checks;
+- gate repairs with human review;
+- preserve grade diffs and old results;
+- test score sensitivity to time, compute, and retry budgets.
+
+Implementability score: 0.92
+
+Sources: [paper v1](https://arxiv.org/abs/2611.08417v1), [Terminal-Bench 2.1](https://github.com/harbor-framework/terminal-bench-2-1)

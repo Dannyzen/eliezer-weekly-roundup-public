@@ -1735,3 +1735,18 @@ Artifact status: the public project page was inspected read-only and marks code 
 Implementability score: 0.67
 
 Sources: [Meta2 paper](https://arxiv.org/abs/2611.05139v1), [project page](https://meta-square.github.io/)
+
+## November 6, 2026 update: build MCP tests from failure mechanisms
+
+MCPHallu makes Branch Collapse, Unreachable Goal, Tool Misuse, and Context Forgetting construction rules for 358 tasks across 36 MCP servers. Unreachable Goal is the hardest subtype, and rankings shift sharply across failure classes.
+
+Practical lesson:
+- add explicit infeasible-goal fixtures;
+- create confusing near-pair tools;
+- test delayed dependence on intermediate values;
+- use structural trajectory checks before judge scoring;
+- release subtype profiles beside aggregate success.
+
+Implementability score: 0.84
+
+Sources: [paper v1](https://arxiv.org/abs/2611.07689v1), [repository](https://github.com/J1zz/mcp_hallu)

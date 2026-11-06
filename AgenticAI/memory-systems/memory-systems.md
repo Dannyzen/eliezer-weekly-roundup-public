@@ -1309,3 +1309,20 @@ Evidence caveat: two backbones in one architecture, one tested only on ALFWorld,
 Implementability score: 0.55
 
 Source: [KEEPER](https://arxiv.org/abs/2610.41482v1)
+
+## November 6, 2026 update: compression needs local and global fidelity
+
+LAQ shows that high nearest-neighbor fidelity can coexist with theme-level distortion. Memory compression gates should therefore cover both local retrieval geometry and global structure used by consolidation, clustering, deletion, and deduplication.
+
+Practical lesson:
+- measure near and far rank fidelity;
+- retain source vectors or records for rollback;
+- qualify codecs on the production distribution;
+- test downstream consolidation and clustering;
+- version codec, encoder, and recipe together.
+
+Evidence caveat: the implementation is new and needs independent replication.
+
+Implementability score: 0.68
+
+Sources: [paper v1](https://arxiv.org/abs/2611.08341v1), [LAQ repository](https://github.com/hank08819/LAQ)

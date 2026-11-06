@@ -2,6 +2,28 @@
 
 Governance research for runtime authority, evidence provenance, identity, gateways, and sovereign control surfaces.
 
+
+## Daily addendum: 2026-11-06
+
+### Test social engineering at the action boundary across modalities
+
+Summary: exercise text, image, document, and audio attacks against simulated actions, then grade harmful execution, independent verification, legitimate completion, and over-refusal together.
+
+Analysis: [Daily strategy](2026-11-06/sovereignty.md#1-test-social-engineering-at-the-action-boundary-across-modalities)
+
+Core source: [Multimodal-SEA](https://arxiv.org/abs/2611.08281v1)
+
+Implementable now:
+- matched benign and malicious multimodal tasks
+- source-literal approval views
+- trusted-channel verification
+- application-log outcome grading
+- over-refusal and attack-success measures
+
+Artifact caveat: the advertised GitHub repository did not resolve during this scan.
+
+Implementability score: 0.76
+
 ## Daily addendum: 2026-11-05
 
 ### Treat self-written handoff policy as an untrusted claim

@@ -610,3 +610,20 @@ Evidence caveat: the verifier is model-based, depends on complete metadata and p
 Implementability score: 0.70
 
 Source: [Right Tool, Wrong Parameters](https://arxiv.org/abs/2611.04673v1)
+
+## November 6, 2026 update: multimodal evidence is an action-boundary input
+
+Multimodal-SEA finds that forged multimodal content raises attack success even when agents perform more proactive verification. The boundary must grade executed effects and the provenance of the verification path, not only whether the response sounds cautious.
+
+Practical lesson:
+- test text, image, document, and audio inputs;
+- bind outcomes to application logs;
+- verify consequential requests through a trusted channel;
+- render source-literal approval details;
+- score attack success and legitimate completion together.
+
+Artifact caveat: the repository named by the paper did not resolve during this scan.
+
+Implementability score: 0.76
+
+Source: [Multimodal-SEA v1](https://arxiv.org/abs/2611.08281v1)

@@ -1,72 +1,94 @@
-# AgenticAI Daily Analysis: 2026-11-06
+# AgenticAI Weekly Analysis: 2026-11-06
 
-All four shortlisted papers were submitted on November 5, 2026. External repositories were inspected read-only. No external source code was cloned, installed, built, imported, or executed.
+This week points to one engineering rule: an agent result is only as reliable as the maintained measurement and evidence surfaces behind it. The strongest work did not propose another general agent loop. It exposed benchmark defects, reusable production traces, ambiguous tool settlement, and memory representations that hide failure when reduced to one score or one summary.
 
-## 1. Treat benchmarks as maintained software
+## 1. Treat benchmarks and graders as maintained software
 
-Terminal-Bench 2.1 shows that a benchmark can be carefully reviewed at release and still accumulate measurement debt. A continuous audit of Terminal-Bench 2.0 found issues in roughly 30 percent of the benchmark. Repairs changed measured accuracy by more than 10 percentage points and moved leaderboard positions by as many as three ranks. Resource policy mattered too: longer time limits closed a 20 point harness gap on GPT 5.4 and shrank a 30 point gap on GPT 5.4 mini to 5 points.
+Terminal-Bench 2.1 reports defects in roughly 30 percent of its predecessor, accuracy changes above 10 percentage points after repair, and leaderboard movements of up to three positions. The same study shows that time limits can erase apparent harness gaps. A separate leaderboard audit found ungraded episodes, nested cost spans, and grader actions mixed into agent traces. Together they make the benchmark release, grader, sandbox image, budget, and report one versioned software product.
 
-Why it matters: benchmark tasks, verifiers, infrastructure, and budgets are one versioned measurement system. A frozen task set with drifting infrastructure or stale oracles produces precise but unreliable scores.
+Why it matters: a stable model score can hide a changing instrument. Release decisions need the exact task version, oracle, environment, resource policy, and graded denominator.
 
-Stack fit: trajectory-aware evaluation and harness release engineering.
+Stack fit: trajectory-aware evaluation, harness release engineering, and model-router calibration.
 
 Implementable now:
-- version tasks, verifiers, sandbox images, timeouts, compute limits, and retry policy together;
-- accept community reports as candidate defects, then reproduce them against stored trajectories;
-- run automated oracle checks and human-gated repairs before publishing revised scores;
-- retain old and repaired grades with machine-readable reasons;
-- compare leaderboard sensitivity across resource budgets before claiming a harness advantage.
-
-Artifact status: [Terminal-Bench 2.1](https://github.com/harbor-framework/terminal-bench-2-1) is a populated public repository with repaired tasks and leaderboard workflow. It was inspected read-only.
-
-Evidence caveat: the audit is one benchmark family. The maintenance workflow generalizes more strongly than the exact defect rate.
+- version tasks, verifiers, images, timeouts, retry policy, and evaluator prompts together;
+- publish graded, ungraded, failed, and dropped counts beside every score;
+- preserve old and repaired grades with a change reason;
+- separate agent actions, grader actions, and infrastructure events in traces;
+- use [Terminal-Bench 2.1](https://github.com/harbor-framework/terminal-bench-2-1) and the [evaluation-instrument reproduction repository](https://github.com/YangzeLiu/eval-instrument-disclosure) as concrete reference artifacts.
 
 Implementability score: 0.92
 
-Core source: [Benchmarks as Software v1](https://arxiv.org/abs/2611.08417v1)
+Core sources:
+- [Benchmarks as Software: Terminal-Bench and the Case for Continuous Benchmarks](https://arxiv.org/abs/2611.08417v1)
+- [Silent Instrument Errors Reorder Agent Leaderboards](https://arxiv.org/abs/2611.04399v1)
 
-## 2. Build MCP tests around structural failure triggers
+## 2. Turn production traces into a regression corpus
 
-MCPHallu turns four failure mechanisms into task construction rules: Branch Collapse, Unreachable Goal, Tool Misuse, and Context Forgetting. Across 358 tasks, 36 production MCP servers, 14 models, and 5,012 trajectories, Unreachable Goal was the hardest subtype. Its mean score was 0.458 and only 23.2 percent of runs passed. Model rankings moved by an average of 6.9 of 13 positions across subtypes, so one aggregate MCP score hides materially different failure profiles.
+GH-AWTrace links 25,014 verified workflows across 5,051 repositories to 4.11 million runs and 562,877 nonempty log archives. Earlier in the week, VeriCUA and EnvOS reinforced the same operational pattern from the test side: gather independent evidence, then certify that the environment and scorer actually observed what the test claims.
 
-Why it matters: an agent that cannot recognize an impossible goal may keep issuing calls or falsely claim completion. Aggregate success rates cannot isolate that behavior from tool-selection or memory failures.
+Why it matters: production failures are more valuable when converted into typed, replayable fixtures. Aggregate success rates discard the provider denial, retry, handoff, or settlement state that would prevent recurrence.
 
-Stack fit: MCP harness design, trajectory diagnosis, and release regression testing.
-
-Implementable now:
-- add infeasible tasks whose available tool inventory cannot satisfy the goal;
-- create near-pair tools that differ in one consequential semantic property;
-- retain intermediate values across multi-step calls and test later dependence;
-- score structural trajectory checks separately from judge-based assessment;
-- report subtype profiles and false-completion rates beside aggregate task success.
-
-Artifact status: [J1zz/mcp_hallu](https://github.com/J1zz/mcp_hallu) is populated with canonical tasks, scoring modules, recorded results, and container infrastructure. It was inspected read-only.
-
-Evidence caveat: parts of the score still use an LLM judge, although structural checks carry most of the weight for Tool Misuse and Unreachable Goal.
-
-Implementability score: 0.84
-
-Core source: [MCPHallu v1](https://arxiv.org/abs/2611.07689v1)
-
-## 3. Validate compressed memory at near and far scales
-
-The LAQ paper shows that nearest-neighbor preservation alone can hide global distortion. At 96 bytes per passage, rescored binary codes retained local fidelity of 0.97 while moving 10.1 percent of passages to another theme. LAQ adds a far-rank hinge objective to OPQ codebook training. It improved global fidelity in all 52 held-out runs while preserving the same byte budget and query-time interface.
-
-Why it matters: retrieval uses the near end of memory geometry, while consolidation, clustering, deletion, deduplication, and theme maps also depend on medium and far relationships. A compression accepted only on recall can silently corrupt those operations.
-
-Stack fit: vector-memory storage, consolidation, and migration qualification.
+Stack fit: observability, deterministic regression testing, and release gates.
 
 Implementable now:
-- measure local neighbor fidelity and global rank fidelity before a compression cutover;
-- preserve full-precision source vectors or source records for rollback and audit;
-- compare consolidation and clustering outcomes, not only retrieval recall;
-- qualify new encoders and quantizers on the actual memory distribution;
-- treat codec, encoder, and training recipe as one versioned memory artifact.
+- store workflow, run, attempt, tool, policy, and failure events with stable identities and hashes;
+- promote representative failures into fixed fixtures with an explicit oracle;
+- keep authoritative system state separate from model-visible observations;
+- add environment self-tests before attributing a failure to the model;
+- use OpenTelemetry or OpenInference for trace shape, then keep the release oracle in a deterministic test layer.
 
-Artifact status: [hank08819/LAQ](https://github.com/hank08819/LAQ) is a populated public research implementation with OPQ-compatible codecs, fidelity metrics, and tests. It was inspected read-only.
+Implementability score: 0.86
 
-Evidence caveat: this is a new single-author method. The package is experimental and its far-fidelity metrics need independent replication on production memory distributions.
+Core sources:
+- [GH-AWTrace: A Large-Scale Dataset of GitHub Agentic Workflow Execution Logs](https://arxiv.org/abs/2611.06866v1)
+- [VeriCUA](https://arxiv.org/abs/2610.40578v1)
+- [EnvOS](https://arxiv.org/abs/2610.40246v1)
 
-Implementability score: 0.68
+## 3. Model recovery as evidence-backed settlement
 
-Core source: [Enhancing Local and Global Structure in Compressed AI Agent Memory v1](https://arxiv.org/abs/2611.08341v1)
+Evidence-Guided Recovery treats timeout outcomes as committed, pending, partial, failed, or unresolved rather than collapsing them into success and failure. The reported authored workload produced 30 certified safe completions in 58 paired episodes with planning assistance, versus 9 of 58 with evidence prompting. Related work this week showed that repair value depends on the deployed executor and that structural diagnostics should isolate scheduling, candidate selection, retention, and snapshot failures.
+
+Why it matters: retrying an ambiguous write can duplicate money movement, messages, or configuration changes. Recovery must query authoritative state and preserve unknown as a legitimate outcome.
+
+Stack fit: event-sourced runtimes, idempotent tool protocols, and executor-bound evaluation.
+
+Implementable now:
+- persist dispatch, acknowledgement, settlement, and reconciliation events;
+- require idempotency keys for consequential writes;
+- query the authoritative sink before retrying;
+- bind repair labels to model, prompt, history protocol, tools, and runtime version;
+- test partial completion and stale-state mutants instead of only clean failures.
+
+Implementability score: 0.83
+
+Core sources:
+- [Evidence-Guided Recovery for AI Agents with Ambiguous Tool Outcomes and Partial Execution](https://arxiv.org/abs/2610.41453v1)
+- [Executor-bound trajectory repair evaluation](https://arxiv.org/abs/2610.38610v1)
+- [Structural diagnostics for stateful workflows](https://arxiv.org/abs/2611.03227v1)
+
+## 4. Keep memory as rebuildable projections over source events
+
+Long-term memory work this week converged on multiple derived views instead of one recursively rewritten summary. Episodic summaries preserve sequence, relational tuples preserve queryable structure, and LAQ adds local and global graph structure to compressed memory. KEEPER and the handoff-summary study expose the failure mode: summaries can retain contradicted claims or manufacture unsupported policy.
+
+Why it matters: memory retrieval quality and memory authority are separate problems. A useful projection can still be wrong, stale, or unsafe to treat as permission.
+
+Stack fit: source-linked memory, graph retrieval, supersession, and handoff continuity.
+
+Implementable now:
+- retain canonical append-only events and provenance outside summaries;
+- build episodic, relational, and graph projections that can be regenerated;
+- test contradiction, omission, recurrence, supersession, and far-neighbor retrieval;
+- keep permissions and operating rules outside writable memory;
+- use the [LAQ repository](https://github.com/hank08819/LAQ) as a read-only implementation reference, with independent replication still required.
+
+Implementability score: 0.72
+
+Core sources:
+- [Long-Term Agent Memory through Complementary Curation and Consolidation](https://arxiv.org/abs/2610.39790v1)
+- [KEEPER](https://arxiv.org/abs/2610.41482v1)
+- [Enhancing Local and Global Structure in Compressed AI Agent Memory](https://arxiv.org/abs/2611.08341v1)
+
+## Working conclusion
+
+The practical stack is becoming evidence-shaped: version the instrument, retain typed events, reconcile ambiguous effects, and derive memory from canonical sources. Better models help only after those surfaces can distinguish model failure from measurement, runtime, or state failure.

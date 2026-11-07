@@ -2,339 +2,53 @@
 
 Implementation research for the deployed agent loop: tool use, memory, orchestration, evaluation, testing, and work-state continuity.
 
+## Latest structured update: 2026-11-07
 
-## Daily addendum: 2026-11-06
+### Consolidate memory offline against source transcripts
 
-### Treat benchmarks as maintained software
+Summary: asynchronous consolidation can correct model-written notes and build navigable wikis, but canonical transcripts must remain available as evidence. Anthropic's internal 25-question evaluation showed the wiki improving across 128 sessions, with search plus wiki outperforming search alone.
 
-Summary: version tasks, verifiers, infrastructure, and resource budgets together, then preserve reports, traces, oracle checks, and human-gated repairs as benchmark maintenance evidence.
+Analysis: [Daily analysis](2026-11-07/reasoning.md#1-consolidate-memory-offline-against-source-transcripts)
 
-Analysis: [Daily analysis](2026-11-06/reasoning.md#1-treat-benchmarks-as-maintained-software)
-
-Core sources: [paper](https://arxiv.org/abs/2611.08417v1), [Terminal-Bench 2.1](https://github.com/harbor-framework/terminal-bench-2-1)
-
-Implementable now:
-- task and oracle versioning
-- trace-backed defect reports
-- human-gated repairs and grade diffs
-- resource-budget sensitivity checks
-- archived old and repaired results
-
-Implementability score: 0.92
-
-### Build MCP tests around structural failure triggers
-
-Summary: construct tests that isolate Branch Collapse, Unreachable Goal, Tool Misuse, and Context Forgetting instead of compressing them into one task-success number.
-
-Analysis: [Daily analysis](2026-11-06/reasoning.md#2-build-mcp-tests-around-structural-failure-triggers)
-
-Core sources: [paper](https://arxiv.org/abs/2611.07689v1), [repository](https://github.com/J1zz/mcp_hallu)
+Core sources: [The components of agent memory](https://www.anthropic.com/research/components-of-agent-memory), [dreaming cookbook](https://platform.claude.com/cookbook/managed-agents-cma-dreaming-with-a-dynamic-workflow)
 
 Implementable now:
-- infeasible-goal fixtures
-- near-pair tool catalogs
-- delayed intermediate-value checks
-- structural trajectory scoring
-- subtype-specific release reports
-
-Implementability score: 0.84
-
-### Validate compressed memory at near and far scales
-
-Summary: qualify memory compression against nearest-neighbor retention and global rank structure so clustering, consolidation, deletion, and deduplication do not inherit silent geometric damage.
-
-Analysis: [Daily analysis](2026-11-06/reasoning.md#3-validate-compressed-memory-at-near-and-far-scales)
-
-Core sources: [paper](https://arxiv.org/abs/2611.08341v1), [LAQ repository](https://github.com/hank08819/LAQ)
-
-Implementable now:
-- local and global fidelity gates
-- source-vector rollback
-- production-distribution qualification
-- codec and encoder versioning
-- consolidation and clustering regression tests
-
-Implementability score: 0.68
-
-## Daily addendum: 2026-11-05
-
-### Preserve production traces as a reusable evaluation corpus
-
-Summary: retain typed run, attempt, tool, failure, and hash evidence so production execution can become a failure taxonomy and regression corpus.
-
-Analysis: [Daily analysis](2026-11-05/reasoning.md#1-preserve-production-traces-as-a-reusable-evaluation-corpus)
-
-Core sources: [GH-AWTrace paper](https://arxiv.org/abs/2611.06866v1), [dataset](https://huggingface.co/datasets/jaykay9999/GHAWTrace)
-
-Implementable now:
-- linked workflow, revision, run, and attempt identities
-- producer-typed logs and failure classes
-- hashes and retention receipts
-- privacy and licensing review
-- trace-derived regression fixtures
-
-Implementability score: 0.86
-
-### Use cached traces to choose a smaller evaluation slice
-
-Summary: summarize and embed prior traces to select informative screening tasks, then keep the full benchmark for release decisions.
-
-Analysis: [Daily analysis](2026-11-05/reasoning.md#2-use-cached-traces-to-choose-a-smaller-evaluation-slice)
-
-Core source: [Task-Efficient Agent Evaluation Using Cached Traces](https://arxiv.org/abs/2611.06803v1)
-
-Implementable now:
-- task-specific trace rubric schemas
-- summary embeddings instead of raw-trace embeddings
-- item-response plus trace-geometry estimates
-- held-out family validation
-- full-suite release gate
-
-Implementability score: 0.78
-
-## Daily addendum: 2026-11-04
-
-### Publish instrument provenance beside every agent score
-
-Summary: report grading coverage, root-span cost, action authorship, evaluator versions, and re-grade diffs so plausible pipeline errors cannot masquerade as model performance.
-
-Analysis: [Daily analysis](2026-11-04/reasoning.md#1-audit-the-evaluation-instrument-beside-every-agent-score)
-
-Core sources: [paper](https://arxiv.org/abs/2611.04399v1), [read-only reproduction repository](https://github.com/YangzeLiu/eval-instrument-disclosure)
-
-Implementable now:
-- graded and ungraded episode counts
-- root-span or response-ID cost deduplication
-- producer tags on every action
-- pinned evaluator and task-data versions
-- per-task re-grade diffs and archive errata
-
-Implementability score: 0.91
-
-### Keep harness edits local while retaining reviewed evolution guidance
-
-Summary: reuse cross-task act, avoid, and hold guidance, but discard the task-specific harness edits produced during each active run.
-
-Analysis: [Daily analysis](2026-11-04/reasoning.md#2-reuse-evolution-guidance-then-discard-task-local-harness-edits)
-
-Core sources: [Meta2 paper](https://arxiv.org/abs/2611.05139v1), [project page](https://meta-square.github.io/)
-
-Implementable now:
-- typed keep or evolve checkpoints
-- bounded notice, instruction, hook, and tool edits
-- preserved active environment and partial trajectory
-- per-task harness reset
-- fixed-seed and checkpoint-cost comparisons
-
-Implementability score: 0.67
-
-
-## Daily addendum: 2026-11-03
-
-### Audit workflow structure before changing models
-
-Summary: separate scheduling, candidate-selection, state-retention, and snapshot failures with fixed-work executable fixtures and first-failure evidence.
-
-Analysis: [Daily analysis](2026-11-03/reasoning.md#1-audit-workflow-structure-instead-of-collapsing-failure-into-one-task-score)
-
-Core sources: [paper](https://arxiv.org/abs/2611.03227v1), [read-only repository](https://github.com/Shereen20112003/what-structurally-breaks-an-agent)
-
-Implementable now:
-- fixed-operation workflow families
-- dependency-depth and candidate-fan-out sweeps
-- state-width and snapshot-visibility variants
-- first-failure mechanism labels
-- explicit retry and recovery cost
-
-Implementability score: 0.72
-
-## Daily addendum: 2026-11-02
-
-### Recover from ambiguous tool outcomes with public evidence
-
-Summary: classify timeouts as uncertain effects, query authoritative state, and select retry, continue, compensate, handoff, or unresolved from persisted evidence.
-
-Analysis: [Daily analysis](2026-11-02/reasoning.md#1-recover-from-ambiguous-tool-outcomes-with-public-evidence)
-
-Core source: [Evidence-Guided Recovery](https://arxiv.org/abs/2610.41453v1)
-
-Implementable now:
-- intent, dispatch, settlement, and verification events
-- stable operation IDs and idempotency keys
-- provider state queries before retry
-- explicit partial, pending, and unresolved outcomes
-- replayable recovery fixtures
-
-Implementability score: 0.83
-
-### Evaluate recursive memory for error persistence and retention
-
-Summary: task success cannot show whether recursive memory stopped carrying contradicted claims or preserved correct history.
-
-Analysis: [Daily analysis](2026-11-02/reasoning.md#2-evaluate-recursive-memory-for-error-persistence-not-task-score-alone)
-
-Core source: [KEEPER](https://arxiv.org/abs/2610.41482v1)
-
-Implementable now:
-- source-linked memory claims
-- contradiction and recurrence fixtures
-- separate correction and retention metrics
-- canonical events outside rewritten summaries
-
-Implementability score: 0.55
-
-## Daily addendum: 2026-11-01
-
-### Specialize evidence collection before aggregating a repair
-
-Summary: assign distinct evidence dimensions to parallel agents, then aggregate source-linked observations and patches under independent verification.
-
-Analysis: [Daily analysis](2026-11-01/reasoning.md#1-specialize-evidence-collection-before-aggregating-a-repair)
-
-Core source: [ExploreRepair](https://arxiv.org/abs/2610.39899v1)
-
-Implementable now:
-- orthogonal evidence lanes
-- typed evidence and patch returns
-- trajectory distillation before synthesis
-- independent final verification
-- same-budget single-agent comparison
-
-Implementability score: 0.72
-
-### Evaluate repairs with the executor that will run them
-
-Summary: repair value is executor-specific, so substitute models and greedy replay can select the wrong intervention for the deployed policy.
-
-Analysis: [Daily analysis](2026-11-01/reasoning.md#2-evaluate-repairs-with-the-executor-that-will-run-them)
-
-Core source: [Repairs for Whom?](https://arxiv.org/abs/2610.38610v1)
-
-Implementable now:
-- executor fingerprints in repair labels
-- deployed-policy rollout checks
-- net-gain scoring against no repair
-- disagreement regression fixtures
-- repair reevaluation after runtime changes
-
-Implementability score: 0.86
-
-## Daily addendum: 2026-10-31
-
-### Make verification an evidence-gathering agent, then certify the test environment
-
-Summary: verify persisted outcomes through bounded exploration, and prove the evaluation mutation, observation path, feasibility, and scorer before blaming the model.
-
-Analysis: [Daily analysis](2026-10-31/reasoning.md#1-make-verification-an-evidence-gathering-agent-then-certify-the-test-environment)
-
-Core sources: [VeriCUA](https://arxiv.org/abs/2610.40578v1), [EnvOS](https://arxiv.org/abs/2610.40246v1)
-
-Implementable now:
-- requirement-level evidence rubrics
-- GUI plus persisted-state checks
-- explicit abstention
-- pre-run intervention and scorer certification
-- separate authoritative-state and model-observation logs
-
-Implementability score: 0.86
-
-### Keep episodic and relational memory as complementary projections
-
-Summary: preserve narrative sequence and compact relationships in separate source-linked projections, then consolidate offline rather than rewriting canonical history.
-
-Analysis: [Daily analysis](2026-10-31/reasoning.md#2-keep-episodic-and-relational-memory-as-complementary-projections)
-
-Core source: [Long-Term Agent Memory through Complementary Curation and Consolidation](https://arxiv.org/abs/2610.39790v1)
-
-Implementable now:
-- canonical event log
-- episodic and relational projections
-- shared retrieval budget
-- versioned asynchronous consolidation
-- contradiction and supersession tests
-
-Implementability score: 0.74
-
-## Latest structured week: 2026-10-30
-
-### Gate tool calls before execution and grade every executable prefix
-
-Summary: validate current environment state before dispatch, then score the whole trajectory for schema validity, state preconditions, dependencies, recovery, and final success.
-
-Analysis: [Weekly analysis](2026-10-30/reasoning.md#1-gate-tool-calls-before-execution-and-grade-every-executable-prefix)
-
-Core sources: [StateMirror](https://arxiv.org/abs/2610.32648v1), [Prefix Executability](https://arxiv.org/abs/2610.40444v1)
-
-Implementable now:
-- JSON Schema or Pydantic tool validation
-- environment-state predicates
-- append-only trajectory events
-- first-error depth and prefix-survival metrics
+- append-only transcripts or typed source events
+- versioned memory projections and promotion diffs
+- source citations, contradiction checks, and duplicate merges
+- search-only, projection-only, and combined-path regression tests
 
 Implementability score: 0.88
 
-### Fault-inject the harness and test the full work arc
+### Grade evidence limits, not only final answers
 
-Summary: model scale does not substitute for a resilient harness, and one-shot success hides inherited defects across evolving work.
+Summary: BioBasicsBench evaluates whether agents detect bad controls, ambiguous signals, and unsupported conclusions across 100 raw wet-lab tasks. The reusable method is to score evidence sufficiency and justified abstention separately from the final answer.
 
-Analysis: [Weekly analysis](2026-10-30/reasoning.md#2-fault-inject-the-harness-and-test-the-full-work-arc)
+Analysis: [Daily analysis](2026-11-07/reasoning.md#2-grade-evidence-limits-not-only-final-answers)
 
-Core sources: [MCP fault study](https://arxiv.org/abs/2610.32555v1), [FeatureArc](https://arxiv.org/abs/2610.37434v1), [REGATTA](https://arxiv.org/abs/2610.30924v1)
-
-Implementable now:
-- seeded MCP fault campaigns
-- model-harness release matrices
-- multi-stage regression fixtures
-- fault detection and recovery scoring
-
-Implementability score: 0.87
-
-### Compile evidence into decision state, then preserve it across handoffs
-
-Summary: retrieving facts is insufficient. Long-running work needs a source-linked projection of governing state plus typed handoffs for decisions, constraints, effects, open scopes, and verification status.
-
-Analysis: [Weekly analysis](2026-10-30/reasoning.md#3-compile-evidence-into-decision-state-then-preserve-it-across-handoffs)
-
-Core sources: [SciValidityBench](https://arxiv.org/abs/2610.34767v1), [HSC-Bench](https://arxiv.org/abs/2610.36523v1), [Spine](https://arxiv.org/abs/2610.37224v1)
+Core source: [Measuring how AI agents handle everyday wet-lab science](https://openai.com/index/measuring-how-ai-agents-handle-wet-lab-science)
 
 Implementable now:
-- source-linked decision-state projections
-- structured handoff schemas
-- nested work scopes with immutable completion results
-- counterfactual state tests
+- real ambiguous work products as test fixtures
+- raw multimodal inputs and independent expert rubrics
+- separate scores for conclusions, evidence, controls, and abstention
+- repeated trials with confidence intervals and token cost
 
-Implementability score: 0.80
-
-### Test generated tests for behavioral adequacy
-
-Summary: passing generated tests are weak release evidence unless they reject seeded wrong implementations and cover the requirement's observable behavior.
-
-Analysis: [Weekly analysis](2026-10-30/reasoning.md#4-test-generated-tests-for-behavioral-adequacy)
-
-Core source: [Req2Test-Bench](https://arxiv.org/abs/2610.36584v1)
-
-Implementable now:
-- mutation testing
-- requirement-to-behavior maps
-- independent release oracles
-- kill-completeness gates
-
-Implementability score: 0.81
+Implementability score: 0.78
 
 ## Current working model
 
-1. Compile current state before choosing an action.
-2. Validate the action before dispatch.
-3. Verify persisted outcomes against explicit requirements.
-4. Certify dynamic test environments before attributing failures.
-5. Preserve source evidence and derive fit-for-purpose memory projections.
-6. Grade the full work arc and preserve state across handoffs.
+1. Version the measurement instrument before comparing models.
+2. Preserve typed events before compressing evidence.
+3. Build memory as rebuildable projections over source events.
+4. Grade evidence sufficiency and justified abstention.
+5. Keep release oracles deterministic and independent from the acting model.
 
 ## Browse
 
-- [Daily roundup](../roundups/2026-11-03.md)
-- [Latest dated analysis](2026-11-03/reasoning.md)
-- [Weekly synthesis](../roundups/2026-10-30.md)
+- [Latest roundup](../roundups/2026-11-07.md)
+- [Latest dated analysis](2026-11-07/reasoning.md)
+- [Friday synthesis](2026-11-06/reasoning.md)
 - [Decision-state compilation](decision-state-compilation/decision-state-compilation.md)
 - [Agent harness architecture](agent-harness-architecture/agent-harness-architecture.md)
 - [Memory systems](memory-systems/memory-systems.md)

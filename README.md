@@ -6,9 +6,9 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-11-07: [source-preserving memory, evidence-limited evaluation, and recurring-agent control](roundups/2026-11-07.md)
-- Latest implementation analysis: [AgenticAI](AgenticAI/2026-11-07/reasoning.md)
-- Latest strategy analysis: [Strategy](Strategy/2026-11-07/sovereignty.md)
+- Daily scan, 2026-11-08: [failure classification, contract-derived migration tests, source authority, and signed handoffs](roundups/2026-11-08.md)
+- Latest implementation analysis: [AgenticAI](AgenticAI/2026-11-08/reasoning.md)
+- Latest strategy analysis: [Strategy](Strategy/2026-11-08/sovereignty.md)
 - Latest implementation index: [AgenticAI README](AgenticAI/README.md)
 - Latest strategy index: [Strategy README](Strategy/README.md)
 - Friday synthesis, week ending 2026-11-06: [measurement and authority need explicit control planes](roundups/2026-11-06.md)

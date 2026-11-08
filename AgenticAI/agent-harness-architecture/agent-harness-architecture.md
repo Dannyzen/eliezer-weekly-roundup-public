@@ -1750,3 +1750,20 @@ Practical lesson:
 Implementability score: 0.84
 
 Sources: [paper v1](https://arxiv.org/abs/2611.07689v1), [repository](https://github.com/J1zz/mcp_hallu)
+
+## November 8, 2026 update: derive upgrade gates from changed contracts
+
+Across 73 tasks covering 60 documented runtime changes, typical-input assertions released 41.0 percent of wrong repairs. One release-note-derived edge input cut the wrong-release rate to 6.5 percent, while harder distractors preserved a 15.3 to 16.8 percent residual.
+
+Practical lesson:
+- compile release-note clauses into before-and-after contracts;
+- generate edge inputs from the changed clause;
+- execute hidden checks independently from the repair model;
+- test on the actual runtime versions;
+- archive inputs, expected effects, versions, and verdicts.
+
+Artifact caveat: the task records and receipts are available from the authors on request, not through a verified public repository.
+
+Implementability score: 0.87
+
+Source: [Accepted but Wrong](https://arxiv.org/abs/2611.08269v1)

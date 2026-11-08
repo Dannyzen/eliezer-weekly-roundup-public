@@ -627,3 +627,20 @@ Artifact caveat: the repository named by the paper did not resolve during this s
 Implementability score: 0.76
 
 Source: [Multimodal-SEA v1](https://arxiv.org/abs/2611.08281v1)
+
+## November 8, 2026 update: define injection by source authority
+
+A 90-case benchmark shows that untrusted content can preserve the task while tampering with a decision rule, action, consequence, observation meaning, or world state. Tool-policy defenses can miss these attacks because the expected tool is used with attacker-shaped values.
+
+Practical lesson:
+- declare which source may determine each consequential value;
+- trace critical arguments to authorized evidence;
+- test state, rule, consequence, and observation tampering;
+- grade legitimate completion and unauthorized effect separately;
+- mutate attack wording beyond imperative instructions.
+
+Artifact status: the public benchmark repository resolved and was inspected read-only at the metadata level.
+
+Implementability score: 0.82
+
+Sources: [paper v1](https://arxiv.org/abs/2611.07640v1), [repository](https://github.com/amazon-science/task-tampering-prompt-injection)

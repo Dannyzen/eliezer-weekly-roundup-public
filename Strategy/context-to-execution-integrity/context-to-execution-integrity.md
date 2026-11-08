@@ -778,3 +778,20 @@ Implementability score: 0.72
 Sources:
 - [Approve What, Exactly?](https://arxiv.org/abs/2610.21063v1)
 - [Agent Step-Up](https://github.com/Sports-Vision-Inc/agent-step-up)
+
+## November 8, 2026 update: signed transit begins after extraction
+
+Signed requirement manifests reduced unsafe commits from 69.4 percent to 9.0 percent across the primary 1,440-trajectory study. A deterministic verifier outperformed an LLM checker on both detection and false alarms. The remaining unsafe decisions disappeared with an oracle manifest, locating the residual risk before signing.
+
+Practical lesson:
+- extract requirements with literal source evidence and typed predicates;
+- reject evidence absent from the authenticated request;
+- canonicalize and sign outside model access;
+- verify the final effect deterministically;
+- audit extraction separately from transit integrity.
+
+Artifact caveat: code, task banks, freeze manifests, and run logs are available from the authors on request.
+
+Implementability score: 0.76
+
+Source: [Signed but Not Safe](https://arxiv.org/abs/2611.07483v1)

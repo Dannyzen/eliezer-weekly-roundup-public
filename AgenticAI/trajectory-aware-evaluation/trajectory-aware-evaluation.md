@@ -1709,3 +1709,18 @@ Practical lesson:
 Implementability score: 0.92
 
 Sources: [paper v1](https://arxiv.org/abs/2611.08417v1), [Terminal-Bench 2.1](https://github.com/harbor-framework/terminal-bench-2-1)
+
+## November 8, 2026 update: classify failure cause before choosing an intervention
+
+A run-independent issue-difficulty score reached 0.92 AUROC on public SWE-bench Verified trajectories, versus about 0.62 for tested trajectory predictors. After controlling for issue and model, the trajectory contribution was statistically equivalent to zero.
+
+Practical lesson:
+- collect repeated attempts per issue-model pair;
+- compare issue-only, model-only, and trajectory-aware baselines;
+- label hard issue, weak model, and bad run separately;
+- evaluate stop, retry, and switch policies under equal budgets;
+- test interventions on held-out runs.
+
+Implementability score: 0.84
+
+Source: [Hard Issue, Weak Model, or Bad Run?](https://arxiv.org/abs/2611.08285v1)

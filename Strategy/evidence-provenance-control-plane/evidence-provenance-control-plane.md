@@ -384,3 +384,20 @@ Implementability score: 0.72
 Sources:
 - [PCM paper v1](https://arxiv.org/abs/2610.39109v1)
 - [PCM protocol repository](https://github.com/Cygnux-Labs/PCM-protocol)
+
+## November 9, 2026 update: review provenance belongs in release receipts
+
+GitHub now exposes Copilot review settings, explicit attribution, review effort, and reported skills, MCP servers, and custom instructions through platform APIs. That makes the review configuration queryable at release time.
+
+Practical lesson:
+- capture enterprise, organization, and repository policy scope;
+- bind attribution and effort to the exact head SHA;
+- retain reported skills, MCP servers, and custom instructions;
+- distinguish reported sources from independently observed events;
+- fail closed when required provenance is missing or policy inheritance is ambiguous.
+
+Evidence caveat: reported source fields show what Copilot attributes to the review. They do not prove faithful use or review correctness.
+
+Implementability score: 0.91
+
+Source: [GitHub Copilot code review API update](https://github.blog/changelog/2026-11-06-copilot-code-review-api-management-and-review-overview-updates/)

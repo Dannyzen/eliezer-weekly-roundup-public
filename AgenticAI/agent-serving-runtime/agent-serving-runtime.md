@@ -149,3 +149,20 @@ Sources:
 - [Ask the Tool, Don't Guess](https://arxiv.org/abs/2609.18849v1)
 - [MCP progress](https://modelcontextprotocol.io/specification/2025-06-18/basic/utilities/progress)
 - [Exgentic agent traces](https://huggingface.co/datasets/Exgentic/agent-llm-traces)
+
+## November 9, 2026 update: preserve expert cooperation during compression
+
+HOPE makes MoE compression workload-aware by recording pairwise expert co-activation and contribution statistics, then solving for a prune-set that preserves cooperative structure. At 50 percent pruning, it reported an average rank of 1.58 across five methods and preserved Qwen3.5-35B-A3B performance on SWE-Bench Pro.
+
+Practical lesson:
+- calibrate on representative agent trajectories;
+- compare against first-order pruning at identical budgets;
+- retain the calibration identity and prune-set JSON;
+- gate promotion on target agent quality, general quality, memory, and latency;
+- treat the exact checkpoint and serving stack as part of the result.
+
+Artifact caveat: the public Apache-2.0 package is small, has no releases, and requires large-model calibration infrastructure. It was inspected read-only and not executed.
+
+Implementability score: 0.58
+
+Sources: [implementation walkthrough](https://huggingface.co/blog/amazon/higher-order-pruning-experts), [paper v3](https://arxiv.org/abs/2609.18916v3), [package](https://github.com/awslabs/HOPE)

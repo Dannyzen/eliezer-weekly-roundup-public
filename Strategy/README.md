@@ -2,56 +2,40 @@
 
 Control-plane research for authority, identity, provenance, gateways, approvals, privacy, and sovereign infrastructure.
 
-## Latest structured update: 2026-11-08
+## Latest structured update: 2026-11-09
 
-### Define prompt injection by source authority
+### Make review provenance a release input
 
-Summary: untrusted content can preserve the user's task while changing a rule, state fact, action value, or observation meaning. Defenses focused on explicit instruction override can therefore miss unauthorized effects performed through expected tools.
+Summary: GitHub now exposes Copilot code-review policy, attribution, effort, and reported skills, MCP servers, and custom instructions through REST and GraphQL APIs. This makes review configuration a queryable release-control surface.
 
-Analysis: [Daily strategy](2026-11-08/sovereignty.md#1-define-prompt-injection-by-source-authority)
+Analysis: [Daily strategy](2026-11-09/sovereignty.md#1-make-review-provenance-a-release-input)
 
-Core sources: [paper](https://arxiv.org/abs/2611.07640v1), [public benchmark repository](https://github.com/amazon-science/task-tampering-prompt-injection)
-
-Implementable now:
-- per-value source-authority rules
-- critical-argument provenance
-- state, rule, consequence, and observation-tampering fixtures
-- separate legitimate-completion and unauthorized-effect scores
-
-Implementability score: 0.82
-
-### Sign requirements after source-bound extraction
-
-Summary: signed requirement manifests sharply reduced unsafe multi-agent commits, but every remaining unsafe decision in the oracle comparison came from extraction errors before signing. Transit integrity starts after the real trust boundary.
-
-Analysis: [Daily strategy](2026-11-08/sovereignty.md#2-sign-requirements-after-source-bound-extraction)
-
-Core source: [Signed but Not Safe](https://arxiv.org/abs/2611.07483v1)
+Core source: [GitHub changelog](https://github.blog/changelog/2026-11-06-copilot-code-review-api-management-and-review-overview-updates/)
 
 Implementable now:
-- verbatim requirement evidence plus typed predicates
-- canonical manifests signed outside model access
-- deterministic final-effect checks
-- separate pre-signing extraction audits
+- API inventory of review settings by policy scope
+- source-SHA-bound review receipts
+- retained attribution, effort, skills, MCP servers, and instructions
+- independent effect checks for consequential releases
 
-Implementability score: 0.76
+Implementability score: 0.91
 
 ## Current strategic model
 
 1. Evidence informs decisions but does not grant authority.
-2. Authority belongs to sources and the decision variables they govern.
-3. Signed transit cannot repair incomplete extraction.
-4. Effect-bound tickets narrow host grants.
+2. Platform policy and reported context belong in the review receipt.
+3. Reported provenance is useful but still needs independent effect evidence.
+4. Signed transit cannot repair incomplete extraction.
 5. Receipts prove what changed.
 6. Privacy scope follows traces and downstream propagation.
 
 ## Browse
 
-- [Latest roundup](../roundups/2026-11-08.md)
-- [Latest dated strategy](2026-11-08/sovereignty.md)
+- [Latest roundup](../roundups/2026-11-09.md)
+- [Latest dated strategy](2026-11-09/sovereignty.md)
 - [Friday synthesis](2026-11-06/sovereignty.md)
-- [Effect-bound skill execution](effect-bound-skill-execution/effect-bound-skill-execution.md)
 - [Evidence provenance control plane](evidence-provenance-control-plane/evidence-provenance-control-plane.md)
+- [Effect-bound skill execution](effect-bound-skill-execution/effect-bound-skill-execution.md)
 - [Agent execution control plane](agent-execution-control-plane/agent-execution-control-plane.md)
 - [Context-to-execution integrity](context-to-execution-integrity/context-to-execution-integrity.md)
 - [Memory authority control plane](memory-authority-control-plane/memory-authority-control-plane.md)

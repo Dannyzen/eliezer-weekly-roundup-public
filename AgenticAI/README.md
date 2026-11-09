@@ -2,55 +2,55 @@
 
 Implementation research for the deployed agent loop: tool use, memory, orchestration, evaluation, testing, and work-state continuity.
 
-## Latest structured update: 2026-11-08
+## Latest structured update: 2026-11-09
 
-### Separate hard issues, weak models, and bad runs
+### Train exact workflows against executable verifiers
 
-Summary: current coding-agent failure predictors can score well by rediscovering issue difficulty and model ability. On public SWE-bench Verified trajectories, an issue-only baseline reached 0.92 AUROC versus about 0.62 for tested trajectory predictors.
+Summary: a 3.35B model fine-tuned on scripted TaxOps trajectories reached 93.3 percent exact success on 300 held-out synthetic returns with 0.030 wasted calls per case. The strongest change corrected the demonstration policy instead of teaching more recovery behavior.
 
-Analysis: [Daily analysis](2026-11-08/reasoning.md#1-separate-hard-issues-weak-models-and-bad-runs)
+Analysis: [Daily analysis](2026-11-09/reasoning.md#1-train-exact-workflows-against-executable-verifiers)
 
-Core source: [Hard Issue, Weak Model, or Bad Run?](https://arxiv.org/abs/2611.08285v1)
-
-Implementable now:
-- repeated attempts for each issue-model pair
-- issue-only and model-only baselines
-- causal failure labels before stop, retry, or switch decisions
-- equal-budget closed-loop intervention tests
-
-Implementability score: 0.84
-
-### Derive migration tests from changed contracts
-
-Summary: typical-input checks released 41.0 percent of wrong repairs across 73 migration tasks. One edge input derived from the release note cut the wrong-release rate to 6.5 percent.
-
-Analysis: [Daily analysis](2026-11-08/reasoning.md#2-derive-migration-tests-from-changed-contracts)
-
-Core source: [Accepted but Wrong](https://arxiv.org/abs/2611.08269v1)
+Core source: [TaxOps](https://huggingface.co/blog/Manoj2142/taxops-efficient-tool-agent)
 
 Implementable now:
-- before-and-after contracts from release notes
-- edge inputs targeted at changed semantics
-- hidden checks independent from the repair model
-- runtime, input, expected-effect, and verdict receipts
+- typed tools and deterministic final-state verifiers
+- scripted oracle trajectories
+- exact success, field accuracy, waste, token, and latency metrics
+- shifted cases with unseen decoys
 
-Implementability score: 0.87
+Implementability score: 0.78
+
+### Preserve expert cooperation when shrinking MoE models
+
+Summary: HOPE chooses experts with pairwise co-activation and contribution statistics. At 50 percent pruning it outperformed four first-order methods and preserved reported agentic coding performance on Qwen3.5-35B-A3B.
+
+Analysis: [Daily analysis](2026-11-09/reasoning.md#2-preserve-expert-cooperation-when-shrinking-moe-models)
+
+Core source: [implementation walkthrough](https://huggingface.co/blog/amazon/higher-order-pruning-experts)
+
+Implementable now:
+- calibration on representative agent trajectories
+- interaction-aware and first-order pruning comparisons
+- versioned prune-set artifacts
+- target-workload quality and serving-cost gates
+
+Implementability score: 0.58
 
 ## Current working model
 
-1. Version the measurement instrument before comparing models.
-2. Separate issue difficulty, model ability, and run variance.
-3. Derive migration gates from changed contracts.
-4. Preserve typed events before compressing evidence.
-5. Keep release oracles deterministic and independent from the acting model.
+1. Compile bounded workflows into typed actions and executable effects.
+2. Train and test against exact verifiers, not prose judgments alone.
+3. Preserve cooperative structure when routing or pruning model capacity.
+4. Bind every optimization to the exact workload, checkpoint, and receipt.
+5. Keep release oracles independent from the acting model.
 
 ## Browse
 
-- [Latest roundup](../roundups/2026-11-08.md)
-- [Latest dated analysis](2026-11-08/reasoning.md)
+- [Latest roundup](../roundups/2026-11-09.md)
+- [Latest dated analysis](2026-11-09/reasoning.md)
 - [Friday synthesis](2026-11-06/reasoning.md)
-- [Decision-state compilation](decision-state-compilation/decision-state-compilation.md)
 - [Agent harness architecture](agent-harness-architecture/agent-harness-architecture.md)
+- [Agent serving runtime](agent-serving-runtime/agent-serving-runtime.md)
 - [Memory systems](memory-systems/memory-systems.md)
 - [Trajectory-aware evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
 - [Skills as control](skills-as-control/skills-as-control.md)

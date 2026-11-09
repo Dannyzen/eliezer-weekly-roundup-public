@@ -1767,3 +1767,20 @@ Artifact caveat: the task records and receipts are available from the authors on
 Implementability score: 0.87
 
 Source: [Accepted but Wrong](https://arxiv.org/abs/2611.08269v1)
+
+## November 9, 2026 update: train bounded workflows against exact effects
+
+TaxOps demonstrates a harness pattern for small tool agents: typed tools, scripted oracle trajectories, an exact final-state verifier, and separate waste metrics. Its strongest iteration changed the demonstration policy around corrected documents rather than adding recovery examples.
+
+Practical lesson:
+- define the valid action grammar before training;
+- build an executable final-state oracle;
+- separate success, field accuracy, invalid calls, wasted calls, tokens, and latency;
+- hold out shifted decoys and document layouts;
+- inspect transition failures before adding demonstrations.
+
+Evidence caveat: the environment is synthetic and community-authored. Public code, model, data, and replay artifacts resolve, but no production-tax validity or independent replication is established.
+
+Implementability score: 0.78
+
+Sources: [TaxOps article](https://huggingface.co/blog/Manoj2142/taxops-efficient-tool-agent), [repository](https://github.com/ydv-manoj/taxops-agent)

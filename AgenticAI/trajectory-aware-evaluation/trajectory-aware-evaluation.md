@@ -1724,3 +1724,20 @@ Practical lesson:
 Implementability score: 0.84
 
 Source: [Hard Issue, Weak Model, or Bad Run?](https://arxiv.org/abs/2611.08285v1)
+
+## November 10, 2026 update: certify evidence sufficiency before scoring accuracy
+
+Correct Answers from Insufficient Histories shows why final-answer accuracy is unsafe for trajectory evaluation. Qwen3-32B and DeepSeek-V4-Flash gave concrete answers on 196 and 182 of 203 certified-insufficient prefixes, and still matched 87 and 85 hidden references.
+
+Practical lesson:
+- construct compatible complete histories with different answers;
+- label the common visible prefix insufficient;
+- grade support, correctness, and abstention separately;
+- run deterministic witness checks before judge models;
+- retain witness pairs in the evaluation receipt.
+
+Artifact caveat: the retained study artifact is not publicly released for anonymous replay.
+
+Implementability score: 0.86
+
+Source: [paper v1](https://arxiv.org/abs/2611.11840v1)

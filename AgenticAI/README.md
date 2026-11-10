@@ -2,52 +2,68 @@
 
 Implementation research for the deployed agent loop: tool use, memory, orchestration, evaluation, testing, and work-state continuity.
 
-## Latest structured update: 2026-11-09
+## Latest structured update: 2026-11-10
 
-### Train exact workflows against executable verifiers
+### Grade evidence sufficiency before answer accuracy
 
-Summary: a 3.35B model fine-tuned on scripted TaxOps trajectories reached 93.3 percent exact success on 300 held-out synthetic returns with 0.030 wasted calls per case. The strongest change corrected the demonstration policy instead of teaching more recovery behavior.
+Summary: two readers produced concrete answers on 196 and 182 of 203 certified-insufficient trajectory prefixes. Correct-looking answers therefore do not prove that visible memory supports them.
 
-Analysis: [Daily analysis](2026-11-09/reasoning.md#1-train-exact-workflows-against-executable-verifiers)
+Analysis: [Daily analysis](2026-11-10/reasoning.md#1-grade-evidence-sufficiency-before-answer-accuracy)
 
-Core source: [TaxOps](https://huggingface.co/blog/Manoj2142/taxops-efficient-tool-agent)
-
-Implementable now:
-- typed tools and deterministic final-state verifiers
-- scripted oracle trajectories
-- exact success, field accuracy, waste, token, and latency metrics
-- shifted cases with unseen decoys
-
-Implementability score: 0.78
-
-### Preserve expert cooperation when shrinking MoE models
-
-Summary: HOPE chooses experts with pairwise co-activation and contribution statistics. At 50 percent pruning it outperformed four first-order methods and preserved reported agentic coding performance on Qwen3.5-35B-A3B.
-
-Analysis: [Daily analysis](2026-11-09/reasoning.md#2-preserve-expert-cooperation-when-shrinking-moe-models)
-
-Core source: [implementation walkthrough](https://huggingface.co/blog/amazon/higher-order-pruning-experts)
+Core source: [paper v1](https://arxiv.org/abs/2611.11840v1)
 
 Implementable now:
-- calibration on representative agent trajectories
-- interaction-aware and first-order pruning comparisons
-- versioned prune-set artifacts
-- target-workload quality and serving-cost gates
+- compatible-history witness pairs
+- separate support, correctness, and abstention labels
+- deterministic checks before LLM judges
+- source-bound evaluation receipts
 
-Implementability score: 0.58
+Implementability score: 0.86
+
+### Measure orchestration with fixed executors
+
+Summary: WorkflowArena records executable delegation across 145 long-horizon tasks and uses fixed executors to separate workflow quality from worker strength.
+
+Analysis: [Daily analysis](2026-11-10/reasoning.md#2-measure-orchestration-as-its-own-capability)
+
+Core sources: [paper v1](https://arxiv.org/abs/2611.12856v1), [repository](https://github.com/Einsia/WorkflowArena)
+
+Implementable now:
+- shared planning and execution budgets
+- delegation and dependency traces
+- fixed-executor transfer tests
+- hidden integrated-deliverable verifiers
+
+Implementability score: 0.74
+
+### Interpose before optimizing agent cost
+
+Summary: Agency places deterministic context and tool optimizations between existing harnesses and model providers. The paper reports up to 35 percent savings, but no public implementation resolved.
+
+Analysis: [Daily analysis](2026-11-10/reasoning.md#3-put-cost-optimization-in-a-harness-interposition-layer)
+
+Core source: [paper v1](https://arxiv.org/abs/2611.12122v1)
+
+Implementable now:
+- call-level cost decomposition
+- repeated-context and redundant-tool analysis
+- reversible feature-flagged transforms
+- same-task cost, success, latency, and failure-shape gates
+
+Implementability score: 0.62
 
 ## Current working model
 
-1. Compile bounded workflows into typed actions and executable effects.
-2. Train and test against exact verifiers, not prose judgments alone.
-3. Preserve cooperative structure when routing or pruning model capacity.
-4. Bind every optimization to the exact workload, checkpoint, and receipt.
-5. Keep release oracles independent from the acting model.
+1. Certify that visible evidence supports the answer.
+2. Evaluate workflow quality separately from worker capability.
+3. Charge planning, delegation, and execution to one budget.
+4. Optimize cost only behind reversible accuracy gates.
+5. Preserve typed traces and independent effect verifiers.
 
 ## Browse
 
-- [Latest roundup](../roundups/2026-11-09.md)
-- [Latest dated analysis](2026-11-09/reasoning.md)
+- [Latest roundup](../roundups/2026-11-10.md)
+- [Latest dated analysis](2026-11-10/reasoning.md)
 - [Friday synthesis](2026-11-06/reasoning.md)
 - [Agent harness architecture](agent-harness-architecture/agent-harness-architecture.md)
 - [Agent serving runtime](agent-serving-runtime/agent-serving-runtime.md)

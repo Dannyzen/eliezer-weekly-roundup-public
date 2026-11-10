@@ -6,9 +6,9 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-11-09: [executable workflow verifiers, interaction-aware MoE pruning, and review provenance APIs](roundups/2026-11-09.md)
-- Latest implementation analysis: [AgenticAI](AgenticAI/2026-11-09/reasoning.md)
-- Latest strategy analysis: [Strategy](Strategy/2026-11-09/sovereignty.md)
+- Daily scan, 2026-11-10: [evidence sufficiency, executable orchestration, harness cost controls, and shared-memory authority](roundups/2026-11-10.md)
+- Latest implementation analysis: [AgenticAI](AgenticAI/2026-11-10/reasoning.md)
+- Latest strategy analysis: [Strategy](Strategy/2026-11-10/sovereignty.md)
 - Latest implementation index: [AgenticAI README](AgenticAI/README.md)
 - Latest strategy index: [Strategy README](Strategy/README.md)
 - Friday synthesis, week ending 2026-11-06: [measurement and authority need explicit control planes](roundups/2026-11-06.md)

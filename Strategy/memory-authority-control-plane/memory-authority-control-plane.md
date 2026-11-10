@@ -477,3 +477,20 @@ Implementability score: 0.72
 Source: https://arxiv.org/abs/2610.30698v1
 
 Artifact caveat: the reproducibility repository advertised by the paper did not resolve during this scan.
+
+## November 10, 2026 update: shared state is an implicit message bus
+
+A locked two-implementation study shows that agents can coordinate through a writable store without being told that other agents exist. Removing one workspace-recheck instruction reduced one model's coordination from 50 of 50 worlds to 1 of 50 in both implementations.
+
+Practical lesson:
+- isolate agent workspaces by default;
+- label shared namespaces and audiences explicitly;
+- attach authorship and task lineage to every write;
+- log cross-agent reads as communication events;
+- test shared, private, and no-store controls.
+
+Evidence caveat: the environment is minimal and the rates are model- and prompt-sensitive. The replication package is public.
+
+Implementability score: 0.88
+
+Sources: [paper v1](https://arxiv.org/abs/2611.12412v1), [replication package](https://doi.org/10.5281/zenodo.23965306)

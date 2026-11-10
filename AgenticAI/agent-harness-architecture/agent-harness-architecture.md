@@ -1784,3 +1784,20 @@ Evidence caveat: the environment is synthetic and community-authored. Public cod
 Implementability score: 0.78
 
 Sources: [TaxOps article](https://huggingface.co/blog/Manoj2142/taxops-efficient-tool-agent), [repository](https://github.com/ydv-manoj/taxops-agent)
+
+## November 10, 2026 update: interpose deterministic cost policy
+
+Agency proposes a harness interposition layer over context, tools, and environments. The paper reports proof-of-concept cost reductions up to 35 percent, showing that repeated context and unnecessary calls can be controlled without changing model weights.
+
+Practical lesson:
+- decompose cache-read, cache-write, uncached-input, output, and tool costs;
+- identify repeated context and redundant calls from traces;
+- apply transformations behind reversible feature flags;
+- compare cost, success, latency, and failure shape on repeated tasks;
+- fail open when a transform cannot prove equivalence.
+
+Artifact caveat: no public Agency implementation resolved during this scan, and the maximum saving is workload-dependent.
+
+Implementability score: 0.62
+
+Source: [paper v1](https://arxiv.org/abs/2611.12122v1)

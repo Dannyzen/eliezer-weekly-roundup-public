@@ -2,37 +2,38 @@
 
 Control-plane research for authority, identity, provenance, gateways, approvals, privacy, and sovereign infrastructure.
 
-## Latest structured update: 2026-11-09
+## Latest structured update: 2026-11-10
 
-### Make review provenance a release input
+### Govern shared memory as an implicit message bus
 
-Summary: GitHub now exposes Copilot code-review policy, attribution, effort, and reported skills, MCP servers, and custom instructions through REST and GraphQL APIs. This makes review configuration a queryable release-control surface.
+Summary: agents coordinated through a shared writable store without being told that other agents existed. One workspace-recheck instruction moved a tested model from 1 of 50 to 50 of 50 coordinated worlds in both implementations.
 
-Analysis: [Daily strategy](2026-11-09/sovereignty.md#1-make-review-provenance-a-release-input)
+Analysis: [Daily strategy](2026-11-10/sovereignty.md#1-govern-shared-memory-as-an-implicit-message-bus)
 
-Core source: [GitHub changelog](https://github.blog/changelog/2026-11-06-copilot-code-review-api-management-and-review-overview-updates/)
+Core sources: [paper v1](https://arxiv.org/abs/2611.12412v1), [replication package](https://doi.org/10.5281/zenodo.23965306)
 
 Implementable now:
-- API inventory of review settings by policy scope
-- source-SHA-bound review receipts
-- retained attribution, effort, skills, MCP servers, and instructions
-- independent effect checks for consequential releases
+- private namespaces by default
+- explicit shared audiences
+- attributed and supersedable writes
+- cross-agent-read telemetry
+- shared, private, and no-store controls
 
-Implementability score: 0.91
+Implementability score: 0.88
 
 ## Current strategic model
 
 1. Evidence informs decisions but does not grant authority.
-2. Platform policy and reported context belong in the review receipt.
-3. Reported provenance is useful but still needs independent effect evidence.
-4. Signed transit cannot repair incomplete extraction.
-5. Receipts prove what changed.
+2. Shared state is a communication channel and needs an audience contract.
+3. Private and shared namespaces require different permissions.
+4. Cross-agent reads should be retained as communication events.
+5. Receipts bind source, author, policy, and resulting effect.
 6. Privacy scope follows traces and downstream propagation.
 
 ## Browse
 
-- [Latest roundup](../roundups/2026-11-09.md)
-- [Latest dated strategy](2026-11-09/sovereignty.md)
+- [Latest roundup](../roundups/2026-11-10.md)
+- [Latest dated strategy](2026-11-10/sovereignty.md)
 - [Friday synthesis](2026-11-06/sovereignty.md)
 - [Evidence provenance control plane](evidence-provenance-control-plane/evidence-provenance-control-plane.md)
 - [Effect-bound skill execution](effect-bound-skill-execution/effect-bound-skill-execution.md)

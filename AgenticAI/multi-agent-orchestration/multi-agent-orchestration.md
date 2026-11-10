@@ -356,3 +356,20 @@ Artifact caveat: no public implementation repository resolved from the paper dur
 Implementability score: 0.72
 
 Source: [ExploreRepair](https://arxiv.org/abs/2610.39899v1)
+
+## November 10, 2026 update: score authored workflows with fixed workers
+
+WorkflowArena makes orchestration measurable by recording executable delegation under one planning-plus-execution budget. Its 145 tasks span 8 domains, and fixed-executor transfer tests separate workflow quality from worker strength.
+
+Practical lesson:
+- define interdependent artifacts and an integrated verifier;
+- charge orchestration time to the same budget as execution;
+- retain worker prompts, dependencies, revisions, and outcomes;
+- compare source models against fixed executors;
+- report workflow quality beside final task success.
+
+Evidence caveat: configurations ran once per task, harness and model are partly confounded, and some domains use LLM judges without measured human agreement.
+
+Implementability score: 0.74
+
+Sources: [paper v1](https://arxiv.org/abs/2611.12856v1), [repository](https://github.com/Einsia/WorkflowArena)

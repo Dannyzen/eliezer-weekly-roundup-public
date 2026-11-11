@@ -2,38 +2,38 @@
 
 Control-plane research for authority, identity, provenance, gateways, approvals, privacy, and sovereign infrastructure.
 
-## Latest structured update: 2026-11-10
+## Latest structured update: 2026-11-11
 
-### Govern shared memory as an implicit message bus
+### Put personal-agent policy outside the prompt
 
-Summary: agents coordinated through a shared writable store without being told that other agents existed. One workspace-recheck instruction moved a tested model from 1 of 50 to 50 of 50 coordinated worlds in both implementations.
+Summary: Nod is a local-first personal-agent reference architecture with containerized workspaces, private vault entry, server-side mutation checks, approvals, and action receipts. Its model-based safety check still failed 8 of 240 decisions with a smaller model.
 
-Analysis: [Daily strategy](2026-11-10/sovereignty.md#1-govern-shared-memory-as-an-implicit-message-bus)
+Analysis: [Daily strategy](2026-11-11/sovereignty.md#1-put-personal-agent-policy-outside-the-prompt)
 
-Core sources: [paper v1](https://arxiv.org/abs/2611.12412v1), [replication package](https://doi.org/10.5281/zenodo.23965306)
+Core sources: [official announcement](https://blog.n8n.io/meet-nod/), [repository](https://github.com/n8n-io/nod), [product and benchmark page](https://nod.n8n.io/)
 
 Implementable now:
-- private namespaces by default
-- explicit shared audiences
-- attributed and supersedable writes
-- cross-agent-read telemetry
-- shared, private, and no-store controls
+- deterministic action authorization where possible
+- effect-bound approvals
+- secret entry outside model context
+- action, identity, cost, and outcome receipts
+- hosted-dependency and telemetry review
 
-Implementability score: 0.88
+Implementability score: 0.76
 
 ## Current strategic model
 
-1. Evidence informs decisions but does not grant authority.
-2. Shared state is a communication channel and needs an audience contract.
-3. Private and shared namespaces require different permissions.
-4. Cross-agent reads should be retained as communication events.
-5. Receipts bind source, author, policy, and resulting effect.
-6. Privacy scope follows traces and downstream propagation.
+1. Local execution does not establish sovereignty by itself.
+2. Policy and credentials belong outside model context.
+3. Model-based safety decisions need fail-closed thresholds and independent tests.
+4. Approvals should bind to one exact effect and identity.
+5. Receipts should preserve requests, decisions, actions, costs, and outcomes.
+6. Hosted dependencies and telemetry remain part of the data boundary.
 
 ## Browse
 
-- [Latest roundup](../roundups/2026-11-10.md)
-- [Latest dated strategy](2026-11-10/sovereignty.md)
+- [Latest roundup](../roundups/2026-11-11.md)
+- [Latest dated strategy](2026-11-11/sovereignty.md)
 - [Friday synthesis](2026-11-06/sovereignty.md)
 - [Evidence provenance control plane](evidence-provenance-control-plane/evidence-provenance-control-plane.md)
 - [Effect-bound skill execution](effect-bound-skill-execution/effect-bound-skill-execution.md)

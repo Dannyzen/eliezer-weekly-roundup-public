@@ -165,3 +165,22 @@ The strategic claim is simple: durable agents need a compiler between memory and
 - [The Right Fact, the Wrong Decision: SciValidityBench for Scientific Agent Memory, arXiv v1](https://arxiv.org/abs/2610.34767v1)
 - [SciValidityBench reference implementation](https://github.com/SciValidityBench/SciValidityBench)
 - [SciValidityBench project site](https://scivaliditybench.github.io/SciValidityBench/)
+
+
+## November 12, 2026 update: compile stable traces out of the planner loop
+
+ReTrace adds a production-shaped compilation path. It extracts guards, tool inputs, alternatives, and completion checks from an SOP plus evidence-bearing agent traces, merges them into a portable rule document, and synthesizes executable workflow code. The runtime path is deterministic even when individual tools still call models.
+
+Practical lesson:
+- retain reasoning with tool records because calls alone omit decision conditions;
+- link every compiled rule to trace evidence;
+- test unobserved branches and held-out cases before promotion;
+- use labeled failures as compiler-repair fixtures;
+- preserve an agent escape path for inputs outside the compiled contract.
+
+Evidence caveat: no public ReTrace implementation artifact resolved. Unrepaired workflows give up several points of task success for speed and cost, and the enterprise break-even calculation uses an estimated construction cost rather than measured production construction cost.
+
+Implementability score: 0.72
+
+Source:
+- [ReTrace v1](https://arxiv.org/abs/2611.14492v1)

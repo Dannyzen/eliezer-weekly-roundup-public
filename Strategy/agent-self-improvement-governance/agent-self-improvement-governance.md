@@ -165,3 +165,22 @@ Implementability score: 0.62
 
 Source:
 - [SelfSearch v2](https://arxiv.org/abs/2609.37968v2)
+
+
+## November 12, 2026 update: falsify lessons before durable promotion
+
+Falsification-Gated Self-Evolution treats each candidate lesson as a typed hypothesis with a precondition, behavior change, expected effect, and verifier. It applies the change only in temporary state, then runs transfer, counterexample, and archived-regression probes before commit, refinement, or rejection.
+
+Practical lesson:
+- quarantine candidate lessons outside active memory;
+- require exact scope, expected effect, verifier, and source evidence;
+- test transfer and adversarial counterexamples;
+- replay archived successes before promotion;
+- bind the promotion receipt to probe results and memory version.
+
+Evidence caveat: governance quality is bounded by verifier coverage, and no public implementation artifact resolved from the paper.
+
+Implementability score: 0.74
+
+Source:
+- [When Should Agents Remember? v1](https://arxiv.org/abs/2611.14326v1)

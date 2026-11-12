@@ -2,72 +2,62 @@
 
 Implementation research for the deployed agent loop: tool use, memory, orchestration, evaluation, testing, and work-state continuity.
 
-## Latest structured update: 2026-11-11
+## Latest structured update: 2026-11-12
 
-### Link reusable memory to source trajectories
+### Compile repeated agent traces into planner-free workflows
 
-Summary: WikiTrace lets an agent descend from a concise lesson to the compilation and raw run that produced it. It improved the same-insight baseline by 3.2 points and reduced memory Regression from 6.5 percent to 4.5 percent.
+Summary: ReTrace turns an SOP and evidence-bearing agent traces into a portable rule document and executable workflow where code selects the next step. It traded several points of task success for large runtime and cost reductions, then recovered performance through failure-driven repair.
 
-Analysis: [Daily analysis](2026-11-11/reasoning.md#1-link-every-reusable-lesson-to-its-source-trajectory)
+Analysis: [Daily analysis](2026-11-12/reasoning.md#1-compile-repeated-agent-traces-into-planner-free-workflows)
 
-Core sources: [paper v1](https://arxiv.org/abs/2611.14320v1), [repository](https://github.com/yukyeongleee/wikitrace)
+Durable topic: [Decision-state compilation](decision-state-compilation/decision-state-compilation.md)
 
-Implementable now:
-- source trajectory IDs and content hashes
-- read-only evidence descent
-- conflict and failed-source triggers
-- separate memory Gain and Regression metrics
-
-Implementability score: 0.88
-
-### Preserve run memory in an ordinary private workspace
-
-Summary: CAMG-II uses Bash and an episode-persistent workspace across context replacement. CAMP-II shows that models can learn file-based memory behavior that transfers to external coding and terminal benchmarks.
-
-Analysis: [Daily analysis](2026-11-11/reasoning.md#2-treat-a-persistent-workspace-as-the-models-memory-interface)
-
-Core source: [paper v1](https://arxiv.org/abs/2611.14009v1)
+Core source: [ReTrace paper v1](https://arxiv.org/abs/2611.14492v1)
 
 Implementable now:
-- per-run persistent workspaces
-- standard note, evidence, plan, and receipt files
-- hidden verifiers outside writable state
-- content-intervention tests
+- typed rule documents with guards and completion checks
+- source links from rules to traces
+- held-out and counterfactual workflow tests
+- failure-driven repair fixtures
+- explicit escape paths for novel cases
 
-Implementability score: 0.46
+Implementability score: 0.72
 
-### Grade rendered work products
+### Test research agents in inherited workspaces
 
-Summary: MKA evaluates 200 private visual knowledge-work tasks under one open-source harness and rubric, while ten public tasks expose the format. The grader renders files and inspects spreadsheet formulas rather than trusting the transcript.
+Summary: ARE-bench replays real researcher sessions and complete in-progress workspaces to the exact request boundary. Models that passed about 69 percent under immediate-contract grading fell to 28.4 to 40.0 percent when historical and material workspace requirements were included.
 
-Analysis: [Daily analysis](2026-11-11/reasoning.md#3-grade-the-rendered-deliverable-not-the-chat-transcript)
+Analysis: [Daily analysis](2026-11-12/reasoning.md#2-test-research-agents-in-inherited-workspaces)
 
-Core sources: [Google announcement](https://blog.google/innovation-and-ai/models-and-research/gemini-models/multimodal-knowledge-agent-benchmark/), [methodology](https://artificialanalysis.ai/articles/google-deepmind-multimodal-knowledge-agent), [public sample](https://huggingface.co/datasets/google/multimodal-knowledge-agent), [Stirrup](https://github.com/ArtificialAnalysis/Stirrup)
+Core source: [ARE-bench paper v1](https://arxiv.org/abs/2611.14364v1)
 
 Implementable now:
-- delivery-surface fixtures
-- factual and visual rubric dimensions
-- rendered artifact and formula checks
-- pinned harness, tools, sandbox, and grader
+- request-boundary workspace snapshots
+- stale and failed artifacts in test fixtures
+- separate current, historical, material, and norm checklists
+- critical-item pass gates
+- clean-room versus inherited-state comparisons
 
-Implementability score: 0.82
+Implementability score: 0.79
 
 ## Current working model
 
-1. Treat memory summaries as claims linked to raw evidence.
-2. Preserve run state in private, inspectable workspaces.
-3. Keep hidden tests and authority-bearing state outside writable context.
-4. Evaluate the delivered artifact under a pinned harness.
-5. Measure regressions introduced by memory, not only aggregate gains.
+1. Use agents for variable and novel paths.
+2. Compile stable recurring behavior into evidence-linked deterministic workflows.
+3. Preserve an escape path when inputs exceed the compiled contract.
+4. Evaluate agents and workflows inside inherited project state.
+5. Grade critical historical constraints separately from immediate task completion.
 
 ## Browse
 
-- [Latest roundup](../roundups/2026-11-11.md)
-- [Latest dated analysis](2026-11-11/reasoning.md)
+- [Latest roundup](../roundups/2026-11-12.md)
+- [Latest dated analysis](2026-11-12/reasoning.md)
 - [Friday synthesis](2026-11-06/reasoning.md)
+- [Decision-state compilation](decision-state-compilation/decision-state-compilation.md)
 - [Agent harness architecture](agent-harness-architecture/agent-harness-architecture.md)
 - [Agent serving runtime](agent-serving-runtime/agent-serving-runtime.md)
 - [Memory systems](memory-systems/memory-systems.md)
+- [Evidence-linked memory](evidence-linked-memory/evidence-linked-memory.md)
 - [Trajectory-aware evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
 - [Skills as control](skills-as-control/skills-as-control.md)
 - [Multi-agent orchestration](multi-agent-orchestration/multi-agent-orchestration.md)

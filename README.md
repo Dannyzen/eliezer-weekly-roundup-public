@@ -6,13 +6,13 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-11-11: [evidence-linked memory, persistent file workspaces, deliverable-level grading, and external action policy](roundups/2026-11-11.md)
-- Latest implementation analysis: [AgenticAI](AgenticAI/2026-11-11/reasoning.md)
-- Latest strategy analysis: [Strategy](Strategy/2026-11-11/sovereignty.md)
+- Daily scan, 2026-11-12: [compiled workflows, inherited-workspace evaluation, gated memory promotion, and constrained generative UI](roundups/2026-11-12.md)
+- Latest implementation analysis: [AgenticAI](AgenticAI/2026-11-12/reasoning.md)
+- Latest strategy analysis: [Strategy](Strategy/2026-11-12/sovereignty.md)
 - Latest implementation index: [AgenticAI README](AgenticAI/README.md)
 - Latest strategy index: [Strategy README](Strategy/README.md)
+- Deep Dive Wednesday, 2026-11-11: [evidence-linked memory](AgenticAI/evidence-linked-memory/evidence-linked-memory.md)
 - Friday synthesis, week ending 2026-11-06: [measurement and authority need explicit control planes](roundups/2026-11-06.md)
-- Deep Dive Wednesday, 2026-11-04: [effect-bound skill execution](Strategy/effect-bound-skill-execution/effect-bound-skill-execution.md)
 
 ## Browse by category
 

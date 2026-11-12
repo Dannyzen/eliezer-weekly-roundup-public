@@ -27,7 +27,11 @@ Artifact status: contents inspected read-only. The public Apache-2.0 repository 
 
 First listed: 2026-11-11. Submitted: 2026-11-10 16:46:59 UTC.
 
+Deep dive: [Evidence-linked memory](../evidence-linked-memory/evidence-linked-memory.md)
+
 Core sources: [paper v1](https://arxiv.org/abs/2611.14320v1), [repository](https://github.com/yukyeongleee/wikitrace)
+
+Why it won the week: it changes memory from detached guidance into a checkable claim. The same-insight comparison isolates the value of source access, and the Gain/Regression split measures whether memory preserves tasks that already work.
 
 ## 2. Treat a persistent workspace as the model's memory interface
 

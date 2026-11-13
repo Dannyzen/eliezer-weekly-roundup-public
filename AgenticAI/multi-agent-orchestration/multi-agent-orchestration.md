@@ -373,3 +373,19 @@ Evidence caveat: configurations ran once per task, harness and model are partly 
 Implementability score: 0.74
 
 Sources: [paper v1](https://arxiv.org/abs/2611.12856v1), [repository](https://github.com/Einsia/WorkflowArena)
+
+## November 13, 2026 update: delegation needs an evidence contract
+
+Lost in Delegation found no consistent accuracy gain from forced delegated generative search and larger failures on post-cutoff facts. Query distortion, hidden retrieval failures, and parent distrust of executor evidence made the handoff boundary the dominant risk.
+
+Practical lesson:
+- preserve the source question and constraints verbatim;
+- require returned sources, failures, ambiguity, and confidence state;
+- compare delegation with direct tool use under equal budgets;
+- let the parent integrate evidence without silently replacing it with prior knowledge.
+
+Evidence caveat: the study covers composite factual search, not independently verifiable code or artifact work.
+
+Implementability score: 0.83
+
+Source: [Lost in Delegation](https://arxiv.org/abs/2611.16526v1)

@@ -1741,3 +1741,19 @@ Artifact caveat: the retained study artifact is not publicly released for anonym
 Implementability score: 0.86
 
 Source: [paper v1](https://arxiv.org/abs/2611.11840v1)
+
+## November 13, 2026 update: derive memory tests from operational hazards
+
+AstroMemBench turns six operational challenge categories into 16 memory subchallenges, 140 templates, and 2,240 deterministic instances across nine tasks. It scores completion, state, safety, and resource effects instead of recall alone.
+
+Practical lesson:
+- map each hazard to required historical evidence and a downstream capability;
+- generate matched clean, noisy, compacted, and restarted histories;
+- compare native context, retrieval, and persistent memory on identical instances;
+- retain deterministic scenario receipts for regression testing.
+
+Evidence caveat: the scenarios are spacecraft-specific and synthetic. The transferable result is the Scenario-Challenge-Capability method.
+
+Implementability score: 0.82
+
+Sources: [paper v1](https://arxiv.org/abs/2611.16590v1), [repository](https://github.com/flyingView/AstroMemBench-v1)

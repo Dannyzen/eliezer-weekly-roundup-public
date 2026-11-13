@@ -1801,3 +1801,19 @@ Artifact caveat: no public Agency implementation resolved during this scan, and 
 Implementability score: 0.62
 
 Source: [paper v1](https://arxiv.org/abs/2611.12122v1)
+
+## November 13, 2026 update: test action choice against paired task states
+
+StateAlign shows that task success can rise while tool hallucination remains high. Its paired-state method changes one condition at a time so call, ask, retrieve, decline, continue, and stop decisions can be graded directly.
+
+Practical lesson:
+- build one-condition state contrasts;
+- score action appropriateness separately from outcome;
+- retain multi-call completion and tool-error recovery fixtures;
+- enforce deterministic runtime guards even without RL training.
+
+Artifact status: the public Apache-2.0 repository contains training configurations, sample data, evaluation scripts, and source modules. It was inspected read-only.
+
+Implementability score: 0.63
+
+Sources: [paper v1](https://arxiv.org/abs/2611.16304v1), [repository](https://github.com/ZhexiLu/StateAlign)

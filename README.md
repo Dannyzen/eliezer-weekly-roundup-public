@@ -6,8 +6,8 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-11-12: [compiled workflows, inherited-workspace evaluation, gated memory promotion, and constrained generative UI](roundups/2026-11-12.md)
-- Latest implementation analysis: [AgenticAI](AgenticAI/2026-11-12/reasoning.md)
+- Daily scan, 2026-11-13: [evidence-preserving delegation, state-aware tool use, operational memory tests, and costed memory evolution](roundups/2026-11-13.md)
+- Latest implementation analysis: [AgenticAI](AgenticAI/2026-11-13/reasoning.md)
 - Latest strategy analysis: [Strategy](Strategy/2026-11-12/sovereignty.md)
 - Latest implementation index: [AgenticAI README](AgenticAI/README.md)
 - Latest strategy index: [Strategy README](Strategy/README.md)

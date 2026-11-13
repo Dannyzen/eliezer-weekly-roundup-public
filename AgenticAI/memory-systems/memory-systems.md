@@ -1326,3 +1326,20 @@ Evidence caveat: the implementation is new and needs independent replication.
 Implementability score: 0.68
 
 Sources: [paper v1](https://arxiv.org/abs/2611.08341v1), [LAQ repository](https://github.com/hank08819/LAQ)
+
+## November 13, 2026 update: search memory programs under an accuracy-cost objective
+
+MAPE evolves complete memory programs behind stable construction, retrieval, composition, and answer interfaces. It reports up to a 12 point absolute accuracy gain over manual baselines at 35 percent of the serving cost. Raw-conversation retention and query-specific composition recurred across discovered systems.
+
+Practical lesson:
+- keep raw evidence beside derived memory;
+- hold models, prompts, judges, and tasks fixed across candidates;
+- optimize accuracy and lifecycle cost together;
+- retain candidate lineage, diagnostics, and failure attribution;
+- transplant useful components before replacing a whole system.
+
+Evidence caveat: the method uses LLM judges and meaningful search compute. Validate the patterns on the production workload before promotion.
+
+Implementability score: 0.58
+
+Sources: [paper v1](https://arxiv.org/abs/2611.17068v1), [repository](https://github.com/ash-ding/MAPE)

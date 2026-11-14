@@ -2,99 +2,67 @@
 
 Implementation research for the deployed agent loop: tool use, memory, orchestration, evaluation, testing, and work-state continuity.
 
-## Latest structured update: 2026-11-13
+## Latest structured update: 2026-11-14
 
-### Preserve evidence across delegation boundaries
+### Value memory by future work
 
-Summary: Lost in Delegation found no consistent accuracy gain from forced delegated search and larger failures on post-cutoff facts. Orchestrators distorted queries, lost retrieval failures, and overrode executor evidence with stale priors.
+Summary: CoReMem measures whether a trajectory segment helps the next coding task, then builds compact memory around repository locations and executable checks.
 
-Analysis: [Daily analysis](2026-11-13/reasoning.md#1-delegate-only-when-the-orchestrator-can-preserve-the-evidence-contract)
+Analysis: [Daily analysis](2026-11-14/reasoning.md#1-value-memory-by-future-work-not-retrieval-relevance)
 
-Durable topic: [Multi-agent orchestration](multi-agent-orchestration/multi-agent-orchestration.md)
-
-Core source: [Lost in Delegation paper v1](https://arxiv.org/abs/2611.16526v1)
+Core source: [CoReMem v1](https://arxiv.org/abs/2611.17316v1)
 
 Implementable now:
-- lossless source-question handoffs
-- returned sources, failures, and uncertainty
-- direct-tool baselines under equal budgets
-- parent-owned evidence integration
+- matched next-task trials with and without candidate memory
+- source-linked file, command, and check anchors
+- joint resolution, step, token, and memory-cost scoring
 
-Implementability score: 0.83
+Implementability score: 0.78
 
-### Test tool decisions against explicit state
+### Give structural coordination its own optimization objective
 
-Summary: StateAlign pairs near-identical states that require different actions, then trains with outcome and state-contrastive rewards. The cheaper transferable pattern is to grade call, ask, retrieve, decline, continue, and stop decisions separately from task success.
+Summary: MultiLoop improved task accuracy through prompts and a new tool while delegation failures persisted. Harness optimization must score coordination structure separately.
 
-Analysis: [Daily analysis](2026-11-13/reasoning.md#2-train-and-test-tool-decisions-against-explicit-task-state)
+Analysis: [Daily analysis](2026-11-14/reasoning.md#2-optimize-harness-structure-not-only-prompts-and-tools)
 
-Durable topic: [Agent harness architecture](agent-harness-architecture/agent-harness-architecture.md)
-
-Core sources: [StateAlign paper v1](https://arxiv.org/abs/2611.16304v1), [repository](https://github.com/ZhexiLu/StateAlign)
+Core source: [MultiLoop v1](https://arxiv.org/abs/2611.15754v1)
 
 Implementable now:
-- one-condition state contrasts
-- action-appropriateness grading
-- tool-error recovery fixtures
-- deterministic runtime guards
+- versioned harness diffs and rollout receipts
+- structural failure labels
+- equal-budget single-agent baselines
+- held-out regression tasks
 
-Implementability score: 0.63
+Implementability score: 0.72
 
-### Turn memory hazards into deterministic scenarios
+### Calibrate trajectory auditors against benign controls
 
-Summary: AstroMemBench maps operational challenges to 2,240 history-dependent tests with deterministic scores for completion, state, safety, and resources. This is a reusable memory-evaluation design method rather than a generic recall leaderboard.
+Summary: ReA-Bench pairs risky traces with authorized benign behavior and evidence variants, exposing the recall versus false-positive tradeoff hidden by aggregate scores.
 
-Analysis: [Daily analysis](2026-11-13/reasoning.md#3-turn-memory-requirements-into-deterministic-scenario-tests)
+Analysis: [Daily analysis](2026-11-14/reasoning.md#3-audit-trajectory-risks-with-paired-evidence-conditions)
 
-Durable topic: [Trajectory-aware evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
-
-Core sources: [AstroMemBench paper v1](https://arxiv.org/abs/2611.16590v1), [repository](https://github.com/flyingView/AstroMemBench-v1)
+Core source: [ReA-Bench v1](https://arxiv.org/abs/2611.16493v1)
 
 Implementable now:
-- Scenario-Challenge-Capability test design
-- matched clean, noisy, compacted, and restarted histories
-- separate completion, state, safety, and resource scores
-- deterministic regression receipts
+- risky and benign trace pairs
+- shortened and evidence-completed variants
+- recall at fixed false-positive budgets
+- failure-tier diagnostics
 
-Implementability score: 0.82
-
-### Search memory designs under accuracy and cost
-
-Summary: MAPE evolves complete memory programs through stable lifecycle interfaces. It reports up to 12 points of absolute accuracy gain at 35 percent of baseline serving cost and repeatedly discovers raw-evidence retention plus query-specific composition.
-
-Analysis: [Daily analysis](2026-11-13/reasoning.md#4-evolve-memory-programs-under-an-accuracy-cost-objective)
-
-Durable topic: [Memory systems](memory-systems/memory-systems.md)
-
-Core sources: [MAPE paper v1](https://arxiv.org/abs/2611.17068v1), [repository](https://github.com/ash-ding/MAPE)
-
-Implementable now:
-- stable build, retrieve, compose, and answer interfaces
-- raw evidence beside derived memory
-- fixed evaluation conditions
-- joint accuracy and serving-cost objectives
-- candidate lineage and failure attribution
-
-Implementability score: 0.58
+Implementability score: 0.81
 
 ## Current working model
 
-1. Preserve the source question, evidence, failures, and uncertainty across delegation boundaries.
-2. Grade tool actions against explicit state before grading final success.
-3. Convert operational memory hazards into deterministic history-dependent tests.
-4. Keep raw evidence canonical and derived memory reversible.
-5. Optimize memory and orchestration programs for quality and lifecycle cost together.
+1. Preserve canonical evidence before deriving memory or conclusions.
+2. Measure memory on future work, not retrieval similarity alone.
+3. Optimize task outcomes and coordination structure separately.
+4. Audit risk with benign controls and evidence-conditioned variants.
+5. Promote only changes with held-out proof and rollback.
 
 ## Browse
 
-- [Latest roundup](../roundups/2026-11-13.md)
-- [Latest dated analysis](2026-11-13/reasoning.md)
-- [Friday synthesis](2026-11-06/reasoning.md)
-- [Decision-state compilation](decision-state-compilation/decision-state-compilation.md)
-- [Agent harness architecture](agent-harness-architecture/agent-harness-architecture.md)
-- [Agent serving runtime](agent-serving-runtime/agent-serving-runtime.md)
+- [Daily roundup](../roundups/2026-11-14.md)
+- [Daily analysis](2026-11-14/reasoning.md)
 - [Memory systems](memory-systems/memory-systems.md)
-- [Evidence-linked memory](evidence-linked-memory/evidence-linked-memory.md)
-- [Trajectory-aware evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
-- [Skills as control](skills-as-control/skills-as-control.md)
 - [Multi-agent orchestration](multi-agent-orchestration/multi-agent-orchestration.md)
+- [Trajectory-aware evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)

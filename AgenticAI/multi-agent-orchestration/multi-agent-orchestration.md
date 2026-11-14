@@ -389,3 +389,20 @@ Evidence caveat: the study covers composite factual search, not independently ve
 Implementability score: 0.83
 
 Source: [Lost in Delegation](https://arxiv.org/abs/2611.16526v1)
+
+## November 14, 2026 update: optimize coordination structure explicitly
+
+MultiLoop improved a DeepSearchQA multi-agent harness by 4.61 points with ten training samples, but the changes were prompt refinements and one added tool. Delegation and information-sharing failures largely persisted.
+
+Practical lesson:
+- retain every harness diff, rollout, and failure classification;
+- grade coordination structure separately from task accuracy;
+- require edits to name the delegation or information path they change;
+- compare against fixed single-agent and equal-budget baselines;
+- preserve a held-out structural regression set.
+
+Evidence caveat: this is one benchmark case study and no public implementation repository was verified.
+
+Implementability score: 0.72
+
+Source: [MultiLoop v1](https://arxiv.org/abs/2611.15754v1)

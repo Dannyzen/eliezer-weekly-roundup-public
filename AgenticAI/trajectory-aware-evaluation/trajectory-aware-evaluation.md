@@ -1757,3 +1757,20 @@ Evidence caveat: the scenarios are spacecraft-specific and synthetic. The transf
 Implementability score: 0.82
 
 Sources: [paper v1](https://arxiv.org/abs/2611.16590v1), [repository](https://github.com/flyingView/AstroMemBench-v1)
+
+## November 14, 2026 update: calibrate auditors with benign and evidence-paired traces
+
+ReA-Bench shows that high risk recall can coexist with high false-positive rates on authorized benign actions. Its paired full, shortened, and evidence-completed trajectories isolate safety knowledge, contradiction, retrieval, verification, steering, and missing-information failures.
+
+Practical lesson:
+- create risky and authorization-valid benign pairs;
+- vary evidence availability without changing the underlying task;
+- report recall at fixed false-positive budgets;
+- classify the judgment failure before changing the auditor;
+- combine synchronous state checks with asynchronous trajectory review.
+
+Evidence caveat: adapted production and red-team scenarios do not estimate production risk prevalence.
+
+Implementability score: 0.81
+
+Source: [ReA-Bench v1](https://arxiv.org/abs/2611.16493v1)

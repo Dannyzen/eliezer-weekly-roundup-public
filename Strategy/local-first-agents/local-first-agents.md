@@ -247,3 +247,20 @@ Sources:
 - https://arxiv.org/abs/2610.02001v1
 - https://github.com/Mingbird/Mingbird-agent
 - https://github.com/Mingbird/Mingbird-agent/releases/tag/v1.9.2
+
+## November 14, 2026 update: major local runtime releases need migration proof
+
+llama.cpp v1.0.0 removes deprecated APIs and changes speculative decoding, cache, MoE, model, server, test, and packaging surfaces. Local control is credible only when operators can qualify and roll back the runtime beneath the model.
+
+Practical lesson:
+- pin binary, model, metadata, flags, and client contract;
+- replay representative tool, context, concurrency, and cancellation workloads;
+- measure latency, memory, cache behavior, validity, and failures;
+- test removed API paths before promotion;
+- retain a prior-version rollback package.
+
+Artifact status: the MIT-licensed repository and v1.0.0 release were inspected read-only. No external source was executed.
+
+Implementability score: 0.93
+
+Sources: [release](https://github.com/ggml-org/llama.cpp/releases/tag/v1.0.0), [overview](https://huggingface.co/blog/ggml-org/llama-cpp-v1)

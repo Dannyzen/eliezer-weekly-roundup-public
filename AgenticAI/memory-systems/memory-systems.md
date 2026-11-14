@@ -1343,3 +1343,20 @@ Evidence caveat: the method uses LLM judges and meaningful search compute. Valid
 Implementability score: 0.58
 
 Sources: [paper v1](https://arxiv.org/abs/2611.17068v1), [repository](https://github.com/ash-ding/MAPE)
+
+## November 14, 2026 update: price memory by next-task value
+
+CoReMem evaluates candidate trajectory segments by replaying the next coding task from the same inherited repository state with and without each segment. Compact memory built around repository locations and executable checks improved resolve rate while reducing steps and cache-aware tokens.
+
+Practical lesson:
+- preserve canonical trajectories and inherited state;
+- extract source-linked file, command, and check anchors;
+- compare next-task runs with and without memory;
+- score resolution, steps, tokens, and memory overhead together;
+- promote only memory that improves held-out future work.
+
+Evidence caveat: the reported result uses ChainSWE and one adapted actor. No public implementation artifact was inspected.
+
+Implementability score: 0.78
+
+Source: [CoReMem v1](https://arxiv.org/abs/2611.17316v1)

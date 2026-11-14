@@ -1,98 +1,109 @@
-# AgenticAI Daily Analysis: 2026-11-13
+# AgenticAI Weekly Analysis: 2026-11-07 to 2026-11-13
 
-## 1. Delegate only when the orchestrator can preserve the evidence contract
+The week converged on one engineering rule: an agent stack is reliable only when it preserves the evidence that justifies each state transition. Answers, memories, delegations, tool calls, and optimizations should all be evaluated as transitions with explicit inputs, effects, and receipts.
 
-Lost in Delegation compares single-agent search with forced delegation across purpose-built pre-cutoff and post-cutoff factual datasets. Delegation did not produce a consistent accuracy gain and more often reduced accuracy, with larger drops when the requested facts were outside the orchestrator's parametric knowledge. The recurring failures were concrete: orchestrators distorted delegated queries, executors used tools inefficiently, and retrieval failures or evidence were lost at the handoff boundary.
+## 1. Grade evidence sufficiency before answer correctness
 
-Why it matters: parallel workers reduce context pressure only when task decomposition preserves the actual question, evidence status, and uncertainty. A subagent answer without its query, source trail, retrieval failures, and confidence state invites the parent to overwrite fresh evidence with stale prior beliefs.
+Several findings exposed the same hidden failure: a correct answer can be produced from an insufficient history, a plausible conclusion can exceed the evidence, and a failure monitor can learn issue difficulty instead of detecting a bad run. Final-answer accuracy therefore cannot be the only quality gate.
 
-Stack fit: multi-agent orchestration and generative search.
+Correct Answers from Insufficient Histories provides a controlled memory-evaluation method. BioBasicsBench rewards error detection and recognition that raw evidence cannot support a conclusion. Hard Issue, Weak Model, or Bad Run? separates static task and model effects from run-specific failure signals.
 
-Implementable now:
-- gate delegation on subtask independence and evidence availability
-- pass the source question and constraints without interpretive rewriting
-- require returned sources, failed retrievals, and unresolved ambiguity
-- compare delegated and direct-tool paths under equal budgets
-- let the parent integrate evidence without silently replacing it with prior knowledge
+Why it matters: agent systems need to know whether an answer is supported, not only whether it matches a reference. Unsupported correctness creates false confidence and weak regression tests.
 
-Evidence caveat: the study focuses on composite factual search tasks. It does not establish that delegation is harmful for code, simulation, or artifact-producing work with independently verifiable outputs.
-
-Artifact status: no dedicated implementation repository was identified from the primary paper. The paper and experimental details are public.
-
-Implementability score: 0.83
-
-Core source: [Lost in Delegation paper v1](https://arxiv.org/abs/2611.16526v1)
-
-## 2. Train and test tool decisions against explicit task state
-
-StateAlign constructs paired task states that differ in information availability, tool capability, or task progress, then combines outcome rewards with token-level state-contrastive reinforcement learning. Across five base models, the authors report gains on BFCL v4 multi-turn, ToolSandbox, and When2Call. On Qwen3-8B, BFCL v4 multi-turn accuracy rose from 45.5 percent to 55.2 percent, while no-tool hallucination on SimpleToolHalluBench fell from 62.2 percent under outcome-only training to 56.1 percent.
-
-Why it matters: successful tool calling and justified tool calling are separate objectives. An agent can recognize that information is missing in its reasoning and still fabricate an argument or call an irrelevant tool. State-paired tests expose that gap directly.
-
-Stack fit: tool-use training, harness evaluation, and action gating.
+Stack fit: trajectory evaluation, memory evaluation, and scientific or operational decision support.
 
 Implementable now:
-- create paired fixtures for call, ask, retrieve, decline, continue, and stop states
-- vary one state condition at a time
-- grade action appropriateness separately from final task success
-- preserve recovery cases after tool errors
-- apply deterministic runtime guards even when model training is unavailable
+- pair complete and evidence-depleted histories for the same question;
+- score support, uncertainty, and abstention separately from answer accuracy;
+- calibrate failure monitors across issue, model, and run strata;
+- preserve raw evidence and control quality in evaluation fixtures;
+- require a citation or evidence receipt for high-consequence conclusions.
 
-Artifact status: the Apache-2.0 repository is public and populated with training configurations, sample data, evaluation scripts, and source modules. It was inspected read-only and was not executed.
+Implementability score: 0.88
 
-Evidence caveat: reproducing the reported gains requires reinforcement-learning infrastructure. The state-paired evaluation pattern is much cheaper to adopt than the full training method.
+Core sources: [Correct Answers from Insufficient Histories v1](https://arxiv.org/abs/2611.11840v1), [BioBasicsBench](https://openai.com/index/measuring-how-ai-agents-handle-wet-lab-science), [Hard Issue, Weak Model, or Bad Run? v1](https://arxiv.org/abs/2611.08285v1)
 
-Implementability score: 0.63
+## 2. Treat orchestration as evidence-preserving state control
 
-Core sources: [StateAlign paper v1](https://arxiv.org/abs/2611.16304v1), [repository](https://github.com/ZhexiLu/StateAlign), [model](https://huggingface.co/ZhexiLu/StateAlign-8B)
+Lost in Delegation found no consistent benefit from forced delegated search and larger failures on post-cutoff facts. Queries were distorted, retrieval failures disappeared, and orchestrators overrode returned evidence with stale priors. StateAlign attacks the adjacent tool-use problem with paired states that change whether an agent should call, ask, retrieve, decline, continue, or stop. ReTrace shows that stable traces can be compiled into planner-free workflows when their decision structure is repeatable.
 
-## 3. Turn memory requirements into deterministic scenario tests
+Why it matters: orchestration quality is distinct from worker strength. More agents and more tools add failure boundaries unless the parent preserves the source question, current state, returned evidence, failed retrievals, and uncertainty.
 
-AstroMemBench maps six operational challenge categories into 16 memory subchallenges across nine spacecraft tasks. Its 140 templates produce 2,240 instances, each with 30 historical interaction turns and deterministic scoring for completion, state changes, safety, and resource use. The six main configurations run on matched instances, and the paper reports that ordinary RAG was competitive with specialized memory systems in same-session tests, while Mem0 led RAG by 12.25 points after a session restart.
-
-Why it matters: a memory benchmark becomes operationally useful when it tests history-dependent decisions rather than generic recall. The Scenario-Challenge-Capability method can be reused for client workflows: identify a real operating hazard, define the historical evidence required, and score the downstream action and side effects deterministically.
-
-Stack fit: memory-system evaluation and embodied-agent testing.
+Stack fit: multi-agent orchestration, tool-use harnesses, and workflow compilation.
 
 Implementable now:
-- derive memory cases from operational hazards and required capabilities
-- generate matched clean, noisy, compacted, and restarted histories
-- score completion, state, safety, and resource effects separately
-- compare native context, RAG, and persistent memory on the same instances
-- preserve deterministic scenario receipts for regression testing
+- pass source questions and constraints without interpretive rewriting;
+- require evidence, failures, and unresolved ambiguity in every handoff;
+- create one-condition state pairs for call, ask, retrieve, continue, and stop;
+- compare direct-tool and delegated paths under equal budgets;
+- compile only stable, observed workflows and retain an escape path for novel states.
 
-Artifact status: the MIT repository is public and populated with benchmark data, evaluation code, documentation, and CI. It was inspected read-only and was not executed.
+The weakest point is transfer. Search delegation, reinforcement-learned tool use, and trace compilation cover different workloads. The shared control pattern is stronger than any claim that one method generalizes across all agent tasks.
 
-Evidence caveat: the benchmark is spacecraft-specific and uses long synthetic histories. Its reusable contribution is the test-design method, not direct transfer of the reported system ranking to enterprise agents.
+Implementability score: 0.76
+
+Core sources: [Lost in Delegation v1](https://arxiv.org/abs/2611.16526v1), [StateAlign v1](https://arxiv.org/abs/2611.16304v1), [StateAlign repository](https://github.com/ZhexiLu/StateAlign), [ReTrace v1](https://arxiv.org/abs/2611.14492v1)
+
+## 3. Build memory as a reversible projection over canonical events
+
+Anthropic's memory stack keeps transcripts below notes, wikis, and injected context. WikiTrace links reusable lessons back to source trajectories. Falsification-Gated Self-Evolution tests candidate lessons before durable promotion. AstroMemBench converts operational hazards into deterministic history-dependent scenarios. MAPE searches complete memory programs under both accuracy and serving cost.
+
+The combined design is stronger than a larger context window or a vector store alone. Raw events remain canonical. Derived memory is versioned, source-linked, testable, reversible, and selected for the current query.
+
+Why it matters: memory systems fail through unsupported consolidation, stale lessons, hidden writeback, and evaluation that rewards lucky answers. A memory layer should expose what it derived, why it was promoted, and which evidence can invalidate it.
+
+Stack fit: long-term memory, self-improvement, retrieval, and context assembly.
+
+Implementable now:
+- retain append-only transcripts or event logs as source evidence;
+- attach source spans and memory-version identifiers to every derived lesson;
+- quarantine candidate lessons and test transfer, counterexamples, and regressions;
+- run matched clean, noisy, compacted, and restarted history scenarios;
+- compare native context, retrieval, and persistent memory on identical instances;
+- optimize accuracy and lifecycle cost together behind stable interfaces.
 
 Implementability score: 0.82
 
-Core sources: [AstroMemBench paper v1](https://arxiv.org/abs/2611.16590v1), [repository](https://github.com/flyingView/AstroMemBench-v1)
+Core sources: [The components of agent memory](https://www.anthropic.com/research/components-of-agent-memory), [Evidence-Linked Memory v1](https://arxiv.org/abs/2611.14320v1), [WikiTrace repository](https://github.com/yukyeongleee/wikitrace), [FGSE v1](https://arxiv.org/abs/2611.14326v1), [AstroMemBench v1](https://arxiv.org/abs/2611.16590v1), [MAPE v1](https://arxiv.org/abs/2611.17068v1)
 
-## 4. Evolve memory programs under an accuracy-cost objective
+## 4. Evaluate the deployed environment and the actual artifact
 
-MAPE treats memory construction, retrieval, and composition as a standardized programmable lifecycle. An iterative diagnosis and proposal loop evolves complete memory programs rather than tuning one component. On LoCoMo and LongMemEval, the authors report up to a 12 point absolute accuracy gain over manually designed baselines at 35 percent of the serving cost. Across runs, two patterns recurred: retain raw conversations as retrievable evidence, then process retrieved evidence through query-specific composition before answering.
+ARE-bench evaluates research agents inside inherited workspaces rather than clean prompts. Accepted but Wrong derives migration tests from changed contracts. Google's multimodal knowledge-agent benchmark grades rendered deliverables. Together they argue for evaluation that reproduces the state, contracts, files, and output surface an agent will face in production.
 
-Why it matters: memory architecture should be selected as a measured program, not as a fixed vendor feature. The strongest practical lesson is the objective function. Accuracy-only search added operations for marginal gains, while joint accuracy-cost search preserved cheaper candidate lineages and shifted computation toward selective query-time processing.
+Why it matters: benchmark success can disappear when the agent inherits partial work, stale files, changed schemas, tool errors, or a deliverable that must survive human inspection. The environment is part of the task.
 
-Stack fit: memory-system design, automated harness optimization, and cost-aware evaluation.
+Stack fit: regression harnesses, migration testing, browser and artifact evaluation, and release gates.
 
 Implementable now:
-- expose memory build, retrieve, compose, and answer stages behind stable interfaces
-- retain raw evidence beside derived memories
-- evaluate every candidate on fixed tasks, models, prompts, and judges
-- optimize accuracy and lifecycle serving cost together
-- keep candidate lineage, diagnostics, and failure attribution
-- transplant successful components into existing systems before replacing the whole stack
+- snapshot inherited project state and exact dependency versions;
+- derive tests from changed contracts and migration boundaries;
+- grade intermediate state, final artifact, and side effects separately;
+- preserve skipped, excluded, and failed evidence in the receipt;
+- replay production-shaped faults before release.
 
-Artifact status: the Apache-2.0 repository is public and populated with the evolution framework, baselines, evaluation harnesses, and locked environments. It was inspected read-only and was not executed.
+Implementability score: 0.84
 
-Evidence caveat: the reported search uses LLM judges and meaningful evaluation compute. The transferable design patterns need independent workload-specific validation.
+Core sources: [ARE-bench v1](https://arxiv.org/abs/2611.14364v1), [Accepted but Wrong v1](https://arxiv.org/abs/2611.08269v1), [Multimodal Knowledge Agent benchmark announcement](https://blog.google/innovation-and-ai/models-and-research/gemini-models/multimodal-knowledge-agent-benchmark/)
 
-Implementability score: 0.58
+## 5. Optimize at the harness boundary with measured objectives
 
-Core sources: [MAPE paper v1](https://arxiv.org/abs/2611.17068v1), [repository](https://github.com/ash-ding/MAPE)
+System Optimizations for Cost-Efficient Agent Harnesses puts caching, batching, context handling, and tool interposition in the harness rather than scattering them through agent prompts. MAPE applies the same principle to memory lifecycle programs. TaxOps shows that narrow agents with executable verifiers can outperform more expensive generic loops on bounded workflows.
+
+Why it matters: cost control is safest where the runtime can observe exact state, reuse, latency, and outcomes. Prompt-only optimization hides causal effects and makes rollback difficult.
+
+Stack fit: agent serving, model routing, memory serving, and bounded workflow automation.
+
+Implementable now:
+- instrument tokens, latency, tool calls, cache hits, retries, and outcomes;
+- use deterministic verifiers for bounded workflows;
+- add caching and context reuse only at observable runtime boundaries;
+- compare quality and total serving cost on fixed workloads;
+- retain candidate lineage and rollback receipts.
+
+Implementability score: 0.64
+
+Core sources: [System Optimizations for Cost-Efficient Agent Harnesses v1](https://arxiv.org/abs/2611.12122v1), [MAPE v1](https://arxiv.org/abs/2611.17068v1), [TaxOps](https://huggingface.co/blog/Manoj2142/taxops-efficient-tool-agent)
 
 ## Working conclusion
 
-The shared pattern is state fidelity. Delegation needs lossless evidence handoffs, tool use needs explicit task-state contrasts, memory needs deterministic history-dependent tests, and architecture search needs fixed interfaces plus cost-aware receipts. More agents or more memory operations are weak substitutes for preserving the state that justifies the next action.
+The week did not argue for a larger agent stack. It argued for a more explicit one. Preserve evidence, represent state, test transitions, and optimize at runtime boundaries that can emit receipts. Model intelligence remains useful, but runtime-owned evidence determines whether that intelligence is trustworthy.

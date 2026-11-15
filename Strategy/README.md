@@ -2,36 +2,52 @@
 
 Control-plane research for authority, identity, provenance, gateways, approvals, privacy, and sovereign infrastructure.
 
-## Latest structured update: 2026-11-14
+## Latest structured update: 2026-11-15
 
-### Govern local inference as a runtime lifecycle
+### Separate operational telemetry from sensitive content
 
-Summary: llama.cpp v1.0.0 removes deprecated APIs and changes speculative decoding, cache, MoE, model, server, test, and packaging surfaces. Sovereign adoption needs workload replay, source identity, and rollback.
+Summary: Google Data Cloud separates content-free metrics and trace spans from opt-in conversation logging in owner-controlled BigQuery tables.
 
-Analysis: [Daily strategy](2026-11-14/sovereignty.md#1-treat-local-inference-releases-as-governed-api-migrations)
+Analysis: [Daily strategy](2026-11-15/sovereignty.md#1-separate-operational-telemetry-from-sensitive-conversation-content)
 
-Core sources: [llama.cpp v1.0.0 release](https://github.com/ggml-org/llama.cpp/releases/tag/v1.0.0), [release overview](https://huggingface.co/blog/ggml-org/llama-cpp-v1)
+Core source: [Google Data Cloud announcement](https://cloud.google.com/blog/products/data-analytics/enterprise-ai-agent-observability-with-bigquery-and-looker/)
 
 Implementable now:
-- pinned binary, model, flags, and client contract
-- production-shaped replay across tool calls and long context
-- latency, memory, cache, validity, and failure measurements
-- prior-version rollback package
+- content-free run events by default
+- independent gates for prompts, responses, arguments, and payloads
+- owner-controlled content stores with separate IAM and retention
+- protected-source suppression and logging-failure receipts
 
-Implementability score: 0.93
+Implementability score: 0.90
+
+### Make middleware the task-authority plane
+
+Summary: Microsoft Agent Framework Python 1.26.0 adds application-owned context labeling, task-scoped authority guidance, typed outputs, and finite sandbox execution budgets.
+
+Analysis: [Daily strategy](2026-11-15/sovereignty.md#2-put-context-classification-task-authority-and-execution-budgets-in-middleware)
+
+Core source: [Python 1.26.0 release](https://github.com/microsoft/agent-framework/releases/tag/python-1.26.0)
+
+Implementable now:
+- context classification before planning
+- principal, task, resource, and expiry-bound grants
+- typed agent handoffs
+- finite timeouts with cancellation and cleanup tests
+
+Implementability score: 0.86
 
 ## Current strategic model
 
-1. Evidence informs authority without becoming authority.
-2. Persistent state changes begin as quarantined proposals.
-3. Local execution still requires identity, policy, observability, and rollback.
-4. Major runtime upgrades are migrations, not package refreshes.
-5. Promotion follows representative replay against an exact source identity.
+1. Operational telemetry and sensitive content are separate data classes.
+2. Context labels inform policy without granting authority.
+3. Task grants are scoped, expiring runtime objects.
+4. Typed handoffs, timeouts, cancellation, and receipts belong in middleware.
+5. Effects remain bound to exact user intent at invocation time.
 
 ## Browse
 
-- [Daily roundup](../roundups/2026-11-14.md)
-- [Daily strategy](2026-11-14/sovereignty.md)
-- [Local-first agents](local-first-agents/local-first-agents.md)
+- [Daily roundup](../roundups/2026-11-15.md)
+- [Daily strategy](2026-11-15/sovereignty.md)
 - [Runtime governance](runtime-governance/runtime-governance.md)
+- [Agent gateway governance](agent-gateway-governance/agent-gateway-governance.md)
 - [Agent execution control plane](agent-execution-control-plane/agent-execution-control-plane.md)

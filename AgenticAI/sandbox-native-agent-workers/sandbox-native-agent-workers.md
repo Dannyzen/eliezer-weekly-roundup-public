@@ -198,3 +198,20 @@ Implementability score: 0.64
 Sources:
 - [SPACE repository](https://github.com/perplexityai/SPACE)
 - [SPACE architecture guide](https://space.docs.perplexity.ai/guide/architecture.html)
+
+## November 15, 2026 update: schedule native execution at command granularity
+
+Metal Sandbox preserves private agent workspaces while scheduling parallel-safe and accelerator-sensitive commands separately across connected Macs. Four M4 nodes produced 1.68 to 2.05 times command-throughput gains under concentrated demand; measured-trace replay reduced mean tool wait by 18.8 percent.
+
+Practical lesson:
+- keep workspace identity independent from execution-node identity;
+- classify parallel-safe and serialized commands explicitly;
+- bind migrated commands and returns to one trajectory;
+- replay fixed traces before live cross-node scheduling;
+- measure queue wait, occupancy, correctness, and batch elapsed time together.
+
+Caveat: trace replay assumes unchanged phase durations and continuously replenished sessions. The main public repository exposes no detected license in GitHub metadata.
+
+Implementability score: 0.66
+
+Sources: [paper v1](https://arxiv.org/abs/2611.17294v1), [Metal Sandbox](https://github.com/WangHaoZhe/metal-sandbox), [Harbor integration](https://github.com/WangHaoZhe/harbor)

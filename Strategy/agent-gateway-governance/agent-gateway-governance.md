@@ -1364,3 +1364,20 @@ Implementability score: 0.82
 Sources:
 - [paper v1](https://arxiv.org/abs/2611.03555v1)
 - [mcpvenom repository](https://github.com/dynatrace-research/mcpvenom)
+
+## November 15, 2026 update: derive write authority outside the model
+
+CapLite derives authority-bearing write arguments from tool schemas and values stated in the user request. The planner commits writes before untrusted tool output enters context, and deterministic code checks each recipient, amount, object, or destination at invocation time.
+
+Practical lesson:
+- do not let the defended model author its own final authorization policy;
+- identify effect-critical fields in tool schemas;
+- freeze intended writes before untrusted reads;
+- require exact normalized request-bound values;
+- preserve policy and effect receipts.
+
+Evidence caveat: zero attacks succeeded in 13,935 attacked AgentDojo episodes, but answer-only injection remains outside the write-integrity guarantee and no public implementation artifact was identified.
+
+Implementability score: 0.78
+
+Source: [CapLite v1](https://arxiv.org/abs/2611.17115v1)

@@ -1378,3 +1378,21 @@ Evidence caveat: the benchmark has six controlled scenarios and one author. The 
 Implementability score: 0.38
 
 Sources: [paper](https://arxiv.org/abs/2610.40588v1), [artifact](https://github.com/leonidas1712/precrime-agents)
+
+## November 15, 2026 update: separate telemetry from content and authority
+
+Google Data Cloud separates content-free operational telemetry from optional transcript logging, while Microsoft Agent Framework adds application-owned context labeling, task-scoped authority guidance, typed outputs, and finite guest-execution budgets.
+
+Practical lesson:
+- define operational events that exclude sensitive content by default;
+- gate transcript and payload capture separately;
+- classify context before planning without turning labels into grants;
+- bind task grants to principal, resources, and expiry;
+- enforce typed handoffs, finite timeouts, cancellation, and cleanup;
+- preserve telemetry, authority, and effect receipts as distinct records.
+
+Evidence caveat: Google's controls are vendor capabilities, and Microsoft's message labeler is experimental. Exact-version replay remains required.
+
+Implementability score: 0.88
+
+Sources: [Google Data Cloud announcement](https://cloud.google.com/blog/products/data-analytics/enterprise-ai-agent-observability-with-bigquery-and-looker/), [Microsoft Agent Framework Python 1.26.0](https://github.com/microsoft/agent-framework/releases/tag/python-1.26.0)

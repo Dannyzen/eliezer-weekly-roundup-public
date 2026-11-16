@@ -2,52 +2,52 @@
 
 Implementation research for the deployed agent loop: tool use, memory, orchestration, evaluation, testing, and work-state continuity.
 
-## Latest structured update: 2026-11-15
+## Latest structured update: 2026-11-16
 
-### Derive write authority from schemas and the user request
+### Learn harness programs from typed trajectories
 
-Summary: CapLite replaces model-written security artifacts with fixed schema rules, precommitted writes, and deterministic checks that bind authority-bearing arguments to values stated by the user.
+Summary: ModHarness-RL makes compression and steering executable programs over typed interaction state, then validates and replays candidate changes before promotion.
 
-Analysis: [Daily analysis](2026-11-15/reasoning.md#1-derive-write-authority-from-schemas-and-user-stated-values)
+Analysis: [Daily analysis](2026-11-16/reasoning.md#1-learn-harness-programs-from-typed-trajectories)
 
-Core source: [CapLite v1](https://arxiv.org/abs/2611.17115v1)
-
-Implementable now:
-- classify recipient, amount, object, and destination fields
-- freeze intended writes before reading untrusted content
-- require normalized equality with user-stated authority values
-- test write injection separately from answer-only injection
-
-Implementability score: 0.78
-
-### Schedule native accelerator work at the command boundary
-
-Summary: Metal Sandbox preserves private agent workspaces while serializing accelerator-sensitive commands and migrating eligible queue work across Macs.
-
-Analysis: [Daily analysis](2026-11-15/reasoning.md#2-schedule-native-accelerator-work-at-the-command-boundary)
-
-Core source: [Metal Sandbox v1](https://arxiv.org/abs/2611.17294v1)
+Core source: [ModHarness-RL v1](https://arxiv.org/abs/2611.18533v1)
 
 Implementable now:
-- parallel-safe versus serialized command classes
-- per-instance workspace and HOME isolation
-- command-to-trajectory identity through migration
-- fixed-trace replay before live scheduling
+- typed trajectory blocks
+- deterministic compression and steering programs
+- historical replay before admission
+- score, context, latency, and regression gates
 
-Implementability score: 0.66
+Implementability score: 0.62
+
+### Checkpoint setup at semantic boundaries
+
+Summary: HerAgent validates, checkpoints, repairs, and rolls back environment setup by functional block, then proves the accepted sequence in a fresh environment.
+
+Analysis: [Daily analysis](2026-11-16/reasoning.md#2-checkpoint-coding-agent-setup-at-semantic-boundaries)
+
+Core source: [HerAgent v1](https://arxiv.org/abs/2611.18443v1)
+
+Implementable now:
+- ordered setup blocks with validation commands
+- clean checkpoints after passed blocks
+- bounded repair and root-cause rollback
+- clean-environment replay before acceptance
+
+Implementability score: 0.84
 
 ## Current working model
 
-1. Models propose plans and candidate arguments.
-2. Deterministic code owns authority-bearing writes.
-3. Sandboxes preserve workspace and process boundaries.
-4. Schedulers allocate scarce execution at command granularity.
-5. Promotion follows matched attack, correctness, and throughput evidence.
+1. Store agent work as typed trajectory state.
+2. Express harness changes as executable programs.
+3. Checkpoint at semantic validation boundaries.
+4. Replay candidate changes and repaired setup from known-good state.
+5. Promote only evidence-bearing artifacts.
 
 ## Browse
 
-- [Daily roundup](../roundups/2026-11-15.md)
-- [Daily analysis](2026-11-15/reasoning.md)
+- [Daily roundup](../roundups/2026-11-16.md)
+- [Daily analysis](2026-11-16/reasoning.md)
 - [Agent harness architecture](agent-harness-architecture/agent-harness-architecture.md)
 - [Sandbox-native agent workers](sandbox-native-agent-workers/sandbox-native-agent-workers.md)
 - [Trajectory-aware evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)

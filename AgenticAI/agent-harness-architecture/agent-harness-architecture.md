@@ -1817,3 +1817,21 @@ Artifact status: the public Apache-2.0 repository contains training configuratio
 Implementability score: 0.63
 
 Sources: [paper v1](https://arxiv.org/abs/2611.16304v1), [repository](https://github.com/ZhexiLu/StateAlign)
+
+
+## November 16, 2026 update: make harness evolution executable and replayable
+
+ModHarness-RL turns compression and steering into programs over typed trajectory state, while HerAgent makes semantic setup blocks the unit of validation, checkpointing, repair, and rollback.
+
+Practical lesson:
+- store reasoning, calls, results, and guidance as typed blocks;
+- express harness transforms as deterministic programs;
+- checkpoint only at semantic validation boundaries;
+- replay candidate changes and repairs from known-good state;
+- promote only after held-out and clean-environment proof.
+
+Evidence caveat: ModHarness-RL's public repository currently contains documentation rather than an implementation, and HerAgent's artifact predates the current paper. Neither repository exposes a detected license in GitHub metadata.
+
+Implementability score: 0.73
+
+Sources: [ModHarness-RL v1](https://arxiv.org/abs/2611.18533v1), [HerAgent v1](https://arxiv.org/abs/2611.18443v1)

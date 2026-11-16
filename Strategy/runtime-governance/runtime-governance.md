@@ -1396,3 +1396,21 @@ Evidence caveat: Google's controls are vendor capabilities, and Microsoft's mess
 Implementability score: 0.88
 
 Sources: [Google Data Cloud announcement](https://cloud.google.com/blog/products/data-analytics/enterprise-ai-agent-observability-with-bigquery-and-looker/), [Microsoft Agent Framework Python 1.26.0](https://github.com/microsoft/agent-framework/releases/tag/python-1.26.0)
+
+
+## November 16, 2026 update: pair verified plans with runtime enforcement
+
+Soteria verifies tool contracts, progress, and sequence policies before execution, then checks every proposed call again at runtime. The verified plan provides a recovery path when a call is blocked.
+
+Practical lesson:
+- formalize tool contracts and workflow policies;
+- compose reusable sub-plans;
+- verify progress and compliance before side effects;
+- enforce every call at the effect boundary;
+- preserve blocked-call and recovery receipts.
+
+Evidence caveat: specifications are generated with LLM assistance and manually validated. Partial plans remain possible, so runtime enforcement is still the hard boundary. No public implementation repository was identified.
+
+Implementability score: 0.68
+
+Source: [Soteria v1](https://arxiv.org/abs/2611.17880v1)

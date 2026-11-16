@@ -494,3 +494,21 @@ Evidence caveat: the environment is minimal and the rates are model- and prompt-
 Implementability score: 0.88
 
 Sources: [paper v1](https://arxiv.org/abs/2611.12412v1), [replication package](https://doi.org/10.5281/zenodo.23965306)
+
+
+## November 16, 2026 update: erasure authority follows derivation lineage
+
+LinEra records every source visible to a memory writer as a parent and binds descendant encryption keys to that lineage. One source-key puncture makes the full descendant closure unreadable without locating every copy.
+
+Practical lesson:
+- capture complete model-visible parentage at write time;
+- bind keys to lineage, not object identity alone;
+- keep writer context small to limit the forgetting radius;
+- test deletion against vectors, free pages, and backups;
+- re-derive from surviving sources after erasure.
+
+Evidence caveat: the guarantee excludes model weights, copies exported before deletion, repeated facts in independent sources, and running-process side channels. Session-level summaries create a large forgetting radius.
+
+Implementability score: 0.58
+
+Sources: [LinEra paper v1](https://arxiv.org/abs/2611.18133v1), [MIT repository](https://github.com/yulliwasameur/linera)

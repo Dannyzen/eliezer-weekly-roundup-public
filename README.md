@@ -6,9 +6,9 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-11-15: [deterministic boundaries own authority and scheduling](roundups/2026-11-15.md)
-- Latest implementation analysis: [AgenticAI](AgenticAI/2026-11-15/reasoning.md)
-- Latest strategy analysis: [Strategy](Strategy/2026-11-15/sovereignty.md)
+- Daily scan, 2026-11-16: [the agentic stack is becoming an evidence-bearing state machine](roundups/2026-11-16.md)
+- Latest implementation analysis: [AgenticAI](AgenticAI/2026-11-16/reasoning.md)
+- Latest strategy analysis: [Strategy](Strategy/2026-11-16/sovereignty.md)
 - Latest implementation index: [AgenticAI README](AgenticAI/README.md)
 - Latest strategy index: [Strategy README](Strategy/README.md)
 - Friday synthesis, week ending 2026-11-13: [evidence is not authority](roundups/2026-11-13.md)

@@ -1381,3 +1381,22 @@ Evidence caveat: zero attacks succeeded in 13,935 attacked AgentDojo episodes, b
 Implementability score: 0.78
 
 Source: [CapLite v1](https://arxiv.org/abs/2611.17115v1)
+
+## November 17, 2026 update: bind extension provenance and runtime authority
+
+GitHub's plugin-only customization control covers skills, custom agents, hooks, MCP servers, and executable extensions. It is an origin gate, not a complete allowlist. Marketplace restrictions and runtime enforcement remain separate controls.
+
+Practical lesson:
+- inventory every customization source;
+- require approved packaging for high-impact categories;
+- restrict eligible marketplaces;
+- pin required and blocked plugins;
+- configure runtime permissions and sandboxing separately;
+- test denied sources and denied effects;
+- retain policy, plugin, runtime, and effect identities.
+
+Evidence caveat: the controls require eligible GitHub Enterprise Cloud Copilot plans. Plugin-only does not imply enterprise ownership, and selecting the Copilot harness does not activate sandboxing.
+
+Implementability score: 0.88
+
+Sources: [customization controls](https://github.blog/changelog/2026-11-16-control-where-github-copilot-customizations-come-from/), [harness transition](https://github.blog/changelog/2026-11-16-vs-code-retires-the-local-harness-in-february-2027/)

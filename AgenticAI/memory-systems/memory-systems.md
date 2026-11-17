@@ -1360,3 +1360,21 @@ Evidence caveat: the reported result uses ChainSWE and one adapted actor. No pub
 Implementability score: 0.78
 
 Source: [CoReMem v1](https://arxiv.org/abs/2611.17316v1)
+
+## November 17, 2026 update: retrieve by utility after bounding candidates
+
+Jetriever shows that similarity is an incomplete definition of memory relevance. A memory can change the right answer through an implicit association even when its text does not resemble the query.
+
+Practical lesson:
+- retain raw chunks and stable source IDs;
+- define usefulness against the downstream decision;
+- calibrate scores for ranking;
+- use metadata or cheap retrieval to bound candidates;
+- measure cost, latency, and answer effect together;
+- keep similarity baselines to expose where utility scoring earns its cost.
+
+Evidence caveat: the strongest InMind result covers 125 tasks, the broader benchmark check samples 60 questions, and full-pool scoring averages more than 1,200 conversations per sampled question.
+
+Implementability score: 0.60
+
+Sources: [Jetriever v1](https://arxiv.org/abs/2611.21478v1), [repository](https://github.com/imlrz/Jetriever)

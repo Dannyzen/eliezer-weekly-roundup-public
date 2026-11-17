@@ -2,52 +2,37 @@
 
 Control-plane research for authority, identity, provenance, gateways, approvals, privacy, and sovereign infrastructure.
 
-## Latest structured update: 2026-11-16
+## Latest structured update: 2026-11-17
 
-### Verify the plan and enforce every effect
+### Govern customization origin and runtime separately
 
-Summary: Soteria verifies tool contracts, progress, and policy compliance before execution, then uses the verified plan as a recovery guide behind runtime enforcement.
+Summary: GitHub now exposes enterprise provenance controls for skills, agents, hooks, MCP servers, and executable extensions, while runtime permissions and sandboxing remain a separate enforcement layer.
 
-Analysis: [Daily strategy](2026-11-16/sovereignty.md#1-verify-the-plan-and-enforce-every-effect)
+Analysis: [Daily strategy](2026-11-17/sovereignty.md#1-govern-customization-origin-and-runtime-separately)
 
-Core source: [Soteria v1](https://arxiv.org/abs/2611.17880v1)
-
-Implementable now:
-- formal tool contracts and sequence policies
-- reusable verified sub-plans
-- pre-execution verification
-- runtime monitoring and recovery receipts
-
-Implementability score: 0.68
-
-### Make forgetting follow memory lineage
-
-Summary: LinEra binds memory encryption to the full derivation graph so one source-key puncture makes every descendant memory unreadable.
-
-Analysis: [Daily strategy](2026-11-16/sovereignty.md#2-make-forgetting-follow-the-memory-derivation-graph)
-
-Core source: [LinEra paper v1](https://arxiv.org/abs/2611.18133v1)
+Core source: [GitHub customization controls](https://github.blog/changelog/2026-11-16-control-where-github-copilot-customizations-come-from/)
 
 Implementable now:
-- complete parent capture at memory write time
-- lineage-bound keys
-- small-context memory writers
-- post-erasure re-derivation from surviving sources
+- plugin-only policy for high-impact customizations
+- known-marketplace restrictions
+- explicit harness migration tests
+- separately configured permissions and sandbox policy
+- provenance, approval, and effect receipts
 
-Implementability score: 0.58
+Implementability score: 0.88
 
 ## Current strategic model
 
-1. Verify action sequences before side effects.
-2. Enforce every call against the same runtime specifications.
-3. Treat blocked calls as recovery events, not dead ends.
-4. Capture derivation lineage when memory is written.
-5. Apply forgetting to the lineage closure and prove the result.
+1. Inventory every customization source and loaded capability.
+2. Admit high-impact extensions only through approved plugins or managed settings.
+3. Restrict eligible marketplaces and pin plugin policy.
+4. Enforce permissions and sandbox boundaries in the runtime.
+5. Verify blocked sources and effects with fail-closed tests.
 
 ## Browse
 
-- [Daily roundup](../roundups/2026-11-16.md)
-- [Daily strategy](2026-11-16/sovereignty.md)
+- [Daily roundup](../roundups/2026-11-17.md)
+- [Daily strategy](2026-11-17/sovereignty.md)
+- [Agent gateway governance](agent-gateway-governance/agent-gateway-governance.md)
 - [Runtime governance](runtime-governance/runtime-governance.md)
-- [Memory authority control plane](memory-authority-control-plane/memory-authority-control-plane.md)
 - [Agent execution control plane](agent-execution-control-plane/agent-execution-control-plane.md)

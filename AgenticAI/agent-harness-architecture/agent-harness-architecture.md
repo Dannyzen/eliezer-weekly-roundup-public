@@ -1835,3 +1835,21 @@ Evidence caveat: ModHarness-RL's public repository currently contains documentat
 Implementability score: 0.73
 
 Sources: [ModHarness-RL v1](https://arxiv.org/abs/2611.18533v1), [HerAgent v1](https://arxiv.org/abs/2611.18443v1)
+
+## November 17, 2026 update: models propose, deterministic harnesses decide
+
+System 1 Agents and agent-guided SMT tuning expose the same boundary at different scales. A model can score finite choices or propose bounded configuration changes. Deterministic code should assemble calls, execute complete evaluations, validate semantic outputs, and decide promotion.
+
+Practical lesson:
+- compile effect-bearing calls from typed choices;
+- keep missing values explicit;
+- constrain optimization proposals to a declared surface;
+- validate complete target groups and semantic outputs;
+- preserve decision, experiment, and promotion receipts;
+- replay from the last accepted state.
+
+Evidence caveat: System 1 Agents is evaluated on biomedical catalogs without live tool execution, while the SMT workflow is a nine-week research campaign without a packaged public implementation.
+
+Implementability score: 0.76
+
+Sources: [System 1 Agents v1](https://arxiv.org/abs/2611.21053v1), [SMT solver tuning v1](https://arxiv.org/abs/2611.20484v1)

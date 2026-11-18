@@ -1378,3 +1378,20 @@ Evidence caveat: the strongest InMind result covers 125 tasks, the broader bench
 Implementability score: 0.60
 
 Sources: [Jetriever v1](https://arxiv.org/abs/2611.21478v1), [repository](https://github.com/imlrz/Jetriever)
+
+## November 18, 2026 update: retain contradictions as first-class memory
+
+Two controlled studies show that memory systems should preserve disagreement rather than silently select one fact. Conflict sets must survive retrieval, worker reporting, and lead synthesis.
+
+Practical lesson:
+- store claims separately with source, writer, and time provenance;
+- detect conflicts without immediately superseding either claim;
+- surface ranked conflict sets to the reasoning layer;
+- measure pair recall at every handoff stage;
+- retain raw evidence for reinspection.
+
+Evidence caveat: the studies use planted numerical conflicts and limited task domains. Production qualification needs broader natural conflicts and repeated runs.
+
+Implementability score: 0.82
+
+Sources: [Multi-Agent Memory Inconsistency v1](https://arxiv.org/abs/2611.22245v1), [Surfacing Disagreement Beats Resolving It v1](https://arxiv.org/abs/2611.22461v1)

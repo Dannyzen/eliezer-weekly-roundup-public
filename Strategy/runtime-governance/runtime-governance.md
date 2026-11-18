@@ -1414,3 +1414,20 @@ Evidence caveat: specifications are generated with LLM assistance and manually v
 Implementability score: 0.68
 
 Source: [Soteria v1](https://arxiv.org/abs/2611.17880v1)
+
+## November 18, 2026 update: require behavioral proof after capability changes
+
+GitHub Copilot Evals makes skills, custom agents, and MCP tools testable through repeatable tasks, explicit run approval, failed-check inspection, and before-and-after comparison.
+
+Practical lesson:
+- bind evals to exact capability and runtime versions;
+- check outcomes, trajectories, and authority use separately;
+- approve every side-effecting test run explicitly;
+- compare candidate and incumbent configurations on the same fixtures;
+- retain the complete acceptance receipt.
+
+Evidence caveat: this is a public preview and does not replace source provenance, permissions, sandboxing, or effect-boundary enforcement.
+
+Implementability score: 0.92
+
+Source: [GitHub Copilot Evals public preview](https://github.blog/changelog/2026-11-17-github-copilot-evals-is-now-in-public-preview/)

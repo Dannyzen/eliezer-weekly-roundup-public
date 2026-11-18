@@ -1774,3 +1774,20 @@ Evidence caveat: adapted production and red-team scenarios do not estimate produ
 Implementability score: 0.81
 
 Source: [ReA-Bench v1](https://arxiv.org/abs/2611.16493v1)
+
+## November 18, 2026 update: freeze evidence and rerun capability evals
+
+ForecastGym shows that retrospective search can leak resolved outcomes even with date filters. GitHub Copilot Evals provides an immediate product surface for repeatable tests of skills, agents, and MCP tools.
+
+Practical lesson:
+- capture evidence states before outcomes exist;
+- replay identical evidence across candidate models and configurations;
+- version task fixtures, capabilities, models, and harnesses;
+- compare outcome and trajectory checks before promotion;
+- retain approved-run and failed-check receipts.
+
+Evidence caveat: ForecastGym is forecasting-specific, and Copilot Evals is a public preview without independent reliability results.
+
+Implementability score: 0.86
+
+Sources: [ForecastGym v1](https://arxiv.org/abs/2611.23045v1), [GitHub Copilot Evals](https://github.blog/changelog/2026-11-17-github-copilot-evals-is-now-in-public-preview/)

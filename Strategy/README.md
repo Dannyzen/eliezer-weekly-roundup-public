@@ -2,37 +2,37 @@
 
 Control-plane research for authority, identity, provenance, gateways, approvals, privacy, and sovereign infrastructure.
 
-## Latest structured update: 2026-11-17
+## Latest structured update: 2026-11-18
 
-### Govern customization origin and runtime separately
+### Make capability changes pass owned evals
 
-Summary: GitHub now exposes enterprise provenance controls for skills, agents, hooks, MCP servers, and executable extensions, while runtime permissions and sandboxing remain a separate enforcement layer.
+Summary: GitHub Copilot Evals adds repeatable behavioral tests for skills, custom agents, and MCP tools, with approval and before-and-after comparison built into the workflow.
 
-Analysis: [Daily strategy](2026-11-17/sovereignty.md#1-govern-customization-origin-and-runtime-separately)
+Analysis: [Daily strategy](2026-11-18/sovereignty.md#1-make-capability-changes-pass-owned-evals)
 
-Core source: [GitHub customization controls](https://github.blog/changelog/2026-11-16-control-where-github-copilot-customizations-come-from/)
+Core source: [GitHub Copilot Evals public preview](https://github.blog/changelog/2026-11-17-github-copilot-evals-is-now-in-public-preview/)
 
 Implementable now:
-- plugin-only policy for high-impact customizations
-- known-marketplace restrictions
-- explicit harness migration tests
-- separately configured permissions and sandbox policy
-- provenance, approval, and effect receipts
+- owned evals for high-impact capabilities
+- exact configuration and fixture version binding
+- separate outcome, trajectory, and authority checks
+- explicit approval for side-effecting runs
+- replayable promotion receipts
 
-Implementability score: 0.88
+Implementability score: 0.92
 
 ## Current strategic model
 
-1. Inventory every customization source and loaded capability.
-2. Admit high-impact extensions only through approved plugins or managed settings.
-3. Restrict eligible marketplaces and pin plugin policy.
-4. Enforce permissions and sandbox boundaries in the runtime.
-5. Verify blocked sources and effects with fail-closed tests.
+1. Admit capabilities through approved provenance channels.
+2. Bind runtime permissions to exact principals and effects.
+3. Require owned evals for every high-impact capability.
+4. Re-run the same eval after model, harness, prompt, skill, agent, or MCP changes.
+5. Fail closed when required behavioral proof is missing or stale.
 
 ## Browse
 
-- [Daily roundup](../roundups/2026-11-17.md)
-- [Daily strategy](2026-11-17/sovereignty.md)
-- [Agent gateway governance](agent-gateway-governance/agent-gateway-governance.md)
+- [Daily roundup](../roundups/2026-11-18.md)
+- [Daily strategy](2026-11-18/sovereignty.md)
 - [Runtime governance](runtime-governance/runtime-governance.md)
-- [Agent execution control plane](agent-execution-control-plane/agent-execution-control-plane.md)
+- [Agent gateway governance](agent-gateway-governance/agent-gateway-governance.md)
+- [Evidence provenance control plane](evidence-provenance-control-plane/evidence-provenance-control-plane.md)

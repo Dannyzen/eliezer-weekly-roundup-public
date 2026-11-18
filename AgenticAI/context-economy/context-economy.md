@@ -575,6 +575,23 @@ Sources:
 - [TraceLite paper v1](https://arxiv.org/abs/2610.28612v1)
 - [TraceLite repository](https://github.com/xjywhu/TraceLite)
 
+## November 18, 2026 update: price the trajectory, not the prompt
+
+Context Has a Price shows that shorter prompts and fewer searches can still increase total cost when prefix reuse changes or agents take more steps.
+
+Practical lesson:
+- separate uncached input, cached input, and output tokens;
+- attribute cache reuse to the run that created it;
+- measure commands, steps, resolution, and cost together;
+- compare interventions on matched tasks and seeds;
+- require task-outcome parity before accepting savings.
+
+Evidence caveat: results depend on the tested open models, agents, local serving setup, and price vectors. Study-specific implementation materials were not publicly resolved.
+
+Implementability score: 0.88
+
+Source: [Context Has a Price v1](https://arxiv.org/abs/2611.22238v1)
+
 ## Working conclusion
 
 The future agent stack is not context maximalism. It is context accounting. Systems that know what to admit, retrieve, compress, cache, update incrementally, preserve prefix continuity, and audit will beat systems that merely buy larger windows and hope the model sorts it out.

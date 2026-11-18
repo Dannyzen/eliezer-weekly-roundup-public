@@ -406,3 +406,20 @@ Evidence caveat: this is one benchmark case study and no public implementation r
 Implementability score: 0.72
 
 Source: [MultiLoop v1](https://arxiv.org/abs/2611.15754v1)
+
+## November 18, 2026 update: measure evidence survival across handoffs
+
+Mandatory delegation increased retrieval of both conflicting claims but reduced final conflict detection because workers omitted evidence before it reached the lead. Optional delegation with overlapping access performed better.
+
+Practical lesson:
+- require source-linked claims in worker outputs;
+- trace pair recall from source reads to final report;
+- permit overlapping source access for cross-document checks;
+- surface conflicting claims instead of merging them silently;
+- compare against equal-budget single-agent execution.
+
+Evidence caveat: the benchmark covers 73 planted numerical conflicts across 11 document-review tasks with two runs per model.
+
+Implementability score: 0.84
+
+Source: [Multi-Agent Memory Inconsistency v1](https://arxiv.org/abs/2611.22245v1)

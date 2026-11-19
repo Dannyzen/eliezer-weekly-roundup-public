@@ -1,30 +1,40 @@
-# Strategy Daily Analysis: 2026-11-18
+# Strategy Deep Dive: 2026-11-18
 
-Today's strategy signal is that every capability change needs a versioned acceptance test. Provenance and runtime policy control what may run; evals prove whether an admitted configuration still behaves as intended.
+This week's strongest strategic finding is that natural-language policy can become a fast, attributable runtime verification layer. The Verifier Foundation Model makes hundreds of criteria operational without asking a large generative judge to reread the full trace for every rule.
 
-## 1. Make capability changes pass owned evals
+## 1. Put a policy verifier between trace and authority
 
-GitHub Copilot Evals now lets users create repeatable tests for project skills, custom agents, and MCP tools, approve each run, inspect failures, and compare results before and after configuration changes.
+VFM encodes a shared agent context and target once, then evaluates each atomic natural-language criterion as an isolated tree-attention branch. It returns per-rule YES, NO, or N/A probabilities.
 
-Why it matters: an approved source is not proof of safe or useful behavior. Skills, tools, models, prompts, and harnesses interact. A configuration that passed last week can regress after any one of those components changes.
+Why this won the week: the other strong findings improve one subsystem. ReTrace compiles repeated plans, HEAMS evaluates memory responsibilities, CapLite constrains prompt-injected writes, and Copilot Evals regression-tests capability changes. VFM defines a reusable runtime policy plane that can govern all of those systems.
+
+Measured evidence:
+
+- 0.885 trace-level FAIL F1 on 543 held-out DynaBench dialogues, compared with 0.720 for DynaGuard-4B;
+- 97.6 percent top-one localization of the violated rule on failing traces;
+- 0.946 FAIL F1 when the top three suspected rules were escalated to a 26B judge;
+- 1.81 seconds and 10.5 GB VRAM to evaluate 1,000 criteria against a roughly 4,000-token trace on one H100.
 
 Implementable now:
-- assign an owner and user journey to every high-impact capability;
-- bind each eval to exact skill, agent, MCP, model, harness, policy, and fixture versions;
-- separate outcome checks from trajectory and authority checks;
-- require explicit approval for side-effecting test runs;
-- compare candidate and incumbent configurations on the same tasks;
-- retain inputs, checks, traces, decisions, and effects as one acceptance receipt;
-- fail closed when a required eval is absent, stale, or cannot reproduce its fixture.
 
-Evidence and caveat: the product is in public preview for Copilot Individual, Business, and Enterprise. GitHub has not published independent reliability measurements, cross-model stability, or guarantees that every customization path is covered. It should be treated as an immediately usable regression surface, not a complete governance system.
+- define one canonical policy bundle as stable atomic questions;
+- run VFM-0.6B or VFM-4B in shadow mode on retained traces;
+- measure false passes, false blocks, N/A rates, latency, and localization by policy family;
+- escalate uncertain and high-risk verdicts to a stronger judge or human;
+- retain policy version, criterion IDs, checkpoint, thresholds, verdicts, final authority decision, and effect as one receipt.
 
-Artifact status: official GitHub changelog inspected. No plugin, extension, or external source was installed or executed.
+The main weakness is material. On real insurance calls, finetuned 4B variants falsely passed 19 to 26 percent of gold violations, often confidently. The paper also says zero-shot verification remains poorly calibrated. VFM is ready for shadow triage and focused escalation. It is not ready to replace deterministic authorization for irreversible actions.
 
-Implementability score: 0.92
+Artifact status: the immutable paper, public repository tree and README, model links, benchmark manifests, and tests were inspected read-only. No external code or model was executed.
 
-Core source: [GitHub Copilot Evals public preview](https://github.blog/changelog/2026-11-17-github-copilot-evals-is-now-in-public-preview/)
+Implementability score: 0.76
+
+Deep dive: [Runtime policy verification](../runtime-policy-verification/runtime-policy-verification.md)
+
+Core source: [Runtime Verification of Multiple Natural Language Criteria for Agent Governance](https://arxiv.org/abs/2611.23074v1)
+
+Implementation source: [spitis/vfm](https://github.com/spitis/vfm)
 
 ## Working conclusion
 
-Treat evals as the behavioral half of capability admission. Source policy and runtime controls decide what may run; owned, versioned evals decide whether a specific configuration earns promotion.
+Natural-language policy should become a versioned runtime object with per-rule verdicts and explicit escalation. The verifier can narrow attention and produce evidence. Deterministic execution control must still own final authority.

@@ -1395,3 +1395,21 @@ Evidence caveat: the studies use planted numerical conflicts and limited task do
 Implementability score: 0.82
 
 Sources: [Multi-Agent Memory Inconsistency v1](https://arxiv.org/abs/2611.22245v1), [Surfacing Disagreement Beats Resolving It v1](https://arxiv.org/abs/2611.22461v1)
+
+## November 19, 2026 update: make memory a shared control surface
+
+MemoSync exposes memory proposal, scope, selection, citation, history, and post-turn audit through a local-first workbench. The memory record becomes an inspectable lifecycle rather than hidden prompt state.
+
+Practical lesson:
+- separate personal, project, and session scopes;
+- require review for sensitive memory changes;
+- record the exact memories selected for each turn;
+- distinguish agent citations from independent evidence of use;
+- retain per-item history and reversible status changes;
+- project the store into portable Markdown without losing canonical events.
+
+Evidence caveat: the controlled study uses fixed coding tasks and an LLM evaluator for part of the alignment score. The field deployment includes nine developers for one week.
+
+Implementability score: 0.86
+
+Sources: [MemoSync paper v1](https://arxiv.org/abs/2611.24165v1), [MemoSync repository](https://github.com/SLEEPYBQ/MemoSync)

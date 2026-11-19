@@ -1791,3 +1791,21 @@ Evidence caveat: ForecastGym is forecasting-specific, and Copilot Evals is a pub
 Implementability score: 0.86
 
 Sources: [ForecastGym v1](https://arxiv.org/abs/2611.23045v1), [GitHub Copilot Evals](https://github.blog/changelog/2026-11-17-github-copilot-evals-is-now-in-public-preview/)
+
+## November 19, 2026 update: evaluate agent updates against the incumbent
+
+Safe Personal RSI turns reusable instruction edits into versioned release candidates. Candidate and incumbent configurations run against the same safety and utility cases, failures are repeated, rollback provides repair evidence, and promotion fails closed.
+
+Practical lesson:
+- keep the incumbent runnable as the control;
+- grade safety and utility separately;
+- repeat failures before changing the candidate;
+- use rollback to isolate harmful edits;
+- preserve matched traces and promotion receipts;
+- test runtime memory and OAuth controls outside the prompt gate.
+
+Evidence caveat: the benchmark contains 29 cases, prompt updates only, and no verified public implementation artifact. The stronger transferred repair still leaves 17.9% attack violations.
+
+Implementability score: 0.72
+
+Source: [Safe Personal RSI v1](https://arxiv.org/abs/2611.23651v1)

@@ -1243,3 +1243,21 @@ Skill retrieval should return candidates, not commit the executor to one abstrac
 Implementability score: 0.78
 
 Sources: [paper v1](https://arxiv.org/abs/2610.31461v1), [repository](https://github.com/Jayceon-3/Adaptive-Skill-Agent)
+
+## November 19, 2026 update: enforce skill order, not only tool permission
+
+SkillCFI compiles procedural skill prose into a state-transition contract and enforces it at trusted tool boundaries. This catches required-step, ordering, and evidence failures that a permission allowlist admits.
+
+Practical lesson:
+- compile source obligations into typed transitions;
+- reject mandatory checks with no observable boundary evidence;
+- hold workflow state outside model context;
+- mediate every execution channel;
+- return legal next steps after refusal;
+- mutation-test the compiled contract against the skill source.
+
+Evidence caveat: one agent and eight self-written skills drive the live evaluation. None of 53 public skills compiled unchanged, and the code is promised only after acceptance.
+
+Implementability score: 0.52
+
+Source: [SkillCFI v1](https://arxiv.org/abs/2611.24185v1)

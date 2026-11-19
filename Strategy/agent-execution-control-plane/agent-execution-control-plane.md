@@ -393,3 +393,21 @@ Evidence caveat: the 60-pair study uses mock services and synthetic canaries, an
 Implementability score: 0.62
 
 Source: [RuntimeTickets](https://arxiv.org/abs/2611.03772v1)
+
+## November 19, 2026 update: use intent contracts for attribution, not final authority
+
+Intent Contracts separates a planner without tools from a trusted model that writes calls from checked quotations and scope fields. It produces strong attribution but leaves wrong-target authorization failures when the trusted side lacks environment evidence.
+
+Practical lesson:
+- keep planners away from direct effect tools;
+- bind every call to a logged goal, user quotation, and scope;
+- validate contract structure without a model;
+- resolve object identity against live environment state;
+- authorize the exact effect at the final trusted boundary;
+- preserve ordered contracts, calls, state changes, and denials.
+
+Evidence caveat: one planner, one trusted executor, three task families, and benign overreach only. The public artifact was inspected read-only and was not executed.
+
+Implementability score: 0.76
+
+Sources: [Intent Contracts v1](https://arxiv.org/abs/2611.24025v1), [implementation and run records](https://github.com/zwang-devv/intent-contracts)

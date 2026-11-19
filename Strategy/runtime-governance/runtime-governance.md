@@ -1431,3 +1431,21 @@ Evidence caveat: this is a public preview and does not replace source provenance
 Implementability score: 0.92
 
 Source: [GitHub Copilot Evals public preview](https://github.blog/changelog/2026-11-17-github-copilot-evals-is-now-in-public-preview/)
+
+## November 19, 2026 update: govern agent state promotion and procedural flow
+
+Safe Personal RSI and SkillCFI cover two distinct control points. Candidate instructions need matched release gates before promotion. Executing skills need deterministic transition enforcement after promotion.
+
+Practical lesson:
+- version every persistent instruction and skill contract;
+- compare candidates with an incumbent on matched fixtures;
+- promote only after separate safety and utility gates;
+- compile critical obligations into host-observable transitions;
+- retain refusals, recovery paths, and effect receipts;
+- keep runtime identity, memory, and OAuth checks outside prompt-only evaluation.
+
+Evidence caveat: both systems are paper-level in this scan. Safe Personal RSI covers 29 cases, while SkillCFI evaluates one agent and eight self-written skills.
+
+Implementability score: 0.62
+
+Sources: [Safe Personal RSI v1](https://arxiv.org/abs/2611.23651v1), [SkillCFI v1](https://arxiv.org/abs/2611.24185v1)

@@ -134,3 +134,14 @@ The next product question is whether every material action can produce a rule-le
 - [VFM source repository](https://github.com/spitis/vfm)
 - [NeurIPS 2026 paper listing](https://neurips.cc/virtual/2026/loc/atlanta/session/137656)
 - [CriteriaBank dataset](https://huggingface.co/datasets/spitis/CriteriaBank)
+
+## November 20, 2026 update: verify observed effects across steps
+
+Tether moves enforcement below command text. It dry-runs proposed actions in an ephemeral sandbox, derives conservative abstract effects from system calls, persists labels across steps, and applies Lean-defined stateful policy before host mutation.
+
+The evaluation spans 344 adversarial and 1,590 benign trajectories across MonitoringBenchHonest and LinuxArena. It reports 100% recall for in-scope attacks with 2.3% to 5.0% benign false positives. The scope qualification matters: purely semantic attacks and untraced external state remain outside the fine-grained guarantee.
+
+Implementability score: 0.62
+
+Source:
+- [Tether](https://arxiv.org/abs/2611.25599v1)

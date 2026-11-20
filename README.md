@@ -6,11 +6,11 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily research, 2026-11-19: [visible state, deterministic authority](roundups/2026-11-19.md)
-- Latest implementation analysis: [AgenticAI](AgenticAI/2026-11-19/reasoning.md)
-- Latest strategy analysis: [Strategy](Strategy/2026-11-19/sovereignty.md)
-- Public artifact to inspect: [MemoSync](https://github.com/SLEEPYBQ/MemoSync)
-- Public artifact to inspect: [Intent Contracts](https://github.com/zwang-devv/intent-contracts)
+- Daily research, 2026-11-20: [effects below the agent abstraction](roundups/2026-11-20.md)
+- Latest implementation analysis: [AgenticAI](AgenticAI/2026-11-20/reasoning.md)
+- Latest strategy analysis: [Strategy](Strategy/2026-11-20/sovereignty.md)
+- Public artifact to inspect: [agent-runtime-capacity](https://github.com/MEKHALA/agent-runtime-capacity)
+- Public artifact to inspect: [DriftGuard](https://anonymous.4open.science/r/DriftGuard-7F0B)
 - Latest implementation index: [AgenticAI README](AgenticAI/README.md)
 - Latest strategy index: [Strategy README](Strategy/README.md)
 - Friday synthesis, week ending 2026-11-13: [evidence is not authority](roundups/2026-11-13.md)

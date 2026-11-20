@@ -2,53 +2,53 @@
 
 Implementation research for the deployed agent loop: tool use, memory, orchestration, evaluation, testing, and work-state continuity.
 
-## Latest structured update: 2026-11-19
+## Latest structured update: 2026-11-20
 
-### Gate agent updates against the incumbent
+### Stop reserving one environment per waiting session
 
-Summary: Safe Personal RSI evaluates candidate reusable instructions against the current version, repeats failures, uses rollback for repair evidence, and keeps the incumbent when no candidate passes both safety and utility gates.
+Summary: Agent sessions spend seconds waiting on models and milliseconds computing, yet many runtimes reserve one environment for the whole conversation and idle-retention window. Explicit close is the first capacity fix.
 
-Analysis: [Daily analysis](2026-11-19/reasoning.md#1-gate-personal-agent-updates-against-the-incumbent)
+Analysis: [Daily analysis](2026-11-20/reasoning.md#1-stop-reserving-one-environment-per-waiting-session)
 
-Core source: [Safe Personal RSI v1](https://arxiv.org/abs/2611.23651v1)
-
-Implementable now:
-- versioned instruction candidates and incumbents
-- matched safety and utility fixtures
-- repeated failure traces and rollback tests
-- fail-closed promotion
-
-Implementability score: 0.72
-
-### Make memory visible, scoped, and reversible
-
-Summary: MemoSync exposes memory proposal, scope, selection, citation, history, audit, and reversal through a local-first operator workbench.
-
-Analysis: [Daily analysis](2026-11-19/reasoning.md#2-make-agent-memory-visible-scoped-and-reversible)
-
-Core sources: [MemoSync paper v1](https://arxiv.org/abs/2611.24165v1), [MemoSync repository](https://github.com/SLEEPYBQ/MemoSync)
+Core sources: [Held While Waiting v1](https://arxiv.org/abs/2611.26480v1), [agent-runtime-capacity artifact](https://github.com/MEKHALA/agent-runtime-capacity)
 
 Implementable now:
-- personal, project, and session scopes
-- pre-turn memory selection receipts
-- per-item version history
-- post-turn memory-use audits
-- local SQLite and Markdown projections
+- explicit close on success, failure, and cancellation
+- held-environment and idle-retention metrics
+- real-wait capacity tests
+- workload-driven capacity simulation
 
-Implementability score: 0.86
+Implementability score: 0.82
+
+### Train memory guards from counterfactual trajectory evidence
+
+Summary: DriftGuard learns which retrieved memory changes downstream behavior by running repeated single-memory counterfactual replays offline, then predicts that causal risk online.
+
+Analysis: [Daily analysis](2026-11-20/reasoning.md#2-train-memory-guards-from-counterfactual-trajectory-evidence)
+
+Core sources: [DriftGuard v1](https://arxiv.org/abs/2611.25583v1), [DriftGuard artifact](https://anonymous.4open.science/r/DriftGuard-7F0B)
+
+Implementable now:
+- source-linked memory lineage
+- pre-action trajectory checkpoints
+- repeated single-memory neutralization
+- causal labels for action, attack, violation, and task effects
+- validation-calibrated intervention thresholds
+
+Implementability score: 0.63
 
 ## Current working model
 
-1. Preserve canonical events and the incumbent configuration.
-2. Propose memory and instruction changes as versioned candidates.
-3. Expose scope, selection, citation, and history to the operator.
-4. Test safety, utility, and actual memory use before promotion.
-5. Keep every promoted state reversible and source-linked.
+1. Measure held runtime state, not only billed CPU or tokens.
+2. Close terminal sessions explicitly before changing infrastructure.
+3. Preserve trajectory checkpoints and memory lineage.
+4. Build causal memory labels offline through controlled replay.
+5. Keep serving-time guards bounded and auditable.
 
 ## Browse
 
-- [Daily roundup](../roundups/2026-11-19.md)
-- [Daily analysis](2026-11-19/reasoning.md)
+- [Daily roundup](../roundups/2026-11-20.md)
+- [Daily analysis](2026-11-20/reasoning.md)
+- [Agent serving runtime](agent-serving-runtime/agent-serving-runtime.md)
 - [Memory systems](memory-systems/memory-systems.md)
 - [Trajectory-aware evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
-- [Skills as control](skills-as-control/skills-as-control.md)

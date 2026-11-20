@@ -1413,3 +1413,21 @@ Evidence caveat: the controlled study uses fixed coding tasks and an LLM evaluat
 Implementability score: 0.86
 
 Sources: [MemoSync paper v1](https://arxiv.org/abs/2611.24165v1), [MemoSync repository](https://github.com/SLEEPYBQ/MemoSync)
+
+## November 20, 2026 update: causal memory risk needs replay evidence
+
+DriftGuard separates causal labeling from online enforcement. It generates supervision with repeated single-memory counterfactual replays, then trains an online risk model to predict action, attack, violation, and task effects before execution. This is stronger than content-only suspicion because it asks whether neutralizing the memory changes the current trajectory.
+
+Practical boundary:
+- preserve source-linked memory lineage and pre-action checkpoints;
+- construct causal labels offline;
+- calibrate intervention thresholds on held-out trajectories;
+- quarantine before rewrite and retain the original for audit.
+
+The public snapshot includes code, configs, schemas, tests, and benchmark adapters. Full reproduction is infrastructure-heavy and single-memory interventions do not model memory interactions.
+
+Implementability score: 0.63
+
+Sources:
+- [DriftGuard](https://arxiv.org/abs/2611.25583v1)
+- [DriftGuard artifact](https://anonymous.4open.science/r/DriftGuard-7F0B)

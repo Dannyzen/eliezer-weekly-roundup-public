@@ -166,3 +166,21 @@ Artifact caveat: the public Apache-2.0 package is small, has no releases, and re
 Implementability score: 0.58
 
 Sources: [implementation walkthrough](https://huggingface.co/blog/amazon/higher-order-pruning-experts), [paper v3](https://arxiv.org/abs/2609.18916v3), [package](https://github.com/awslabs/HOPE)
+
+## November 20, 2026 update: held environments are the capacity unit
+
+Held While Waiting shows that model-wait time dominates agent sessions while many managed runtimes reserve a dedicated environment until the client closes the conversation or an idle timeout expires. Across 3,549 deployed steps, estimated framework work was 5 to 40 milliseconds against a 2.7-second median model wait.
+
+Immediate control:
+- close terminal sessions explicitly;
+- measure held-environment seconds and idle-retention time;
+- benchmark with real waits;
+- simulate multiplexing against recorded workloads.
+
+The public artifact includes shipped measurements, capacity checks up to 400 concurrent sessions, a nine-platform survey, and workload-driven simulations.
+
+Implementability score: 0.82
+
+Sources:
+- [Held While Waiting](https://arxiv.org/abs/2611.26480v1)
+- [agent-runtime-capacity](https://github.com/MEKHALA/agent-runtime-capacity)

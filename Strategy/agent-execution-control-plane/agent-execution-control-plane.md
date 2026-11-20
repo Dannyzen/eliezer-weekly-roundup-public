@@ -411,3 +411,14 @@ Evidence caveat: one planner, one trusted executor, three task families, and ben
 Implementability score: 0.76
 
 Sources: [Intent Contracts v1](https://arxiv.org/abs/2611.24025v1), [implementation and run records](https://github.com/zwang-devv/intent-contracts)
+
+## November 20, 2026 update: authorize the closure of a capability
+
+Signed, Valid, and Unauthorized formalizes a last-boundary rule for delegated effects. A signed object is admissible only when every transfer sequence it enables remains inside the buyer's mandate. Display-field checks, address allowlists, and one successful simulation do not establish that property.
+
+In 2,130 generated objects and 62,979 execution programs, 265 violating objects passed field, expiry, and address checks. The paper's Closure checker rejected all 1,680 objects with an observed violation under its model. The reusable agent pattern is to compute or bound the reachable effect set before granting the capability.
+
+Implementability score: 0.68
+
+Source:
+- [Signed, Valid, and Unauthorized](https://arxiv.org/abs/2611.24989v1)

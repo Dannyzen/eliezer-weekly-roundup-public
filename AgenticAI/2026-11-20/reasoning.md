@@ -1,61 +1,87 @@
-# AgenticAI Daily Analysis: 2026-11-20
+# AgenticAI Weekly Analysis: 2026-11-20
 
 ## Scope
 
-This scan covers sources first listed by arXiv on 20 November 2026. Held While Waiting was submitted on 19 November at 17:40 UTC. DriftGuard was submitted on 19 November at 06:26 UTC. Public artifacts were inspected through repository pages, metadata, trees, and README files only. No external source was cloned, installed, built, imported, or executed.
+This synthesis covers primary sources captured from 14 through 20 November 2026. It compresses the week's daily notes into three implementation patterns. Public repositories and artifacts were inspected read-only. No external source was cloned, installed, built, imported, or executed.
 
-## 1. Stop reserving one environment per waiting session
+## 1. Evaluate changes prospectively against an incumbent
 
-Held While Waiting measures the resource shape of agent runtimes instead of treating an agent turn as ordinary request-response compute. Across 3,549 deployed LangGraph and Strands steps, model waits dominated wall time while estimated framework work was only 5 to 40 milliseconds per step. On AgentCore, the median model wait was 2.7 seconds.
+The week's evaluation papers converge on one rule: a candidate memory, agent update, or audit decision earns promotion only by improving the next task under controlled comparison.
 
-The capacity failure comes from session ownership. A dedicated environment remains reserved while the model is thinking and, unless the client explicitly closes it, for a default 15-minute idle period after a customer-service conversation that averaged 33 seconds. The paper estimates that only 2 to 15 of every 1,000 held environments are computing at a given moment. Its direct capacity checks cover up to 400 concurrent sessions.
+[CoReMem](https://arxiv.org/abs/2611.17316v1) values memory by prospective utility in successive coding tasks instead of by compression quality or similarity. [Safe Personal RSI](https://arxiv.org/abs/2611.23651v1) evaluates personal-agent updates against the incumbent and repairs regressions before promotion. [DriftGuard](https://arxiv.org/abs/2611.25583v1) derives online memory-risk labels from repeated offline counterfactual replay. [ReA-Bench](https://arxiv.org/abs/2611.16493v1) reinforces the same methodological point for auditors: benign controls and paired evidence variants matter because an alarm alone cannot distinguish sensitivity from useful discrimination.
 
-Why it matters: agent capacity is constrained by held environments before it is constrained by CPU. The first operational fix is client-owned and cheap: close sessions as soon as the conversation ends. The larger platform fix is multiplexing. In the paper's workload-driven simulation, 64 conversations sharing one environment required 59 times fewer environments, while 99% of replies gained no more than 40 milliseconds of delay.
+Why it matters: self-improvement and persistent memory create compounding state. Static quality scores miss downstream regressions, while direct promotion turns every user into the test environment. The safer loop is challenger versus incumbent, task-level acceptance, explicit regression budgets, and rollback.
 
-Fits into the stack: agent serving, session lifecycle, capacity planning, isolation, and queueing.
+Fits into the stack: evaluation harnesses, personal-agent updates, memory admission, audit calibration, and release gates.
 
-Practical tools and methods worth exploring now:
-- [MEKHALA/agent-runtime-capacity](https://github.com/MEKHALA/agent-runtime-capacity), inspected read-only;
-- explicit session-close calls on every terminal path;
-- held-environment seconds as a first-class metric;
-- separate model-wait, framework-CPU, tool-wait, and idle-retention spans;
-- capacity tests with real waits instead of tight back-to-back loops;
-- workload-driven simulation before platform-level multiplexing.
+Implementable now:
+- retain an incumbent configuration and evaluate challengers against it;
+- replay fixed task suites with paired seeds and state snapshots;
+- score task success, policy violations, cost, and latency separately;
+- use counterfactual memory neutralization offline to create causal labels;
+- require bounded improvement with no unacceptable regression before promotion;
+- retain the old state and promotion receipt for rollback.
 
-Artifact status: contents inspected read-only. The Apache-2.0 repository has a populated `main` branch, shipped measurements, calibration notes, a nine-platform survey, analysis scripts, tests, and workload-driven simulation outputs. It has five commits and no release tags, so treat it as a research artifact rather than a maintained package.
+Artifact status: papers verified from immutable v1 pages. DriftGuard exposes a read-only research snapshot. The full methods depend on benchmark-specific environments and repeated trajectory execution.
 
-Evidence limit: CPU time is bracketed rather than directly observed for deployed steps. The simulation's memory footprint is illustrative. The author works for AWS, says the work was independent, and studies AWS services among the surveyed platforms.
+Evidence limit: the benchmarks and intervention policies are domain-specific. Counterfactual single-memory replay does not capture all multi-memory interactions, and personal-agent acceptance thresholds remain a product decision.
+
+Implementability score: 0.72
+
+Core sources: [CoReMem v1](https://arxiv.org/abs/2611.17316v1), [Safe Personal RSI v1](https://arxiv.org/abs/2611.23651v1), [DriftGuard v1](https://arxiv.org/abs/2611.25583v1), [ReA-Bench v1](https://arxiv.org/abs/2611.16493v1)
+
+## 2. Make memory a visible, reversible, lineage-bearing object
+
+Memory quality and memory governance are the same operational problem. [MemoSync](https://arxiv.org/abs/2611.24165v1) makes cross-session memory visible and co-managed by developers and agents. [Jetriever](https://arxiv.org/abs/2611.21478v1) ranks memory by expected usefulness rather than surface similarity. [Forget the Lineage](https://arxiv.org/abs/2611.18133v1) shows why deletion must cover derived summaries, embeddings, residues, and backups, not only the original message.
+
+The combined design is stronger than another vector store. Each memory needs source identity, derivation edges, scope, validity, utility evidence, review state, and a reversible lifecycle. Retrieval can use utility, but the scoring surface itself needs evaluation because a learned utility model can become another unobserved authority source.
+
+Why it matters: invisible memory creates silent behavior drift. Weak deletion leaves derived state behind. Similarity-only retrieval favors lexical resemblance over task value. A governed memory object lets the runtime explain why a memory was admitted, retrieved, changed, quarantined, or erased.
+
+Fits into the stack: persistent memory, local-first workbenches, retrieval, provenance, user control, and erasure.
+
+Implementable now:
+- use [MemoSync](https://github.com/SLEEPYBQ/MemoSync) as a read-only design reference for visible cross-session memory;
+- store immutable source IDs and explicit derivation edges;
+- separate recall ranking from write authority;
+- expose review, quarantine, supersession, and rollback states;
+- evaluate utility ranking on downstream tasks rather than retrieval similarity alone;
+- propagate erasure across the derivation closure and record an erasure receipt.
+
+Artifact status: MemoSync has a populated TypeScript repository and tagged history. The erasure and utility-ranking papers describe more architecture than a drop-in production package.
+
+Evidence limit: lineage-complete erasure requires coverage across storage systems and backups. Utility ranking needs domain data and can overfit its evaluator.
+
+Implementability score: 0.66
+
+Core sources: [MemoSync v1](https://arxiv.org/abs/2611.24165v1), [MemoSync repository](https://github.com/SLEEPYBQ/MemoSync), [Jetriever v1](https://arxiv.org/abs/2611.21478v1), [Forget the Lineage v1](https://arxiv.org/abs/2611.18133v1)
+
+## 3. Treat sessions and harness steps as explicit runtime state
+
+[Held While Waiting](https://arxiv.org/abs/2611.26480v1) shows that agent capacity can be dominated by environments reserved while models wait, even when framework computation lasts only milliseconds. [HerAgent](https://arxiv.org/abs/2611.18443v1) makes coding-agent environment setup recoverable through semantic checkpoints. [ModHarness-RL](https://arxiv.org/abs/2611.18533v1) treats the harness as an executable program that can itself evolve. [Metal Sandbox](https://arxiv.org/abs/2611.17294v1) moves scheduling below the agent to recover idle native GPU capacity safely.
+
+These findings belong together. An agent runtime is a state machine with held resources, resumable checkpoints, scheduled commands, and terminal cleanup. Chat abstractions hide all four.
+
+Why it matters: adding capacity before measuring held state wastes money. Retrying whole setup trajectories wastes time and obscures failure location. Letting each model independently schedule scarce resources creates contention and weak isolation.
+
+Fits into the stack: serving, coding-agent harnesses, sandbox scheduling, recovery, and capacity planning.
+
+Implementable now:
+- close sessions explicitly on success, failure, cancellation, and timeout;
+- measure held-environment seconds, model wait, tool wait, CPU, and idle retention separately;
+- checkpoint setup at semantic block boundaries with verified outputs;
+- resume from the last accepted checkpoint rather than replaying the entire trajectory;
+- schedule scarce devices below the model through a deterministic runtime queue;
+- version harness logic and evaluate harness changes like application changes.
+
+Artifact status: [agent-runtime-capacity](https://github.com/MEKHALA/agent-runtime-capacity) and [pheragent](https://github.com/BeeuniLab/pheragent) have populated repositories inspected read-only. The broader multiplexing and learnable-harness claims still require architecture and replication.
+
+Evidence limit: the capacity study is narrow and partly simulation-based. Evolving harnesses can optimize benchmarks without improving operational behavior unless the acceptance suite covers real failure modes.
 
 Implementability score: 0.82
 
-Core sources: [Held While Waiting v1](https://arxiv.org/abs/2611.26480v1), [agent-runtime-capacity artifact](https://github.com/MEKHALA/agent-runtime-capacity)
-
-## 2. Train memory guards from counterfactual trajectory evidence
-
-DriftGuard treats a retrieved memory as risky only when neutralizing it changes downstream execution. Offline, it branches from the same pre-action state, neutralizes one memory at a time, repeats the paired replay three times, and labels four effects: action change, attack removal, policy-violation removal, and task recovery. A 7B online risk model then predicts those intervention-derived labels before the action without replaying the trajectory online.
-
-This is stronger than scoring memory text for suspicious wording. Across MINJA, AgentPoison, and MPBench, DriftGuard beat zero-shot and few-shot frontier-model rankers on memory-level attribution. On the three online-defense benchmarks, it reduced Mem2ActBench attack success from 46.7% to 5.3% for direct override and from 77.4% to 3.3% for sleeper memory. Its reported added latency was 1.52 seconds per task on a held-out set of 100 tasks, versus 6.19 seconds for A-MemGuard, 8.53 seconds for an LLM memory auditor, and 17.24 seconds for SMSR.
-
-Why it matters: provenance and content filters can show where a memory came from or whether it looks suspicious. They do not show whether that memory causes a harmful branch in the current task. Counterfactual replay supplies that causal supervision offline, then amortizes it into a serving-time guard.
-
-Fits into the stack: persistent memory, trajectory replay, causal evaluation, online guardrails, and memory repair.
-
-Practical tools and methods worth exploring now:
-- [DriftGuard anonymous artifact](https://anonymous.4open.science/r/DriftGuard-7F0B), inspected read-only;
-- source-linked memory records and pre-action checkpoints;
-- repeated single-memory neutralization over recorded trajectories;
-- separate labels for action, attack, violation, and task effects;
-- validation-calibrated intervention thresholds;
-- quarantine before rewrite, with the original memory retained for audit.
-
-Artifact status: contents inspected read-only. The snapshot dated 8 November contains configs, implementation modules, examples, schemas, scripts, tests, a license, and a README. Full experiments depend on six external benchmark or agent-environment resources.
-
-Evidence limit: training used eight RTX 4090 GPUs, single-memory interventions do not capture multi-memory interactions, thresholds are benchmark-specific, and rewrite-based neutralization has no guarantee under domain shift or unseen attacks.
-
-Implementability score: 0.63
-
-Core sources: [DriftGuard v1](https://arxiv.org/abs/2611.25583v1), [DriftGuard artifact](https://anonymous.4open.science/r/DriftGuard-7F0B)
+Core sources: [Held While Waiting v1](https://arxiv.org/abs/2611.26480v1), [HerAgent v1](https://arxiv.org/abs/2611.18443v1), [ModHarness-RL v1](https://arxiv.org/abs/2611.18533v1), [Metal Sandbox v1](https://arxiv.org/abs/2611.17294v1)
 
 ## Working conclusion
 
-Agent runtimes need two forms of accounting that chat abstractions hide: resources held while the model waits, and state that causally changes the next action. Measure both at the trajectory boundary.
+The implementable unit is the explicit runtime object: a candidate update with an incumbent, a memory with lineage, and a session with lifecycle state. Once those objects exist, promotion, retrieval, recovery, and capacity become measurable control problems.

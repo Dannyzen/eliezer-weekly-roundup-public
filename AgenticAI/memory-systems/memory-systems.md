@@ -1431,3 +1431,21 @@ Implementability score: 0.63
 Sources:
 - [DriftGuard](https://arxiv.org/abs/2611.25583v1)
 - [DriftGuard artifact](https://anonymous.4open.science/r/DriftGuard-7F0B)
+
+## November 22, 2026 update: measure memory dosage and compaction by downstream work
+
+CompAct-Bench and the altk-evolve deployment study expose two different state-loss failures. Compaction can omit unresolved facts or falsely mark work complete. Memory consolidation can lose derivation provenance, and an oversized guideline set can hurt a weaker model even when it helps a stronger one.
+
+Practical lesson:
+- replay continuation from a frozen environment boundary;
+- grade completed work rather than summary similarity;
+- preserve unresolved goals, completed effects, and source pointers as typed state;
+- retain independent derivation IDs through guideline merging;
+- build dose curves per model against a fixed scaffold;
+- select on development tasks and report held-out performance separately.
+
+Evidence caveat: CompAct-Bench includes 25 internal workspace tasks. The memory study used `test_normal` for configuration comparison because no separate selection split remained, so its selected-set maximum is optimistic.
+
+Implementability scores: 0.72 for continuation replay; 0.86 for provenance-bearing memory dosage tests
+
+Sources: [CompAct-Bench v1](https://arxiv.org/abs/2611.25673v1), [memory deployment lessons v1](https://arxiv.org/abs/2611.26361v1), [altk-evolve](https://github.com/AgentToolkit/altk-evolve)

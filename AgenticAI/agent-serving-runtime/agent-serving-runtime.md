@@ -184,3 +184,20 @@ Implementability score: 0.82
 Sources:
 - [Held While Waiting](https://arxiv.org/abs/2611.26480v1)
 - [agent-runtime-capacity](https://github.com/MEKHALA/agent-runtime-capacity)
+
+## November 22, 2026 update: park waits as durable session state
+
+Cloudflare Agents SDK v0.34.0 exposes a practical capacity control: a Pi tool can park for a person, deadline, or another session signal while its Durable Object hibernates and holds no invocation. The runtime resumes the tool when the bound signal arrives or the deadline passes.
+
+Immediate control:
+- persist the park reason, tool-call identity, deadline, and expected signal;
+- deliver signals idempotently;
+- resume from durable session history;
+- test duplicate signals, timeout, cancellation, and authorization renewal;
+- version the conversation schema because Pi 1.6 sessions cannot roll back to Pi 1.5.
+
+Evidence caveat: this is a Cloudflare-specific release and was not executed in this scan. The semantics are portable, while the exact hibernation and migration behavior is platform-specific.
+
+Implementability score: 0.85
+
+Source: [Cloudflare Agents SDK Pi 1.6 changelog](https://developers.cloudflare.com/changelog/post/2026-11-20-pi-harness-pi-1-6/)

@@ -2,24 +2,24 @@
 
 Control-plane research for authority, identity, provenance, gateways, approvals, privacy, and sovereign infrastructure.
 
-## Daily update: 2026-11-21
+## Daily update: 2026-11-22
 
-### Prove mandate and answerability before action release
+### Enforce source permissions before retrieval reaches the model
 
-Summary: Realistic trajectory audits should test whether an agent stays inside its mandate, while paired-state audits should prove that the decision received enough current state to be answerable.
+Summary: Organizational search should bind caller identity to source scope, filter retrieval before context assembly, and return cited source identities with the answer.
 
-Analysis: [Daily strategy analysis](2026-11-21/sovereignty.md)
+Analysis: [Daily strategy analysis](2026-11-22/sovereignty.md#1-enforce-source-permissions-before-retrieval-reaches-the-model)
 
-Core sources: [Continuation Audits](https://arxiv.org/abs/2611.24491v1), [State-Dependent Command Safety](https://arxiv.org/abs/2611.24682v1)
+Core sources: [Diderot repository](https://github.com/bluesky-social/diderot), [v1.0.0 release](https://github.com/bluesky-social/diderot/releases/tag/v1.0.0)
 
 Implementable now:
-- redacted real-session prefixes in disposable audit fixtures
-- separate deviation and consequence scoring
-- paired cases with identical commands and opposite state-dependent outcomes
-- exact state and policy snapshot capture
-- fail-closed handling for missing or stale state
+- event-level source and principal scope
+- request-bound caller identity
+- pre-context retrieval filtering
+- cited source and scope receipts
+- Postgres event truth with a rebuildable vector projection
 
-Implementability scores: 0.60 for continuation audits; 0.90 for answerability audits
+Implementability score: 0.78
 
 ## Weekly baseline: week ending 2026-11-20
 
@@ -59,19 +59,20 @@ Implementability score: 0.68
 
 ## Current strategic model
 
-1. Treat model output as a proposal.
-2. Preserve provenance without treating it as authorization.
-3. Compile proposals into typed action manifests.
-4. Compute or observe the reachable effects.
-5. Compare those effects with the current mandate.
+1. Resolve principal identity before retrieval or action.
+2. Filter source evidence before model context assembly.
+3. Treat model output as a proposal.
+4. Compile proposals into typed action manifests.
+5. Compare reachable effects with the current mandate.
 6. Keep commit authority and persistent policy outside model context.
 
 ## Browse
 
-- [Latest daily roundup](../roundups/2026-11-21.md)
-- [Daily strategy analysis](2026-11-21/sovereignty.md)
+- [Latest daily roundup](../roundups/2026-11-22.md)
+- [Daily strategy analysis](2026-11-22/sovereignty.md)
 - [Friday synthesis](../roundups/2026-11-20.md)
 - [Weekly strategy analysis](2026-11-20/sovereignty.md)
+- [Agent gateway governance](agent-gateway-governance/agent-gateway-governance.md)
 - [Runtime policy verification](runtime-policy-verification/runtime-policy-verification.md)
 - [Agent execution control plane](agent-execution-control-plane/agent-execution-control-plane.md)
 - [Agent authority manifests](agent-authority-manifests/agent-authority-manifests.md)

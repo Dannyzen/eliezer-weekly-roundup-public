@@ -2,24 +2,55 @@
 
 Implementation research for the deployed agent loop: tool use, memory, orchestration, evaluation, testing, and work-state continuity.
 
-## Daily update: 2026-11-21
+## Daily update: 2026-11-22
 
-### Evolve harnesses through requirements and deployed-loop evidence
+### Grade compaction by completed work
 
-Summary: Harness changes should enter through evidence-backed user requirements, train or evaluate inside the exact deployed loop, and carry verifier controls that reject known-wrong solutions.
+Summary: Context compaction should be tested by resuming from a fixed environment boundary and grading task completion, repeated work, and false completion claims.
 
-Analysis: [Daily implementation analysis](2026-11-21/reasoning.md)
+Analysis: [Daily implementation analysis](2026-11-22/reasoning.md#1-test-context-compaction-by-resuming-the-task)
 
-Core sources: [AHE-Beta](https://arxiv.org/abs/2611.24924v1), [AHE-Beta repository](https://github.com/Curry09/AHE-Beta), [Hugging Face harness adapters](https://huggingface.co/blog/harness-adapters-at-scale), [adapter collection](https://huggingface.co/collections/harness-hub/qwen38-27b-harness-adapters)
+Core source: [CompAct-Bench](https://arxiv.org/abs/2611.25673v1)
 
 Implementable now:
-- evidence-backed harness requirement issues
-- root-cause consolidation and requirement-specific merge proof
-- exact production-harness replay in evaluation
-- known-wrong and valid-alternative verifier controls
-- separate in-distribution and transfer metrics
+- fixed-boundary continuation replay
+- one executor and action budget across compactors
+- typed unresolved goals, completed effects, and evidence pointers
+- separate omission and false-completion analysis
 
-Implementability scores: 0.65 for requirement-centered evolution; 0.45 for harness-specific RL adapters
+Implementability score: 0.72
+
+### Tune memory dosage per model
+
+Summary: Procedural memory needs model-specific dose curves, conserved provenance, and held-out selection. More guidance can help a strong model while overloading a weaker one.
+
+Analysis: [Daily implementation analysis](2026-11-22/reasoning.md#2-tune-memory-dosage-per-model-and-conserve-provenance)
+
+Core sources: [deployment lessons paper](https://arxiv.org/abs/2611.26361v1), [altk-evolve](https://github.com/AgentToolkit/altk-evolve)
+
+Implementable now:
+- source-linked support counts
+- memory subset bakeoffs against a fixed scaffold
+- separate development and held-out evaluation
+- explicit task and tool error propagation
+
+Implementability score: 0.86
+
+### Persist waits instead of holding invocations
+
+Summary: Human approvals, deadlines, and subagent waits should be persisted as resumable runtime objects so the active invocation and Durable Object can sleep.
+
+Analysis: [Daily implementation analysis](2026-11-22/reasoning.md#3-park-durable-waits-instead-of-holding-an-agent-invocation)
+
+Core source: [Cloudflare Agents SDK v0.34.0](https://developers.cloudflare.com/changelog/post/2026-11-20-pi-harness-pi-1-6/)
+
+Implementable now:
+- persisted park records
+- idempotent signal delivery
+- durable history resume
+- timeout, cancellation, and reauthorization tests
+
+Implementability score: 0.85
 
 ## Weekly baseline: week ending 2026-11-20
 
@@ -74,16 +105,16 @@ Implementability score: 0.82
 
 ## Current working model
 
-1. Promote candidate state only after it beats an incumbent.
-2. Store memory as a governed object with lineage and lifecycle.
-3. Represent sessions as held resources with explicit terminal transitions.
-4. Checkpoint harness work at semantic proof boundaries.
+1. Test state transformations by resuming the real task.
+2. Promote memory only after model-specific dose evaluation.
+3. Store waits as durable runtime state.
+4. Keep memory source identity and derivation through consolidation.
 5. Measure the deployed trajectory rather than the chat turn.
 
 ## Browse
 
-- [Latest daily roundup](../roundups/2026-11-21.md)
-- [Daily implementation analysis](2026-11-21/reasoning.md)
+- [Latest daily roundup](../roundups/2026-11-22.md)
+- [Daily implementation analysis](2026-11-22/reasoning.md)
 - [Friday synthesis](../roundups/2026-11-20.md)
 - [Weekly analysis](2026-11-20/reasoning.md)
 - [Agent serving runtime](agent-serving-runtime/agent-serving-runtime.md)

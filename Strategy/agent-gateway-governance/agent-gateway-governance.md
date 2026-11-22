@@ -1400,3 +1400,21 @@ Evidence caveat: the controls require eligible GitHub Enterprise Cloud Copilot p
 Implementability score: 0.88
 
 Sources: [customization controls](https://github.blog/changelog/2026-11-16-control-where-github-copilot-customizations-come-from/), [harness transition](https://github.blog/changelog/2026-11-16-vs-code-retires-the-local-harness-in-february-2027/)
+
+## November 22, 2026 update: filter organizational retrieval before context assembly
+
+Diderot v1.0.0 binds source scope to ingested events, resolves caller permissions, filters vector results before they enter model context, and returns cited answers over Slack, HTTP, and MCP. This turns retrieval into an authority decision rather than a prompt instruction.
+
+Practical lesson:
+- bind every event to source, tenant, principal scope, and lifecycle state;
+- resolve caller identity before retrieval;
+- apply source ACLs before context assembly;
+- preserve stable source and scope identities in citations;
+- keep the event log canonical and the vector index rebuildable;
+- test membership revocation, private sources, owner-only sessions, and cross-source joins.
+
+Artifact caveat: the first public release has a populated tree, binaries, and checksums, but the system requires Postgres, Qdrant, embeddings, and a model provider. Retrieval is vector-only with no keyword index or reranker, and API compatibility may change.
+
+Implementability score: 0.78
+
+Sources: [Diderot repository](https://github.com/bluesky-social/diderot), [v1.0.0 release](https://github.com/bluesky-social/diderot/releases/tag/v1.0.0)

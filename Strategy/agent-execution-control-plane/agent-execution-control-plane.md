@@ -422,3 +422,20 @@ Implementability score: 0.68
 
 Source:
 - [Signed, Valid, and Unauthorized](https://arxiv.org/abs/2611.24989v1)
+
+## November 23, 2026 update: reconcile uncertain effects before failover
+
+OPCP keeps supplier eligibility, routing, authority, and effect records outside the agent. Its fault experiments show that a lost reply after commit cannot be treated as a clean failure: retry-all duplicated every tested effect in that case.
+
+Practical lesson:
+- persist attempt identity before dispatch;
+- distinguish refusal, commit, uncertainty, and reconciliation;
+- block supplier substitution while an effect is uncertain;
+- require supplier idempotency for same-supplier retries;
+- retain supplier, request, policy, and outcome receipts.
+
+Evidence caveat: the study uses scripted requests and synthetic suppliers. It does not evaluate autonomous-agent success, prompt injection, semantic correctness, or live-vendor portability.
+
+Implementability score: 0.62
+
+Source: [Keep the Process, Change the Supplier v1](https://arxiv.org/abs/2611.26966v1)

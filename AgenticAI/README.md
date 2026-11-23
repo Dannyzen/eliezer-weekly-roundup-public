@@ -2,55 +2,41 @@
 
 Implementation research for the deployed agent loop: tool use, memory, orchestration, evaluation, testing, and work-state continuity.
 
-## Daily update: 2026-11-22
+## Daily update: 2026-11-23
 
-### Grade compaction by completed work
+### Isolate verdict authority
 
-Summary: Context compaction should be tested by resuming from a fixed environment boundary and grading task completion, repeated work, and false completion claims.
+Summary: Candidate code should run in a disposable environment that exports bounded observations to a separate trusted grader holding expected values.
 
-Analysis: [Daily implementation analysis](2026-11-22/reasoning.md#1-test-context-compaction-by-resuming-the-task)
+Analysis: [Daily implementation analysis](2026-11-23/reasoning.md#1-isolate-the-grader-from-the-agent-controlled-test-environment)
 
-Core source: [CompAct-Bench](https://arxiv.org/abs/2611.25673v1)
-
-Implementable now:
-- fixed-boundary continuation replay
-- one executor and action budget across compactors
-- typed unresolved goals, completed effects, and evidence pointers
-- separate omission and false-completion analysis
-
-Implementability score: 0.72
-
-### Tune memory dosage per model
-
-Summary: Procedural memory needs model-specific dose curves, conserved provenance, and held-out selection. More guidance can help a strong model while overloading a weaker one.
-
-Analysis: [Daily implementation analysis](2026-11-22/reasoning.md#2-tune-memory-dosage-per-model-and-conserve-provenance)
-
-Core sources: [deployment lessons paper](https://arxiv.org/abs/2611.26361v1), [altk-evolve](https://github.com/AgentToolkit/altk-evolve)
+Core source: [Who Grades the Agent?](https://arxiv.org/abs/2611.27860v1)
 
 Implementable now:
-- source-linked support counts
-- memory subset bakeoffs against a fixed scaffold
-- separate development and held-out evaluation
-- explicit task and tool error propagation
+- separate candidate and Oracle processes
+- schema-validated observations
+- hidden expected values
+- native-versus-separated replay
+- verdict receipts
 
-Implementability score: 0.86
+Implementability score: 0.68
 
-### Persist waits instead of holding invocations
+### Grade recovery from exercised incidents
 
-Summary: Human approvals, deadlines, and subagent waits should be persisted as resumable runtime objects so the active invocation and Durable Object can sleep.
+Summary: Recovery maturity should be based on fault-injected and operator-attributable outcomes, with full, partial, failed, and unclear recovery separated.
 
-Analysis: [Daily implementation analysis](2026-11-22/reasoning.md#3-park-durable-waits-instead-of-holding-an-agent-invocation)
+Analysis: [Daily implementation analysis](2026-11-23/reasoning.md#2-grade-recovery-by-exercised-outcomes-not-feature-labels)
 
-Core source: [Cloudflare Agents SDK v0.34.0](https://developers.cloudflare.com/changelog/post/2026-11-20-pi-harness-pi-1-6/)
+Core sources: [Exercised, Rarely Recovered](https://arxiv.org/abs/2611.27090v1), [replication package](https://doi.org/10.5281/zenodo.24122560)
 
 Implementable now:
-- persisted park records
-- idempotent signal delivery
-- durable history resume
-- timeout, cancellation, and reauthorization tests
+- crash and partial-write fixtures
+- recovery evidence ladder
+- explicit outcome labels
+- operator-attributable receipts
+- separate compensation gate
 
-Implementability score: 0.85
+Implementability score: 0.92
 
 ## Weekly baseline: week ending 2026-11-20
 
@@ -105,16 +91,16 @@ Implementability score: 0.82
 
 ## Current working model
 
-1. Test state transformations by resuming the real task.
-2. Promote memory only after model-specific dose evaluation.
-3. Store waits as durable runtime state.
-4. Keep memory source identity and derivation through consolidation.
+1. Keep verdict authority outside candidate-controlled environments.
+2. Grade recovery from exercised incidents and explicit outcomes.
+3. Promote memory only after model-specific dose evaluation.
+4. Store waits and session boundaries as durable runtime state.
 5. Measure the deployed trajectory rather than the chat turn.
 
 ## Browse
 
-- [Latest daily roundup](../roundups/2026-11-22.md)
-- [Daily implementation analysis](2026-11-22/reasoning.md)
+- [Latest daily roundup](../roundups/2026-11-23.md)
+- [Daily implementation analysis](2026-11-23/reasoning.md)
 - [Friday synthesis](../roundups/2026-11-20.md)
 - [Weekly analysis](2026-11-20/reasoning.md)
 - [Agent serving runtime](agent-serving-runtime/agent-serving-runtime.md)

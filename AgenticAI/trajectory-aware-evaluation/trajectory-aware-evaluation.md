@@ -1809,3 +1809,20 @@ Evidence caveat: the benchmark contains 29 cases, prompt updates only, and no ve
 Implementability score: 0.72
 
 Source: [Safe Personal RSI v1](https://arxiv.org/abs/2611.23651v1)
+
+## November 23, 2026 update: grade recovery from exercised incidents
+
+A review of 50 agent harnesses and runtimes found 128 public real-use recovery reports, with 19 full recoveries, 54 partial recoveries, and 45 failures. Recovery maturity needs outcome evidence, not a feature label.
+
+Practical lesson:
+- inject crash, partial-write, lost-reply, and destructive-action faults;
+- separate resume, repair, rollback, and compensation;
+- label full, partial, failed, and unclear recovery;
+- require operator-attributable evidence for readiness claims;
+- preserve incident, mechanism, outcome, and evidence identity.
+
+Evidence caveat: the study grades bounded public evidence. Missing evidence means not found, and most strongest reports come from one operator.
+
+Implementability score: 0.92
+
+Sources: [paper v1](https://arxiv.org/abs/2611.27090v1), [replication package](https://doi.org/10.5281/zenodo.24122560)

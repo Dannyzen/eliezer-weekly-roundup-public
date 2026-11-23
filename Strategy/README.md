@@ -2,24 +2,41 @@
 
 Control-plane research for authority, identity, provenance, gateways, approvals, privacy, and sovereign infrastructure.
 
-## Daily update: 2026-11-22
+## Daily update: 2026-11-23
 
-### Enforce source permissions before retrieval reaches the model
+### Reconcile effects before changing suppliers
 
-Summary: Organizational search should bind caller identity to source scope, filter retrieval before context assembly, and return cited source identities with the answer.
+Summary: Effectful tool failover needs persistent attempt state. An uncertain write must block cross-supplier retry until the original outcome is reconciled.
 
-Analysis: [Daily strategy analysis](2026-11-22/sovereignty.md#1-enforce-source-permissions-before-retrieval-reaches-the-model)
+Analysis: [Daily strategy analysis](2026-11-23/sovereignty.md#1-keep-supplier-choice-and-uncertain-effects-outside-the-agent)
 
-Core sources: [Diderot repository](https://github.com/bluesky-social/diderot), [v1.0.0 release](https://github.com/bluesky-social/diderot/releases/tag/v1.0.0)
+Core source: [Keep the Process, Change the Supplier](https://arxiv.org/abs/2611.26966v1)
 
 Implementable now:
-- event-level source and principal scope
-- request-bound caller identity
-- pre-context retrieval filtering
-- cited source and scope receipts
-- Postgres event truth with a rebuildable vector projection
+- typed capability calls
+- persistent attempt identities
+- explicit uncertain outcomes
+- fail-closed reconciliation
+- supplier idempotency contracts
 
-Implementability score: 0.78
+Implementability score: 0.62
+
+### Govern tool descriptions as executable inputs
+
+Summary: MCP tool descriptions can steer consequential argument values while preserving normal-looking tool selection, so descriptors need provenance, admission, and regression gates.
+
+Analysis: [Daily strategy analysis](2026-11-23/sovereignty.md#2-treat-tool-metadata-as-executable-supply-chain-input)
+
+Core source: [Subverting Tool Arguments](https://arxiv.org/abs/2611.27041v1)
+
+Implementable now:
+- approved descriptor origins
+- pinned descriptor and schema hashes
+- exact-change approval views
+- request-bound argument authority
+- descriptor red-team fixtures
+
+Implementability score: 0.76
 
 ## Weekly baseline: week ending 2026-11-20
 
@@ -59,17 +76,17 @@ Implementability score: 0.68
 
 ## Current strategic model
 
-1. Resolve principal identity before retrieval or action.
-2. Filter source evidence before model context assembly.
-3. Treat model output as a proposal.
-4. Compile proposals into typed action manifests.
-5. Compare reachable effects with the current mandate.
-6. Keep commit authority and persistent policy outside model context.
+1. Resolve principal and source identity before retrieval or action.
+2. Treat tool descriptions and schemas as admitted supply-chain inputs.
+3. Compile model proposals into typed capability calls.
+4. Keep supplier routing and effect state outside model context.
+5. Block uncertain writes until reconciliation.
+6. Preserve policy, supplier, argument, effect, and refusal receipts.
 
 ## Browse
 
-- [Latest daily roundup](../roundups/2026-11-22.md)
-- [Daily strategy analysis](2026-11-22/sovereignty.md)
+- [Latest daily roundup](../roundups/2026-11-23.md)
+- [Daily strategy analysis](2026-11-23/sovereignty.md)
 - [Friday synthesis](../roundups/2026-11-20.md)
 - [Weekly strategy analysis](2026-11-20/sovereignty.md)
 - [Agent gateway governance](agent-gateway-governance/agent-gateway-governance.md)

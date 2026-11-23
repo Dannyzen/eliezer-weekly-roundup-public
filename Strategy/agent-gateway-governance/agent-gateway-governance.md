@@ -1418,3 +1418,21 @@ Artifact caveat: the first public release has a populated tree, binaries, and ch
 Implementability score: 0.78
 
 Sources: [Diderot repository](https://github.com/bluesky-social/diderot), [v1.0.0 release](https://github.com/bluesky-social/diderot/releases/tag/v1.0.0)
+
+## November 23, 2026 update: admit and pin tool metadata
+
+GRAFT demonstrates that third-party MCP descriptions can preserve ordinary tool selection while steering one argument to an attacker value. A gateway must govern descriptors and schemas before they shape model behavior.
+
+Practical lesson:
+- admit tool definitions only from approved origins;
+- pin descriptor, schema, and server hashes;
+- show exact metadata changes under approval;
+- bind consequential arguments to trusted request fields;
+- quarantine changed descriptors until regression and red-team fixtures pass;
+- record argument provenance at dispatch.
+
+Evidence caveat: the paper uses controlled benchmarks and synthesized proxy queries. No paper-owned public implementation artifact was verified today.
+
+Implementability score: 0.76
+
+Source: [Subverting Tool Arguments v1](https://arxiv.org/abs/2611.27041v1)

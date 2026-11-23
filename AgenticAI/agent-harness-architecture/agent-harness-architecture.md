@@ -1853,3 +1853,20 @@ Evidence caveat: System 1 Agents is evaluated on biomedical catalogs without liv
 Implementability score: 0.76
 
 Sources: [System 1 Agents v1](https://arxiv.org/abs/2611.21053v1), [SMT solver tuning v1](https://arxiv.org/abs/2611.20484v1)
+
+## November 23, 2026 update: isolate the verdict from the candidate
+
+SplitBench runs candidate code in an attacker-controlled environment but keeps expected values and final judgment in a separate trusted Oracle. The candidate exports bounded observations rather than a self-authored pass result.
+
+Practical lesson:
+- separate candidate execution and verdict authority;
+- validate a narrow observation schema;
+- keep hidden expected values outside the runner;
+- replay native and separated graders before migration;
+- treat weak task specifications as a separate failure class.
+
+Evidence caveat: 180 of 202 tasks converted and verdict agreement was 98.7%, but at least 34 converted tasks retained weak upstream tests. The full artifact is promised upon publication and was not publicly verified today.
+
+Implementability score: 0.68
+
+Source: [Who Grades the Agent? v1](https://arxiv.org/abs/2611.27860v1)

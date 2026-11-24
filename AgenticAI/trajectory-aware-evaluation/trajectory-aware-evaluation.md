@@ -1826,3 +1826,21 @@ Evidence caveat: the study grades bounded public evidence. Missing evidence mean
 Implementability score: 0.92
 
 Sources: [paper v1](https://arxiv.org/abs/2611.27090v1), [replication package](https://doi.org/10.5281/zenodo.24122560)
+
+## November 24, 2026 update: adversarially test the evaluator
+
+Hugging Face's agentic-evaluation guide treats the benchmark as maintained software. Its worked example shows that a shortcut can pass every task when the grader checks only the final number and fail every task once the required intermediate work is verified.
+
+Practical lesson:
+- define one narrow capability claim;
+- test the grader with a reference solution, no-op, and plausible shortcut;
+- repeat tasks and report the metric that matches the decision;
+- inspect successful and failed traces;
+- version task, environment, harness, verifier, trace, and score together;
+- report uncertainty and known coverage gaps.
+
+Evidence caveat: the worked example contains eight synthetic development tasks. The process is reusable, while its model scores are not a general benchmark.
+
+Implementability score: 0.92
+
+Source: [How to build and maintain an agentic evaluation](https://huggingface.co/blog/agentic-evals)

@@ -1449,3 +1449,21 @@ Evidence caveat: both systems are paper-level in this scan. Safe Personal RSI co
 Implementability score: 0.62
 
 Sources: [Safe Personal RSI v1](https://arxiv.org/abs/2611.23651v1), [SkillCFI v1](https://arxiv.org/abs/2611.24185v1)
+
+## November 24, 2026 update: govern actual effects below tool calls
+
+AgentBouncer moves enforcement from the agent trajectory to the system calls that create effects. This catches malicious tool bodies, poisoned scripts, and poisoned repositories that can look benign in tool-call logs.
+
+Practical lesson:
+- mediate effects before they execute;
+- bind decisions to task, principal, target, action, and policy version;
+- use deterministic denials for forbidden effects;
+- cache only scope-equivalent decisions;
+- preserve allow and deny receipts;
+- keep recovery outside the mediated agent's reach.
+
+Evidence caveat: code and data are promised for later release. The reported 340-attack result has not yet been independently reproduced from a public implementation.
+
+Implementability score: 0.48
+
+Source: [AgentBouncer v1](https://arxiv.org/abs/2611.30621v1)

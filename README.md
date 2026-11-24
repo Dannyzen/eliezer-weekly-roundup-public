@@ -6,9 +6,9 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-11-23: [evidence and authority outside the agent environment](roundups/2026-11-23.md)
-- Latest implementation analysis: [AgenticAI](AgenticAI/2026-11-23/reasoning.md)
-- Latest strategy analysis: [Strategy](Strategy/2026-11-23/sovereignty.md)
+- Daily scan, 2026-11-24: [runtime-aware evaluation and effect-boundary control](roundups/2026-11-24.md)
+- Latest implementation analysis: [AgenticAI](AgenticAI/2026-11-24/reasoning.md)
+- Latest strategy analysis: [Strategy](Strategy/2026-11-24/sovereignty.md)
 - Friday synthesis, week ending 2026-11-20: [explicit runtime objects](roundups/2026-11-20.md)
 - Latest implementation index: [AgenticAI README](AgenticAI/README.md)
 - Latest strategy index: [Strategy README](Strategy/README.md)

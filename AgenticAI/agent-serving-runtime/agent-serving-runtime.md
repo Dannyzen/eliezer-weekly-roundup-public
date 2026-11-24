@@ -201,3 +201,20 @@ Evidence caveat: this is a Cloudflare-specific release and was not executed in t
 Implementability score: 0.85
 
 Source: [Cloudflare Agents SDK Pi 1.6 changelog](https://developers.cloudflare.com/changelog/post/2026-11-20-pi-harness-pi-1-6/)
+
+## November 24, 2026 update: score the serving substrate
+
+MASSys shows that multi-agent quality depends on queueing, backend, load, cache pressure, tool latency, retry policy, and deadlines. Evaluated-only quality can stay stable while useful quality over all submitted jobs collapses.
+
+Practical lesson:
+- replay identical candidate-task assignments across serving cells;
+- count submitted, completed, execution-successful, evaluated, and correct jobs separately;
+- measure queue wait, P95 runtime, deadline termination, tool latency, tokens, and KV-cache pressure;
+- bind every score to exact runtime, hardware, model, load, and policy identities;
+- use effective quality over all submissions as the production metric.
+
+Evidence caveat: the public repository is newly released, has no tagged release, and was inspected read-only. The paper's strongest sweeps use H200 serving cells and may not transfer directly to smaller deployments.
+
+Implementability score: 0.62
+
+Sources: [MASSys paper v1](https://arxiv.org/abs/2611.28671v1), [repository](https://github.com/MAS-Sys-Bench/MAS-Sys), [trace dataset](https://huggingface.co/datasets/MAS-Sys/MAS-Sys-Traces)

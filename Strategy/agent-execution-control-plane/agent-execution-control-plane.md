@@ -439,3 +439,20 @@ Evidence caveat: the study uses scripted requests and synthetic suppliers. It do
 Implementability score: 0.62
 
 Source: [Keep the Process, Change the Supplier v1](https://arxiv.org/abs/2611.26966v1)
+
+## November 24, 2026 update: isolate database recovery authority
+
+The database blast-radius study shows that least privilege and recovery solve different problems. Scoped permissions block some destructive operations, while engine-native logs and backups determine whether an accepted mistake can be undone. Credentials stored in application data can also let an agent escape its assigned identity.
+
+Practical lesson:
+- remove drop, truncate, flush, topic-delete, and credential-read authority from task identities;
+- keep backups, logs, snapshots, and recovery credentials outside the acting identity;
+- add an independent deny layer for broad deletes;
+- exercise restore drills after representative destructive actions;
+- reconcile the agent's report against change logs and final state.
+
+Evidence caveat: the preregistered and post-hoc measures do not always agree, and harness choices affect engine comparisons. Use the work to design controls rather than rank databases.
+
+Implementability score: 0.86
+
+Sources: [paper v1](https://arxiv.org/abs/2611.30483v1), [preregistration](https://osf.io/ms7ef), [harness and records](https://github.com/libredb/agent-blast-radius)

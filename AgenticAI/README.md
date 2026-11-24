@@ -2,6 +2,42 @@
 
 Implementation research for the deployed agent loop: tool use, memory, orchestration, evaluation, testing, and work-state continuity.
 
+## Daily update: 2026-11-24
+
+### Count serving failures in agent quality
+
+Summary: Multi-agent benchmarks should replay identical work across load regimes and score useful results over every submitted job, not only the jobs that survive execution.
+
+Analysis: [Daily implementation analysis](2026-11-24/reasoning.md#1-benchmark-multi-agent-systems-under-runtime-pressure)
+
+Core sources: [MASSys paper](https://arxiv.org/abs/2611.28671v1), [repository](https://github.com/MAS-Sys-Bench/MAS-Sys), [trace dataset](https://huggingface.co/datasets/MAS-Sys/MAS-Sys-Traces)
+
+Implementable now:
+- fixed candidate-task replay
+- explicit serving-cell identity
+- submitted-versus-evaluated denominators
+- queue, timeout, latency, and cache telemetry
+- effective quality over all jobs
+
+Implementability score: 0.62
+
+### Test the evaluator before comparing agents
+
+Summary: Agent evaluations need narrow claims, adversarial grader checks, repeated rollouts, trace review, and versioned evidence.
+
+Analysis: [Daily implementation analysis](2026-11-24/reasoning.md#2-treat-the-evaluation-itself-as-a-maintained-system)
+
+Core source: [How to build and maintain an agentic evaluation](https://huggingface.co/blog/agentic-evals)
+
+Implementable now:
+- reference, no-op, and shortcut probes
+- repeated task trials
+- successful-trace inspection
+- uncertainty-aware reporting
+- task, harness, verifier, and result identities
+
+Implementability score: 0.92
+
 ## Daily update: 2026-11-23
 
 ### Isolate verdict authority
@@ -99,8 +135,8 @@ Implementability score: 0.82
 
 ## Browse
 
-- [Latest daily roundup](../roundups/2026-11-23.md)
-- [Daily implementation analysis](2026-11-23/reasoning.md)
+- [Latest daily roundup](../roundups/2026-11-24.md)
+- [Daily implementation analysis](2026-11-24/reasoning.md)
 - [Friday synthesis](../roundups/2026-11-20.md)
 - [Weekly analysis](2026-11-20/reasoning.md)
 - [Agent serving runtime](agent-serving-runtime/agent-serving-runtime.md)

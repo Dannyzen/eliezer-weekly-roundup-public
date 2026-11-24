@@ -2,6 +2,42 @@
 
 Control-plane research for authority, identity, provenance, gateways, approvals, privacy, and sovereign infrastructure.
 
+## Daily update: 2026-11-24
+
+### Mediate concrete effects before execution
+
+Summary: Tool-call text is insufficient authority evidence. Runtime policy should inspect and deny the system calls that implement file, process, network, credential, and package effects.
+
+Analysis: [Daily strategy analysis](2026-11-24/sovereignty.md#1-mediate-actual-effects-below-tool-calls)
+
+Core source: [AgentBouncer](https://arxiv.org/abs/2611.30621v1)
+
+Implementable now:
+- pre-effect system-call mediation
+- task-bound necessity and safety checks
+- deterministic deny rules
+- scope-aware decision caching
+- allowed and denied effect receipts
+
+Implementability score: 0.48
+
+### Isolate recovery and administrator authority
+
+Summary: Scoped database identities need independent deny rules, unreachable backups, credential separation, and exercised restore proof.
+
+Analysis: [Daily strategy analysis](2026-11-24/sovereignty.md#2-pair-least-privilege-with-tested-recovery-and-credential-isolation)
+
+Core sources: [database agent blast-radius study](https://arxiv.org/abs/2611.30483v1), [harness and records](https://github.com/libredb/agent-blast-radius)
+
+Implementable now:
+- task-specific database identities
+- external backup and recovery authority
+- destructive-action deny rules
+- credential isolation
+- change-log reconciliation
+
+Implementability score: 0.86
+
 ## Daily update: 2026-11-23
 
 ### Reconcile effects before changing suppliers
@@ -85,8 +121,8 @@ Implementability score: 0.68
 
 ## Browse
 
-- [Latest daily roundup](../roundups/2026-11-23.md)
-- [Daily strategy analysis](2026-11-23/sovereignty.md)
+- [Latest daily roundup](../roundups/2026-11-24.md)
+- [Daily strategy analysis](2026-11-24/sovereignty.md)
 - [Friday synthesis](../roundups/2026-11-20.md)
 - [Weekly strategy analysis](2026-11-20/sovereignty.md)
 - [Agent gateway governance](agent-gateway-governance/agent-gateway-governance.md)

@@ -145,3 +145,22 @@ Implementability score: 0.62
 
 Source:
 - [Tether](https://arxiv.org/abs/2611.25599v1)
+
+
+## November 25, 2026 update: preserve authority provenance through transformations
+
+Two fresh studies show that authorization can widen when a runtime loses source identity. Context compaction can place model-written text in the request slot, while a delegated approval reply can carry persistent policy changes. Both failures arise because transformed text inherits authority from its position rather than its authenticated author.
+
+Practical lesson:
+- keep immutable user-authored authority inputs separate from compacted context;
+- bind every policy rule to an owner and provenance record;
+- separate one-shot decision capability from policy-update capability;
+- allow principals to remove only restrictions they own;
+- reject updates that widen authority beyond the approved effect;
+- retain compaction, grant, policy-diff, and effect receipts.
+
+The compaction gate blocked attacker actions in 40 attacked episodes. The permission-policy analysis covers 13 designs across 10 agent systems and a survey of 2,227 fetched marketplace plugins. Both anonymous artifacts resolved and were inspected read-only.
+
+Implementability score: 0.77
+
+Sources: [authorization across compaction](https://arxiv.org/abs/2611.32194v1), [permission replies and policy administration](https://arxiv.org/abs/2611.32195v1)

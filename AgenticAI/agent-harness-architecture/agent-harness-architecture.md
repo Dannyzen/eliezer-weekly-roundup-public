@@ -1870,3 +1870,22 @@ Evidence caveat: 180 of 202 tasks converted and verdict agreement was 98.7%, but
 Implementability score: 0.68
 
 Source: [Who Grades the Agent? v1](https://arxiv.org/abs/2611.27860v1)
+
+
+## November 25, 2026 update: preserve completed work and factor the harness explicitly
+
+Agent-Kernel and ShellBench expose two sides of harness quality. The runtime should preserve unaffected DAG state after failure, while the evaluation should cross model, harness, reasoning effort, task, grader, and cost as explicit factors.
+
+Practical lesson:
+- persist dependency and attempt state outside the transcript;
+- reset only failed nodes and their descendants;
+- test schema-aware retries against blind re-execution;
+- pin every evaluation-cell identity;
+- report correctness, safety, latency, tokens, and cost separately;
+- retain held-out tasks and hashed public subsets.
+
+Evidence caveat: Agent-Kernel has no linked public implementation, and its semantic retry comparison has only 18 scenarios. ShellBench exposes 20 of 100 tasks on Hugging Face, but the dataset has no assigned license and its paper-linked GitHub repository did not resolve during this scan.
+
+Implementability score: 0.73
+
+Sources: [fork() for Agents](https://arxiv.org/abs/2611.31727v1), [ShellBench](https://arxiv.org/abs/2611.32946v1), [ShellBench public dataset](https://huggingface.co/datasets/OpenClaw/ShellBench)

@@ -2,6 +2,43 @@
 
 Control-plane research for authority, identity, provenance, gateways, approvals, privacy, and sovereign infrastructure.
 
+
+## Daily update: 2026-11-25
+
+### Preserve authenticated intent across compaction
+
+Summary: Model-written summaries can support planning, but request-derived authorization must read immutable user-authored text carried separately across context compaction.
+
+Analysis: [Daily strategy analysis](2026-11-25/sovereignty.md#1-carry-authenticated-user-intent-across-context-compaction)
+
+Core sources: [authorization across compaction](https://arxiv.org/abs/2611.32194v1), [artifact snapshot](https://anonymous.4open.science/r/LLM-Agent-Authorization-Across-Context-Compaction-504E/)
+
+Implementable now:
+- source-authenticated user-message IDs
+- committed authority witness lists
+- separate reasoning and authorization inputs
+- fail-closed witness validation
+- grant and effect receipts
+
+Implementability score: 0.72
+
+### Keep approval replies from rewriting operator policy
+
+Summary: One-shot approval authority must not imply persistent policy-administration authority. Rule ownership and monotonic denied-set checks should bound updates.
+
+Analysis: [Daily strategy analysis](2026-11-25/sovereignty.md#2-separate-permission-decisions-from-policy-administration)
+
+Core sources: [When Answering Is Administering](https://arxiv.org/abs/2611.32195v1), [reproduction snapshot](https://anonymous.4open.science/r/-When-Answering-Is-Administering-Permission-Replies-That-Rewrite-Coding-Agent-Policy-E5B0/)
+
+Implementable now:
+- separate decision and policy-update schemas
+- owner-bound rule deletion
+- authority-widening rejection
+- pre-update and post-update denied-set checks
+- policy-diff receipts
+
+Implementability score: 0.82
+
 ## Daily update: 2026-11-24
 
 ### Mediate concrete effects before execution
@@ -121,7 +158,7 @@ Implementability score: 0.68
 
 ## Browse
 
-- [Latest daily roundup](../roundups/2026-11-24.md)
+- [Latest daily roundup](../roundups/2026-11-25.md)
 - [Daily strategy analysis](2026-11-24/sovereignty.md)
 - [Friday synthesis](../roundups/2026-11-20.md)
 - [Weekly strategy analysis](2026-11-20/sovereignty.md)

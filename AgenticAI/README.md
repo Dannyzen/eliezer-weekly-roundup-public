@@ -2,6 +2,43 @@
 
 Implementation research for the deployed agent loop: tool use, memory, orchestration, evaluation, testing, and work-state continuity.
 
+
+## Daily update: 2026-11-25
+
+### Recover only the failed dependency branch
+
+Summary: Durable orchestration should preserve completed siblings, reset a failed node and its descendants, and inject structured error context on retry.
+
+Analysis: [Daily implementation analysis](2026-11-25/reasoning.md#1-recover-the-affected-subgraph-instead-of-replaying-the-whole-run)
+
+Core source: [fork() for Agents](https://arxiv.org/abs/2611.31727v1)
+
+Implementable now:
+- persistent DAG node state
+- selective descendant invalidation
+- completed-artifact reuse
+- schema-aware retry context
+- duplicate-effect and recovery telemetry
+
+Implementability score: 0.58
+
+### Cross model, harness, and reasoning effort in evaluations
+
+Summary: Agent evaluation should identify each model, harness, reasoning level, task, grader, and cost cell instead of collapsing them into one leaderboard score.
+
+Analysis: [Daily implementation analysis](2026-11-25/reasoning.md#2-factor-model-harness-and-reasoning-effort-in-agent-evaluation)
+
+Core sources: [ShellBench](https://arxiv.org/abs/2611.32946v1), [public dataset](https://huggingface.co/datasets/OpenClaw/ShellBench)
+
+Implementable now:
+- crossed evaluation designs
+- pinned harness and model identities
+- separate quality, safety, latency, token, and cost metrics
+- held-out tasks
+- hashed public evaluation subsets
+
+Implementability score: 0.88
+
 ## Daily update: 2026-11-24
 
 ### Count serving failures in agent quality
@@ -135,7 +172,7 @@ Implementability score: 0.82
 
 ## Browse
 
-- [Latest daily roundup](../roundups/2026-11-24.md)
+- [Latest daily roundup](../roundups/2026-11-25.md)
 - [Daily implementation analysis](2026-11-24/reasoning.md)
 - [Friday synthesis](../roundups/2026-11-20.md)
 - [Weekly analysis](2026-11-20/reasoning.md)

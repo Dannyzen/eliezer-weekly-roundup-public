@@ -3,6 +3,40 @@
 Implementation research for the deployed agent loop: tool use, memory, orchestration, evaluation, testing, and work-state continuity.
 
 
+## Daily update: 2026-11-26
+
+### Production failures should compile into replayable evolution gates
+
+Summary: Sports Agent separates model evolution from harness evolution, then validates both through diagnosis, replay, independent audit, regression testing, and performance-tolerance gates.
+
+Analysis: [Sports Agent turns production failures into bounded model and harness evolution](2026-11-26/reasoning.md#sports-agent-turns-production-failures-into-bounded-model-and-harness-evolution)
+
+Core source: [Sports Agent v1](https://arxiv.org/abs/2611.33700v1)
+
+Implementable now:
+- retain failed trajectories with source evidence and failure labels;
+- compile recurring failures into replay fixtures;
+- version model, prompt, skill, and data changes separately;
+- promote changes only after independent regression replay.
+
+Implementability score: 0.72
+
+### Context compaction should be a typed, observable runtime operation
+
+Summary: Giving models context inspection and compaction operations improved accuracy or efficiency at tight budgets, while model-to-model variation shows why the harness still needs policy and fallback control.
+
+Analysis: [Model-managed context is becoming a measurable runtime API](2026-11-26/reasoning.md#model-managed-context-is-becoming-a-measurable-runtime-api)
+
+Core source: [Letting Models Manage Their Own Context v1](https://arxiv.org/abs/2611.34147v1)
+
+Implementable now:
+- explore [Mainplane](https://github.com/mainplane-ai/mainplane);
+- expose typed context operations;
+- log retained spans, edit timing, token deltas, cache reuse, and task outcome;
+- compare policies across several context budgets.
+
+Implementability score: 0.76
+
 ## Daily update: 2026-11-25
 
 ### Recover only the failed dependency branch

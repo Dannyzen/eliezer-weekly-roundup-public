@@ -1889,3 +1889,18 @@ Evidence caveat: Agent-Kernel has no linked public implementation, and its seman
 Implementability score: 0.73
 
 Sources: [fork() for Agents](https://arxiv.org/abs/2611.31727v1), [ShellBench](https://arxiv.org/abs/2611.32946v1), [ShellBench public dataset](https://huggingface.co/datasets/OpenClaw/ShellBench)
+
+## November 26, 2026 update: production failures should become replay fixtures
+
+Sports Agent shows a production-shaped evolution loop: diagnose failed answers and trajectories, generate diverse tests from error structure, evolve model and harness separately, then gate changes with independent audit, replay, regression tests, and performance tolerances.
+
+The durable pattern is a failure compiler:
+1. retain the failed trajectory and evidence;
+2. classify the missing capability or control;
+3. generate a replayable fixture that preserves the failure mechanism;
+4. test model, prompt, skill, and data changes independently;
+5. promote only when the wider regression set remains healthy.
+
+Implementability score: 0.72
+
+Source: [Sports Agent v1](https://arxiv.org/abs/2611.33700v1)

@@ -3,13 +3,47 @@
 Control-plane research for authority, identity, provenance, gateways, approvals, privacy, and sovereign infrastructure.
 
 
+## Daily update: 2026-11-26
+
+### Release decisions need evidence certificates, not only scores
+
+Summary: Agent-as-a-Verifier compiles acceptance contracts into obligations and preserves the checks and evidence behind each verdict, creating a reviewable release object.
+
+Analysis: [Agent-as-a-Verifier replaces scalar confidence with checkable certificates](2026-11-26/sovereignty.md#agent-as-a-verifier-replaces-scalar-confidence-with-checkable-certificates)
+
+Core source: [Agent-as-a-Verifier v1](https://arxiv.org/abs/2611.34132v1)
+
+Implementable now:
+- explore [General-Verifier](https://github.com/sunyxedu/General-Verifier);
+- separate claim extraction, check proposal, execution, and evidence audit;
+- compile acceptance criteria independently of the candidate output;
+- preserve obligations and evidence with the release.
+
+Implementability score: 0.74
+
+### Human operator answers need claim-level provenance before training
+
+Summary: About a quarter of operator-reply claims in one support system lacked full runtime evidence. Verifying claims before reward construction reduced offline hallucination flags and improved online automation in the reported deployment.
+
+Analysis: [Operator replies are evidence candidates, not gold labels](2026-11-26/sovereignty.md#operator-replies-are-evidence-candidates-not-gold-labels)
+
+Core source: [Learning from Unreliable Operator References v1](https://arxiv.org/abs/2611.34341v1)
+
+Implementable now:
+- split human answers into atomic claims;
+- verify against the exact runtime evidence available;
+- use supported claims as coverage targets;
+- route unsupported claims to knowledge or tool remediation.
+
+Implementability score: 0.68
+
 ## Daily update: 2026-11-25
 
 ### Preserve authenticated intent across compaction
 
 Summary: Model-written summaries can support planning, but request-derived authorization must read immutable user-authored text carried separately across context compaction.
 
-Analysis: [Daily strategy analysis](2026-11-25/sovereignty.md#1-carry-authenticated-user-intent-across-context-compaction)
+Analysis: [Durable deep dive](context-compaction-provenance/context-compaction-provenance.md#november-25-2026-deep-dive-authenticated-authority-across-context-compaction) and [daily strategy context](2026-11-25/sovereignty.md#1-carry-authenticated-user-intent-across-context-compaction)
 
 Core sources: [authorization across compaction](https://arxiv.org/abs/2611.32194v1), [artifact snapshot](https://anonymous.4open.science/r/LLM-Agent-Authorization-Across-Context-Compaction-504E/)
 
@@ -167,3 +201,4 @@ Implementability score: 0.68
 - [Agent execution control plane](agent-execution-control-plane/agent-execution-control-plane.md)
 - [Agent authority manifests](agent-authority-manifests/agent-authority-manifests.md)
 - [Memory authority control plane](memory-authority-control-plane/memory-authority-control-plane.md)
+- [Context compaction provenance](context-compaction-provenance/context-compaction-provenance.md)

@@ -1467,3 +1467,13 @@ Evidence caveat: code and data are promised for later release. The reported 340-
 Implementability score: 0.48
 
 Source: [AgentBouncer v1](https://arxiv.org/abs/2611.30621v1)
+
+## November 26, 2026 update: human answers are claims, not inherited authority
+
+The customer-support evidence shows why operator text cannot become training authority automatically. Each factual claim should be checked against the knowledge and tool state available to the deployed agent. Supported claims can guide coverage; unsupported claims identify missing data, missing tools, or human-only judgment.
+
+This preserves a clean boundary between human supervision and runtime evidence. It also creates a measurable abstention policy rather than teaching the model to imitate inaccessible knowledge.
+
+Implementability score: 0.68
+
+Source: [Learning from Unreliable Operator References v1](https://arxiv.org/abs/2611.34341v1)

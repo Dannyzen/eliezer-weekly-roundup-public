@@ -26,6 +26,8 @@ Artifact status: the anonymous snapshot contains the gate and experiment scripts
 
 Implementability score: 0.72
 
+Durable deep dive: [Authenticated authority across context compaction](../context-compaction-provenance/context-compaction-provenance.md#november-25-2026-deep-dive-authenticated-authority-across-context-compaction). It explains the text-only impossibility result, dual reasoning and authorization views, the witnessed-request gate, implementation complexity, and the unresolved problem of authority delegated through external documents.
+
 Core sources:
 - [LLM Agent Authorization Across Context Compaction v1](https://arxiv.org/abs/2611.32194v1)
 - [Read-only artifact snapshot](https://anonymous.4open.science/r/LLM-Agent-Authorization-Across-Context-Compaction-504E/)

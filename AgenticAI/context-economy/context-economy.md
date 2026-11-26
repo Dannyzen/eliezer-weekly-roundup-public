@@ -595,3 +595,13 @@ Source: [Context Has a Price v1](https://arxiv.org/abs/2611.22238v1)
 ## Working conclusion
 
 The future agent stack is not context maximalism. It is context accounting. Systems that know what to admit, retrieve, compress, cache, update incrementally, preserve prefix continuity, and audit will beat systems that merely buy larger windows and hope the model sorts it out.
+
+## November 26, 2026 update: context edits should be typed and measured
+
+Model-managed context turns compaction from a hidden harness event into an explicit operation. The runtime can record which spans changed, how many tokens were saved, whether KV cache was reused, and whether task quality improved.
+
+The guardrail is shared control. Models varied widely in whether and when they compacted, so the harness should retain budget limits, fallback policy, and outcome telemetry rather than delegating context authority blindly.
+
+Implementability score: 0.76
+
+Sources: [Context management paper v1](https://arxiv.org/abs/2611.34147v1), [Mainplane](https://github.com/mainplane-ai/mainplane)

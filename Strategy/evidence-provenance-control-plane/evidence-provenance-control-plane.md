@@ -401,3 +401,13 @@ Evidence caveat: reported source fields show what Copilot attributes to the revi
 Implementability score: 0.91
 
 Source: [GitHub Copilot code review API update](https://github.blog/changelog/2026-11-06-copilot-code-review-api-management-and-review-overview-updates/)
+
+## November 26, 2026 update: verification should emit a certificate
+
+Agent-as-a-Verifier makes the release artifact a claim graph, acceptance contract, obligation set, executed checks, and evidence package. This is stronger than a scalar verifier score because reviewers can inspect which requirement each check covered and what evidence supported the verdict.
+
+The practical guardrail is role separation: acceptance compilation should be independent of the candidate's self-description, and check proposal, execution, and evidence audit should remain distinct stages.
+
+Implementability score: 0.74
+
+Sources: [Agent-as-a-Verifier v1](https://arxiv.org/abs/2611.34132v1), [General-Verifier](https://github.com/sunyxedu/General-Verifier)

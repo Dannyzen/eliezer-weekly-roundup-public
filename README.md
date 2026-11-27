@@ -6,12 +6,11 @@ The repo separates patterns that can be tried now from ideas that still need res
 
 ## Latest update
 
-- Daily scan, 2026-11-26: [evidence-bearing evolution and verification](roundups/2026-11-26.md)
-- Latest implementation analysis: [AgenticAI](AgenticAI/2026-11-26/reasoning.md)
-- Latest strategy analysis: [Strategy](Strategy/2026-11-26/sovereignty.md)
-- Friday synthesis, week ending 2026-11-20: [explicit runtime objects](roundups/2026-11-20.md)
-- Latest implementation index: [AgenticAI README](AgenticAI/README.md)
-- Latest strategy index: [Strategy README](Strategy/README.md)
+The November 27 scan turns agent reliability into four preflight audits: patch-block necessity, stage-level memory diagnosis, executable security reachability, and routeability before model selection.
+
+- [Daily roundup](roundups/2026-11-27.md)
+- [AgenticAI analysis](AgenticAI/2026-11-27/reasoning.md)
+- [Strategy analysis](Strategy/2026-11-27/sovereignty.md)
 
 ## Browse by category
 

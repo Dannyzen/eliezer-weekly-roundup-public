@@ -3,6 +3,44 @@
 Implementation research for the deployed agent loop: tool use, memory, orchestration, evaluation, testing, and work-state continuity.
 
 
+## Daily update: 2026-11-27
+
+### Test patch necessity, not patch size
+
+Summary: Delta Residue Attribution replays trajectories, removes final patch blocks, and reruns tests to separate useful tests and documentation from unnecessary code.
+
+Analysis: [Patch size is the wrong over-editing metric](2026-11-27/reasoning.md#patch-size-is-the-wrong-over-editing-metric)
+
+Core source: [Coding-agent over-editing study v1](https://arxiv.org/abs/2611.34875v1)
+
+Implementable now: preserve step-to-diff attribution, remove suspicious blocks under focused tests, and mutation-test agent-authored tests.
+
+Implementability score: 0.78
+
+### Diagnose the memory stage that lost evidence
+
+Summary: HoMe labels failures as never written, overwritten, or not retrieved, then searches bounded harness changes with smoke tests and reusable memory state.
+
+Analysis: [Memory optimization should diagnose where evidence disappeared](2026-11-27/reasoning.md#memory-optimization-should-diagnose-where-evidence-disappeared)
+
+Core source: [HoMe v1](https://arxiv.org/abs/2611.34624v1)
+
+Implementable now: add stage-level traces, session diffs, cheap candidate gates, and task-score plus token-cost objectives around ReMe or another memory harness.
+
+Implementability score: 0.72
+
+### Prove security findings through executable paths
+
+Summary: AgentLens turns component, data-flow, weakness, and guardrail graphs into bounded multi-turn audit scenarios with observed security effects.
+
+Analysis: [Security findings need executable reachability proof](2026-11-27/reasoning.md#security-findings-need-executable-reachability-proof)
+
+Core source: [AgentLens v1](https://arxiv.org/abs/2611.34380v1)
+
+Implementable now: build authority graphs, derive candidate paths, validate them only in isolated test environments, and retain path-level receipts.
+
+Implementability score: 0.67
+
 ## Daily update: 2026-11-26
 
 ### Production failures should compile into replayable evolution gates

@@ -122,6 +122,12 @@ Sources:
 - [GitHub CodeQL 2.26.0 changelog](https://github.blog/changelog/2026-07-10-codeql-2-26-0-adds-kotlin-2-4-0-support-and-ai-prompt-injection-detection)
 - [CodeQL system-prompt-injection query](https://github.com/github/codeql/blob/main/javascript/ql/src/Security/CWE-1427/SystemPromptInjection.ql)
 
+
+## November 27, 2026 update: static findings need executable reachability receipts
+
+AgentLens extends preflight analysis into an Audit Knowledge Graph containing components, data and control flows, weaknesses, and active guardrails. The release gate should derive candidate attack paths from that graph, validate only bounded high-risk paths in isolation, and retain a receipt for the path, payload class, observed effect, and defense state. Keep static candidates separate from execution-validated vulnerabilities.
+
+Source: [AgentLens v1](https://arxiv.org/abs/2611.34380v1). The paper-claimed anonymized artifact returned HTTP 401 from this cron environment.
 ## Working conclusion
 
 Agent static analysis should become the agent equivalent of dependency scanning plus control-flow review. Before an agent runs, the platform should know what can influence its system policy, what it can call, what can loop, and which policy objects actually cover the dangerous paths.

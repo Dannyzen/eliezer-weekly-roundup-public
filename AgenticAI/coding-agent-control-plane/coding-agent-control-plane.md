@@ -528,3 +528,9 @@ A coding agent can detect that repository instructions conflict with live code a
 Implementability score: 0.97
 
 Sources: [paper](https://arxiv.org/abs/2610.30571v1), [public data and analysis artifact](https://github.com/WenJing95/stale-docs-data)
+
+## November 27, 2026 update: test whether each patch block is necessary
+
+Patch size is a weak release metric because useful tests and documentation can make a patch larger. Delta Residue Attribution provides a stronger gate: map each final patch block to its trajectory step, remove the block, rerun task tests, and classify the residue by artifact type. A coding-agent control plane should preserve step-to-diff provenance, test suspicious block removal, mutation-test new tests, and send reducible patches to review instead of equating size with risk.
+
+Source: [Coding-agent over-editing study v1](https://arxiv.org/abs/2611.34875v1)

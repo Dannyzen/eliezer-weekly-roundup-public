@@ -428,3 +428,9 @@ Artifact caveat: the named public repository has no default branch and zero cont
 Implementability score: 0.42
 
 Sources: [RACE paper v1](https://arxiv.org/abs/2610.12061v1), [currently empty repository](https://github.com/HututuAI/RACE)
+
+## November 27, 2026 update: audit routeability before training the router
+
+Routeability Before Routing shows that oracle headroom is insufficient. A governed router should first measure single-best versus virtual-best headroom, tied-best sets, regret, gap closure, selector stability, and simple budget-matched baselines on frozen prompt identities. Promote routing only for workload slices whose gain survives portfolio and predictor changes, with a deterministic single-model fallback.
+
+Source: [Routeability Before Routing v1](https://arxiv.org/abs/2611.34825v1)

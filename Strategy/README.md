@@ -3,6 +3,25 @@
 Control-plane research for authority, identity, provenance, gateways, approvals, privacy, and sovereign infrastructure.
 
 
+## Daily update: 2026-11-27
+
+### Prove routeability before paying for a router
+
+Summary: RAP checks portfolio headroom, tied-best behavior, regret, gap closure, and selector stability before model-routing gains are treated as operational evidence.
+
+Analysis: [Audit routeability before building a router](2026-11-27/sovereignty.md#audit-routeability-before-building-a-router)
+
+Core source: [Routeability Before Routing v1](https://arxiv.org/abs/2611.34825v1)
+
+Implementable now:
+- compute single-best versus virtual-best headroom;
+- compare against simple budget-matched baselines;
+- freeze splits and prompt identities;
+- deploy only workload slices with stable gains;
+- retain a deterministic single-model fallback.
+
+Implementability score: 0.76
+
 ## Daily update: 2026-11-26
 
 ### Release decisions need evidence certificates, not only scores

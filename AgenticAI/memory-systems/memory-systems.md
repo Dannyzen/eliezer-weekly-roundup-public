@@ -843,6 +843,12 @@ Implementability score: 0.66
 
 Source:
 - [Beyond Downstream QA: Rethinking How We Evaluate Agent Memory](https://arxiv.org/abs/2610.22209v1)
+
+## November 27, 2026 update: optimize memory from stage-level failure evidence
+
+HoMe treats memory behavior as a harness spanning construction, maintenance, retrieval, and answer generation. The reusable control pattern is to label where evidence disappeared, preserve session-level state diffs, aggregate recurring mechanisms across failures, reject broken candidates with smoke tests, and price task score against evaluation and query-token cost. This turns memory optimization from prompt tuning into bounded system diagnosis.
+
+Sources: [HoMe v1](https://arxiv.org/abs/2611.34624v1), [ReMe](https://github.com/agentscope-ai/ReMe)
 ## Working conclusion
 
 The next generation of agents will be differentiated less by how eloquently they speak and more by how faithfully and safely they remember. The winning systems will preserve evidence, route memory writes explicitly, retrieve context adaptively, abstain when memory is unsafe, validate high-value writes, make retention and pruning decisions replayable, query local graphs when code structure matters, promote only the right lessons into durable guidance, attach enough context for updates and temporal reasoning, choose abstraction levels that transfer across tasks, keep the most sensitive memory close to the user and under policy control, run durable memory through a governed database-backed state core, separate evaluation memory from user-facing memory, measure whether memories remain usable under scale, budgets, and writeback review, expose operation-level provenance, make reasoning history diffable, test belief-state stay/update/isolate decisions, gate retrieval by policy, resolve contradictions with bitemporal evidence, evaluate memory against heterogeneous evolving source streams, and defend memory write/read paths against poisoning so failures can be traced instead of guessed.

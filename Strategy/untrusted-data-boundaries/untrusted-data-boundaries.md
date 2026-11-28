@@ -644,3 +644,19 @@ Artifact status: the public benchmark repository resolved and was inspected read
 Implementability score: 0.82
 
 Sources: [paper v1](https://arxiv.org/abs/2611.07640v1), [repository](https://github.com/amazon-science/task-tampering-prompt-injection)
+
+
+## November 28, 2026 update: make context channels authority-aware
+
+[Pydantic AI v2.77.0](https://github.com/pydantic/pydantic-ai/releases/tag/v2.77.0) implements a concrete boundary for repository context. `RepoContext`, `Skills`, and `Memory` inspect workspace authority before deciding how text reaches the model. Files below `operator` authority stay out of instructions and arrive as tool output or attributed data instead.
+
+The merged [authority-aware workspace change](https://github.com/pydantic/pydantic-ai/pull/11837) demonstrates the right primitive: provenance changes the channel before interpretation. Low-authority skills are discovered and loaded through tools, while low-authority memory is attributed to its file source rather than the agent.
+
+Practical lesson:
+- classify authority per file and path, not per repository label alone;
+- reserve instruction channels for application and operator sources;
+- make lower-authority text retrievable without promoting it;
+- retain source attribution through compaction and memory snapshots;
+- probe every channel with planted instructions.
+
+Implementability score: 0.93

@@ -423,3 +423,21 @@ Evidence caveat: the benchmark covers 73 planted numerical conflicts across 11 d
 Implementability score: 0.84
 
 Source: [Multi-Agent Memory Inconsistency v1](https://arxiv.org/abs/2611.22245v1)
+
+
+## November 28, 2026 update: route parallelism by measured mechanism
+
+Two new sources sharpen the admission rule for multi-agent work.
+
+[When Are Parallel Subagents Effective for Coding?](https://arxiv.org/abs/2611.33893v1) reports only about 1 to 5 percentage points of hidden-test improvement on random repository-construction tasks at 2.6 to 3.8 times single-agent cost. A forced reference-program probe recovered most of the gain for GPT-5.6 Sol in one setting. Useful gains clustered around early stopping by the single agent, stale long-session context, and modular tasks.
+
+Hugging Face's [swarm training report](https://huggingface.co/blog/training-swarms) shows the opposite route: train communication itself. Four agents sharing one Qwen3-0.6B policy improved training success from 6.6% to 82.3% while generated tokens per training attempt fell 37.4%. The task requires private-information exchange and does not yet establish superiority over a compute-matched single agent on a generally solvable task.
+
+Practical lesson:
+- test forced self-checking and fresh context before adding subagents;
+- route only work with low integration burden or high evidence diversity;
+- compare success, wall-clock, tokens, duplicate work, and integration failures;
+- train communication only when the task has a verifiable shared reward;
+- preserve topology and message events for credit assignment.
+
+Implementability score: 0.70

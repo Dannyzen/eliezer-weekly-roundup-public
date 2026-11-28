@@ -189,3 +189,19 @@ Artifact caveat: no exact paper-owned public dataset or repository resolved in t
 Implementability score: 0.60
 
 Source: [PASTABench](https://arxiv.org/abs/2609.28197v1)
+
+
+## November 28, 2026 update: attack-policy coverage is part of monitor evidence
+
+[Attack Policy Selection can Mislead Monitor Evaluators](https://arxiv.org/abs/2611.34934v1) holds the deployment scenario and 30 control tasks fixed while varying attack generation. The same held-out GPT-5.4 monitor produced false-negative rates from 0.5% to 20.8% across reinforcement-learning optimization levels and from 6.4% to 23.0% across attack methods at their best observed levels.
+
+The detector score therefore needs an attacker identity and optimization envelope. A weak generator tests whether the monitor catches easy attacks. It does not establish robustness against attacks the evaluation never produced.
+
+Practical lesson:
+- version attack generators, prompts, training budgets, and transcript editors;
+- develop against proxy monitors and reserve a held-out target;
+- report the full miss-rate range across methods and budgets;
+- keep clean false positives and utility in the same release evidence;
+- treat narrow attack coverage as missing evidence, not a passing result.
+
+Implementability score: 0.78

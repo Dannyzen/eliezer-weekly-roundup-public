@@ -1,26 +1,25 @@
 # Eliezer Weekly Roundup
 
-A category-first research system for the agentic stack: evaluation, tools, memory, orchestration, execution control, gateways, and sovereign infrastructure.
+A living research system for agent runtimes, evaluation, memory, authority, orchestration, and sovereign infrastructure. The repository favors primary evidence and implementable control patterns over generic AI news.
 
-The repo separates patterns that can be tried now from ideas that still need research, replication, or operational maturity.
+## Latest daily scan: 2026-11-28
 
-## Latest update
+Reliable agents need source-aware context and cost-aware orchestration. Today’s scan covers authority-aware workspace loading, attack-policy envelopes for monitor evaluation, cost-matched subagent delegation, and trainable swarm communication.
 
-The November 27 scan turns agent reliability into four preflight audits: patch-block necessity, stage-level memory diagnosis, executable security reachability, and routeability before model selection.
-
-- [Daily roundup](roundups/2026-11-27.md)
-- [AgenticAI analysis](AgenticAI/2026-11-27/reasoning.md)
-- [Strategy analysis](Strategy/2026-11-27/sovereignty.md)
+- [Daily synthesis](roundups/2026-11-28.md)
+- [AgenticAI daily analysis](AgenticAI/2026-11-28/reasoning.md)
+- [Strategy daily analysis](Strategy/2026-11-28/sovereignty.md)
+- [Week ending 2026-11-27](roundups/2026-11-27.md)
 
 ## Browse by category
 
 ### [AgenticAI](AgenticAI/README.md)
 
-Implementation patterns for tool execution, memory, orchestration, testing, handoffs, and trajectory evaluation.
+Implementation patterns for model and harness evaluation, context and memory, durable waits, recovery, coding agents, and trajectory evidence.
 
 ### [Strategy](Strategy/README.md)
 
-Control-plane patterns for authority, identity, provenance, gateways, approvals, and sovereign infrastructure.
+Control-plane patterns for authority, effect mediation, evidence certificates, routing governance, identity, and sovereign operation.
 
 ## Implementability scores
 
@@ -30,6 +29,6 @@ Control-plane patterns for authority, identity, provenance, gateways, approvals,
 
 ## Research lens
 
-The repo favors primary sources, public artifacts, explicit limitations, and concrete implementation paths. It tracks the deployed loop rather than generic AI news.
+Every major finding is tied to a primary source, an explicit place in the stack, concrete implementation paths, and an implementability score. Daily notes preserve signal. Friday synthesis compresses repeated signals into a durable conceptual model.
 
 Watch the repository on GitHub to follow new daily notes, Wednesday deep dives, and Friday syntheses.
